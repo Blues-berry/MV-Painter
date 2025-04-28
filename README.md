@@ -60,7 +60,7 @@ python train.py --base=./configs/mvpainter-train-controlnet.yaml --gpus 0 --num_
 ```
 
 ## PBR Model
-Our pbr model is improved based on [IDArb](https://github.com/Lizb6626/IDArb/issues). The specific improvements can be found in our technical report. Our training script is similar to IDArb:
+Our pbr model is improved based on [IDArb](https://github.com/Lizb6626/IDArb). The specific improvements can be found in our technical report. Our training script is similar to IDArb:
 
 ```
 accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config configs/train.yaml
