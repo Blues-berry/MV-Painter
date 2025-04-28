@@ -1,0 +1,45 @@
+model:
+  base_learning_rate: 5.0e-05
+  target: mvpainter.model_unet.MVDiffusion
+  # resume: /mnt/workspace/sunzhaoxu/code/TextTure/Zero123/ckpts/diffusion_pytorch_model.bin
+  params:
+    drop_cond_prob: 0.1
+    stable_diffusion_config:
+      pretrained_model_name_or_path:  /mnt/xlab-nas-1/shaomingqi.smq/projects/aigc3d_dev/aigc3d/开源/ckpts/MVPainter/pipeline
+
+
+data:
+  target: src.data.mvpainter_dataset.DataModuleFromConfig
+  params:
+    batch_size: 1
+    num_workers: 8
+    train:
+      target: src.data.mvpainter_dataset.MVPainterData
+      params:
+        valid_path: /mnt/xlab-nas-2/bearbee/aigc3d/data/jinzhi_data/json_file/sketchfab_1M/raw/data_250219_1_h20_withImage.txt
+        # root_dir_list: ['/mnt/workspace/shaomingqi.smq/datasets/zhaoxu/objaverse_render_wangdi_hunyuan_zero123_triposr_aone']
+        meta_fname: train_meta.json
+    validation:
+      target: src.data.mvpainter_dataset.MVPainterData
+      params:
+
+        valid_path: /mnt/xlab-nas-2/bearbee/aigc3d/data/jinzhi_data/json_file/sketchfab_1M/raw/data_250219_1_h20_withImage.txt
+        meta_fname: test_meta.json
+
+
+lightning:
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 1000
+      save_top_k: -1
+      save_last: true
+  callbacks: {}
+
+  trainer:
+    benchmark: true
+    max_epochs: -1
+    gradient_clip_val: 1.0
+    val_check_interval: 1000000
+    num_sanity_val_steps: 0
+    accumulate_grad_batches: 2
+    check_val_every_n_epoch: null   # if not set this, validation does not run
