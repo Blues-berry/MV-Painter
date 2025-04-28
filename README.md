@@ -1,6 +1,6 @@
 # Introduction
 
-# [Prepare](./INSTALL.md)
+# [Prepare](./MVPainter/INSTALL.md)
 
 # Infererence
 ## Generate multi-view images
@@ -66,9 +66,9 @@ Our pbr model is improved based on [IDArb](https://github.com/Lizb6626/IDArb/iss
 accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config configs/train.yaml
 
 ```
-# [Data](../data_process/README.md)
+# [Data](./data_process/README.md)
 
-# [Evaluation](./evaluation/README.md)
+# [Evaluation](./MVPainte/evaluation/README.md)
 
 
 
