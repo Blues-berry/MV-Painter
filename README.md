@@ -68,7 +68,7 @@ accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config conf
 ```
 # [Data](./data_process/README.md)
 
-# [Evaluation](./MVPainte/evaluation/README.md)
+# [Evaluation](./MVPainter/evaluation/README.md)
 
 
 
