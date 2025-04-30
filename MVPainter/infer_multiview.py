@@ -23,6 +23,7 @@ import OpenEXR
 import Imath
 import time
 from huggingface_hub import hf_hub_download
+from transformers.utils import cached_file
 
 from mvpainter.mvpainter_pipeline import MVPainter_Pipeline,RefOnlyNoisedUNet,DepthControlUNet
 from mvpainter.controlnet import ControlNetModel_Union
@@ -261,6 +262,7 @@ if __name__ == '__main__':
         pipeline_path,
         torch_dtype=torch.float16,
     )
+
     controlnet = ControlNetModel_Union.from_unet(pipeline.unet).to(dtype=torch.float16,device=pipeline.device)
     pipeline.add_controlnet(controlnet, conditioning_scale=1.0)
 

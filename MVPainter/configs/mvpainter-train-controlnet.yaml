@@ -4,7 +4,7 @@ model:
   params:
     drop_cond_prob: 0.1
     stable_diffusion_config:
-      pretrained_model_name_or_path:  ../ckpts/MVPainter/pipeline
+      pretrained_model_name_or_path:  shaomq/MVPainter
 data:
   target: src.data.mvpainter_dataset.DataModuleFromConfig
   params:

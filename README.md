@@ -42,13 +42,13 @@ MVPainter is a fully open-source system for 3D texture generation, providing a c
 
 
 
-    Mesh generated from TripoSG, use `--geo_rotation 0`
+    Mesh generated from [TripoSG](https://github.com/VAST-AI-Research/TripoSG), use `--geo_rotation 0`
 
-    Mesh generated from Hunyuan-2, use `--geo_rotation -90`
+    Mesh generated from [Hunyuan-2](https://github.com/Tencent/Hunyuan3D-2), use `--geo_rotation -90`
 
-    Mesh generated from TRELLIS，use  `--geo_rotation -90`
+    Mesh generated from [TRELLIS](https://github.com/microsoft/TRELLIS)，use  `--geo_rotation -90`
 
-    Mesh generated from Hi3dGen  `--geo_rotation -90`
+    Mesh generated from [Hi3dGen](https://github.com/Stable-X/Hi3DGen)  `--geo_rotation -90`
 
 
 ### Extract PBR (Optional)
