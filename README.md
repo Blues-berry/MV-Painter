@@ -93,7 +93,7 @@ Our pbr model is improved based on [IDArb](https://github.com/Lizb6626/IDArb). T
 accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config configs/train.yaml
 
 ```
-## [Data Processing](./data_process/README.md)
+## 📊[Data Processing](./data_process/README.md)
 
 ## 📝[Evaluation](./MVPainter/evaluation/README.md)
 
