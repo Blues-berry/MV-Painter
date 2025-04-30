@@ -22,6 +22,7 @@ import shutil
 import OpenEXR
 import Imath
 import time
+from huggingface_hub import hf_hub_download
 
 from mvpainter.mvpainter_pipeline import MVPainter_Pipeline,RefOnlyNoisedUNet,DepthControlUNet
 from mvpainter.controlnet import ControlNetModel_Union
@@ -254,7 +255,7 @@ if __name__ == '__main__':
 
     # load pipeline modules
 
-    pipeline_path = '/mnt/xlab-nas-1/shaomingqi.smq/projects/aigc3d_dev/aigc3d/开源/ckpts/MVPainter/pipeline'
+    pipeline_path = 'shaomq/MVPainter'
 
     pipeline = MVPainter_Pipeline.from_pretrained(
         pipeline_path,
@@ -265,10 +266,12 @@ if __name__ == '__main__':
 
 
     print('Loading custom unet ...')
-    ckpt = torch.load(
-        # "/mnt/xlab-nas-1/shaomingqi.smq/projects/aigc3d_dev/aigc3d/开源/ckpts/MVPainter/mvpainter_unet/v26_2_step_00024000.ckpt")[
-        "../ckpts/MVPainter/pipeline/unet_w_controlnet/v29_25000.ckpt")[
-        # "/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/Zero123_Origin/logs_h20/hunyuan-controlnet-train-multi-ccm-v28-2/checkpoints/step=00023000.ckpt")[
+    unet_ckpt_path = hf_hub_download(
+        repo_id="shaomq/MVPainter",
+        filename="unet_w_controlnet/v29_25000.ckpt"  # 改成你实际的 ckpt 文件路径
+    )
+
+    ckpt = torch.load(unet_ckpt_path)[
         "state_dict"]
     new_ckpt = {k[5:]: v for k, v in ckpt.items() if "unet" in k}
     pipeline.unet.load_state_dict(new_ckpt)

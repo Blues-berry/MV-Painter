@@ -860,7 +860,7 @@ class MeshRender():
         texture_np, mask = meshVerticeInpaint(
             texture_np, mask, vtx_pos, vtx_uv, pos_idx, uv_idx)
 
-        cv2.imwrite("test_uv_texture.png",(texture_np *
+        # cv2.imwrite("test_uv_texture.png",(texture_np *
              255).astype(
                 np.uint8))
         texture_np = cv2.inpaint(
@@ -872,7 +872,7 @@ class MeshRender():
             3,
             cv2.INPAINT_NS)
         # texture_np =  (texture_np * 255).astype(np.uint8)
-        cv2.imwrite("test_uv_texture_inpainted.png",texture_np)
+        # cv2.imwrite("test_uv_texture_inpainted.png",texture_np)
 
         # import pdb;pdb.set_trace()
 
