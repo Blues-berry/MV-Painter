@@ -48,5 +48,5 @@ Here, we provide the code for evaluating different texturing methods in the `MVP
 
 
 
-    Note: we use [EloPy](https://github.com/HankSheehan/EloPy) to claculate elo ranking scores of all evaluated methods. Please install it from source.
+    Note: we use [EloPy](https://github.com/HankSheehan/EloPy) to claculate elo ranking scores of all evaluated methods.
 

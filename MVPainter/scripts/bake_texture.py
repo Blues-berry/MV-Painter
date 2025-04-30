@@ -1,26 +1,4 @@
-# Open Source Model Licensed under the Apache License Version 2.0
-# and Other Licenses of the Third-Party Components therein:
-# The below Model in this distribution may have been modified by THL A29 Limited
-# ("Tencent Modifications"). All Tencent Modifications are Copyright (C) 2024 THL A29 Limited.
 
-# Copyright (C) 2024 THL A29 Limited, a Tencent company.  All rights reserved.
-# The below software and/or models in this distribution may have been
-# modified by THL A29 Limited ("Tencent Modifications").
-# All Tencent Modifications are Copyright (C) THL A29 Limited.
-
-# Hunyuan 3D is licensed under the TENCENT HUNYUAN NON-COMMERCIAL LICENSE AGREEMENT
-# except for the third-party components listed below.
-# Hunyuan 3D does not impose any additional limitations beyond what is outlined
-# in the repsective licenses of these third-party components.
-# Users must comply with all terms and conditions of original licenses of these third-party
-# components and must ensure that the usage of the third party components adheres to
-# all relevant laws and regulations.
-
-# For avoidance of doubts, Hunyuan 3D means the large language models and
-# their software and algorithms, including trained model weights, parameters (including
-# optimizer states), machine-learning model code, inference-enabling code, training-enabling code,
-# fine-tuning enabling code and other elements of the foregoing made publicly available
-# by Tencent in accordance with TENCENT HUNYUAN COMMUNITY LICENSE AGREEMENT.
 
 
 import logging
@@ -36,40 +14,14 @@ from src.utils.uv_warp_utils import mesh_uv_wrap
 
 logger = logging.getLogger(__name__)
 
-def scale_image(img, scale=0.99):
-    # 打开图像
-    # img = Image.open(image_path)
-    
-    # 获取原始尺寸
-    original_width, original_height = img.size
-
-    # 计算缩放后的尺寸
-    new_width = int(original_width * scale)
-    new_height = int(original_height * scale)
-
-    # 缩放图像
-    resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
-
-    # 将缩放后的图像放回到原始分辨率大小的画布上（居中）
-    output_img = Image.new("RGB", (original_width, original_height), (255, 255, 255))
-    paste_x = (original_width - new_width) // 2
-    paste_y = (original_height - new_height) // 2
-    output_img.paste(resized_img, (paste_x, paste_y))
-
-    # 保存新图像
-    return output_img
 class BakeConfig:
 
     def __init__(self,offset,candidate_view_weights):
         self.device = 'cuda'
-        # self.light_remover_ckpt_path = light_remover_ckpt_path
-        # self.multiview_ckpt_path = multiview_ckpt_path
-        # offset = -90
+
         self.candidate_camera_azims = [0 + offset, 90 + offset, 180 + offset, 270+offset, 0 + offset, 180+offset]
         self.candidate_camera_elevs = [0, 0, 0, 0, 90, -90]
-        # self.candidate_view_weights = [1, 0.1, 0.5, 0.1, 0.05, 0.05]
-        # self.candidate_view_weights = [1, 0.1, 0.1, 0.1, 0.05, 0]
-        # self.candidate_view_weights = [0,0,0,0,0.1,0]
+
         self.candidate_view_weights = candidate_view_weights
         print(self.candidate_view_weights)
 

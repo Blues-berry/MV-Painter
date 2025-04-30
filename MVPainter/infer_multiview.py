@@ -22,6 +22,7 @@ import shutil
 import OpenEXR
 import Imath
 import time
+
 from mvpainter.mvpainter_pipeline import MVPainter_Pipeline,RefOnlyNoisedUNet,DepthControlUNet
 from mvpainter.controlnet import ControlNetModel_Union
 
@@ -266,12 +267,12 @@ if __name__ == '__main__':
     print('Loading custom unet ...')
     ckpt = torch.load(
         # "/mnt/xlab-nas-1/shaomingqi.smq/projects/aigc3d_dev/aigc3d/开源/ckpts/MVPainter/mvpainter_unet/v26_2_step_00024000.ckpt")[
-        "/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/Zero123_Origin/logs_h20/hunyuan-controlnet-train-multi-ccm-v30/checkpoints/step=00025000.ckpt")[
+        "../ckpts/MVPainter/pipeline/unet_w_controlnet/v29_25000.ckpt")[
         # "/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/Zero123_Origin/logs_h20/hunyuan-controlnet-train-multi-ccm-v28-2/checkpoints/step=00023000.ckpt")[
         "state_dict"]
     new_ckpt = {k[5:]: v for k, v in ckpt.items() if "unet" in k}
-
     pipeline.unet.load_state_dict(new_ckpt)
+
 
     pipeline = pipeline.to(torch.device('cuda'))
 

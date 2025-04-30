@@ -1,20 +1,9 @@
+"""
+Blender script to render images of 3D models.
 
-"""Blender script to render images of 3D models.
-
-This script is used to render images of 3D models. It takes in a list of paths
-to .glb files and renders images of each model. The images are from rotating the
-object around the origin. The images are saved to the output directory.
-
-Example usage:
-    blender -b -P blender_script.py -- \
-        --object_path my_object.glb \
-        --output_dir ./views \
-        --engine CYCLES \
-        --scale 0.8 \
-        --num_images 12 \
-        --camera_dist 1.2
-
-Here, input_model_paths.json is a json file containing a list of paths to .glb.
+Modified from https://github.com/3DTopia/MaterialAnything/blob/main/rendering_scripts/blender_script_material.py, the original version is modifiedfrom https://github.com/cvlab-columbia/zero123/blob/main/objaverse-rendering/scripts/blender_script.py.
+Original script licensed under MIT, found at the root of its repository.
+Modifications are licensed under Apache 2.0.
 """
 
 import argparse
@@ -54,12 +43,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--object_path",
     type=str,
-    default='/data/54T/wyw/objverse_obj/000-000/ab66a75ccfa24c0da37741a47d5b1a22.glb',
+    default='/data/objverse_obj/000-000/ab66a75ccfa24c0da37741a47d5b1a22.glb',
     help="Path to the object file",
 )
-parser.add_argument("--output_dir", type=str, default="/home/sunzhaoxu/code/data/avatar_render/") #/data/54T/wyw/data/objverse_obj_render_pbr/
-parser.add_argument("--hdri_path", type=str) #/data/54T/wyw/data/objverse_obj_render_pbr/
-
+parser.add_argument("--output_dir", type=str, default="/data/renders/") 
+parser.add_argument("--hdri_path", type=str)
 parser.add_argument(
     "--engine", type=str, default="CYCLES", choices=["CYCLES", "BLENDER_EEVEE"]
 )
@@ -605,11 +593,10 @@ def clean_imported_data(objects: list):
 
 def normalize_scene(scale, offset):
 
-
     parent_empty = bpy.data.objects.new("NormalizationParent", None)
     bpy.context.scene.collection.objects.link(parent_empty)
     
-    # 获取所有需要处理的对象
+    # Get all objects that need to be processed
     objects = [obj for obj in get_scene_meshes()]
     # clean_imported_data(objects)
     
@@ -617,38 +604,38 @@ def normalize_scene(scale, offset):
     parent_empty.scale = (scale, scale, scale)
     parent_empty.location = offset * scale
     
-    # 将对象父级设置为空对象并保持变换
+    # Set the parent of the objects to the empty object while keeping the transformation
     for obj in objects:
-        # 保持当前世界变换
+        # Keep the current world transformation
         matrix = obj.matrix_world.copy()
         obj.parent = parent_empty
         obj.matrix_parent_inverse = parent_empty.matrix_world.inverted()
         obj.matrix_world = matrix
     
-    # 更新场景
+    # Update the scene
     bpy.context.view_layer.update()
     
     return scale, offset
     
 def create_shadeless_material(original_material):
-    # 创建一个新材质
+    # Create a new material
     mat = bpy.data.materials.new(name=original_material.name + "_Shadeless")
     mat.use_nodes = True
     nodes = mat.node_tree.nodes
     links = mat.node_tree.links
 
-    # 清除默认节点
+    # Clear default nodes
     for node in nodes:
         nodes.remove(node)
 
-    # 创建新的 Emission 和 Material Output 节点
+    # Create new Emission and Material Output nodes
     emission = nodes.new(type='ShaderNodeEmission')
     material_output = nodes.new(type='ShaderNodeOutputMaterial')
 
-    # 连接节点
+    # Connect nodes
     links.new(emission.outputs['Emission'], material_output.inputs['Surface'])
 
-    # 如果原材质使用节点，将 Base Color 复制到 Emission 节点
+    # If the original material uses nodes, copy the Base Color to the Emission node
     if original_material.use_nodes:
         base_color = original_material.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value
     else:
@@ -660,7 +647,6 @@ def create_shadeless_material(original_material):
     return mat
 
 
-# 给所有对象设置发射材质
 def replace_materials_with_shadeless():
     for obj in bpy.data.objects:
         if obj.type == 'MESH':
@@ -841,15 +827,15 @@ def save_images(object_file,object_uid,prefix="",fixed_random_list=None):
 
                                 
 
-                                # 创建漫射 BSDF 节点
+                                # Create a diffuse BSDF node
                                 diffuse_node = mat.node_tree.nodes.new(type='ShaderNodeBsdfDiffuse')
-                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface']) # 将新的材质节点连接到输出节点上
+                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface'])  # Connect the new material node to the output node
 
-                                # 金属度链接到bsdf的basecolor输入上
+                                # Link the metallicity to the basecolor input of the bsdf
                                 mat.node_tree.links.new(origin_basecolor_node.outputs[origin_basecolor_from_socket_index], diffuse_node.inputs['Color'])
 
                                 assert diffuse_node.inputs['Color'].links
-                            elif prefix =="metallic":
+                                elif prefix == "metallic":
 
                                 if principled_bsdf.inputs[metallic_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[metallic_name].links[0])
@@ -857,30 +843,28 @@ def save_images(object_file,object_uid,prefix="",fixed_random_list=None):
                                     mat.node_tree.links.remove(principled_bsdf.inputs[roughness_name].links[0])
                                 if principled_bsdf.inputs[basecolor_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[basecolor_name].links[0])
-                                # 创建漫射 BSDF 节点
+                                    # Create a diffuse BSDF node
                                 diffuse_node = mat.node_tree.nodes.new(type='ShaderNodeBsdfDiffuse')
-                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface']) # 将新的材质节点连接到输出节点上
+                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface'])  # Connect the new material node to the output node
 
 
-                                
-                                # 金属度链接到bsdf的basecolor输入上
+                                    # Link the metallicity to the basecolor input of the bsdf
                                 mat.node_tree.links.new(origin_metallic_node.outputs[origin_metallic_from_socket_index], diffuse_node.inputs['Color'])
 
                                 assert diffuse_node.inputs['Color'].links
 
-
-                            elif prefix =="roughness":
+                                elif prefix == "roughness":
                                 if principled_bsdf.inputs[metallic_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[metallic_name].links[0])
                                 if principled_bsdf.inputs[roughness_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[roughness_name].links[0])
                                 if principled_bsdf.inputs[basecolor_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[basecolor_name].links[0])
-                                # 创建漫射 BSDF 节点
+                                    # Create a diffuse BSDF node
                                 diffuse_node = mat.node_tree.nodes.new(type='ShaderNodeBsdfDiffuse')
-                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface']) # 将新的材质节点连接到输出节点上
+                                mat.node_tree.links.new(diffuse_node.outputs['BSDF'], origin_bsdf_output_link.to_node.inputs['Surface'])  # Connect the new material node to the output node
                                 
-                                # 粗糙度链接到bsdf的basecolor输入上
+                                    # Link the roughness to the basecolor input of the bsdf
                                 mat.node_tree.links.new(origin_roughness_node.outputs[origin_roughness_from_socket_index], diffuse_node.inputs['Color'])
 
                                 assert diffuse_node.inputs['Color'].links

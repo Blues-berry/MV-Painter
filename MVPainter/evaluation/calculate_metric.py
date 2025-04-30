@@ -1,10 +1,10 @@
-# import os 
-# from glob import glob
-# from elopy import *
-# import random
+import os 
+from glob import glob
+from elopy import *
+import random
 import argparse
 import ast
-def get_pair_win_rate(pair_dir,target = 2):
+def get_pair_win_rate_single(pair_dir,target = 1):
     # calulate win rate with given pair
     img_paths = glob(os.path.join(pair_dir,'*.png'))
     metric_1 = []
@@ -25,13 +25,25 @@ def get_pair_win_rate(pair_dir,target = 2):
     win_count_3 = metric_3.count(target)
 
 
-    print(win_count_1 * 1.0 / len(metric_1),win_count_2 * 1.0 / len(metric_1),win_count_3 * 1.0 / len(metric_1))
+    return win_count_1 * 100.0 / len(metric_1),win_count_2 * 100.0 / len(metric_1),win_count_3 * 100.0 / len(metric_1)
+
+def get_win_rate(pair_dir_list):
+
+    for pair in pair_dir_list:
+        win1,win2,win3 = get_pair_win_rate_single(pair,target=1)
+        print("======================================================")
+        print(f"{pair} result:")
+        print(win1,win2,win3)
+        win1,win2,win3 = get_pair_win_rate_single(pair,target=2)
+        print(win1,win2,win3)
+
+
+
 
 
 
 
 def get_mean_elo(elo_metric):
-    # 创建一个字典来累加每个人的总分
     from collections import defaultdict
 
     totals = defaultdict(float)
@@ -47,10 +59,8 @@ def get_mean_elo(elo_metric):
     return averages
 
     
-def get_elo_score(pair_dir_list, player_pairs_list = [('hunyuan','mvpainter')]):
-    # calculate elo score with multi-players and their competition results
-
-    
+def get_elo_score(pair_dir_list, player_pairs_list = [('hunyuan','mvpainter')],players = ['hunyuan','mvpainter','mvadapter']):
+    # calculate elo score with multi-players and their competition results    
     competition_list_metric_1 = []
     competition_list_metric_2 = []
     competition_list_metric_3 = []
@@ -137,6 +147,7 @@ def get_elo_score(pair_dir_list, player_pairs_list = [('hunyuan','mvpainter')]):
     print(get_mean_elo(elo_metric_3))
 
 
+
     
     
 
@@ -144,9 +155,9 @@ def get_elo_score(pair_dir_list, player_pairs_list = [('hunyuan','mvpainter')]):
 
 
 if __name__ == "__main__":
-    pair_hunyuan_mvpainter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/hunyuan-MVPainter'
-    pair_hunyuan_mvadapter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/hunyuan-mvadapter-tripo'
-    pair_mvadpter_mvpainter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/mvadapter-MVPainter-tripo'
+    pair_hunyuan_mvpainter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/hunyuan-MVPainter-trellis'
+    pair_hunyuan_mvadapter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/hunyuan-mvadapter-trellis'
+    pair_mvadpter_mvpainter = '/mnt/xlab-nas-2/shaomingqi.smq/projects/aigc3d_dev/aigc3d/data_process/evaulate_mvpainter/eval_temp/mvadapter-MVPainter-trellis'
 
 
 
@@ -154,8 +165,8 @@ if __name__ == "__main__":
     pair_result_dirs = [pair_hunyuan_mvpainter,pair_hunyuan_mvadapter,pair_mvadpter_mvpainter]
     pair_names = [('hunyuan','mvpainter'),('hunyuan','mvadapter'),('mvadapter','mvpainter')]
     
-    # get pair win rate
-    get_pair_win_rate(pair_hunyuan_mvpainter)
+    # # get pair win rate
+    # get_win_rate(pair_result_dirs)
 
 
     # get all ranking scores

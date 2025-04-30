@@ -1,9 +1,33 @@
-# Introduction
+# MVPainter
+<div align="center">
+</div>
+MVPainter is a fully open-source system for 3D texture generation, providing a comprehensive solution including data, models, and evaluation tools.
 
-# [Prepare](./MVPainter/INSTALL.md)
+<img src="./assets/overview.png" alt="Pipeline" width="800"/>
 
-# Infererence
-## Generate multi-view images
+
+
+- [ ] Release technical report.
+- [ ] Release gradio demo.
+- [x] Release training code.
+- [x] Release data processing code.
+
+## ✨Key Features
+* 🔓 Fully Open-Source Texture Generation Pipeline
+
+* 🧩 Compatible with Mainstream 3D Geometry Generation Methods
+
+* 🎨 High-Fidelity, Geometry- and Image-Aligned PBR Texture Generation
+
+
+## 🔥 News
+
+* [2025-04-30] Release model weights, data processing, trainning, inference scripts.
+
+## 🔧[Installation](./MVPainter/INSTALL.md)
+
+## 💡Infererence
+### Generate multi-view images
 
 1. Prepare the input images and glbs in `/data/test/imgs` and `/data/test/glbs`.
 
@@ -24,7 +48,7 @@
     Mesh generated from Hi3dGen  `--geo_rotation -90`
 
 
-## Extract PBR (Optional)
+### Extract PBR (Optional)
 Extract PBR attributes from generated mul-view images.
 
 ```
@@ -35,7 +59,7 @@ The extracted PBR maps will be saved in `--mv_res_dir` directory.
 
 
 
-## Painting
+### Painting
 
 Run the following command to paint 3d model with multi-view generations:
 
@@ -47,36 +71,38 @@ python infer_paint.py --mv_res_dir ./outputs/test/mvpainter --output_dir ./resul
 
 
 
-# Train
-## Multi-View Generation Model
-### Train UNet
+## 🏋️Training
+### Multi-View Generation Model
+#### Train UNet
 ```
 python train.py --base=./configs/mvpainter-train-unet.yaml --gpus 0 --num_nodes 32 --logdir=./logs
 ```
 
-### Train controlnet
+#### Train controlnet
 ```
 python train.py --base=./configs/mvpainter-train-controlnet.yaml --gpus 0 --num_nodes 32 --logdir=./logs
 ```
 
-## PBR Model
+### PBR Model
 Our pbr model is improved based on [IDArb](https://github.com/Lizb6626/IDArb). The specific improvements can be found in our technical report. Our training script is similar to IDArb:
 
 ```
 accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config configs/train.yaml
 
 ```
-# [Data](./data_process/README.md)
+## [Data Processing](./data_process/README.md)
 
-# [Evaluation](./MVPainter/evaluation/README.md)
+## 📝[Evaluation](./MVPainter/evaluation/README.md)
 
 
 
-# Acknowledgment
+## ⭐️Acknowledgment
 
 In this project we use parts of the implementations of the following works:
 - [Hunyuan3D-1](https://github.com/Tencent/Hunyuan3D-1)
 - [Hunyuan3D-2](https://github.com/Tencent/Hunyuan3D-2)
 - [IDArb](https://github.com/Lizb6626/IDArb)
+- [MaterialAnything](https://github.com/3DTopia/MaterialAnything)
+
 
 We thank these work's contributors for open sourcing their research and exploration.

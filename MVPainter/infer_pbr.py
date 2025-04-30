@@ -25,29 +25,29 @@ def reform_image(img_nd):
     img_reform = np.concatenate([albedo, normal, mtl, rgh], axis=-1)
     return img_reform.transpose(1, 2, 0)
 
-# 拼接图片的函数
-def create_image_grid(image_folder, output_path,suffix = 'basecolor'):
-    # 获取文件夹中的图片文件名
+# Function to create an image grid
+def create_image_grid(image_folder, output_path, suffix='basecolor'):
+    # Get image file names in the folder
     image_files = [f"result_{i}_{suffix}.png" for i in range(1, 7)]
     images = [Image.open(os.path.join(image_folder, img)) for img in image_files]
 
-    # 获取单张图片的宽高（假设所有图片大小相同）
+    # Get the width and height of a single image (assuming all images are the same size)
     img_width, img_height = images[0].size
 
-    # 创建空白画布，宽是2张图片的宽度，高是3张图片的高度
+    # Create a blank canvas, with a width of 2 image widths and a height of 3 image heights
     grid_width = 2 * img_width
     grid_height = 3 * img_height
     grid_image = Image.new("RGB", (grid_width, grid_height))
 
-    # 将图片按网格位置粘贴到画布上
+    # Paste images onto the canvas in a grid position
     for idx, img in enumerate(images):
-        x_offset = (idx % 2) * img_width   # 列索引 * 图片宽度
-        y_offset = (idx // 2) * img_height  # 行索引 * 图片高度
+        x_offset = (idx % 2) * img_width   # Column index * image width
+        y_offset = (idx // 2) * img_height  # Row index * image height
         grid_image.paste(img, (x_offset, y_offset))
 
-    # 保存拼接后的图片
+    # Save the combined image
     grid_image.save(output_path)
-    print(f"拼接完成，结果保存为 {output_path}")
+    print(f"Puzzling completed, result saved as {output_path}")
 
 def save_image(out, name):
     Nv = out.shape[0]
@@ -80,8 +80,7 @@ def load_pipeline():
     feature_extractor = CLIPImageProcessor.from_pretrained("lizb6626/IDArb", subfolder="feature_extractor")
     vae = AutoencoderKL.from_pretrained("lizb6626/IDArb", subfolder="vae")
     scheduler = DDIMScheduler.from_pretrained("lizb6626/IDArb", subfolder="scheduler")
-    unet = UNetDR2DConditionModel.from_pretrained("/mnt/xlab-nas-1/shaomingqi.smq/projects/aigc3d_dev/aigc3d/IDArb/output/idarb-parallel-arbobjaverse-0416-512/checkpoint-19000", subfolder="unet")
-    # unet = UNetDR2DConditionModel.from_pretrained("lizb6626/IDArb", subfolder="unet")
+    unet = UNetDR2DConditionModel.from_pretrained("shaomq/MVPainter", subfolder="unet_pbr")
     
     pipeline = IDArbDiffusionPipeline(
         text_encoder=text_encoder,

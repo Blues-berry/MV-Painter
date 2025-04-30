@@ -1,20 +1,10 @@
 
-"""Blender script to render images of 3D models.
+"""
+Blender script to render images of 3D models.
 
-This script is used to render images of 3D models. It takes in a list of paths
-to .glb files and renders images of each model. The images are from rotating the
-object around the origin. The images are saved to the output directory.
-
-Example usage:
-    blender -b -P blender_script.py -- \
-        --object_path my_object.glb \
-        --output_dir ./views \
-        --engine CYCLES \
-        --scale 0.8 \
-        --num_images 12 \
-        --camera_dist 1.2
-
-Here, input_model_paths.json is a json file containing a list of paths to .glb.
+https://github.com/cvlab-columbia/zero123/blob/main/objaverse-rendering/scripts/blender_script.py
+Original script licensed under MIT, found at the root of its repository.
+Modifications are licensed under Apache 2.0.
 """
 
 import argparse
