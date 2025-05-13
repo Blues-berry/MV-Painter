@@ -6,7 +6,7 @@
 </div>
 MVPainter is a fully open-source system for 3D texture generation, providing a comprehensive solution including data, models, and evaluation tools.
 
-<img src="./assets/overview.png" alt="Pipeline" width="800"/>
+<img src="./assets/teaser.png" alt="Pipeline" width="800"/>
 
 
 
@@ -67,7 +67,11 @@ The extracted PBR maps will be saved in `--mv_res_dir` directory.
 Run the following command to paint 3d model with multi-view generations:
 
 ```
-python infer_paint.py --mv_res_dir ./outputs/test/mvpainter --output_dir ./results/test/mvpainter --geo_rotation 0
+python infer_paint.py --mv_res_dir ./outputs/test/mvpainter --output_dir ./results/test/mvpainter
+```
+If use PBR:
+```
+python infer_paint.py --mv_res_dir ./outputs/test/mvpainter --output_dir ./results/test/mvpainter --use_pbr
 ```
 
 `--mv_res_dir` is the directory of the generated multi-view images.

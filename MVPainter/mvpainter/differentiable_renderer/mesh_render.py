@@ -861,8 +861,8 @@ class MeshRender():
             texture_np, mask, vtx_pos, vtx_uv, pos_idx, uv_idx)
 
         # cv2.imwrite("test_uv_texture.png",(texture_np *
-             255).astype(
-                np.uint8))
+            #  255).astype(
+            #     np.uint8))
         texture_np = cv2.inpaint(
             (texture_np *
              255).astype(
