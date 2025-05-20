@@ -1,7 +1,8 @@
 # MVPainter
-<div align="center">
+<div align="left">
+  <a href=https://amap-cvlab.github.io/MV-Painter/ target="_blank"><img src=https://img.shields.io/badge/Project%20Page-333399.svg?logo=homepage height=22px></a>
  <a href='https://huggingface.co/shaomq/MVPainter'><img src='https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue'></a> &nbsp;
- <a href='https://arxiv.org/pdf/2505.12635'><img src='https://img.shields.io/badge/arXiv-Coming Soon-b31b1b.svg'></a> &nbsp;
+ <a href='https://arxiv.org/pdf/2505.12635'><img src='https://img.shields.io/badge/arXiv-Report-b31b1b.svg'></a> &nbsp;
 
 </div>
 MVPainter is a fully open-source system for 3D texture generation, providing a comprehensive solution including data, models, and evaluation tools.
