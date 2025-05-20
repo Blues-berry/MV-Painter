@@ -11,7 +11,7 @@ MVPainter is a fully open-source system for 3D texture generation, providing a c
 
 
 - [ ] Release technical report.
-- [ ] Release gradio demo.
+- [x] Release gradio demo.
 - [x] Release training code.
 - [x] Release data processing code.
 
@@ -24,8 +24,8 @@ MVPainter is a fully open-source system for 3D texture generation, providing a c
 
 
 ## 🔥 News
-
-* [2025-04-30] Release model weights, data processing, trainning, inference scripts.
+* [2025-04-30] We have released our [technical report](https://huggingface.co/shaomq/MVPainter)!
+* [2025-04-30] We have released model weights, data processing, trainning, inference scripts.
 
 ## 🔧[Installation](./MVPainter/INSTALL.md)
 
