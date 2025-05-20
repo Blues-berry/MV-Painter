@@ -1,7 +1,7 @@
 # Prepare 
 To run MVPainter you need at least 40GB GPU memory.
 
-Flowing instructions are tested on Ubuntu 22.04 with CUDA 12.1 and Python 3.10.
+Following instructions are tested on Ubuntu 22.04 with CUDA 12.1 and Python 3.10.
 1. Create conda env:
     ```
     conda create -n mvpainter python==3.10
