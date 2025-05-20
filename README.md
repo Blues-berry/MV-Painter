@@ -9,7 +9,7 @@ MVPainter is a fully open-source system for 3D texture generation, providing a c
 <img src="./assets/teaser.png" alt="Pipeline" width="800"/>
 
 
-- [] Release gradio demo.
+- [ ] Release gradio demo.
 - [x] Release technical report.
 - [x] Release training code.
 - [x] Release data processing code.
