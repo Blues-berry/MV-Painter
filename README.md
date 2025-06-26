@@ -28,6 +28,7 @@ MVPainter is a fully open-source system for 3D texture generation, providing a c
 * [2025-04-30] We have released model weights, data processing, trainning, inference scripts.
 
 ## 🔧[Installation](./MVPainter/INSTALL.md)
+Installation guides can be found in [INSTALL.md](./MVPainter/INSTALL.md).
 
 ## 💡Infererence
 ### Generate multi-view images
@@ -98,9 +99,10 @@ accelerate launch --config_file configs/acc/8gpu.yaml train_pbr.py --config conf
 
 ```
 ## 📊[Data Processing](./data_process/README.md)
+Dataprocess guides can be found in [here](./data_process/README.md)
 
 ## 📝[Evaluation](./MVPainter/evaluation/README.md)
-
+Our human-aligned evaluation system can be found in [here](./MVPainter/evaluation/README.md)
 
 ## Citation
 If you found this repository helpful, please cite our report:
