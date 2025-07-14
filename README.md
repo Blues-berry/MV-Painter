@@ -127,6 +127,6 @@ In this project we use parts of the implementations of the following works:
 
 We thank these work's contributors for open sourcing their research and exploration.
 
-## Star History
+<!-- ## Star History
 
-[![Star History](https://api.star-history.com/svg?repos=amap-cvlab/MV-Painter&type=Date)](https://www.star-history.com/#amap-cvlab/MV-Painter&Date)
+[![Star History](https://api.star-history.com/svg?repos=amap-cvlab/MV-Painter&type=Date)](https://www.star-history.com/#amap-cvlab/MV-Painter&Date) -->
