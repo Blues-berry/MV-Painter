@@ -551,6 +551,15 @@ def main(
                     encoder_hidden_states=text_embeddings,
                 ).sample
 
+                # Multi-view consistency loss
+                mv_consistency_loss = torch.tensor(0.0, device=model_pred.device)
+                if mode == 'multi' and cfg.mv_consistency_weight > 0 and Nv > 1:
+                    # Reshape to (B, Nv, Nd, C, H, W)
+                    pred_reshaped = model_pred.view(B, Nv, Nd, *model_pred.shape[1:])
+                    # Compute MSE between view 1 and view 2 for each domain
+                    view_diff = pred_reshaped[:, 0] - pred_reshaped[:, 1]  # (B, Nd, C, H, W)
+                    mv_consistency_loss = (view_diff ** 2).mean()
+
                 # Get the target for loss depending on the prediction type
                 if noise_scheduler.config.prediction_type == "epsilon":
                     target = noise
@@ -581,8 +590,9 @@ def main(
                     if torch.isnan(target).any():
                         print("target is NaN. Taking action.")
 
-
-                    
+                # Add multi-view consistency loss
+                if cfg.mv_consistency_weight > 0:
+                    loss = loss + cfg.mv_consistency_weight * mv_consistency_loss
 
                 # Gather the losses across all processes for logging (if we use distributed training).
                 avg_loss = accelerator.gather(loss.repeat(cfg.train_batch_size)).mean()
@@ -650,6 +660,8 @@ def main(
                         ema_unet.restore(unet.parameters())
 
             logs = {"step_loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
+            if cfg.mv_consistency_weight > 0:
+                logs["mv_consistency_loss"] = mv_consistency_loss.detach().item()
             progress_bar.set_postfix(**logs)
 
             if global_step >= cfg.max_train_steps:

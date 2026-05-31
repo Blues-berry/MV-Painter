@@ -268,7 +268,7 @@ def load_object(object_path: str) -> None:
     """Loads a glb model into the scene."""
     print(object_path)
     if object_path.endswith(".glb"):
-        bpy.ops.import_scene.gltf(filepath=object_path, merge_vertices=True)
+        bpy.ops.import_scene.gltf(filepath=object_path)
     elif object_path.endswith(".fbx"):
         bpy.ops.import_scene.fbx(filepath=object_path)
     elif object_path.endswith(".blend"):
@@ -760,11 +760,13 @@ def save_images(object_file,object_uid,prefix="",fixed_random_list=None):
     reset_scene()
 
     object_file_obj = object_file[:-4] + '_clean.obj'
-    load_object(object_file_obj)
-    scale, offset = normalize_obj()
-    
-    reset_scene()
+    if os.path.exists(object_file_obj):
+        load_object(object_file_obj)
+        scale, offset = normalize_obj()
+        reset_scene()
     load_object(object_file)
+    if not os.path.exists(object_file_obj):
+        scale, offset = normalize_obj()
 
     lights = [obj for obj in bpy.context.scene.objects if obj.type == 'LIGHT']
     for light in lights:
@@ -835,7 +837,8 @@ def save_images(object_file,object_uid,prefix="",fixed_random_list=None):
                                 mat.node_tree.links.new(origin_basecolor_node.outputs[origin_basecolor_from_socket_index], diffuse_node.inputs['Color'])
 
                                 assert diffuse_node.inputs['Color'].links
-                                elif prefix == "metallic":
+
+                            elif prefix == "metallic":
 
                                 if principled_bsdf.inputs[metallic_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[metallic_name].links[0])
@@ -853,7 +856,7 @@ def save_images(object_file,object_uid,prefix="",fixed_random_list=None):
 
                                 assert diffuse_node.inputs['Color'].links
 
-                                elif prefix == "roughness":
+                            elif prefix == "roughness":
                                 if principled_bsdf.inputs[metallic_name].links:
                                     mat.node_tree.links.remove(principled_bsdf.inputs[metallic_name].links[0])
                                 if principled_bsdf.inputs[roughness_name].links:

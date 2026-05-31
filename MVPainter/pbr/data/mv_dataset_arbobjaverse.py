@@ -79,6 +79,24 @@ def get_mv_info(data_type, abs_info, root_dir, views=3, split='train'):
                     'material': os.path.join(root_dir, obj_dir, f'orm_{view:02d}.png'),
                 }
             )
+    elif data_type == 'mvpainter':
+        obj_dir = abs_info
+        # Use 6 specific views (same as MVPainter inference)
+        if split == 'test':
+            view_list = [0, 1, 2, 3]
+        else:
+            view_list = list(range(17))  # 17 views: 000-016
+            view_list = random.sample(view_list, min(views, 17))
+        for view in view_list:
+            info.append({
+                'mask': None,
+                'image': os.path.join(root_dir, obj_dir, 'image', f'{view:03d}.png'),
+                'albedo': os.path.join(root_dir, obj_dir, 'basecolor', f'{view:03d}.png'),
+                'normal': os.path.join(root_dir, obj_dir, 'normal', f'{view:03d}.png'),
+                'camera': os.path.join(root_dir, obj_dir, 'camera', f'{view:03d}.npy'),
+                'material': (os.path.join(root_dir, obj_dir, 'metallic', f'{view:03d}.png'),
+                            os.path.join(root_dir, obj_dir, 'roughness', f'{view:03d}.png')),
+            })
     else:
         raise ValueError(f"Unsupported data type: {data_type}")
     
@@ -371,6 +389,71 @@ class MVDataset(Dataset):
 
         return out_imgs
 
+    def load_normal_mvpainter(self, normal_path, bg_color, alpha, return_type='np'):
+        """Load normal map from MVPainter's uint16 PNG format."""
+        normald = cv2.imread(normal_path, cv2.IMREAD_UNCHANGED)
+        if normald is None:
+            return np.ones((*self.img_wh[::-1], 3), dtype=np.float32)
+        normald = normald.astype(np.float32) / 65535.0  # Convert from uint16 to [0, 1]
+        normald = cv2.resize(normald, self.img_wh, interpolation=cv2.INTER_CUBIC)
+        # Convert from [0,1] to [-1,1]
+        normal = normald * 2.0 - 1.0
+        normal_norm = np.linalg.norm(normal, 2, axis=-1, keepdims=True)
+        normal = normal / (normal_norm + 1e-6)
+        normal = np.nan_to_num(normal, nan=-1.)
+        # Convert to [0,1] range
+        img = np.clip((normal + 1.) / 2., 0., 1.)
+
+        if alpha.shape[-1] != 1:
+            alpha = alpha[:, :, None]
+        img = img[..., :3] * alpha + bg_color * (1 - alpha)
+
+        if return_type == "np":
+            pass
+        elif return_type == "pt":
+            img = torch.from_numpy(img)
+        else:
+            raise NotImplementedError
+        return img
+
+    def load_mr_mvpainter(self, metallic_path, roughness_path, bg_color, alpha, return_type='np'):
+        """Load metallic and roughness from separate MVPainter files."""
+        metallic = Image.open(metallic_path)
+        metallic = np.array(metallic.resize(self.img_wh)).astype(np.float32) / 255.0
+        roughness = Image.open(roughness_path)
+        roughness = np.array(roughness.resize(self.img_wh)).astype(np.float32) / 255.0
+
+        # Combine into single image: [metallic, roughness, 0]
+        if len(metallic.shape) == 3:
+            metallic = metallic[:, :, 0]
+        if len(roughness.shape) == 3:
+            roughness = roughness[:, :, 0]
+
+        h, w = metallic.shape[:2]
+        mr = np.zeros((h, w, 3), dtype=np.float32)
+        mr[:, :, 0] = metallic
+        mr[:, :, 1] = roughness
+
+        if alpha.shape[-1] != 1:
+            alpha = alpha[:, :, None]
+        mr = mr * alpha + bg_color * (1 - alpha)
+
+        if return_type == "np":
+            pass
+        elif return_type == "pt":
+            mr = torch.from_numpy(mr)
+        else:
+            raise NotImplementedError
+        return [mr]
+
+    def load_c2w_mvpainter(self, camera_npy):
+        """Load camera from MVPainter's .npy format."""
+        cam = np.load(camera_npy, allow_pickle=True).item()
+        extrinsic = cam['extrinsic']  # (3, 4)
+        c2w = np.eye(4)
+        c2w[:3, :] = extrinsic
+        return c2w
+
     def load_c2w_gob(self, camera_json):
         json_content = json.load(open(camera_json))
 
@@ -428,8 +511,10 @@ class MVDataset(Dataset):
         # load camera pose
         if data_type == 'gobjaverse':
             camera2world = self.load_c2w_gob(object_info['camera'])
-        elif data_type == 'abo': # ABO
+        elif data_type == 'abo':
             camera2world = self.load_c2w_abo(object_info['camera'])
+        elif data_type == 'mvpainter':
+            camera2world = self.load_c2w_mvpainter(object_info['camera'])
         else: # arbobjaverse
             camera2world = self.load_c2w_arbo(object_info['camera'])
         pose = self.get_pose(camera2world)
@@ -441,15 +526,20 @@ class MVDataset(Dataset):
             normal_tensor = self.load_normal_abo(object_info['normal'], bg_color, mask, return_type='pt')
         elif data_type == 'arbobjaverse':
             normal_tensor = self.load_normal_arbo(object_info['normal'], bg_color, mask, return_type='pt')
+        elif data_type == 'mvpainter':
+            normal_tensor = self.load_normal_mvpainter(object_info['normal'], bg_color, mask, return_type='pt')
         else:
             raise NotImplementedError
         img_tensors_out.append(normal_tensor.permute(2, 0, 1))
 
-        # load metrial
+        # load material
         if data_type == 'gobjaverse':
             mr_tensors = self.load_mr_gob(object_info['material'], bg_color, mask, return_type='pt')
         elif data_type == 'abo' or data_type == 'arbobjaverse':
             mr_tensors = self.load_mr_abo(object_info['material'], bg_color, mask, return_type='pt')
+        elif data_type == 'mvpainter':
+            metallic_path, roughness_path = object_info['material']
+            mr_tensors = self.load_mr_mvpainter(metallic_path, roughness_path, bg_color, mask, return_type='pt')
         else:
             raise NotImplementedError
         img_tensors_out.extend([mr_tensor.permute(2, 0, 1) for mr_tensor in mr_tensors])

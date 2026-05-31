@@ -27,6 +27,7 @@ from transformers.utils import cached_file
 
 from mvpainter.mvpainter_pipeline import MVPainter_Pipeline,RefOnlyNoisedUNet,DepthControlUNet
 from mvpainter.controlnet import ControlNetModel_Union
+from mvpainter.lora_utils import merge_lora_into_unet
 
 # from diffusers import AutoencoderKL, UNet2DConditionModel,EulerAncestralDiscreteScheduler
 # from transformers import CLIPVisionModelWithProjection,CLIPImageProcessor
@@ -105,6 +106,9 @@ parser.add_argument('--geo_rotation', type=int, default=-90, help='roration for 
 parser.add_argument('--diffusion_steps', type=int, default=75, help='Denoising Sampling steps.')
 parser.add_argument('--seed', type=int, default=12, help='Random seed for sampling.')
 parser.add_argument('--no_rembg', action='store_true', help='Do not remove input background.')
+parser.add_argument('--lora_ckpt', type=str, default='', help='Path to LoRA checkpoint (.safetensors).')
+parser.add_argument('--lora_rank', type=int, default=8, help='LoRA rank used during training.')
+parser.add_argument('--lora_alpha', type=int, default=8, help='LoRA alpha used during training.')
 args = parser.parse_args()
 seed_everything(args.seed)
 
@@ -256,7 +260,7 @@ if __name__ == '__main__':
 
     # load pipeline modules
 
-    pipeline_path = 'shaomq/MVPainter'
+    pipeline_path = '../checkpoints/hf_repo'
 
     pipeline = MVPainter_Pipeline.from_pretrained(
         pipeline_path,
@@ -268,15 +272,19 @@ if __name__ == '__main__':
 
 
     print('Loading custom unet ...')
-    unet_ckpt_path = hf_hub_download(
-        repo_id="shaomq/MVPainter",
-        filename="unet_w_controlnet/v29_25000.ckpt"  # 改成你实际的 ckpt 文件路径
-    )
+    unet_ckpt_path = '../checkpoints/v29_25000.safetensors'
 
-    ckpt = torch.load(unet_ckpt_path)[
-        "state_dict"]
-    new_ckpt = {k[5:]: v for k, v in ckpt.items() if "unet" in k}
-    pipeline.unet.load_state_dict(new_ckpt)
+    if os.path.exists(unet_ckpt_path) and os.path.getsize(unet_ckpt_path) > 14000000000:  # > 14GB (full file ~15.3GB)
+        from safetensors.torch import load_file
+        ckpt = load_file(unet_ckpt_path)
+        pipeline.unet.load_state_dict(ckpt)
+    else:
+        print(f"WARNING: v29 checkpoint not available, using base UNet")
+
+    # Merge LoRA weights if provided
+    if args.lora_ckpt and os.path.exists(args.lora_ckpt):
+        print(f'Merging LoRA weights from {args.lora_ckpt} ...')
+        merge_lora_into_unet(pipeline.unet, args.lora_ckpt, args.lora_rank, args.lora_alpha)
 
 
     pipeline = pipeline.to(torch.device('cuda'))

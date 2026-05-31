@@ -13,7 +13,7 @@ def render(render_lines):
         print(i)
         object_uid = uid
 
-        hdri_paths = glob(os.path.join(args.hdri_dir,'*.exr'))
+        hdri_paths = glob(os.path.join(args.hdri_dir,'*.exr')) + glob(os.path.join(args.hdri_dir,'*.hdr'))
         for hdri_path in hdri_paths:
             output_dir = args.output_root_dir
             output_dir = os.path.join(output_dir,os.path.basename(hdri_path).split('.')[0])

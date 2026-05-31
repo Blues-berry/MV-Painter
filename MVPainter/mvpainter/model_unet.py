@@ -54,6 +54,7 @@ class MVDiffusion(pl.LightningModule):
         super(MVDiffusion, self).__init__()
 
         self.drop_cond_prob = drop_cond_prob
+        self.img_size = 256  # Reduced from 512 to fit in RTX 5090 VRAM
 
         self.register_schedule()
 
@@ -80,6 +81,11 @@ class MVDiffusion(pl.LightningModule):
         self.train_scheduler = train_sched      # use ddpm scheduler during training
 
         self.unet = self.pipeline.unet
+
+        # Enable gradient checkpointing to reduce memory
+        if hasattr(self.unet, 'enable_gradient_checkpointing'):
+            self.unet.enable_gradient_checkpointing()
+            print("Gradient checkpointing enabled for UNet")
 
         #scheme2
 
@@ -113,7 +119,14 @@ class MVDiffusion(pl.LightningModule):
     def on_fit_start(self):
         device = torch.device(f'cuda:{self.global_rank}')
         print(device, self.device)
-        self.pipeline.to(self.device)
+        # Move entire pipeline to CPU first
+        self.pipeline.to('cpu')
+        # Then move UNet and VAE to GPU
+        self.unet.to(device)
+        self.pipeline.vae.to(device)
+        # Keep vision encoders on CPU - embeddings are pre-computed
+        self.pipeline.vision_encoder.to('cpu')
+        self.pipeline.vision_encoder_2.to('cpu')
 
         if self.global_rank == 0:
             os.makedirs(os.path.join(self.logdir, 'images'), exist_ok=True)
@@ -125,24 +138,20 @@ class MVDiffusion(pl.LightningModule):
         cond_imgs = cond_imgs.to(self.device)
 
         # random resize the condition image
-        # cond_size = np.random.randint(512, 513)
-        cond_imgs = v2.functional.resize(cond_imgs, 512, interpolation=3, antialias=True).clamp(0, 1)
+        cond_imgs = v2.functional.resize(cond_imgs, self.img_size, interpolation=3, antialias=True).clamp(0, 1)
 
         target_imgs = batch['target_imgs']  # (B, 6, C, H, W)
-        target_imgs = v2.functional.resize(target_imgs, 512, interpolation=3, antialias=True).clamp(0, 1)
+        target_imgs = v2.functional.resize(target_imgs, self.img_size, interpolation=3, antialias=True).clamp(0, 1)
         target_imgs = rearrange(target_imgs, 'b (x y) c h w -> b c (x h) (y w)', x=3, y=2)    # (B, C, 3H, 2W)
         target_imgs = target_imgs.to(self.device)
 
-
-
-
         depth_imgs = batch['depth_imgs']  # (B, 6, C, H, W)
-        depth_imgs = v2.functional.resize(depth_imgs, 512, interpolation=3, antialias=True).clamp(0, 1)
+        depth_imgs = v2.functional.resize(depth_imgs, self.img_size, interpolation=3, antialias=True).clamp(0, 1)
         depth_imgs = rearrange(depth_imgs, 'b (x y) c h w -> b c (x h) (y w)', x=3, y=2)  # (B, C, 3H, 2W)
         depth_imgs = depth_imgs.to(self.device)
 
         real_depth_imgs = batch['real_depth_imgs']  # (B, 6, C, H, W)
-        real_depth_imgs = v2.functional.resize(real_depth_imgs, 512, interpolation=3, antialias=True).clamp(0, 1)
+        real_depth_imgs = v2.functional.resize(real_depth_imgs, self.img_size, interpolation=3, antialias=True).clamp(0, 1)
         real_depth_imgs = rearrange(real_depth_imgs, 'b (x y) c h w -> b c (x h) (y w)', x=3, y=2)  # (B, C, 3H, 2W)
         real_depth_imgs = real_depth_imgs.to(self.device)
 
@@ -221,24 +230,38 @@ class MVDiffusion(pl.LightningModule):
 
         # sample random timestep
         B = cond_imgs.shape[0]
-        
+
         t   = torch.randint(0, self.num_timesteps, size=(B,)).long().to(self.device)
 
         with torch.no_grad():
+            weight_dtype = torch.float16  # DeepSpeed uses fp16
+
             if  np.random.rand() > self.drop_cond_prob:
                 print("no drop")
-                prompt_embeds = self.pipeline.get_prompt_embeds_train(cond_image = cond_imgs,is_drop = False)
-                cond_latents = self.encode_condition_image(cond_imgs)
+                # Use pre-computed embeddings if available
+                if 'global_embeds' in batch:
+                    global_embeds = batch['global_embeds'].to(self.device, dtype=weight_dtype)
+                    global_embeds = global_embeds.view(B, 1, -1)  # remove extra batch dim from dataloader
+                    ramp = global_embeds.new_tensor(self.pipeline.config.ramping_coefficients).unsqueeze(-1).to(weight_dtype)
+                    uc_text_emb = self.pipeline.uc_text_emb.to(self.device, dtype=weight_dtype)
+                    prompt_embeds = uc_text_emb + global_embeds * ramp
+                else:
+                    prompt_embeds = self.pipeline.get_prompt_embeds_train(cond_image = cond_imgs,is_drop = False)
+                cond_latents = self.encode_condition_image(cond_imgs).to(weight_dtype)
                 added_cond_kwargs = self.pipeline.get_added_cond_kwargs_train(B,is_drop = False)
+                added_cond_kwargs = {k: v.to(self.device, dtype=weight_dtype) if isinstance(v, torch.Tensor) else v for k, v in added_cond_kwargs.items()}
             else:
                 print(" yes drop")
-                prompt_embeds = self.pipeline.get_prompt_embeds_train(cond_image = cond_imgs,is_drop = True)
-                cond_latents = self.encode_condition_image(torch.zeros_like(cond_imgs))
+                if 'global_embeds' in batch:
+                    prompt_embeds = torch.zeros((B, 77, 2048), device=self.device, dtype=weight_dtype)
+                else:
+                    prompt_embeds = self.pipeline.get_prompt_embeds_train(cond_image = cond_imgs,is_drop = True)
+                cond_latents = self.encode_condition_image(torch.zeros_like(cond_imgs)).to(weight_dtype)
                 added_cond_kwargs = self.pipeline.get_added_cond_kwargs_train(B,is_drop = True)
+                added_cond_kwargs = {k: v.to(self.device, dtype=weight_dtype) if isinstance(v, torch.Tensor) else v for k, v in added_cond_kwargs.items()}
 
 
-        latents = self.encode_target_images(target_imgs)
-
+        latents = self.encode_target_images(target_imgs).to(weight_dtype)
 
         noise = torch.randn_like(latents)
         latents_noisy = self.train_scheduler.add_noise(latents, noise, t)
@@ -257,7 +280,7 @@ class MVDiffusion(pl.LightningModule):
         lr = self.optimizers().param_groups[0]['lr']
         self.log('lr_abs', lr, prog_bar=True, logger=True, on_step=True, on_epoch=False)
 
-        if self.global_step % 100 == 0 and self.global_rank == 0:
+        if False and self.global_step % 100 == 0 and self.global_rank == 0:  # Disabled for DeepSpeed compatibility
             with torch.no_grad():
 
 
@@ -267,7 +290,7 @@ class MVDiffusion(pl.LightningModule):
                 self.pipeline.scheduler.set_timesteps(50, device=cond_imgs.device)
                 timesteps = self.pipeline.scheduler.timesteps
                 generator = torch.Generator(device=cond_imgs.device,)
-                latents = self.pipeline.prepare_latents(1,4,512*3,512*2,self.pipeline.vae.dtype,cond_imgs.device,generator)
+                latents = self.pipeline.prepare_latents(1,4,self.img_size*3,self.img_size*2,self.pipeline.vae.dtype,cond_imgs.device,generator)
                 # latents = latents_noisy
 
 
@@ -361,7 +384,16 @@ class MVDiffusion(pl.LightningModule):
             for params in module.parameters():
                 params.requires_grad = True
         trainable_params = list(filter(lambda p: p.requires_grad, self.unet.parameters()))
-        optimizer = torch.optim.AdamW(trainable_params, lr=lr)
+
+        # Use DeepSpeed CPUAdam for ZeRO-3 offload
+        try:
+            from deepspeed.ops.adam import DeepSpeedCPUAdam
+            optimizer = DeepSpeedCPUAdam(trainable_params, lr=lr)
+            print("Using DeepSpeed CPUAdam optimizer")
+        except ImportError:
+            optimizer = torch.optim.AdamW(trainable_params, lr=lr)
+            print("Using standard AdamW optimizer")
+
         scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(optimizer, 3000, eta_min=lr/4)
 
         return {'optimizer': optimizer, 'lr_scheduler': scheduler}

@@ -128,28 +128,29 @@ class ReferenceOnlyAttnProc(torch.nn.Module):
         encoder_hidden_states = hidden_states if encoder_hidden_states is None else encoder_hidden_states
         if self.enabled:
             if   mode == 'w': ref_dict[self.name]   = encoder_hidden_states
-            elif mode == 'r': encoder_hidden_states = torch.cat([encoder_hidden_states, ref_dict.pop(self.name)], dim=1)
+            elif mode == 'r': encoder_hidden_states = torch.cat([encoder_hidden_states, ref_dict[self.name]], dim=1)
             else:             raise Exception(f"mode should not be {mode}")
         return self.chained_proc(attn, hidden_states, encoder_hidden_states, attention_mask)
 
 
 class RefOnlyNoisedUNet(torch.nn.Module):
-    def __init__(self, unet, train_scheduler,val_scheduler = None) -> None:
+    def __init__(self, unet, train_scheduler, val_scheduler=None, replace_processors=True) -> None:
         super().__init__()
         self.unet = unet
         self.train_sched = train_scheduler
         if val_scheduler == None:
             self.val_sched = train_scheduler
 
-        unet_attn_procs = dict()
-        for name, _ in unet.attn_processors.items():
-            if torch.__version__ >= '2.0': default_attn_proc = AttnProcessor2_0()
-            elif is_xformers_available():  default_attn_proc = XFormersAttnProcessor()
-            else:                          default_attn_proc = AttnProcessor()
-            unet_attn_procs[name] = ReferenceOnlyAttnProc(
-                default_attn_proc, enabled=name.endswith("attn1.processor"), name=name
-            )
-        unet.set_attn_processor(unet_attn_procs)
+        if replace_processors:
+            unet_attn_procs = dict()
+            for name, _ in unet.attn_processors.items():
+                if torch.__version__ >= '2.0': default_attn_proc = AttnProcessor2_0()
+                elif is_xformers_available():  default_attn_proc = XFormersAttnProcessor()
+                else:                          default_attn_proc = AttnProcessor()
+                unet_attn_procs[name] = ReferenceOnlyAttnProc(
+                    default_attn_proc, enabled=name.endswith("attn1.processor"), name=name
+                )
+            unet.set_attn_processor(unet_attn_procs)
 
     def __getattr__(self, name: str):
         try:
@@ -293,8 +294,13 @@ class DepthControlUNet(torch.nn.Module):
         
 
         if 'control_depth_2' in cross_attention_kwargs:
-            control_depth_2 =  cross_attention_kwargs.pop('control_depth_2')
-            controlnet_cond_list.append(control_depth_2)
+            control_depth_2 = cross_attention_kwargs.pop('control_depth_2')
+            if control_depth_2 is not None:
+                controlnet_cond_list.append(control_depth_2)
+            else:
+                controlnet_cond_list.append(control_depth)  # duplicate first depth
+        else:
+            controlnet_cond_list.append(control_depth)  # duplicate first depth
 
 
 
@@ -650,11 +656,12 @@ class MVPainter_Pipeline(diffusers.DiffusionPipeline):
                 added_cond_kwargs = {"text_embeds": add_text_embeds, "time_ids": add_time_ids}
                 
                 if hasattr(self.unet, "controlnet"):
-                    
+
                     cross_attention_kwargs = {'cond_lat':cond_lat,'control_depth':depth_image}
                     # import pdb;pdb.set_trace()
                     # for v8:
-                    cross_attention_kwargs['control_depth_2'] = depth_image_2
+                    if depth_image_2 is not None:
+                        cross_attention_kwargs['control_depth_2'] = depth_image_2
                     cross_attention_kwargs['control_type'] = torch.Tensor([1,1]).to(depth_image).unsqueeze(0).repeat(2,1)
                 else:
                     cross_attention_kwargs = {'cond_lat':cond_lat}
@@ -716,11 +723,13 @@ class MVPainter_Pipeline(diffusers.DiffusionPipeline):
     def from_pretrained(cls, pretrained_model_name_or_path, *model_args, **kwargs):
         # uc_text_emb.pt and uc_text_emb_2.pt are inferenced and saved in advance
         pipeline = super().from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs)
-        uc_text_emb_path = hf_hub_download(repo_id="shaomq/MVPainter",filename="uc_text_emb.pt")
-        uc_text_emb_2_path = hf_hub_download(repo_id="shaomq/MVPainter",filename="uc_text_emb_2.pt")
+        uc_text_emb_path = os.path.join(pretrained_model_name_or_path, "uc_text_emb.pt")
+        uc_text_emb_2_path = os.path.join(pretrained_model_name_or_path, "uc_text_emb_2.pt")
+        if not os.path.exists(uc_text_emb_path):
+            uc_text_emb_path = hf_hub_download(repo_id="shaomq/MVPainter",filename="uc_text_emb.pt")
+        if not os.path.exists(uc_text_emb_2_path):
+            uc_text_emb_2_path = hf_hub_download(repo_id="shaomq/MVPainter",filename="uc_text_emb_2.pt")
 
-        # pipeline.uc_text_emb = torch.load(os.path.join(pretrained_model_name_or_path, "uc_text_emb.pt"))
-        # pipeline.uc_text_emb_2 = torch.load(os.path.join(pretrained_model_name_or_path, "uc_text_emb_2.pt"))
         pipeline.uc_text_emb = torch.load(uc_text_emb_path)
         pipeline.uc_text_emb_2 = torch.load(uc_text_emb_2_path)
         return pipeline

@@ -265,7 +265,7 @@ def load_object(object_path: str) -> None:
     """Loads a glb model into the scene."""
     print(object_path)
     if object_path.endswith(".glb"):
-        bpy.ops.import_scene.gltf(filepath=object_path, merge_vertices=True)
+        bpy.ops.import_scene.gltf(filepath=object_path)
     elif object_path.endswith(".fbx"):
         bpy.ops.import_scene.fbx(filepath=object_path)
     elif object_path.endswith(".blend"):

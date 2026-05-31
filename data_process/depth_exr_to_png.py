@@ -89,7 +89,7 @@ def process_uid(args):
         depth_exr_path = os.path.join(depth_exr_dir,f'{str(k).zfill(3)}.exr')
         depth_png_path = os.path.join(depth_png_dir,(f'{str(k).zfill(3)}.png'))
         if os.path.exists(depth_exr_path):
-            depth_exr_to_png(depth_exr_path,depth_png_path,'R',depth_scale=depth_scale)
+            depth_exr_to_png(depth_exr_path,depth_png_path,'V',depth_scale=depth_scale)
         else:
             print('no exr')
             flag = False

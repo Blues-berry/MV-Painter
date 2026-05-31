@@ -71,7 +71,8 @@ class MVPainterData(Dataset):
     def __init__(self,
                  root_dir_list=['objaverse/'],
                  meta_fname='valid',
-                 valid_path = None
+                 valid_path = None,
+                 clean_list = None
                  ):
         all_paths = []
         if valid_path is not None:
@@ -87,10 +88,20 @@ class MVPainterData(Dataset):
         else:
             self.root_dir_list = root_dir_list
             for root_dir in root_dir_list:
-                paths = os.listdir(root_dir)
-                paths = [os.path.join(root_dir,path) for path in paths]
+                if clean_list is not None:
+                    clean_path = os.path.join(root_dir, clean_list)
+                    if os.path.exists(clean_path):
+                        with open(clean_path, 'r') as f:
+                            names = [l.strip() for l in f.readlines() if l.strip()]
+                        paths = [os.path.join(root_dir, name) for name in names]
+                    else:
+                        paths = os.listdir(root_dir)
+                        paths = [os.path.join(root_dir, path) for path in paths]
+                else:
+                    paths = os.listdir(root_dir)
+                    paths = [os.path.join(root_dir,path) for path in paths]
                 all_paths = all_paths + paths
-                
+
 
         if "train" in meta_fname:
             self.paths = all_paths[:-20]
@@ -404,7 +415,7 @@ class MVPainterData(Dataset):
             print('base dir name:',base_dir_name)
 
             while not (os.path.exists(pbr_image_path) and os.path.exists(normal_image_path) ):
-                index = random.randint(0, len(self.paths))
+                index = random.randint(0, len(self.paths) - 1)
                 pbr_image_path = os.path.join(self.paths[index], 'image')
                 normal_image_path = os.path.join(self.paths[index], 'normal')
                 depth_image_path = os.path.join(self.paths[index], 'depth_png')
@@ -497,8 +508,8 @@ class MVPainterData(Dataset):
             except Exception as e:
                 print(e)
                 print("wrong path:",pbr_image_path)
-                
-                index = random.randint(0, len(self.paths))
+
+                index = random.randint(0, len(self.paths) - 1)
                 continue
             break
 
@@ -528,6 +539,12 @@ class MVPainterData(Dataset):
             # 'target_ccm_position_imgs': torch.stack(ccm_position_img_list, dim=0).float(),  # (6, 3, H, W)
 
         }
+
+        # Load pre-computed embeddings if available
+        embed_path = os.path.join(self.paths[index], 'embeddings', 'global_embeds.npy')
+        if os.path.exists(embed_path):
+            data['global_embeds'] = torch.from_numpy(np.load(embed_path)).float()
+
         return data
 
 if __name__ == '__main__':

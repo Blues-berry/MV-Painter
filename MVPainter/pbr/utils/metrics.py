@@ -3,8 +3,8 @@ import cv2
 import torch
 import math
 from kornia.losses import ssim_loss
-from utils.misc import rgb_to_srgb as _tonemap_srgb
-from utils.misc import srgb_to_rgb
+from pbr.utils.misc import rgb_to_srgb as _tonemap_srgb
+from pbr.utils.misc import srgb_to_rgb
 from lpips import LPIPS
 
 

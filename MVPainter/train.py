@@ -239,8 +239,17 @@ if __name__ == "__main__":
     trainer_kwargs["callbacks"] = [
         instantiate_from_config(callbacks_cfg[k]) for k in callbacks_cfg]
 
-    trainer_kwargs['precision'] = '32-true'
-    trainer_kwargs["strategy"] = DDPStrategy(find_unused_parameters=True)
+    trainer_kwargs['precision'] = '16-mixed'
+
+    # Use DeepSpeed ZeRO-3 with CPU offload to fit in 31.4 GB VRAM
+    from pytorch_lightning.strategies import DeepSpeedStrategy
+    trainer_kwargs["strategy"] = DeepSpeedStrategy(
+        stage=3,
+        offload_optimizer=True,
+        offload_parameters=True,
+        allgather_bucket_size=5e8,
+        reduce_bucket_size=5e8,
+    )
 
     # trainer
     trainer = Trainer(**trainer_config, **trainer_kwargs, num_nodes=opt.num_nodes)

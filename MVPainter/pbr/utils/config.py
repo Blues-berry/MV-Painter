@@ -78,6 +78,7 @@ class TrainingConfig:
     linear_noise_schedule: bool = False
 
     wo_camera: bool = False
+    mv_consistency_weight: float = 0.0  # Weight for multi-view consistency loss
 
 
 def load_config(cfg_path):
