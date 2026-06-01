@@ -498,7 +498,7 @@ class MVDataset(Dataset):
         # load the mask
         mask = self.load_mask(object_info['mask'], return_type='np')
         # load the image
-        print("image path:",object_info['image'])
+        # print("image path:",object_info['image'])  # Disabled for speed
         img_tensors_in, mask = self.load_image(object_info['image'], bg_color, mask, return_type='pt')
         img_tensors_in = img_tensors_in.permute(2, 0, 1).float()
 

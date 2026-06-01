@@ -1,7 +1,7 @@
 pretrained_model_name_or_path: lizb6626/IDArb
 pretrained_unet_path: lizb6626/IDArb
 
-output_dir: 'output/pbr-ours-73'
+output_dir: 'output/pbr-ours-73-v2'
 
 revision: null
 
@@ -39,8 +39,8 @@ lr_warmup_steps: 100
 snr_gamma: 5.0
 use_8bit_adam: false
 allow_tf32: true
-use_ema: true
-dataloader_num_workers: 0
+use_ema: false
+dataloader_num_workers: 4
 adam_beta1: 0.9
 adam_beta2: 0.999
 adam_weight_decay: 1.e-2
@@ -80,9 +80,9 @@ unet_from_pretrained_kwargs:
 
 zero_snr: true
 linear_noise_schedule: true
-single_view_prob: 0.6
+single_view_prob: 0.3
 wo_camera: false
-mv_consistency_weight: 0.1  # Multi-view consistency loss weight
+mv_consistency_weight: 0.01  # Multi-view consistency loss weight (reduced from 0.1)
 
 camera_embedding_type: '4DoF'
 
