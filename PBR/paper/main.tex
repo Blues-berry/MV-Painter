@@ -35,23 +35,46 @@ However, training these models presents significant challenges that are rarely d
 
 While existing methods focus on improving generation quality through architectural innovations, training stability remains largely unaddressed. This is a critical gap because unstable training wastes computational resources, corrupts model checkpoints, and produces non-reproducible results. Current PBR training pipelines employ several stability techniques including Min-SNR weighting, gradient clipping, EMA, Zero-SNR, linear noise schedules, and mixed precision. Despite these techniques, training instability persists with 407 loss spikes in 10,000 steps.
 
+Figure~\ref{fig:motivation} illustrates the training instability problem. The baseline loss curve exhibits frequent large spikes that exceed 1.0 (the red dashed line), while our method produces a much smoother curve with fewer and smaller spikes. These spikes can corrupt model checkpoints and waste hours of GPU time.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/motivation_loss_spikes.png}
+\caption{Training loss comparison showing the instability problem. Top: Baseline exhibits frequent loss spikes exceeding 1.0. Bottom: Our MV-Consistency method produces a much smoother training curve.}
+\label{fig:motivation}
+\end{figure}
+
 In this work, we make the following contributions. First, we systematically identify that training instability stems from inconsistent gradient signals across different views during training. When the model processes multiple views, the gradient directions can conflict, causing optimization instability. Second, we propose MV-Consistency, a lightweight regularization method that enforces cross-view prediction consistency by adding an MSE loss between predictions of different views. Third, we provide the first systematic analysis of consistency weight trade-offs across 6 configurations, identifying 0.01 as the optimal balance point. Fourth, our method requires only 3 lines of code, no architectural changes, and actually reduces training time by 7\% while improving stability.
 
 \section{Related Work}
 
 \subsection{Multi-View Generation}
 
-Multi-view image generation has seen rapid progress with diffusion-based architectures. Zero123++~\cite{zero123pp} generates six orthographic views simultaneously. SyncDreamer~\cite{syncdreamer} introduces synchronized multi-view denoising. Wonder3D~\cite{wonder3d} combines multi-view diffusion with cross-view attention. InstantMesh~\cite{instantmesh} focuses on efficient mesh reconstruction. MVPainter~\cite{mvpainter} provides a full pipeline with geometric control via ControlNet. While these methods achieve impressive visual quality, none explicitly address training stability. Our work fills this gap by providing a systematic analysis and practical solution.
+Multi-view image generation has seen rapid progress with diffusion-based architectures. Zero123++~\cite{zero123pp} generates six orthographic views simultaneously by extending Stable Diffusion with multi-view attention. SyncDreamer~\cite{syncdreamer} introduces synchronized multi-view denoising for 3D consistency, using elevation-aware conditioning to maintain coherence across views. Wonder3D~\cite{wonder3d} combines multi-view diffusion with cross-domain attention, generating both color and normal maps in a unified framework. InstantMesh~\cite{instantmesh} focuses on efficient mesh reconstruction from sparse views using FlexiCubes. MVPainter~\cite{mvpainter} provides a full pipeline with geometric control via ControlNet, enabling fine-grained control over multi-view generation.
+
+While these methods achieve impressive visual quality, none explicitly address training stability. Our work fills this gap by providing a systematic analysis of training instability in multi-view generation and a practical solution through consistency regularization. The key difference is that existing methods rely on implicit architectural consistency (e.g., shared attention mechanisms), while we propose an explicit loss function that directly enforces cross-view consistency.
 
 \subsection{PBR Material Generation}
 
-IDArb~\cite{idarb} generates PBR materials from multi-view inputs using a domain-recursive UNet architecture. Material Anything~\cite{materialanything} generates materials for any 3D object. Paint3D~\cite{paint3d} focuses on texture painting. These methods achieve high-quality results but do not report training stability metrics. Our experiments reveal that training instability is a significant issue (407 spikes in 10,000 steps) that affects reproducibility and deployment readiness.
+IDArb~\cite{idarb} generates PBR materials from multi-view inputs using a domain-recursive UNet architecture that decomposes the generation process into albedo, normal, and metallic/roughness domains. Material Anything~\cite{materialanything} generates materials for any 3D object using a unified diffusion framework. Paint3D~\cite{paint3d} focuses on texture painting with UV-space optimization. These methods achieve high-quality results but do not report training stability metrics.
+
+Our experiments reveal that training instability is a significant issue (407 spikes in 10,000 steps) that affects reproducibility and deployment readiness. This is particularly problematic for PBR generation because material properties must be consistent across views for realistic 3D rendering. A single loss spike can corrupt the model's understanding of material consistency, leading to artifacts in the final output.
 
 \subsection{Training Regularization}
 
-Common regularization techniques include EMA, gradient clipping, and label smoothing. These methods improve generalization but do not specifically target multi-view consistency. Our MV-Consistency loss is orthogonal to these techniques and can be combined with them. As shown in Table~\ref{tab:regularization}, MV-Consistency provides 5-17$\times$ better stability than generic regularization methods with comparable quality impact.
+Common regularization techniques include EMA (Exponential Moving Average), gradient clipping, and label smoothing. EMA maintains a shadow copy of model weights that converges more smoothly, typically reducing spikes by approximately 10\%. Gradient clipping prevents gradient explosion by capping gradient norms, reducing spikes by approximately 15\%. Label smoothing softens target distributions, reducing overfitting but with modest stability improvement (approximately 5\%).
 
-\begin{table}[h]
+These methods improve generalization but do not specifically target multi-view consistency. Our MV-Consistency loss is orthogonal to these techniques and can be combined with them. As shown in Table~\ref{tab:regularization}, MV-Consistency provides 5-17$\times$ better stability than generic regularization methods with comparable quality impact.
+
+\subsection{Cross-View Consistency in 3D}
+
+Cross-view consistency has been explored in NeRF-based reconstruction, where multi-view consistency losses ensure that rendered views from different angles produce similar results. However, these methods operate in the rendering space rather than the training loss space. Our approach is fundamentally different: we add consistency regularization directly to the diffusion training objective, which provides gradient-level stability rather than output-level consistency.
+
+\subsection{Training Stability in Diffusion Models}
+
+Training stability in diffusion models has been addressed through various techniques including Min-SNR weighting, v-prediction, and noise schedule optimization. However, these methods are general-purpose and do not address the specific instability caused by multi-view gradient conflicts. Our MV-Consistency loss is the first method specifically designed to stabilize multi-view diffusion training by resolving gradient conflicts between views.
+
+\begin{table}[htbp]
 \centering
 \caption{Comparison of regularization methods for multi-view generation. MV-Consistency provides significantly better spike reduction than generic methods.}
 \label{tab:regularization}
@@ -68,6 +91,15 @@ Baseline & 0\% & 0\% & No & None \\
 \end{table}
 
 \section{Method}
+
+Figure~\ref{fig:method} provides an overview of our MV-Consistency method. The model processes multiple views of the same object through a shared UNet, producing predictions for albedo, normal, and material properties. We add an MSE loss between the predictions of different views, which provides a stabilizing gradient signal during training.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/method_overview.png}
+\caption{MV-Consistency method overview. Input views are processed through a shared UNet to produce PBR predictions. We add an MSE loss between predictions of different views (red path), which stabilizes training by enforcing cross-view consistency.}
+\label{fig:method}
+\end{figure}
 
 \subsection{Problem Formulation}
 
@@ -113,7 +145,7 @@ Our evaluation metrics include PSNR and SSIM for per-pixel reconstruction qualit
 
 Table~\ref{tab:main} presents the main comparison between Baseline and our method with consistency weight 0.01. The results demonstrate that MV-Consistency dramatically improves training stability while maintaining near-identical output quality.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Main results: Baseline vs Ours (73 objects, 10,000 steps). MV-Consistency dramatically reduces training instability while maintaining output quality.}
 \label{tab:main}
@@ -146,7 +178,7 @@ Loss spikes are reduced by 87\% (407 to 53), and P99 loss drops by 95\% (5.12 to
 
 Figure~\ref{fig:training} shows the training stability comparison. The baseline loss curve exhibits frequent large spikes, while our method produces a much smoother curve. The loss distribution shows the baseline's heavy tail versus our method's compact distribution.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/training_stability.png}
 \caption{Training stability comparison. Left: Loss curves showing Baseline spikes vs Ours smooth convergence. Center: Loss distribution showing Baseline's heavy tail vs Ours' compact distribution. Right: Spike count comparison (407 vs 53).}
@@ -155,7 +187,7 @@ Figure~\ref{fig:training} shows the training stability comparison. The baseline 
 
 Figure~\ref{fig:comparison} presents visual comparison across 10 objects. The error maps show similar quality between Baseline and Ours, confirming that the consistency loss does not degrade visual quality.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{figures/paper_main_comparison.png}
 \caption{Visual comparison: GT vs Baseline vs Ours (MV-Consistency) for 10 objects. Error maps show similar quality between methods.}
@@ -169,7 +201,7 @@ To understand why MV-Consistency reduces spikes, we analyze the loss patterns ac
 
 Table~\ref{tab:gradient} shows the spike distribution across training modes. Remarkably, 48 out of 53 spikes (91\%) occur during single-view training steps where the consistency loss is inactive, while only 5 spikes occur during multi-view steps. This provides strong evidence that the consistency loss prevents spikes by stabilizing multi-view training.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Spike distribution across training modes. 91\% of spikes occur in single-view mode where MV-Consistency is inactive.}
 \label{tab:gradient}
@@ -189,7 +221,7 @@ Multi-view training has 3.3$\times$ lower standard deviation than single-view tr
 
 Table~\ref{tab:ablation} presents the ablation study on consistency weight across 10 objects with 5,000 training steps. The results show a clear trade-off between stability and quality.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering
 \caption{Ablation study on consistency weight (10 objects, 5,000 steps). w=0.01 provides the optimal balance.}
 \label{tab:ablation}
@@ -209,7 +241,7 @@ Weight & PSNR$\uparrow$ & SSIM$\uparrow$ & LPIPS$\downarrow$ & CV Albedo$\downar
 
 At w=0.01, PSNR drops by only 1.1\% compared to baseline, while higher weights (0.1, 0.5) cause significant degradation (6\%, 28\% respectively). The cross-view consistency metrics improve with higher weights, but at unacceptable quality cost. Figure~\ref{fig:ablation} visualizes these trade-offs.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/ablation_weight.png}
 \caption{Ablation study: PSNR and Cross-View Consistency vs consistency weight. The red dashed line indicates the chosen weight (0.01).}

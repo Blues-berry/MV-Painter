@@ -25,53 +25,59 @@
 \citation{instantmesh}
 \citation{mvpainter}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Training loss comparison showing the instability problem. Top: Baseline exhibits frequent loss spikes exceeding 1.0. Bottom: Our MV-Consistency method produces a much smoother training curve.\relax }}{2}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:motivation}{{1}{2}{Training loss comparison showing the instability problem. Top: Baseline exhibits frequent loss spikes exceeding 1.0. Bottom: Our MV-Consistency method produces a much smoother training curve.\relax }{figure.caption.1}{}}
 \citation{idarb}
 \citation{materialanything}
 \citation{paint3d}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Multi-View Generation}{2}{subsection.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}PBR Material Generation}{2}{subsection.2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Training Regularization}{2}{subsection.2.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of regularization methods for multi-view generation. MV-Consistency provides significantly better spike reduction than generic methods.\relax }}{2}{table.caption.1}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:regularization}{{1}{2}{Comparison of regularization methods for multi-view generation. MV-Consistency provides significantly better spike reduction than generic methods.\relax }{table.caption.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Formulation}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}MV-Consistency Loss}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Implementation}{3}{subsection.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Why $\lambda =0.01$ is Optimal}{3}{subsection.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Theoretical Justification}{3}{subsection.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{3}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{3}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results}{3}{subsection.4.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Main results: Baseline vs Ours (73 objects, 10,000 steps). MV-Consistency dramatically reduces training instability while maintaining output quality.\relax }}{4}{table.caption.2}\protected@file@percent }
-\newlabel{tab:main}{{2}{4}{Main results: Baseline vs Ours (73 objects, 10,000 steps). MV-Consistency dramatically reduces training instability while maintaining output quality.\relax }{table.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Training stability comparison. Left: Loss curves showing Baseline spikes vs Ours smooth convergence. Center: Loss distribution showing Baseline's heavy tail vs Ours' compact distribution. Right: Spike count comparison (407 vs 53).\relax }}{4}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:training}{{1}{4}{Training stability comparison. Left: Loss curves showing Baseline spikes vs Ours smooth convergence. Center: Loss distribution showing Baseline's heavy tail vs Ours' compact distribution. Right: Spike count comparison (407 vs 53).\relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Gradient Analysis}{4}{subsection.4.3}\protected@file@percent }
-\newlabel{sec:gradient}{{4.3}{4}{Gradient Analysis}{subsection.4.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Spike distribution across training modes. 91\% of spikes occur in single-view mode where MV-Consistency is inactive.\relax }}{5}{table.caption.5}\protected@file@percent }
-\newlabel{tab:gradient}{{3}{5}{Spike distribution across training modes. 91\% of spikes occur in single-view mode where MV-Consistency is inactive.\relax }{table.caption.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Ablation Study}{5}{subsection.4.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Ablation study on consistency weight (10 objects, 5,000 steps). w=0.01 provides the optimal balance.\relax }}{5}{table.caption.6}\protected@file@percent }
-\newlabel{tab:ablation}{{4}{5}{Ablation study on consistency weight (10 objects, 5,000 steps). w=0.01 provides the optimal balance.\relax }{table.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Multi-Scale Validation}{5}{subsection.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Comparison with Other Regularization}{5}{subsection.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Computational Efficiency}{5}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Multi-View Generation}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}PBR Material Generation}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Training Regularization}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Cross-View Consistency in 3D}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Training Stability in Diffusion Models}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of regularization methods for multi-view generation. MV-Consistency provides significantly better spike reduction than generic methods.\relax }}{4}{table.caption.2}\protected@file@percent }
+\newlabel{tab:regularization}{{1}{4}{Comparison of regularization methods for multi-view generation. MV-Consistency provides significantly better spike reduction than generic methods.\relax }{table.caption.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Formulation}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}MV-Consistency Loss}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Implementation}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces MV-Consistency method overview. Input views are processed through a shared UNet to produce PBR predictions. We add an MSE loss between predictions of different views (red path), which stabilizes training by enforcing cross-view consistency.\relax }}{5}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:method}{{2}{5}{MV-Consistency method overview. Input views are processed through a shared UNet to produce PBR predictions. We add an MSE loss between predictions of different views (red path), which stabilizes training by enforcing cross-view consistency.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Why $\lambda =0.01$ is Optimal}{6}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Theoretical Justification}{6}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{6}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{6}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Gradient Analysis}{6}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:gradient}{{4.3}{6}{Gradient Analysis}{subsection.4.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Main results: Baseline vs Ours (73 objects, 10,000 steps). MV-Consistency dramatically reduces training instability while maintaining output quality.\relax }}{7}{table.caption.4}\protected@file@percent }
+\newlabel{tab:main}{{2}{7}{Main results: Baseline vs Ours (73 objects, 10,000 steps). MV-Consistency dramatically reduces training instability while maintaining output quality.\relax }{table.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Training stability comparison. Left: Loss curves showing Baseline spikes vs Ours smooth convergence. Center: Loss distribution showing Baseline's heavy tail vs Ours' compact distribution. Right: Spike count comparison (407 vs 53).\relax }}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:training}{{3}{7}{Training stability comparison. Left: Loss curves showing Baseline spikes vs Ours smooth convergence. Center: Loss distribution showing Baseline's heavy tail vs Ours' compact distribution. Right: Spike count comparison (407 vs 53).\relax }{figure.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Spike distribution across training modes. 91\% of spikes occur in single-view mode where MV-Consistency is inactive.\relax }}{7}{table.caption.7}\protected@file@percent }
+\newlabel{tab:gradient}{{3}{7}{Spike distribution across training modes. 91\% of spikes occur in single-view mode where MV-Consistency is inactive.\relax }{table.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Visual comparison: GT vs Baseline vs Ours (MV-Consistency) for 10 objects. Error maps show similar quality between methods.\relax }}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:comparison}{{4}{8}{Visual comparison: GT vs Baseline vs Ours (MV-Consistency) for 10 objects. Error maps show similar quality between methods.\relax }{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Ablation Study}{9}{subsection.4.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Ablation study on consistency weight (10 objects, 5,000 steps). w=0.01 provides the optimal balance.\relax }}{9}{table.caption.8}\protected@file@percent }
+\newlabel{tab:ablation}{{4}{9}{Ablation study on consistency weight (10 objects, 5,000 steps). w=0.01 provides the optimal balance.\relax }{table.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Ablation study: PSNR and Cross-View Consistency vs consistency weight. The red dashed line indicates the chosen weight (0.01).\relax }}{9}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:ablation}{{5}{9}{Ablation study: PSNR and Cross-View Consistency vs consistency weight. The red dashed line indicates the chosen weight (0.01).\relax }{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Multi-Scale Validation}{9}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Comparison with Other Regularization}{9}{subsection.4.6}\protected@file@percent }
 \bibstyle{plainnat}
 \bibdata{references}
 \bibcite{idarb}{Li et\nobreakspace  {}al.(2024)}
 \bibcite{syncdreamer}{Liu et\nobreakspace  {}al.(2024)Liu, Lin, Zeng, Long, Liu, Komura, and Wang}
 \bibcite{wonder3d}{Long et\nobreakspace  {}al.(2024)}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Computational Efficiency}{10}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{10}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations and Future Work}{10}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{10}{section.7}\protected@file@percent }
 \bibcite{mvpainter}{Shao et\nobreakspace  {}al.(2025)Shao, Xiong, Sun, and Xu}
 \bibcite{zero123pp}{Shi et\nobreakspace  {}al.(2023)}
 \bibcite{instantmesh}{Xu et\nobreakspace  {}al.(2024)}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{6}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations and Future Work}{6}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{6}{section.7}\protected@file@percent }
 \bibcite{paint3d}{Zeng et\nobreakspace  {}al.(2024)}
 \bibcite{materialanything}{Zhang et\nobreakspace  {}al.(2024)}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Visual comparison: GT vs Baseline vs Ours (MV-Consistency) for 10 objects. Error maps show similar quality between methods.\relax }}{8}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:comparison}{{2}{8}{Visual comparison: GT vs Baseline vs Ours (MV-Consistency) for 10 objects. Error maps show similar quality between methods.\relax }{figure.caption.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Ablation study: PSNR and Cross-View Consistency vs consistency weight. The red dashed line indicates the chosen weight (0.01).\relax }}{9}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:ablation}{{3}{9}{Ablation study: PSNR and Cross-View Consistency vs consistency weight. The red dashed line indicates the chosen weight (0.01).\relax }{figure.caption.7}{}}
