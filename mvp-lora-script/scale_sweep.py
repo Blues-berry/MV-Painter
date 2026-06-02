@@ -1,123 +1,104 @@
 """
-Phase 3: Scale Sweep
-Test different LoRA scale values on the 250-step checkpoint.
+Scale Sweep: Test different LoRA scale values on the 250-step checkpoint.
+
+FIXED: Uses ControlNet + depth grids (matching correct inference pipeline).
 """
 import os
 import sys
 import torch
 import numpy as np
 from PIL import Image
-from safetensors.torch import load_file
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'MVPainter'))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from mvpainter.mvpainter_pipeline import MVPainter_Pipeline
+from pipeline_utils import (
+    load_pipeline, get_bare_unet, reload_base_weights, verify_reference_attention,
+    create_combined_grids, run_inference, verify_zero_lora_identity,
+    seed_everything, CHECKPOINT_PATH, UNET_CKPT_PATH, TRAIN_DATA, psnr,
+)
 from mvpainter.lora_utils_attn2 import merge_lora_into_unet_attn2_only
-from diffusers import EulerAncestralDiscreteScheduler
 
 
-def psnr(img1, img2):
-    """Compute PSNR between two PIL images."""
-    a1 = np.array(img1).astype(float)
-    a2 = np.array(img2).astype(float)
-    if a1.shape != a2.shape:
-        img2 = img2.resize(img1.size)
-        a2 = np.array(img2).astype(float)
-    mse = np.mean((a1 - a2) ** 2)
-    if mse == 0:
-        return float('inf')
-    return 10 * np.log10(255.0 ** 2 / mse)
-
-
-def merge_lora_with_scale(unet, lora_path, rank, alpha, scale):
+def merge_lora_with_scale(bare_unet, lora_path, rank, alpha, scale):
     """Merge LoRA weights with a custom scale factor."""
-    lora_state = load_file(lora_path)
-    effective_alpha = alpha * scale  # Scale the alpha
-    merge_lora_into_unet_attn2_only(unet, lora_path, rank=rank, alpha=effective_alpha)
-
-
-def load_pipeline(checkpoint_path, unet_ckpt_path, device='cuda'):
-    """Load base pipeline."""
-    pipeline = MVPainter_Pipeline.from_pretrained(
-        checkpoint_path, torch_dtype=torch.float16, use_safetensors=True,
-    )
-    pipeline.scheduler = EulerAncestralDiscreteScheduler.from_config(
-        pipeline.scheduler.config, timestep_spacing='trailing',
-    )
-    if os.path.exists(unet_ckpt_path):
-        ckpt = load_file(unet_ckpt_path)
-        unet_state = {k[len('unet.unet.'):]: v for k, v in ckpt.items() if k.startswith('unet.unet.')}
-        if unet_state:
-            pipeline.unet.load_state_dict(unet_state, strict=False)
-    return pipeline.to(device)
-
-
-def run_inference(pipeline, image, seed=42, num_steps=50):
-    """Run pipeline with fixed seed."""
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    np.random.seed(seed)
-
-    with torch.no_grad(), torch.amp.autocast('cuda'):
-        output = pipeline(image, num_inference_steps=num_steps, output_type='pil')
-
-    if isinstance(output, list) and len(output) >= 1:
-        return output[0]
-    elif hasattr(output, 'images'):
-        return output.images[0]
-    return None
+    effective_alpha = int(alpha * scale)
+    merge_lora_into_unet_attn2_only(bare_unet, lora_path, rank=rank, alpha=effective_alpha)
 
 
 def main():
-    checkpoint_path = '../checkpoints/hf_repo'
-    unet_ckpt_path = '../checkpoints/v29_25000.safetensors'
-    output_dir = '/4T/CXY/MV-Painter/mvpoutput/scale_sweep'
+    output_dir = '/4T/CXY/MV-Painter/mvpoutput/scale_sweep_fixed'
     os.makedirs(output_dir, exist_ok=True)
 
-    # Use 250-step checkpoint
     lora_path = '/4T/CXY/MV-Painter/MVPainter/logs/mvpainter-lora-attn2-only-r4-lr1e5-250-lora-attn2-only-r4-lr1e5-250/lora_checkpoints/lora_step_0000250.safetensors'
 
     # Test sample
-    sample_path = '/4T/CXY/MV-Painter/data/train_data/rendered_full/00603cadc4474dafb78cdb55278568f2/image/000.png'
-    sample_image = Image.open(sample_path).convert('RGBA')
+    sample_obj = '00603cadc4474dafb78cdb55278568f2'
+    sample_path = os.path.join(TRAIN_DATA, sample_obj, 'image', '000.png')
+    if not os.path.exists(sample_path):
+        # Fallback to first test object
+        sample_obj = 'd6a5427888b8413fbfcbcaad14353af8'
+        sample_path = os.path.join(TRAIN_DATA, sample_obj, 'image', '000.png')
 
-    # Scales to test
+    sample_image = Image.open(sample_path).convert('RGBA')
+    obj_path = os.path.join(TRAIN_DATA, sample_obj)
+    normal_grid, depth_grid = create_combined_grids(obj_path)
+
+    if normal_grid is None:
+        print("ERROR: Could not create depth/normal grids for test sample")
+        return
+
     scales = [0.0, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0]
+
+    # Load pipeline once
+    pipeline = load_pipeline()
+
+    # --- Zero-LoRA Identity Verification ---
+    print('\n' + '=' * 60)
+    print('Zero-LoRA Identity Verification')
+    print('=' * 60)
+    ok = verify_zero_lora_identity(
+        pipeline, sample_image, normal_grid, depth_grid,
+        lora_path, merge_lora_into_unet_attn2_only, rank=4, alpha=4,
+    )
+    if not ok:
+        print('\n*** ABORTING: Zero-LoRA identity check failed! ***')
+        return
 
     results = []
 
     # Generate zero-shot baseline
-    print("="*60)
+    print("=" * 60)
     print("Generating zero-shot baseline...")
-    print("="*60)
-    pipeline = load_pipeline(checkpoint_path, unet_ckpt_path)
-    img_zs = run_inference(pipeline, sample_image, seed=42)
+    print("=" * 60)
+    reload_base_weights(pipeline)
+    verify_reference_attention(pipeline)
+    img_zs = run_inference(pipeline, sample_image, normal_grid, depth_grid, seed=42)
     img_zs.save(os.path.join(output_dir, 'zeroshot.png'))
-    del pipeline
-    torch.cuda.empty_cache()
 
     # Test each scale
     for scale in scales:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"Testing scale = {scale}")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
-        pipeline = load_pipeline(checkpoint_path, unet_ckpt_path)
-        merge_lora_with_scale(pipeline.unet, lora_path, rank=4, alpha=4, scale=scale)
-        img = run_inference(pipeline, sample_image, seed=42)
+        reload_base_weights(pipeline)
+        bare_unet = get_bare_unet(pipeline)
+
+        if scale > 0:
+            merge_lora_with_scale(bare_unet, lora_path, rank=4, alpha=4, scale=scale)
+
+        verify_reference_attention(pipeline)
+        img = run_inference(pipeline, sample_image, normal_grid, depth_grid, seed=42)
         img.save(os.path.join(output_dir, f'scale_{scale:.2f}.png'))
 
         p = psnr(img_zs, img)
         results.append({'scale': scale, 'psnr': p})
         print(f"Scale {scale:.2f}: PSNR = {p:.2f} dB")
 
-        del pipeline
-        torch.cuda.empty_cache()
-
     # Generate report
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("SCALE SWEEP RESULTS")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"{'Scale':>8} {'PSNR (dB)':>12} {'Status':>10}")
     print("-" * 30)
     for r in results:
@@ -129,7 +110,8 @@ def main():
 
 ## Configuration
 - LoRA Checkpoint: 250-step attn2-only (rank=4, alpha=4)
-- Test Sample: 00603cadc4474dafb78cdb55278568f2
+- Test Sample: {sample_obj}
+- Pipeline: ControlNet + depth/normal grids (correct inference path)
 - Inference Steps: 50
 - Seed: 42
 
@@ -145,7 +127,7 @@ def main():
     # Find recommended scale
     good_scales = [r for r in results if 25 < r['psnr'] < 45]
     if good_scales:
-        recommended = good_scales[len(good_scales)//2]
+        recommended = good_scales[len(good_scales) // 2]
         report += f"""
 ## Recommendation
 
@@ -158,7 +140,7 @@ This scale provides a good balance between:
 ## Usage
 
 ```python
-merge_lora_with_scale(pipeline.unet, lora_path, rank=4, alpha=4, scale={recommended['scale']:.2f})
+merge_lora_with_scale(pipeline.unet.unet.unet, lora_path, rank=4, alpha=4, scale={recommended['scale']:.2f})
 ```
 """
     else:

@@ -1,0 +1,50 @@
+data:
+  params:
+    batch_size: 1
+    num_workers: 0
+    train:
+      params:
+        clean_list: clean_objects.txt
+        meta_fname: train_meta.json
+        root_dir_list:
+        - /4T/CXY/MV-Painter/data/train_data/rendered_full
+      target: src.data.mvpainter_dataset.MVPainterData
+    validation:
+      params:
+        clean_list: clean_objects.txt
+        meta_fname: test_meta.json
+        root_dir_list:
+        - /4T/CXY/MV-Painter/data/train_data/rendered_full
+      target: src.data.mvpainter_dataset.MVPainterData
+  target: src.data.mvpainter_dataset.DataModuleFromConfig
+lightning:
+  callbacks:
+    lora_checkpoint:
+      params:
+        alpha: 4
+        every_n_steps: 100
+        rank: 4
+      target: mvpainter.model_unet_lora_attn2.LoRACheckpointCallbackAttn2
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 250
+      save_last: true
+      save_top_k: -1
+  trainer:
+    accumulate_grad_batches: 1
+    benchmark: true
+    check_val_every_n_epoch: null
+    gradient_clip_val: 1.0
+    max_epochs: -1
+    max_steps: 250
+    num_sanity_val_steps: 0
+    val_check_interval: 1000000
+model:
+  base_learning_rate: 5.0e-05
+  params:
+    drop_cond_prob: 0.1
+    lora_alpha: 4
+    lora_rank: 4
+    stable_diffusion_config:
+      pretrained_model_name_or_path: ../checkpoints/hf_repo
+  target: mvpainter.model_unet_lora_attn2.MVDiffusionLoRAAttn2

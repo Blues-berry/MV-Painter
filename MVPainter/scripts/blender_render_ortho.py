@@ -746,7 +746,8 @@ def save_images(object_file,prefix="",fixed_random_list=None):
     for light in lights:
         bpy.data.objects.remove(light, do_unlink=True)
 
-    add_hdri_lighting('./scripts/overcast_soil_puresky_4k.exr')
+    hdri_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'overcast_soil_puresky_4k.exr')
+    add_hdri_lighting(hdri_path)
     
     scale, offset = normalize_scene()
 
