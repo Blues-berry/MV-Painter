@@ -1,9 +1,7 @@
 """
-LoRA training model with attn1-only support.
-Applies LoRA ONLY to attn1 (self-attention) for ablation study.
-attn2 (cross-attention) keeps original processors.
-
-This is the REVERSE of attn2-only: used to prove that attn1 LoRA is what breaks reference attention.
+LoRA training model with attn2-only support.
+Preserves ReferenceOnlyAttnProc for attn1 (reference attention).
+Only applies LoRA to attn2 (cross-attention).
 """
 import os
 import json
@@ -19,9 +17,9 @@ from einops import rearrange
 from diffusers import EulerAncestralDiscreteScheduler, DDPMScheduler, UNet2DConditionModel
 
 from .mvpainter_pipeline import RefOnlyNoisedUNet, MVPainter_Pipeline
-from .lora_utils_attn1 import (
-    create_lora_processors_attn1_only,
-    save_lora_weights_attn1_only,
+from .lora_utils_attn2 import (
+    create_lora_processors_attn2_only,
+    save_lora_weights_attn2_only,
 )
 
 
@@ -41,8 +39,8 @@ def unscale_image(image):
     return image / 0.5 * 0.8
 
 
-class LoRACheckpointCallbackAttn1(pl.Callback):
-    """Saves attn1-only LoRA weights."""
+class LoRACheckpointCallbackAttn2(pl.Callback):
+    """Saves attn2-only LoRA weights."""
 
     def __init__(self, save_dir='', every_n_steps=1000, rank=8, alpha=8):
         super().__init__()
@@ -57,11 +55,11 @@ class LoRACheckpointCallbackAttn1(pl.Callback):
             os.makedirs(save_dir, exist_ok=True)
             save_path = os.path.join(save_dir, f'lora_step_{trainer.global_step + 1:07d}.safetensors')
             processors = pl_module.unet.attn_processors
-            save_lora_weights_attn1_only(processors, save_path, self.rank, self.alpha)
+            save_lora_weights_attn2_only(processors, save_path, self.rank, self.alpha)
 
 
-class MVDiffusionLoRAAttn1(pl.LightningModule):
-    """LoRA training with attn1-only for ablation study."""
+class MVDiffusionLoRAAttn2(pl.LightningModule):
+    """LoRA training with attn2-only to preserve reference attention."""
 
     def __init__(
         self,
@@ -91,8 +89,8 @@ class MVDiffusionLoRAAttn1(pl.LightningModule):
         )
         self.pipeline = pipeline
 
-        # Set up attn1-only LoRA processors
-        lora_processors = create_lora_processors_attn1_only(
+        # Set up attn2-only LoRA processors
+        lora_processors = create_lora_processors_attn2_only(
             pipeline.unet, rank=lora_rank, network_alpha=lora_alpha,
         )
         pipeline.unet.set_attn_processor(lora_processors)
@@ -118,7 +116,7 @@ class MVDiffusionLoRAAttn1(pl.LightningModule):
             if any(kw in n for kw in ['to_q_lora', 'to_k_lora', 'to_v_lora', 'to_out_lora'])
         )
         total_params = sum(p.numel() for p in self.unet.parameters())
-        print(f"LoRA parameters (attn1 only): {lora_params / 1e6:.2f}M / {total_params / 1e6:.2f}M total ({100 * lora_params / total_params:.2f}%)")
+        print(f"LoRA parameters (attn2 only): {lora_params / 1e6:.2f}M / {total_params / 1e6:.2f}M total ({100 * lora_params / total_params:.2f}%)")
 
         self.validation_step_outputs = []
 
@@ -312,15 +310,15 @@ class MVDiffusionLoRAAttn1(pl.LightningModule):
         # Freeze everything
         self.unet.requires_grad_(False)
 
-        # Unfreeze only attn1 LoRA parameters
+        # Unfreeze only attn2 LoRA parameters
         lora_keywords = ['to_q_lora', 'to_k_lora', 'to_v_lora', 'to_out_lora']
         trainable_params = []
         for name, param in self.unet.named_parameters():
-            if any(kw in name for kw in lora_keywords) and 'attn1' in name:
+            if any(kw in name for kw in lora_keywords) and 'attn2' in name:
                 param.requires_grad = True
                 trainable_params.append(param)
 
-        print(f"LoRA trainable parameters (attn1 only): {sum(p.numel() for p in trainable_params) / 1e6:.2f}M")
+        print(f"LoRA trainable parameters (attn2 only): {sum(p.numel() for p in trainable_params) / 1e6:.2f}M")
 
         try:
             from deepspeed.ops.adam import DeepSpeedCPUAdam
