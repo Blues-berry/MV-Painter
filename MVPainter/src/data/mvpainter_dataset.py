@@ -72,8 +72,10 @@ class MVPainterData(Dataset):
                  root_dir_list=['objaverse/'],
                  meta_fname='valid',
                  valid_path = None,
-                 clean_list = None
+                 clean_list = None,
+                 object_list_file = None
                  ):
+        self.root_dir_list = root_dir_list
         all_paths = []
         if valid_path is not None:
             with open(valid_path,'r') as f:
@@ -85,8 +87,17 @@ class MVPainterData(Dataset):
                     mesh_path = '/'.join(mesh_path)
                     all_paths.append(mesh_path)
 
+        elif object_list_file is not None:
+            # 直接使用指定的对象列表文件（支持绝对路径或相对于 root_dir 的路径）
+            if os.path.isabs(object_list_file):
+                list_path = object_list_file
+            else:
+                list_path = os.path.join(root_dir_list[0], object_list_file)
+            with open(list_path, 'r') as f:
+                names = [l.strip() for l in f.readlines() if l.strip()]
+            all_paths = [os.path.join(root_dir_list[0], name) for name in names]
+
         else:
-            self.root_dir_list = root_dir_list
             for root_dir in root_dir_list:
                 if clean_list is not None:
                     clean_path = os.path.join(root_dir, clean_list)
@@ -103,10 +114,13 @@ class MVPainterData(Dataset):
                 all_paths = all_paths + paths
 
 
-        if "train" in meta_fname:
-            self.paths = all_paths[:-20]
-        else:
-            self.paths = all_paths[-20:]
+            if "train" in meta_fname:
+                self.paths = all_paths[:-20]
+            else:
+                self.paths = all_paths[-20:]
+
+        if not hasattr(self, 'paths'):
+            self.paths = all_paths
 
         self.target_order = [0,15,12,7,13,14]
 
@@ -431,6 +445,7 @@ class MVPainterData(Dataset):
             normal_img_list = []
             res_img_list = []
             depth_img_list = []
+            alpha_img_list = []
 
 
             try:
@@ -466,14 +481,16 @@ class MVPainterData(Dataset):
 
                     img, alpha = self.load_im(os.path.join(pbr_image_path, '%03d.png' % idx), bkg_color,item_random_ratio)
                     res_img_list.append(img)
+                    if alpha is not None:
+                        alpha_img_list.append(alpha)
 
-                    depth_img, alpha = self.load_img_depth(os.path.join(depth_image_path, '%03d.png' % idx), bkg_color,item_random_ratio)
+                    depth_img, _ = self.load_img_depth(os.path.join(depth_image_path, '%03d.png' % idx), bkg_color,item_random_ratio)
                     depth_img_list.append(depth_img)
 
 
-     
 
-                    img, alpha = self.load_im_normal(os.path.join(normal_image_path, '%03d.png' % idx), bkg_color,item_random_ratio)
+
+                    img, _ = self.load_im_normal(os.path.join(normal_image_path, '%03d.png' % idx), bkg_color,item_random_ratio)
                     # normal进行坐标系旋转
                     if reverse:
                         img = self.rotate_normal_z_90(img)
@@ -489,6 +506,10 @@ class MVPainterData(Dataset):
                     normal_img_list[3] = torchvision.transforms.functional.rotate(normal_img_list[3],angle=90)
                     depth_img_list[1] = torchvision.transforms.functional.rotate(depth_img_list[1],angle=90)
                     depth_img_list[3] = torchvision.transforms.functional.rotate(depth_img_list[3],angle=90)
+                    if len(alpha_img_list) > 1:
+                        alpha_img_list[1] = torchvision.transforms.functional.rotate(alpha_img_list[1].unsqueeze(0),angle=90).squeeze(0)
+                    if len(alpha_img_list) > 3:
+                        alpha_img_list[3] = torchvision.transforms.functional.rotate(alpha_img_list[3].unsqueeze(0),angle=90).squeeze(0)
                 
 
         
@@ -501,7 +522,11 @@ class MVPainterData(Dataset):
 
                 min_depth = torch.min(depth_imgs[valid_mask])
                 max_depth = torch.max(depth_imgs[valid_mask])
-                depth_imgs[valid_mask] = (depth_imgs[valid_mask] - min_depth) / (max_depth - min_depth) # (6,3,512,512)
+                depth_range = max_depth - min_depth
+                if depth_range > 0:
+                    depth_imgs[valid_mask] = (depth_imgs[valid_mask] - min_depth) / depth_range
+                else:
+                    depth_imgs[valid_mask] = 0.0  # Avoid NaN from division by zero
                                         
                                 
 
@@ -537,8 +562,11 @@ class MVPainterData(Dataset):
             'depth_imgs': normal_imgs,
             'real_depth_imgs':depth_imgs,
             # 'target_ccm_position_imgs': torch.stack(ccm_position_img_list, dim=0).float(),  # (6, 3, H, W)
-
         }
+
+        # Add alpha mask if available
+        if len(alpha_img_list) == len(res_img_list):
+            data['alpha_masks'] = torch.stack(alpha_img_list, dim=0).float()  # (6, H, W)
 
         # Load pre-computed embeddings if available
         embed_path = os.path.join(self.paths[index], 'embeddings', 'global_embeds.npy')

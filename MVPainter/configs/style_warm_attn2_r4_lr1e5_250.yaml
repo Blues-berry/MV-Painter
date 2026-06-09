@@ -18,13 +18,13 @@ data:
       params:
         root_dir_list: ['/4T/CXY/MV-Painter/mvpoutput/style_transfer/styled_warm']
         meta_fname: train_meta.json
-        clean_list: clean_objects.txt
+        object_list_file: /4T/CXY/MV-Painter/data/train_data/rendered_full/train_objects_1200.txt
     validation:
       target: src.data.mvpainter_dataset.MVPainterData
       params:
         root_dir_list: ['/4T/CXY/MV-Painter/data/train_data/rendered_full']
         meta_fname: test_meta.json
-        clean_list: clean_objects.txt
+        object_list_file: test_objects_300.txt
 
 lightning:
   modelcheckpoint:

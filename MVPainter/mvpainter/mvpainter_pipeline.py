@@ -138,8 +138,10 @@ class RefOnlyNoisedUNet(torch.nn.Module):
         super().__init__()
         self.unet = unet
         self.train_sched = train_scheduler
-        if val_scheduler == None:
+        if val_scheduler is None:
             self.val_sched = train_scheduler
+        else:
+            self.val_sched = val_scheduler
 
         if replace_processors:
             unet_attn_procs = dict()

@@ -36,12 +36,35 @@ def seed_everything(seed=42):
         torch.cuda.manual_seed_all(seed)
 
 
+def strip_key_prefix(state_dict, prefix='unet.unet.'):
+    """Strip a prefix from state dict keys if present.
+
+    The v29_25000 checkpoint stores UNet keys as 'unet.unet.conv_in.weight'
+    but the bare UNet expects 'conv_in.weight'. This function detects and
+    strips the prefix, also filtering out non-UNet keys (e.g. controlnet.*).
+    """
+    has_prefix = any(k.startswith(prefix) for k in state_dict)
+    if not has_prefix:
+        return state_dict
+    stripped = {}
+    for k, v in state_dict.items():
+        if k.startswith(prefix):
+            stripped[k[len(prefix):]] = v
+        # Skip controlnet.* and other non-UNet keys
+    print(f'  Stripped prefix "{prefix}" from {len(stripped)} keys '
+          f'(filtered {len(state_dict) - len(stripped)} non-UNet keys)')
+    return stripped
+
+
 def load_state_dict_safe(model, state_dict, strict=False, label=""):
     """Load state dict with warnings for missing/unexpected keys.
 
     Unlike torch.load_state_dict(strict=False) which silently ignores mismatches,
     this function prints warnings so issues are visible.
     """
+    # Auto-detect and strip key prefix (v29 checkpoint has 'unet.unet.*' keys)
+    state_dict = strip_key_prefix(state_dict)
+
     missing, unexpected = model.load_state_dict(state_dict, strict=False)
     if missing:
         print(f'  WARNING [{label}]: {len(missing)} missing keys:')
@@ -60,15 +83,19 @@ def load_state_dict_safe(model, state_dict, strict=False, label=""):
     return missing, unexpected
 
 
-def load_pipeline(checkpoint_path=CHECKPOINT_PATH, unet_ckpt_path=UNET_CKPT_PATH, device='cuda'):
+def load_pipeline(checkpoint_path=CHECKPOINT_PATH, unet_ckpt_path=UNET_CKPT_PATH, device='cuda', use_v29=True):
     """Load pipeline with ControlNet + RefOnlyNoisedUNet (matching correct inference path).
 
     This is the ONLY correct way to load the pipeline for eval. The wrapper chain is:
     DepthControlUNet (pipeline.unet)
       -> RefOnlyNoisedUNet (pipeline.unet.unet)
         -> UNet2DConditionModel (pipeline.unet.unet.unet)
+
+    Args:
+        use_v29: If True, load v29 fine-tuned UNet checkpoint. If False, use base pretrained UNet.
     """
-    print('Loading pipeline with ControlNet...')
+    label = 'v29' if use_v29 else 'base'
+    print(f'Loading pipeline with ControlNet (UNet={label})...')
     pipeline = MVPainter_Pipeline.from_pretrained(
         checkpoint_path, torch_dtype=torch.float16, use_safetensors=True,
     )
@@ -83,10 +110,12 @@ def load_pipeline(checkpoint_path=CHECKPOINT_PATH, unet_ckpt_path=UNET_CKPT_PATH
     pipeline.add_controlnet(controlnet, conditioning_scale=1.0)
 
     # Load custom UNet checkpoint into bare UNet
-    if os.path.exists(unet_ckpt_path) and os.path.getsize(unet_ckpt_path) > 14_000_000_000:
+    if use_v29 and os.path.exists(unet_ckpt_path) and os.path.getsize(unet_ckpt_path) > 14_000_000_000:
         bare_unet = pipeline.unet.unet.unet
         load_state_dict_safe(bare_unet, load_file(unet_ckpt_path), label="UNet checkpoint")
-        print('  Loaded custom UNet checkpoint (v29_25000).')
+        print(f'  Loaded custom UNet checkpoint (v29_25000).')
+    else:
+        print(f'  Using base pretrained UNet (no v29 checkpoint).')
 
     pipeline = pipeline.to(device)
     return pipeline
@@ -102,11 +131,15 @@ def get_ref_unet(pipeline):
     return pipeline.unet.unet
 
 
-def reload_base_weights(pipeline, checkpoint_path=CHECKPOINT_PATH, unet_ckpt_path=UNET_CKPT_PATH):
-    """Reload base UNet weights to undo any LoRA merge."""
+def reload_base_weights(pipeline, checkpoint_path=CHECKPOINT_PATH, unet_ckpt_path=UNET_CKPT_PATH, use_v29=True):
+    """Reload base UNet weights to undo any LoRA merge.
+
+    Args:
+        use_v29: If True, reload v29 checkpoint. If False, reload base pretrained weights.
+    """
     bare_unet = get_bare_unet(pipeline)
     base_ckpt = os.path.join(checkpoint_path, 'unet', 'diffusion_pytorch_model.safetensors')
-    if os.path.exists(unet_ckpt_path) and os.path.getsize(unet_ckpt_path) > 14_000_000_000:
+    if use_v29 and os.path.exists(unet_ckpt_path) and os.path.getsize(unet_ckpt_path) > 14_000_000_000:
         base_ckpt = unet_ckpt_path
     load_state_dict_safe(bare_unet, load_file(base_ckpt), label="reload_base")
     print('  Reloaded base UNet weights.')

@@ -1,6 +1,6 @@
 model:
   base_learning_rate: 1.0e-05
-  target: mvpainter.model_unet_lora_attn1.MVDiffusionLoRAAttn1
+  target: mvpainter.model_unet_lora_full.MVDiffusionLoRAFull
   params:
     drop_cond_prob: 0.1
     stable_diffusion_config:
@@ -34,7 +34,7 @@ lightning:
       save_last: true
   callbacks:
     lora_checkpoint:
-      target: mvpainter.model_unet_lora_attn1.LoRACheckpointCallbackAttn1
+      target: mvpainter.model_unet_lora_full.LoRACheckpointCallbackFull
       params:
         every_n_steps: 250
         rank: 4
