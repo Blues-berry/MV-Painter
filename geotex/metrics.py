@@ -29,6 +29,7 @@ def compute_ssim(pred, target, mask=None):
     sigma12 = F.avg_pool2d(pred * target, 3, 1, 1) - mu1 * mu2
     ssim_map = ((2 * mu1 * mu2 + C1) * (2 * sigma12 + C2)) / \
                ((mu1 ** 2 + mu2 ** 2 + C1) * (sigma1 + sigma2 + C2))
+    ssim_map = ssim_map.clamp(0, 1)
     if mask is not None:
         mask_d = F.max_pool2d(mask[:, :1], 3, 1, 1)
         fg = mask_d > 0.5
