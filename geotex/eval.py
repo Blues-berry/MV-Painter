@@ -19,7 +19,7 @@ from omegaconf import OmegaConf
 from src.utils.train_util import instantiate_from_config
 from torchvision.transforms import v2
 from torchvision.utils import save_image
-from diffusers import EulerDiscreteScheduler
+from diffusers import EulerDiscreteScheduler, EulerAncestralDiscreteScheduler
 
 from metrics import (compute_psnr, compute_ssim, compute_edge_mask,
                      unscale_latents, unscale_image)
@@ -76,6 +76,8 @@ def generate_images(model, batch, device, weight_dtype, geo_feats=None,
     added_cond_kwargs = {k: v.to(device, dtype=weight_dtype) if isinstance(v, torch.Tensor) else v
                          for k, v in added_cond_kwargs.items()}
 
+    # NOTE: EulerDiscrete (not EulerAncestral) matches the training setup.
+    # The model was trained with this scheduler configuration.
     scheduler = EulerDiscreteScheduler.from_config(model.pipeline.scheduler.config)
     scheduler.set_timesteps(num_steps, device=device)
 

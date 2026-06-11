@@ -447,7 +447,7 @@ class MVDiffusionGeoTex(pl.LightningModule):
         train_sched = DDPMScheduler.from_config(pipeline.scheduler.config)
         if isinstance(pipeline.unet, UNet2DConditionModel) or True:
             pipeline.unet = RefOnlyNoisedUNet(
-                pipeline.unet, train_sched, pipeline.scheduler, replace_processors=False,
+                pipeline.unet, train_sched, pipeline.scheduler, replace_processors=True,
             )
 
         self.train_scheduler = train_sched
