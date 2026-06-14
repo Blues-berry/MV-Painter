@@ -149,3 +149,22 @@ def compute_lpips(pred, target, mask=None, lpips_fn=None, device=None):
         t = t * m
     with torch.no_grad():
         return lpips_fn(p, t).item()
+
+
+# ──────────────────────────────────────────────────────────────────────
+# Latent / image scaling utilities (from original metrics.py)
+# ──────────────────────────────────────────────────────────────────────
+
+def scale_latents(latents):
+    """Scale latents for training: (latents - 0.22) * 0.75."""
+    return (latents - 0.22) * 0.75
+
+
+def unscale_latents(latents):
+    """Unscale latents after inference: latents / 0.75 + 0.22."""
+    return latents / 0.75 + 0.22
+
+
+def unscale_image(image):
+    """Unscale decoded image: image / 0.5 * 0.8."""
+    return image / 0.5 * 0.8

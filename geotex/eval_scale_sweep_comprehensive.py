@@ -388,8 +388,8 @@ def main():
                 from torchvision.utils import save_image
                 prefix = f"obj_{obj_idx:03d}"
                 save_image(gt, os.path.join(vis_dir, f'{prefix}_gt.png'))
-                save_image(image_orig, os.path.join(vis_dir, f'{prefix}_orig.png'))
-                save_image(image_scaled, os.path.join(vis_dir, f'{prefix}_adapter.png'))
+                save_image(normalize_background(image_orig, mask), os.path.join(vis_dir, f'{prefix}_orig.png'))
+                save_image(normalize_background(image_scaled, mask), os.path.join(vis_dir, f'{prefix}_adapter.png'))
 
         # Save per-object CSV
         fieldnames = list(scale_results[0].keys())

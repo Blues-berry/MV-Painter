@@ -57,6 +57,16 @@ def compute_lpips(pred, target, mask=None, device=None):
 
 
 # ---------------------------------------------------------------------------
+# Background normalization
+# ---------------------------------------------------------------------------
+def normalize_background(image, mask, bg_value=1.0):
+    bg = (mask < 0.5).expand_as(image)
+    result = image.clone()
+    result[bg] = bg_value
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Image generation
 # ---------------------------------------------------------------------------
 @torch.no_grad()
@@ -206,8 +216,8 @@ def save_object_visualizations(gt, orig, adapter, mask, edge_mask, output_dir, o
 
     # GT / Original / Adapter
     save_image(gt, os.path.join(vis_dir, f'{prefix}_gt.png'))
-    save_image(orig, os.path.join(vis_dir, f'{prefix}_original.png'))
-    save_image(adapter, os.path.join(vis_dir, f'{prefix}_adapter.png'))
+    save_image(normalize_background(orig, mask), os.path.join(vis_dir, f'{prefix}_original.png'))
+    save_image(normalize_background(adapter, mask), os.path.join(vis_dir, f'{prefix}_adapter.png'))
 
     # Error maps
     err_orig = (orig - gt).abs()

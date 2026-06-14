@@ -31,7 +31,7 @@ from torchvision.utils import save_image
 from diffusers import EulerDiscreteScheduler
 
 from metrics import compute_psnr, compute_ssim, compute_edge_mask, unscale_latents, unscale_image
-from eval import load_model, generate_images, get_lpips, compute_lpips, collate_batch, prepare_batch
+from eval import load_model, generate_images, get_lpips, compute_lpips, collate_batch, prepare_batch, normalize_background
 
 
 def main():
@@ -138,8 +138,8 @@ def main():
             os.makedirs(vis_dir, exist_ok=True)
             prefix = f"obj_{obj_idx:03d}"
             save_image(gt, os.path.join(vis_dir, f'{prefix}_gt.png'))
-            save_image(image_orig, os.path.join(vis_dir, f'{prefix}_original.png'))
-            save_image(image_adapter, os.path.join(vis_dir, f'{prefix}_adapter.png'))
+            save_image(normalize_background(image_orig, mask), os.path.join(vis_dir, f'{prefix}_original.png'))
+            save_image(normalize_background(image_adapter, mask), os.path.join(vis_dir, f'{prefix}_adapter.png'))
             err_orig = (image_orig - gt).abs()
             err_adapter = (image_adapter - gt).abs()
             save_image(err_orig * 5, os.path.join(vis_dir, f'{prefix}_original_error.png'))

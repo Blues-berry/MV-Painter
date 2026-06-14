@@ -367,8 +367,8 @@ def main():
             # Save vis for first 3
             if obj_idx < 3:
                 save_image(gt, os.path.join(vis_dir, f'obj_{obj_idx:03d}_gt.png'))
-                save_image(image_orig, os.path.join(vis_dir, f'obj_{obj_idx:03d}_orig.png'))
-                save_image(image_adapter, os.path.join(vis_dir, f'obj_{obj_idx:03d}_adapter.png'))
+                save_image(normalize_background(image_orig, mask), os.path.join(vis_dir, f'obj_{obj_idx:03d}_orig.png'))
+                save_image(normalize_background(image_adapter, mask), os.path.join(vis_dir, f'obj_{obj_idx:03d}_adapter.png'))
 
         # Save CSV
         fieldnames = list(results[0].keys())

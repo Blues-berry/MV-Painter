@@ -30,7 +30,7 @@ from torchvision.utils import save_image
 
 from metrics import compute_psnr, compute_ssim, unscale_latents, unscale_image
 from eval import (load_model, generate_images, get_lpips, compute_lpips,
-                  collate_batch, prepare_batch)
+                  collate_batch, prepare_batch, normalize_background)
 
 
 # 3x2 grid layout: row 0 = [front, front_right], row 1 = [right, back],
@@ -143,14 +143,17 @@ def main():
 
             all_results.append(result)
 
-        # Save per-object view visualization
+        # Save per-object view visualization (normalize background for clean display)
         if args.save_vis and obj_idx < args.vis_count:
             obj_dir = os.path.join(per_view_dir, f'obj_{obj_idx:03d}')
             os.makedirs(obj_dir, exist_ok=True)
+            # Extract normalized views for visualization only
+            orig_views_norm = extract_views(normalize_background(image_orig, mask))
+            adapter_views_norm = extract_views(normalize_background(image_adapter, mask))
             for v_idx, v_name in enumerate(VIEW_NAMES):
                 save_image(gt_views[v_idx], os.path.join(obj_dir, f'{v_name}_gt.png'))
-                save_image(orig_views[v_idx], os.path.join(obj_dir, f'{v_name}_orig.png'))
-                save_image(adapter_views[v_idx], os.path.join(obj_dir, f'{v_name}_adapter.png'))
+                save_image(orig_views_norm[v_idx], os.path.join(obj_dir, f'{v_name}_orig.png'))
+                save_image(adapter_views_norm[v_idx], os.path.join(obj_dir, f'{v_name}_adapter.png'))
 
         # Progress
         obj_deltas = [r['delta_psnr'] for r in all_results if r['object_idx'] == obj_idx]

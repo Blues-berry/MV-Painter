@@ -1,0 +1,191 @@
+# Audit Path Registry
+# Central registry of checkpoints, reports, and their canonical status.
+# Updated: 2026-06-14 (extended sweep audit)
+
+# ============================================================
+# CHECKPOINTS
+# ============================================================
+checkpoints:
+  v1_step2000:
+    path: mvpoutput/geotex_refattn_v1/checkpoints/geotex_step_0002000.pt
+    sha256: 4bde4c66949413c3e43e0d27b8f8b5c2cb2f9aedab55d0af60159685d124973f
+    status: selected_stable
+    notes: "Best checkpoint from v1 training. Scale sweep shows FG SSIM monotonically increases to s=2.50."
+    recommended_scale: 2.50
+    previous_scale: 1.25
+    scale_sweep_50obj:
+      scales_tested: [0.75, 0.9, 1.0, 1.1, 1.15, 1.25, 1.35, 1.5, 1.6, 1.75, 2.0, 2.25, 2.5]
+      best_fg_ssim_scale: 2.50
+      best_fg_ssim_delta: 0.145
+      best_nef_ssim_delta: 0.121
+      best_edge_ssim_delta: 0.136
+      gain_vs_1p25: 0.057
+      gain_vs_1p50: 0.032
+      severe_regressions_vs_1p25: 2
+    eval_300obj_scale_1p25:
+      path: mvpoutput/geotex_refattn_v1/scale_1p25_300obj
+      fg_ssim_delta: 0.046
+      edge_ssim_delta: 0.078
+      full_psnr_delta: 8.10
+    eval_300obj_scale_2p50:
+      path: mvpoutput/geotex_refattn_v1/eval_300obj_scale_2p50
+      status: canonical
+      fg_ssim_delta: 0.088
+      nef_ssim_delta: 0.058
+      edge_ssim_delta: 0.124
+      full_psnr_delta: 8.06
+      gain_vs_1p25_fg_ssim: 0.042
+      objects_improved: 241
+      severe_regressions: 13
+      notes: "300-object validation PASSED. s=2.50 is recommended scale."
+
+  v2a_step250:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/checkpoints/geotex_step_0000250.pt
+    sha256: 0df3caa1922ab91bdd8c457c0efbce7f3828246bc8401db0405291864085296d
+    status: archived_failed
+    notes: "v2a continuation attempt. Failed 300-object Go condition. 80% objects regress on FG SSIM vs v1."
+    failure_reason: "scale=1.25 FG SSIM degraded from +0.046 to +0.018; NEF SSIM degraded from +0.021 to -0.009"
+
+  v2a_step500:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/checkpoints/geotex_step_0000500.pt
+    sha256: dc71aa61fc15666030d12511e4bd8ad514dc5a2151da9e12b31451907c93a584
+    status: archived_failed
+    notes: "v2a continuation at step 500. Not evaluated at 300-object scale. 50-object results also unimpressive."
+
+# ============================================================
+# EVAL RESULT DIRECTORIES
+# ============================================================
+eval_results:
+  v1_scale1p25_300obj:
+    path: mvpoutput/geotex_refattn_v1/scale_1p25_300obj
+    checkpoint: v1_step2000
+    scale: 1.25
+    object_count: 300
+    seed: 42
+    evaluator: geotex/eval_scale_inline.py
+    status: canonical
+
+  v1_scale_sweep_50obj:
+    path: mvpoutput/geotex_refattn_v1/scale_sweep_v1_50obj
+    checkpoint: v1_step2000
+    scales: [0.75, 0.9, 1.0, 1.1, 1.15, 1.25, 1.35, 1.5]
+    object_count: 50
+    seed: 42
+    evaluator: geotex/eval_scale_inline.py
+    status: canonical
+
+  v1_scale_sweep_extended_50obj:
+    path: mvpoutput/geotex_refattn_v1/scale_sweep_v1_extended_50obj
+    checkpoint: v1_step2000
+    scales: [1.6, 1.75, 2.0, 2.25, 2.5]
+    object_count: 50
+    seed: 42
+    evaluator: geotex/eval_scale_inline.py
+    status: canonical
+    notes: "Extended sweep. FG SSIM still increasing at s=2.50. 300-object gate passed."
+    files:
+      extended_scale_sweep_summary.csv:
+        sha256: 486ae4ed4cc120232047975d571377ec42beafc777709ff95f71823d850ffe2f
+        mtime: "2026-06-13 09:50:21"
+      extended_scale_sweep_summary.md:
+        sha256: (updated 2026-06-14)
+        mtime: "2026-06-14"
+      extended_per_object_scale_sweep.csv:
+        sha256: 3900a89cf25289a7032a2b6f2febdbe4854ba77d135661740d71c60bfeaa4501
+        mtime: "2026-06-13 09:50:21"
+      extended_scale_regression_cases.md:
+        sha256: (updated 2026-06-14)
+        mtime: "2026-06-14"
+      selection_analysis.json:
+        sha256: d91c141c506c3f37c2defb5b62c75ce60ffcc4fbf3a416546bc613b24a6d6dd5
+        mtime: "2026-06-13 09:50:36"
+      visual_sanity_report.md:
+        sha256: 8ecd146979fdfb3bae205785c1ac5a95587696bd4e5247aebb3f3b0146d41518
+        mtime: "2026-06-13 09:51:37"
+      visual_sanity_manifest.csv:
+        sha256: 4536263cb295d97e1fc63632df185b0fbe19dbf2b138b5cd0e60919bcbef1b9a
+        mtime: "2026-06-13 09:50:36"
+      visual_sanity_checklist.md:
+        sha256: (new 2026-06-14)
+        mtime: "2026-06-14"
+
+  v1_eval_300obj_scale_2p50:
+    path: mvpoutput/geotex_refattn_v1/eval_300obj_scale_2p50
+    checkpoint: v1_step2000
+    scale: 2.50
+    object_count: 300
+    seed: 42
+    evaluator: geotex/eval_scale_inline.py
+    status: canonical
+    provenance: PRE-EXISTING (2026-06-13, bg2okljc0)
+    notes: "300-object validation at s=2.50. FG SSIM +0.088, gain +0.042 vs s=1.25. 252/300 objects improve. 13 severe regressions."
+
+  v2a_step250_scale1p0_300obj:
+    path: mvpoutput/geotex_refattn_v2/eval_v2a_step250_scale1p0_300obj
+    checkpoint: v2a_step250
+    scale: 1.0
+    object_count: 300
+    seed: 42
+    evaluator: geotex/eval_scale_sweep_v2.py
+    status: canonical
+
+  v2a_step250_scale1p25_300obj:
+    path: mvpoutput/geotex_refattn_v2/eval_v2a_step250_scale1p25_300obj
+    checkpoint: v2a_step250
+    scale: 1.25
+    object_count: 300
+    seed: 42
+    evaluator: geotex/eval_scale_sweep_v2.py
+    status: canonical
+
+# ============================================================
+# REPORTS
+# ============================================================
+reports:
+  # Canonical decision evidence
+  v2a_300obj_decision_report:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/v2a_300obj_decision_report.md
+    status: canonical_decision_evidence
+    notes: "300-object Go/No-Go evaluation. v2a FAILED all conditions."
+
+  v2a_vs_v1_regression_diagnostic:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/v2a_vs_v1_regression_diagnostic.md
+    status: canonical_decision_evidence
+    notes: "Per-object regression analysis. 80% objects regress on FG SSIM."
+
+  decison_state:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/DECISION_STATE.md
+    status: canonical_decision_evidence
+    notes: "Final decision record: v2a NO-GO, v1 selected."
+
+  # Superseded reports
+  fair_50obj_comparison:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/fair_50obj_comparison.md
+    status: superseded
+    superseded_by: v2a_300obj_decision_report
+    notes: "50-object comparison. Superseded by 300-object validation."
+
+  eval_50obj_summary:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/eval_50obj_summary.md
+    status: superseded
+    superseded_by: v2a_300obj_decision_report
+    notes: "Early 50-object summary. Superseded by canonical 300-object reports."
+
+  best_checkpoint_selection:
+    path: mvpoutput/geotex_refattn_v2/v2a_continue_control/best_checkpoint_selection.md
+    status: superseded
+    superseded_by: decison_state
+    notes: "Early checkpoint selection. Superseded by DECISION_STATE.md."
+
+# ============================================================
+# SANITY GUARD
+# ============================================================
+sanity_guard:
+  script: geotex/validate_eval_comparison.py
+  status: active
+  checks:
+    - "Object set consistency (FAIL if mismatch)"
+    - "Object count consistency (FAIL if 300 vs 50)"
+    - "Seed consistency (WARNING if missing)"
+    - "Checkpoint SHA256 reporting"
+    - "Scale and config completeness"
