@@ -22,6 +22,7 @@ from einops import rearrange
 from diffusers import EulerAncestralDiscreteScheduler, DDPMScheduler, UNet2DConditionModel
 
 from .mvpainter_pipeline import RefOnlyNoisedUNet, MVPainter_Pipeline
+from .adaptive_correction import AdaptiveCorrectionController
 
 
 def scale_latents(latents):
@@ -283,15 +284,20 @@ class GeoTexResnetWrapper(nn.Module):
 
     The wrapper checks for a _geo_feats attribute on itself (set externally)
     to decide whether to apply the adapter.
+
+    Supports optional AdaptiveCorrectionController for LTAG/GSG/FSC modulation.
+    When no controller is set, falls back to legacy behavior (raw correction).
     """
 
-    def __init__(self, resnet, adapter, geo_feat_key='up_0'):
+    def __init__(self, resnet, adapter, geo_feat_key='up_0', adapter_idx=0):
         super().__init__()
         self.resnet = resnet
         self.adapter = adapter
         self.geo_feat_key = geo_feat_key
+        self.adapter_idx = adapter_idx
         self._current_geo_feats = None
         self._last_correction = None  # For residual regularization
+        self._correction_controller = None  # Set externally for adaptive correction
 
     def set_geo_feats(self, geo_feats):
         """Set geometry features for the current forward pass."""
@@ -318,6 +324,16 @@ class GeoTexResnetWrapper(nn.Module):
                     )
                 # Compute correction and store for regularization
                 correction = self.adapter.compute_correction(hidden_states, geo_feat)
+
+                # Apply adaptive correction (LTAG/GSG/FSC) if controller is set
+                if self._correction_controller is not None:
+                    correction = self._correction_controller.apply(
+                        correction, geo_feat, self.adapter_idx
+                    )
+                # Legacy: apply static _adapter_scale (used by eval_exploration TCAS)
+                elif hasattr(self, '_adapter_scale'):
+                    correction = correction * self._adapter_scale
+
                 self._last_correction = correction
                 hidden_states = hidden_states + correction
 
@@ -359,9 +375,11 @@ def inject_adapters(unet, mode='up_only', geo_channels=64):
     for block_name, resnet_idx, resnet, in_ch, geo_key in block_configs:
         adapter = GeoTexAdapter(in_channels=in_ch, geo_channels=geo_channels)
         adapters.append(adapter)
+        adapter_idx = len(adapters) - 1
 
-        # Wrap the resnet with the adapter
-        wrapped = GeoTexResnetWrapper(resnet, adapter, geo_feat_key=geo_key)
+        # Wrap the resnet with the adapter (pass adapter_idx for controller)
+        wrapped = GeoTexResnetWrapper(resnet, adapter, geo_feat_key=geo_key,
+                                      adapter_idx=adapter_idx)
 
         # Replace the resnet in the UNet
         if block_name == 'mid':
@@ -370,7 +388,7 @@ def inject_adapters(unet, mode='up_only', geo_channels=64):
             up_idx = int(block_name.split('_')[1])
             unet.up_blocks[up_idx].resnets[resnet_idx] = wrapped
 
-        adapter_map[len(adapters) - 1] = (block_name, geo_key)
+        adapter_map[adapter_idx] = (block_name, geo_key)
 
     print(f"Injected {len(adapters)} GeoTex adapters ({mode} mode)")
 
@@ -417,6 +435,11 @@ class MVDiffusionGeoTex(pl.LightningModule):
         edge_loss_weight=0.02,
         adapter_reg_weight=1e-4,
         img_size=256,
+        # Adaptive Correction (FAC) settings
+        enable_ltag=False,
+        enable_gsg=False,
+        enable_fsc=False,
+        ltag_init_schedule=None,  # dict: {'early': 1.25, 'mid': 2.50, 'late': 1.25}
     ):
         super().__init__()
 
@@ -429,6 +452,10 @@ class MVDiffusionGeoTex(pl.LightningModule):
         self.adapter_reg_weight = adapter_reg_weight
         self.img_size = img_size
         self._lr = None
+        self.enable_ltag = enable_ltag
+        self.enable_gsg = enable_gsg
+        self.enable_fsc = enable_fsc
+        self.ltag_init_schedule = ltag_init_schedule
 
         self.register_schedule()
 
@@ -464,13 +491,41 @@ class MVDiffusionGeoTex(pl.LightningModule):
             self.unet, mode=adapter_mode, geo_channels=geo_channels
         )
 
+        # Initialize Adaptive Correction Controller (FAC)
+        num_adapters = len(self.adapters)
+        if enable_ltag or enable_gsg or enable_fsc:
+            ltag_kwargs = {}
+            if ltag_init_schedule:
+                ltag_kwargs['init_schedule'] = ltag_init_schedule
+            self.correction_controller = AdaptiveCorrectionController(
+                num_adapters=num_adapters,
+                geo_channels=geo_channels,
+                enable_ltag=enable_ltag,
+                enable_gsg=enable_gsg,
+                enable_fsc=enable_fsc,
+                ltag_kwargs=ltag_kwargs,
+            )
+            # Register controller on all wrappers
+            for name, module in self.unet.unet.named_modules():
+                if isinstance(module, GeoTexResnetWrapper):
+                    module._correction_controller = self.correction_controller
+            fac_params = self.correction_controller.param_count()
+            print(f"FAC (Adaptive Correction) enabled: LTAG={enable_ltag}, GSG={enable_gsg}, FSC={enable_fsc}")
+            print(f"  FAC params: {fac_params}")
+        else:
+            self.correction_controller = None
+            print("FAC disabled — using legacy static scaling")
+
         # Count parameters
         adapter_params = sum(p.numel() for p in self.adapters.parameters())
         encoder_params = sum(p.numel() for p in self.geo_encoder.parameters())
-        total_trainable = adapter_params + encoder_params
+        fac_total = sum(p.numel() for p in self.correction_controller.parameters()) if self.correction_controller else 0
+        total_trainable = adapter_params + encoder_params + fac_total
         unet_params = sum(p.numel() for p in self.unet.parameters())
         print(f"GeoTex adapter params: {adapter_params / 1e6:.2f}M")
         print(f"GeoTex encoder params: {encoder_params / 1e6:.2f}M")
+        if fac_total > 0:
+            print(f"FAC controller params: {fac_total / 1e6:.4f}M")
         print(f"Total trainable: {total_trainable / 1e6:.2f}M / {unet_params / 1e6:.2f}M UNet ({100 * total_trainable / unet_params:.2f}%)")
 
         self.validation_step_outputs = []
@@ -503,6 +558,8 @@ class MVDiffusionGeoTex(pl.LightningModule):
         self.pipeline.vae.to(device)
         self.adapters.to(device)
         self.geo_encoder.to(device)
+        if self.correction_controller is not None:
+            self.correction_controller.to(device)
         self.pipeline.vision_encoder.to('cpu')
         self.pipeline.vision_encoder_2.to('cpu')
 
@@ -664,6 +721,10 @@ class MVDiffusionGeoTex(pl.LightningModule):
         # Encode geometry features
         geo_feats = self.geo_encoder(geo_input.to(weight_dtype))
 
+        # Set LTAG timestep before forward pass (uses first sample's timestep)
+        if self.correction_controller is not None:
+            self.correction_controller.set_timestep(t[0])
+
         noise_pred = self.forward_unet(
             latents_noisy, t, prompt_embeds, cond_latents,
             depth_imgs=None, depth_imgs_2=None,
@@ -813,6 +874,12 @@ class MVDiffusionGeoTex(pl.LightningModule):
             p.requires_grad = True
             trainable_params.append(p)
 
+        # Add FAC controller parameters
+        if self.correction_controller is not None:
+            for p in self.correction_controller.parameters():
+                p.requires_grad = True
+                trainable_params.append(p)
+
         total_trainable = sum(p.numel() for p in trainable_params)
         print(f"GeoTex trainable parameters: {total_trainable / 1e6:.2f}M")
 
@@ -833,7 +900,7 @@ class MVDiffusionGeoTex(pl.LightningModule):
         return {'optimizer': optimizer, 'lr_scheduler': scheduler}
 
     def save_geotex_weights(self, save_path):
-        """Save adapter and encoder weights."""
+        """Save adapter, encoder, and FAC controller weights."""
         # Collect adapter state dicts from wrapped resnets
         adapter_states = []
         for name, module in self.unet.named_modules():
@@ -844,12 +911,17 @@ class MVDiffusionGeoTex(pl.LightningModule):
             'adapters': adapter_states,
             'encoder': self.geo_encoder.state_dict(),
         }
+
+        # Save FAC controller if present
+        if self.correction_controller is not None:
+            state['fac_controller'] = self.correction_controller.state_dict()
+
         os.makedirs(os.path.dirname(save_path) or '.', exist_ok=True)
         torch.save(state, save_path)
         print(f"Saved GeoTex weights to {save_path}")
 
     def load_geotex_weights(self, load_path):
-        """Load adapter and encoder weights."""
+        """Load adapter, encoder, and FAC controller weights."""
         state = torch.load(load_path, map_location='cpu')
 
         # Load adapter state dicts into wrapped resnets
@@ -868,4 +940,12 @@ class MVDiffusionGeoTex(pl.LightningModule):
                     self.adapters[i].load_state_dict(s)
 
         self.geo_encoder.load_state_dict(state['encoder'])
+
+        # Load FAC controller if present in checkpoint and model has one
+        if self.correction_controller is not None and 'fac_controller' in state:
+            self.correction_controller.load_state_dict(state['fac_controller'])
+            print(f"  Loaded FAC controller weights")
+        elif self.correction_controller is not None:
+            print(f"  FAC controller enabled but not in checkpoint — using initialized weights")
+
         print(f"Loaded GeoTex weights from {load_path}")
