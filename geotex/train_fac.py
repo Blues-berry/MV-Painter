@@ -198,6 +198,21 @@ def main():
         if model.correction_controller is not None:
             model.correction_controller.set_timestep(t[0])
 
+        # Apply TCAS scale during training (matches inference condition)
+        # This ensures GSG/FSC learn to modulate correction at TCAS-scaled magnitude
+        tcas_schedule = {'early': 1.25, 'mid': 2.50, 'late': 1.25}
+        t_frac = t[0].item() / 1000.0  # timestep normalized
+        if t_frac > 0.66:
+            tcas_scale = tcas_schedule['early']
+        elif t_frac > 0.33:
+            tcas_scale = tcas_schedule['mid']
+        else:
+            tcas_scale = tcas_schedule['late']
+        from mvpainter.model_unet_geotex import GeoTexResnetWrapper
+        for module in model.unet.modules():
+            if isinstance(module, GeoTexResnetWrapper):
+                module._adapter_scale = tcas_scale
+
         # Set geo features and run forward
         model._set_geo_feats_on_wrappers(geo_feats)
 
