@@ -325,14 +325,18 @@ class GeoTexResnetWrapper(nn.Module):
                 # Compute correction and store for regularization
                 correction = self.adapter.compute_correction(hidden_states, geo_feat)
 
-                # Apply adaptive correction (LTAG/GSG/FSC) if controller is set
+                # Apply static _adapter_scale first (TCAS temporal schedule)
+                # This ensures correction magnitude matches what adapter was trained for
+                if hasattr(self, '_adapter_scale'):
+                    correction = correction * self._adapter_scale
+
+                # Then apply adaptive correction (GSG/FSC) on top if controller is set
+                # Note: LTAG in controller provides its own scale, so when LTAG is enabled
+                # _adapter_scale should NOT be set (use one or the other for temporal scaling)
                 if self._correction_controller is not None:
                     correction = self._correction_controller.apply(
                         correction, geo_feat, self.adapter_idx
                     )
-                # Legacy: apply static _adapter_scale (used by eval_exploration TCAS)
-                elif hasattr(self, '_adapter_scale'):
-                    correction = correction * self._adapter_scale
 
                 self._last_correction = correction
                 hidden_states = hidden_states + correction

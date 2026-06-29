@@ -25,10 +25,9 @@ from src.utils.train_util import instantiate_from_config
 from torchvision.transforms import v2
 from torchvision.utils import save_image
 from diffusers import EulerDiscreteScheduler
-from einops import rearrange
-
 from metrics import compute_psnr, compute_ssim, compute_edge_mask, unscale_latents, unscale_image
 from metrics_extended import compute_all_extended
+from data_utils import prepare_batch, collate_batch
 from mvpainter.adaptive_correction import AdaptiveCorrectionController
 from mvpainter.model_unet_geotex import GeoTexResnetWrapper
 
@@ -185,10 +184,12 @@ def generate_with_variant(model, batch, device, weight_dtype, geo_feats,
 
     try:
         for step_idx, t in enumerate(scheduler.timesteps):
-            if variant == 'tcas':
-                scale = get_tcas_scale(step_idx, num_steps, tcas_schedule or {})
-                setup_static_scale(model, scale)
-            elif controller is not None:
+            # Always apply TCAS scale (base temporal schedule)
+            scale = get_tcas_scale(step_idx, num_steps, tcas_schedule or {})
+            setup_static_scale(model, scale)
+
+            if variant != 'tcas' and controller is not None:
+                # FAC: additionally set timestep for LTAG (if enabled)
                 controller.set_timestep(t)
 
             latent_input = scheduler.scale_model_input(latents, t)
@@ -322,26 +323,24 @@ def run_eval(args):
     obj_names = []
 
     print(f"\nRunning 300-object evaluation: {num_objects} objects × {len(VARIANTS)} variants")
-    print(f"Steps: {num_steps}, Seed: 42+idx")
+    print(f"Steps: {num_steps}, Seed: 42 (fixed, same as eval_exploration)")
     print("=" * 80)
 
     start_time = time.time()
     for obj_idx in range(num_objects):
-        batch = dataset[obj_idx]
-        batch = {k: v.unsqueeze(0) if isinstance(v, torch.Tensor) else v for k, v in batch.items()}
+        batch = collate_batch(dataset, obj_idx, device)
         obj_name = f'obj_{obj_idx:04d}'
         obj_names.append(obj_name)
 
-        # Prepare
+        # Prepare (use data_utils.prepare_batch for consistency with eval_exploration)
         cond_imgs, target_imgs, normal_imgs, real_depth_imgs, geo_input, mask = \
-            model.prepare_batch_data(batch, device=device)
+            prepare_batch(batch, model.img_size, device)
         geo_input_clean = geo_input.float().clamp(0, 1)
         geo_input_clean = torch.nan_to_num(geo_input_clean, nan=0.0, posinf=1.0, neginf=0.0)
         geo_feats = model.geo_encoder(geo_input_clean)
 
-        # Fixed seed
-        seed = 42 + obj_idx
-        torch.manual_seed(seed)
+        # Fixed seed (same seed=42 for all objects, matching eval_exploration.py)
+        torch.manual_seed(42)
         latent_h, latent_w = model.img_size * 3 // 8, model.img_size * 2 // 8
         init_latents = torch.randn(1, 4, latent_h, latent_w, device=device, dtype=weight_dtype)
 
@@ -517,7 +516,8 @@ def run_eval(args):
             'fac_checkpoint': args.fac_checkpoint,
             'num_objects': num_objects,
             'num_steps': num_steps,
-            'seed_base': 42,
+            'seed': 42,
+            'seed_mode': 'fixed (same for all objects, matching eval_exploration)',
         },
         'summary': summary,
         'deltas': deltas,
@@ -536,7 +536,7 @@ def run_eval(args):
         f.write("# FAC 300-Object Ablation Summary\n\n")
         f.write(f"- Checkpoint: `{args.checkpoint}`\n")
         f.write(f"- FAC weights: `{args.fac_checkpoint}`\n")
-        f.write(f"- Objects: {num_objects}, Steps: {num_steps}, Seed: 42+idx\n")
+        f.write(f"- Objects: {num_objects}, Steps: {num_steps}, Seed: 42 (fixed)\n")
         f.write(f"- Time: {elapsed_total:.0f}s\n\n")
 
         f.write("## Main Table\n\n")

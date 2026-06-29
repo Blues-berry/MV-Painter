@@ -176,12 +176,12 @@ def generate_with_variant(model, batch, device, weight_dtype, geo_feats,
 
     try:
         for step_idx, t in enumerate(scheduler.timesteps):
-            if variant == 'tcas':
-                # TCAS: set static scale per timestep phase
-                scale = get_tcas_scale(step_idx, num_steps, tcas_schedule or {})
-                setup_static_scale(model, scale)
-            elif controller is not None:
-                # FAC: set timestep for LTAG
+            # Always apply TCAS scale (base temporal schedule)
+            scale = get_tcas_scale(step_idx, num_steps, tcas_schedule or {})
+            setup_static_scale(model, scale)
+
+            if variant != 'tcas' and controller is not None:
+                # FAC: additionally set timestep for LTAG (if enabled)
                 controller.set_timestep(t)
 
             latent_input = scheduler.scale_model_input(latents, t)
