@@ -188,17 +188,26 @@ class RefOnlyNoisedUNet(torch.nn.Module):
             noisy_cond_lat = self.val_sched.scale_model_input(noisy_cond_lat, timestep.reshape(-1))
 
         ref_dict = {}
-        
+
+        # Disable GeoTex adapter during reference-write pass:
+        # The write pass encodes condition image into ref_dict for reference attention.
+        # Adapter corrections should only apply during the target-read pass.
+        from .model_unet_geotex import GeoTexResnetWrapper
+        GeoTexResnetWrapper._skip_correction = True
+
         _ = self.unet(
-            noisy_cond_lat, 
-            timestep, 
-            encoder_hidden_states = encoder_hidden_states, 
+            noisy_cond_lat,
+            timestep,
+            encoder_hidden_states = encoder_hidden_states,
             class_labels = class_labels,
             cross_attention_kwargs = dict(mode="w", ref_dict=ref_dict),
             added_cond_kwargs = added_cond_kwargs,
             return_dict = return_dict,
             **kwargs
         )
+
+        # Re-enable adapter for target-read pass
+        GeoTexResnetWrapper._skip_correction = False
 
         res = self.unet(
             sample, 
