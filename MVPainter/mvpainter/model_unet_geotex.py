@@ -133,9 +133,11 @@ class GeoTexAdapter(nn.Module):
             nn.Sigmoid(),
         )
 
-        # Output projection: bottleneck -> in_channels, zero-initialized
+        # Output projection: bottleneck -> in_channels
+        # Use small random init (not zeros) so encoder gets gradients from step 1.
+        # The residual starts near-zero but with non-zero gradient flow.
         self.output_proj = nn.Conv2d(bottleneck, in_channels, kernel_size=1)
-        nn.init.zeros_(self.output_proj.weight)
+        nn.init.normal_(self.output_proj.weight, std=1e-3)
         nn.init.zeros_(self.output_proj.bias)
 
     def compute_correction(self, x, geo_feat):
@@ -289,12 +291,25 @@ class GeoTexResnetWrapper(nn.Module):
     When no controller is set, falls back to legacy behavior (raw correction).
     """
 
-    def __init__(self, resnet, adapter, geo_feat_key='up_0', adapter_idx=0):
+    # Class-level flag: skip adapter correction during reference-write pass
+    _skip_correction = False
+
+    # Per-layer scale caps (set by inject_adapters based on depth group)
+    LAYER_MAX_SCALES = {
+        'deep': 3.0,      # up_0: global structure
+        'middle': 3.5,    # up_1: primary shape lever
+        'shallow': 0.8,   # up_2: fine texture, minimal intervention
+    }
+
+    def __init__(self, resnet, adapter, geo_feat_key='up_0', adapter_idx=0,
+                 depth_group='deep'):
         super().__init__()
         self.resnet = resnet
         self.adapter = adapter
         self.geo_feat_key = geo_feat_key
         self.adapter_idx = adapter_idx
+        self.depth_group = depth_group
+        self._max_scale = self.LAYER_MAX_SCALES.get(depth_group, 3.0)
         self._current_geo_feats = None
         self._last_correction = None  # For residual regularization
         self._correction_controller = None  # Set externally for adaptive correction
@@ -312,6 +327,10 @@ class GeoTexResnetWrapper(nn.Module):
         # Run original resnet
         hidden_states = self.resnet(*args, **kwargs)
 
+        # Skip adapter correction during reference-write pass
+        if GeoTexResnetWrapper._skip_correction:
+            return hidden_states
+
         # Apply adapter if geo_feats are available
         if self._current_geo_feats is not None:
             geo_feat = self._current_geo_feats.get(self.geo_feat_key)
@@ -326,9 +345,10 @@ class GeoTexResnetWrapper(nn.Module):
                 correction = self.adapter.compute_correction(hidden_states, geo_feat)
 
                 # Apply static _adapter_scale first (TCAS temporal schedule)
-                # This ensures correction magnitude matches what adapter was trained for
+                # Clamp to per-layer maximum to prevent texture damage in shallow layers
                 if hasattr(self, '_adapter_scale'):
-                    correction = correction * self._adapter_scale
+                    effective_scale = min(self._adapter_scale, self._max_scale)
+                    correction = correction * effective_scale
 
                 # Then apply adaptive correction (GSG/FSC) on top if controller is set
                 # Note: LTAG in controller provides its own scale, so when LTAG is enabled
@@ -375,15 +395,27 @@ def inject_adapters(unet, mode='up_only', geo_channels=64):
             in_ch = resnet.conv1.out_channels  # Use output channels
             block_configs.append((f'up_{block_idx}', resnet_idx, resnet, in_ch, f'up_{block_idx}'))
 
+    # Block name -> depth group mapping for per-layer scale caps
+    BLOCK_DEPTH_MAP = {
+        'mid': 'deep',
+        'up_0': 'deep',
+        'up_1': 'middle',
+        'up_2': 'shallow',
+    }
+
     # Create adapters and wrap resnets
     for block_name, resnet_idx, resnet, in_ch, geo_key in block_configs:
         adapter = GeoTexAdapter(in_channels=in_ch, geo_channels=geo_channels)
         adapters.append(adapter)
         adapter_idx = len(adapters) - 1
 
+        # Determine depth group for per-layer scale cap
+        depth_group = BLOCK_DEPTH_MAP.get(block_name, 'deep')
+
         # Wrap the resnet with the adapter (pass adapter_idx for controller)
         wrapped = GeoTexResnetWrapper(resnet, adapter, geo_feat_key=geo_key,
-                                      adapter_idx=adapter_idx)
+                                      adapter_idx=adapter_idx,
+                                      depth_group=depth_group)
 
         # Replace the resnet in the UNet
         if block_name == 'mid':

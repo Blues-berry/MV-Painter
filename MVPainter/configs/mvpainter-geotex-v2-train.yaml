@@ -1,0 +1,70 @@
+## GeoTex-Adapter v2 Training Config
+##
+## Key improvements:
+##   - Expanded dataset (1706 objects, was 1200)
+##   - Stronger foreground/edge loss (0.7/0.3, was 0.3/0.1)
+##   - Lower latent SSIM weight (0.2, was 0.5)
+##   - Lower regularization (5e-5, was 1e-4)
+##   - Per-layer TCAS v2 schedule applied during training (fixes train/eval mismatch)
+##   - Write/read pass separation enabled
+##   - Per-layer scale caps (shallow=0.8, middle=3.5, deep=3.0)
+##
+## Training with train_v2.py (NOT the Lightning trainer):
+##   python geotex/train_v2.py --config MVPainter/configs/mvpainter-geotex-v2-train.yaml \
+##       --output_dir mvpoutput/geotex_v2 --steps 10000
+
+model:
+  base_learning_rate: 3.0e-04  # Peak LR (train_v2.py handles warmup+cosine)
+  target: mvpainter.model_unet_geotex.MVDiffusionGeoTex
+  params:
+    drop_cond_prob: 0.1
+    stable_diffusion_config:
+      pretrained_model_name_or_path: ../checkpoints/hf_repo
+    adapter_mode: up_only
+    geo_channels: 64
+    # Enhanced loss weights (applied via train_v2.py compute_enhanced_loss)
+    foreground_loss_weight: 0.7
+    ssim_loss_weight: 0.2
+    edge_loss_weight: 0.3
+    adapter_reg_weight: 5.0e-05
+    img_size: 256
+
+data:
+  target: src.data.mvpainter_dataset.DataModuleFromConfig
+  params:
+    batch_size: 1
+    num_workers: 0
+    train:
+      target: src.data.mvpainter_dataset.MVPainterData
+      params:
+        root_dir_list: ['/4T/CXY/MV-Painter/data/train_data/rendered_full']
+        meta_fname: train_meta.json
+        object_list_file: train_objects_2000.txt
+    validation:
+      target: src.data.mvpainter_dataset.MVPainterData
+      params:
+        root_dir_list: ['/4T/CXY/MV-Painter/data/train_data/rendered_full']
+        meta_fname: test_meta.json
+        object_list_file: test_objects_300.txt
+
+lightning:
+  modelcheckpoint:
+    params:
+      every_n_train_steps: 1000
+      save_top_k: -1
+      save_last: true
+  callbacks:
+    geotex_checkpoint:
+      target: mvpainter.model_unet_geotex.GeoTexCheckpointCallback
+      params:
+        every_n_steps: 1000
+
+  trainer:
+    benchmark: true
+    max_epochs: -1
+    max_steps: 10000
+    gradient_clip_val: 1.0
+    val_check_interval: 1000000
+    num_sanity_val_steps: 0
+    accumulate_grad_batches: 4
+    check_val_every_n_epoch: null
