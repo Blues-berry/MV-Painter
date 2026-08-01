@@ -196,12 +196,19 @@ def compute_enhanced_loss(noise_pred, noise_gt, model, target_imgs=None, mask=No
                           depth_imgs=None, normal_imgs=None,
                           foreground_weight=0.7, edge_weight=0.3,
                           ssim_weight=0.2, reg_weight=5e-5,
+                          ratio_reg_weight=0, var_weight=0.01,
                           step=0, device='cuda'):
-    """Enhanced loss with stronger foreground/edge weighting.
+    """Enhanced loss with lightweight anti-collapse.
 
-    Args:
-        pixel_ssim_weight: if > 0, decode latents and compute real pixel SSIM
-            (expensive, only enabled periodically)
+    Anti-collapse strategy (v3 final):
+      - Primary: output_proj weight norm clamping (in training loop, not loss)
+      - Secondary: shallow layer scale=0.1 (in forward pass)
+      - Tertiary: var_weight=0.01 (gentle variance preservation, not dominant)
+      - reg_weight=5e-5 (same as v2_ext, light L2 on corrections)
+
+    Key learning: aggressive loss-based constraints (high reg, ratio penalty)
+    create gradient conflicts with noise_loss → training instability → NaN.
+    Physical constraints (weight norm clamp, scale caps) are stable.
     """
     loss_dict = {}
     latent_h, latent_w = noise_pred.shape[2], noise_pred.shape[3]
@@ -241,7 +248,7 @@ def compute_enhanced_loss(noise_pred, noise_gt, model, target_imgs=None, mask=No
         loss_dict['train/ssim_loss'] = ssim_loss.item()
         total_loss = total_loss + ssim_weight * ssim_loss
 
-    # Adapter residual regularization
+    # Adapter residual regularization (L2 on corrections)
     if reg_weight > 0:
         reg_loss = torch.tensor(0.0, device=noise_pred.device)
         count = 0
@@ -253,6 +260,20 @@ def compute_enhanced_loss(noise_pred, noise_gt, model, target_imgs=None, mask=No
             reg_loss = reg_loss / count
             loss_dict['train/reg_loss'] = reg_loss.item()
             total_loss = total_loss + reg_weight * reg_loss
+
+    # Note: ratio penalty removed — it caused gradient instability (penalty grew
+    # unbounded as adapter strengthened, conflicting with noise loss gradients).
+    # Replaced by static scale caps (shallow=0.1) which provide hard limits without
+    # gradient conflicts.
+
+    # Variance preservation loss: prevent mode collapse to gray
+    if var_weight > 0:
+        pred_var = noise_pred.var(dim=[2, 3]).mean()
+        gt_var = noise_gt.var(dim=[2, 3]).mean()
+        # Only penalize when predicted variance is LESS than GT variance
+        var_loss = F.relu(gt_var - pred_var)
+        loss_dict['train/var_loss'] = var_loss.item()
+        total_loss = total_loss + var_weight * var_loss
 
     loss_dict['train/total_loss'] = total_loss.item()
     return total_loss, loss_dict
@@ -280,7 +301,9 @@ def main():
     parser.add_argument('--fg_weight', type=float, default=0.7, help='Foreground loss weight')
     parser.add_argument('--edge_weight', type=float, default=0.3, help='Edge loss weight')
     parser.add_argument('--ssim_weight', type=float, default=0.2, help='Latent SSIM weight')
-    parser.add_argument('--reg_weight', type=float, default=5e-5, help='Adapter reg weight')
+    parser.add_argument('--reg_weight', type=float, default=1e-3, help='Adapter L2 reg weight')
+    parser.add_argument('--ratio_reg_weight', type=float, default=0.01, help='Correction/hidden ratio penalty')
+    parser.add_argument('--var_weight', type=float, default=0.05, help='Variance preservation weight')
     args = parser.parse_args()
 
     # Seed
@@ -315,7 +338,8 @@ def main():
     print(f"Grad accum: {args.grad_accum}, Effective batch: {args.grad_accum}")
     print(f"EMA decay: {args.ema_decay}")
     print(f"Loss: fg={args.fg_weight}, edge={args.edge_weight}, "
-          f"ssim={args.ssim_weight}, reg={args.reg_weight}")
+          f"ssim={args.ssim_weight}, reg={args.reg_weight}, "
+          f"ratio_reg={args.ratio_reg_weight}, var={args.var_weight}")
     print()
 
     model = instantiate_from_config(config.model)
@@ -461,24 +485,15 @@ def main():
             geo_input_clean = torch.nan_to_num(geo_input_clean, nan=0.0, posinf=1.0, neginf=0.0)
             geo_feats = model.geo_encoder(geo_input_clean)
 
-            # TCAS-aware training: staged scale introduction
-            # Phase 1 (step 0-2000): uniform scale=1.0 (let adapter learn stable corrections)
-            # Phase 2 (step 2000-4000): linearly ramp to full TCAS v2 schedule
-            # Phase 3 (step 4000+): full per-layer TCAS v2 schedule
-            scale_ramp = min(1.0, max(0.0, (step - 2000) / 2000))  # 0 at step<=2000, 1 at step>=4000
-            if scale_ramp <= 0:
-                # Uniform scale=1.0 during initial training
-                for module in model.unet.modules():
-                    if isinstance(module, GeoTexResnetWrapper):
-                        module._adapter_scale = 1.0
-            else:
-                # Blend between uniform 1.0 and full TCAS v2
-                setup_per_layer_scales(model, t[0].item(), model.num_timesteps)
-                if scale_ramp < 1.0:
-                    for module in model.unet.modules():
-                        if isinstance(module, GeoTexResnetWrapper):
-                            full_scale = module._adapter_scale
-                            module._adapter_scale = 1.0 + (full_scale - 1.0) * scale_ramp
+            # Apply scale caps during training to prevent mode collapse.
+            # Key insight from v2_ext: shallow layer 0 had correction/hidden = 10.5x
+            # Use aggressive caps: shallow=0.1, others at 1.0 (no amplification).
+            for module in model.unet.modules():
+                if isinstance(module, GeoTexResnetWrapper):
+                    if module.depth_group == 'shallow':
+                        module._adapter_scale = 0.1  # Heavily suppress shallow layers
+                    else:
+                        module._adapter_scale = 1.0  # No amplification for deep/middle
 
             # Set geo features and run forward
             model._set_geo_feats_on_wrappers(geo_feats)
@@ -490,10 +505,8 @@ def main():
                 added_cond_kwargs=added_cond_kwargs,
                 return_dict=False, is_training=True,
             )[0]
-            model._clear_geo_feats_on_wrappers()
-            clear_adapter_scales(model)
 
-            # Compute loss
+            # Compute loss BEFORE clearing (loss reads _last_correction/_last_hidden)
             loss, loss_dict = compute_enhanced_loss(
                 noise_pred, noise, model,
                 target_imgs=target_imgs, mask=mask,
@@ -502,8 +515,12 @@ def main():
                 edge_weight=args.edge_weight,
                 ssim_weight=args.ssim_weight,
                 reg_weight=args.reg_weight,
+                ratio_reg_weight=args.ratio_reg_weight,
+                var_weight=args.var_weight,
                 step=step, device=device,
             )
+            # Clear geo feats AFTER loss computation
+            model._clear_geo_feats_on_wrappers()
 
             # Scale loss for gradient accumulation
             scaled_loss = loss / args.grad_accum
@@ -534,6 +551,18 @@ def main():
 
         optimizer.step()
         optimizer.zero_grad()
+
+        # Output projection weight norm clamping (prevents correction explosion)
+        # Key insight: correction = output_proj(gated_geo), so limiting output_proj
+        # norm directly bounds correction magnitude without gradient conflicts.
+        # v2_ext converged to norm ≈ 1.0-1.4; cap at 1.5 to allow learning direction
+        # while preventing the unbounded growth that caused NaN in v3 attempts.
+        with torch.no_grad():
+            for adapter in model.adapters:
+                w = adapter.output_proj.weight
+                w_norm = w.norm()
+                if w_norm > 1.5:
+                    w.mul_(1.5 / w_norm)
 
         # EMA update
         ema.update(trainable_named_params)
