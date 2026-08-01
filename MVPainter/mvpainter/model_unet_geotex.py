@@ -133,11 +133,11 @@ class GeoTexAdapter(nn.Module):
             nn.Sigmoid(),
         )
 
-        # Output projection: bottleneck -> in_channels
-        # Use small random init (not zeros) so encoder gets gradients from step 1.
-        # The residual starts near-zero but with non-zero gradient flow.
+        # Output projection: bottleneck -> in_channels, zero-initialized
+        # Zero-init ensures correction starts at exactly 0, preserving base model quality.
+        # Encoder gradients flow once output_proj weights become non-zero after first few steps.
         self.output_proj = nn.Conv2d(bottleneck, in_channels, kernel_size=1)
-        nn.init.normal_(self.output_proj.weight, std=1e-3)
+        nn.init.zeros_(self.output_proj.weight)
         nn.init.zeros_(self.output_proj.bias)
 
     def compute_correction(self, x, geo_feat):
@@ -312,6 +312,7 @@ class GeoTexResnetWrapper(nn.Module):
         self._max_scale = self.LAYER_MAX_SCALES.get(depth_group, 3.0)
         self._current_geo_feats = None
         self._last_correction = None  # For residual regularization
+        self._last_hidden = None  # For ratio-based regularization
         self._correction_controller = None  # Set externally for adaptive correction
 
     def set_geo_feats(self, geo_feats):
@@ -322,6 +323,8 @@ class GeoTexResnetWrapper(nn.Module):
         """Clear geometry features after forward pass."""
         self._current_geo_feats = None
         self._last_correction = None
+        self._last_correction_raw = None
+        self._last_hidden = None
 
     def forward(self, *args, **kwargs):
         # Run original resnet
@@ -344,21 +347,21 @@ class GeoTexResnetWrapper(nn.Module):
                 # Compute correction and store for regularization
                 correction = self.adapter.compute_correction(hidden_states, geo_feat)
 
-                # Apply static _adapter_scale first (TCAS temporal schedule)
-                # Clamp to per-layer maximum to prevent texture damage in shallow layers
+                # Apply static _adapter_scale (set during training or inference)
+                # For shallow layers this is the primary defense against mode collapse
                 if hasattr(self, '_adapter_scale'):
                     effective_scale = min(self._adapter_scale, self._max_scale)
                     correction = correction * effective_scale
 
-                # Then apply adaptive correction (GSG/FSC) on top if controller is set
-                # Note: LTAG in controller provides its own scale, so when LTAG is enabled
-                # _adapter_scale should NOT be set (use one or the other for temporal scaling)
+                # Apply adaptive correction (GSG/FSC) if controller is set
                 if self._correction_controller is not None:
                     correction = self._correction_controller.apply(
                         correction, geo_feat, self.adapter_idx
                     )
 
+                # Store for regularization loss computation
                 self._last_correction = correction
+                self._last_hidden = hidden_states.detach()
                 hidden_states = hidden_states + correction
 
         return hidden_states
