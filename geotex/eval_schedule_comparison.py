@@ -57,37 +57,37 @@ DEPTH_GROUPS = ['deep', 'middle', 'shallow']
 #   {depth_group: float} for per-layer-group scaling.
 
 def schedule_fixed(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                   sigma_norm=None, scale_value=1.25):
+                   sigma_norm=None, snr_norm=None, scale_value=1.25):
     """Fixed uniform scale throughout denoising."""
     return scale_value
 
 
 def schedule_linear_decay(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                          sigma_norm=None, s_high=2.50, s_low=1.25):
+                          sigma_norm=None, snr_norm=None, s_high=2.50, s_low=1.25):
     """Linear decay from s_high to s_low. progress in [0,1]."""
     return s_high + (s_low - s_high) * progress
 
 
 def schedule_cosine_decay(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                          sigma_norm=None, s_high=2.50, s_low=1.25):
+                          sigma_norm=None, snr_norm=None, s_high=2.50, s_low=1.25):
     """Cosine annealing from s_high to s_low."""
     return s_low + (s_high - s_low) * 0.5 * (1.0 + math.cos(math.pi * progress))
 
 
 def schedule_linear_warmup(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                           sigma_norm=None, s_low=1.25, s_high=2.50):
+                           sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50):
     """Linear warm-up from s_low to s_high."""
     return s_low + (s_high - s_low) * progress
 
 
 def schedule_cosine_bump(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                         sigma_norm=None, s_low=1.25, s_high=2.50):
+                         sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50):
     """Smooth cosine bump: low-high-low with sin(pi*p) shape."""
     return s_low + (s_high - s_low) * math.sin(math.pi * progress)
 
 
 def schedule_c3(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                sigma_norm=None, s_low=1.25, s_high=2.50):
+                sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50):
     """TCAS C3: piecewise constant low-high-low with 1/3 boundaries."""
     if progress < 1.0 / 3.0:
         return s_low
@@ -98,13 +98,13 @@ def schedule_c3(progress, step_idx=None, total_steps=None, t=None, sigma=None,
 
 
 def schedule_no_adapter(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                        sigma_norm=None):
+                        sigma_norm=None, snr_norm=None):
     """s=0 everywhere == base MV-Painter pipeline without GeoTex adapter."""
     return 0.0
 
 
 def schedule_gaussian_peak(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                           sigma_norm=None, s_low=1.25, s_high=2.50, center=0.5, width=0.18):
+                           sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50, center=0.5, width=0.18):
     """Smooth Gaussian bump centered in the middle of denoising.
 
     Compared with cosine_bump (sin(pi*p)), the Gaussian peak concentrates
@@ -114,7 +114,7 @@ def schedule_gaussian_peak(progress, step_idx=None, total_steps=None, t=None, si
 
 
 def schedule_trapezoid(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                       sigma_norm=None, s_low=1.25, s_high=2.50,
+                       sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50,
                        rise_start=0.15, rise_end=0.35, fall_start=0.65, fall_end=0.85):
     """Trapezoid: linear rise to a plateau, hold, then linear fall.
 
@@ -134,7 +134,7 @@ def schedule_trapezoid(progress, step_idx=None, total_steps=None, t=None, sigma=
 
 
 def schedule_sigma_bump(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                        sigma_norm=None, s_low=1.25, s_high=2.50, center=0.5, width=0.18):
+                        sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50, center=0.5, width=0.18):
     """Low-high-low keyed on the ACTUAL scheduler noise level sigma.
 
     sigma_norm goes 1.0 (full noise, first step) → ~0 (clean, last step),
@@ -148,7 +148,7 @@ def schedule_sigma_bump(progress, step_idx=None, total_steps=None, t=None, sigma
 
 
 def schedule_sigma_decay(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                         sigma_norm=None, s_high=2.50, s_low=1.25):
+                         sigma_norm=None, snr_norm=None, s_high=2.50, s_low=1.25):
     """Scale proportional to current noise level sigma (monotonic decay in sigma space).
 
     Unlike progress-based linear decay, the strength is set by the true
@@ -161,8 +161,36 @@ def schedule_sigma_decay(progress, step_idx=None, total_steps=None, t=None, sigm
     return s_low + (s_high - s_low) * sn
 
 
+def schedule_snr_bump(progress, step_idx=None, total_steps=None, t=None, sigma=None,
+                      sigma_norm=None, snr_norm=None, s_low=1.25, s_high=2.50,
+                      center=0.5, width=0.18):
+    """Low-high-low keyed on the true SNR axis rather than progress.
+
+    snr_norm goes 0 (full noise) -> 1 (clean). Center=0.5 targets the mid-SNR
+    range, which under the Euler sigma schedule falls in the middle denoising
+    stage where geometric refinement is most informative.
+    """
+    if snr_norm is None:
+        return schedule_c3(progress, s_low=s_low, s_high=s_high)
+    sn = float(snr_norm)
+    return s_low + (s_high - s_low) * math.exp(-((sn - center) ** 2) / (2.0 * width ** 2))
+
+
+def schedule_snr_decay(progress, step_idx=None, total_steps=None, t=None, sigma=None,
+                       sigma_norm=None, snr_norm=None, s_high=2.50, s_low=1.25):
+    """Scale decreasing with SNR (strong when the signal is noisy, weak when clean).
+
+    This is the SNR-domain analog of sigma_decay: strong geometric correction
+    while the latent is dominated by noise, tapering as the signal emerges.
+    """
+    if snr_norm is None:
+        return schedule_linear_decay(progress, s_high=s_high, s_low=s_low)
+    sn = float(snr_norm)
+    return s_high - (s_high - s_low) * sn
+
+
 def schedule_tcas_v2_5phase(progress, step_idx=None, total_steps=None, t=None, sigma=None,
-                            sigma_norm=None):
+                            sigma_norm=None, snr_norm=None):
     """TCAS-V2: 5-phase, per-layer-group schedule (deep/middle/shallow).
 
     Reuses the canonical schedule from geotex/tcas_schedule.py so it stays
@@ -183,6 +211,8 @@ SCHEDULES = {
     'trapezoid': lambda p, **kw: schedule_trapezoid(p, **kw, s_low=1.25, s_high=2.50),
     'sigma_bump': lambda p, **kw: schedule_sigma_bump(p, **kw, s_low=1.25, s_high=2.50),
     'sigma_decay': lambda p, **kw: schedule_sigma_decay(p, **kw, s_high=2.50, s_low=1.25),
+    'snr_bump': lambda p, **kw: schedule_snr_bump(p, **kw, s_low=1.25, s_high=2.50),
+    'snr_decay': lambda p, **kw: schedule_snr_decay(p, **kw, s_high=2.50, s_low=1.25),
     'tcas_v2_5phase': schedule_tcas_v2_5phase,
     'C3_TCAS': lambda p, **kw: schedule_c3(p, **kw, s_low=1.25, s_high=2.50),
 }
@@ -199,6 +229,8 @@ SCHEDULE_FORMS = {
     'trapezoid': '1.25 → 2.50 → 1.25 (trapezoid)',
     'sigma_bump': '1.25 → 2.50 → 1.25 (σ bump)',
     'sigma_decay': '2.50 → 1.25 (σ decay)',
+    'snr_bump': '1.25 → 2.50 → 1.25 (SNR bump)',
+    'snr_decay': '2.50 → 1.25 (SNR decay)',
     'tcas_v2_5phase': 'per-layer 5-phase (TCAS-V2)',
     'C3_TCAS': '1.25 → 2.50 → 1.25 (piecewise)',
 }
@@ -275,15 +307,30 @@ def generate_with_schedule(model, batch, device, weight_dtype, geo_feats,
     if geo_feats is not None:
         model._set_geo_feats_on_wrappers(geo_feats)
 
+    # SNR in the EDM/Karras convention: unit-variance signal plus sigma-noise,
+    # so SNR = 1 / sigma^2. Under the Euler sigma schedule sigma runs from
+    # sigma_max (full noise, ~25) down to ~0 (clean), hence log10(SNR) spans
+    # roughly [-2.8, +inf). We normalize log10(SNR) over the observed range so
+    # snr_norm = 0 at full noise and snr_norm = 1 at the cleanest step; the
+    # physically meaningful midpoint sigma=1 (SNR=0 dB) falls near the middle.
+    log_snr_min = -2.0 * math.log10(max(sigma_max, 1e-6))  # log10(1/sigma_max^2)
+    log_snr_max = -2.0 * math.log10(max(float(sigmas[-2]) if len(sigmas) > 1 else 0.05, 1e-6))
+    log_snr_span = max(log_snr_max - log_snr_min, 1e-6)
+
     try:
         for step_idx, t in enumerate(scheduler.timesteps):
             # Compute progress fraction
             progress = step_idx / max(num_steps - 1, 1)
             sigma = float(sigmas[step_idx]) if step_idx < len(sigmas) else float(sigmas[-1])
             sigma_norm = sigma / max(sigma_max, 1e-6)
+            # True EDM SNR: log10(1/sigma^2), normalized over the observed range.
+            # snr_norm = 0 (full noise) -> 1 (clean), monotonic in progress.
+            log_snr = -2.0 * math.log10(max(sigma, 1e-6))
+            snr_norm = max(0.0, min(1.0, (log_snr - log_snr_min) / log_snr_span))
             # Apply schedule to all adapter wrappers
             scale = schedule_fn(progress, step_idx=step_idx, total_steps=num_steps,
-                                t=int(t), sigma=sigma, sigma_norm=sigma_norm)
+                                t=int(t), sigma=sigma, sigma_norm=sigma_norm,
+                                snr_norm=snr_norm)
             if isinstance(scale, dict):
                 # Per-layer-group schedule
                 for module in model.unet.modules():
