@@ -86,6 +86,40 @@ def clear_scales(model):
 
 
 # ============================================================
+# Uniform scale schedules (C3 / no-adapter / fixed)
+# Each returns a float scale given denoising progress in [0,1].
+# ============================================================
+
+def scale_c3(step_frac, s_low=1.25, s_high=2.50):
+    """Paper C3: piecewise constant low-high-low with 1/3 boundaries."""
+    if step_frac < 1.0 / 3.0:
+        return s_low
+    elif step_frac < 2.0 / 3.0:
+        return s_high
+    else:
+        return s_low
+
+
+def scale_no_adapter(step_frac):
+    """s=0 everywhere: base pipeline without geometric adapter."""
+    return 0.0
+
+
+def scale_fixed(step_frac, s=1.25):
+    """Fixed uniform scale throughout denoising."""
+    return s
+
+
+SCHEDULE_FNS = {
+    'c3': lambda p: scale_c3(p),
+    'no_adapter': lambda p: scale_no_adapter(p),
+    'fixed_low': lambda p: scale_fixed(p, 1.25),
+    'fixed_high': lambda p: scale_fixed(p, 2.50),
+    'tcas_v2': None,  # handled by generate_with_tcas_v2 (per-layer)
+}
+
+
+# ============================================================
 # LPIPS
 # ============================================================
 def get_lpips_fn(device):
@@ -239,6 +273,59 @@ def generate_with_tcas_v2(model, batch, device, weight_dtype, geo_feats,
 
 
 @torch.no_grad()
+def generate_with_scale_fn(model, batch, device, weight_dtype, geo_feats,
+                           scale_fn, num_steps, init_latents):
+    """Generate with a uniform temporal scale function scale_fn(step_frac)->float.
+
+    Used for the paper C3 schedule, the no-adapter baseline (scale_fn returns 0),
+    and fixed uniform scales. scale=0 is numerically equivalent to no adapter.
+    """
+    cond_imgs = batch['cond_imgs'].to(device)
+    cond_imgs = v2.functional.resize(cond_imgs, model.img_size, interpolation=3, antialias=True).clamp(0, 1)
+    B = cond_imgs.shape[0]
+    global_embeds = batch['global_embeds'].to(device, dtype=weight_dtype).view(B, 1, -1)
+    ramp = global_embeds.new_tensor(model.pipeline.config.ramping_coefficients).unsqueeze(-1).to(weight_dtype)
+    uc_text_emb = model.pipeline.uc_text_emb.to(device, dtype=weight_dtype)
+    prompt_embeds = uc_text_emb + global_embeds * ramp
+    cond_latents = model.encode_condition_image(cond_imgs).to(weight_dtype)
+    added_cond_kwargs = model.pipeline.get_added_cond_kwargs_train(B, is_drop=False)
+    added_cond_kwargs = {k: v.to(device, dtype=weight_dtype) if isinstance(v, torch.Tensor) else v
+                         for k, v in added_cond_kwargs.items()}
+
+    scheduler = EulerDiscreteScheduler.from_config(model.pipeline.scheduler.config)
+    scheduler.set_timesteps(num_steps, device=device)
+    latents = init_latents * scheduler.init_noise_sigma
+
+    if geo_feats is not None:
+        model._set_geo_feats_on_wrappers(geo_feats)
+
+    try:
+        for step_idx, t in enumerate(scheduler.timesteps):
+            step_frac = step_idx / max(num_steps - 1, 1)
+            scale = scale_fn(step_frac)
+            for module in model.unet.modules():
+                if isinstance(module, GeoTexResnetWrapper):
+                    module._adapter_scale = scale
+            latent_input = scheduler.scale_model_input(latents, t)
+            noise_pred = model.pipeline.unet(
+                latent_input, t, encoder_hidden_states=prompt_embeds,
+                cross_attention_kwargs=dict(cond_lat=cond_latents),
+                added_cond_kwargs=added_cond_kwargs, return_dict=False, is_training=False,
+            )[0]
+            latents = scheduler.step(noise_pred, t, latents, return_dict=False)[0]
+    finally:
+        model._clear_geo_feats_on_wrappers()
+        clear_scales(model)
+
+    latents_dec = unscale_latents(latents)
+    decoded = model.pipeline.vae.decode(
+        latents_dec / model.pipeline.vae.config.scaling_factor, return_dict=False
+    )[0]
+    image = unscale_image(decoded)
+    return (image * 0.5 + 0.5).clamp(0, 1)
+
+
+@torch.no_grad()
 def generate_baseline(model, batch, device, weight_dtype, num_steps, init_latents):
     """Generate without adapter (baseline for delta metrics)."""
     cond_imgs = batch['cond_imgs'].to(device)
@@ -313,11 +400,15 @@ def compute_all_metrics(pred, target, mask, lpips_fn=None, normalize_bg=True):
         r['gt_fg_rgb_std'] = ext.get('gt_fg_rgb_std', 0)
         r['fg_grad_mag'] = ext.get('fg_grad_mag', 0)
         r['gt_fg_grad_mag'] = ext.get('gt_fg_grad_mag', 0)
+        r['fg_lap_var'] = ext.get('fg_lap_var', 0)
+        r['gt_fg_lap_var'] = ext.get('gt_fg_lap_var', 0)
         r['rgb_std_ratio'] = r['fg_rgb_std'] / (r['gt_fg_rgb_std'] + 1e-8)
         r['grad_ratio'] = r['fg_grad_mag'] / (r['gt_fg_grad_mag'] + 1e-8)
+        r['lap_var_ratio'] = r['fg_lap_var'] / (r['gt_fg_lap_var'] + 1e-8)
     except Exception:
         r['rgb_std_ratio'] = None
         r['grad_ratio'] = None
+        r['lap_var_ratio'] = None
 
     return r
 
@@ -357,9 +448,27 @@ def run_eval(args):
     baseline_results = []
     obj_names = []
 
+    # Select generation function by schedule
+    sched_name = getattr(args, 'schedule', 'tcas_v2')
+    if sched_name == 'tcas_v2':
+        def gen_fn(model, batch, device, weight_dtype, geo_feats, num_steps, init_latents):
+            return generate_with_tcas_v2(model, batch, device, weight_dtype,
+                                         geo_feats, num_steps, init_latents)
+        sched_desc = 'TCAS v2 (5-phase, per-layer)'
+    elif sched_name in SCHEDULE_FNS and SCHEDULE_FNS[sched_name] is not None:
+        fn = SCHEDULE_FNS[sched_name]
+        def gen_fn(model, batch, device, weight_dtype, geo_feats, num_steps, init_latents,
+                   _fn=fn):
+            return generate_with_scale_fn(model, batch, device, weight_dtype,
+                                          geo_feats, _fn, num_steps, init_latents)
+        sched_desc = sched_name
+    else:
+        raise ValueError(f"Unknown schedule: {sched_name}. Choose from "
+                         f"{list(SCHEDULE_FNS.keys())}")
+
     print(f"\nRunning unified 300-object evaluation")
     print(f"Steps: {num_steps}, Seed: 42, BG normalization: {args.normalize_bg}")
-    print(f"Schedule: TCAS v2 (5-phase, per-layer)")
+    print(f"Schedule: {sched_desc}")
     print("=" * 80)
 
     start_time = time.time()
@@ -380,10 +489,8 @@ def run_eval(args):
         latent_h, latent_w = model.img_size * 3 // 8, model.img_size * 2 // 8
         init_latents = torch.randn(1, 4, latent_h, latent_w, device=device, dtype=weight_dtype)
 
-        # Generate with TCAS v2
-        pred = generate_with_tcas_v2(
-            model, batch, device, weight_dtype, geo_feats, num_steps, init_latents
-        )
+        # Generate with the selected schedule
+        pred = gen_fn(model, batch, device, weight_dtype, geo_feats, num_steps, init_latents)
 
         # Compute metrics
         metrics = compute_all_metrics(
@@ -434,7 +541,9 @@ def run_eval(args):
     # Summary Statistics
     # ============================================================
     metric_keys = ['full_psnr', 'full_ssim', 'fg_psnr', 'fg_ssim',
-                   'edge_ssim', 'fg_lpips', 'rgb_std_ratio', 'grad_ratio']
+                   'edge_ssim', 'fg_lpips', 'rgb_std_ratio', 'grad_ratio',
+                   'lap_var_ratio', 'fg_lap_var', 'gt_fg_lap_var',
+                   'fg_rgb_std', 'gt_fg_rgb_std', 'fg_grad_mag', 'gt_fg_grad_mag']
 
     print("\n" + "=" * 100)
     print("UNIFIED 300-OBJECT EVALUATION SUMMARY")
@@ -486,7 +595,7 @@ def run_eval(args):
             'num_objects': num_objects,
             'num_steps': num_steps,
             'normalize_bg': args.normalize_bg,
-            'schedule': 'TCAS_v2_5phase_perlayer',
+            'schedule': getattr(args, 'schedule', 'tcas_v2'),
             'metrics': {k: {kk: float(vv) for kk, vv in v.items()} for k, v in summary.items()},
         }, f, indent=2)
     print(f"\nSaved: {summary_path}")
@@ -526,6 +635,11 @@ def main():
     parser.add_argument('--num_objects', type=int, default=300)
     parser.add_argument('--num_steps', type=int, default=75)
     parser.add_argument('--device', type=str, default='cuda:0')
+    parser.add_argument('--schedule', type=str, default='tcas_v2',
+                        choices=['tcas_v2', 'c3', 'no_adapter', 'fixed_low', 'fixed_high'],
+                        help='Adapter scale schedule: tcas_v2 (per-layer 5-phase), '
+                             'c3 (paper 3-stage 1.25/2.50/1.25), no_adapter (s=0), '
+                             'fixed_low (1.25), fixed_high (2.50)')
     parser.add_argument('--normalize_bg', action='store_true', default=True,
                         help='Normalize backgrounds before metric computation')
     parser.add_argument('--no_normalize_bg', dest='normalize_bg', action='store_false')
