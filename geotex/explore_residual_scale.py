@@ -33,7 +33,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
 from explore_contradiction import (load_model, generate_with_schedule,
                                    compute_probes, make_schedules)
 
-GAMMAS = [0.1, 0.3, 1.0, 3.0]
+GAMMAS_DEFAULT = [0.1, 0.3, 1.0, 3.0]
 
 
 def snapshot_output_proj(model):
@@ -73,6 +73,8 @@ def main():
     parser.add_argument('--num_objects', type=int, default=6)
     parser.add_argument('--num_steps', type=int, default=50)
     parser.add_argument('--device', type=str, default='cuda:0')
+    parser.add_argument('--gammas', type=float, nargs='+', default=None,
+                        help='Custom gamma list (default: 0.1 0.3 1.0 3.0)')
     args = parser.parse_args()
 
     device = torch.device(args.device)
@@ -88,6 +90,7 @@ def main():
     SCHEDULES = make_schedules()
 
     snap = snapshot_output_proj(model)
+    GAMMAS = args.gammas if args.gammas else GAMMAS_DEFAULT
     # measure the native (gamma=1) residual magnitude per layer for reference
     all_results = {}  # (gamma, sched) -> list of metrics
     print(f"\nResidual spectrum on {num_objects} objects, checkpoint={args.checkpoint}")
