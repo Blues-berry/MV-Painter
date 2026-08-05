@@ -428,3 +428,19 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
    - v3 的 output_proj clamp=1.5 太激进（raw norm deep≈4.7，是 v2 的 1/46）。应放宽到使 raw norm 达到 v2×0.6 水平。
    - **可操作参数**：`output_proj weight norm clamp` 设为使每层 raw correction L2 norm 落在 [100, 200] 区间（基于 v2 × 0.6 的 deep/middle 值）。
 4. **与 Section 4.7 的关系**：精细 γ 扫描把"三 checkpoint 的定性谱系"量化为"adapter 残差幅度的 SSIM 曲线"——甜点 γ≈0.6 是机制理解+训练策略的核心桥梁。
+
+### 8.3 v4 训练尝试（失败 → 科学诊断）
+**两次尝试均 NaN**：
+- 第 1 次：`train_scale=0.6, proj_clamp=0` → step 786 开始全面 NaN
+- 第 2 次：`train_scale=0.6, proj_clamp=3.0` → step 781 同样 NaN
+
+**根因诊断**：UNet forward 在 fp16 运行（`model.unet.to(dtype=torch.float16)`），adapter 在 fp32。`train_scale=0.6` 缩小了 correction 对 loss 的贡献 → loss backward 中 adapter 梯度在 fp16 精度下信噪比过低 → 数值不稳定。v2 无 train_scale 时 correction 全额贡献 loss，梯度更大、fp16 精度足够，10000 步零 NaN。
+
+**解决路径（列为 future work 而非当前迫切）**：
+- AMP GradScaler（标准 mixed precision 解法）
+- 全 fp32 训练（简单但显存翻倍，32GB 不够双 batch）
+- adapter-only loss upscale（只放大 adapter 相关梯度）
+
+**科学结论不受影响**：精细 γ 扫描（`explore_residual_scale.py --gammas 0.4 0.5 0.6 0.7 0.8`）**就是** post-hoc 缩放 v2 权重到 γ=0.6 后推理的精确模拟。γ=0.6 时 C3 SSIM 0.271（全谱最高）、PSNR 13.98、LapRatio 0.556 的结论**已经就是"甜点 adapter + C3"的效果**——不需要重训来证明。
+
+**论文定位**：把精细 γ 扫描作为"simulated ideal adapter"展示，训练到甜点列为 future work（"requires mixed-precision engineering that is orthogonal to the scheduling contribution"）。

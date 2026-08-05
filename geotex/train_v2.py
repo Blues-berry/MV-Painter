@@ -196,7 +196,7 @@ def compute_enhanced_loss(noise_pred, noise_gt, model, target_imgs=None, mask=No
                           depth_imgs=None, normal_imgs=None,
                           foreground_weight=0.7, edge_weight=0.3,
                           ssim_weight=0.2, reg_weight=5e-5,
-                          ratio_reg_weight=0, var_weight=0.01,
+                          var_weight=0.01,
                           step=0, device='cuda'):
     """Enhanced loss with lightweight anti-collapse.
 
@@ -302,8 +302,15 @@ def main():
     parser.add_argument('--edge_weight', type=float, default=0.3, help='Edge loss weight')
     parser.add_argument('--ssim_weight', type=float, default=0.2, help='Latent SSIM weight')
     parser.add_argument('--reg_weight', type=float, default=1e-3, help='Adapter L2 reg weight')
-    parser.add_argument('--ratio_reg_weight', type=float, default=0.01, help='Correction/hidden ratio penalty')
     parser.add_argument('--var_weight', type=float, default=0.05, help='Variance preservation weight')
+    parser.add_argument('--train_scale', type=float, default=None,
+                        help='Uniform adapter scale during training (overrides per-layer caps). '
+                             'If None, uses legacy behavior (shallow=0.1, others=1.0). '
+                             'Set to 0.6 for v4 sweetspot training.')
+    parser.add_argument('--proj_clamp', type=float, default=1.5,
+                        help='Output projection weight norm clamp (0 to disable). '
+                             'v3 used 1.5 but never triggered (norms ≈0.4). '
+                             'v4 sets 0 (disabled, relying on train_scale for control).')
     args = parser.parse_args()
 
     # Seed
@@ -339,7 +346,7 @@ def main():
     print(f"EMA decay: {args.ema_decay}")
     print(f"Loss: fg={args.fg_weight}, edge={args.edge_weight}, "
           f"ssim={args.ssim_weight}, reg={args.reg_weight}, "
-          f"ratio_reg={args.ratio_reg_weight}, var={args.var_weight}")
+          f"var={args.var_weight}")
     print()
 
     model = instantiate_from_config(config.model)
@@ -485,15 +492,20 @@ def main():
             geo_input_clean = torch.nan_to_num(geo_input_clean, nan=0.0, posinf=1.0, neginf=0.0)
             geo_feats = model.geo_encoder(geo_input_clean)
 
-            # Apply scale caps during training to prevent mode collapse.
-            # Key insight from v2_ext: shallow layer 0 had correction/hidden = 10.5x
-            # Use aggressive caps: shallow=0.1, others at 1.0 (no amplification).
-            for module in model.unet.modules():
-                if isinstance(module, GeoTexResnetWrapper):
-                    if module.depth_group == 'shallow':
-                        module._adapter_scale = 0.1  # Heavily suppress shallow layers
-                    else:
-                        module._adapter_scale = 1.0  # No amplification for deep/middle
+            # Apply scale caps during training to control correction magnitude.
+            # Legacy (v3): shallow=0.1, others=1.0 (aggressive suppression, led to too-weak adapter)
+            # v4 sweetspot: uniform train_scale=0.6 (calibrated from fine gamma scan §8)
+            if args.train_scale is not None:
+                for module in model.unet.modules():
+                    if isinstance(module, GeoTexResnetWrapper):
+                        module._adapter_scale = args.train_scale
+            else:
+                for module in model.unet.modules():
+                    if isinstance(module, GeoTexResnetWrapper):
+                        if module.depth_group == 'shallow':
+                            module._adapter_scale = 0.1  # Heavily suppress shallow layers
+                        else:
+                            module._adapter_scale = 1.0  # No amplification for deep/middle
 
             # Set geo features and run forward
             model._set_geo_feats_on_wrappers(geo_feats)
@@ -515,7 +527,6 @@ def main():
                 edge_weight=args.edge_weight,
                 ssim_weight=args.ssim_weight,
                 reg_weight=args.reg_weight,
-                ratio_reg_weight=args.ratio_reg_weight,
                 var_weight=args.var_weight,
                 step=step, device=device,
             )
@@ -553,16 +564,15 @@ def main():
         optimizer.zero_grad()
 
         # Output projection weight norm clamping (prevents correction explosion)
-        # Key insight: correction = output_proj(gated_geo), so limiting output_proj
-        # norm directly bounds correction magnitude without gradient conflicts.
-        # v2_ext converged to norm ≈ 1.0-1.4; cap at 1.5 to allow learning direction
-        # while preventing the unbounded growth that caused NaN in v3 attempts.
-        with torch.no_grad():
-            for adapter in model.adapters:
-                w = adapter.output_proj.weight
-                w_norm = w.norm()
-                if w_norm > 1.5:
-                    w.mul_(1.5 / w_norm)
+        # v3 used 1.5 (never triggered, norms converge ≈0.4);
+        # v4 disables (train_scale=0.6 controls magnitude via gradient scaling).
+        if args.proj_clamp > 0:
+            with torch.no_grad():
+                for adapter in model.adapters:
+                    w = adapter.output_proj.weight
+                    w_norm = w.norm()
+                    if w_norm > args.proj_clamp:
+                        w.mul_(args.proj_clamp / w_norm)
 
         # EMA update
         ema.update(trainable_named_params)
