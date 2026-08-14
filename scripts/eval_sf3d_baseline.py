@@ -59,8 +59,11 @@ def render_mesh_to_view(mesh, cam, img_size=256, device='cuda:0'):
     """
     glctx = get_glctx()
 
-    # Extract mesh data
-    verts = torch.from_numpy(mesh.vertices).float().to(device)  # [V, 3]
+    # Extract mesh data. SF3D outputs meshes in ~[-0.4, 0.4] range;
+    # TCAS cameras assume Objaverse normalization (~unit sphere).
+    # Scale mesh to match the expected object size in camera view.
+    mesh_scale = 3.0  # empirically matched to GT object coverage
+    verts = torch.from_numpy(mesh.vertices * mesh_scale).float().to(device)  # [V, 3]
     faces = torch.from_numpy(mesh.faces).int().to(device)  # [F, 3]
 
     # Build MVP matrix from camera params
@@ -69,7 +72,10 @@ def render_mesh_to_view(mesh, cam, img_size=256, device='cuda:0'):
     if extrinsic.shape == (3, 4):
         extrinsic = np.vstack([extrinsic, [0, 0, 0, 1]])
 
-    # World2cam (4x4)
+    # World2cam (4x4). TCAS uses Blender/OpenCV convention (y-down, z-forward);
+    # nvdiffrast uses OpenGL (y-up, z-backward). Flip y and z rows.
+    cv2gl = np.diag([1, -1, -1, 1]).astype(np.float64)
+    extrinsic = cv2gl @ extrinsic
     w2c = torch.from_numpy(extrinsic).float().to(device)
 
     # Perspective projection matrix (OpenGL-style)

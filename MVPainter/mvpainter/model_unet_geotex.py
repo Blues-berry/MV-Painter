@@ -352,10 +352,14 @@ class GeoTexResnetWrapper(nn.Module):
 
                 # Then apply adaptive correction (GSG/FSC) on top if controller is set
                 # Note: LTAG in controller provides its own scale, so when LTAG is enabled
-                # _adapter_scale should NOT be set (use one or the other for temporal scaling)
+                # _adapter_scale should NOT be set (use one or the other for temporal scaling).
+                # The per-layer cap (_max_scale) is passed to the controller so LTAG's
+                # temporal scale obeys the same injection limits as the TCAS schedule,
+                # keeping LTAG@init ≡ effective C3 at every layer.
                 if self._correction_controller is not None:
                     correction = self._correction_controller.apply(
-                        correction, geo_feat, self.adapter_idx
+                        correction, geo_feat, self.adapter_idx,
+                        max_scale=self._max_scale,
                     )
 
                 self._last_correction = correction

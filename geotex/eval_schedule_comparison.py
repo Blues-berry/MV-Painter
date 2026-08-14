@@ -407,7 +407,19 @@ def main():
     parser.add_argument('--num_objects', type=int, default=24)
     parser.add_argument('--num_steps', type=int, default=50)
     parser.add_argument('--device', type=str, default='cuda:0')
+    parser.add_argument('--schedules', type=str, default=None,
+                        help='Comma-separated schedule names; default runs all schedules')
     args = parser.parse_args()
+
+    schedule_names = list(SCHEDULES)
+    if args.schedules:
+        requested = [name.strip() for name in args.schedules.split(',') if name.strip()]
+        unknown = sorted(set(requested) - set(SCHEDULES))
+        if unknown:
+            raise ValueError(f"Unknown schedule(s): {unknown}. Choose from {list(SCHEDULES)}")
+        if not requested:
+            raise ValueError('--schedules must contain at least one schedule name')
+        schedule_names = requested
 
     device = torch.device(args.device)
     weight_dtype = torch.float16
@@ -424,10 +436,10 @@ def main():
     print(f"Dataset: {len(dataset)} objects, evaluating first {num_objects} (probe set)")
 
     # Results storage
-    all_results = {name: [] for name in SCHEDULES}
+    all_results = {name: [] for name in schedule_names}
 
     print(f"\nRunning schedule comparison on {num_objects} objects")
-    print(f"Schedules: {list(SCHEDULES.keys())}")
+    print(f"Schedules: {schedule_names}")
     print(f"Steps: {args.num_steps}, Seed: 42")
     print("=" * 80)
 
@@ -446,7 +458,8 @@ def main():
         latent_h, latent_w = model.img_size * 3 // 8, model.img_size * 2 // 8
         init_latents = torch.randn(1, 4, latent_h, latent_w, device=device, dtype=weight_dtype)
 
-        for sched_name, sched_fn in SCHEDULES.items():
+        for sched_name in schedule_names:
+            sched_fn = SCHEDULES[sched_name]
             # Generate with this schedule
             pred = generate_with_schedule(
                 model, batch, device, weight_dtype, geo_feats,
@@ -467,11 +480,16 @@ def main():
         # Progress
         if (obj_idx + 1) % 4 == 0:
             # Show C3 and fixed_high metrics for quick comparison
-            c3 = all_results['C3_TCAS'][-1]
-            fh = all_results['fixed_high'][-1]
-            print(f"[{obj_idx+1}/{num_objects}] "
-                  f"C3: SSIM={c3['fg_ssim']:.4f} PSNR={c3['psnr']:.2f} | "
-                  f"Fixed-high: SSIM={fh['fg_ssim']:.4f} PSNR={fh['psnr']:.2f}")
+            progress_parts = []
+            for name in ('C3_TCAS', 'fixed_high'):
+                if name in all_results:
+                    r = all_results[name][-1]
+                    progress_parts.append(f"{name}: SSIM={r['fg_ssim']:.4f} PSNR={r['psnr']:.2f}")
+            if not progress_parts:
+                name = schedule_names[0]
+                r = all_results[name][-1]
+                progress_parts.append(f"{name}: SSIM={r['fg_ssim']:.4f} PSNR={r['psnr']:.2f}")
+            print(f"[{obj_idx+1}/{num_objects}] " + " | ".join(progress_parts))
 
         torch.cuda.empty_cache()
 
@@ -488,7 +506,7 @@ def main():
     print("-" * 110)
 
     summary_rows = []
-    for sched_name in SCHEDULES:
+    for sched_name in schedule_names:
         results = all_results[sched_name]
         fg_ssim_vals = [r['fg_ssim'] for r in results]
         psnr_vals = [r['psnr'] for r in results]
@@ -568,7 +586,7 @@ def main():
         writer = csv.writer(f)
         writer.writerow(['schedule', 'object', 'fg_ssim', 'psnr', 'lap_var', 'rgb_std',
                          'grad_mag', 'gt_lap_var', 'gt_rgb_std', 'gt_grad_mag'])
-        for sched_name in SCHEDULES:
+        for sched_name in schedule_names:
             for r in all_results[sched_name]:
                 writer.writerow([sched_name, r['object'], f"{r['fg_ssim']:.6f}",
                                  f"{r['psnr']:.4f}", f"{r['lap_var']:.6f}",
