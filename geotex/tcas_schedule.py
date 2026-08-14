@@ -87,3 +87,28 @@ def get_scale_for_step_idx(step_idx, total_steps, layer_group='middle'):
     """
     step_frac = step_idx / max(total_steps - 1, 1)
     return get_tcas_v2_scale(step_frac, layer_group)
+
+
+# ============================================================
+# Simple uniform schedules (shared across all eval scripts)
+# Each takes denoising progress in [0,1] and returns a float scale.
+# ============================================================
+
+def schedule_c3(progress, s_low=1.25, s_high=2.50):
+    """C3: piecewise constant low-high-low with 1/3 boundaries."""
+    if progress < 1.0 / 3.0:
+        return s_low
+    elif progress < 2.0 / 3.0:
+        return s_high
+    else:
+        return s_low
+
+
+def schedule_fixed(progress, scale_value=1.25):
+    """Fixed uniform scale throughout denoising."""
+    return scale_value
+
+
+def schedule_no_adapter(progress):
+    """s=0 everywhere: base pipeline without geometric adapter."""
+    return 0.0

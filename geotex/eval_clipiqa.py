@@ -39,6 +39,7 @@ from PIL import Image
 from torchvision import transforms
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
+sys.path.insert(0, os.path.dirname(__file__))
 
 
 # ============================================================
@@ -100,6 +101,14 @@ class CLIPIQAScorer:
             self.pos_dir = F.normalize(self.pos_embeds.mean(dim=0, keepdim=True), dim=-1)
             self.neg_dir = F.normalize(self.neg_embeds.mean(dim=0, keepdim=True), dim=-1)
 
+        # Pre-compute CLIP normalization tensors (avoid per-call allocation)
+        self.clip_mean = torch.tensor(
+            [0.48145466, 0.4578275, 0.40821073], device=device
+        ).view(1, 3, 1, 1)
+        self.clip_std = torch.tensor(
+            [0.26862954, 0.26130258, 0.27577711], device=device
+        ).view(1, 3, 1, 1)
+
     @torch.no_grad()
     def score_tensor(self, image_tensor):
         """Score a single image tensor (B, C, H, W) in [0,1] range.
@@ -110,9 +119,7 @@ class CLIPIQAScorer:
         # Resize to CLIP input size
         images = F.interpolate(image_tensor, size=(224, 224), mode='bicubic', align_corners=False)
         # Normalize with CLIP stats
-        mean = torch.tensor([0.48145466, 0.4578275, 0.40821073], device=self.device).view(1, 3, 1, 1)
-        std = torch.tensor([0.26862954, 0.26130258, 0.27577711], device=self.device).view(1, 3, 1, 1)
-        images = (images - mean) / std
+        images = (images - self.clip_mean) / self.clip_std
 
         # Encode using HF transformers CLIP
         features = self.model.get_image_features(pixel_values=images.to(self.device))
@@ -165,24 +172,11 @@ class CLIPIQAScorer:
 
 
 # ============================================================
-# Schedule functions (same as eval_schedule_comparison.py)
+# Schedule functions (from shared tcas_schedule module)
 # ============================================================
 
 from mvpainter.model_unet_geotex import GeoTexResnetWrapper
-
-
-def schedule_fixed(progress, scale_value):
-    return scale_value
-
-
-def schedule_c3(progress, s_low=1.25, s_high=2.50):
-    if progress < 1.0 / 3.0:
-        return s_low
-    elif progress < 2.0 / 3.0:
-        return s_high
-    else:
-        return s_low
-
+from tcas_schedule import schedule_c3, schedule_fixed
 
 EVAL_SCHEDULES = {
     's_1.25': lambda p: schedule_fixed(p, 1.25),

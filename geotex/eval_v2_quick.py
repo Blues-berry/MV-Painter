@@ -19,6 +19,7 @@ import numpy as np
 from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
+sys.path.insert(0, os.path.dirname(__file__))
 
 from omegaconf import OmegaConf
 from src.utils.train_util import instantiate_from_config
@@ -26,47 +27,7 @@ from torchvision.transforms import v2
 from torchvision.utils import save_image, make_grid
 from diffusers import EulerDiscreteScheduler
 from mvpainter.model_unet_geotex import GeoTexResnetWrapper
-
-
-def unscale_latents(latents):
-    return latents / 0.75 + 0.22
-
-
-def unscale_image(image):
-    return image / 0.5 * 0.8
-
-
-def compute_psnr(pred, target, mask=None):
-    if mask is not None:
-        if mask.shape[1] == 1 and pred.shape[1] > 1:
-            mask = mask.expand_as(pred)
-        fg = mask > 0.5
-        if fg.sum() == 0:
-            return 0.0
-        mse = ((pred[fg] - target[fg]) ** 2).mean()
-    else:
-        mse = ((pred - target) ** 2).mean()
-    if mse == 0:
-        return float('inf')
-    return 10 * torch.log10(1.0 / mse).item()
-
-
-def compute_ssim(pred, target, mask=None):
-    C1, C2 = 0.01 ** 2, 0.03 ** 2
-    mu1 = F.avg_pool2d(pred, 3, 1, 1)
-    mu2 = F.avg_pool2d(target, 3, 1, 1)
-    sigma1 = F.avg_pool2d(pred ** 2, 3, 1, 1) - mu1 ** 2
-    sigma2 = F.avg_pool2d(target ** 2, 3, 1, 1) - mu2 ** 2
-    sigma12 = F.avg_pool2d(pred * target, 3, 1, 1) - mu1 * mu2
-    ssim_map = ((2 * mu1 * mu2 + C1) * (2 * sigma12 + C2)) / \
-               ((mu1 ** 2 + mu2 ** 2 + C1) * (sigma1 + sigma2 + C2))
-    if mask is not None:
-        mask_d = F.max_pool2d(mask[:, :1], 3, 1, 1)
-        fg = mask_d > 0.5
-        if fg.sum() == 0:
-            return 0.0
-        return (ssim_map[:, :1] * mask_d)[fg].mean().item()
-    return ssim_map.mean().item()
+from metrics import compute_psnr, compute_ssim, unscale_latents, unscale_image
 
 
 def load_model(config_path, device):

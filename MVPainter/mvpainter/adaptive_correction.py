@@ -149,29 +149,34 @@ class LearnedTimestepGating(nn.Module):
 # ============================================================
 
 class SpatialGeometryGate(nn.Module):
-    """Generates spatial attention mask from geometry features.
+    """Generates spatial residual gate from geometry features.
 
-    High curvature / edge regions → gate close to 1 (strong correction)
-    Flat / texture-rich regions → gate close to 0 (weak correction, preserve texture)
+    Residual form: gate = 1 + tanh(conv(geo_feat)) in [0, 2], neutral 1.0.
+    High curvature / edge regions → gate > 1 (amplify correction)
+    Flat / texture-rich regions → gate < 1 (attenuate correction, preserve texture)
+
+    The residual parameterization is chosen so that the neutral position is
+    exactly 1.0 (identity) and tanh'(0) = 1 keeps a full gradient at init;
+    a plain sigmoid with a high bias init saturates and stalls training.
 
     Architecture:
-        geo_feat (B, C, H, W) → 1×1 conv → sigmoid → spatial_gate (B, 1, H, W)
+        geo_feat (B, C, H, W) → 1×1 conv → 1 + tanh → spatial_gate (B, 1, H, W)
 
     Parameters: ~130 per adapter (64 weights + 1 bias for 1×1 conv).
     """
 
-    def __init__(self, geo_channels=64, init_bias=2.0):
+    def __init__(self, geo_channels=64, init_bias=0.0):
         """
         Args:
             geo_channels: input channels from geometry encoder
-            init_bias: initial bias (2.0 → sigmoid(2.0)≈0.88, near-identity start)
-                       Higher = more permissive initially, learns to differentiate over time.
+            init_bias: initial bias (default 0 → gate = 1 + tanh(0) = 1, identity).
         """
         super().__init__()
         self.gate_conv = nn.Conv2d(geo_channels, 1, kernel_size=1)
 
-        # Initialize: near-zero weights + high bias → gate ≈ 1 everywhere at start
-        # This ensures FAC doesn't degrade quality before training converges
+        # Zero weights + zero bias → gate = 1 + tanh(0) = 1 everywhere at start.
+        # This makes the initial FAC position exactly neutral (no degradation)
+        # while keeping a full gradient (tanh'(0) = 1) through the gate.
         nn.init.zeros_(self.gate_conv.weight)
         nn.init.constant_(self.gate_conv.bias, init_bias)
 
@@ -181,9 +186,9 @@ class SpatialGeometryGate(nn.Module):
         Args:
             geo_feat: (B, C, H, W) geometry features from encoder
         Returns:
-            gate: (B, 1, H, W) in [0, 1]
+            gate: (B, 1, H, W) in [0, 2], neutral 1.0
         """
-        return torch.sigmoid(self.gate_conv(geo_feat.float()))
+        return 1.0 + torch.tanh(self.gate_conv(geo_feat.float()))
 
 
 # ============================================================
@@ -219,10 +224,14 @@ class FrequencySelectiveFilter(nn.Module):
         super().__init__()
         self.mask_size = mask_size
 
-        # Learnable frequency mask in logit space (sigmoid maps to [0, 1])
-        # Initialize as near-all-pass filter (high cutoff → passes almost everything)
-        init_mask = self._create_lowpass_init(mask_size, init_cutoff, init_sharpness)
-        self.freq_mask_logit = nn.Parameter(init_mask)
+        # Residual parameterization in the mask domain:
+        #   mask = init_mask + tanh(residual), clamped to [0, 1]
+        # The base all-pass mask is a fixed buffer (neutral position), and the
+        # learnable residual starts at 0, so the initial FAC position is exactly
+        # the near-all-pass filter while tanh'(0) = 1 gives a direct gradient.
+        init_mask = torch.sigmoid(self._create_lowpass_init(mask_size, init_cutoff, init_sharpness))
+        self.register_buffer('_init_mask', init_mask)
+        self.freq_mask_residual = nn.Parameter(torch.zeros_like(init_mask))
 
     def _create_lowpass_init(self, size, cutoff, sharpness):
         """Create initial low-pass filter mask in logit space.
@@ -243,7 +252,7 @@ class FrequencySelectiveFilter(nn.Module):
     @property
     def freq_mask(self):
         """Get the frequency mask in [0, 1] range."""
-        return torch.sigmoid(self.freq_mask_logit)
+        return (self._init_mask + torch.tanh(self.freq_mask_residual)).clamp(0, 1)
 
     def forward(self, correction):
         """Apply frequency-selective filtering to correction.
@@ -359,7 +368,7 @@ class AdaptiveCorrectionController(nn.Module):
         else:
             self._current_scales = None
 
-    def apply(self, correction, geo_feat, adapter_idx):
+    def apply(self, correction, geo_feat, adapter_idx, max_scale=None):
         """Apply adaptive correction pipeline.
 
         Order: LTAG (temporal) → GSG (spatial) → FSC (frequency)
@@ -368,15 +377,24 @@ class AdaptiveCorrectionController(nn.Module):
             correction: (B, C, H, W) raw adapter correction
             geo_feat: (B, geo_ch, H, W) geometry features at matching resolution
             adapter_idx: int, index of this adapter (for per-adapter modules)
+            max_scale: optional per-adapter cap on the LTAG temporal scale,
+                matching the per-layer caps applied to the hand-coded TCAS
+                schedule (deep 3.0 / middle 3.5 / shallow 0.8). With this cap,
+                an LTAG initialized to the effective C3 schedule reproduces TCAS
+                exactly at every layer, so the ablation isolates the learned
+                temporal rule rather than a difference in injection limits.
         Returns:
             (B, C, H, W) adaptively modulated correction (same dtype as input)
         """
         input_dtype = correction.dtype
         out = correction
 
-        # 1. LTAG: temporal gating (scalar per adapter)
+        # 1. LTAG: temporal gating (scalar per adapter), capped to the same
+        #    per-layer maximum as the TCAS _adapter_scale path.
         if self._current_scales is not None and self.enable_ltag:
             scale = self._current_scales[adapter_idx]  # scalar
+            if max_scale is not None:
+                scale = min(scale, max_scale)
             out = out * scale
 
         # 2. GSG: spatial gating

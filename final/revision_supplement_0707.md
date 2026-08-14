@@ -149,7 +149,7 @@
 
 审稿人质疑 Laplacian variance / RGB Std / Gradient 不能等价于好纹理。论文已将它们重新定位为 "proxy indicators for texture flattening detection"，但没有补充 perceptual quality metrics 或 human preference study。
 
-### 补充方案 A：Small-scale Human Preference Study
+### 补充结果 A：Blinded Human Preference Study（已完成）
 
 **实验设计：**
 
@@ -163,15 +163,17 @@
 - **展示方式**：每对图片随机左右排列，评价者不知道哪个是 C3、哪个是 s=2.50
 - **数据收集**：每个对象 × 每个维度 × 每个评价者 = 30 × 3 × 5 = 450 个 pairwise judgment
 
-**预期结果（基于论文现有定量证据推断）：**
+**实际结果：**
 
 | Dimension | C3 preferred (%) | s=2.50 preferred (%) | No clear preference (%) |
 |---|---|---|---|
-| Texture coherence | ~70% | ~20% | ~10% |
-| Artifact presence | ~65% | ~25% | ~10% |
-| Overall preference | ~68% | ~22% | ~10% |
+| Criterion | s=1.25 | s=2.50 | C3 |
+|---|---:|---:|---:|
+| Texture naturalness | 46.1% | 14.4% | 39.4% |
+| Shape consistency | 13.3% | 46.0% | 40.7% |
+| Overall quality | 24.4% | 17.5% | **58.1%** |
 
-**论证逻辑**：论文已证明 C3 在 87.7% 的对象上 Lap Var 优于 s=2.50，在 95.0% 的对象上 RGB Std 优于 s=2.50。如果 proxy metrics 的方向与人类偏好一致（即 texture flattening 确实被人感知为质量下降），则 preference study 应该验证 C3 在主观上也优于 s=2.50。即使 win rate 不到 90%（因为部分对象 s=2.50 的 contour improvement 可能被评价者视为正面），只要 >60% 就能说明 proxy metrics 的方向正确。
+**结果解读**：C3 并非在每个单项上都最高：s=1.25 最常被选择为 texture naturalness，s=2.50 最常被选择为 shape consistency；C3 在 overall quality 上获得最高比例（58.1%）。这直接支持“几何一致性—纹理保留”的平衡论证，而不把代理纹理指标误写成人类质量分数。
 
 **论文插入位置**：Section 4.5 (Large-scale Validation) 末尾，作为 "Perceptual Validation" 子段落。
 
@@ -216,7 +218,7 @@
 - 同时衡量 structure fidelity 和 texture quality，比 SSIM 更贴近人类感知
 - 在 300-object set 上对比三种条件
 
-**预期结果：**
+**参考方案结果（未运行）：**
 
 | Method | DISTS↓ | Win vs. s=2.50 |
 |---|---|---|
@@ -226,62 +228,36 @@
 
 **注意**：DISTS 作为 full-reference metric，可能更接近 SSIM 而非纯 texture quality；s=2.50 在 structure 上强，可能在 DISTS 上与 C3 接近。如果差异不显著，需要配合 human study 来补充。
 
-### 推荐实施优先级
+### 实施状态
 
-1. **Human preference study**（方案 A）— 最有说服力，审稿人最认可
-2. **CLIP-IQA**（方案 B）— 自动化 + perceptual + no-reference，可批量跑
-3. **DISTS**（方案 C）— full-reference，数据现成可以立即计算
-
-建议至少实施 A + B，即 human preference study + CLIP-IQA。
+1. Human preference study：✅ 已完成，30 objects、24 participants、720 votes/criterion。
+2. CLIP-IQA：✅ 已完成，50 objects、C3 对 s=2.50 胜率 94%。
+3. DISTS：暂不运行，保留为 full-reference future work，避免在现有结论之外引入未核验指标。
 
 ### 拟加入正文的总结段落（CLIP-IQA 数据已填入）
 
-> **Perceptual validation.** To address the concern that proxy texture statistics (Laplacian variance, RGB standard deviation, gradient magnitude) do not directly measure perceptual texture quality, we conduct two additional evaluations. First, a pairwise human preference study on 30 randomly sampled objects (5 raters, blind evaluation) shows that C3 is preferred over s = 2.50 in [X]% of comparisons for texture coherence, [Y]% for artifact avoidance, and [Z]% for overall quality (binomial test p < 0.01). Second, CLIP-IQA scores on 50 validation objects show that C3 achieves a mean foreground score of 0.4906, compared with 0.4860 for s = 2.50, with C3 scoring higher on 94% of objects (paired t-test, p < 10⁻⁶). The ordering s = 1.25 (0.4920) > C3 (0.4906) > s = 2.50 (0.4860) is consistent with the paper's central argument: stronger adapter scaling reduces perceptual quality, and TCAS recovers 77% of the quality lost by aggressive scaling. These results confirm that the texture flattening detected by proxy metrics corresponds to genuine perceptual quality degradation, not merely statistical noise or artifact-driven high-frequency responses.
+> **Perceptual validation.** To address the concern that proxy texture statistics do not directly measure perceptual quality, we conduct two complementary evaluations. A blinded three-alternative preference study on 30 validation objects with 24 participants yields 720 valid decisions per criterion: C3 receives the highest overall-quality preference (418/720, 58.1%), while the conservative and aggressive baselines are preferred for texture naturalness and shape consistency, respectively. CLIP-IQA on 50 validation objects gives C3 a mean foreground score of 0.4906 versus 0.4860 for s = 2.50, with C3 scoring higher on 94% of objects (paired t-test, p < 10⁻⁶). Together these results support C3 as a perceptually preferred balance, without treating any single proxy metric as a standalone quality score.
 
 ---
 
-## 修改项 3：FAC 定位调整
+## 修改项 3：FAC 已从论文删除（2026-08-10）
 
-### 问题回顾
+### 决策
 
-FAC 目前被定位为 "extension experiment"，但如果审稿人认为 TCAS 太简单，FAC 恰好可以增强方法的技术深度。
+FAC（LTAG/GSG/FSC 可学习控制器）实验在 2026-08-09 完成真实重跑（`fac_version:3`，300-obj，seed 42 严格配对），结果为**显著负结果**：
 
-### 建议调整（仅修改措辞，不改动实验内容）
+| Variant | PSNR | FG-SSIM | vs TCAS C3 |
+|---|---|---|---|
+| TCAS C3 (baseline) | 19.12 | 0.3708 | — |
+| LTAG only | 16.97 | 0.3487 | −2.14 dB, win 1.7%, p≈6.5e-50 |
+| LTAG+GSG | 16.21 | 0.3163 | −2.91 dB |
+| Full FAC | 16.11 | 0.3204 | −3.00 dB, win 1.3%, p≈1.2e-50 |
 
-**Abstract 调整：**
+warm-start 对照（LTAG 重置为精确 C3 → per-object Δ≈−0.27 dB=噪声）证实 eval 路径无误，3 dB 下降是真实学习退化。机制：训练把 C3 的低-高-低包络压平（early/late 1.25→2.0-2.4），GSG/FSC 几乎没动（|W|≈0.01）。
 
-原文末尾加一句：
-> We further instantiate this principle with Full Adaptive Correction (FAC), a lightweight learned extension that generalizes TCAS from temporal-only control to joint temporal, spatial, and frequency-selective residual modulation, demonstrating that the stage-wise adapter control idea can be extended to finer-grained adaptive correction.
+**用户决定：论文完整，删除整个 FAC 章节**（FAC 原是 "supporting evidence" 非主贡献）。final_submit.tex 已删全部 8 处 FAC 引用（abstract/intro/fig1 caption/方法 4.6/实验 setup/实验 5.6+tab:fac/limitations/conclusion），编译通过无 dangling ref。
 
-**Introduction 第(4)条贡献调整：**
-
-将 (4) 拆为 (4) + (5)：
-
-> (4) Large-scale texture preservation analysis on 300 objects... [保持不变]
->
-> (5) We further propose Full Adaptive Correction (FAC), which extends TCAS from a fixed temporal schedule to a lightweight adaptive framework operating jointly across temporal, spatial, and frequency dimensions. FAC outperforms TCAS on 81.3% and 72.0% of objects in PSNR and FG-SSIM, respectively, demonstrating that the stage-wise adapter control principle identified through TCAS can be further developed into a learned, content-adaptive strategy.
-
-**Section 3.4 标题调整：**
-
-从 "GeoTex-Adapter and FAC Adaptive Extension" 改为：
-> "From Fixed Scheduling to Adaptive Correction: The FAC Framework"
-
-**核心定位句：**
-
-> We first identify TCAS as a training-free temporal control principle that reveals the shape-texture trade-off, and further develop it into FAC, a lightweight adaptive framework that generalizes stage-wise control to spatial and frequency dimensions. TCAS provides the foundational insight; FAC instantiates it as a learnable strategy.
-
-### 与现有论文内容的一致性
-
-这个调整不改变：
-- 实验数据（Table 6 FAC ablation 完全保留）
-- TCAS 仍然是 training-free 的主方法
-- FAC 仍然需要少量参数训练
-- 结论部分对 FAC 的讨论不变
-
-仅改变：
-- FAC 从 "附加验证" 升级为 "方法的自然延伸"
-- 在 narrative 中将 TCAS → FAC 描述为一个递进关系
-- 读者感知从 "主方法太简单 + 有个锦上添花的 extension" 变为 "从简单有效的发现出发，进一步发展成更完整的框架"
+注意：本修改项旧的"提升 FAC 定位"方案（含 81.3%/72.0% 合成数字）**已作废**，勿再使用。
 
 ---
 
@@ -444,12 +420,57 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 | 优先级 | 内容 | 状态 | 效果 |
 |---|---|---|---|
 | P0 | Table X: Generic schedule comparison | ✅ **已完成** (24-obj probe, 7 schedules) | 直接回应审稿人第一条 |
-| P1 | Human preference study (30 obj × 5 raters) | 📋 协议已写好，图片已生成 | 最强回应审稿人第二条 |
+| P1 | Human preference study (30 obj × 24 participants) | ✅ **已完成**（720 valid decisions/criterion） | 最强回应审稿人第二条 |
 | P2 | CLIP-IQA on 50-obj | ✅ **已完成** (94% win rate, p<10⁻⁶) | 辅助回应第二条 |
-| P3 | FAC 定位调整 | 📝 LaTeX 草稿已写好 | 缓解 "方法太简单" |
+| P3 | FAC 定位调整 | ✅ **已删除**（2026-08-10，真实结果显著为负，见修改项 3） | 论文已完整，删去更简洁 |
 | P4 | Limitation 微调 | 📝 文字已准备 | 避免自认问题未解决 |
 | P5 | Additional Analysis（adapter-dependence of high-scale failure modes） | ✅ **已完成** (2026-08-03, 4 组机制实验) | 把"高 scale→flatten"普适论断弱化为 adapter 依赖，同时强化 TCAS 结构性价值 |
 | P6 | 方法探索：Residual-Normalized Adaptive Scale | ✅ **已完成** (2026-08-03, 含决定性对照) | 对照实验证明归一化剖面无独立价值（norm_flat≡fixed_low_weak）；固化为机制诊断："干预强度受 min(scale,cap)×raw_norm 三重约束"，不作为新方法；C3 仍最优 |
+
+## 修改项 6：C3 边界/幅值稳健性与 top-2 迁移（2026-08-13）
+
+### A1：边界与峰值敏感性扫描
+
+在同一 `geotex_v2_ema_final.pt`、50 步、seed=42 的 24-object probe 协议上，固定低值 $s_l=1.25$，扫描三个 high-scale 窗口和五个峰值：
+
+| high window | peak scales |
+|---|---|
+| $[0.25,0.75)$ | 2.00, 2.25, 2.50, 2.75, 3.00 |
+| $[1/3,2/3)$ | 2.00, 2.25, 2.50, 2.75, 3.00 |
+| $[0.4,0.6)$ | 2.00, 2.25, 2.50, 2.75, 3.00 |
+
+结果按 PSNR 排名前十如下；所有候选仍使用同一对象、初始 latent 和评估口径：
+
+| Window | Peak | FG-SSIM | PSNR | Lap/GT | RGB/GT |
+|---|---:|---:|---:|---:|---:|
+| $[1/3,2/3)$ | 2.75 | 0.2894 | **16.79** | 0.471 | 9.052 |
+| $[1/3,2/3)$ | 3.00 | 0.2827 | 16.77 | 0.522 | 10.127 |
+| $[0.25,0.75)$ | 2.25 | 0.2866 | 16.73 | 0.485 | 9.801 |
+| $[1/3,2/3)$ | 2.50 (C3) | 0.2940 | 16.71 | 0.438 | 7.961 |
+| $[0.25,0.75)$ | 2.50 | 0.2781 | 16.64 | 0.564 | 11.639 |
+| $[0.4,0.6)$ | 3.00 | 0.2942 | 16.62 | 0.469 | 7.334 |
+
+解读：middle-third 是稳定高性能区域；2.75 的 PSNR 仅比 C3 高 0.08 dB，但其 RGB/Lap 诊断更偏离且 FG-SSIM 更低。因此 C3 的 $(1/3,2/3,2.50)$ 是保守、可解释的折中点，不是依赖单个 probe 噪声的唯一最优点。更宽窗口并未稳定提升结果，更窄窗口也没有改善信号保真度。
+
+数据：`mvpoutput/revision_c3_sensitivity/summary.json`、`per_object_metrics.csv`。
+
+### A2：top-2 probe schedule 的 300-object 迁移
+
+probe 中排除 C3 后 PSNR 最高的两个非 C3 schedule 是 trapezoid（16.61）和 gaussian peak（16.55）。将二者和 C3 在相同 v2 checkpoint、50 步、seed=42 协议下直接迁移至 300 objects，结果为：
+
+| Schedule | FG-SSIM | PSNR | C3 mean delta | C3 wins (FG-SSIM / PSNR) |
+|---|---:|---:|---:|---:|
+| C3 | **0.3698** | **19.10** | — | — |
+| Trapezoid | 0.3495 | 18.84 | +0.0202 / +0.2548 dB | 268/300 / 223/300 |
+| Gaussian peak | 0.3514 | 18.78 | +0.0184 / +0.3181 dB | 263/300 / 253/300 |
+
+C3 相对 trapezoid 和 gaussian peak 的 PSNR 配对 95% CI 分别为 [0.207, 0.302] dB 和 [0.278, 0.358] dB，均显著偏离零。C3 的 Lap/GT 虽低于两个平滑候选，但这与现有结论一致：较高 LapVar 可能来自伪影，不能单独视为更好纹理；C3 同时取得更高 FG-SSIM/PSNR，说明其信号和结构平衡更好。
+
+数据：`mvpoutput/revision_top2_300/summary.json`、`per_object_results.csv`。
+
+### 论文论证更新
+
+这两项实验支持的准确表述是：C3 的优势来自“中段集中、早晚保守”的结构，并在候选边界、峰值和 300-object 迁移上具有稳健性；不应表述为 C3 在所有单项代理指标上都绝对最优，也不应把 A1 的 2.75 PSNR 微小提升写成新方法。
 
 ---
 
@@ -458,23 +479,25 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 ### 数据一致性检查
 
 1. **C3 配置确认**：(s_e, s_m, s_l) = (1.25, 2.50, 1.25)，三等分 denoising progress ✓
-2. **300-obj 结果确认**：
-   - FG-SSIM: s=1.25 → 0.430, s=2.50 → 0.473, C3 → 0.476 ✓
-   - PSNR: s=1.25 → 17.95, s=2.50 → 17.90, C3 → 18.86 ✓
-   - Lap Var Ratio (vs s=1.25): s=2.50 → 0.678, C3 → 0.835 ✓
-   - RGB Std Ratio (vs s=1.25): s=2.50 → 0.643, C3 → 0.970 ✓
+2. **300-obj 结果确认（2026-08-11 对齐 final_submit.tex tab:300obj/tab:texture300，v2 checkpoint）**：
+   - FG-SSIM: s=1.25 → 0.389, s=2.50 → 0.233, C3 → 0.371 ✓
+   - Edge-SSIM: s=1.25 → 0.202, s=2.50 → 0.182, C3 → 0.204 ✓
+   - PSNR: s=1.25 → 18.57, s=2.50 → 17.24, C3 → 19.12 ✓
+   - FG-LPIPS: s=1.25 → 0.190, s=2.50 → 0.257, C3 → 0.191 ✓
+   - 纹理诊断（ratio to GT）Lap/GT: 0.54/1.99/0.47；RGB/GT: 3.33/18.35/5.73；Grad/GT: 0.72/1.49/0.82 ✓
+   - 注：旧值（0.430/0.473/0.476、17.95/17.90/18.86）来自已废弃 checkpoint，勿再使用
 3. **Probe 结果确认**：C3 ΔLap Var = -0.0006 (近零)，其他高 scale 变体均为负值 ✓
 4. **Object-level win rates 确认**：C3 vs s=2.50 在 Lap Var 87.7%, RGB Std 95.0%, Grad Mag 83.0% ✓
-5. **FAC 结果确认**：Full FAC PSNR 19.28, FG-SSIM 0.4830, 优于 TCAS 81.3% / 72.0% ✓
+5. **FAC 结果确认**：~~Full FAC PSNR 19.28, FG-SSIM 0.4830, 优于 TCAS 81.3% / 72.0%~~ **已作废（合成数字，勿再使用）**。真实 FAC v3（2026-08-09，300-obj 严格配对）：Full FAC PSNR 16.11, FG-SSIM 0.3204, −3.00 dB, win 1.3%, p≈1.2e-50 —— 显著负结果，整个 FAC 章节已删除（见修改项 3）。
 6. **新增 13-schedule 数据确认（2026-07-31）**：在 `geotex_v2_ema_final.pt` 上 24-obj / 50 步 / seed=42，`fixed_low`/`C3`/`fixed_high` 与 2026-07-07 运行一致（0.3116/0.2956/0.1880 vs 0.3109/0.2971/0.1900）✓；C3 仍为 Best trade-off；`no_adapter`（现有方法基线）PSNR 14.07 显著低于 C3 16.76 ✓
 
 ### 新增内容不得与以下结论冲突
 
-- C3 的 FG-SSIM 与 s=2.50 无显著差异（CI 过零）
+- C3 的 FG-SSIM 显著高于 s=2.50（286/300 win，+0.138），显著低于 s=1.25（−0.018，CI [−0.022,−0.015]）；新增内容不得与这些差异描述冲突
 - TCAS 不声称完全消除 texture loss，只是显著减少
 - Proxy metrics 已被定位为 diagnostic evidence，不是 standalone quality score
 - C3 在 probe 上选出后 freeze，不在 300-obj 上重新搜索
-- FAC 需要训练参数，TCAS 是 training-free
+- ~~FAC 需要训练参数，TCAS 是 training-free~~（FAC 已删除，此条失效）
 
 ---
 
@@ -500,4 +523,4 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 
 ## 结语
 
-本日志记录的补充内容均基于论文现有实验框架的合理延伸，不修改已有实验结论，不引入与现有数据矛盾的声明。所有预期结果均从现有定量证据合理推断，实际实施时以真实实验数据为准。
+本日志区分已完成实验、已核验结果和未运行的候选方案。A1/A2 的真实结果见“修改项 6”；未运行的 DISTS/FID/KID 等方案仅作为后续方向，不得写入论文为已完成结果。

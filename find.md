@@ -220,6 +220,29 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 4. C3（mid 段高）在 v2 上依然最优，因为中间段确实是几何细化最有效的阶段（refattn_v1 与 v2 一致）。
 5. 结构/保真：C3 PSNR 15.43 全场最高，SSIM 0.252 与 best 相当。
 
+**24-obj 升级确认（2026-08-07，`stage_ablation_v2_24obj/`）**：R10 结论在 4× 样本量下完全稳健：
+| schedule | FG-SSIM | PSNR | LapRatioGT | LapCorr |
+|---|---|---|---|---|
+| no_adapter | 0.3019 | 14.12 | 0.910 | -0.0052 |
+| fixed_low | 0.3113 | 16.13 | 0.250 | +0.0020 |
+| fixed_high | 0.1881 | 15.54 | 0.896 | -0.0183 |
+| **C3_TCAS** | **0.3007** | **16.79** | **0.217** | -0.0085 |
+| **early_high** | **0.2077** | 15.44 | 0.879 | -0.0081 |
+| **mid_high** | **0.2996** | **16.80** | 0.220 | -0.0096 |
+| late_high | 0.3106 | 16.18 | 0.239 | -0.0028 |
+- early_high ≈ fixed_high（0.208 vs 0.188，LapRatio 0.879 vs 0.896）→ **v2 破坏源仍确认是 early 段**
+- mid_high ≈ C3（0.300 vs 0.301，PSNR 16.80 vs 16.79）→ **中段集中高 scale 即 C3 的机制，24-obj 确认**
+- late_high ≈ fixed_low（0.311 vs 0.311）→ **late 段高 scale 无害，与论文 refattn_v1 相反，再次证明危险阶段 adapter 依赖**
+
+**同批 uniform-scale 趋势（v2，`revision_scale_sweep_v2/`，与 revision_schedule_comparison 同协议合并）**：
+| scale | FG-SSIM | PSNR | LapRatio | RGBStdRatio |
+|---|---|---|---|---|
+| 1.00 | 0.337 | 15.94 | 0.575 | 2.36 |
+| 1.75 | 0.257 | 16.24 | 0.815 | 14.70 |
+| 2.25 | 0.211 | 15.70 | 1.448 | 23.88 |
+- **v2 上 FG-SSIM 随 scale 单调下降**（0.337→0.211），与论文 refattn_v1 单调上升（+0.047→+0.145）**完全相反** → Section 4.7 "uniform high scale 失效模式 adapter 依赖"的 24-obj 直接证据
+- RGBStdRatio 从 2.36 飙到 23.88 → 高 scale 在 v2 上放大高频伪影（与论文 flatten 相反）
+
 ### R11. 残差谱（v2，6-obj/50 步，γ=0.1~3.0）——**修复重跑后 H4 成立**
 - **code-reviewer 发现 critical bug**：首版 `apply_gamma` 用 `mul_`（原地乘当前权重）且循环内无 restore → 实际生效幅度 = {0.1, 0.03, 0.03, 0.09}，**γ=1.0 原生与 γ=3.0 强幅度两个关键点完全缺失**，首版 12 行数据只覆盖弱幅度带。首版"H4 被证伪"结论无效，旧数据备份到 `residual_scale_v2/BUG_CUMULATIVE/`。
 - **已修复**：`apply_gamma(model, snap, gamma)` 改为基于快照绝对设置（`copy_(w*gamma)`），每次迭代独立；try/finally 保护 restore。
@@ -444,6 +467,56 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 **科学结论不受影响**：精细 γ 扫描（`explore_residual_scale.py --gammas 0.4 0.5 0.6 0.7 0.8`）**就是** post-hoc 缩放 v2 权重到 γ=0.6 后推理的精确模拟。γ=0.6 时 C3 SSIM 0.271（全谱最高）、PSNR 13.98、LapRatio 0.556 的结论**已经就是"甜点 adapter + C3"的效果**——不需要重训来证明。
 
 **论文定位**：把精细 γ 扫描作为"simulated ideal adapter"展示，训练到甜点列为 future work（"requires mixed-precision engineering that is orthogonal to the scheduling contribution"）。
+
+### 8.4 v4 NaN 根因修正（2026-08-07）——不是梯度 SNR，是 shallow 层 fp16 前向溢出
+**§8.3 原诊断"梯度 SNR 不足"被证据推翻**。重新对比 v2/v4 训练日志：
+| | v2（成功） | v4（NaN） |
+|---|---|---|
+| 训练 scale | shallow=0.1, deep/mid=1.0 | 所有层=0.6（shallow 6×） |
+| gnorm 峰值 | **66.65**（step 1787，clip=0.5 救回） | **仅 3.48**（step 770 就崩） |
+| NaN 起点 | 无（10000 步） | step 781 |
+
+→ **v4 的 gnorm 比 v2 低 19 倍还崩，说明不是梯度爆炸/SNR 问题，而是 shallow correction 在 fp16 前向溢出**（`hidden_states + correction` 超 fp16 范围 → Inf → loss NaN）。v2 用 shallow=0.1 强抑制，即使 deep/mid 梯度巨大也稳定。
+
+**v5 修复**（`geotex/train_v5_sweetspot.sh`）：
+- `--train_scale` 支持 per-layer JSON dict：`'{"deep":0.6,"middle":0.6,"shallow":0.1}'`
+- deep/mid=0.6（甜点），shallow=0.1（保持 v2 的抑制，杜绝溢出）
+- 该配置 200 步 smoke 零 NaN，loss 收敛，gnorm 稳定 0.01-0.04
+
+**code-reviewer 审查（WARN → 已修复）**：JSON 键缺失会静默 fallback 到 1.0（复现 v4 NaN 路径）。已在 `parse_train_scale` 加严格键集+值校验（missing 'shallow' 直接报错）、修正帮助文本、scale 应用提升到训练前一次。
+
+**为什么这次能成功（vs v4）**：v4 误以为需要 uniform scale 到甜点；实际甜点只需 deep/mid 降到 0.6，shallow 必须保持 0.1 抑制——这正是 v2 成功配方 + 甜点幅度的结合。
+
+### 8.5 v4/v5 NaN 根因再修正（2026-08-07）——不是 shallow fp16 溢出，是 train_scale=0.6 导致的 reg 反馈失控（§8.4 已推翻）
+**§8.4 的"shallow 层 fp16 前向溢出"诊断被 v5-fixed 运行推翻**。v5-fixed（§8.4 声称的修复：per-layer `0.6/0.6/0.1` + random init + var_weight=0.05）**在 step 1420 NaN**。把全部运行摆成对照表：
+
+| Run | scale | var_loss | clamp | init | 数据 | 结果 |
+|---|---|---|---|---|---|---|
+| **v2** | TCAS ramp (Phase1=1.0 → 最高 3.5) | 无 | 无 | random | 2000(1706) | **10000 步零 NaN** |
+| v4 | uniform 0.6 | **0** | 3.0 | zero | clean(1200) | NaN@781, reg_loss→110 |
+| v5-fixed | 0.6/0.6/0.1 | 0.05 | 1.5 | random | clean | NaN@1420, reg_loss→250-400 |
+| v2-repro | 1.0/0.1 | 0.05 | 1.5 | random | clean | 100 步零 NaN |
+
+**排除法结论**：
+- 不是 init：v4(zero) 和 v5-fixed(random) 都炸。
+- 不是 var_loss：v4 显式 `var_weight=0.0`（train_args.json 实证）照样炸。
+- 不是 clamp、不是数据：v2-repro 用 clean 数据+clamp 1.5 也稳。
+- **唯一共同爆炸因子 = train_scale=0.6**（v2/v2-repro 都是 scale≥1.0 深/中层）。
+
+**机制（reg 反馈失控，基于 loss 梯度的 scale 依赖）**：
+- `correction = scale × g(θ)`；noise_loss 梯度 ∝ scale，reg_loss = Σ‖correction‖² 梯度 ∝ scale²。
+- scale 越低，L2 正则相对拟合压力**成比例越弱** → adapter 权重无约束生长 → corrections 爆炸。
+- 实证：v4/v5 发散前 `train/reg_loss` 从 ~0 爬到 100-400（correction 范数 ~10-20，淹没 O(1) 的 UNet 特征）。
+- 为什么 §8.4 的 200 步 smoke "零 NaN" 是误导：发散是慢燃（step 700-1400 才显形），200 步 smoke 测不出来。
+
+**正确路径（不是"训练甜点 scale"，而是"复现 v2 稳定配方 + 推理时 γ=0.6"）**：
+- γ=0.6 甜点是**对 v2 这个强 adapter 的推理衰减**（C3 SSIM 0.271 vs γ=1.0 的 0.255）。
+- 训练目标 = v2-faithful：`--tcas_ramp`（Phase1 uniform 1.0 → Phase2 ramp → Phase3 完整 TCAS schedule）+ `var_weight 0` + `proj_clamp 0` + `reg_weight 5e-5` + `train_objects_2000.txt` + random init。
+- `train_v2.py` 新增 `--tcas_ramp` 标志（恢复 v2 时代被替换的 scale 调度逻辑），config 已恢复 2000 数据。
+- 脚本：`geotex/train_v5_faithful.sh`（完整）/ `train_v5_faithful_smoke.sh`（200 步指纹验证）。
+- **验证指纹**：v2 的 step-1 gnorm = 0.0067；v2-faithful smoke 若复现此值 → 代码/数据/scale 全部对齐。
+
+**教训**：慢燃训练不稳定的 smoke 验证必须跑过历史发散点（≥1500 步或监测 reg_loss 爬升），200 步 smoke 只能验 syntax 级正确性。
 
 ---
 

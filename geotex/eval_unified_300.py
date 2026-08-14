@@ -30,6 +30,7 @@ import numpy as np
 from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
+sys.path.insert(0, os.path.dirname(__file__))
 
 from omegaconf import OmegaConf
 from src.utils.train_util import instantiate_from_config
@@ -43,30 +44,12 @@ from mvpainter.model_unet_geotex import GeoTexResnetWrapper
 
 
 # ============================================================
-# TCAS v2 Schedule (same as train_v2.py)
+# TCAS v2 Schedule (from shared tcas_schedule module)
 # ============================================================
-TCAS_V2_SCHEDULES = {
-    'deep':    [0.75, 1.50, 2.25, 1.25, 0.50],
-    'middle':  [1.00, 2.00, 3.00, 1.75, 0.75],
-    'shallow': [0.25, 0.50, 0.75, 0.40, 0.20],
-}
-PHASE_BOUNDARIES = [0.0, 0.15, 0.35, 0.65, 0.85, 1.0]
-
-
-def get_tcas_v2_scale(step_frac, layer_group='middle'):
-    """5-phase smooth TCAS with per-layer variation."""
-    schedule = TCAS_V2_SCHEDULES.get(layer_group, TCAS_V2_SCHEDULES['middle'])
-    for i in range(len(PHASE_BOUNDARIES) - 1):
-        if step_frac <= PHASE_BOUNDARIES[i + 1]:
-            phase_start = PHASE_BOUNDARIES[i]
-            phase_end = PHASE_BOUNDARIES[i + 1]
-            local_frac = (step_frac - phase_start) / (phase_end - phase_start)
-            if i < len(schedule) - 1:
-                val_curr = schedule[i]
-                val_next = schedule[min(i + 1, len(schedule) - 1)]
-                return val_curr + (val_next - val_curr) * local_frac * 0.3
-            return schedule[i]
-    return schedule[-1]
+from tcas_schedule import (
+    get_tcas_v2_scale, get_scale_for_step_idx,
+    schedule_c3, schedule_fixed, schedule_no_adapter,
+)
 
 
 def setup_per_layer_scales(model, step_idx, total_steps):
@@ -85,36 +68,11 @@ def clear_scales(model):
                 delattr(module, '_adapter_scale')
 
 
-# ============================================================
-# Uniform scale schedules (C3 / no-adapter / fixed)
-# Each returns a float scale given denoising progress in [0,1].
-# ============================================================
-
-def scale_c3(step_frac, s_low=1.25, s_high=2.50):
-    """Paper C3: piecewise constant low-high-low with 1/3 boundaries."""
-    if step_frac < 1.0 / 3.0:
-        return s_low
-    elif step_frac < 2.0 / 3.0:
-        return s_high
-    else:
-        return s_low
-
-
-def scale_no_adapter(step_frac):
-    """s=0 everywhere: base pipeline without geometric adapter."""
-    return 0.0
-
-
-def scale_fixed(step_frac, s=1.25):
-    """Fixed uniform scale throughout denoising."""
-    return s
-
-
 SCHEDULE_FNS = {
-    'c3': lambda p: scale_c3(p),
-    'no_adapter': lambda p: scale_no_adapter(p),
-    'fixed_low': lambda p: scale_fixed(p, 1.25),
-    'fixed_high': lambda p: scale_fixed(p, 2.50),
+    'c3': schedule_c3,
+    'no_adapter': schedule_no_adapter,
+    'fixed_low': lambda p: schedule_fixed(p, scale_value=1.25),
+    'fixed_high': lambda p: schedule_fixed(p, scale_value=2.50),
     'tcas_v2': None,  # handled by generate_with_tcas_v2 (per-layer)
 }
 
