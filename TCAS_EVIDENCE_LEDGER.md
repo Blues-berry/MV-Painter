@@ -12,7 +12,7 @@ from different checkpoints or scale semantics must not be combined.
 | Scheduler / steps | `EulerDiscreteScheduler.from_config(...)`, `set_timesteps(50)` |
 | Seed | 42; schedules within each run share initial latents |
 | Main adapter semantics | capped forward; effective scale is `min(requested_scale, layer cap)`; caps deep/middle/shallow = 3.0/3.5/0.8 |
-| Probe / validation | 24-object probe for selection; frozen schedule on 300-object validation |
+| Probe / validation | 24-object probe (`obj_0000`--`obj_0023`); frozen schedule on disjoint 276-object holdout (`obj_0024`--`obj_0299`); 300-object full pool is descriptive |
 | Primary metrics | PSNR, FG-SSIM, foreground MAE; LapVar is a diagnostic only |
 
 ## Evidence-to-claim map
@@ -40,3 +40,4 @@ from different checkpoints or scale semantics must not be combined.
 - Normalization audit: `geotex/explore_norm_schedule.py`.
 - Latest stage output: `mvpoutput/explore_contradiction/stage_ablation_v2_24obj_rerun/`.
 - Latest normalization audit: `mvpoutput/explore_contradiction/norm_schedule_v2_strength_match_6obj/`.
+- Disjoint holdout recomputation: `mvpoutput/revision_holdout_split/holdout_summary.json` via `geotex/analyze_holdout_split.py`.
