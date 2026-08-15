@@ -340,6 +340,21 @@ Limitation 中把 CLIP-IQA、DISTS、FID/KID 列为 "future work"，容易被审
 
 本次重跑产物：`mvpoutput/explore_contradiction/stage_ablation_v2_24obj_rerun/stage_ablation_summary.json`、`per_object_metrics.csv` 和 `stage_utility_analysis.json`。旧的 `stage_ablation_v2_24obj/stage_ablation_summary.json` 仅保留为历史均值记录，不与本次配对分析混用。
 
+### Pareto/utility 证据摘要（最新 24-object probe）
+
+下表把阶段效用与多指标 guardrail 放在同一处。PSNR utility 是相对 fixed-low 的配对差；FG-SSIM 和 LapVar 仅作为结构/高频诊断，不能单独解释为纹理质量。除注明 A1 外，数值来自 `stage_ablation_v2_24obj_rerun/`。
+
+| schedule | PSNR | FG-SSIM | LapVar / fixed-low | PSNR utility (95% CI) | interpretation |
+|---|---:|---:|---:|---:|---|
+| Fixed low (1.25) | 16.19 | 0.311 | 1.00 | 0 (reference) | conservative structure guardrail |
+| Early high | 15.40 | 0.206 | 3.85 | $-0.788\;[-1.420,-0.156]$ | reject: fidelity loss and artifact-sensitive increase |
+| Middle high | 16.76 | 0.297 | 0.85 | $+0.574\;[0.391,0.756]$ | retain: main fidelity gain, modest structural cost |
+| Late high | 16.27 | 0.311 | 0.90 | $+0.077\;[0.006,0.149]$ | low tie-break: structurally near-neutral |
+| C3 (low-high-low) | 16.77 | 0.297 | 0.86 | direct schedule validation | Pareto compromise, not per-metric maximum |
+| Middle-third peak 2.75 (A1) | 16.79 | 0.289 | 0.47 / GT | candidate peak only | tiny PSNR extreme with weaker guardrails |
+
+The table supports a Pareto interpretation rather than an “all metrics optimal” claim: middle concentration provides the useful fidelity gain, early high scale fails both fidelity and structural guardrails, and late high scale is not intrinsically harmful but offers too little additional evidence to justify overriding the conservative tie-break. The 2.75 A1 peak is retained as a sensitivity result, not promoted to a new method.
+
 **拟加入正文的段落（作为 Discussion 或 Limitation 前的 Additional Analysis）**：
 
 > **Adapter-dependence of high-scale failure modes.** The specific failure mode of aggressive adapter scaling is not universal. Across three adapter checkpoints, uniform high scale produced texture flattening, high-frequency artifact amplification, or no appreciable effect. A per-layer scale-cap ablation and a residual-magnitude sweep isolate scale semantics and residual strength as determining factors. Crucially, the stage ablation also shows that the sensitive denoising stage is adapter-dependent: on the artifact-prone v2 adapter, early-stage high scale reproduced nearly all of the damage while late-stage high scale was nearly harmless, whereas another adapter exhibited late-stage texture loss. For the tested v2 regime, the measured stage utilities support concentrating correction in the middle and using conservative values elsewhere. This is evidence for a conditional structural rule, not a universal adapter-independent optimum: changing the adapter regime requires re-estimating the stage utilities.
@@ -359,9 +374,9 @@ Limitation 中把 CLIP-IQA、DISTS、FID/KID 列为 "future work"，容易被审
 
 ## 修改项 6：方法探索 — Residual-Normalized Adaptive Scale（残差归一化自适应 scale）
 
-### 动机（由修改项 5 的机制发现直接推出）
+### 动机（由修改项 5 的机制发现直接推出；历史探索）
 
-修改项 5 证明：高强度 adapter 干预的副作用强度由**残差幅度**单调决定（残差谱实验：γ=0.1→no-op, 1.0→伪影放大, 3.0→更强伪影+压平）。由此推论：**固定 scale 的真正问题不是数值本身，而是它作用于不同幅度的残差上产生不可预测的干预强度**。这直接指向一个训练-free 的改进方法——把控制变量从"scale 数值"改为"目标干预强度（residual norm）"。
+修改项 5 证明：高强度 adapter 干预的副作用强度由**残差幅度**单调决定（残差谱实验：γ=0.1→no-op, 1.0→伪影放大, 3.0→更强伪影+压平）。这曾提示一个训练-free 的探索方向：把控制变量从“scale 数值”改为“目标干预强度（residual norm）”。后续强度匹配对照未支持该方向的独立收益，因此本节保留为机制诊断和负结果，不定义第二种方法。
 
 ### 方法
 
@@ -376,7 +391,9 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 
 不修改模型 forward，仅通过 per-depth scale 分发（训练-free，零额外参数）。
 
-### 实验数据（6-obj / 50 步）
+### 初步探索结果（6-obj / 50 步；已被下方强度匹配复核 supersede）
+
+> **历史结果说明。** 下表来自早期聚合脚本，保留用于记录探索过程；其数值与实验口径不完全等同于后续逐对象强度匹配复核，不能用于正文、最终结论或与最新表格混合比较。当前唯一有效的 normalization 证据是下方“最新强度审计复核”及其结果目录 `mvpoutput/explore_contradiction/norm_schedule_v2_strength_match_6obj/`。
 
 **v2（强残差，伪影 regime）**
 | schedule | FG-SSIM | PSNR | AbsLap | LapRatioGT |
@@ -398,11 +415,11 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 
 ### 结果解读
 
-1. **决定性对照实验否定归一化剖面的独立价值**：在 v2 上加入 `fixed_low_weak`（uniform scale=1.0，与 norm_flat 的 deep/middle 干预强度相同但无归一化剖面）作为对照。结果 **norm_flat 与 fixed_low_weak 的 FG-SSIM/AbsLap/PSNR 全部完全一致**（0.2791 / 0.00862 / 14.59）——两者数学等价（都施加 scale 1.0 于 deep/middle，shallow 都被 cap 到 0.8）。**norm_flat 的 SSIM 优势（0.279 高于 fixed_low 0.266）纯粹来自"更弱干预"（scale 1.0 vs 1.25），归一化剖面没有任何独立价值。**
+1. **决定性对照实验否定归一化剖面的独立价值**：在 v2 上加入 `fixed_low_weak`（uniform scale=1.0，与 norm_flat 的 deep/middle 干预强度相同但无归一化剖面）作为对照。最新逐对象复核显示 **norm_flat 与 fixed_low_weak 的五项指标完全一致**（均值见下方最新表格）——两者数学等价（都施加 scale 1.0 于 deep/middle，shallow 都被 cap 到 0.8）。因此 normalization 的表观结构优势来自更弱的 uniform scale，而不是独立的归一化剖面。
 2. **相对归一化（scale=k）退化为固定 scale**：target 定义为自身 ref_norm 的倍数，`scale = target/ref_norm = k` 恒为常数，归一化机制塌缩。
 3. **绝对目标归一化被 cap 阻断**：v3 要达到 v2 的干预强度需 scale≈46（deep: 216/4.7），远超 LAYER_MAX_SCALES cap（deep=3.0），全部被截断 → norm_flat 与 norm_c3 结果相同。
 4. **v3 上所有 schedule 均 no-op（≈0.245）**：单 checkpoint 归一化只"保持"自身参考强度。**v3 的 no-op 本质是训练问题（anticollapse 过度导致残差过弱）+ 推理 cap 阻断双重原因。**
-5. **C3 仍是最优训练-free 方法**：v2 上 C3 SSIM 0.254 与 best（0.279）相当、PSNR 15.42 全场最高、LapRatioGT 0.253 纹理损失最低——**C3 的简单低-高-低固定调度不可被归一化方法超越**。
+5. **C3 仍是当前主线的训练-free schedule**：早期聚合表中的“最优”比较已被下方逐对象强度匹配复核替代，不能据此声称 C3 在所有指标上最优。最新复核显示 C3 取得最高 PSNR，并在结构/高频诊断之间提供可解释折中；normalization 没有独立收益。
 6. **核心诊断洞见**：干预强度 = `min(scale, cap) × raw_norm` 三重约束。归一化方法不是有效新方法，但它揭示"固定 scale 的真正问题是残差幅度差异导致的不可预测干预强度"，以及"weak adapter 的 no-op 需在训练侧解决"。
 
 ### 数据文件
@@ -430,7 +447,7 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 `norm_flat` 与 `fixed_low_weak` 的五项逐对象指标完全相同；其 requested/effective scale 和 applied residual 统计也逐项一致。因此归一化剖面没有独立价值，norm-flat 的结构指标优势完全来自较弱的 uniform scale=1.0。`norm_c3` 没有超过 C3，且高频诊断更差。
 
 结果文件：`mvpoutput/explore_contradiction/norm_schedule_v2_strength_match_6obj/`。该复核不扩展到 24/300 objects，残差归一化不作为第二方法。
-- C3/TCAS 保持为最优训练-free 方法。
+- C3/TCAS 保持为本文的主线训练-free schedule；在当前小规模复核中它是 PSNR 最高的参考方案，但不宣称所有指标或所有 adapter 上全局最优。
 
 ---
 
@@ -473,7 +490,7 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 
 数据：`mvpoutput/revision_c3_sensitivity/summary.json`、`per_object_metrics.csv`。
 
-### A2：top-2 probe schedule 的 300-object 迁移
+### A2：top-2 probe schedule 的 disjoint holdout 迁移
 
 probe 中排除 C3 后 PSNR 最高的两个非 C3 schedule 是 trapezoid（16.61）和 gaussian peak（16.55）。将二者和 C3 在相同 v2 checkpoint、50 步、seed=42 协议下直接迁移至 300 objects，结果为：
 
@@ -487,9 +504,23 @@ C3 相对 trapezoid 和 gaussian peak 的 PSNR 配对 95% CI 分别为 [0.207, 0
 
 数据：`mvpoutput/revision_top2_300/summary.json`、`per_object_results.csv`。
 
+### Probe/holdout overlap audit（2026-08-15）
+
+检查发现 24-object probe 使用同一 validation pool 的 `obj_0000`--`obj_0023`，因此原始 300-object 汇总包含 probe 对象，不能单独作为独立泛化证据。现有 CSV 已按对象 ID 重算 disjoint holdout `obj_0024`--`obj_0299`，共 276 objects，无需重新生成图像：
+
+| Comparison | Mean PSNR delta | Paired 95\% CI | Win count |
+|---|---:|---:|---:|
+| C3 vs fixed high | +1.875 dB | [1.717, 2.032] | 255/276 |
+| C3 vs fixed low | +0.497 dB | [0.399, 0.595] | 205/276 |
+| C3 vs no adapter | +2.928 dB | [2.788, 3.068] | 275/276 |
+| C3 vs trapezoid | +0.258 dB | [0.207, 0.308] | 206/276 |
+| C3 vs Gaussian peak | +0.324 dB | [0.281, 0.367] | 232/276 |
+
+因此正文的 transfer/generalization claim 使用 276-object holdout；300-object full-pool 表保留为 descriptive statistics。结果入口：`mvpoutput/revision_holdout_split/holdout_summary.json`，重算脚本为 `geotex/analyze_holdout_split.py`。
+
 ### 论文论证更新
 
-这两项实验支持的准确表述是：C3 的优势来自“中段集中、早晚保守”的结构，并在候选边界、峰值和 300-object 迁移上具有稳健性；不应表述为 C3 在所有单项代理指标上都绝对最优，也不应把 A1 的 2.75 PSNR 微小提升写成新方法。
+这两项实验支持的准确表述是：C3 的优势来自“中段集中、早晚保守”的结构，并在候选边界、峰值和 disjoint 276-object holdout 迁移上具有稳健性；不应表述为 C3 在所有单项代理指标上都绝对最优，也不应把 A1 的 2.75 PSNR 微小提升写成新方法。
 
 ---
 
