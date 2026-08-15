@@ -15,7 +15,7 @@ convert to a per-wrapper scale each step:
 Because scale is per-wrapper, it is applied through the model's normal
 `_adapter_scale` path (capped by LAYER_MAX_SCALES) — zero memory overhead.
 
-  norm_flat: target = ref_norm(depth)          (constant, ~ fixed_low strength)
+  norm_flat: target = ref_norm(depth)          (constant, which becomes scale=1.0)
   norm_c3:   target = ref_norm(depth)*k(stage)  k=[0.6, 1.4, 0.6]  low-high-low
 
 The claim to verify: normalizing to a reference intervention strength makes the
@@ -33,6 +33,7 @@ import os
 import sys
 import json
 import argparse
+import csv
 import torch
 import numpy as np
 
@@ -84,7 +85,7 @@ def calibrate_raw_norms(model, batch, device, weight_dtype, geo_feats,
     ref = {}
     for st in agg:
         ref[st] = {d: float(np.mean(v)) for d, v in agg[st].items()}
-    return ref, pred
+    return ref, pred, summarize_intervention(residual_log, num_steps)
 
 
 def make_norm_schedules(raw_norms, k, abs_targets=None):
@@ -111,6 +112,24 @@ def make_norm_schedules(raw_norms, k, abs_targets=None):
             return out
         return sched
     return {name: make(k) for name, k in NORM_K.items() if k is not None}
+
+
+def summarize_intervention(residual_log, num_steps):
+    """Return stage/depth means needed to audit normalization claims."""
+    rows = []
+    for step_idx, entries in residual_log.items():
+        stage = stage_of(step_idx / max(num_steps - 1, 1))
+        for entry in entries.values():
+            raw_l2 = entry['l2'] / (entry['eff_scale'] + 1e-8)
+            rows.append({
+                'stage': stage,
+                'depth': entry['depth'],
+                'raw_l2': raw_l2,
+                'requested_scale': entry['scale'],
+                'effective_scale': entry['eff_scale'],
+                'applied_l2': entry['l2'],
+            })
+    return rows
 
 
 def main():
@@ -151,6 +170,7 @@ def main():
                         'norm_flat', 'norm_c3']
 
     all_results = {s: [] for s in schedules_to_run}
+    intervention_rows = []
     # absolute targets from a reference checkpoint (cross-checkpoint normalization)
     abs_targets = None
     if args.target_json:
@@ -173,10 +193,14 @@ def main():
         init_latents = torch.randn(1, 4, latent_h, latent_w, device=device, dtype=weight_dtype)
 
         # calibrate ref norms for THIS object via fixed_low (also its baseline)
-        ref_norms, pred_fl = calibrate_raw_norms(
+        ref_norms, pred_fl, fixed_low_intervention = calibrate_raw_norms(
             model, batch, device, weight_dtype, geo_feats, init_latents, args.num_steps)
         m_fl = compute_probes(pred_fl, target_imgs, mask)
+        m_fl['object'] = f'obj_{obj_idx:04d}'
         all_results['fixed_low'].append(m_fl)
+        for row in fixed_low_intervention:
+            row.update({'object': f'obj_{obj_idx:04d}', 'schedule': 'fixed_low'})
+            intervention_rows.append(row)
         if obj_idx == 0:
             print("  obj0 ref raw L2 norm by (stage, depth):")
             for st in ref_norms:
@@ -189,11 +213,16 @@ def main():
                 continue
             sched_fn = SCHEDULES[sched_name] if sched_name in SCHEDULES else norm_scheds[sched_name]
             torch.manual_seed(42)  # align RNG so all schedules share cond latent/ref noise
+            residual_log = {}
             pred = generate_with_schedule(
                 model, batch, device, weight_dtype, geo_feats,
-                sched_fn, args.num_steps, init_latents.clone(), {})
+                sched_fn, args.num_steps, init_latents.clone(), residual_log)
             m = compute_probes(pred, target_imgs, mask)
+            m['object'] = f'obj_{obj_idx:04d}'
             all_results[sched_name].append(m)
+            for row in summarize_intervention(residual_log, args.num_steps):
+                row.update({'object': f'obj_{obj_idx:04d}', 'schedule': sched_name})
+                intervention_rows.append(row)
             del pred, m
             torch.cuda.empty_cache()
         if (obj_idx + 1) % 2 == 0:
@@ -231,7 +260,27 @@ def main():
            'num_steps': args.num_steps, 'ref_norms': ref_norms, 'results': summary}
     with open(os.path.join(args.output_dir, 'norm_schedule_summary.json'), 'w') as f:
         json.dump(out, f, indent=2)
+    metrics_path = os.path.join(args.output_dir, 'per_object_metrics.csv')
+    metric_fields = ['object', 'schedule', 'fg_ssim', 'psnr', 'fg_lap_var',
+                     'fg_lap_corr', 'fg_mae']
+    with open(metrics_path, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=metric_fields)
+        writer.writeheader()
+        for schedule, rows in all_results.items():
+            for row in rows:
+                writer.writerow({'object': row.get('object', ''),
+                                 'schedule': schedule,
+                                 **{k: row[k] for k in metric_fields[2:]}})
+    intervention_path = os.path.join(args.output_dir, 'intervention_stats.csv')
+    intervention_fields = ['object', 'schedule', 'stage', 'depth', 'raw_l2',
+                           'requested_scale', 'effective_scale', 'applied_l2']
+    with open(intervention_path, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=intervention_fields)
+        writer.writeheader()
+        writer.writerows(intervention_rows)
     print(f"\nSaved: {os.path.join(args.output_dir, 'norm_schedule_summary.json')}")
+    print(f"Saved: {metrics_path}")
+    print(f"Saved: {intervention_path}")
     print("Done.")
 
 

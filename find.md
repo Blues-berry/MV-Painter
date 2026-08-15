@@ -340,19 +340,19 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 ### 7.2 设计（训练-free，`geotex/explore_norm_schedule.py`）
 - **校准**：每对象先跑 fixed_low，用 residual_log 反推各层 raw L2 norm（raw = scaled / eff_scale）。冒烟实测 v3 各层 raw norm：deep≈4.7, middle≈11, shallow≈131（shallow 比 middle 大 11 倍）。
 - **归一化**：scale(depth, stage) = target(depth, stage) / ref_norm(depth) = k[depth][stage]（平均 norm 校准下 target=ref*k，比例抵消）。
-  - norm_flat：k=1.0 恒定（≈fixed_low 干预强度）
+  - norm_flat：k=1.0 恒定（当前实现中等价于 uniform scale=1.0，不等于 fixed_low=1.25）
   - norm_c3：deep/middle 0.6/1.4/0.6（低-高-低），shallow 0.4/0.8/0.4（纹理层弱干预）
 - 施加：通过 `generate_with_schedule` 新增的 dict-scale 支持（per-depth 分发），零 forward patch。
 
 ### 7.3 待验证的假设
-- **H5**：把干预强度归一化到固定_low 参考后，v2 上能避免 fixed_high 的伪影放大（SSIM 不坍缩），v3 上能恢复有效干预（不再 no-op）——即跨 adapter 行为一致。
-- **H5b**：norm_c3 在 v2/v3 上都 ≥ C3 或与之相当（保留时间调度的同时规避 adapter 依赖）。
+- **H5（已否定）**：把干预强度归一化到固定_low 参考后，v2 上能避免 fixed_high 的伪影放大、v3 上恢复有效干预。后续强度匹配对照证明该优势不来自归一化剖面。
+- **H5b（已否定）**：norm_c3 在 v2/v3 上都 ≥ C3 或与之相当；实际 norm_c3 未超过 C3。
 
 ### 7.4 运行
 - `mvpoutput/explore_contradiction/norm_schedule_{v2,v3}.log`（6-obj / 50 步），Monitor 每小时轮询（task b23dsvp0y）。
 - 冒烟（v3, 1 obj, 8 步）已跑通：norm_flat SSIM 0.3429 / norm_c3 0.3416，与 fixed_low 0.3427 相当（8 步太短，需 50 步才能见分晓）。
 
-### 7.4b 完整结果（6-obj / 50 步）——**H5 在 v2 上成立，v3 上仍 no-op**
+### 7.4b 初始结果（6-obj / 50 步）——**后续强度审计已修正其解释**
 **v2**：
 | schedule | FG-SSIM | PSNR | AbsLap | LapRatioGT |
 |---|---|---|---|---|
@@ -362,7 +362,7 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 | **norm_flat** | **0.291** | 14.99 | 0.0069 | 0.317 |
 | **norm_c3** | 0.273 | 13.94 | 0.0129 | 0.590 |
 
-- **norm_flat 在 v2 上 SSIM 全场最高（0.291），AbsLap≈fixed_low** → 归一化到参考干预强度，既避免 fixed_high 伪影（SSIM 不坍缩）、又不压平（Lap≈fixed_low），**优于固定 scale 甚至 C3**。H5 在 v2（伪影 regime）成立。
+- **norm_flat 在 v2 上 SSIM 较高（0.291），AbsLap≈fixed_low**；后续加入 fixed_low_weak 后证明该优势来自 uniform scale=1.0 的较弱干预，而非归一化剖面。H5 作为“归一化方法独立有效”不成立。
 - norm_c3 中段 1.4× 干预在 v2 上稍过（LapRatioGT 0.59，PSNR 低），说明强 adapter 上中段不该再放大。
 
 **v3**：
@@ -382,7 +382,7 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 - **单 checkpoint 内归一化**（target=自身 fixed_low）解决"过度干预"（v2 伪影）✅，但不解决"干预不足"（v3 no-op）。
 - **跨 checkpoint 目标归一化**（用 v2 干预强度作为全局参考，让 v3 归一化到 v2 强度）才能同时解决两者——但需验证"干预强度可跨 adapter 迁移"。
 - **逐步自适应**：每步实时读 raw norm（非校准平均），更精确。代价需 forward hook。
-- **结论方向**：norm_flat 作为 TCAS 的 adapter 无关升级版在**强 adapter（v2）上有效**（SSIM 最高），可作为 training-free baseline 写入论文；但需诚实说明"对弱 adapter 无效，因弱 adapter 本身是训练问题非推理问题"。
+- **结论方向**：norm_flat 不作为 TCAS 的 adapter 无关升级版；其结果只保留为“较弱干预可缓解强 adapter 伪影”的机制对照。弱 adapter 的 no-op 仍是训练/残差幅度问题。
 - 附带洞察：**weak adapter 的 no-op 本质是训练不充分**（anticollapse 过度），推理期任何 schedule 都救不了——这本身是对"anticollapse 策略"的一个重要诊断。
 
 ### 7.6 code-reviewer 审查结论（WARN）与诚实修正
@@ -424,6 +424,12 @@ image-reader 环境的视觉通道实际不可用（模型不支持视觉输入�
 5. norm_c3（中段 1.4×）在 v2 上纹理损失大（LapRatio 0.75）——强 adapter 上中段不应再放大，与 7.4b 一致。
 
 **方法最终定位（定稿）**：残差归一化不是有效的新方法。它揭示的核心约束——**干预强度 = min(scale, cap) × raw_norm**——是诊断洞见（weak adapter no-op 是训练问题），但不是可用的推理策略。TCAS/C3 保持为最优训练-free 方法。
+
+### 7.9 最新强度审计复核（2026-08-15）
+
+在同一 v2 checkpoint、50 steps、seed=42、6-object 协议下，新增保存逐对象指标和按 stage/depth 的 raw norm、requested/effective scale、applied residual。`norm_flat` 与 `fixed_low_weak=1.0` 的五项指标逐对象完全一致，证明当前实现中的 relative normalization 数学上退化为较弱的 uniform scale；`norm_c3` 也没有超过 C3。
+
+最新结果入口：`mvpoutput/explore_contradiction/norm_schedule_v2_strength_match_6obj/`。该结果取代旧的摘要性 norm 对照，残差归一化不扩展到 24/300 objects，不作为第二方法，仅保留为 `min(scale, cap) × raw_norm` 机制诊断。
 
 ---
 
