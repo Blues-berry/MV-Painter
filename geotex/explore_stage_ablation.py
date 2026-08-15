@@ -27,6 +27,7 @@ import os
 import sys
 import json
 import argparse
+import csv
 import torch
 import numpy as np
 
@@ -148,6 +149,21 @@ def main():
            'num_steps': args.num_steps, 'results': summary_rows}
     with open(os.path.join(args.output_dir, 'stage_ablation_summary.json'), 'w') as f:
         json.dump(out, f, indent=2)
+    # Keep the paired observations.  The stage utility is a within-object
+    # comparison, so means alone are insufficient for uncertainty estimates.
+    per_object_path = os.path.join(args.output_dir, 'per_object_metrics.csv')
+    metric_names = ('fg_ssim', 'psnr', 'fg_lap_var', 'fg_lap_corr', 'fg_mae')
+    fieldnames = ['object', 'schedule', *metric_names]
+    with open(per_object_path, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for schedule, rows in all_results.items():
+            for row in rows:
+                writer.writerow({
+                    'object': row['object'], 'schedule': schedule,
+                    **{name: row[name] for name in metric_names},
+                })
+    print(f"Saved: {per_object_path}")
     print(f"\nSaved: {os.path.join(args.output_dir, 'stage_ablation_summary.json')}")
     print("Done.")
 

@@ -102,11 +102,11 @@
 
 1. **Monotonic decay (linear/cosine) 相对 fixed high 无明显改善，仍远不如 C3**：linear/cosine decay 的 FG-SSIM (0.211/0.208) 仅略高于 fixed high (0.190)，而 C3 达到 0.296；三者 Lap Var Ratio > 1.4、RGB Std Ratio > 22，均远超 GT 参照，表明产生了过度高频响应/artifact。这是因为 early-stage 的强干预破坏了全局结构。
 
-2. **Linear warm-up 是最接近 C3 的进度域竞争者，但 PSNR 更低**：linear_warmup 的 FG-SSIM (0.295) 与 C3 (0.297) 几乎持平，但 PSNR (16.39) 低于 C3 (16.76)。两者 Lap Var Ratio (0.49 vs 0.43) 和 RGB Std Ratio (10.57 vs 7.91) 均明显偏离 GT（1.0），说明 late-stage 的强 adapter 干预确实压制了 texture；而 C3 在相近的结构保真度下实现了更高的信号保真度。
+2. **Linear warm-up 是最接近 C3 的进度域竞争者，但 PSNR 更低**：linear_warmup 的 FG-SSIM (0.295) 与 C3 (0.297) 几乎持平，但 PSNR (16.39) 低于 C3 (16.76)。两者 Lap Var Ratio (0.49 vs 0.43) 和 RGB Std Ratio (10.57 vs 7.91) 均明显偏离 GT（1.0），说明该连续 schedule 在本协议下仍未取得理想的纹理统计；这不单独证明 late-stage 干预在所有 adapter 上都压制 texture。
 
 3. **平滑非单调变体（cosine bump / gaussian peak / trapezoid）均不如 C3**：这些变体形状与 C3 类似（低-高-低），但连续平滑过渡导致 middle 段的 effective peak duration 短于 C3 的 1/3 piecewise-constant，FG-SSIM (0.253/0.280/0.277) 均低于 C3 (0.296)，且 gaussian/trapezoid 的 Lap Var Ratio (0.57/0.58) 明显低于 C3 (0.43)，落入 Texture flattening。
 
-4. **C3 在 FG-SSIM + PSNR 两项上同时最优**：这不是单一指标的优势，而是 shape-texture 两个维度的最佳平衡。
+4. **C3 是受约束的 shape-texture 折中，而非每个指标的绝对最优**：它在该 probe 协议中取得最高 PSNR，并保持接近 fixed_low 的结构质量；fixed_low 的 FG-SSIM 更高，因此优势应表述为信号保真度与结构约束之间的平衡。
 
 **补充实验新增论证（2026-07-31）：**
 
@@ -119,7 +119,7 @@
 
 7. **C3 的优势不是"选对了某个更强 baseline 之外"的偶然**：在 24 个对象的 FG-SSIM 上，C3 (0.2956) 与结构最优的 `fixed_low` (0.3116) 相差 5.1%，处于 10% 结构相当带内；`no_adapter` 的 FG-SSIM (0.3015) 虽略高于 C3，但作为无几何约束的现有方法基线已被排除在结构竞争带之外，且其 PSNR (14.07) 远低于 C3。C3 的 PSNR (16.76) 为全部 13 个 schedule 中最高，且相对 `fixed_low` 的 PSNR 胜率为 23/24 (96%)。这与论文 Table 5（300-obj）中"C3 的 FG-SSIM 与最强结构相当、PSNR 最高"的结论一致。
 
-**注意**：Lap Var Ratio 和 RGB Std Ratio 的绝对值与 Table 4 (300-obj) 不同，因为这里是 24-obj probe set 上的数据，且 GeoTex-v2 adapter 的行为与论文中的 base adapter 有差异。但**相对排序**和**论证结论**完全一致——C3 在所有 schedule 中实现最佳平衡，且显著优于无适配器的现有方法基线。
+**注意**：Lap Var Ratio 和 RGB Std Ratio 的绝对值与 Table 4 (300-obj) 不同，因为这里是 24-obj probe set 上的数据，且 GeoTex-v2 adapter 的行为与论文中的 base adapter 有差异。因此结论限定为：C3 在本 probe 协议中取得最高 PSNR，并在结构和纹理诊断间形成较好的折中；不能外推为所有 schedule 或 adapter 上的绝对最优。
 
 ### 关键论证点（拟加入正文的文字）
 
@@ -333,14 +333,16 @@ Limitation 中把 CLIP-IQA、DISTS、FID/KID 列为 "future work"，容易被审
 
 ### 核心论证
 
-**TCAS 的价值是结构性的，而非针对特定 adapter 的压平缓解。** 四项分析共同说明：
+**TCAS 的价值是经过阶段效用验证的条件性结构结论，而非 adapter-independent 定理。** 四项分析共同说明：
 1. 高强度 adapter 干预的副作用有**是否起效（残差幅度）**、**方向（scale 语义/cap）**、**时序位置（危险阶段）**三个维度，均 adapter 依赖。
-2. 但在**所有 scale 起效的 regime**（refattn_v1 的 flatten、v2 的 artifact amplification）中，**低-高-低的三段式时间调度（C3）都是最优平衡**。
-3. 原因：C3 依赖的是 **diffusion 去噪过程的阶段角色**（early=全局布局、mid=几何细化、late=颜色/纹理合成）——这是扩散过程本身的普适属性，不随 adapter 改变。因此 TCAS 通过"把强校正集中在中间段、避开 early/late"缓解高强度干预的副作用，**不依赖副作用的具体形式**。
+2. 在当前 v2 adapter/checkpoint 上，24-object 阶段消融相对 fixed_low 的 PSNR 配对效用为 $U_e=-0.788$ dB（95% CI $[-1.420,-0.156]$）、$U_m=+0.574$ dB（$[0.391,0.756]$）、$U_l=+0.077$ dB（$[0.006,0.149]$）；early-high 的 LapVar/fixed-low 比为 3.85，而 late-high 为 0.90。early-high 的 FG-SSIM 差为 $-0.105$（CI $[-0.141,-0.069]$），late-high 的 FG-SSIM 差为 $+0.001$（CI $[-0.002,0.003]$）。这说明 early 是明确破坏源，late 在结构上近似中性，而不是 late intervention 必然有害。
+3. 因此 CAI 在“阶段效用可加”的近似下给出 bang-bang 候选：高效用阶段选 high，负效用阶段选 low；对于只有小幅 fidelity 变化且无结构收益的阶段，使用 low 作为纹理保真的 tie-break。由于 late utility 虽为小幅正值，且完整三段 schedule 存在交互效应，additive model 只用于解释阶段排序，C3 的完整 schedule 仍由直接 ablation 和 13-schedule probe 验证。不同 checkpoint、残差幅度、per-layer cap 或 scale 语义变化时，必须重新测量 $U_k$；不能声称不依赖 adapter。
+
+本次重跑产物：`mvpoutput/explore_contradiction/stage_ablation_v2_24obj_rerun/stage_ablation_summary.json`、`per_object_metrics.csv` 和 `stage_utility_analysis.json`。旧的 `stage_ablation_v2_24obj/stage_ablation_summary.json` 仅保留为历史均值记录，不与本次配对分析混用。
 
 **拟加入正文的段落（作为 Discussion 或 Limitation 前的 Additional Analysis）**：
 
-> **Adapter-dependence of high-scale failure modes.** The specific failure mode of aggressive adapter scaling is not universal. Across three adapter checkpoints, uniform high scale produced texture flattening (strong-residual adapter evaluated without per-layer caps), high-frequency artifact amplification (strong-residual adapter under per-layer caps, where scale boosts coarse-resolution layers while the fine-texture layer is capped), or no appreciable effect (weak-residual adapter). A per-layer scale-cap ablation on the same checkpoint reproduced both behaviors, isolating the scale semantics as a determining factor. A residual-magnitude sweep on a single checkpoint further shows that the intervention's *strength* is monotonic in the trained residual magnitude: scaling the adapter's output projection from 0.1x to 3x transitions the behavior from no-effect, to artifact amplification under high scale, to stronger artifacts (and over-constraint even under conservative scale). Moreover, a stage ablation shows that even *which denoising stage is most sensitive to high scale* is adapter-dependent: on the artifact-prone adapter, early-stage high scale reproduced nearly all of the damage while late-stage high scale was nearly harmless, whereas on the paper's adapter the late stage was the main source of texture loss. Despite this, in every regime where scaling had a non-negligible effect, the temporal low-high-low schedule (C3) yielded the best shape-texture balance, because concentrating strong correction in the middle denoising stage is effective regardless of the adapter. This indicates that TCAS's value is structural rather than incidental: by relying on the diffusion process's stage-dependent roles (global layout → geometry refinement → texture synthesis), it mitigates the harm of high-scale intervention without depending on how that harm manifests.
+> **Adapter-dependence of high-scale failure modes.** The specific failure mode of aggressive adapter scaling is not universal. Across three adapter checkpoints, uniform high scale produced texture flattening, high-frequency artifact amplification, or no appreciable effect. A per-layer scale-cap ablation and a residual-magnitude sweep isolate scale semantics and residual strength as determining factors. Crucially, the stage ablation also shows that the sensitive denoising stage is adapter-dependent: on the artifact-prone v2 adapter, early-stage high scale reproduced nearly all of the damage while late-stage high scale was nearly harmless, whereas another adapter exhibited late-stage texture loss. For the tested v2 regime, the measured stage utilities support concentrating correction in the middle and using conservative values elsewhere. This is evidence for a conditional structural rule, not a universal adapter-independent optimum: changing the adapter regime requires re-estimating the stage utilities.
 
 ### 数据文件
 - `mvpoutput/explore_contradiction/{v2,v3}/explore_summary.json`（多 checkpoint 扫描）

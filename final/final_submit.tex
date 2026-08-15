@@ -1,0 +1,562 @@
+\documentclass[times,twocolumn,final]{elsarticle}
+
+\usepackage{cag}
+\usepackage{framed,multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{placeins}
+
+\journal{Computers \& Graphics}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation}
+
+\author{}
+
+\begin{abstract}
+Multi-view diffusion pipelines for 3D asset texturing often inject geometric conditions, such as normal and depth maps, through adapter modules. However, the adapter scale used at inference time is usually chosen empirically, although the generated views are later projected and baked into the final mesh texture. This paper studies when adapter strength should be applied during denoising. We first show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling degrades structural fidelity and amplifies high-frequency artifacts rather than merely strengthening geometric adherence. We introduce a measurable Correction--Alignment--Interference (CAI) analysis based on finite differences between stage interventions and derive a conditional bang--bang candidate under an additive stage-utility approximation. On the studied adapter, the measured utilities identify early intervention as harmful, middle intervention as strongly beneficial, and late intervention as structurally neutral; a conservative late tie-break yields Timestep-Conditioned Adapter Scaling (TCAS) with C3 $(1.25, 2.50, 1.25)$. A stage ablation confirms this ordering: early-stage high scale reproduces most of the damage of uniform high scaling, whereas middle-stage concentration gives the highest PSNR. On a 24-object probe set C3 achieves the best PSNR among thirteen scheduling variants, and transferred unchanged to a 300-object validation set it improves PSNR by 1.88~dB over aggressive uniform scaling and by 2.96~dB over the adapter-free pipeline. The resulting claim is conditional on the measured adapter/checkpoint regime; it is not a universal adapter-independent optimum.
+\end{abstract}
+
+\begin{keyword}
+\KWD
+multi-view diffusion model \sep 3D texture generation \sep adapter scaling \sep timestep-conditioned scaling \sep shape-texture trade-off \sep geometric control \sep texture quality assessment
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+\label{sec:intro}
+
+Recent advances in single-image 3D generation have substantially improved the recovery of geometry, multi-view consistency, and sparse-view reconstruction \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. As geometric generation models become increasingly mature, generating high-quality textures on an existing 3D shape has become a key factor affecting the realism and usability of 3D content. For an object whose geometry has already been determined, the final visual quality depends not only on whether the shape is complete, but also on whether the texture is faithful to the reference image, aligned with the 3D surface, and rich in local details.
+
+Existing multi-view texture generation methods usually generate RGB images from multiple target views using 2D image diffusion models, and then map the generated images back to the 3D surface through projection or texture baking \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. This route benefits from the generative capability of image diffusion models, but it still faces challenges in reference appearance alignment, geometry-texture consistency, and local texture detail preservation. Geometry-controlled multi-view diffusion methods represented by MVPainter introduce geometric conditions such as normals and depth maps to improve the alignment between generated textures and the underlying 3D surface, demonstrating the importance of explicit geometric control for 3D texture generation \cite{shao2025mvpainter}.
+
+This problem is practical for graphics asset production because the generated multi-view images are not only evaluation frames: they are projected and baked into the final mesh texture. Local color collapse, spurious high-frequency marks, or view-dependent over-control can therefore become persistent defects in the textured asset.
+
+However, introducing geometric conditions is not only a question of whether a control signal should be used, but also a question of how strongly it should be applied. In adapter-augmented diffusion pipelines, geometric conditions are usually injected into the model through an adapter or control branch, and their influence is regulated by a scaling factor. In practice, this factor is often set empirically: a small scale may lead to insufficient geometric constraints, whereas a larger scale is usually expected to improve structural consistency.
+
+In multi-view texture generation, however, stronger adapter scaling is not necessarily better. Texture generation requires not only contours and structures to be consistent with geometry, but also surface color variations, material details, and high-frequency patterns to be preserved. We observe that a single uniform scale is a blunt control: aggressive scaling over-injects geometric residuals throughout the trajectory, which degrades structural fidelity and amplifies high-frequency artifacts, while conservative scaling under-constrains geometry. The effective question is therefore not only \emph{how} strongly but \emph{when} the adapter should intervene, because the denoising process performs different functions at different stages.
+
+Therefore, adapter scaling in geometry-controlled multi-view diffusion deserves further analysis. Compared with prior work that mainly studies how to build texture generation pipelines, how to introduce geometric conditions, and how to improve overall generation quality, adapter strength is a fine-grained inference-time control problem. It directly affects the balance between shape consistency and texture detail, and is an easily overlooked factor in multi-view texture generation quality.
+
+This problem is related to, but not solved by, existing guidance scheduling strategies. CFG scheduling changes the extrapolation between conditional and unconditional predictions, while a geometry adapter injects residuals into intermediate representations. Generic ControlNet or adapter scale scheduling similarly treats condition strength mainly as a condition-adherence knob. In texture generation, however, the key question is not only how strongly to follow the geometry, but also when geometric residuals should dominate and when they should recede so that the base model can synthesize color, material, and high-frequency texture. Simple monotonic schedules such as linear or cosine decay do not explicitly address this non-monotonic requirement.
+
+The goal of this paper is not to propose a new full texture generation system, but to analyze and improve inference-time adapter scaling within a fixed geometry-controlled multi-view diffusion pipeline.
+
+The main contributions of this paper are as follows:
+
+(1) We systematically diagnose the failure of uniform adapter scaling in multi-view diffusion texture generation, showing that on the studied adapter aggressive uniform scales degrade structural fidelity and amplify high-frequency artifacts. We formalize the temporal trade-off with a measurable Correction--Alignment--Interference (CAI) model and derive a conditional bang--bang schedule from stage utilities.
+
+(2) We identify an adapter-specific temporal conflict between geometric residual injection and texture formation, and propose Timestep-Conditioned Adapter Scaling (TCAS), which concentrates strong geometric correction in the middle denoising stage while using conservative scales in the early and late stages.
+
+(3) Through a stage ablation, a thirteen-schedule comparison on a 24-object probe set, and a 300-object validation without re-searching, we show why fixed high scales and direct guidance-schedule transfers are insufficient and test the conditional CAI prediction for the studied adapter/checkpoint regime.
+
+(4) We provide large-scale texture-diagnostic, CLIP-IQA, and blinded preference analyses showing that TCAS avoids the foreground artifact amplification and perceptual-quality loss caused by full high-scale scaling.
+
+\section{Related Work}
+\label{sec:related}
+
+\subsection{3D Texture Generation and Multi-view Diffusion}
+\label{subsec:3dtex}
+
+Single-image 3D generation is often decomposed into geometry and texture generation. Single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have improved structural stability and shape completeness \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}, but high-quality texture remains a bottleneck. Existing texture methods typically synthesize multi-view RGB images with 2D diffusion models and then project or bake them onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}, which still leaves reference appearance misalignment, geometry-texture inconsistency, and local detail loss.
+
+Methods such as MVPainter formulate 3D texture generation as geometry-controlled multi-view diffusion \cite{shao2025mvpainter}; MV-Adapter further shows that adapter-style multi-view control can improve cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}. These works inject normals, depth maps, or related geometry signals to align textures with the surface, but they mainly study how to introduce geometry rather than how strongly it should act during inference.
+
+\subsection{Adapter-augmented Diffusion Models and Geometric Control}
+\label{subsec:adapter}
+
+Adapter modules have become an important mechanism for introducing additional conditions into diffusion models. ControlNet injects spatial conditions such as edges, depth maps, and normals into a pretrained diffusion model through a parallel branch \cite{zhang2023controlnet}. IP-Adapter introduces image prompts through decoupled attention \cite{ye2023ipadapter}. LoRA and its variants implement lightweight model adaptation through low-rank residual updates \cite{hu2022lora,liu2024dora,zhang2023adalora}. Although these methods differ in architecture, they generally include some form of scaling factor that controls the influence of the external condition or adapter residual on the base model.
+
+In practice, the adapter scale is often treated as an empirical hyperparameter. A larger scale improves condition adherence, but in texture generation it may weaken the base model's ability to synthesize color, material, and high-frequency detail. Adapter scaling is therefore a balance between geometric constraints and texture fidelity: given a fixed adapter and fixed geometric conditions, how should the strength be scheduled to preserve both?
+
+\subsection{Diffusion Guidance Scheduling and Timestep Control}
+\label{subsec:guidance}
+
+The denoising process of diffusion models is highly stage-dependent. Early steps mainly determine global layout and coarse structure, middle steps refine shape and semantic structure, and late steps are more responsible for color, texture, and high-frequency details \cite{ho2020ddpm,song2021ddim}. Based on this observation, many guidance scheduling strategies have been explored in both research and practice. For example, classifier-free guidance scales may be adjusted linearly, with cosine schedules, or dynamically to mitigate oversaturation, detail loss, or reduced diversity caused by overly strong guidance \cite{ho2022cfg,castillo2023adaptive}. In addition, the development of latent diffusion, high-resolution diffusion, and Transformer-based diffusion models further shows the close relationship among generation quality, noise schedules, conditional injection, and network architecture \cite{rombach2022ldm,esser2024scaling,blackforestlabs2024flux,loshchilov2019decoupled,cherti2023reproducible,nichol2022glide,saharia2022photorealistic,peebles2023scalable}.
+
+These methods all exploit the staged nature of denoising to regulate conditional strength. However, different control signals act through different mechanisms. CFG scheduling adjusts the weight between conditional and unconditional predictions, mainly affecting the balance among semantic control, diversity, and visual fidelity. By contrast, the scale of a geometric adapter acts directly on intermediate features or residual branches, controlling how strongly geometric conditions intervene in the generation process. ControlNet-style scale control is closer in spirit, but it is still usually interpreted as a condition-adherence strength; directly applying a larger, smaller, or smoothly decayed control scale does not specify which denoising stage should receive strong geometric residuals for texture generation.
+
+This distinction matters because the desired schedule for geometry-controlled texture generation is not necessarily monotonic. Decay or warm-up can reduce over-control in one part of the trajectory, but cannot simultaneously avoid unstable early residuals, strengthen mid-stage geometry refinement, and weaken late residuals that compete with color and high-frequency texture formation. Adapter scheduling therefore requires a dedicated analysis of geometric residual injection rather than a direct transfer of CFG or generic ControlNet scale scheduling.
+
+\section{Method}
+\label{sec:method}
+
+\subsection{Task Definition and Base Pipeline}
+\label{subsec:task}
+
+This paper builds on the MVPainter-style geometry-controlled multi-view texture generation framework \cite{shao2025mvpainter} and studies how the inference-time strength of geometric condition injection affects the generated results. Given a single reference image and the corresponding 3D geometry, the base pipeline first generates RGB texture images from six target views and then obtains a textured mesh through projection or texture baking. We do not modify the base UNet, VAE, or pretrained adapter weights. Instead, the adapter scaling factor is treated as the key inference-time control variable.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1.pdf}
+\caption{Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the residual strength according to denoising stages to balance geometric consistency and texture fidelity. The final multi-view outputs are projected and baked into a textured 3D mesh.}
+\label{fig:overview}
+\end{figure*}
+
+During multi-view diffusion, the 3D geometry is rendered into normal maps, depth maps, and foreground masks, denoted as:
+\begin{equation}
+G = \{G_\text{normal}, G_\text{depth}, G_\text{mask}\}.
+\end{equation}
+
+The geometric adapter maps these conditions to a residual correction term and injects it into the intermediate hidden states of the UNet. For the $t$-th denoising step, the adapter injection can be written as:
+\begin{equation}
+h'_t = h_t + s(p_t) \cdot A_\phi(h_t, G),
+\label{eq:injection}
+\end{equation}
+where $h_t$ and $h'_t$ denote the hidden states before and after injection, $p_t$ denotes the sampling progress, and $s(p_t)$ is the adapter scaling strength at the current denoising stage. This formulation highlights a key difference from CFG-style guidance: changing $s(p_t)$ does not reweight two predicted scores, but changes the magnitude of a geometry-conditioned residual added to the feature stream. A larger $s$ usually enhances geometric condition adherence. Whether it is beneficial, however, depends on \emph{when} it is applied: the denoising process performs different functions at different stages, and a residual that is constructive in one stage can be disruptive in another (Section~\ref{subsec:cai}). This paper therefore studies how to schedule $s$ during denoising to balance shape consistency and texture detail preservation.
+
+\subsection{Shape-Texture Diagnostic Metrics}
+\label{subsec:metrics}
+
+Adapter scaling cannot be evaluated by a single structural metric. We use shape and structure metrics based on SSIM \cite{wang2004ssim} (FG-SSIM, Edge-SSIM, Crop-SSIM), signal/perceptual metrics (PSNR and LPIPS \cite{zhang2018lpips}), and texture diagnostics (Laplacian variance, RGB standard deviation, gradient magnitude) to measure how foreground statistics deviate from ground truth under different schedules.
+
+Laplacian variance, RGB standard deviation, and gradient magnitude are not standalone perceptual texture-quality metrics: larger values can arise from coherent material detail, but also from noise, color overshoot, or artifacts, and smaller values can indicate either conservative smoothing or genuine variation loss. We therefore use them only as proxy indicators of how far the foreground statistics depart from ground truth, and always interpret them together with paired comparisons under identical views and masks and local visual audits checking whether retained variation is coherent appearance rather than random artifacts.
+
+Taking Laplacian variance as an example, the foreground texture response is defined as:
+\begin{equation}
+M_\text{tex} = \text{Var}(\text{Lap}(I_\text{out} \odot G_\text{mask})),
+\end{equation}
+where Lap denotes the Laplacian filter, $G_\text{mask}$ denotes the foreground mask, and Var denotes spatial variance. A larger $M_\text{tex}$ usually corresponds to stronger local high-frequency variation, but it is not necessarily equivalent to better texture. On the adapter studied here, the failure mode of aggressive uniform scaling is the opposite of simple flattening: it over-injects high-frequency response and saturates foreground color (Section~\ref{subsec:tradeoff}). Texture conclusions therefore rest on agreement across the three diagnostics, the visual audits, CLIP-IQA, and the preference study rather than on any single statistic.
+
+\subsection{Timestep-Conditioned Adapter Scaling}
+\label{subsec:tcas}
+
+The diffusion denoising process is stage-dependent: early steps mainly establish the global layout and coarse contours; middle steps refine geometric structure and cross-view alignment; late steps are more responsible for color, material, and local texture synthesis. Based on this observation, we propose Timestep-Conditioned Adapter Scaling (TCAS), which replaces a globally fixed adapter scale with a stage-dependent scale function. TCAS is not intended as a generic smooth guidance schedule. Its low-high-low form encodes the adapter-specific hypothesis that geometry residuals should be strongest only after coarse structure becomes stable and before late texture synthesis dominates.
+
+To avoid ambiguity caused by different raw timestep directions in different schedulers, we use sampling progress $p$ to represent the denoising process, where $p = 0$ denotes the start from noise and $p = 1$ denotes the end of sampling close to the final image state. TCAS divides denoising into early, middle, and late stages:
+\begin{equation}
+s(p) = \begin{cases} s_e, & 0 \leq p < 1/3 \\ s_m, & 1/3 \leq p < 2/3 \\ s_l, & 2/3 \leq p \leq 1 \end{cases}.
+\label{eq:tcas}
+\end{equation}
+
+The selected C3 configuration used in this paper is:
+\begin{equation}
+(s_e, s_m, s_l) = (1.25, 2.50, 1.25).
+\end{equation}
+
+This design follows three principles. First, the early stage uses a conservative scale to avoid disrupting global structure formation with strong geometric residuals. Second, the middle stage uses a higher scale to strengthen geometric constraints from normals, depth maps, and foreground contours. Third, the late stage reduces the scale again to prevent geometric residuals from suppressing color variation, material detail, and high-frequency texture synthesis. This non-monotonic schedule is therefore different from simply decaying or increasing the adapter strength across all timesteps. TCAS introduces no new parameters and does not modify the base model or adapter weights; it only replaces the scaling factor during inference, so its computational overhead is negligible.
+
+\subsection{Why Mid-Stage Concentration Is Selected: The CAI Model}
+\label{subsec:cai}
+TCAS's low--high--low form is derived from measurable stage utilities rather than an assumed alignment curve. Let $Q$ be the primary fidelity objective (PSNR here), and let $L$ denote the fixed-low schedule. For stage $k\in\{e,m,l\}$, define the finite-difference utility of activating the high scale only in that stage as
+\begin{equation}
+U_k = Q(s_k=s_{\max},s_{j\ne k}=s_{\min})-Q(L)=A_k-I_k,
+\label{eq:cai-utility}
+\end{equation}
+where $A_k$ is the alignment benefit and $I_k$ is the measured interference cost; neither component is assumed to be directly observable. Under the additive stage approximation
+\begin{equation}
+Q(s_e,s_m,s_l)\approx Q(L)+\sum_{k\in\{e,m,l\}}U_k\,z_k,
+\quad z_k\in\{0,1\},
+\label{eq:cai-additive}
+\end{equation}
+the bounded optimization is separable, and the solution is bang--bang: choose $s_{\max}$ when the measured utility is positive and $s_{\min}$ when it is negative. For a multi-objective texture task, $U_k$ is a vector rather than a universal scalar: PSNR is the fidelity objective, while FG-SSIM and LapVar act as structural/artifact guardrails. A stage with no structural gain but only a small fidelity change is assigned the conservative value as a tie-break. This is a conditional rule, not a claim that an unmeasured alignment profile or a hand-chosen penalty is globally optimal.
+
+The 24-object v2 ablation provides the required sign and guardrail test. Relative to fixed-low (PSNR $16.19$), the paired utilities are $U_e^{\rm PSNR}=-0.788$ dB, $U_m^{\rm PSNR}=+0.574$ dB, and $U_l^{\rm PSNR}=+0.077$ dB. Early-high raises the foreground Laplacian-variance ratio to $3.85$ times fixed-low and drops FG-SSIM to $0.206$, whereas late-high leaves FG-SSIM statistically unchanged and has a LapVar ratio of $0.90$. Thus the measured evidence supports conservative early scaling, a strong middle scale, and a conservative late tie-break, producing C3. The small positive late PSNR utility is explicitly retained rather than hidden; it is why the conclusion is a conditional shape--texture choice rather than a universal scalar optimum.
+
+This is a conditional result for the tested checkpoint, adapter, scheduler, and metric. Changing residual magnitude, per-layer caps, checkpoint, or scale semantics changes the measured $U_k$ and requires recalibration. The CAI model therefore explains how a low--high--low schedule follows from observed stage utilities; it does not establish an adapter-independent universal optimum or determine the numerical scales $1.25$ and $2.50$.
+
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Experimental Setup}
+\label{subsec:setup}
+
+Experiments are conducted using an MVPainter-style geometry-controlled multi-view diffusion pipeline. Each object contains a single reference image and corresponding 3D geometry. During preprocessing, the 3D geometry is rendered into target-view normal maps, depth maps, foreground masks, and ground-truth RGB images. The model generates six target views at a time, and all comparisons with ground-truth renderings are performed under unified views, resolution, and foreground masks.
+
+All comparisons keep the object list, reference image, target views, random seed, base UNet, VAE, adapter weights, and number of denoising steps fixed; only the adapter scale or schedule is changed. The number of sampling steps is 50, and a fixed seed is used for the initial latents so that all schedules within an experiment share the same noise trajectory. C3 is selected using only a 24-object probe set; the same schedule is then frozen and applied unchanged to the 300-object validation set, where no parameter search is performed. The uniform-scale diagnosis, the stage ablation, and the scheduling baselines therefore differ only in the temporal profile of adapter scale, isolating the effect of scheduling from changes in model architecture, training data, or sampling budget.
+
+Accordingly, the main comparisons are among inference-time adapter scaling strategies under the same base pipeline, not among different texture generation architectures. Uniform scales serve as deployment baselines and as the diagnostic reference for the failure of naive scaling, a stage ablation localizes where high scale is harmful, and the scheduling baselines test whether the temporal profile resolves the failure. In addition, we compare against the base pipeline without any geometric adapter (scale $s=0$), which serves as a reference for texture generation approaches that do not inject geometry-conditioned residuals. This no-adapter baseline is reported both on the 24-object probe set (Table~\ref{tab:generic_schedule}) and on the 300-object validation set (Table~\ref{tab:300obj_noadapter}), so the comparison to non-adapter texture generation is available at the same scale as the main validation.
+
+We use the following evaluation sets, all drawn from the same validation pool: (1) a 24-object probe set for the uniform-scale diagnosis, the stage ablation, and thirteen scheduling variants, from which C3 is selected; (2) a 300-object validation set for testing the frozen C3 schedule, uniform baselines, the no-adapter pipeline, the texture diagnostics, and the third-party baseline without re-searching TCAS; (3) a 50-object subset for CLIP-IQA; and (4) a 30-object subset for the blinded preference study.
+
+Metrics include shape/structure (FG-SSIM, Edge-SSIM, Crop-SSIM), signal/perceptual fidelity (PSNR, LPIPS), and texture diagnostics (Laplacian variance, RGB standard deviation, gradient magnitude). Metrics are averaged over six target views and objects; texture conclusions additionally use object-level win rates, significance tests, and local audits to avoid relying on a single structural or high-frequency statistic.
+
+\subsection{Shape-Texture Trade-off of Adapter Scaling}
+\label{subsec:tradeoff}
+
+Uniform scaling applies a single adapter scale to every denoising step and every network layer. Table~\ref{tab:sweep} sweeps this scale on the 24-object probe set, from the adapter-free pipeline ($s = 0$) to aggressive scaling ($s = 2.50$). Signal fidelity rises steeply with moderate control, peaks near $s \approx 1.75$, and then declines, while foreground SSIM keeps collapsing and the foreground RGB-standard-deviation ratio to ground truth explodes from about $4\times$ to $27\times$. Figure~\ref{fig:qualitative} shows the failure qualitatively: aggressive scaling over-saturates foreground color and injects excess high-frequency response, while the adapter-free pipeline under-constrains geometry.
+
+\begin{table}[t]
+\centering
+\caption{Uniform adapter scaling on the 24-object probe set (Section~\ref{subsec:setup}). PSNR peaks at a moderate scale and then declines, while foreground SSIM collapses and the foreground RGB-standard-deviation ratio to ground truth explodes at the aggressive end, indicating color overshoot and high-frequency artifact amplification rather than texture flattening.}
+\label{tab:sweep}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Scale & PSNR$\uparrow$ & FG-SSIM$\uparrow$ & RGB-Std ratio \\
+\midrule
+$s = 0$ (no adapter) & 14.07 & 0.3015 & 4.23 \\
+$s = 1.00$ & 15.94 & 0.3370 & 2.36 \\
+$s = 1.25$ & 16.15 & 0.3116 & 3.77 \\
+$s = 1.75$ & 16.24 & 0.2567 & 14.70 \\
+$s = 2.25$ & 15.70 & 0.2107 & 23.88 \\
+$s = 2.50$ & 15.53 & 0.1880 & 27.17 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Two distinct regimes emerge. Below a moderate scale the adapter under-constrains geometry: the adapter-free pipeline reaches only 14.07~dB PSNR and its foreground Laplacian variance is dominated by unconstrained noise. Above it, over-injected geometric residuals do not simply wash out detail; they saturate foreground color and amplify high-frequency response while structure itself degrades (FG-SSIM falls from 0.31 to 0.19 between $s = 1.25$ and $s = 2.50$). No single uniform scale resolves this trade-off -- the PSNR optimum near $s \approx 1.75$ already shows collapsed FG-SSIM (0.257) -- which motivates a schedule that varies adapter strength across the denoising trajectory.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig4.pdf}
+\caption{Qualitative failure of aggressive uniform scaling. Three objects are shown as zoom-in crops (with a small thumbnail indicating the crop location in the source view) under GT, conservative scaling $s = 1.25$, and aggressive scaling $s = 2.50$. Compared with $s = 1.25$, the aggressive scale over-saturates foreground color, blows out highlights, and injects excess high-frequency artifacts rather than smoothing texture. Dark-gray borders denote GT, green borders conservative scaling, and red borders aggressive scaling.}
+\label{fig:qualitative}
+\end{figure*}
+
+\subsection{Stage Ablation: Where High Scale Is Harmful}
+\label{subsec:stageablation}
+
+The CAI model predicts that the utility of a high-scale intervention is stage-dependent. To localize it, we run a stage ablation on the 24-object probe set: we apply the high scale $s = 2.50$ only within a single third of the denoising trajectory and $s = 1.25$ elsewhere, and compare the three resulting schedules against the two uniform endpoints and C3. Table~\ref{tab:stageablation} reports the outcome.
+
+\begin{table}[t]
+\centering
+\caption{Stage ablation on the 24-object probe set (Section~\ref{subsec:setup}). ``High'' denotes $s = 2.50$ applied in the indicated third of the denoising trajectory, with $s = 1.25$ in the remaining steps. FG-Lap Var is the foreground Laplacian variance (an elevated value here indicates injected high-frequency response) and MAE the foreground mean absolute error. Early-stage high scaling reproduces the structural damage and artifact amplification of uniform high scaling; late-stage high scaling preserves structure but does not recover signal fidelity; concentrating the high scale in the middle stage (C3) achieves the best fidelity.}
+\label{tab:stageablation}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Schedule & PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-Lap Var & MAE$\downarrow$ \\
+\midrule
+Fixed low ($1.25$) & 16.19 & 0.311 & 0.0059 & 1.18 \\
+Fixed high ($2.50$) & 15.50 & 0.188 & 0.0191 & 1.20 \\
+Early-stage high & 15.40 & 0.206 & 0.0190 & 1.23 \\
+Mid-stage high & 16.76 & 0.297 & 0.0050 & 1.10 \\
+Late-stage high & 16.27 & 0.311 & 0.0055 & 1.18 \\
+C3 (TCAS) & 16.77 & 0.297 & 0.0051 & 1.10 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+The ablation is consistent with the conditional CAI prediction. Relative to fixed-low, paired finite differences give $U_e^{\rm PSNR}=-0.788$ dB (95\% CI $[-1.420,-0.156]$), $U_m^{\rm PSNR}=+0.574$ dB (CI $[0.391,0.756]$), and $U_l^{\rm PSNR}=+0.077$ dB (CI $[0.006,0.149]$). Early-stage high scaling also reduces FG-SSIM by $0.105$ (CI $[-0.141,-0.069]$) and raises LapVar to $3.85\times$ fixed-low, confirming that early intervention is damaging. Late-stage high scaling is nearly neutral for structure: its FG-SSIM change is $+0.001$ (CI $[-0.002,0.003]$) and its LapVar ratio is $0.90$, so the data do not support an intrinsically harmful late stage. Middle-stage high scaling gives the largest useful fidelity gain, with only a modest FG-SSIM decrease of $0.014$.
+
+The positive but small late PSNR utility also exposes an important limitation of a purely additive derivation: stage effects interact. The measured one-stage utilities therefore establish the ordering of the useful intervention (early harmful, middle strongly beneficial, late structurally neutral), but they do not by themselves predict the exact value of a three-stage schedule. We consequently use the additive model only as a conditional stage-selection approximation and validate the complete C3 schedule directly. The middle-third-high schedule is identical to C3 by construction and reaches 16.76 dB versus 16.77 dB for C3, within run-to-run variation; the frozen C3 then wins the broader scheduling comparison and transfers without re-searching.
+
+\subsection{Timestep-Conditioned Adapter Scaling: Shape-Texture Balance of C3}
+\label{subsec:c3}
+
+The stage ablation tells us \emph{where} the high scale is harmful; we now search \emph{how} to schedule it. We compare thirteen scheduling variants on the 24-object probe set and freeze the selected schedule before 300-object validation. The variants include uniform baselines, generic guidance-style schedules, $\sigma$-domain schedules, and per-layer refinements, ruling out the simple explanation that any stronger control scale or guidance-like schedule solves the problem.
+
+All variants share the identical pipeline, objects, seed, 50 denoising steps, and initial latents, so they differ only in the temporal profile of adapter scale. The probe objective is not the highest structural score, but a stable compromise that avoids the trap of ``higher structural metrics but corrupted texture.'' A schedule that improves FG-SSIM through late strong residuals while amplifying high-frequency artifacts does not solve the adapter-specific conflict.
+
+To test whether generic CFG or ControlNet-style scheduling can solve the trade-off, we evaluate linear decay, cosine decay, linear warm-up, and a smooth cosine bump on the same 24-object probe set, with fixed low/high endpoints and identical pipeline, objects, seed, 50 denoising steps, and metrics.
+
+\begin{table*}[t]
+\centering
+\caption{Comparison with the base pipeline and generic guidance-style schedules on the 24-object probe set. The table reports structural and signal-fidelity metrics together with diagnostic assessment. Probe-set Laplacian/RGB diagnostic ratios are not used as texture-quality scores here because extremely large values can be dominated by unstable color or noise amplification; they serve only to flag artifact-prone schedules.}
+\label{tab:generic_schedule}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccll}
+\toprule
+Schedule & Form & FG-SSIM$\uparrow$ & PSNR$\uparrow$ & Probe diagnostic outcome & Assessment \\
+\midrule
+No adapter & $0$ (base pipeline) & 0.3015 & 14.07 & Unconstrained artifacts & No geometric control \\
+Fixed low & $1.25$ uniform & $\mathbf{0.3116}$ & 16.15 & Conservative variation & Reference \\
+Fixed high & $2.50$ uniform & 0.1880 & 15.53 & Artifact amplification & Over-controlled/artifact-prone \\
+Linear decay & $2.50 \rightarrow 1.25$ & 0.2096 & 15.58 & Artifact amplification & Unstable geometry/artifacts \\
+Cosine decay & $2.50 \rightarrow 1.25$ & 0.2055 & 15.47 & Artifact amplification & Unstable geometry/artifacts \\
+Linear warm-up & $1.25 \rightarrow 2.50$ & 0.2953 & 16.39 & Late-stage over-control & Over-constrained texture stage \\
+Cosine bump & $1.25 \rightarrow 2.50 \rightarrow 1.25$ & 0.2529 & 16.10 & Insufficient middle concentration & Weak geometry \\
+$\sigma$-decay & $2.50 \rightarrow 1.25$ ($\sigma$ domain) & 0.2346 & 16.11 & Artifact amplification & Unstable geometry/artifacts \\
+$\sigma$-bump & $1.25 \rightarrow 2.50 \rightarrow 1.25$ ($\sigma$ domain) & 0.2376 & 16.13 & Artifact amplification & Unstable geometry/artifacts \\
+Gaussian peak & $1.25 \rightarrow 2.50 \rightarrow 1.25$ (Gaussian) & 0.2798 & 16.55 & Over-constrained texture stage & Weak geometry \\
+Trapezoid & $1.25 \rightarrow 2.50 \rightarrow 1.25$ (trapezoid) & 0.2773 & 16.61 & Over-constrained texture stage & Weak geometry \\
+Per-layer 5-phase & TCAS-V2 & 0.2111 & 15.11 & Artifact amplification & Over-refined/unstable \\
+C3 (TCAS) & $1.25 \rightarrow 2.50 \rightarrow 1.25$ piecewise & 0.2956 & $\mathbf{16.76}$ & \underline{Stable diagnostics} & \underline{Best trade-off} \\
+\bottomrule
+\end{tabular}% 
+}
+\end{table*}
+
+Table~\ref{tab:generic_schedule} shows that common guidance schedules do not solve the problem. Decay schedules start with strong early residuals and still retain high late strength, producing unstable outputs and lower PSNR. Warm-up avoids early over-control but peaks in the late texture-synthesis stage, and its probe FG-SSIM (0.295) is closest to C3 yet its PSNR (16.39) remains below C3 (16.76). The cosine bump is shaped like C3, but its effective high-scale duration is shorter than the full middle third used by C3. C3 therefore obtains the highest PSNR (16.76) and higher FG-SSIM than the monotonic decay and smooth bump schedules, winning FG-SSIM on all 24 objects over fixed high, linear decay, cosine decay, and cosine bump; against linear warm-up it matches FG-SSIM (0.296 vs.\ 0.295) while exceeding its PSNR (16.76 vs.\ 16.39). Although fixed-low scaling has a higher probe FG-SSIM than C3, it is included only as a conservative reference: on the 300-object validation set, C3 pays a small FG-SSIM cost relative to $s = 1.25$ (0.371 vs.\ 0.389) while improving PSNR by 0.55 dB and maintaining higher edge alignment (Table~\ref{tab:300obj}). The goal is therefore not to beat fixed low on every metric, but to obtain a schedule that transfers with better geometry-texture balance. The probe diagnostics are used only to flag unstable amplification or over-control, while the larger 300-object study reports the same texture diagnostics with a consistent $s=1.25$ reference (Table~\ref{tab:texture300}).
+
+The base pipeline itself, obtained by setting the adapter scale to zero (no geometric residual injection), provides a reference for comparing against texture generation approaches without a geometry-conditioned adapter. On the same 24-object probe set, this no-adapter baseline reaches a PSNR of only 14.07, 2.7~dB below C3 (16.76), and C3 wins on PSNR for all 24 objects. Although the no-adapter baseline attains a foreground SSIM comparable to C3 (0.3015 vs.\ 0.2956), its high-frequency diagnostic is dominated by unconstrained artifacts (probe Lap Var ratio 1.77 vs.\ 0.43 for C3), again illustrating that a single structural score does not reflect signal fidelity or coherent texture. The geometric adapter therefore provides substantial structure alignment, and TCAS preserves this benefit while improving fidelity.
+
+We further test whether stronger scheduling baselines can replace C3. Scheduling the adapter scale by the actual scheduler noise level $\sigma$ rather than the sampling progress $p$ (a Gaussian bump and a monotonic decay in the $\sigma$ domain) yields FG-SSIM of 0.238 and 0.235, far below C3 (0.296), with C3 winning on all 24 objects. Applying finer per-layer 5-phase schedules (TCAS-V2) also underperforms C3 (FG-SSIM 0.211), and smoother non-monotonic variants such as a Gaussian peak or a trapezoid (FG-SSIM 0.280 and 0.277) still fall short of C3 on PSNR (16.55 and 16.61 vs.\ 16.76). Thus, the advantage of TCAS does not arise from choosing the progress axis over the noise axis, from per-layer refinement, or from smoothing the mid-stage plateau; the simple uniform-across-layers three-stage C3 remains the best shape-texture trade-off.
+
+The C3 configuration uses $s = 1.25$ in early/late stages and $s = 2.50$ in the middle stage. This follows the denoising-stage roles captured by the CAI model: early latents are noisy and alignment is low, middle signals support geometry refinement at maximal alignment, and late steps synthesize color, material, and fine texture, where adapter intervention should recede.
+
+We additionally test the sensitivity of the C3 design choices rather than treating its boundaries and peak scale as uniquely optimal. On the same 24-object probe set, we sweep high-scale windows $[0.25,0.75)$, $[1/3,2/3)$, and $[0.4,0.6)$, together with peak scales from 2.00 to 3.00. The canonical middle-third window remains in the best-performing region: its 2.50 setting achieves 16.71 dB PSNR, while the best setting in that window (2.75) achieves 16.79 dB. The broader and narrower windows achieve at most 16.73 and 16.62 dB, respectively. This confirms that C3 is a robust middle-stage choice rather than a boundary-sensitive point estimate.
+
+Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and uniform adapter scaling. The zoom-in crops make the intended comparison visible: conservative scaling preserves more natural color but provides weaker structural correction, whereas aggressive scaling strengthens geometric constraints but over-saturates color and injects high-frequency artifacts. C3 applies strong geometric correction in the middle stage and reduces adapter intervention in the late stage, thereby avoiding the artifact amplification of $s = 2.50$ while retaining stronger geometric correction than the conservative scale.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig6.pdf}
+\caption{Qualitative comparison between C3 and uniform adapter scaling. Three objects are shown as zoom-in crops (with a small thumbnail indicating the crop location) under GT, conservative uniform scaling $s = 1.25$, aggressive uniform scaling $s = 2.50$, and C3 (TCAS). Compared with $s = 2.50$, C3 retains more natural color and avoids high-frequency artifact amplification in the zoom-in regions, while retaining structural fidelity comparable to the conservative scale with higher signal fidelity (Table~\ref{tab:300obj}). Orange borders denote C3 outputs.}
+\label{fig:c3compare}
+\end{figure}
+
+Mechanistically, C3 is tied to denoising-stage behavior rather than validation-set tuning or a generic monotonic rule. The stage ablation in Section~\ref{subsec:stageablation} localizes this: early-stage high residuals are unstable under high noise and low alignment, middle-stage signals make normals/depth/contours most effective, and late strong residuals compete with color, material, and fine texture synthesis. Stronger ControlNet-like scaling alone therefore does not resolve the conflict.
+
+As a scale-up test against the strongest non-C3 probe competitors, we transfer the trapezoid and Gaussian-peak schedules unchanged to all 300 validation objects. C3 improves PSNR by 0.255 dB and 0.318 dB over these schedules, winning on 223/300 and 253/300 objects, respectively. It also wins foreground SSIM on 268/300 and 263/300 objects, with paired 95\% confidence intervals for the PSNR differences of [0.207, 0.302] dB and [0.278, 0.358] dB. These results show that the C3 advantage is not limited to the original uniform baselines or to the 24-object search set.
+
+\FloatBarrier
+
+\subsection{Large-scale Validation}
+\label{subsec:largescale}
+
+As a transfer test rather than another search, we compare conservative uniform scaling ($s = 1.25$), aggressive uniform scaling ($s = 2.50$), and fixed C3 (TCAS) on 300 objects.
+
+\begin{table}[t]
+\centering
+\caption{Large-scale validation on 300 objects. Values are absolute metrics of generated outputs with respect to ground truth.}
+\label{tab:300obj}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Method & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & PSNR$\uparrow$ & FG-LPIPS$\downarrow$ \\
+\midrule
+$s = 1.25$ & 0.389 & 0.202 & 18.57 & 0.190 \\
+$s = 2.50$ & 0.233 & 0.182 & 17.24 & 0.257 \\
+C3 (TCAS) & 0.371 & $\mathbf{0.204}$ & $\mathbf{19.12}$ & $\mathbf{0.191}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+Table~\ref{tab:300obj} shows that aggressive uniform scaling $s = 2.50$ has the lowest structural fidelity, signal fidelity, and edge alignment across all methods, consistent with over-control of the adapter residuals. C3 achieves the highest PSNR (19.12) and edge alignment, at a small structural cost relative to the conservative reference (FG-SSIM 0.371 vs.\ 0.389), indicating that timestep-conditioned scaling trades a small amount of foreground similarity for substantially higher signal fidelity and edge alignment.
+
+To compare against texture generation approaches that do not use a geometry-conditioned adapter, we additionally evaluate the base pipeline with the adapter scale set to zero on the same 300 objects (Table~\ref{tab:300obj_noadapter}). This provides a consistent reference at the same scale as the main validation, complementing the probe-scale comparison in Table~\ref{tab:generic_schedule}.
+
+\begin{table}[t]
+\centering
+\caption{Comparison with the base pipeline (no adapter) on 300 objects. Values are absolute metrics of generated outputs with respect to ground truth. C3 wins on PSNR for 297/300 objects over the no-adapter baseline.}
+\label{tab:300obj_noadapter}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Method & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & PSNR$\uparrow$ & FG-LPIPS$\downarrow$ \\
+\midrule
+No adapter & 0.384 & 0.182 & 16.16 & 0.218 \\
+$s = 1.25$ & 0.389 & 0.202 & 18.57 & 0.190 \\
+$s = 2.50$ & 0.233 & 0.182 & 17.24 & 0.257 \\
+C3 (TCAS) & 0.371 & $\mathbf{0.204}$ & $\mathbf{19.12}$ & $\mathbf{0.191}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+On this 300-object set, the no-adapter baseline reaches a PSNR of 16.16, 2.96~dB below C3 (19.12), and C3 wins on PSNR for 297 of 300 objects. Although the no-adapter baseline has a foreground SSIM comparable to C3 (0.384 vs.\ 0.371), its signal fidelity is substantially lower and its foreground LPIPS is worse (0.218 vs.\ 0.191). This mirrors the probe-scale finding: a single structural score does not reflect signal fidelity, and TCAS preserves the geometric adapter's alignment benefit while improving fidelity over the base pipeline. The no-adapter baseline also has lower edge alignment (Edge-SSIM 0.182 vs.\ 0.204), indicating weaker contour adherence without geometric residuals.
+
+As an independent third-party comparison, we also evaluate SF3D \cite{sf3d2024}, a feed-forward single-image 3D reconstruction method that jointly predicts geometry and UV-mapped texture without using any geometric condition input. We run SF3D from the same reference images on 298 objects, render its reconstructed meshes under the same target-view cameras using differentiable rasterization, and compute the same metrics against GT. SF3D achieves a mean PSNR of 15.95, 3.01~dB below C3 (18.96 on the matched set). Its FG-SSIM (0.419) is higher than C3 (0.369), which again illustrates that foreground structural similarity alone does not capture signal fidelity: SF3D's reconstructed geometry may produce plausible silhouettes, but its texture detail and color accuracy are substantially worse. This confirms that geometry-controlled multi-view texture generation with TCAS provides a meaningful advantage over reconstruction-based approaches that do not leverage given geometry.
+
+Because PSNR is not a texture-quality metric, we further compute Laplacian variance, RGB standard deviation, and gradient magnitude on the same 300 objects as diagnostic evidence of how the foreground statistics deviate from ground truth. All results use the same objects, seed, 50 denoising steps, and adapter weights (Section~\ref{subsec:setup}).
+
+\begin{table}[t]
+\centering
+\caption{Foreground texture diagnostics on the same 300 objects (Section~\ref{subsec:setup}). Values are foreground mean absolute statistics; the last three columns are the mean over objects of each per-object ratio to the corresponding ground-truth statistic (equal object weighting). Aggressive uniform scaling $s = 2.50$ blows up the RGB standard deviation ratio to ground truth to $18.4\times$ on average (vs.\ $3.3\times$ for $s = 1.25$), consistent with color overshoot and high-frequency artifact amplification rather than texture flattening. C3 keeps the RGB ratio comparable in magnitude to the conservative reference ($5.7\times$ vs.\ $3.3\times$) and far below the aggressive end, while retaining higher structural fidelity (Table~\ref{tab:300obj}).}
+\label{tab:texture300}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc|ccc}
+\toprule
+Method & Lap Var & RGB Std & Grad Mag & Lap/GT & RGB/GT & Grad/GT \\
+\midrule
+$s = 1.25$ & 0.0050 & 0.0563 & 0.1934 & 0.54 & 3.33 & 0.72 \\
+$s = 2.50$ & 0.0162 & 0.2979 & 0.3842 & 1.99 & 18.35 & 1.49 \\
+C3 (TCAS) & 0.0044 & 0.0909 & 0.2194 & 0.47 & 5.73 & 0.82 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+Table~\ref{tab:texture300} shows the opposite of a texture-flattening signature. Aggressive uniform scaling $s = 2.50$ produces a foreground RGB standard deviation of 0.298 against a ground-truth mean of 0.047, with a mean per-object ratio to ground truth of $18.4\times$, and a Laplacian variance ratio above one, indicating injected high-frequency response rather than removed texture. C3, by contrast, keeps the RGB ratio at 5.73, comparable in magnitude to the conservative reference $s = 1.25$ (3.33) and far below the aggressive end (18.35), and the lowest Laplacian ratio (0.47), showing that the middle-concentrated schedule avoids the aggressive end's color overshoot and artifact amplification while still improving structural fidelity and signal fidelity (Table~\ref{tab:300obj}). These diagnostics are interpreted together with the qualitative comparisons in Figure~\ref{fig:qualitative} and Figure~\ref{fig:c3compare}, since high-frequency statistics alone cannot distinguish coherent material detail from noise.
+
+Object-level statistics confirm that the C3 advantage over aggressive scaling is not driven by a few objects: C3 achieves higher PSNR than $s = 2.50$ on 275 of 300 objects (mean $+1.87$~dB) and higher FG-SSIM on 286 of 300 objects. Relative to the conservative reference $s = 1.25$, C3 improves PSNR on 237 of 300 objects (mean $+0.55$~dB) at a small but statistically significant FG-SSIM cost ($-0.018$, 95\%~CI $[-0.022,\,-0.015]$); its foreground LPIPS difference is not significant (95\%~CI crosses zero) and its edge alignment is slightly higher. On RGB standard deviation C3 stays closer to the conservative reference than to the aggressive end on the large majority of objects.
+
+\paragraph{Perceptual validation with CLIP-IQA}
+To address the concern that proxy texture statistics do not directly measure perceptual quality, we additionally evaluate CLIP-IQA \cite{wang2023clipiqa}, which builds on CLIP representations \cite{radford2021clip}, on a 50-object validation subset as a complementary no-reference perceptual signal. CLIP-IQA is used as complementary perceptual evidence rather than a complete replacement for human preference evaluation.
+
+\begin{table}[t]
+\centering
+\caption{CLIP-IQA perceptual validation on 50 validation objects. Scores are reported for foreground regions and full rendered views. Higher is better.}
+\label{tab:clipiqa}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Method & CLIP-IQA (FG)$\uparrow$ & CLIP-IQA (Full)$\uparrow$ & Win vs. $s=2.50$ \\
+\midrule
+$s = 1.25$ & $\mathbf{0.4920 \pm 0.0032}$ & $\mathbf{0.4918 \pm 0.0030}$ & $\mathbf{98.0\%}$ \\
+$s = 2.50$ & $0.4860 \pm 0.0018$ & $0.4857 \pm 0.0017$ & -- \\
+C3 (TCAS) & $0.4906 \pm 0.0028$ & $0.4903 \pm 0.0025$ & 94.0\% \\
+\bottomrule
+\end{tabular}% 
+}
+\end{table}
+
+Table~\ref{tab:clipiqa} shows that C3 achieves a foreground CLIP-IQA score of 0.4906 versus 0.4860 for $s = 2.50$, winning on 94.0\% of objects. The paired test is significant ($p < 10^{-6}$), with a 95\% confidence interval of [0.0037, 0.0054]. The ordering $s = 1.25$ $>$ C3 $>$ $s = 2.50$ supports the diagnosis that aggressive scaling reduces perceptual quality, while TCAS recovers most of this loss with stronger geometry than conservative scaling.
+
+\paragraph{Blinded preference study}
+To further examine whether the diagnostic texture differences are perceptually meaningful, we conducted a blinded three-alternative forced-choice preference study on 30 validation objects. Twenty-four participants viewed anonymized results from conservative uniform scaling, aggressive uniform scaling, and C3 in randomized order, and selected the best result for texture naturalness, shape consistency, and overall quality. This yields 720 valid first-choice decisions for each criterion. The study complements the proxy diagnostics by testing whether the observed texture and structure differences are reflected in human preference.
+
+\begin{table}[!htbp]
+\centering
+\caption{Blinded three-alternative first-choice preference study. Percentages are computed over 720 valid decisions per criterion.}
+\label{tab:preference}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Method & Texture naturalness$\uparrow$ & Shape consistency$\uparrow$ & Overall quality$\uparrow$ \\
+\midrule
+$s = 1.25$ & $\mathbf{332/720\ (46.1\%)}$ & 96/720 (13.3\%) & 176/720 (24.4\%) \\
+$s = 2.50$ & 104/720 (14.4\%) & $\mathbf{331/720\ (46.0\%)}$ & 126/720 (17.5\%) \\
+C3 (TCAS) & 284/720 (39.4\%) & 293/720 (40.7\%) & $\mathbf{418/720\ (58.1\%)}$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+\FloatBarrier
+
+The preference pattern in Table~\ref{tab:preference} follows the intended trade-off. Conservative scaling is most often selected for texture naturalness, while aggressive scaling is most often selected for shape consistency. C3 stays close to both single-scale baselines on their respective strengths and receives the highest overall preference, with 58.1\% of all overall-quality votes. Thus, TCAS is not claimed to maximize every individual criterion; it provides a perceptually preferred balance between geometric adherence and texture preservation.
+
+Overall, the 300-object experiments show that TCAS maintains structural alignment while avoiding the artifact amplification and color overshoot of full high-scale scaling. C3 still shows some diagnostic deviation from ground truth relative to $s = 1.25$, so we do not claim that TCAS eliminates texture deviation or guarantees superior texture in every case. Instead, the metric, CLIP-IQA, visual, and preference evidence jointly indicate that it avoids the high-scale over-control pattern and offers the stronger overall trade-off.
+
+\FloatBarrier
+
+\section{Limitations}
+\label{sec:limitations}
+
+This paper focuses on inference-time adapter scaling and does not retrain the base multi-view diffusion model or adapter. TCAS can avoid the artifact amplification and color overshoot of high-scale uniform scaling, but cannot fundamentally solve invisible-region completion, complex material synthesis, or cross-view detail consistency.
+
+Second, Laplacian variance, RGB standard deviation, and gradient magnitude are proxy metrics for foreground statistics. They detect high-frequency amplification and color deviation, but noise, erroneous patterns, or artifacts can also inflate them. We therefore interpret them with local visual audits, CLIP-IQA validation, and a blinded preference study. A more complete evaluation should add larger-scale blinded user studies, full-reference metrics such as DISTS \cite{ding2022dists}, and FID/KID on larger rendered-view test sets.
+
+In addition, TCAS uses fixed stage boundaries and C3 = (1.25, 2.50, 1.25). It is a validated strategy for the studied geometry-adapter pipeline rather than a universally optimal schedule, and has not yet been adapted to object complexity, material type, reference quality, or sampler families.
+
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper analyzes adapter scaling in multi-view diffusion texture generation. Higher adapter scales improve structural metrics such as FG-SSIM up to a point, but aggressive uniform scaling then degrades structural fidelity and amplifies high-frequency artifacts: on 300 objects, $s = 2.50$ raises the mean foreground RGB standard deviation ratio to ground truth to roughly $18\times$ while collapsing FG-SSIM to 0.233. This reveals an adapter-specific temporal conflict not captured by treating scale as generic guidance strength. We formalize it with a measurable Correction--Alignment--Interference (CAI) model: under an additive stage-utility approximation, the observed utilities select a conditional low--high--low schedule.
+
+We propose TCAS, whose C3 configuration applies strong adapter correction in the middle denoising stage and conservative scales in early/late stages. A stage ablation localizes the failure: early-stage high scaling reproduces most of the structural damage of uniform high scaling, while late-stage high scaling is nearly harmless. C3 is selected only on a 24-object probe set, then frozen. On 300 objects, C3 improves PSNR by 1.88 dB over aggressive uniform scaling $s = 2.50$ while retaining higher foreground SSIM, and by 2.96 dB over the base pipeline without geometric adaptation.
+
+The core contribution is therefore to reveal and validate a hidden shape-texture trade-off caused by geometry-adapter residual injection, to explain the tested regime with CAI stage utilities, and to show that a simple non-monotonic inference schedule resolves the trade-off better than fixed high-scale control and the tested generic schedules. Because the texture diagnostics are proxies, we further verify the conclusion with CLIP-IQA, where C3 outperforms $s = 2.50$ on 94.0\% of the 50-object subset, and with a blinded preference study where C3 receives 58.1\% of overall first-choice votes. Adapter strength should thus be treated as a stage-dependent inference control variable rather than a single fixed hyperparameter, with stage utilities recalibrated when the adapter regime changes.
+
+
+\begin{thebibliography}{36}
+
+\bibitem{liu2023zero1to3}
+Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{ICCV}, 2023.
+
+\bibitem{shi2023zero123pp}
+Shi R, Chen H, Zhang Z, et al. Zero123++: A single image to consistent multi-view diffusion base model. arXiv:2310.15110, 2023.
+
+\bibitem{liu2023syncdreamer}
+Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. arXiv:2309.03453, 2023.
+
+\bibitem{long2023wonder3d}
+Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. arXiv:2310.15008, 2023.
+
+\bibitem{shi2024mvdream}
+Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for 3D generation. \textit{ICLR}, 2024.
+
+\bibitem{wang2023imagedream}
+Wang P, et al. ImageDream: Image-prompt multi-view diffusion for 3D generation. arXiv:2312.02201, 2023.
+
+\bibitem{xu2024instantmesh}
+Xu J, et al. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. \textit{NeurIPS}, 2024.
+
+\bibitem{ke2024era3d}
+Ke Q, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. arXiv:2405.11616, 2024.
+
+
+\bibitem{chen2023text2tex}
+Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. arXiv preprint, 2023.
+
+\bibitem{richardson2023texture}
+Richardson E, et al. TEXTure: Semantic texture transfer using diffusion models. arXiv preprint, 2023.
+
+\bibitem{poole2023dreamfusion}
+Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-to-3D using 2D diffusion. \textit{ICLR}, 2023.
+
+\bibitem{chen2023fantasia3d}
+Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance for high-quality text-to-3D content creation. \textit{ICCV}, 2023.
+
+\bibitem{shao2025mvpainter}
+Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
+
+\bibitem{huang2024mvadapter}
+Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. arXiv:2412.03632, 2024.
+
+\bibitem{zhang2023controlnet}
+Zhang L, Rao A, Agrawala M. Adding conditional control to text-to-image diffusion models. \textit{ICCV}, 2023.
+
+\bibitem{ye2023ipadapter}
+Ye H, Zhang J, Liu S, Han X, Yang W. IP-Adapter: Text compatible image prompt adapter for text-to-image diffusion models. arXiv:2308.06721, 2023.
+
+
+\bibitem{hu2022lora}
+Hu E J, Shen Y, Wallis P, et al. LoRA: Low-rank adaptation of large language models. \textit{ICLR}, 2022.
+
+\bibitem{liu2024dora}
+Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. arXiv:2402.09353, 2024.
+
+\bibitem{zhang2023adalora}
+Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{ICLR}, 2023.
+
+\bibitem{ho2020ddpm}
+Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{NeurIPS}, 2020.
+
+\bibitem{song2021ddim}
+Song J, Meng C, Ermon S. Denoising diffusion implicit models. \textit{ICLR}, 2021.
+
+\bibitem{ho2022cfg}
+Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop}, 2022.
+
+\bibitem{castillo2023adaptive}
+Castillo A, Legenstein R, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. arXiv:2312.12487, 2023.
+
+\bibitem{rombach2022ldm}
+Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthesis with latent diffusion models. \textit{CVPR}, 2022.
+
+\bibitem{esser2024scaling}
+Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow transformers for high-resolution image synthesis. \textit{ICML}, 2024.
+
+\bibitem{blackforestlabs2024flux}
+Black Forest Labs. FLUX: Flow matching for image generation. 2024.
+
+\bibitem{loshchilov2019decoupled}
+Loshchilov I, Hutter F. Decoupled weight decay regularization. \textit{ICLR}, 2019.
+
+\bibitem{cherti2023reproducible}
+Cherti M, Beaumont R, Wightman R, et al. Reproducible scaling laws for contrastive language-image learning. \textit{CVPR}, 2023.
+
+\bibitem{nichol2022glide}
+Nichol A, Dhariwal P, Ramesh A, et al. GLIDE: Towards photorealistic image generation and editing with text-guided diffusion models. \textit{ICML}, 2022.
+
+\bibitem{saharia2022photorealistic}
+Saharia C, Chan W, Saxena S, et al. Photorealistic text-to-image diffusion models with deep language understanding. \textit{NeurIPS}, 2022.
+
+\bibitem{peebles2023scalable}
+Peebles W, Xie S. Scalable diffusion models with transformers. \textit{ICCV}, 2023.
+
+\bibitem{wang2004ssim}
+Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{TIP}, 2004, 13(4): 600--612.
+
+\bibitem{zhang2018lpips}
+Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{CVPR}, 2018.
+
+\bibitem{wang2023clipiqa}
+Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing the look and feel of images. \textit{AAAI}, 2023.
+
+\bibitem{radford2021clip}
+Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{ICML}, 2021.
+
+\bibitem{ding2022dists}
+Ding K, Ma K, Wang S, Simoncelli E P. Image quality assessment: Unifying structure and texture similarity. \textit{TPAMI}, 2022.
+
+\bibitem{sf3d2024}
+Boss M, Huang Z, Vasishta A, Jampani V. SF3D: Stable Fast 3D Mesh Reconstruction with UV-unwrapping and Illumination Disentanglement. arXiv:2408.00653, 2024.
+
+\end{thebibliography}
+\end{document}
