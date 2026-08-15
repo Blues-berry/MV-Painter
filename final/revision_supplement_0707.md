@@ -34,11 +34,11 @@
 
 | Schedule | Form | FG-SSIM↑ | PSNR↑ | Lap Var Ratio | RGB Std Ratio | Assessment |
 |---|---|---|---|---|---|---|
-| Fixed low | 1.25 (uniform) | 0.3109 | 16.13 | 0.521 | 4.180 | Texture flattening |
+| Fixed low | 1.25 (uniform) | 0.3109 | 16.13 | 0.521 | 4.180 | Texture-statistic deviation |
 | Fixed high | 2.50 (uniform) | 0.1900 | 15.52 | 1.653 | 26.963 | Weak geometry |
 | Linear decay | 2.50→1.25 (linear) | 0.2110 | 15.58 | 1.462 | 22.166 | Weak geometry |
 | Cosine decay | 2.50→1.25 (cosine) | 0.2081 | 15.48 | 1.489 | 23.501 | Weak geometry |
-| Linear warm-up | 1.25→2.50 (linear) | 0.2942 | 16.31 | 0.462 | 10.509 | Texture flattening |
+| Linear warm-up | 1.25→2.50 (linear) | 0.2942 | 16.31 | 0.462 | 10.509 | Texture-statistic deviation |
 | Cosine bump | 1.25→2.50→1.25 (sin) | 0.2554 | 16.10 | 0.851 | 17.114 | Weak geometry |
 | **C3 (TCAS)** | **1.25→2.50→1.25 (piecewise)** | **0.2971** | **16.67** | **0.419** | **8.092** | **Best trade-off** |
 
@@ -71,14 +71,14 @@
 | Schedule | Form | FG-SSIM↑ | PSNR↑ | Lap Var Ratio | RGB Std Ratio | Assessment |
 |---|---|---|---|---|---|---|
 | **no_adapter** | **0 (no adapter, base MV-Painter)** | **0.3015** | **14.07** | **1.771** | **4.231** | **Weak geometry** |
-| Fixed low | 1.25 (uniform) | 0.3116 | 16.15 | 0.473 | 3.773 | Texture flattening |
+| Fixed low | 1.25 (uniform) | 0.3116 | 16.15 | 0.473 | 3.773 | Texture-statistic deviation |
 | Fixed high | 2.50 (uniform) | 0.1880 | 15.53 | 1.693 | 27.170 | Weak geometry |
 | Linear decay | 2.50→1.25 (linear) | 0.2096 | 15.58 | 1.434 | 22.769 | Weak geometry |
 | Cosine decay | 2.50→1.25 (cosine) | 0.2055 | 15.47 | 1.526 | 23.865 | Weak geometry |
-| Linear warm-up | 1.25→2.50 (linear) | 0.2953 | 16.39 | 0.490 | 10.570 | Texture flattening |
+| Linear warm-up | 1.25→2.50 (linear) | 0.2953 | 16.39 | 0.490 | 10.570 | Texture-statistic deviation |
 | Cosine bump | 1.25→2.50→1.25 (sin) | 0.2529 | 16.10 | 0.905 | 17.304 | Weak geometry |
-| Gaussian peak | 1.25→2.50→1.25 (gaussian) | 0.2798 | 16.55 | 0.569 | 11.538 | Texture flattening |
-| Trapezoid | 1.25→2.50→1.25 (trapezoid) | 0.2773 | 16.61 | 0.576 | 12.081 | Texture flattening |
+| Gaussian peak | 1.25→2.50→1.25 (gaussian) | 0.2798 | 16.55 | 0.569 | 11.538 | Texture-statistic deviation |
+| Trapezoid | 1.25→2.50→1.25 (trapezoid) | 0.2773 | 16.61 | 0.576 | 12.081 | Texture-statistic deviation |
 | σ bump | 1.25→2.50→1.25 (σ bump) | 0.2376 | 16.13 | 1.165 | 15.577 | Weak geometry |
 | σ decay | 2.50→1.25 (σ decay) | 0.2346 | 16.11 | 1.267 | 14.993 | Weak geometry |
 | TCAS-V2 5-phase | per-layer 5-phase | 0.2111 | 15.11 | 1.335 | 15.225 | Weak geometry |
@@ -104,7 +104,7 @@
 
 2. **Linear warm-up 是最接近 C3 的进度域竞争者，但 PSNR 更低**：linear_warmup 的 FG-SSIM (0.295) 与 C3 (0.297) 几乎持平，但 PSNR (16.39) 低于 C3 (16.76)。两者 Lap Var Ratio (0.49 vs 0.43) 和 RGB Std Ratio (10.57 vs 7.91) 均明显偏离 GT（1.0），说明该连续 schedule 在本协议下仍未取得理想的纹理统计；这不单独证明 late-stage 干预在所有 adapter 上都压制 texture。
 
-3. **平滑非单调变体（cosine bump / gaussian peak / trapezoid）均不如 C3**：这些变体形状与 C3 类似（低-高-低），但连续平滑过渡导致 middle 段的 effective peak duration 短于 C3 的 1/3 piecewise-constant，FG-SSIM (0.253/0.280/0.277) 均低于 C3 (0.296)，且 gaussian/trapezoid 的 Lap Var Ratio (0.57/0.58) 明显低于 C3 (0.43)，落入 Texture flattening。
+3. **平滑非单调变体（cosine bump / gaussian peak / trapezoid）均不如 C3**：这些变体形状与 C3 类似（低-高-低），但连续平滑过渡导致 middle 段的 effective peak duration 短于 C3 的 1/3 piecewise-constant，FG-SSIM (0.253/0.280/0.277) 均低于 C3 (0.296)，且其 LapVar/RGB 统计偏离 GT。由于 LapVar 方向依赖 adapter regime，这里不将该偏离单独解释为 texture flattening。
 
 4. **C3 是受约束的 shape-texture 折中，而非每个指标的绝对最优**：它在该 probe 协议中取得最高 PSNR，并保持接近 fixed_low 的结构质量；fixed_low 的 FG-SSIM 更高，因此优势应表述为信号保真度与结构约束之间的平衡。
 
@@ -115,7 +115,7 @@
 6. **更强的 schedule baseline（σ-aware / TCAS-V2 逐层 / 更平滑非单调）仍无法取代 C3**：
    - **σ bump / σ decay（按真实噪声 σ 调度）**：FG-SSIM 仅 0.238/0.235，显著低于 C3 (0.296)，C3 以 100% 对象胜出。说明用去噪进度 p 而非 σ 作为调度轴并不是 C3 优势的来源；即便在真实 SNR 域做同样的低-高-低或单调调度，也无法复现 C3 的形状-纹理平衡。
    - **TCAS-V2 5-phase（逐层差异幅度）**：FG-SSIM 0.211、PSNR 15.11，均低于 C3，且 C3 100% 对象全胜。逐层更细的时间+层次划分反而破坏了 C3 的稳定性——C3 的简单 uniform-across-layer 三段式在形状与纹理间取得更好平衡。
-   - **Gaussian peak / Trapezoid（更平滑的非单调）**：FG-SSIM 0.280/0.277 接近 C3 但 PSNR 16.55/16.61 仍低于 C3 (16.76)，且均落入 Texture flattening。平滑过渡缩短了有效峰值持续时间，与 cosine bump 的失败机理一致；C3 的 piecewise-constant 中段平台仍是关键设计。
+   - **Gaussian peak / Trapezoid（更平滑的非单调）**：FG-SSIM 0.280/0.277 接近 C3 但 PSNR 16.55/16.61 仍低于 C3 (16.76)，且统计诊断偏离 C3。平滑过渡缩短了有效峰值持续时间，与 cosine bump 的失败机理一致；C3 的 piecewise-constant 中段平台仍是关键设计。
 
 7. **C3 的优势不是"选对了某个更强 baseline 之外"的偶然**：在 24 个对象的 FG-SSIM 上，C3 (0.2956) 与结构最优的 `fixed_low` (0.3116) 相差 5.1%，处于 10% 结构相当带内；`no_adapter` 的 FG-SSIM (0.3015) 虽略高于 C3，但作为无几何约束的现有方法基线已被排除在结构竞争带之外，且其 PSNR (14.07) 远低于 C3。C3 的 PSNR (16.76) 为全部 13 个 schedule 中最高，且相对 `fixed_low` 的 PSNR 胜率为 23/24 (96%)。这与论文 Table 5（300-obj）中"C3 的 FG-SSIM 与最强结构相当、PSNR 最高"的结论一致。
 
@@ -123,7 +123,7 @@
 
 ### 关键论证点（拟加入正文的文字）
 
-> **Why monotonic schedules fail.** Linear decay and cosine decay start with a strong adapter scale and gradually reduce it. Although they avoid *continuously* high scales in late steps, their early-stage intervention is already strong, potentially disturbing global structure formation. More critically, because the decay is gradual, the adapter still applies relatively high residual magnitude during late steps (e.g., at p = 0.8, linear decay gives s = 1.50, which is still well above the conservative baseline). This leaves insufficient room for late-stage texture synthesis.
+> **Why monotonic schedules fail.** Linear decay and cosine decay start with a strong adapter scale and gradually reduce it. Their early-stage intervention is already strong, potentially disturbing global structure formation. The gradual profile also differs from C3's full middle-stage plateau. This comparison does not establish that late intervention is intrinsically harmful; the stage ablation shows that its effect depends on the adapter regime.
 >
 > **Why warm-up schedules fail.** Linear warm-up increases the adapter scale from 1.25 to 2.50. This correctly avoids early over-control but makes the adapter strongest precisely in the late denoising stage—the stage where texture synthesis is most active. The result is that geometric residuals compete with color and high-frequency pattern generation, causing significant texture loss despite high FG-SSIM.
 >
@@ -147,7 +147,7 @@
 
 ### 问题回顾
 
-审稿人质疑 Laplacian variance / RGB Std / Gradient 不能等价于好纹理。论文已将它们重新定位为 "proxy indicators for texture flattening detection"，但没有补充 perceptual quality metrics 或 human preference study。
+审稿人质疑 Laplacian variance / RGB Std / Gradient 不能等价于好纹理。论文已将它们重新定位为 "proxy indicators for texture-statistic deviation and artifact detection"，并结合 perceptual quality metrics 与 human preference study。
 
 ### 补充结果 A：Blinded Human Preference Study（已完成）
 
@@ -205,8 +205,8 @@
 **核心发现：**
 1. **排序 s=1.25 > C3 > s=2.50** 完美符合论文论证：更强的 adapter scale → 更低的感知质量
 2. **C3 恢复了大部分 perceptual quality**：s=2.50 相对 s=1.25 损失 0.0060 CLIP-IQA score，C3 只损失 0.0014（恢复了 77% 的质量损失）
-3. **94% win rate** 远超预期的 ~72%，说明 texture flattening 在 perceptual model 中是非常显著的质量下降
-4. 结论与 proxy metrics 方向一致：proxy metrics 检测到的 texture flattening 确实对应真实的 perceptual quality degradation
+3. **94% win rate** 远超预期的 ~72%，说明 aggressive-scale 的 perceptual quality degradation 在 perceptual model 中是显著的
+4. 结论与 proxy metrics 的联合方向一致：结构坍缩、颜色偏移和统计异常对应真实的 perceptual quality degradation；单一 LapVar 方向不作独立结论
 
 **数据文件**：`mvpoutput/revision_clipiqa/clipiqa_results.json`
 
@@ -371,7 +371,7 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 
 其中 $\|\text{raw correction}\|_d$ 通过一次 fixed_low 校准 pass 测得（该 pass 同时产生 fixed_low 基线），$\text{target}(d, t) = \|\text{raw}\|_d \cdot k(d, t)$。由于参考 norm 在平均意义下校准，归一化简化为 per-depth、per-stage 的倍率 $k(d, t)$：
 
-- **norm_flat**：$k \equiv 1$（施加与 fixed_low 相同的干预强度，但各层一致）
+- **norm_flat**：$k \equiv 1$（在当前实现中退化为 uniform scale=1.0；不等于 fixed_low=1.25）
 - **norm_c3**：deep/middle $k=\{0.6, 1.4, 0.6\}$（低-高-低），shallow $k=\{0.4, 0.8, 0.4\}$（纹理层弱干预）
 
 不修改模型 forward，仅通过 per-depth scale 分发（训练-free，零额外参数）。
@@ -413,6 +413,23 @@ $$\text{scale}(d, t) = \frac{\text{target}(d, t)}{\|\text{raw correction}\|_d}$$
 ### 论文定位（最终）
 - **不建议作为新方法写入**——对照实验证明其无独立价值，等于更保守的固定 scale。
 - 建议作为**机制理解的补充实验**（限 Limitation 或 Discussion）：展示"干预强度受 min(scale,cap)×raw_norm 三重约束"，以及"weak adapter no-op 需训练侧解决"，强化对 adapter scaling 机制的理解。
+
+### 最新强度审计复核（v2，6-object / 50 steps / seed=42）
+
+新增 `fixed_low_weak=1.0`、逐对象指标和实际 residual 统计后，结果为：
+
+| schedule | FG-SSIM | PSNR | AbsLap | LapRatioGT |
+|---|---:|---:|---:|---:|
+| fixed_low (1.25) | 0.2744 | 14.82 | 0.00506 | 0.232 |
+| fixed_low_weak (1.0) | 0.2896 | 14.55 | 0.00898 | 0.411 |
+| fixed_high (2.50) | 0.1707 | 14.47 | 0.02144 | 0.983 |
+| C3 | 0.2557 | **15.58** | **0.00532** | **0.244** |
+| norm_flat | **0.2896** | 14.55 | 0.00898 | 0.411 |
+| norm_c3 | 0.2648 | 13.43 | 0.01970 | 0.903 |
+
+`norm_flat` 与 `fixed_low_weak` 的五项逐对象指标完全相同；其 requested/effective scale 和 applied residual 统计也逐项一致。因此归一化剖面没有独立价值，norm-flat 的结构指标优势完全来自较弱的 uniform scale=1.0。`norm_c3` 没有超过 C3，且高频诊断更差。
+
+结果文件：`mvpoutput/explore_contradiction/norm_schedule_v2_strength_match_6obj/`。该复核不扩展到 24/300 objects，残差归一化不作为第二方法。
 - C3/TCAS 保持为最优训练-free 方法。
 
 ---
