@@ -467,6 +467,10 @@ C3 (TCAS) & 284/720 (39.4\%) & 293/720 (40.7\%) & $\mathbf{418/720\ (58.1\%)}$ \
 \end{table}
 \FloatBarrier
 
+The preference pattern in Table~\ref{tab:preference} follows the intended trade-off. Conservative scaling is most often selected for texture naturalness, while aggressive scaling is most often selected for shape consistency. C3 stays close to both single-scale baselines on their respective strengths and receives the highest overall preference, with 58.1\% of all overall-quality votes. Thus, TCAS is not claimed to maximize every individual criterion; it provides a perceptually preferred balance between geometric adherence and texture preservation.
+
+Because first-choice decisions are clustered within both participants and objects, we additionally report 95\% confidence intervals obtained by a two-level cluster bootstrap (resampling participants and objects with replacement, 10{,}000 resamples). C3's overall-quality share is 58.0\% (95\% CI $[50.1\%, 65.8\%]$), exceeding the conservative and aggressive baselines by $+33.6$ (CI $[19.3, 47.2]$) and $+40.5$ percentage points (CI $[29.4, 51.8]$); both differences exclude zero, so the overall-preference advantage of C3 is significant under cluster-aware inference. By contrast, the baselines' single-criterion advantages are not significant (texture naturalness: $s = 1.25$ over C3 $+6.7$ points, CI $[-7.9, 21.5]$; shape consistency: $s = 2.50$ over C3 $+5.3$ points, CI $[-6.7, 17.9]$). Overall quality is therefore the only criterion with a significant preference, supporting the interpretation of TCAS as the perceptually preferred balance rather than a per-criterion maximum.
+
 \subsection{FAC Adaptive Correction Extension: A Controlled Re-examination}
 \label{subsec:facexp}
 
