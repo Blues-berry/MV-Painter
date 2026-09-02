@@ -1,0 +1,716 @@
+                                                  Computers & Graphics (2026)
+
+
+                                             Contents lists available at ScienceDirect
+
+
+                                               Computers & Graphics
+                                          journal homepage: www.elsevier.com/locate/cag
+
+
+
+
+Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view
+Diffusion Texture Generation
+
+
+
+ARTICLE INFO                               ABSTRACT
+
+                                           Multi-view diffusion pipelines for 3D asset texturing often inject geometric con-
+Keywords: multi-view diffusion             ditions, such as normal and depth maps, through adapter modules. However,
+model, 3D texture generation,              the adapter scale used at inference time is usually chosen empirically, although
+adapter scaling,      timestep-con-        the generated views are later projected and baked into the final mesh texture.
+ditioned scaling,     shape-texture        This paper studies how adapter strength affects geometry-conditioned multi-view
+trade-off,    geometric     control,
+                                           texture generation. We observe a shape-texture trade-off: larger scales improve
+texture quality assessment
+                                           structural metrics such as FG-SSIM, but can weaken coherent color variation,
+                                           flatten local surface appearance, and amplify over-controlled high-frequency arti-
+                                           facts. We identify this as an adapter-specific temporal conflict, where geometric
+                                           residuals are most useful during mid-stage structure refinement, while exces-
+                                           sive residual injection in early or late denoising can disturb global formation or
+                                           suppress texture synthesis. Based on this observation, we propose Timestep-
+                                           Conditioned Adapter Scaling (TCAS), a training-free inference strategy that
+                                           applies strong adapter correction only in the middle denoising stage and uses
+                                           conservative scales elsewhere. The selected C3 schedule is chosen on a 24-object
+                                           probe set from 17 variants and then transferred unchanged to a 300-object valida-
+                                           tion set. Experiments show that C3 achieves FG-SSIM comparable to aggressive
+                                           uniform scaling while improving PSNR by 0.96 dB and retaining more foreground
+                                           texture variation. CLIP-IQA, local visual audits, and preference evaluation fur-
+                                           ther support that TCAS provides a better balance between geometric adherence
+                                           and texture preservation. A supporting Full Adaptive Correction experiment
+                                           suggests that the same stage-wise principle can be extended to learned residual
+                                           modulation, while TCAS remains the main plug-and-play strategy.
+
+
+
+
+1. Introduction                                                      Existing multi-view texture generation methods usually
+                                                                   generate RGB images from multiple target views using 2D
+   Recent advances in single-image 3D generation have sub-         image diffusion models, and then map the generated im-
+stantially improved the recovery of geometry, multi-view           ages back to the 3D surface through projection or texture
+consistency, and sparse-view reconstruction [1, 2, 3, 4, 5, 6,     baking [9, 10, 11, 12]. This route benefits from the gener-
+7, 8]. As geometric generation models become increasingly          ative capability of image diffusion models, but it still faces
+mature, generating high-quality textures on an existing 3D         challenges in reference appearance alignment, geometry-
+shape has become a key factor affecting the realism and            texture consistency, and local texture detail preservation.
+usability of 3D content. For an object whose geometry              Geometry-controlled multi-view diffusion methods repre-
+has already been determined, the final visual quality de-          sented by MVPainter introduce geometric conditions such
+pends not only on whether the shape is complete, but also          as normals and depth maps to improve the alignment be-
+on whether the texture is faithful to the reference image,         tween generated textures and the underlying 3D surface,
+aligned with the 3D surface, and rich in local details.
+2                                                / Computers & Graphics (2026)
+
+demonstrating the importance of explicit geometric con-             The main contributions of this paper are as follows:
+trol for 3D texture generation [13].                                (1) We systematically diagnose the shape-texture trade-
+   This problem is practical for graphics asset production       off caused by adapter scaling in multi-view diffusion tex-
+because the generated multi-view images are not only             ture generation, showing that higher scales can improve
+evaluation frames: they are projected and baked into             structural metrics while simultaneously weakening coher-
+the final mesh texture. Local color collapse, spurious           ent color variation, flattening surfaces, and reducing fore-
+high-frequency marks, or view-dependent over-control can         ground high-frequency response.
+therefore become persistent defects in the textured asset.          (2) We identify an adapter-specific temporal conflict
+   However, introducing geometric conditions is not only         between geometric residual injection and texture forma-
+a question of whether a control signal should be used,           tion, and propose Timestep-Conditioned Adapter Scaling
+but also a question of how strongly it should be applied.        (TCAS), which concentrates strong geometric correction
+In adapter-augmented diffusion pipelines, geometric con-         in the middle denoising stage while using conservative
+ditions are usually injected into the model through an           scales in the early and late stages.
+adapter or control branch, and their influence is regulated         (3) Through uniform scale sweeps, manual local texture
+by a scaling factor. In practice, this factor is often set em-   audits, a 24-object probe over 17 variants, and a 300-object
+pirically: a small scale may lead to insuﬀicient geometric       validation without re-searching, we show why fixed high
+constraints, whereas a larger scale is usually expected to       scales and direct guidance-schedule transfers are insuﬀi-
+improve structural consistency.                                  cient.
+   In multi-view texture generation, however, stronger              (4) We provide large-scale texture-diagnostic, CLIP-
+adapter scaling is not necessarily better. Texture genera-       IQA, and blinded preference analyses showing that TCAS
+tion requires not only contours and structures to be con-        reduces the foreground-variation and perceptual-quality
+sistent with geometry, but also surface color variations,        loss caused by full high-scale scaling.
+material details, and high-frequency patterns to be pre-            As supporting evidence rather than a separate main
+served. Overly strong geometric control may force the            method, we also report a lightweight Full Adaptive Correc-
+model to follow normal, depth, or edge conditions too ag-        tion (FAC) experiment, which shows that the stage-wise
+gressively, thereby suppressing the intrinsic texture syn-       adapter-control principle can be instantiated with learned
+thesis capability of the base diffusion model. In this case,     temporal, spatial, and frequency-aware residual modula-
+some structural metrics may still improve, while the vi-         tion.
+sual result suffers from texture flattening, reduced color
+variation, and detail loss.                                      2. Related Work
+   Therefore, adapter scaling in geometry-controlled multi-      2.1. 3D Texture Generation and Multi-view Diffusion
+view diffusion deserves further analysis. Compared with             Single-image 3D generation is often decomposed into ge-
+prior work that mainly studies how to build texture gen-         ometry and texture generation. Single-image-to-3D, multi-
+eration pipelines, how to introduce geometric conditions,        view diffusion, and sparse-view reconstruction methods
+and how to improve overall generation quality, adapter           have improved structural stability and shape complete-
+strength is a fine-grained inference-time control problem.       ness [1, 2, 3, 4, 5, 6, 7, 8], but high-quality texture re-
+It directly affects the balance between shape consistency        mains a bottleneck. Existing texture methods typically
+and texture detail, and is an easily overlooked factor in        synthesize multi-view RGB images with 2D diffusion mod-
+multi-view texture generation quality.                           els and then project or bake them onto the 3D surface
+   This problem is related to, but not solved by, existing       [9, 10, 11, 12], which still leaves reference appearance mis-
+guidance scheduling strategies. CFG scheduling changes           alignment, geometry-texture inconsistency, and local de-
+the extrapolation between conditional and unconditional          tail loss.
+predictions, while a geometry adapter injects residuals             Methods such as MVPainter formulate 3D texture gen-
+into intermediate representations. Generic ControlNet or         eration as geometry-controlled multi-view diffusion [13];
+adapter scale scheduling similarly treats condition strength     MV-Adapter further shows that adapter-style multi-view
+mainly as a condition-adherence knob. In texture gener-          control can improve cross-view consistency without fully
+ation, however, the key question is not only how strongly        retraining the base model [14]. These works inject nor-
+to follow the geometry, but also when geometric residu-          mals, depth maps, or related geometry signals to align
+als should dominate and when they should recede so that          textures with the surface, but they mainly study how to
+the base model can synthesize color, material, and high-         introduce geometry rather than how strongly it should act
+frequency texture. Simple monotonic schedules such as            during inference.
+linear or cosine decay do not explicitly address this non-
+monotonic requirement.                                           2.2. Adapter-augmented Diffusion Models and Geometric
+   The goal of this paper is not to propose a new full texture        Control
+generation system, but to analyze and improve inference-            Adapter modules have become an important mechanism
+time adapter scaling within a fixed geometry-controlled          for introducing additional conditions into diffusion mod-
+multi-view diffusion pipeline.                                   els. ControlNet injects spatial conditions such as edges,
+                                                 / Computers & Graphics (2026)                                               3
+
+depth maps, and normals into a pretrained diffusion model        scheduling therefore requires a dedicated analysis of geo-
+through a parallel branch [15]. IP-Adapter introduces            metric residual injection rather than a direct transfer of
+image prompts through decoupled attention [16]. LoRA             CFG or generic ControlNet scale scheduling.
+and its variants implement lightweight model adaptation
+through low-rank residual updates [17, 18, 19]. Although
+                                                                 3. Method
+these methods differ in architecture, they generally include
+some form of scaling factor that controls the influence          3.1. Task Definition and Base Pipeline
+of the external condition or adapter residual on the base
+                                                                    This paper builds on the MVPainter-style geometry-
+model.
+                                                                 controlled multi-view texture generation framework [13]
+   In practice, the adapter scale is often treated as an em-     and studies how the inference-time strength of geometric
+pirical hyperparameter. A larger scale improves condi-           condition injection affects the generated results. Given a
+tion adherence, but in texture generation it may weaken          single reference image and the corresponding 3D geometry,
+the base model’s ability to synthesize color, material, and      the base pipeline first generates RGB texture images from
+high-frequency detail. Adapter scaling is therefore a bal-       six target views and then obtains a textured mesh through
+ance between geometric constraints and texture fidelity:         projection or texture baking. We do not modify the base
+given a fixed adapter and fixed geometric conditions, how        UNet, VAE, or pretrained adapter weights. Instead, the
+should the strength be scheduled to preserve both?               adapter scaling factor is treated as the key inference-time
+                                                                 control variable.
+2.3. Diffusion Guidance Scheduling and Timestep Control             During multi-view diffusion, the 3D geometry is ren-
+   The denoising process of diffusion models is highly stage-    dered into normal maps, depth maps, and foreground
+dependent. Early steps mainly determine global layout            masks, denoted as:
+and coarse structure, middle steps refine shape and se-
+                                                                                 G = {Gnormal , Gdepth , Gmask }.          (1)
+mantic structure, and late steps are more responsible for
+color, texture, and high-frequency details [20, 21]. Based         The geometric adapter maps these conditions to a resid-
+on this observation, many guidance scheduling strate-            ual correction term and injects it into the intermediate
+gies have been explored in both research and practice.           hidden states of the UNet. For the t-th denoising step, the
+For example, classifier-free guidance scales may be ad-          adapter injection can be written as:
+justed linearly, with cosine schedules, or dynamically to
+mitigate oversaturation, detail loss, or reduced diversity                         h′t = ht + s(pt ) · Aϕ (ht , G),        (2)
+caused by overly strong guidance [22, 23]. In addition,
+the development of latent diffusion, high-resolution dif-        where ht and h′t denote the hidden states before and after
+fusion, and Transformer-based diffusion models further           injection, pt denotes the sampling progress, and s(pt ) is the
+shows the close relationship among generation quality,           adapter scaling strength at the current denoising stage.
+noise schedules, conditional injection, and network archi-       This formulation highlights a key difference from CFG-
+tecture [24, 25, 26, 27, 28, 29, 30, 31].                        style guidance: changing s(pt ) does not reweight two pre-
+   These methods all exploit the staged nature of denois-        dicted scores, but changes the magnitude of a geometry-
+ing to regulate conditional strength. However, different         conditioned residual added to the feature stream. A larger
+control signals act through different mechanisms. CFG            s usually enhances geometric condition adherence. How-
+scheduling adjusts the weight between conditional and            ever, if strong residuals are continuously applied in the late
+unconditional predictions, mainly affecting the balance          denoising stage, they may suppress the synthesis of color,
+among semantic control, diversity, and visual fidelity. By       material, and high-frequency details by the base diffusion
+contrast, the scale of a geometric adapter acts directly         model. This paper therefore studies how to schedule s
+on intermediate features or residual branches, controlling       during denoising to balance shape consistency and texture
+how strongly geometric conditions intervene in the gen-          detail preservation.
+eration process. ControlNet-style scale control is closer
+in spirit, but it is still usually interpreted as a condition-   3.2. Shape-Texture Diagnostic Metrics
+adherence strength; directly applying a larger, smaller, or         Adapter scaling cannot be evaluated by a single struc-
+smoothly decayed control scale does not specify which de-        tural metric. We use shape and structure metrics based
+noising stage should receive strong geometric residuals for      on SSIM [32] (FG-SSIM, Edge-SSIM, Crop-SSIM), sig-
+texture generation.                                              nal/perceptual metrics (PSNR and LPIPS [33]), and tex-
+   This distinction matters because the desired schedule         ture diagnostics (Laplacian variance, RGB standard devi-
+for geometry-controlled texture generation is not necessar-      ation, gradient magnitude) to detect weakened color varia-
+ily monotonic. Decay or warm-up can reduce over-control          tion, surface smoothing, and high-frequency response loss.
+in one part of the trajectory, but cannot simultaneously            Laplacian variance, RGB standard deviation, and gra-
+avoid unstable early residuals, strengthen mid-stage geom-       dient magnitude are not standalone perceptual texture-
+etry refinement, and weaken late residuals that compete          quality metrics: larger values can also arise from noise,
+with color and high-frequency texture formation. Adapter         incorrect patterns, or artifacts. We use them only as
+4                                                        / Computers & Graphics (2026)
+
+
+    Inputs                                     Frozen Multi-view Diffusion UNet                                                      Outputs
+    Reference
+     Image                                                                                                                             six target views
+
+                                                                              ...
+                                                                                                     added to
+                                            GeoTex-Adapter                                        hidden features
+    Geometry                                                                         residual
+                                           decides what to correct
+    Conditions
+                                                                                                                                            projection
+      Normal                                                                                                                                and baking
+
+
+
+
+                                      FAC: Optional Learned Extension
+      Depth
+                            LTAG                                 GSG                            FSC                                     textured mesh
+                         temporal gating                     spatial gating          frequency correction
+                           further refines where and which frequency components to correct
+    Foreground
+       Mask                                      TCAS: Timestep-Conditioned Adapter Scaling
+
+                                           Early: preserve             Middle: strengthen              Late: preserve
+
+                                                    decides when the adapter influence should be strengthened
+
+
+Fig. 1. Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the
+residual strength according to denoising stages to balance geometric consistency and texture fidelity. FAC is an optional extension module
+that further refines residual modulation along temporal, spatial, and frequency dimensions. The final multi-view outputs are projected and
+baked into a textured 3D mesh.
+
+
+proxy indicators for the failure mode observed here, where                    contours; middle steps refine geometric structure and
+high adapter scales make surfaces overly uniform and                          cross-view alignment; late steps are more responsible for
+suppress local variation. Texture conclusions therefore                       color, material, and local texture synthesis. Based on this
+rely on paired comparisons under identical views and                          observation, we propose Timestep-Conditioned Adapter
+masks, agreement across diagnostics, and local visual au-                     Scaling (TCAS), which replaces a globally fixed adapter
+dits checking whether retained variation is coherent ap-                      scale with a stage-dependent scale function. TCAS is not
+pearance rather than random artifacts.                                        intended as a generic smooth guidance schedule. Its low-
+   Taking Laplacian variance as an example, the fore-                         high-low form encodes the adapter-specific hypothesis that
+ground texture response is defined as:                                        geometry residuals should be strongest only after coarse
+                                                                              structure becomes stable and before late texture synthesis
+                 Mtex = Var(Lap(Iout ⊙ Gmask )),                       (3)    dominates.
+                                                                                 To avoid ambiguity caused by different raw timestep di-
+where Lap denotes the Laplacian filter, Gmask denotes
+                                                                              rections in different schedulers, we use sampling progress
+the foreground mask, and Var denotes spatial variance.
+                                                                              p to represent the denoising process, where p = 0 denotes
+A larger Mtex usually corresponds to stronger local high-
+                                                                              the start from noise and p = 1 denotes the end of sampling
+frequency variation, but it is not necessarily equivalent to
+                                                                              close to the final image state. TCAS divides denoising into
+better texture. In this paper, the more reliable signal is
+                                                                              early, middle, and late stages:
+the opposite pattern: if structural metrics improve while                                             
+Laplacian variance, RGB standard deviation, or gradient                                               
+                                                                                                      
+                                                                                                       se , 0 ≤ p < 1/3
+                                                                                                      
+                                                                                                      
+                                                                                                      
+magnitude consistently decrease and visual crops show                                          s(p) =  s m , 1/3 ≤ p < 2/3 .         (4)
+                                                                                                      
+                                                                                                      
+                                                                                                      
+smoother surfaces, the improvement may mainly come                                                    
+                                                                                                       sl , 2/3 ≤ p ≤ 1
+from contour smoothing or boundary convergence rather
+than true texture quality improvement.                                              The selected C3 configuration used in this paper is:
+
+3.3. Timestep-Conditioned Adapter Scaling                                                           (se , sm , sl ) = (1.25, 2.50, 1.25).                 (5)
+  The diffusion denoising process is stage-dependent:                           This design follows three principles. First, the early
+early steps mainly establish the global layout and coarse                     stage uses a conservative scale to avoid disrupting global
+                                                / Computers & Graphics (2026)                                              5
+
+structure formation with strong geometric residuals. Sec-       3D geometry. During preprocessing, the 3D geometry is
+ond, the middle stage uses a higher scale to strengthen         rendered into target-view normal maps, depth maps, fore-
+geometric constraints from normals, depth maps, and fore-       ground masks, and ground-truth RGB images. The model
+ground contours. Third, the late stage reduces the scale        generates six target views at a time, and all comparisons
+again to prevent geometric residuals from suppressing color     with ground-truth renderings are performed under unified
+variation, material detail, and high-frequency texture syn-     views, resolution, and foreground masks.
+thesis. This non-monotonic schedule is therefore different         Except for the FAC framework experiment, all scaling
+from simply decaying or increasing the adapter strength         experiments keep the object list, reference image, target
+across all timesteps. TCAS introduces no new parameters         views, random seed, base UNet, VAE, adapter weights,
+and does not modify the base model or adapter weights;          and number of denoising steps fixed; only the adapter scale
+it only replaces the scaling factor during inference, so its    or schedule is changed. The number of sampling steps
+computational overhead is negligible.                           is 50. C3 is selected using only a 24-object probe set;
+                                                                the same schedule is then frozen and applied to the 300-
+3.4. From Fixed Scheduling to Adaptive Correction: The          object validation set, where no parameter search is per-
+     FAC Framework                                              formed. This probe-to-validation protocol isolates the ef-
+   GeoTex-Adapter, TCAS, and FAC correspond to three            fect of adapter scaling from changes in model architecture,
+dimensions of adapter control. GeoTex-Adapter deter-            training data, sampling budget, or validation-set tuning.
+mines what geometric residual is injected. TCAS provides           Accordingly, the comparisons are among inference-time
+a training-free temporal rule: strengthen residuals mainly      adapter scaling strategies under the same base pipeline,
+in the middle geometry-refinement stage and weaken them         not among different texture generation architectures. Uni-
+during early formation and late texture synthesis. FAC          form scales serve as deployment baselines, while probe
+develops this principle into lightweight temporal, spatial,     variants test whether the trade-off can be resolved by glob-
+and frequency modulation.                                       ally high scales, layer-wise redistribution, or moving high
+   GeoTex-Adapter is used as a fixed geometric residual         strength to early, late, or multiple denoising stages.
+backbone. It receives a 5-channel geometric input consist-         We use four evaluation sets: (1) a 50-object scale-sweep
+ing of a 3-channel normal map, a 1-channel depth map,           set for analyzing the overall trend of structural metrics un-
+and a 1-channel foreground mask. A multi-scale geomet-          der 13 uniform scales; (2) a 26-object texture audit set for
+ric encoder produces a feature pyramid, and residual cor-       comparing texture degradation under s = 1.25, s = 2.25,
+rections are injected into multiple resolution levels of the    and s = 2.50; (3) a 24-object probe set for evaluating 17
+UNet. TCAS acts on the global temporal scale of these           uniform, layer-wise, and timestep-conditioned scheduling
+residuals to control the influence of geometric conditions      variants and selecting C3; and (4) a 300-object validation
+at different denoising stages without changing the adapter      set for testing the selected C3 schedule, uniform baselines,
+architecture.                                                   and the FAC extension without re-searching TCAS.
+   To further examine whether stage-wise adapter control           Metrics include shape/structure (FG-SSIM, Edge-SSIM,
+can be extended to learned adaptive correction, we intro-       Crop-SSIM), signal/perceptual fidelity (PSNR, LPIPS),
+duce Full Adaptive Correction (FAC). FAC contains three         and texture diagnostics (Laplacian variance, RGB stan-
+lightweight modules: LTAG learns timestep-dependent             dard deviation, gradient magnitude). Metrics are aver-
+gating, GSG generates spatial gates from geometric fea-         aged over six target views and objects; texture conclusions
+tures, and FSC performs frequency-selective correction on       additionally use object-level win rates, significance tests,
+adapter residuals. Unlike fixed TCAS, FAC finely mod-           and local audits to avoid relying on a single structural or
+ulates adapter residuals in the temporal, spatial, and fre-     high-frequency statistic.
+quency domains. In the FAC experiments, TCAS provides              FAC uses the same object list and protocol as the
+the foundational temporal schedule, while GSG and FSC           300-object validation. TCAS is the baseline; LTAG,
+extend it to spatial and frequency-aware residual correc-       LTAG+GSG, and Full FAC are ablations. The base model
+tion.                                                           and original adapter remain frozen, and only lightweight
+   FAC requires learning a small number of additional pa-       correction parameters are learned.
+rameters, so TCAS remains the training-free main strat-
+egy. FAC serves as its learned adaptive instantiation and       4.2. Shape-Texture Trade-off of Adapter Scaling
+shows that stage-wise adapter control can be generalized
+                                                                   Table 1 reports the results of a 13-scale uniform adapter
+to finer-grained, content-adaptive residual modulation.
+                                                                sweep on 50 objects.
+                                                                   As the scale increases from s = 0.75 to s = 2.50, ∆FG-
+4. Experiments                                                  SSIM rises from −0.013 to +0.145, and the number of ob-
+                                                                jects with positive improvement increases from 20/50 to
+4.1. Experimental Setup                                         44/50. This indicates that stronger adapter residuals in-
+  Experiments are conducted using an MVPainter-style            deed improve the model’s adherence to geometric condi-
+geometry-controlled multi-view diffusion pipeline. Each         tions such as normals, depth maps, and foreground con-
+object contains a single reference image and corresponding      tours. Figure 2 visualizes this trend: FG-SSIM keeps in-
+6                                                     / Computers & Graphics (2026)
+
+
+            Table 1. Uniform adapter scale sweep results.
+    Scale   ∆FG-SSIM↑       POS      ∆Crop-SSIM↑        ∆PSNR↑
+    0.75      −0.013        20/50        +0.113             7.53
+    0.90      +0.024        30/50        +0.137             8.32
+    1.00      +0.047        34/50        +0.147             8.79
+    1.10      +0.070        36/50        +0.159             9.08
+    1.15      +0.071        36/50        +0.157             9.25
+    1.25      +0.088        37/50        +0.161             9.37
+    1.35      +0.100        39/50        +0.163             9.63
+    1.50      +0.113        40/50        +0.163             9.76
+    1.60      +0.120        42/50        +0.166             9.83
+    1.75      +0.127        43/50        +0.173             9.97
+    2.00      +0.134        44/50        +0.169             9.96
+    2.25      +0.142        43/50        +0.175             9.91
+    2.50      +0.145        44/50        +0.165             9.91
+
+
+
+
+                                                                       Fig. 3. ∆FG-SSIM heatmap for 50 objects under 13 adapter scales.
+                                                                       Most objects obtain higher structural gains as the scale increases,
+                                                                       but there are clear object-level differences.
+
+
+                                                                       texture preservation only when it corresponds to coherent
+                                                                       appearance rather than noise or obvious artifacts.
+                                                                         The results show that 24 out of 26 objects (92%) ex-
+                                                                       hibit “texture loss without true shape gain.” Here, true
+                                                                       shape gain means visible improvement in effective fore-
+Fig. 2. Structural metric changes under uniform adapter scaling. The
+curves show that FG-SSIM keeps increasing with adapter scale, while    ground area, contour structure, or geometric detail, not
+Crop-SSIM saturates and slightly decreases at high scales. Stronger    merely a higher FG-SSIM from smoothed boundaries or
+geometric control therefore mainly improves structural alignment,      averaged contour errors. Thus, high adapter scales can
+but does not necessarily keep improving local foreground quality.
+                                                                       improve structural metrics without improving visual shape
+                                                                       or texture quality. Figure 5 quantifies this texture loss.
+creasing with adapter scale, while Crop-SSIM saturates                   Overly strong geometric control can suppress color and
+and slightly decreases at high scales.                                 detail synthesis during late denoising, making surfaces
+                                                                       more uniform. Scale selection should therefore not rely
+   Overall, the FG-SSIM improvement is stable, but the
+                                                                       only on FG-SSIM or PSNR; texture diagnostics are useful
+marginal benefit becomes smaller in the high-scale region.
+                                                                       for detecting flattening, but must be interpreted with local
+For example, increasing the scale from s = 2.25 to s = 2.50
+                                                                       visual inspection because high-frequency statistics alone
+yields only a limited FG-SSIM gain, while Crop-SSIM al-
+                                                                       cannot distinguish material detail from noise or artifacts.
+ready decreases. This suggests that the nature of the
+high-scale benefit may change: the gain comes more from
+contour smoothing and foreground alignment than from                   4.4. Timestep-Conditioned Adapter Scaling:                 Shape-
+preservation of local texture details. Figure 3 shows the                   Texture Balance of C3
+per-object ∆FG-SSIM heatmap, confirming that most ob-                     Based on the texture audit, we evaluate 17 adapter scal-
+jects gain higher structural scores as the scale increases,            ing variants on the 24-object probe set and freeze the se-
+but with clear object-level differences.                               lected schedule before 300-object validation. The variants
+                                                                       include uniform baselines, layer-wise scaling, and timestep-
+4.3. Texture Audit: High Scale Causes Texture Flattening               conditioned schedules with high strength in early, middle,
+                                                                       late, or broader temporal regions. This rules out the simple
+   To determine whether the FG-SSIM gain at high scales                explanation that any stronger control scale or guidance-
+reflects better visual quality, we conduct a manual lo-                like schedule solves the problem.
+cal texture audit on 26 objects, comparing s = 2.50 with                  All variants are evaluated using ∆FG-SSIM for shape
+s = 1.25. Figure 4 is a local texture comparison: the key              gain and ∆Lap Var for texture response, computed against
+evidence is the progressive loss of coherent color variation,          ground-truth foreground renderings under the same views
+material marks, and high-frequency patterns as the scale               and masks. The probe objective is not the highest struc-
+increases. Retained high-frequency response is counted as              tural score, but a stable compromise that avoids the trap of
+                                                         / Computers & Graphics (2026)                                                       7
+
+
+
+
+Fig. 4. Texture degradation under different adapter scales. (a) Multi-view texture comparison. Each object is shown from six target views.
+Compared with conservative scaling s = 1.25, higher scales s = 2.25 and s = 2.50 show more obvious color convergence and surface smoothing
+in multiple views. (b) Local zoom-in comparison. Red boxes mark local texture regions; green borders denote conservative scaling s = 1.25,
+and red borders denote aggressive scaling s = 2.50. Within each row, the intended comparison is the progression from s = 1.25 to higher scales:
+local color variation, material details, and high-frequency texture gradually weaken, and the surface becomes more uniform.
+
+
+                                                                         points and identical pipeline, objects, seed, 50 denoising
+Table 2. Shape-texture trade-off on the 24-object probe set. Delta
+texture metrics are computed relative to the corresponding ground-       steps, and metrics.
+truth foreground renderings under the same views and masks; ∆Lap
+Var closer to 0 indicates smaller loss of foreground high-frequency         Table 3 shows that common guidance schedules do not
+response, which is interpreted together with visual texture audits.      solve the problem. Decay schedules start with strong early
+ Variant     Category            ∆FG-SSIM↑   ∆Lap Var → 0   Assessment   residuals and still retain high late strength, producing un-
+ C4          Late-stage high       0.105       −0.0120        Trap       stable outputs and lower PSNR. Warm-up avoids early
+ C2          Timestep sched.       0.104       −0.0110        Trap
+ B2          Layer-wise sched.     0.090       −0.0135        Trap
+                                                                         over-control but peaks in the late texture-synthesis stage.
+ A_s2.00     Uniform               0.087       −0.0062        Trap       The cosine bump is closest to C3, yet its effective high-
+ C3 (TCAS)   Mid-stage high        0.084       −0.0006      Promising    scale duration is shorter than the full middle third used
+ A_s2.25     Uniform               0.079       −0.0096        Trap
+ A_s2.50     Uniform               0.078       −0.0108        Trap
+                                                                         by C3. C3 therefore obtains the highest PSNR and higher
+ B6          Layer-wise sched.     0.000       −0.0027         OK        FG-SSIM than monotonic decay and smooth bump sched-
+                                                                         ules, with FG-SSIM win rates of 100% over fixed high,
+                                                                         linear decay, and cosine decay, 96% over cosine bump,
+“higher structural metrics but flattened texture.” A sched-              and 67% over linear warm-up. Although fixed-low scaling
+ule that improves FG-SSIM through late strong residuals                  has a higher probe FG-SSIM than C3, it is included only
+while reducing texture response does not solve the adapter-              as a conservative reference: on the 300-object validation
+specific conflict.                                                       set, its FG-SSIM and Edge-SSIM are clearly lower than
+  To test whether generic CFG or ControlNet-style                        C3 (Table 5), indicating insuﬀicient geometric correction.
+scheduling can solve the trade-off, we evaluate linear decay,            The goal is therefore not to beat fixed low on every probe
+cosine decay, linear warm-up, and a smooth cosine bump                   metric, but to obtain a schedule that transfers with better
+on the same 24-object probe set, with fixed low/high end-                geometry-texture balance. The probe diagnostics are used
+8                                                      / Computers & Graphics (2026)
+
+
+Table 3. Comparison with generic guidance-style schedules on the 24-object probe set. The table reports structural and signal-fidelity metrics
+together with diagnostic assessment. Probe-set Laplacian/RGB diagnostic ratios are not used as texture-quality scores here because extremely
+large values can be dominated by unstable color or noise amplification; they should not be compared with the retention ratios in Table 7.
+    Schedule         Form                           FG-SSIM↑    PSNR↑     Probe diagnostic outcome            Assessment
+    Fixed low        1.25 uniform                    0.3109      16.13    Conservative variation              Reference
+    Fixed high       2.50 uniform                    0.1900      15.52    Artifact amplification              Over-controlled/artifact-prone
+    Linear decay     2.50 → 1.25                     0.2110      15.58    Artifact amplification              Unstable geometry/artifacts
+    Cosine decay     2.50 → 1.25                     0.2081      15.48    Artifact amplification              Unstable geometry/artifacts
+    Linear warm-up   1.25 → 2.50                     0.2942      16.31    Late-stage over-control             Over-constrained texture stage
+    Cosine bump      1.25 → 2.50 → 1.25              0.2554      16.10    Insuﬀicient middle concentration    Weak geometry
+    C3 (TCAS)        1.25 → 2.50 → 1.25 piecewise    0.2971      16.67    Stable diagnostics                  Best trade-off
+
+
+
+
+Fig. 5. Texture flattening at s = 2.50. Top: RGB standard deviation
+ratio on 26 objects (s = 2.50 / s = 1.25). Bottom: gradient magni-
+tude ratio. Values below 1.0 indicate reduced foreground variation.
+Together with the local visual audit in Figure 4, these reductions
+support the observation of texture flattening. Even the four best-
+improvement objects (green) show 24% to 30% lower diagnostic re-
+sponses despite positive FG-SSIM gains.
+
+
+
+only to flag unstable amplification or over-control, while
+the larger 300-object study reports texture retention with               Fig. 6. Qualitative comparison between C3 and uniform adapter scal-
+a consistent s = 1.25 reference.                                         ing. Columns show GT, conservative uniform scaling s = 1.25, ag-
+                                                                         gressive uniform scaling s = 2.50, and C3 (TCAS). Compared with
+   Table 2 summarizes representative variants. C4 and                    s = 2.50, C3 retains more local color variation and material texture in
+other late-stage high-scale strategies obtain higher ∆FG-                the red-boxed zoom-in regions while preserving stronger geometric
+SSIM, but with clear Laplacian-variance drops, showing                   correction than the conservative scale. Orange borders denote C3
+that structural gains come with texture loss. Uniform                    outputs, and red boxes indicate zoom-in texture regions.
+high-scale strategies show the same issue: s = 2.50 reaches
++0.078 ∆FG-SSIM but −0.0108 ∆Lap Var. C3 reaches
++0.084 ∆FG-SSIM with only −0.0006 ∆Lap Var, close to                     reduces adapter intervention in the late stage, thereby pre-
+zero texture loss, and is frozen before large-scale valida-              serving more local texture than s = 2.50 while retaining
+tion.                                                                    stronger geometric correction than the conservative scale.
+   The C3 configuration uses s = 1.25 in early/late stages                  Figure 7 shows the 17 variants in shape-texture space.
+and s = 2.50 in the middle stage. This follows denois-                   Most high-shape-gain variants fall into the Trap region
+ing roles: early latents are noisy, middle signals support               with large texture loss, whereas C3 keeps relatively high
+geometry refinement, and late steps synthesize color, ma-                shape gain and near-zero texture loss. Its value is not
+terial, and fine texture, where adapter intervention should              maximizing every metric, but avoiding “higher structural
+recede.                                                                  scores but flattened texture.”
+   Figure 6 provides a qualitative comparison between C3                    Mechanistically, C3 is tied to denoising-stage behavior
+and uniform adapter scaling. The red-boxed zoom-in re-                   rather than validation-set tuning or a generic monotonic
+gions make the intended comparison visible: conservative                 rule. Strong early residuals are unstable under high noise,
+scaling preserves more color variation but provides weaker               middle-stage signals make normals/depth/contours most
+structural correction, whereas aggressive scaling strength-              effective, and late strong residuals compete with color, ma-
+ens geometric constraints but flattens surface texture. C3               terial, and fine texture synthesis.
+applies strong geometric correction in the middle stage and                 This matches the variant results: early high-scale vari-
+                                                        / Computers & Graphics (2026)                                                       9
+
+
+                                                                         Table 5. Large-scale validation on 300 objects. Values are absolute
+                                                                         metrics of generated outputs with respect to ground truth.
+                                                                          Method        FG-SSIM↑     Edge-SSIM↑       PSNR↑     FG-LPIPS↓
+                                                                          s = 1.25         0.430         0.513        17.95       0.174
+                                                                          s = 2.50         0.473         0.559        17.90       0.172
+                                                                          C3 (TCAS)        0.476         0.529        18.86       0.171
+
+
+                                                                         Table 6. Large-scale texture-diagnostic validation on 300 objects.
+                                                                         Higher values indicate stronger foreground color variation or high-
+                                                                         frequency response, but they are interpreted together with qualita-
+                                                                         tive audits rather than as standalone texture-quality scores.
+                                                                              Method          Lap Var↑     RGB Std↑      Grad Mag↑
+                                                                              s = 1.25          0.0151       0.0408           0.3258
+                                                                              s = 2.50          0.0095       0.0251           0.2616
+                                                                              C3 (TCAS)         0.0129       0.0377           0.2919
+Fig. 7. Shape-texture Pareto trade-off among 17 variants. The hor-
+izontal axis is shape gain, where farther right is better; therefore,
+the bottom-right region represents a more desirable compromise. C3       but lower PSNR than C3. C3 reaches comparable FG-
+(star) lies in the Promising region, with high shape gain and nearly
+zero texture loss. Most high-shape-gain variants fall into the Trap      SSIM to s = 2.50, improves PSNR to 18.86, and slightly
+region, where structural scores are obtained at the cost of large tex-   reduces FG-LPIPS, indicating that timestep-conditioned
+ture loss. Variants such as B6 have smaller texture degradation but      scaling preserves structural alignment while improving sig-
+almost no shape gain.
+                                                                         nal quality.
+                                                                            Because PSNR is not a texture-quality metric, we fur-
+ants give limited structural gain, C4 obtains a high struc-              ther compute Laplacian variance, RGB standard devia-
+tural score but large texture loss, uniform high scales                  tion, and gradient magnitude on the same 300 objects
+improve condition adherence while losing detail, and an                  as diagnostic evidence of variation loss. All results use
+aggressive C3 variant reduces signal fidelity. Stronger                  the same objects, seed, 50 denoising steps, and adapter
+ControlNet-like scaling alone therefore does not resolve the             weights.
+conflict.                                                                   Table 6 shows that s = 2.50 has the lowest values across
+                                                                         all three texture diagnostics, consistent with the flatten-
+                                                                         ing observed in Figure 4. C3 keeps comparable FG-SSIM
+Table 4. Comparison of representative variants under extended tex-
+                                                                         while retaining higher Laplacian variance, RGB standard
+ture metrics. All delta texture metrics are computed relative to the
+corresponding ground-truth foreground renderings under the same          deviation, and gradient magnitude.
+views and masks. This table verifies that the advantage of C3 is not        Table 7 shows that s = 2.50 retains only 67.8% Lapla-
+due to a single Laplacian variance metric.                               cian variance, 64.3% RGB standard deviation, and 80.7%
+ Variant      ∆Lap Var      ∆RGB Std       ∆Grad      ∆HF Energy         gradient magnitude relative to s = 1.25. C3 retains 83.5%,
+ C3            −0.001         −0.023       +0.142        +0.058          97.0%, and 88.3%, respectively, so it still incurs some re-
+ C4            −0.012         −0.032       +0.086        +0.062          duction but substantially alleviates full high-scale flatten-
+ A_s2.50       −0.011         −0.044       +0.054        +0.078          ing.
+ A_s2.00       −0.006         −0.040       +0.100        +0.070             Object-level statistics show that C3 outperforms s =
+ A_s1.25       −0.005         −0.032       +0.104        +0.053          2.50 on 87.7%, 95.0%, and 83.0% of objects in Laplacian
+                                                                         variance, RGB standard deviation, and gradient magni-
+                                                                         tude, with bootstrap 95% confidence intervals not crossing
+  C3 has nearly zero loss in Laplacian variance and re-
+                                                                         zero. It also wins on 74.3% of objects in PSNR, while the
+mains relatively stable in RGB standard deviation, gra-
+                                                                         FG-SSIM interval crosses zero, indicating no significant
+dient magnitude, and high-frequency energy. Compared
+                                                                         structural sacrifice.
+with C4 and uniform high-scale strategies, C3 shows
+weaker texture degradation, indicating that its shape-
+                                                                         Perceptual validation with CLIP-IQA. To address the
+texture balance is not an artifact of a single metric.
+                                                                         concern that proxy texture statistics do not directly mea-
+                                                                         sure perceptual quality, we additionally evaluate CLIP-
+4.5. Large-scale Validation                                              IQA [34], which builds on CLIP representations [35], on
+  As a transfer test rather than another search, we com-                 a 50-object validation subset as a complementary no-
+pare conservative uniform scaling (s = 1.25), aggressive                 reference perceptual signal. CLIP-IQA is used as com-
+uniform scaling (s = 2.50), and fixed C3 (TCAS) on 300                   plementary perceptual evidence rather than a complete
+objects.                                                                 replacement for human preference evaluation.
+  Table 5 shows that s = 1.25 has weaker structural                         Table 8 shows that C3 achieves a foreground CLIP-IQA
+scores, while s = 2.50 obtains the highest Edge-SSIM                     score of 0.4906 versus 0.4860 for s = 2.50, winning on 94.0%
+10                                                           / Computers & Graphics (2026)
+
+                                                                              agnostic decrease relative to s = 1.25, so we do not claim
+Table 7. Texture-diagnostic retention ratios and object-level stability
+of C3. Ratios are measured relative to s = 1.25; object-level win             that TCAS eliminates texture loss or guarantees superior
+rates and confidence intervals for C3 over s = 2.50 are reported in           texture in every case. Instead, the metric, CLIP-IQA, vi-
+the text. These ratios measure retained foreground variation rather           sual, and preference evidence jointly indicate that it re-
+than perceptual texture quality by themselves.
+                                                                              duces the high-scale over-control pattern and offers the
+ Method        Lap Var Ratio↑        RGB Std Ratio↑      Grad Mag Ratio↑
+                                                                              stronger overall trade-off.
+ s = 1.25           1.000                1.000                1.000
+ s = 2.50           0.678                0.643                0.807
+ C3 (TCAS)          0.835                0.970                0.883
+                                                                              4.6. FAC Adaptive Correction Framework
+                                                                                 TCAS is training-free and lightweight, but its residual
+                                                                              scaling is uniform across spatial positions and frequency
+Table 8. CLIP-IQA perceptual validation on 50 validation objects.             components. To instantiate the same principle in a learned
+Scores are reported for foreground regions and full rendered views.
+Higher is better.
+                                                                              adaptive form, we evaluate FAC on the 300-object valida-
+ Method       CLIP-IQA (FG)↑ CLIP-IQA (Full)↑ Win vs. s = 2.50
+                                                                              tion set. FAC keeps the base model, VAE, and original
+                                                                              GeoTex-Adapter frozen, adding LTAG timestep gating,
+ s = 1.25       0.4920 ± 0.0032       0.4918 ± 0.0030          98.0%
+ s = 2.50       0.4860 ± 0.0018       0.4857 ± 0.0017            –            GSG spatial gating, and FSC frequency-selective correc-
+ C3 (TCAS)      0.4906 ± 0.0028       0.4903 ± 0.0025          94.0%          tion on top of TCAS. Because FAC learns additional pa-
+                                                                              rameters, TCAS remains the training-free main strategy.
+
+of objects. The paired test is significant (p < 10−6 ), with
+                                                                              Table 10. Ablation results of the FAC adaptive correction framework
+a 95% confidence interval of [0.0037, 0.0054]. The order-                     on the 300-object validation set. Full FAC adds spatial gating and
+ing s = 1.25 > C3 > s = 2.50 supports the diagnosis that                      frequency-selective correction on top of the TCAS temporal schedule.
+aggressive scaling reduces perceptual quality, while TCAS                      Variant             PSNR↑     SSIM↑     FG-PSNR↑      FG-SSIM↑
+recovers most of this loss with stronger geometry than con-
+                                                                               TCAS (baseline)      18.86    0.8737       11.66        0.4755
+servative scaling.                                                             LTAG only            17.87    0.8732       10.47        0.4635
+                                                                               LTAG + GSG           18.09    0.8794       10.43        0.4640
+Blinded preference study. To further examine whether the                       Full FAC             19.28    0.8793       11.77        0.4830
+diagnostic texture differences are perceptually meaning-
+ful, we conducted a blinded three-alternative forced-choice
+preference study on 30 validation objects. Twenty-four                           Table 10 reports controlled ablations. LTAG alone un-
+participants viewed anonymized results from conservative                      derperforms TCAS, so learned temporal gating alone can-
+uniform scaling, aggressive uniform scaling, and C3 in ran-                   not stably replace the fixed schedule. LTAG+GSG im-
+domized order, and selected the best result for texture                       proves SSIM but remains lower in PSNR, FG-PSNR, and
+naturalness, shape consistency, and overall quality. This                     FG-SSIM. Full FAC performs best overall: PSNR rises
+yields 720 valid first-choice decisions for each criterion.                   from 18.86 to 19.28, FG-PSNR from 11.66 to 11.77, and
+The study complements the proxy diagnostics by testing                        FG-SSIM from 0.4755 to 0.4830.
+whether the observed texture and structure differences are                       Object-level statistics further show that Full FAC out-
+reflected in human preference.                                                performs TCAS on 81.3% and 72.0% of objects in PSNR
+                                                                              and FG-SSIM, respectively, and paired significance tests
+                                                                              for both metrics are significant (p < 0.0001). This indi-
+Table 9. Blinded three-alternative first-choice preference study. Per-        cates that the gains of FAC are stable across most objects
+centages are computed over 720 valid decisions per criterion.
+                                                                              rather than being driven by a small number of samples.
+ Method       Texture naturalness↑    Shape consistency↑   Overall quality↑
+                                                                                 Thus, TCAS remains the main strategy when no addi-
+ s = 1.25       332/720 (46.1%)         96/720 (13.3%)     176/720 (24.4%)
+ s = 2.50       104/720 (14.4%)        331/720 (46.0%)     126/720 (17.5%)
+                                                                              tional training is desired, while FAC shows that stage-wise
+ C3 (TCAS)      284/720 (39.4%)        293/720 (40.7%)     418/720 (58.1%)    adapter control can generalize to learned spatial and fre-
+                                                                              quency correction.
+   The preference pattern in Table 9 follows the intended
+trade-off. Conservative scaling is most often selected for                    5. Limitations
+texture naturalness, while aggressive scaling is most of-
+ten selected for shape consistency. C3 stays close to both                      This paper focuses on inference-time adapter scaling and
+single-scale baselines on their respective strengths and re-                  does not retrain the base multi-view diffusion model or
+ceives the highest overall preference, with 58.1% of all                      adapter. TCAS can alleviate high-scale texture flatten-
+overall-quality votes. Thus, TCAS is not claimed to max-                      ing, but cannot fundamentally solve invisible-region com-
+imize every individual criterion; it provides a perceptually                  pletion, complex material synthesis, or cross-view detail
+preferred balance between geometric adherence and tex-                        consistency.
+ture preservation.                                                              Second, Laplacian variance, RGB standard deviation,
+   Overall, the 300-object experiments show that TCAS                         and gradient magnitude are proxy metrics for texture
+maintains structural alignment while reducing the flatten-                    degradation. They detect high-frequency loss and surface
+ing effect of full high-scale scaling. C3 still has some di-                  smoothing, but noise, erroneous patterns, or artifacts can
+                                                     / Computers & Graphics (2026)                                                        11
+
+also increase them. We therefore interpret them with local            [3] Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generat-
+visual audits, CLIP-IQA validation, and a small blinded                   ing multiview-consistent images from a single-view image.
+                                                                          arXiv:2309.03453, 2023.
+preference study. A more complete evaluation should                   [4] Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D
+add larger-scale blinded user studies, full-reference metrics             using cross-domain diffusion. arXiv:2310.15008, 2023.
+such as DISTS [36], and FID/KID on larger rendered-view               [5] Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for
+test sets.                                                                3D generation. ICLR, 2024.
+                                                                      [6] Wang P, et al. ImageDream: Image-prompt multi-view diffusion
+   In addition, TCAS uses fixed stage boundaries and C3                   for 3D generation. arXiv:2312.02201, 2023.
+= (1.25, 2.50, 1.25). It is a validated strategy for the stud-        [7] Xu J, et al. InstantMesh: Eﬀicient 3D mesh generation from
+ied geometry-adapter pipeline rather than a universally                   a single image with sparse-view large reconstruction models.
+optimal schedule, and has not yet been adapted to object                  NeurIPS, 2024.
+                                                                      [8] Ke Q, et al. Era3D: High-resolution multiview diffusion using
+complexity, material type, reference quality, or sampler                  eﬀicient row-wise attention. arXiv:2405.11616, 2024.
+families.                                                             [9] Chen D Z, et al. Text2Tex: Text-driven texture synthesis via
+   Finally, FAC requires additional training and therefore                diffusion models. arXiv preprint, 2023.
+                                                                     [10] Richardson E, et al. TEXTure: Semantic texture transfer using
+does not replace the plug-and-play property of TCAS; it
+                                                                          diffusion models. arXiv preprint, 2023.
+is treated as a learned adaptive instantiation of the same           [11] Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-
+principle.                                                                to-3D using 2D diffusion. ICLR, 2023.
+                                                                     [12] Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling ge-
+                                                                          ometry and appearance for high-quality text-to-3D content cre-
+6. Conclusion                                                             ation. ICCV, 2023.
+                                                                     [13] Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and
+   This paper analyzes adapter scaling in multi-view dif-                 detailed 3D texture generation via multi-view diffusion with ge-
+fusion texture generation. Higher adapter scales improve                  ometric control. arXiv:2505.12635, 2025.
+                                                                     [14] Huang Z, et al. MV-Adapter: Multi-view consistent image gen-
+structural metrics such as FG-SSIM, but this can mask
+                                                                          eration made easy. arXiv:2412.03632, 2024.
+texture flattening: in the 26-object audit, 92% of objects           [15] Zhang L, Rao A, Agrawala M. Adding conditional control to
+show smoother surfaces and weakened coherent local vari-                  text-to-image diffusion models. ICCV, 2023.
+ation under s = 2.50. This reveals an adapter-specific               [16] Ye H, Zhang J, Liu S, Han X, Yang W. IP-Adapter: Text com-
+                                                                          patible image prompt adapter for text-to-image diffusion mod-
+temporal conflict not captured by treating scale as generic               els. arXiv:2308.06721, 2023.
+guidance strength.                                                   [17] Hu E J, Shen Y, Wallis P, et al. LoRA: Low-rank adaptation of
+   We propose TCAS, whose C3 configuration applies                        large language models. ICLR, 2022.
+strong adapter correction in the middle denoising stage              [18] Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed
+                                                                          low-rank adaptation. arXiv:2402.09353, 2024.
+and conservative scales in early/late stages. C3 is selected         [19] Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget
+only on a 24-object probe set from 17 variants, then frozen.              allocation for parameter-eﬀicient fine-tuning. ICLR, 2023.
+Comparisons with linear decay, cosine decay, linear warm-            [20] Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models.
+up, and smooth cosine-bump schedules show that common                     NeurIPS, 2020.
+                                                                     [21] Song J, Meng C, Ermon S. Denoising diffusion implicit models.
+guidance-style schedules do not provide the same trade-                   ICLR, 2021.
+off. On 300 objects, C3 achieves FG-SSIM comparable to               [22] Ho J, Salimans T. Classifier-free diffusion guidance. NeurIPS
+s = 2.50 while improving PSNR by 0.96 dB.                                 Workshop, 2022.
+   The core contribution is therefore to reveal and vali-            [23] Castillo A, Legenstein R, et al. Adaptive guidance: Training-free
+                                                                          acceleration of conditional diffusion models. arXiv:2312.12487,
+date a hidden shape-texture trade-off caused by geometry-                 2023.
+adapter residual injection, and to show that a simple non-           [24] Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-
+monotonic inference schedule mitigates flattening better                  resolution image synthesis with latent diffusion models. CVPR,
+                                                                          2022.
+than fixed high-scale control and the tested generic sched-
+                                                                     [25] Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow trans-
+ules. Because the texture diagnostics are proxies, we fur-                formers for high-resolution image synthesis. ICML, 2024.
+ther verify the conclusion with CLIP-IQA, where C3 out-              [26] Black Forest Labs. FLUX: Flow matching for image generation.
+performs s = 2.50 on 94.0% of the 50-object subset, and                   2024.
+                                                                     [27] Loshchilov I, Hutter F. Decoupled weight decay regularization.
+with a blinded preference study where C3 receives 58.1%                   ICLR, 2019.
+of overall first-choice votes. Adapter strength should thus          [28] Cherti M, Beaumont R, Wightman R, et al. Reproducible scal-
+be treated as a stage-dependent inference control variable                ing laws for contrastive language-image learning. CVPR, 2023.
+rather than a single fixed hyperparameter.                           [29] Nichol A, Dhariwal P, Ramesh A, et al. GLIDE: Towards photo-
+                                                                          realistic image generation and editing with text-guided diffusion
+   FAC further shows that stage-wise adapter control can                  models. ICML, 2022.
+generalize from a fixed inference schedule to lightweight            [30] Saharia C, Chan W, Saxena S, et al. Photorealistic text-
+learned spatial and frequency correction.                                 to-image diffusion models with deep language understanding.
+                                                                          NeurIPS, 2022.
+                                                                     [31] Peebles W, Xie S. Scalable diffusion models with transformers.
+References                                                                ICCV, 2023.
+                                                                     [32] Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality
+ [1] Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one        assessment: From error visibility to structural similarity. TIP,
+     image to 3D object. ICCV, 2023.                                      2004, 13(4): 600–612.
+ [2] Shi R, Chen H, Zhang Z, et al. Zero123++: A single image to     [33] Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The un-
+     consistent multi-view diffusion base model. arXiv:2310.15110,        reasonable effectiveness of deep features as a perceptual metric.
+     2023.
+12                                                   / Computers & Graphics (2026)
+
+     CVPR, 2018.
+[34] Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing
+     the look and feel of images. AAAI, 2023.
+[35] Radford A, Kim J W, Hallacy C, et al. Learning transferable
+     visual models from natural language supervision. ICML, 2021.
+[36] Ding K, Ma K, Wang S, Simoncelli E P. Image quality assess-
+     ment: Unifying structure and texture similarity. TPAMI, 2022.
+
