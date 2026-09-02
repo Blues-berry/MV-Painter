@@ -1,0 +1,145 @@
+云电脑
+不是。这三份审稿意见是 CAD/Graphics 2026 会议的审稿人写的（会议审稿），不是 Computers & Graphics 期刊编辑部另外新找的审稿人。
+不过你要理解这背后的流程逻辑：
+为什么会是 "会议审稿意见" 却要投到期刊去？
+你这篇走的是 VSI（特刊）通道：会议先审稿 → 接收的论文 → 被推荐进 Elsevier 的 Computers & Graphics 期刊。在这个模式下：
+表格
+环节	谁在审
+论文评审	CAD/Graphics 2026 的会议审稿人（就是那三位，分数 -1/1/1）
+期刊的角色	主要是接收平台 + 把关：确认你按意见修改、回复信是否充分回应
+后续是否再审	邮件没说要找新审稿人。按惯例，这种会议推荐进期刊的流程，一般不会再组织全新的期刊外审，顶多是编辑部形式审查 + 核对你是否逐条回应了那三位审稿人的意见
+所以：虽然审稿意见来自会议，但对你的实际约束是 "期刊级" 的 —— 修改稿和回复信要交到期刊投稿系统，期刊会依据这几份意见判断 "修改是否到位"，不到位就会两边一起拒（邮件里那句 If the revision does not sufficiently address the reviewers' comments 就是这个意思）。
+一句话总结：审稿人是会议的，但 "验收标准" 是期刊的。你回复信里逐条回应的对象，就是这三份意见，回应质量决定期刊是否正式接收。
+要不要我帮你把三份意见整理成 "意见逐条 → 回复要点 → 修改位置" 的对照清单，直接作为回复信草稿的基础？
+也就是我修改好了回复就能中期刊是这个意思吧
+基本是这个意思，但准确说不是 "保送"，而是 "条件接收"—— 邮件本身就是带条件的接收通知。让我把剩下的关卡给你摆清楚：
+大概率 = 期刊接收，前提是这几关都过：
+按时提交（9 月 10 日 GMT 前，否则两边一起拒，这个没商量）
+逐条回应三份审稿意见—— 这是最实质的一关，尤其 R2 给了 -1（边缘拒稿），他的 "泛化性不足" 质疑如果修改后还是回避，编辑部可能判定 "未充分回应"
+格式合规：按 Computers & Graphics 期刊格式重排、回复信放最前面
+过编辑部：投稿系统里的版权、伦理声明、利益冲突、图 / 数据可用性等流程性手续
+要注意的变数：
+邮件说 "recommended your paper (upon revision) for publication"，是推荐 + 需修改，不是最终接收函。最终接收通常在你提交修改稿、编辑部确认满意后才正式发出。
+万一编辑觉得 R2 的核心质疑没被解决，可能要求再补一轮修改（甚至再审一轮），但不会直接拒 —— 因为接收意向已经明确表达了。
+特刊一般不会再重新找新审稿人，主要看 "修改是否充分"。
+一句话：只要你在截止前把三份意见实打实回应到位（尤其是数据细节、泛化性、统计口径、FAC 训练分离这几条共同的硬伤），期刊接收基本是稳的。但 R2 那条 "泛化性" 是唯一的实质风险点，值得在回复信和补充实验里多花力气。
+要我帮你把三份意见整理成逐条对照表、并起草回复信吗？现在是 9 月 2 日，离截止就 8 天，动手越早越稳。
+Response Letter (DRAFT v1 — 2026-09-02)
+STATUS: DRAFT. Items marked [PENDING] must be filled from the corresponding runs/data before submission:
+cosine bump / linear warm-up 300-object numbers (run geotex/run_r31_schedules_300.sh),
+preference-study cluster-bootstrap CIs (need the raw per-trial vote export),
+final page/line references after the tex edits are compiled.
+Response to Reviewers
+Manuscript: Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation (CAD/Graphics 2026, Paper 75; recommended to Computers & Graphics as VSI: CAG_SS_CAD/Graphics 2026)
+Dear Editors and Reviewers,
+We thank the program committee of CAD/Graphics 2026 for recommending this manuscript, upon revision, for publication in Computers & Graphics, and we thank all three reviewers for their careful and constructive comments. We have revised the manuscript substantially. All reviewer comments are addressed below; each response states what was changed and where. This revised manuscript is recommended by CAD/Graphics 2026.
+Summary of major changes
+Before the point-by-point responses, we summarize the changes that affect several comments at once.
+Unified, fully documented evaluation protocol. While preparing the revision we audited our evaluation scripts and found that the original manuscript's 300-object tables had been produced by an evaluation path that applied the adapter scale as an uncapped multiplication, whereas the deployed model forward applies the scale as min⁡(s,cℓ)\min(s, c_\ell)min(s,cℓ​) with per-layer caps. Because this scale semantics measurably changes the direction of high-scale effects (Reviewer 2, W1), we re-ran all experiments under a single, explicitly documented protocol (fixed released adapter checkpoint, capped scale semantics, Euler discrete scheduler, 50 steps, seed 42, shared initial latents) and updated every table accordingly. The qualitative conclusions are unchanged — a uniform scale is a blunt control, and stage-dependent scaling resolves the trade-off — but the failure mode under the finalized protocol is color overshoot and high-frequency artifact amplification rather than pure flattening, and the manuscript now reports this accurately (Abstract, Sec. 4.2, Fig. 4).
+A formal stage-utility model (CAI) and a stage ablation now explain why the mid-stage schedule is selected, replacing the heuristic framing (new Sec. 3.4 and Sec. 4.3).
+A disjoint holdout protocol. We disclose that the original 24-object probe and the 300-object pool overlapped, and now perform all transfer claims on a disjoint 276-object holdout (obj0024\mathrm{obj}{0024}obj0024​–obj0299\mathrm{obj}{0299}obj0299​), with the full 300-object pool retained as descriptive statistics (Sec. 4.1).
+The FAC extension has been removed. A controlled re-training and re-evaluation of the learned-correction (FAC) variants under the strict paired protocol showed a significant negative result (details under R1-C1/R2-W3), so the section was deleted rather than revised. TCAS remains the sole, training-free method.
+New baselines and sensitivity analyses: adapter-free (scale 0) baselines on the probe and 300-object sets, a third-party SF3D comparison, a 13-schedule comparison, a C3 boundary/peak sensitivity sweep, reviewer-named generic schedules transferred to the 300-object pool, and an explicit implementation/dataset appendix (Sec. 4.1).
+Reviewer #1
+R1-C1. Data splits and FAC evaluation are unclear; FAC requires a fully described training objective and separate train/tuning/test sets.
+Response. We agree, and we have made two changes.
+(a) Data splits. Section 4.1 now documents the complete data pipeline: all objects come from Objaverse; ground truth is rendered with Blender (Cycles, 512×512, white background); the training pool contains 1,118 rendered objects and the evaluation pool contains 300 rendered objects, and we verified that the two identifier sets intersect in zero objects, so no evaluation object was seen in adapter training. Within the 300-object pool, the 24-object probe is obj0000\mathrm{obj}{0000}obj0000​–obj0023\mathrm{obj}{0023}obj0023​, and all transfer claims now use the disjoint 276-object holdout obj0024\mathrm{obj}{0024}obj0024​–obj0299\mathrm{obj}{0299} obj0299​; we explicitly disclose that the earlier manuscript's 300-object tables included the probe objects, and those tables are now labeled descriptive only (Sec. 4.1; holdout statistics in Secs. 4.4–4.5). The CLIP-IQA (50 objects) and preference-study (30 objects) subsets are drawn from the holdout side of the pool.
+(b) FAC. During the reproducibility audit we re-trained and re-evaluated all FAC variants (LTAG; LTAG+GSG; full FAC) under a strictly paired protocol (same 300 objects, same seeds, TCAS baseline paired per object). The result was a significant negative one: full FAC reached 16.11 dB PSNR / 0.3204 FG-SSIM versus 19.12 / 0.3708 for the TCAS baseline (−3.00 dB, paired win rate 1.3%, p≈10−50p\approx10^{-50} p≈10−50), with a warm-start control (initializing the learned gate at the exact C3 schedule) confirming that the evaluation path was correct and the degradation is a real training effect. Because the previously reported FAC numbers could not be reproduced under the finalized protocol, we removed the FAC section entirely rather than revise it; the manuscript now contains only the training-free TCAS method. We apologize for the earlier version's insufficiently controlled FAC reporting.
+R1-C2. Provide the exact implementation and checkpoints, conditioning, resolution, sampler, scheduler, prompts or references.
+Response. A new "Implementation and dataset details" paragraph in Sec. 4.1 specifies: the base pipeline (MVPainter-style joint six-view latent diffusion UNet, frozen), the adapter input (5-channel normal/depth/mask at 256×256) and injection levels, the exact released checkpoint (v2 EMA, 10,000 steps), the capped scale semantics min⁡(s,cℓ)\min (s,c_\ell) min (s,cℓ​) with cdeep=3.0c_\mathrm {deep}=3.0cdeep​=3.0, cmiddle=3.5c_\mathrm {middle}=3.5cmiddle​=3.5, cshallow=0.8c_\mathrm {shallow}=0.8cshallow​=0.8, the scheduler (Euler discrete, 50 steps), the fixed seed (42) and shared initial latents, the six target views, the ground-truth rendering configuration, and the exact metric implementations (foreground-masked SSIM/PSNR, edge masks from depth/normal discontinuities, LPIPS-Alex, foreground Laplacian-variance/RGB-std/gradient diagnostics). The pipeline is reference-image-conditioned (no text prompts are used), consistent with the MVPainter formulation.
+R1-C3. Preference decisions are clustered by participant and object; use mixed-effects analysis or participant- and object-level bootstrap intervals, and report study instructions, randomization, and other design details.
+Response. We agree that the 720 first-choice decisions are clustered within participants and objects, and we have made two changes. (a) The study design is now fully reported (Sec. 4.5): blinded 3AFC, three criteria, per-trial randomization of the left-to-right condition order, participant instructions, participant background, and the fact that every participant judged all 30 objects under all three criteria. (b) We now report two-level cluster-bootstrap 95% confidence intervals (resampling participants and objects with replacement, 10,000 resamples) for the preference shares of each method under each criterion [PENDING: insert CIs]. We deliberately report the cluster-bootstrap intervals rather than a single binomial test, since the latter would overstate significance under clustering.
+Reviewer #2
+R2-W1. Generalizability is insufficiently demonstrated; all experiments run on a single MVPainter-style pipeline, so the results cannot distinguish a general property of geometry-conditioned adapters from a backbone-specific one.
+Response. This is the most important concern, and the revision addresses it in three ways rather than claiming generality we cannot support.
+(a) The claims are now explicitly conditional. The manuscript no longer states that high scale universally flattens texture. The revised narrative, supported by new mechanism probes, is that the failure mode of aggressive adapter scaling is adapter-dependent (new Sec. 4.6, "Adapter Dependence of High-Scale Failure Modes"): across three adapter checkpoints of the same architecture under an identical inference protocol, uniform high scale produced (i) texture flattening with the original uncapped base adapter, (ii) high-frequency artifact amplification and color overshoot with the strong-residual capped adapter (the finalized protocol used throughout the paper), and (iii) no appreciable effect with a deliberately weakened adapter. A per-layer cap ablation on a single checkpoint reproduces both directions of the effect, isolating the scale semantics as a determining factor; a residual-magnitude sweep (γ∈[0.1,3.0]\gamma\in [0.1,3.0]γ∈[0.1,3.0]) shows the intervention strength is monotone in the trained residual magnitude; and a cross-adapter stage ablation shows that even the most dangerous denoising stage is adapter-dependent (early-stage on the capped adapter; late-stage on the uncapped one).
+(b) What is stable is stated precisely. In every regime where scaling had a non-negligible effect, the low–high–low temporal structure (C3) gave the best fidelity–structure balance, because concentrating correction in the middle stage exploits the stage-dependent roles of the diffusion process itself (global layout → geometric refinement → texture synthesis). The manuscript now frames TCAS as a conditional structural rule with re-estimable stage utilities (CAI, Sec. 3.4), not an adapter-independent optimum, and the Limitations state that adaptation to other backbones, adapter architectures, and sampler families is future work.
+(c) The evaluation no longer depends on a single pipeline point. We added the adapter-free baseline (scale 0) on both the probe and the 300-object pool, and an independent third-party comparison to SF3D on 298 objects, so the trade-off analysis is situated against non-adapter texture generation as well.
+R2-W2. TCAS is a heuristic three-stage schedule; the analysis does not explain why the boundaries or values should be meaningful or transferable.
+Response. We agree the original presentation was heuristic, and the revision replaces it with a derivation plus robustness checks:
+CAI model (new Sec. 3.4). We define a finite-difference stage utility Uk=Q (high in stage k)−Q (fixed low) U_k = Q (\text {high in stage } k)-Q (\text {fixed low}) Uk​=Q (high in stage k)−Q (fixed low) with an evidence vector (ΔQk,ΔSk,−ΔRk)(\Delta Q_k, \Delta S_k, -\Delta R_k)(ΔQk​,ΔSk​,−ΔRk​) and guardrails, and show that under an additive stage approximation the scalar-QQQ problem has a bang–bang solution. On the 24-object probe, the measured utilities are Ue=−0.788U_e=-0.788Ue​=−0.788 dB (95% CI [−1.420,−0.156][-1.420,-0.156][−1.420,−0.156]), Um=+0.574U_m=+0.574Um​=+0.574 dB [0.391,0.756][0.391,0.756][0.391,0.756], Ul=+0.077U_l=+0.077Ul​=+0.077 dB [0.006,0.149][0.006,0.149][0.006,0.149]: early-high violates the structural guardrail (FG-SSIM −0.105-0.105−0.105, CI [−0.141,−0.069][-0.141,-0.069][−0.141,−0.069]; LapVar 3.85×3.85\times3.85×), late-high is structurally neutral, and mid-high carries the useful gain — which selects the low–high–low schedule rather than assuming it. The paper states explicitly that the additive model is a conditional approximation and that the full schedule is validated directly.
+Boundary/peak sensitivity (new in Sec. 4.4). We swept three high-scale windows ([0.25,0.75)[0.25,0.75)[0.25,0.75), [1/3,2/3)[1/3,2/3)[1/3,2/3), [0.4,0.6)[0.4,0.6)[0.4,0.6)) × five peaks (2.00–3.00) = 15 candidates on the probe set. The canonical middle-third window lies in the stable high-performance region (2.50: 16.71 dB; best-in-window 2.75: 16.79 dB, only +0.08 dB with worse diagnostics and lower FG-SSIM); broader and narrower windows reach at most 16.73/16.62 dB. C3 is therefore a robust region, not a boundary-sensitive point estimate.
+Why not other schedules or axes. The 13-schedule comparison now includes σ-domain (noise-level-keyed) schedules, per-layer 5-phase schedules, and smooth bumps; none matches C3, showing the advantage does not come from the progress axis, per-layer refinement, or the piecewise shape alone.
+Transfer without re-searching. C3 is frozen on the probe and transferred to the disjoint 276-object holdout, where it also beats the strongest non-C3 probe candidates (trapezoid +0.258 dB, CI [0.207,0.308][0.207,0.308][0.207,0.308]; Gaussian peak +0.324 dB, CI [0.281,0.367][0.281,0.367][0.281,0.367]) and the reviewer-named generic schedules: linear warm-up (+0.323 dB, CI [0.263,0.386][0.263,0.386][0.263,0.386], 214/276 wins, with FG-SSIM statistically tied at −0.001-0.001−0.001) and the cosine bump (+0.902 dB, CI [0.824,0.981][0.824,0.981][0.824,0.981], 253/276 wins, FG-SSIM +0.046+0.046+0.046).
+R2-W3. Subset sources/construction/overlap and FAC training details are insufficient.
+Response. Subset construction, selection, and overlap are now fully specified in Sec. 4.1 (see R1-C1): one 300-object Objaverse pool, disjoint from the 1,118-object training pool (verified zero identifier overlap); probe = first 24 identifiers; holdout = the remaining 276; the earlier probe–validation overlap is disclosed and all transfer claims use the disjoint holdout. For FAC: after the reproducibility audit described in R1-C1 (b) produced a significant negative result under strict train/validation separation (FAC modules trained on the 1,118-object training pool, never on evaluation objects), we removed the FAC section entirely. The manuscript now contains no learned-correction claims; we are happy to provide the full configuration of the failed rerun as supplementary material if the reviewers wish.
+Reviewer #3
+R3-C1. Competing schedules are validated only on the probe set; evaluate cosine bump and linear warm-up on the large independent set.
+Response. Done. Linear warm-up and the cosine bump were evaluated on the same 300-object pool with the identical protocol (same checkpoint, capped scale semantics, 50 steps, seed 42, shared initial latents), and the transfer claims use the disjoint 276-object holdout. On the holdout, C3 improves PSNR over linear warm-up by +0.323 dB (95% CI [0.263,0.386][0.263, 0.386][0.263,0.386], winning on 214/276 objects) while matching its structure (mean FG-SSIM difference −0.001), and over the cosine bump by +0.902 dB (95% CI [0.824,0.981][0.824, 0.981][0.824,0.981], winning on 253/276 objects) with a higher FG-SSIM (+0.046). On the full 300-object pool the means are 18.75 dB / 0.370 (warm-up) and 18.21 dB / 0.324 (bump) versus 19.12 dB / 0.371 for C3. The holdout ordering matches the probe: linear warm-up approaches C3 in structure but loses in signal fidelity, and the smooth cosine bump loses in both because its effective high-scale duration is shorter than the full middle third. These results are reported alongside the already-transferred trapezoid and Gaussian-peak schedules (Sec. 4.4).
+R3-C2. The aggregation procedures in the texture tables appear to differ; clarify the exact computation.
+Response. The reviewer is correct, and we thank them for the careful check. The earlier tables mixed two aggregation orders (a ratio of per-condition means versus the mean of per-object ratios). In the revision, all texture tables are regenerated from per-object CSVs with a single, explicitly stated rule, written in the table captions: absolute foreground statistics are means over objects and views, and each ratio column is the mean over objects of the per-object ratio to the corresponding ground-truth statistic (equal object weighting) (Table tab:texture300). We also re-verified every reported win rate and confidence interval from the same per-object files.
+R3-C3. Clarify the statistical reporting: what does ± denote, which paired test, how are bootstrap CIs constructed?
+Response. Clarified at first use and in all relevant captions. For CLIP-IQA (Table tab:clipiqa): ±\pm± denotes the standard deviation across the 50 objects; the paired comparison is a two-sided paired ttt-test (t (49)=10.52t (49)=10.52t (49)=10.52, p≈3.6×10−14p\approx3.6\times10^{-14} p≈3.6×10−14 for C3 vs. s=2.50s {=} 2.50s=2.50); the 95% CI of the paired mean difference is a percentile bootstrap over objects with 10,000 resamples ([0.0037,0.0054][0.0037,0.0054][0.0037,0.0054]). For the preference study, significance is now reported via two-level (participant- and object-level) cluster bootstrap intervals as described in R1-C3 [PENDING: CIs]; the study's instructions, randomization, and exclusion rules are reported in Sec. 4.5. All other paired statements in the paper (e.g., stage-utility CIs in Sec. 4.3, holdout deltas in Sec. 4.4) use object-level paired statistics with percentile bootstrap 95% CIs, and the bootstrap procedure is now stated once in Sec. 4.1.
+R3-C4. More complete dataset and implementation details; for FAC, specify training data, loss, optimization, parameter count, and whether the 300 validation objects are excluded from FAC training and model selection.
+Response. Dataset and implementation details are addressed by the new Sec. 4.1 paragraph (R1-C1, R1-C2), including the verified zero-overlap between the training pool and the 300-object evaluation pool. Regarding FAC: the controlled re-run described in R1-C1 (b)/R2-W3 trained the lightweight correction modules on the 1,118-object training pool only (strictly disjoint from all evaluation objects) with the same denoising objective as the base adapter, and used no evaluation object for training or model selection; nevertheless the learned variants degraded fidelity by ≈3 dB relative to the TCAS baseline. Because the result is negative and the earlier positive numbers could not be reproduced, we removed the FAC section rather than risk presenting under-verified material; TCAS — which introduces no parameters and no training — remains the main and sole method.
+Checklist of changes
+Reviewer point
+Change
+Location (revised manuscript)
+R1-C1a / R2-W3 / R3-C4 (splits, overlap)
+Dataset/implementation paragraph; disjoint holdout protocol; zero train–eval overlap verified
+Sec. 4.1
+R1-C1b / R2-W3 / R3-C4 (FAC)
+FAC section removed; negative-result audit reported here
+(removed); this letter
+R1-C2 / R3-C4 (implementation)
+Checkpoint, scale semantics, scheduler, steps, seed, views, rendering, metrics
+Sec. 4.1
+R1-C3 / R3-C3 (statistics)
+± defined; test named; bootstrap procedure stated; cluster bootstrap added
+Sec. 4.1, 4.5
+R2-W1 (generality)
+Conditional reframing; Adapter-Dependence subsection; adapter-free + SF3D baselines
+Abstract, Secs. 4.2, 4.5, 4.6, 5
+R2-W2 (heuristic schedule)
+CAI model; stage ablation; 15-candidate sensitivity sweep; σ-domain/per-layer baselines
+Secs. 3.4, 4.3, 4.4
+R3-C1 (large-set schedules)
+cosine bump + linear warm-up on 300-object pool (disjoint holdout statistics)
+Sec. 4.4
+R3-C2 (aggregation)
+Single aggregation rule stated in captions; tables regenerated from per-object CSVs
+Sec. 4.5
+We believe the revised manuscript is substantially stronger, and we thank the reviewers again for comments that directly led to the CAI model, the disjoint holdout protocol, and the adapter-dependence analysis.
+Sincerely, The Authors
+你觉得这个回复可以吗
+先说结论：底子和态度很好，但当前这个 v1 状态不能直接提交—— 有 3 个问题会实质影响接收，其中一个是致命的。
+一、做得好的地方（保留）
+覆盖完整：R1 三条、R2 三条、R3 四条全部逐条回应，结尾还有 checklist 对照表，格式正是期刊要求的 "意见→回复→修改位置" 结构。
+诚实：主动披露探针集 / 验证集重叠、承认评估口径问题，这比被审稿人揪出来强太多。
+R3-C2、R3-C3 回答到位：对审稿人点名的算术问题（保留率聚合）直接说 "The reviewer is correct"，统计口径（±=SD、配对 t 检验、bootstrap 参数）给得具体。
+FAC 处理科学：有配对协议、warm-start 控制组、具体数字，并主动提出可提供失败重跑配置。
+开头含邮件要求的 "recommended by CAD/Graphics 2026" 声明。
+二、三个严重问题（提交前必须解决）
+🔴 1.【最致命】"失败模式" 变了，但回复信自相矛盾
+原稿核心观察（也是 R2 明确点赞的强项）：高 scale → 纹理扁平化，还专门提了 "24/26 对象人工审计证实"。但你的 Summary 里写：修正协议下失败模式是 "色彩过冲 + 高频伪影，而非纯扁平化"，同时又说" 定性结论不变 "。
+这两句是打架的—— 机制层面的结论明明变了。审稿人看到的第一反应会是："你审稿时夸的那个观察，现在被你自己推翻了，那我凭什么信你这份修改稿？"
+必须正面处理，主动写清楚：
+"我们纠正了原稿对失败模式的描述（扁平化→过冲 / 伪影），证据如下……"
+24/26 人工审计是否重做？新协议下数字是多少？R2 一定会追问，不能回避。
+重述 trade-off 的准确表述：原来是 "几何 vs 纹理保真"，现在是 "几何 vs 无伪影纹理"，机制不同但 "uniform scale 是钝控制、中段调度最优" 的结论在两种机制下都成立 —— 把这条逻辑链写出来。
+确认 Abstract、正文 4.2、Fig.4 与回复信在失败模式描述上完全一致。
+🔴 2.【性质严重】PENDING 声明和正文数字打架
+头部标记 cosine bump /linear warm-up 的 300 对象数字是 [PENDING]（还没跑），但正文 R2-W2 / R3-C1 里已经出现了具体数字（+0.323 dB、+0.902 dB、214/276、253/276…）。
+如果这些是你估算 / 占位写进去的 —— 那就是在提交材料里放未经实验验证的数字，审稿人核对时一旦对不上，比 "没补实验" 严重得多。
+必须：跑完 geotex/run_r31_schedules_300.sh，用真实输出填数；跑不出来就把正文数字删掉、只留 [PENDING] 占位。绝不带假数字提交。
+聚类 bootstrap CI、页 / 行引用同理，提交前填实。
+🔴 3.【信任风险】三件事叠加 = 审稿人怀疑整个实验语料
+承认评估 bug + FAC 原数字不可复现 + 探针 / 验证集重叠，同时出现，审稿人合理反应是："那原稿到底还有什么是准的？"
+在 Summary 里加一段主动担责：承认原版报告不够可控，说明这次审计 + 统一协议重跑是系统性修正，并承诺每个数字都从 per-object 结果可复现。
+FAC 删除要正面包装：不是 "我们失败了所以砍掉"，而是 "去掉不可复现的弱组件，论文贡献更干净 ——TCAS 是唯一且充分的免训练方法"。
+你已写 "可提供失败重跑配置作为补充材料"，保留，很好。
+三、中等问题（要修）
+4. R2-W1 泛化性只是 "部分" 回应
+你新增的（同架构 3 个 checkpoint、cap 消融、SF3D 对比、adapter-free 基线）都很扎实，但仍是同一 backbone 家族——R2 完全可以说 "你还是没证明跨 backbone"。建议在回应里主动点破边界："我们承认仍限于同一架构，但机制分析（scale 语义是决定因素、跨 checkpoint 一致）部分回答了 ' 是 adapter 特性而非超参 '"，把 Limitations 里 "跨 backbone 是未来工作" 并进回应，别让 R2 自己发现。
+5. 8 天 vs 承诺的海量新实验 ⚠️
+这份回复信承诺了：重跑全部实验、300 对象两套新调度、15 候选敏感性、13 调度对比、SF3D 298 对象、跨 adapter 3 checkpoint、逐层 cap 消融、残差扫参、聚类 bootstrap、全部表格重生成 ——审稿人会逐条核对。8 天做完全部非常紧张。要么全真做，要么提交前缩减承诺。我的优先级建议：
+表格
+优先级	必做 / 可砍
+🔥 必做	R3-C1 点名的 300 对象两套调度；CAI 模型 + stage 消融（R2-W2 核心）；数据 / 实现细节段落（三位都要）
+👍 加分	聚类 bootstrap、adapter-free 基线
+⚖️ 可砍或改补充材料	SF3D 对比、跨 checkpoint 全量、13 调度全对比 —— 做不了就在 Limitations 如实说明
+6. 格式清理
+全文有 LaTeX 渲染残留乱码（如 min(s,c_l)min(s,c_l)、obj0024... 这种），提交前清干净。
+数学符号统一用 LaTeX 源码，别把渲染后的文本粘进回复信。
+编译后填页 / 行引用。
