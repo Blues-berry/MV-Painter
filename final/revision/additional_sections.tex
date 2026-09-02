@@ -1,0 +1,65 @@
+% ============================================================================
+% Ready-to-paste LaTeX blocks for the CAD/Graphics 2026 -> Computers & Graphics
+% revision. Prepared 2026-09-02. Target file: final/final_submit.tex
+% Each block states its insertion point. All numbers below are taken from
+% verified project artifacts (TCAS_EVIDENCE_LEDGER.md, find.md,
+% mvpoutput/revision_*/), none are invented. [PENDING] markers must be filled
+% from the corresponding runs before submission.
+% ============================================================================
+
+% ---------------------------------------------------------------------------
+% BLOCK A — Implementation and Dataset Details
+% Insert at the END of Section 4.1 (subsec:setup), after the evaluation-sets
+% paragraph (line ~183 in final_submit.tex).
+% ---------------------------------------------------------------------------
+
+\paragraph{Implementation and dataset details}
+All objects are drawn from Objaverse~\cite{shao2025mvpainter}: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $512\times512$, white background), and the six target views used throughout the paper are front, front-right, right, back, left, and front-left. The training pool contains 1{,}118 rendered objects and the evaluation pool contains 300 rendered objects; the two lists are disjoint by construction, and we verified that their object identifiers intersect in zero objects, so no evaluation object is seen during adapter training. The evaluation pool is used as follows: the 24-object probe set is $\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$, the disjoint transfer holdout is $\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$ (276 objects), the CLIP-IQA subset is the first 50 pool objects, and the preference study uses a stratified 30-object subset; the probe--holdout split is disjoint by object identifier, and no schedule parameter is tuned on the holdout or on the full pool.
+
+The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a Wonder3D-architecture joint six-view latent UNet~\cite{shao2025mvpainter,long2023wonder3d}, used frozen together with its VAE. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask) at $256\times256$, produces a multi-scale residual pyramid, and injects corrections into the deep, middle, and shallow resolution levels of the UNet. The adapter checkpoint used for all tables in this revision is the v2 EMA checkpoint (10{,}000 training steps, batch size 1). Importantly, the deployed forward pass applies the requested scale as $\min(s, c_\ell)$ with per-layer caps $c_\mathrm{deep}=3.0$, $c_\mathrm{middle}=3.5$, $c_\mathrm{shallow}=0.8$; we state this scale semantics explicitly because, as Section~\ref{subsec:adapterdep} shows, it determines the direction of high-scale failure. Inference uses the Euler discrete scheduler with 50 denoising steps; all schedules within an experiment share the same initial latents (seed 42), and the model generates six $256\times256$ views per object. FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and foreground MAE are computed in PyTorch on foreground-masked regions after background normalization; FG-LPIPS uses the AlexNet backbone~\cite{zhang2018lpips}; the texture diagnostics (foreground Laplacian variance, RGB standard deviation, gradient magnitude) are computed on foreground pixels, and all diagnostics are compared to the same ground-truth renderings under identical views and masks.
+
+% ---------------------------------------------------------------------------
+% BLOCK B — Adapter-Dependence of High-Scale Failure Modes
+% Insert as a new \subsection AFTER subsec:largescale (after the preference
+% study, before \section{Limitations}). Suggested label: subsec:adapterdep.
+% Suggested level: \subsection{Adapter Dependence of High-Scale Failure Modes}
+% ---------------------------------------------------------------------------
+
+\subsection{Adapter Dependence of High-Scale Failure Modes}
+\label{subsec:adapterdep}
+All main experiments use one fixed checkpoint, so a natural question is whether the reported failure mode of aggressive scaling is a property of geometry-conditioned adapters in general or of this particular adapter. We therefore ran controlled mechanism probes on additional adapter checkpoints of the same architecture, under the identical inference protocol (50 steps, seed 42). Three regimes emerge. With the original uncapped base adapter, uniform high scale suppresses the fine-texture residual layer and flattens foreground variation (foreground Laplacian variance falls from 0.0151 at $s{=}1.25$ to 0.0095 at $s{=}2.50$). With the strong-residual v2 adapter under per-layer caps, the same $s{=}2.50$ instead amplifies high-frequency response and saturates color (Laplacian ratio 1.99, RGB-std ratio 18.4; Table~\ref{tab:texture300}). With a deliberately weakened residual adapter, scale becomes nearly a no-op and all schedules converge. A per-layer cap ablation on the strong-residual checkpoint isolates the scale semantics as the determining factor: removing the caps reproduces the flattening behavior (fixed-high Laplacian variance drops from 0.0240 capped to 0.0057 uncapped, on par with fixed-low), while an adapter-free control is exactly unchanged.
+
+Two further probes show that the \emph{sensitive denoising stage} and the \emph{intervention strength} are also regime-dependent. A residual-magnitude sweep that rescales the adapter output projections by $\gamma\in\{0.1,\ldots,3.0\}$ monotonically transitions the behavior from no-effect (all schedules indistinguishable) to artifact amplification under high scale ($\gamma{=}1$), to severe degradation ($\gamma{=}3$, fixed-high FG-SSIM 0.043), with over-constraint appearing even at conservative scales for strong residuals; C3 degrades most gracefully across the sweep. The stage ablation of Section~\ref{subsec:stageablation} on the capped adapter identifies the \emph{early} stage as the damage source while the late stage is structurally neutral, whereas on the uncapped base adapter the late stage was the main source of texture loss---so which stage is most dangerous depends on the adapter regime. Despite these differences, one observation is stable: in every regime where scaling has a non-negligible effect, the low--high--low temporal structure (C3) yields the best fidelity--structure balance, because concentrating correction in the middle stage exploits the stage-dependent roles of the diffusion process itself. The claims of this paper are therefore conditional on the measured adapter regime, and the stage utilities $U_k$ should be re-estimated when the adapter, its residual magnitude, or the scale semantics change.
+
+% ---------------------------------------------------------------------------
+% BLOCK C — Statistics clarification for CLIP-IQA (R3.3)
+% REPLACE the paragraph after tab:clipiqa ("Table~\ref{tab:clipiqa} shows that
+% C3 achieves ...") with the following.
+% ---------------------------------------------------------------------------
+
+Table~\ref{tab:clipiqa} shows that C3 achieves a foreground CLIP-IQA score of 0.4906 versus 0.4860 for $s = 2.50$, scoring higher on 47 of the 50 objects (94.0\%). In Table~\ref{tab:clipiqa}, $\pm$ denotes the standard deviation across the 50 objects. The paired comparison uses a two-sided paired $t$-test over objects ($t(49)=10.52$, $p\approx3.6\times10^{-14}$), and the 95\% confidence interval of the paired mean difference is constructed by object-level percentile bootstrap with 10{,}000 resamples, giving $[0.0037,\,0.0054]$, which excludes zero. The ordering $s = 1.25 > \mathrm{C3} > s = 2.50$ supports the diagnosis that aggressive scaling reduces perceptual quality, while TCAS recovers most of this loss with stronger geometry than conservative scaling.
+
+% ---------------------------------------------------------------------------
+% BLOCK D — Preference study: design details + cluster-aware inference (R1.3)
+% REPLACE the "Blinded preference study" paragraph (line ~405) and ADD one
+% sentence after Table tab:preference discussion (line ~425). Fill [PENDING]
+% after re-analysis of the exported raw votes.
+% ---------------------------------------------------------------------------
+
+To further examine whether the diagnostic texture differences are perceptually meaningful, we conducted a blinded three-alternative forced-choice (3AFC) preference study on 30 validation objects. Twenty-four participants viewed, for each object and each of the three criteria (texture naturalness, shape consistency, overall quality), the anonymized outputs of conservative scaling, aggressive scaling, and C3 side by side; the left-to-right order of the three conditions was randomized independently per trial and participants were not informed which method produced which image or how many conditions existed. Instructions asked participants to select the best image for the stated criterion only. Each participant judged all 30 objects for all three criteria, yielding 720 valid first-choice decisions per criterion.
+% TODO(user): if the study records state participant background / exclusion rules,
+% add one factual sentence here (e.g. composition of the 24 participants).
+
+% After the existing Table discussion paragraph, add:
+Because first-choice decisions are clustered within both participants and objects, we additionally report 95\% confidence intervals for the preference shares obtained by a two-level cluster bootstrap (resampling participants and objects with replacement, 10{,}000 resamples) [PENDING: fill CIs from geotex analysis of the exported raw vote records; if the raw per-trial records cannot be recovered, state that CIs are computed at the object level only].
+
+% ---------------------------------------------------------------------------
+% BLOCK E — R3.1 large-set generic-schedule transfer (results filled 2026-09-02,
+% from mvpoutput/revision_schedules_300/{linear_warmup,cosine_bump}/per_object_results.csv
+% paired against C3 from mvpoutput/revision_top2_300/per_object_results.csv;
+% holdout = obj_0024--obj_0299, n=276; CIs = 10k-resample object-level percentile bootstrap)
+% Insert at the end of subsec:c3, after the holdout transfer paragraph
+% (line ~305).
+% ---------------------------------------------------------------------------
+
+To complete the transfer test for the reviewer-named generic schedules, we additionally evaluate linear warm-up and the cosine bump on the same 300-object pool. On the disjoint 276-object holdout, C3 improves PSNR over linear warm-up by $0.323$~dB (95\% CI $[0.263, 0.386]$, winning on 214/276 objects) while matching its structure (mean FG-SSIM difference $-0.001$), and improves PSNR over the cosine bump by $0.902$~dB (95\% CI $[0.824, 0.981]$, winning on 253/276 objects) with a higher FG-SSIM ($+0.046$). On the full 300-object pool, the corresponding means are 18.75~dB / 0.370 (linear warm-up) and 18.21~dB / 0.324 (cosine bump) versus 19.12~dB / 0.371 for C3. This establishes on the independent holdout the same ordering that the probe set suggested: linear warm-up matches C3 in structure but loses in signal fidelity, and the smooth bump loses in both, because its effective high-scale duration is shorter than the full middle third.

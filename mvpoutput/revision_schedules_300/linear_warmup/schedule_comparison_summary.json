@@ -1,0 +1,16 @@
+{
+  "num_objects": 300,
+  "num_steps": 50,
+  "checkpoint": "mvpoutput/geotex_v2/checkpoints/geotex_v2_ema_final.pt",
+  "results": [
+    {
+      "schedule": "linear_warmup",
+      "form": "1.25 \u2192 2.50 (linear)",
+      "fg_ssim": 0.3704713845377167,
+      "psnr": 18.752676558494567,
+      "lap_var_ratio": 0.5150856891923409,
+      "rgb_std_ratio": 7.553512729362035,
+      "assessment": "Best trade-off"
+    }
+  ]
+}

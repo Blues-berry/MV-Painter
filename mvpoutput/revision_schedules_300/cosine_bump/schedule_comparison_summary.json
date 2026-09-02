@@ -1,0 +1,16 @@
+{
+  "num_objects": 300,
+  "num_steps": 50,
+  "checkpoint": "mvpoutput/geotex_v2/checkpoints/geotex_v2_ema_final.pt",
+  "results": [
+    {
+      "schedule": "cosine_bump",
+      "form": "1.25 \u2192 2.50 \u2192 1.25 (smooth sin)",
+      "fg_ssim": 0.3244230617706974,
+      "psnr": 18.211378077665966,
+      "lap_var_ratio": 0.8886859424707332,
+      "rgb_std_ratio": 11.587812103286167,
+      "assessment": "Best trade-off"
+    }
+  ]
+}
