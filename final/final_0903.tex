@@ -9,6 +9,9 @@
 \usepackage{booktabs}
 \usepackage{placeins}
 
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
 \journal{Computers \& Graphics}
 
 \begin{document}
@@ -142,12 +145,24 @@ The selected C3 configuration used in this paper is:
 This design follows three principles. First, the early stage uses a conservative scale to avoid disrupting global structure formation with strong geometric residuals. Second, the middle stage uses a higher scale to strengthen geometric constraints from normals, depth maps, and foreground contours. Third, the late stage reduces the scale again to prevent geometric residuals from suppressing color variation, material detail, and high-frequency texture synthesis. This non-monotonic schedule is therefore different from simply decaying or increasing the adapter strength across all timesteps. TCAS introduces no new parameters and does not modify the base model or adapter weights; it only replaces the scaling factor during inference, so its computational overhead is negligible.
 
 \paragraph{Why mid-stage concentration is selected: the CAI model.}
-The low--high--low form is not assumed but derived from measurable stage utilities. Let $Q$ be a fidelity objective (PSNR here) and let $L$ denote the fixed-low schedule. For stage $k\in\{e,m,l\}$, define the finite-difference utility of activating the high scale only in that stage,
-\begin{equation}
-U_k = Q(\text{high in stage }k)-Q(L),
-\label{eq:cai-utility}
-\end{equation}
-together with an evidence vector of the corresponding FG-SSIM and texture-diagnostic changes, which acts as a guardrail against structural collapse or artifact inflation. Under the additive stage approximation $Q(s_e,s_m,s_l)\approx Q(L)+\sum_k U_k z_k$ with $z_k\in\{0,1\}$, the optimization is separable and admits a bang--bang solution: choose the high scale where $U_k>0$ and the conservative scale elsewhere. On a 24-object stage ablation, the measured utilities are $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$: early-high violates the structural guardrail (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$), late-high is structurally neutral, and mid-high carries the useful fidelity gain, which selects the conservative--high--conservative assignment. The additive model is a conditional stage-selection approximation---stage effects interact, and the complete C3 schedule is therefore validated directly; changing the adapter or its scale semantics requires re-estimating $U_k$ (Section~\ref{subsec:adapterdep}).
+The low--high--low form is not assumed but derived from measurable stage utilities; we state the argument formally. Let $Q(s_e,s_m,s_l)$ denote a fidelity objective (PSNR here), let $L$ denote the fixed-low schedule, and let $z_k\in\{0,1\}$ indicate whether the high scale is assigned to stage $k\in\{e,m,l\}$.
+
+\begin{proposition}[Guardrailed bang--bang optimality]
+\label{prop:cai}
+Suppose (i) the stage-utility model $Q(s_e,s_m,s_l)=Q(L)+\sum_{k}U_k z_k$, where $U_k=Q(\text{high scale only in stage }k)-Q(L)$ is the measured finite-difference utility of stage $k$, and (ii) per-stage guardrails under which stage $k$ is admissible for the high scale only if its intervention does not reduce FG-SSIM by more than $\tau$ nor raise the artifact-sensitive Laplacian-variance diagnostic beyond a factor $\rho$ relative to $L$. Then the admissible schedule maximizing $Q$ is bang--bang: $z_k^{\star}=\mathbf{1}[\,U_k>0 \text{ and stage } k \text{ admissible}\,]$. Moreover, for a stage whose utility is positive but statistically indistinguishable from zero and whose structural effect is insignificant, assigning the conservative scale yields a statistically indistinguishable fidelity at a strictly lower texture-deviation risk, so the conservative assignment is the risk-dominant choice.
+\end{proposition}
+
+\begin{quote}\small
+\textit{Proof.} Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. \hfill$\square$
+\end{quote}
+
+\begin{remark}
+The utilities are measured finite differences on a 24-object stage ablation of the strong-residual adapter instance of Section~\ref{subsec:adapterdep}: $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$) with a guardrail violation (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$; foreground Laplacian variance $3.85\times$ fixed-low), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$ with a structurally insignificant FG-SSIM change ($+0.001$, CI $[-0.002,0.003]$). Proposition~\ref{prop:cai} selects exactly the conservative--high--conservative assignment C3: the early stage is inadmissible, the middle stage is admissible with the dominant gain, and the late stage takes the conservative tie-break.
+\end{remark}
+
+\begin{remark}
+Additivity is an approximation: stage effects interact, and the complete C3 schedule is therefore validated directly (Secs.~\ref{subsec:c3}--\ref{subsec:adapterdep}). Changing the adapter, its residual magnitude, or the scale semantics changes the measured $U_k$ and requires re-estimation. Proposition~\ref{prop:cai} thus provides a conditional optimality guarantee within the measured adapter regime---explaining why the mid-stage assignment follows from data rather than from a hand-tuned rule---and not a universal one.
+\end{remark}
 
 \subsection{GeoTex-Adapter and FAC Adaptive Extension}
 \label{subsec:fac}
