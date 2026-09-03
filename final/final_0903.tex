@@ -8,6 +8,12 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{placeins}
+\setcounter{totalnumber}{6}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
@@ -258,12 +264,12 @@ Overall, the FG-SSIM improvement is stable, but the marginal benefit becomes sma
 
 To determine whether the FG-SSIM gain at high scales reflects better visual quality, we further conduct a texture audit on 26 objects, comparing texture metrics and foreground shape changes for $s = 2.50$ relative to $s = 1.25$. Figure~\ref{fig:qualitative} should be read as a local texture comparison rather than as a claim that any method fully matches the ground truth: the key evidence is the progressive loss of color variation, material marks, and high-frequency patterns inside the marked regions as the scale increases. The conservative scale $s = 1.25$ better preserves color variation and local texture, while $s = 2.50$ more easily produces uniform and smooth surfaces.
 
-\begin{figure*}[t]
+\begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig4.pdf}
+\includegraphics[width=\columnwidth]{figures/fig4.pdf}
 \caption{Texture degradation under different adapter scales. Each row shows one object; large crops highlight local texture regions (thumbnails below indicate crop locations). Green borders denote conservative scaling $s = 1.25$; red borders denote aggressive scaling $s = 2.50$. Within each row, increasing the adapter scale causes progressive loss of color variation and high-frequency detail: surfaces become more uniform and color-saturated, indicating that stronger geometric correction suppresses the base model's texture synthesis capability.}
 \label{fig:qualitative}
-\end{figure*}
+\end{figure}
 
 The results show that 24 out of 26 objects (92\%) exhibit a pattern of ``texture loss without true shape gain.'' Only two objects show comparable texture quality, and no object shows a clear texture improvement from the high scale. Here, ``true shape gain'' is not equivalent to an increase in FG-SSIM. It refers to whether the high scale brings substantive improvement in effective foreground area, contour structure, or geometric detail compared with the conservative scale. If the metric improvement mainly comes from smoothed foreground boundaries or averaged contour errors without visible geometric improvement, it is categorized as having no true shape gain. Therefore, although a high adapter scale can improve structural metrics, such improvement does not necessarily indicate better visual shape or texture quality. Figure~\ref{fig:audit} further quantifies this texture loss.
 
