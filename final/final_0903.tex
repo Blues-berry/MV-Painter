@@ -159,15 +159,15 @@ The low--high--low form is not assumed but derived from a measurable Correction-
 
 \begin{proposition}[Guardrailed bang--bang optimality]
 \label{prop:cai}
-Suppose (i) the stage-utility model $Q(s_e,s_m,s_l)=Q(L)+\sum_{k}U_k z_k$, where $U_k=Q(\text{high scale only in stage }k)-Q(L)$ is the measured finite-difference utility of stage $k$, and (ii) per-stage guardrails under which stage $k$ is admissible for the high scale only if its intervention does not reduce FG-SSIM by more than $\tau$ nor raise the artifact-sensitive Laplacian-variance diagnostic beyond a factor $\rho$ relative to $L$. Then the admissible schedule maximizing $Q$ is bang--bang: $z_k^{\star}=\mathbf{1}[\,U_k>0 \text{ and stage } k \text{ admissible}\,]$. Moreover, for a stage whose utility is positive but statistically indistinguishable from zero and whose structural effect is insignificant, assigning the conservative scale yields a statistically indistinguishable fidelity at a strictly lower texture-deviation risk, so the conservative assignment is the risk-dominant choice.
+Suppose (i) the stage-utility model $Q(s_e,s_m,s_l)=Q(L)+\sum_{k}U_k z_k$, where $U_k=Q(\text{high scale only in stage }k)-Q(L)$ is the measured finite-difference utility of stage $k$, and (ii) per-stage guardrails under which stage $k$ is admissible for the high scale only if its intervention does not reduce FG-SSIM by more than $\tau$ nor raise the artifact-sensitive Laplacian-variance diagnostic beyond a factor $\rho$ relative to $L$. Then the admissible schedule maximizing $Q$ is bang--bang: $z_k^{\star}=\mathbf{1}[\,U_k>0 \text{ and stage } k \text{ admissible}\,]$. Moreover, for a stage whose utility is positive but not separated from zero by a practically meaningful margin (a 95\% CI lower bound below a small equivalence margin $\epsilon$) and whose structural effect is insignificant, assigning the conservative scale yields a statistically indistinguishable fidelity at a strictly lower texture-deviation risk, so the conservative assignment is the risk-dominant choice.
 \end{proposition}
 
 \begin{quote}\small
-\textit{Proof.} Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. \hfill$\square$
+\textit{Proof.} Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (fixing $z_k=0$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$, or its lower bound lies below the equivalence margin $\epsilon$ so that the gain is practically indistinguishable from $0$, and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. \hfill$\square$
 \end{quote}
 
 \begin{remark}
-The utilities are measured finite differences on a 24-object stage ablation of the strong-residual adapter instance of Section~\ref{subsec:adapterdep}: $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$) with a guardrail violation (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$; foreground Laplacian variance $3.85\times$ fixed-low), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$ with a structurally insignificant FG-SSIM change ($+0.001$, CI $[-0.002,0.003]$). Proposition~\ref{prop:cai} selects exactly the conservative--high--conservative assignment C3: the early stage is inadmissible, the middle stage is admissible with the dominant gain, and the late stage takes the conservative tie-break.
+The utilities are measured finite differences on a 24-object stage ablation of the strong-residual adapter instance of Section~\ref{subsec:adapterdep}: $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$) with a guardrail violation (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$; foreground Laplacian variance $3.85\times$ fixed-low), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$ with a structurally insignificant FG-SSIM change ($+0.001$, CI $[-0.002,0.003]$). Proposition~\ref{prop:cai} selects exactly the conservative--high--conservative assignment C3: the early stage is inadmissible, the middle stage is admissible with the dominant gain, and the late stage takes the conservative tie-break, since its utility gain is practically negligible (CI lower bound $+0.006$~dB, far below any meaningful equivalence margin such as $\epsilon=0.1$~dB).
 \end{remark}
 
 \begin{remark}
@@ -219,27 +219,6 @@ Table~\ref{tab:sweep} reports the results of a 13-scale uniform adapter sweep on
 \caption{Uniform adapter scale sweep results.}
 \label{tab:sweep}
 \small
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-Scale & $\Delta$FG-SSIM$\uparrow$ & POS & $\Delta$Crop-SSIM$\uparrow$ & $\Delta$PSNR$\uparrow$ \\
-\midrule
-0.75 & $-$0.013 & 20/50 & +0.113 & 7.53 \\
-0.90 & +0.024 & 30/50 & +0.137 & 8.32 \\
-1.00 & +0.047 & 34/50 & +0.147 & 8.79 \\
-1.10 & +0.070 & 36/50 & +0.159 & 9.08 \\
-1.15 & +0.071 & 36/50 & +0.157 & 9.25 \\
-1.25 & +0.088 & 37/50 & +0.161 & 9.37 \\
-1.35 & +0.100 & 39/50 & +0.163 & 9.63 \\
-1.50 & +0.113 & 40/50 & +0.163 & 9.76 \\
-1.60 & +0.120 & 42/50 & +0.166 & 9.83 \\
-1.75 & +0.127 & 43/50 & +0.173 & 9.97 \\
-2.00 & +0.134 & 44/50 & +0.169 & 9.96 \\
-2.25 & +0.142 & 43/50 & +0.175 & 9.91 \\
-2.50 & +0.145 & 44/50 & +0.165 & 9.91 \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 As the scale increases from $s = 0.75$ to $s = 2.50$, $\Delta$FG-SSIM rises from $-$0.013 to +0.145, and the number of objects with positive improvement increases from 20/50 to 44/50. This indicates that stronger adapter residuals indeed improve the model's adherence to geometric conditions such as normals, depth maps, and foreground contours. Figure~\ref{fig:curve} visualizes this trend: FG-SSIM keeps increasing with adapter scale, while Crop-SSIM saturates and slightly decreases at high scales.
@@ -294,22 +273,6 @@ All variants are evaluated using $\Delta$FG-SSIM for shape gain and $\Delta$Lap 
 \centering
 \caption{Shape-texture trade-off on the 24-object probe set. Delta texture metrics are computed relative to the corresponding ground-truth foreground renderings under the same views and masks; $\Delta$Lap Var closer to 0 indicates smaller texture loss.}
 \label{tab:probe}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{llccc}
-\toprule
-Variant & Category & $\Delta$FG-SSIM$\uparrow$ & $\Delta$Lap Var $\to$ 0 & Assessment \\
-\midrule
-C4 & Late-stage high & 0.105 & $-$0.0120 & Trap \\
-C2 & Timestep sched. & 0.104 & $-$0.0110 & Trap \\
-B2 & Layer-wise sched. & 0.090 & $-$0.0135 & Trap \\
-A\_s2.00 & Uniform & 0.087 & $-$0.0062 & Trap \\
-C3 (TCAS) & Mid-stage high & 0.084 & $-$0.0006 & Promising \\
-A\_s2.25 & Uniform & 0.079 & $-$0.0096 & Trap \\
-A\_s2.50 & Uniform & 0.078 & $-$0.0108 & Trap \\
-B6 & Layer-wise sched. & 0.000 & $-$0.0027 & OK \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 Table~\ref{tab:probe} summarizes representative scheduling variants on the 24-object probe set. C4 and other late-stage high-scale strategies obtain higher $\Delta$FG-SSIM, but they are accompanied by obvious decreases in Laplacian variance, indicating that their structural gains come at the cost of texture loss. This is the main reason a direct transfer of guidance scheduling intuition is insufficient: a schedule can make the condition stronger at apparently useful timesteps and still damage the texture signal that matters for 3D appearance. Uniform high-scale strategies show a similar problem. For example, $s = 2.50$ achieves $\Delta$FG-SSIM of +0.078, but $\Delta$Lap Var decreases to $-$0.0108. In contrast, C3 achieves $\Delta$FG-SSIM of +0.084. Although it is slightly lower than some aggressive variants in structure gain, its Laplacian variance loss is only $-$0.0006, close to zero texture loss. Therefore, C3 is the only variant labeled Promising. We freeze this configuration before large-scale validation and do not tune it on the 300-object set.
@@ -344,19 +307,6 @@ This explanation is consistent with the scheduling-variant results. Early high-s
 \centering
 \caption{Comparison of representative variants under extended texture metrics. All delta texture metrics are computed relative to the corresponding ground-truth foreground renderings under the same views and masks. This table verifies that the advantage of C3 is not due to a single Laplacian variance metric.}
 \label{tab:extended}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-Variant & $\Delta$Lap Var & $\Delta$RGB Std & $\Delta$Grad & $\Delta$HF Energy \\
-\midrule
-C3 & $-$0.001 & $-$0.023 & +0.142 & +0.058 \\
-C4 & $-$0.012 & $-$0.032 & +0.086 & +0.062 \\
-A\_s2.50 & $-$0.011 & $-$0.044 & +0.054 & +0.078 \\
-A\_s2.00 & $-$0.006 & $-$0.040 & +0.100 & +0.070 \\
-A\_s1.25 & $-$0.005 & $-$0.032 & +0.104 & +0.053 \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 Table~\ref{tab:extended} compares representative variants under extended texture metrics. C3 has nearly zero loss in Laplacian variance and remains relatively stable in RGB standard deviation, gradient magnitude, and high-frequency energy. Compared with C4 and uniform high-scale strategies, C3 shows weaker texture degradation, indicating that its shape-texture balance is not an artifact of a single metric.
@@ -372,17 +322,6 @@ Finally, as a transfer test rather than another search, we compare conservative 
 \centering
 \caption{Large-scale validation on 300 objects. Values are absolute metrics of generated outputs with respect to ground truth.}
 \label{tab:300obj}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lcccc}
-\toprule
-Method & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & PSNR$\uparrow$ & FG-LPIPS$\downarrow$ \\
-\midrule
-$s = 1.25$ & 0.430 & 0.513 & 17.95 & 0.174 \\
-$s = 2.50$ & 0.473 & 0.559 & 17.90 & 0.172 \\
-C3 (TCAS) & 0.476 & 0.529 & 18.86 & 0.171 \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 
@@ -414,17 +353,6 @@ Table~\ref{tab:texture300} shows that although $s = 2.50$ achieves the highest E
 \centering
 \caption{Texture retention ratios and object-level stability of C3. Each ratio is the mean over objects of the per-object ratio of the corresponding foreground statistic to that of $s = 1.25$ (equal object weighting); object-level win rates and confidence intervals for C3 over $s = 2.50$ are reported in the text.}
 \label{tab:retention}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lccc}
-\toprule
-Method & Lap Var Ratio$\uparrow$ & RGB Std Ratio$\uparrow$ & Grad Mag Ratio$\uparrow$ \\
-\midrule
-$s = 1.25$ & 1.000 & 1.000 & 1.000 \\
-$s = 2.50$ & 0.678 & 0.643 & 0.807 \\
-C3 (TCAS) & 0.835 & 0.970 & 0.883 \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 
@@ -441,17 +369,6 @@ To address the concern that proxy texture statistics do not directly measure per
 \centering
 \caption{CLIP-IQA perceptual validation on 50 validation objects. Scores are reported for foreground regions and full rendered views; $\pm$ denotes the standard deviation across the 50 objects. Higher is better.}
 \label{tab:clipiqa}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lccc}
-\toprule
-Method & CLIP-IQA (FG)$\uparrow$ & CLIP-IQA (Full)$\uparrow$ & Win vs. $s = 2.50$ \\
-\midrule
-$s = 1.25$ & $\mathbf{0.4920 \pm 0.0032}$ & $\mathbf{0.4918 \pm 0.0030}$ & $\mathbf{98.0\%}$ \\
-$s = 2.50$ & $0.4860 \pm 0.0018$ & $0.4857 \pm 0.0017$ & -- \\
-C3 (TCAS) & $0.4906 \pm 0.0028$ & $0.4903 \pm 0.0025$ & 94.0\% \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 
 Table~\ref{tab:clipiqa} shows that C3 achieves a foreground CLIP-IQA score of 0.4906 versus 0.4860 for $s = 2.50$, scoring higher on 47 of the 50 objects (94.0\%). The paired comparison uses a two-sided paired $t$-test over objects ($t(49)=10.52$, $p\approx3.6\times10^{-14}$), and the 95\% confidence interval of the paired mean difference is constructed by object-level percentile bootstrap with 10{,}000 resamples, giving $[0.0037,\,0.0054]$, which excludes zero. The ordering $s = 1.25$ $>$ C3 $>$ $s = 2.50$ supports the diagnosis that aggressive scaling reduces perceptual quality, while TCAS recovers most of this loss with stronger geometry than conservative scaling.
@@ -463,17 +380,6 @@ To further examine whether the diagnostic texture differences are perceptually m
 \centering
 \caption{Blinded three-alternative first-choice preference study. Percentages are computed over 720 valid decisions per criterion.}
 \label{tab:preference}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lccc}
-\toprule
-Method & Texture naturalness$\uparrow$ & Shape consistency$\uparrow$ & Overall quality$\uparrow$ \\
-\midrule
-$s = 1.25$ & $\mathbf{332/720\ (46.1\%)}$ & 96/720 (13.3\%) & 176/720 (24.4\%) \\
-$s = 2.50$ & 104/720 (14.4\%) & $\mathbf{331/720\ (46.0\%)}$ & 126/720 (17.5\%) \\
-C3 (TCAS) & 284/720 (39.4\%) & 293/720 (40.7\%) & $\mathbf{418/720\ (58.1\%)}$ \\
-\bottomrule
-\end{tabular}%
-}
 \end{table}
 \FloatBarrier
 
