@@ -59,7 +59,9 @@ ossutil_output
 events.out.tfevents*
 
 # Paper (keep locally in final/, do not upload to GitHub)
-final/
+final/*
+# Exception: final submission package must be tracked for backup
+!final/submission_package_CAG
 
 # Archive
 archive/
