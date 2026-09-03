@@ -25,11 +25,11 @@
 
 \journal{Computers \& Graphics}
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
-%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
-\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+%DIF CFONT PREAMBLE %DIF PREAMBLE
 \RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
-\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
-\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{red} \sf #1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red} \scriptsize #1}} %DIF PREAMBLE
 %DIF SAFE PREAMBLE %DIF PREAMBLE
 \providecommand{\DIFaddbegin}{} %DIF PREAMBLE
 \providecommand{\DIFaddend}{} %DIF PREAMBLE
@@ -53,7 +53,7 @@
 \newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
 % store original definition of \includegraphics %DIF PREAMBLE
 \LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
-\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{red}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
 \newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
 \sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
 \settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
@@ -89,9 +89,9 @@
 \RequirePackage{listings} %DIF PREAMBLE
 \RequirePackage{color} %DIF PREAMBLE
 \lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
-%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
-  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
-  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+%DIF DIFCODE_CFONT %DIF PREAMBLE
+  moredelim=[il][\color{red}\scriptsize]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{red}\sffamily]{\%DIF\ >\ } %DIF PREAMBLE
 } %DIF PREAMBLE
 \lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
 	language=DIFcode, %DIF PREAMBLE
@@ -248,7 +248,7 @@ This design follows three principles. First, the early stage uses a conservative
 }\end{proposition}
 
 \begin{quote}\small
-\textit{\DIFadd{Proof.}} \DIFadd{Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. }\hfill\DIFadd{$\square$
+\DIFadd{\textit{Proof.} Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. }\hfill\DIFadd{$\square$
 }\end{quote}
 
 \begin{remark}
@@ -613,7 +613,7 @@ TCAS uses a fixed three-stage scale, which has the advantages of requiring no tr
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tab:fac} reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, FG-PSNR, and FG-SSIM remain lower than TCAS, showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793}\DIFdelend \DIFaddbegin \DIFadd{The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2}{\DIFaddend ,\DIFdelbegin \DIFdel{FG-PSNR increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830. }\DIFdelend \DIFaddbegin }\DIFadd{000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
+\DIFdel{Table~S2 reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, FG-PSNR, and FG-SSIM remain lower than TCAS, showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793}\DIFdelend \DIFaddbegin \DIFadd{The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2}{\DIFaddend ,\DIFdelbegin \DIFdel{FG-PSNR increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830. }\DIFdelend \DIFaddbegin }\DIFadd{000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
 }\DIFaddend 
 
 \DIFdelbegin \DIFdel{Object-level statistics further show that Full FAC outperforms TCAS on 81.3\% and 72.0\% of objects in PSNR and FG-SSIM, respectively, and paired significance tests for both metrics are significant ($p < 0.0001$). This indicates that }\DIFdelend \DIFaddbegin \DIFadd{In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning the most favourable training conditions we could construct: joint training of all controllers; a two-stage scheme with the temporal gate warm-started at the exact C3 envelope and frozen while the spatial and frequency controllers train; an envelope penalty that constrains the gate to remain near C3 during joint training; a fidelity-weighted objective; and a gently scheduled variant with fourfold-reduced training. Their paired deficits relative to the TCAS baseline range from $-1.1$ to $-2.9$~dB PSNR (win rates at most 16\%), increasing monotonically with the amount of controller training. A warm-start control in which the gate is left untrained at the exact C3 envelope is statistically indistinguishable from TCAS (paired $\Delta=-0.18$~dB on }\DIFaddend the \DIFdelbegin \DIFdel{gains of FAC are stable across most objects rather than being driven by a small number of samples. }\DIFdelend \DIFaddbegin \DIFadd{12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero), validating the evaluation path. The complete dose--response study is provided in the supplementary material.
