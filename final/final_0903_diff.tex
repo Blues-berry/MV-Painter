@@ -1,4 +1,7 @@
 \documentclass[times,twocolumn,final]{elsarticle}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL final.tex        Thu Aug 13 12:42:27 2026
+%DIF ADD final_0903.tex   Thu Sep  3 07:38:11 2026
 
 \usepackage{cag}
 \usepackage{framed,multirow}
@@ -9,10 +12,90 @@
 \usepackage{booktabs}
 \usepackage{placeins}
 
-\newtheorem{proposition}{Proposition}
-\newtheorem{remark}{Remark}
-
+%DIF 12a12-14
+\newtheorem{proposition}{Proposition} %DIF > 
+\newtheorem{remark}{Remark} %DIF > 
+ %DIF > 
+%DIF -------
 \journal{Computers \& Graphics}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 
@@ -20,10 +103,12 @@
 
 \title{Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation}
 
-\author[a]{Xueyuan Che\corref{cor1}}
-\cortext[cor1]{Corresponding author.}
-\author[a]{Libo Sun}
+\DIFdelbegin %DIFDELCMD < \author{%%%
+\DIFdelend \DIFaddbegin \author[a]{\DIFadd{Xueyuan Che}\corref{cor1}\DIFaddend }
+\DIFaddbegin \cortext[cor1]{Corresponding author.}
+\author[a]{\DIFadd{Libo Sun}}
 \address[a]{School of Instrument Science and Engineering, Southeast University, Nanjing 210096, China}
+\DIFaddend 
 
 \begin{abstract}
 Multi-view diffusion models have become an important approach to 3D texture generation, where adapter modules are commonly used to inject geometric conditions such as normals and depth maps to improve cross-view consistency and geometric alignment. However, the adapter scaling strength during inference is often selected empirically, and its influence on shape fidelity and texture detail remains insufficiently analyzed. This paper systematically studies adapter scaling in geometry-controlled multi-view texture generation. We find that a larger adapter scale can improve structural metrics such as FG-SSIM, but it may also suppress the texture synthesis capability of the base diffusion model, leading to weakened color variation, flattened surfaces, and loss of high-frequency details. This observation indicates that adapter scaling is not merely a structure-enhancement parameter, but a key control variable that governs the balance between shape consistency and texture preservation. Rather than treating this as a generic guidance-scheduling problem, we identify an adapter-specific temporal conflict: geometric residuals injected into intermediate features are most useful for mid-stage structure refinement, whereas excessive residual injection in early or late stages can respectively disturb global formation or suppress texture synthesis. To mitigate this conflict, we propose Timestep-Conditioned Adapter Scaling (TCAS), a training-free inference strategy that concentrates strong geometric correction in the middle denoising stage and uses conservative scales in the early and late stages. The selected schedule C3 is chosen only on a 24-object probe set by analyzing 17 scaling variants and is then transferred unchanged to a 300-object validation set, where no parameter search is performed. Experiments show that TCAS maintains shape fidelity close to aggressive uniform scaling while achieving better signal fidelity and more stable texture preservation. These results suggest that, in adapter-augmented multi-view diffusion pipelines, adapter strength should be treated as a stage-dependent inference control variable rather than a fixed hyperparameter. TCAS requires no retraining, introduces negligible computational overhead, and can be used as a plug-and-play strategy for geometry-controlled multi-view texture generation tasks.
@@ -102,7 +187,7 @@ This paper builds on the MVPainter-style geometry-controlled multi-view texture 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig1.pdf}
-\caption{Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the residual strength according to denoising stages to balance geometric consistency and texture fidelity. The final multi-view outputs are projected and baked into a textured 3D mesh.}
+\caption{Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the residual strength according to denoising stages to balance geometric consistency and texture fidelity. \DIFdelbeginFL \DIFdelFL{FAC is an optional extension module that further refines residual modulation along temporal, spatial, and frequency dimensions. }\DIFdelendFL The final multi-view outputs are projected and baked into a textured 3D mesh.}
 \label{fig:overview}
 \end{figure*}
 
@@ -147,27 +232,28 @@ The selected C3 configuration used in this paper is:
 
 This design follows three principles. First, the early stage uses a conservative scale to avoid disrupting global structure formation with strong geometric residuals. Second, the middle stage uses a higher scale to strengthen geometric constraints from normals, depth maps, and foreground contours. Third, the late stage reduces the scale again to prevent geometric residuals from suppressing color variation, material detail, and high-frequency texture synthesis. This non-monotonic schedule is therefore different from simply decaying or increasing the adapter strength across all timesteps. TCAS introduces no new parameters and does not modify the base model or adapter weights; it only replaces the scaling factor during inference, so its computational overhead is negligible.
 
-\paragraph{Why mid-stage concentration is selected: the CAI model.}
-The low--high--low form is not assumed but derived from measurable stage utilities; we state the argument formally. Let $Q(s_e,s_m,s_l)$ denote a fidelity objective (PSNR here), let $L$ denote the fixed-low schedule, and let $z_k\in\{0,1\}$ indicate whether the high scale is assigned to stage $k\in\{e,m,l\}$.
+\DIFaddbegin \paragraph{\DIFadd{Why mid-stage concentration is selected: the CAI model.}}
+\DIFadd{The low--high--low form is not assumed but derived from measurable stage utilities; we state the argument formally. Let $Q(s_e,s_m,s_l)$ denote a fidelity objective (PSNR here), let $L$ denote the fixed-low schedule, and let $z_k\in\{0,1\}$ indicate whether the high scale is assigned to stage $k\in\{e,m,l\}$.
+}
 
 \begin{proposition}[Guardrailed bang--bang optimality]
 \label{prop:cai}
-Suppose (i) the stage-utility model $Q(s_e,s_m,s_l)=Q(L)+\sum_{k}U_k z_k$, where $U_k=Q(\text{high scale only in stage }k)-Q(L)$ is the measured finite-difference utility of stage $k$, and (ii) per-stage guardrails under which stage $k$ is admissible for the high scale only if its intervention does not reduce FG-SSIM by more than $\tau$ nor raise the artifact-sensitive Laplacian-variance diagnostic beyond a factor $\rho$ relative to $L$. Then the admissible schedule maximizing $Q$ is bang--bang: $z_k^{\star}=\mathbf{1}[\,U_k>0 \text{ and stage } k \text{ admissible}\,]$. Moreover, for a stage whose utility is positive but statistically indistinguishable from zero and whose structural effect is insignificant, assigning the conservative scale yields a statistically indistinguishable fidelity at a strictly lower texture-deviation risk, so the conservative assignment is the risk-dominant choice.
-\end{proposition}
+\DIFadd{Suppose (i) the stage-utility model $Q(s_e,s_m,s_l)=Q(L)+\sum_{k}U_k z_k$, where $U_k=Q(\text{high scale only in stage }k)-Q(L)$ is the measured finite-difference utility of stage $k$, and (ii) per-stage guardrails under which stage $k$ is admissible for the high scale only if its intervention does not reduce FG-SSIM by more than $\tau$ nor raise the artifact-sensitive Laplacian-variance diagnostic beyond a factor $\rho$ relative to $L$. Then the admissible schedule maximizing $Q$ is bang--bang: $z_k^{\star}=\mathbf{1}[\,U_k>0 \text{ and stage } k \text{ admissible}\,]$. Moreover, for a stage whose utility is positive but statistically indistinguishable from zero and whose structural effect is insignificant, assigning the conservative scale yields a statistically indistinguishable fidelity at a strictly lower texture-deviation risk, so the conservative assignment is the risk-dominant choice.
+}\end{proposition}
 
 \begin{quote}\small
-\textit{Proof.} Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. \hfill$\square$
-\end{quote}
+\textit{\DIFadd{Proof.}} \DIFadd{Under (i), $Q$ decomposes into the constant $Q(L)$ plus one independent binary term $U_k z_k$ per stage. Condition (ii) restricts each feasible set to $\{0,1\}$ (removing at most the value $1$ for inadmissible stages) without coupling the stages; the joint maximizer over a product of independent binary feasible sets is therefore the product of per-stage maximizers, i.e., $z_k^{\star}=1$ exactly when $k$ is admissible and $U_k>0$. For the tie-break, if the CI of $U_k$ contains $0$ and the structural change is insignificant, both assignments give statistically indistinguishable $Q$, while $z_k=0$ strictly reduces the texture-deviation risk. }\hfill\DIFadd{$\square$
+}\end{quote}
 
 \begin{remark}
-The utilities are measured finite differences on a 24-object stage ablation of the strong-residual adapter instance of Section~\ref{subsec:adapterdep}: $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$) with a guardrail violation (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$; foreground Laplacian variance $3.85\times$ fixed-low), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$ with a structurally insignificant FG-SSIM change ($+0.001$, CI $[-0.002,0.003]$). Proposition~\ref{prop:cai} selects exactly the conservative--high--conservative assignment C3: the early stage is inadmissible, the middle stage is admissible with the dominant gain, and the late stage takes the conservative tie-break.
-\end{remark}
+\DIFadd{The utilities are measured finite differences on a 24-object stage ablation of the strong-residual adapter instance of Section~\ref{subsec:adapterdep}: $U_e=-0.788$~dB (95\% CI $[-1.420,-0.156]$) with a guardrail violation (FG-SSIM $-0.105$, CI $[-0.141,-0.069]$; foreground Laplacian variance $3.85\times$ fixed-low), $U_m=+0.574$~dB $[0.391,0.756]$, and $U_l=+0.077$~dB $[0.006,0.149]$ with a structurally insignificant FG-SSIM change ($+0.001$, CI $[-0.002,0.003]$). Proposition~\ref{prop:cai} selects exactly the conservative--high--conservative assignment C3: the early stage is inadmissible, the middle stage is admissible with the dominant gain, and the late stage takes the conservative tie-break.
+}\end{remark}
 
 \begin{remark}
-Additivity is an approximation: stage effects interact, and the complete C3 schedule is therefore validated directly (Secs.~\ref{subsec:c3}--\ref{subsec:adapterdep}). Changing the adapter, its residual magnitude, or the scale semantics changes the measured $U_k$ and requires re-estimation. Proposition~\ref{prop:cai} thus provides a conditional optimality guarantee within the measured adapter regime---explaining why the mid-stage assignment follows from data rather than from a hand-tuned rule---and not a universal one.
-\end{remark}
+\DIFadd{Additivity is an approximation: stage effects interact, and the complete C3 schedule is therefore validated directly (Secs.~\ref{subsec:c3}--\ref{subsec:adapterdep}). Changing the adapter, its residual magnitude, or the scale semantics changes the measured $U_k$ and requires re-estimation. Proposition~\ref{prop:cai} thus provides a conditional optimality guarantee within the measured adapter regime---explaining why the mid-stage assignment follows from data rather than from a hand-tuned rule---and not a universal one.
+}\end{remark}
 
-\subsection{GeoTex-Adapter and FAC Adaptive Extension}
+\DIFaddend \subsection{GeoTex-Adapter and FAC Adaptive Extension}
 \label{subsec:fac}
 
 GeoTex-Adapter, TCAS, and FAC correspond to three complementary dimensions of adapter control. GeoTex-Adapter determines what geometric residual correction should be injected. TCAS determines when the residual should be strengthened or weakened along the denoising-time dimension. FAC further modulates the residual in a fine-grained manner along spatial positions and frequency components.
@@ -176,7 +262,7 @@ GeoTex-Adapter is used as a fixed geometric residual backbone. It receives a 5-c
 
 To further examine whether stage-wise adapter control can be extended to learned adaptive correction, we also conduct experiments with Full Adaptive Correction (FAC). FAC contains three lightweight modules: LTAG learns timestep-dependent gating, GSG generates spatial gates from geometric features, and FSC performs frequency-selective correction on adapter residuals. Unlike fixed TCAS, FAC finely modulates adapter residuals in the temporal, spatial, and frequency domains. In the extension experiments, FAC uses TCAS as the base temporal schedule and further adds GSG and FSC for spatial and frequency correction.
 
-It should be emphasized that FAC requires learning a small number of additional parameters. Therefore, TCAS, which requires no training, remains the main method in this paper. FAC is used only as a learned adaptive extension; Section~\ref{subsec:facexp} reports a controlled re-examination that delimits when learned modulation can be expected to help.
+It should be emphasized that FAC requires learning a small number of additional parameters. Therefore, TCAS, which requires no training, remains the main method in this paper. FAC is used only as a learned adaptive extension\DIFdelbegin \DIFdel{to show that stage-wise adapter control can be generalized to finer-grained adaptive correction}\DIFdelend \DIFaddbegin \DIFadd{; Section~\ref{subsec:facexp} reports a controlled re-examination that delimits when learned modulation can be expected to help}\DIFaddend .
 
 \section{Experiments}
 \label{sec:experiments}
@@ -194,13 +280,15 @@ We use four evaluation sets: (1) a 50-object scale-sweep set for analyzing the o
 
 Evaluation metrics are divided into three categories: shape and structure metrics (FG-SSIM, Edge-SSIM, and Crop-SSIM), signal and perceptual metrics (PSNR and LPIPS), and texture diagnostic metrics (Laplacian variance, RGB standard deviation, and gradient magnitude). All metrics are first computed over six target views and then averaged over views and objects. For texture-related conclusions, we report means, object-level win rates, and significance tests to avoid judging generation quality based on a single structural score.
 
-The FAC extension uses the same object list and evaluation protocol as the 300-object validation, and its lightweight modules are trained only on the adapter's training pool, which is disjoint from all evaluation objects. TCAS is used as the main baseline, while LTAG, LTAG+GSG, and Full FAC are evaluated as ablation variants under the same paired protocol. The base model and original adapter remain frozen, and only lightweight adaptive correction parameters are learned.
+The FAC extension uses the same object list and evaluation protocol as the 300-object validation\DIFaddbegin \DIFadd{, and its lightweight modules are trained only on the adapter's training pool, which is disjoint from all evaluation objects}\DIFaddend . TCAS is used as the main baseline, while LTAG, LTAG+GSG, and Full FAC are evaluated as ablation variants \DIFdelbegin \DIFdel{. Full FAC adds GSG and FSC on top of the TCAS temporal schedule}\DIFdelend \DIFaddbegin \DIFadd{under the same paired protocol}\DIFaddend . The base model and original adapter remain frozen, and only lightweight adaptive correction parameters are learned\DIFdelbegin \DIFdel{to verify the extensibility of the TCAS idea toward learned spatial and frequency correction}\DIFdelend \DIFaddbegin \DIFadd{.
+}
 
-\paragraph{Implementation and dataset details}
-All objects are drawn from the Objaverse 3D asset collection: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $512\times512$, white background), and six target views (front, front-right, right, back, left, front-left) are used throughout the paper. The adapter's training pool contains 1{,}118 rendered objects and the evaluation pools described above are drawn independently; we verified that the training and evaluation identifier sets intersect in zero objects, so no evaluation object is seen during adapter training. Within the 300-object validation pool, the 24-object probe set corresponds to the first 24 identifiers ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$) and the remaining 276 identifiers ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$) form a holdout that is strictly disjoint from the probe; Section~\ref{subsec:adapterdep} reports transfer statistics on this disjoint holdout in addition to the full-pool tables. The 50-object scale-sweep set comprises the first 50 objects of the pool ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0049}$), and the 26-object audit set is a purposive subset of these 50 objects, selected to span the observed range of per-object $\Delta$FG-SSIM behaviour for manual inspection; all evaluation sets are subsets of the 300-object pool, and no training object appears in any of them. The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a joint six-view latent UNet, used frozen together with its VAE. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), produces a multi-scale residual pyramid, and injects corrections into multiple UNet resolution levels; for the adapter studied in the main tables, the requested scale is applied multiplicatively at every injected layer. Inference uses the Euler discrete scheduler with 50 denoising steps and a fixed random seed (42) shared by all schedules within an experiment, so all variants share the same initial latents; the model generates six views per object. FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the texture diagnostics (foreground Laplacian variance, RGB standard deviation, gradient magnitude) are computed on foreground pixels and compared against the same ground-truth renderings under identical views and masks.
+\paragraph{\DIFadd{Implementation and dataset details}}
+\DIFadd{All objects are drawn from the Objaverse 3D asset collection: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $512\times512$, white background), and six target views (front, front-right, right, back, left, front-left) are used throughout the paper. The adapter's training pool contains 1}{\DIFadd{,}}\DIFadd{118 rendered objects and the evaluation pools described above are drawn independently; we verified that the training and evaluation identifier sets intersect in zero objects, so no evaluation object is seen during adapter training. Within the 300-object validation pool, the 24-object probe set corresponds to the first 24 identifiers ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$) and the remaining 276 identifiers ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$) form a holdout that is strictly disjoint from the probe; Section~\ref{subsec:adapterdep} reports transfer statistics on this disjoint holdout in addition to the full-pool tables. The 50-object scale-sweep set comprises the first 50 objects of the pool ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0049}$), and the 26-object audit set is a purposive subset of these 50 objects, selected to span the observed range of per-object $\Delta$FG-SSIM behaviour for manual inspection; all evaluation sets are subsets of the 300-object pool, and no training object appears in any of them. The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a joint six-view latent UNet, used frozen together with its VAE. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), produces a multi-scale residual pyramid, and injects corrections into multiple UNet resolution levels; for the adapter studied in the main tables, the requested scale is applied multiplicatively at every injected layer. Inference uses the Euler discrete scheduler with 50 denoising steps and a fixed random seed (42) shared by all schedules within an experiment, so all variants share the same initial latents; the model generates six views per object. FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the texture diagnostics (foreground Laplacian variance, RGB standard deviation, gradient magnitude) are computed on foreground pixels and compared against the same ground-truth renderings under identical views and masks.
+}
 
-\paragraph{Statistical reporting.}
-Object-level paired comparisons report two-sided paired tests and 95\% confidence intervals constructed by percentile bootstrap over objects with 10{,}000 resamples. Where a mean is accompanied by $\pm$, the quantity is the standard deviation across objects. Preference-study intervals add a participant-level bootstrap level (Section~\ref{subsec:largescale}).
+\paragraph{\DIFadd{Statistical reporting.}}
+\DIFadd{Object-level paired comparisons report two-sided paired tests and 95\% confidence intervals constructed by percentile bootstrap over objects with 10}{\DIFadd{,}}\DIFadd{000 resamples. Where a mean is accompanied by $\pm$, the quantity is the standard deviation across objects. Preference-study intervals add a participant-level bootstrap level (Section~\ref{subsec:largescale})}\DIFaddend .
 
 \subsection{Shape-Texture Trade-off of Adapter Scaling}
 \label{subsec:tradeoff}
@@ -311,8 +399,10 @@ The specific configuration of C3 uses the conservative scale $s = 1.25$ in the e
 
 Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and uniform adapter scaling. The red-boxed zoom-in regions make the intended comparison visible: conservative scaling preserves more color variation but provides weaker structural correction, whereas aggressive scaling strengthens geometric constraints but flattens surface texture. C3 applies strong geometric correction in the middle stage and reduces adapter intervention in the late stage, thereby preserving more local texture than $s = 2.50$ while retaining stronger geometric correction than the conservative scale.
 
-\begin{figure}[!t]
-\centering
+\DIFdelbegin %DIFDELCMD < \begin{figure}[t]
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{figure}[!t]
+\DIFaddendFL \centering
 \includegraphics[width=\columnwidth]{figures/fig6.pdf}
 \caption{Qualitative comparison between C3 and uniform adapter scaling. Large crops show local texture regions (thumbnails below indicate crop locations). Columns: GT (gray), $s = 1.25$ (green), $s = 2.50$ (red), and C3 (orange). Compared with $s = 2.50$, C3 retains more local color variation and material texture while preserving stronger geometric correction than the conservative scale.}
 \label{fig:c3compare}
@@ -320,8 +410,10 @@ Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and unif
 
 Figure~\ref{fig:pareto} further shows the distribution of the 17 variants in the shape-texture space. Most variants with high shape gain are accompanied by large texture loss and fall into the Trap region, whereas C3 maintains a relatively high shape gain while keeping texture loss near zero. Thus, the value of C3 is not that it maximizes every metric, but that it avoids the trap of ``higher structural scores but flattened texture,'' resulting in a more stable shape-texture compromise.
 
-\begin{figure}[!t]
-\centering
+\DIFdelbegin %DIFDELCMD < \begin{figure}[t]
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{figure}[!t]
+\DIFaddendFL \centering
 \includegraphics[width=\columnwidth]{figures/fig7.pdf}
 \caption{Shape-texture Pareto trade-off among 17 variants. The horizontal axis is shape gain, where farther right is better; therefore, the bottom-right region represents a more desirable compromise. C3 (star) lies in the Promising region, with high shape gain and nearly zero texture loss. Most high-shape-gain variants fall into the Trap region, where structural scores are obtained at the cost of large texture loss. Variants such as B6 have smaller texture degradation but almost no shape gain.}
 \label{fig:pareto}
@@ -386,7 +478,7 @@ PSNR mainly reflects global pixel error and should not be directly equated with 
 
 \begin{table}[t]
 \centering
-\caption{Large-scale texture preservation validation on 300 objects. Higher texture metrics indicate better preservation of foreground color variation and high-frequency details. Absolute values are means over objects and views; the ratios in Table~\ref{tab:retention} are the mean over objects of each per-object ratio relative to the corresponding $s = 1.25$ statistic (equal object weighting).}
+\caption{Large-scale texture preservation validation on 300 objects. Higher texture metrics indicate better preservation of foreground color variation and high-frequency details. \DIFaddbeginFL \DIFaddFL{Absolute values are means over objects and views; the ratios in Table~\ref{tab:retention} are the mean over objects of each per-object ratio relative to the corresponding $s = 1.25$ statistic (equal object weighting).}\DIFaddendFL }
 \label{tab:texture300}
 \small
 \begin{tabular}{lccc}
@@ -405,7 +497,7 @@ Table~\ref{tab:texture300} shows that although $s = 2.50$ achieves the highest E
 
 \begin{table}[t]
 \centering
-\caption{Texture retention ratios and object-level stability of C3. Each ratio is the mean over objects of the per-object ratio of the corresponding foreground statistic to that of $s = 1.25$ (equal object weighting); object-level win rates and confidence intervals for C3 over $s = 2.50$ are reported in the text.}
+\caption{Texture retention ratios and object-level stability of C3. \DIFdelbeginFL \DIFdelFL{Texture ratios are measured relative }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Each ratio is the mean over objects of the per-object ratio of the corresponding foreground statistic }\DIFaddendFL to \DIFaddbeginFL \DIFaddFL{that of }\DIFaddendFL $s = 1.25$ \DIFaddbeginFL \DIFaddFL{(equal object weighting)}\DIFaddendFL ; object-level win rates and confidence intervals for C3 over $s = 2.50$ are reported in the text.}
 \label{tab:retention}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccc}
@@ -427,12 +519,13 @@ Object-level statistics further show that C3 outperforms $s = 2.50$ on 87.7\%, 9
 
 In summary, the 300-object experiments demonstrate that adapter scaling affects both structural alignment and texture detail preservation. Full high-scale scaling strengthens edge constraints but is more likely to cause texture flattening. TCAS strengthens geometric correction in the middle stage and reduces adapter intervention in the late stage, thereby maintaining structural alignment while substantially reducing texture loss. It should be noted that C3 still has some texture decrease relative to $s = 1.25$; therefore, we do not claim that TCAS completely eliminates texture loss, but rather that it significantly reduces texture degradation compared with full high-scale scaling.
 
-\paragraph{Perceptual validation with CLIP-IQA}
-To address the concern that proxy texture statistics do not directly measure perceptual quality, we additionally evaluate CLIP-IQA, which builds on CLIP representations, on a 50-object validation subset as a complementary no-reference perceptual signal. CLIP-IQA is used as complementary perceptual evidence rather than a complete replacement for human preference evaluation.
+\DIFaddbegin \paragraph{\DIFadd{Perceptual validation with CLIP-IQA}}
+\DIFadd{To address the concern that proxy texture statistics do not directly measure perceptual quality, we additionally evaluate CLIP-IQA, which builds on CLIP representations, on a 50-object validation subset as a complementary no-reference perceptual signal. CLIP-IQA is used as complementary perceptual evidence rather than a complete replacement for human preference evaluation.
+}
 
 \begin{table}[t]
 \centering
-\caption{CLIP-IQA perceptual validation on 50 validation objects. Scores are reported for foreground regions and full rendered views; $\pm$ denotes the standard deviation across the 50 objects. Higher is better.}
+\caption{\DIFaddFL{CLIP-IQA perceptual validation on 50 validation objects. Scores are reported for foreground regions and full rendered views; $\pm$ denotes the standard deviation across the 50 objects. Higher is better.}}
 \label{tab:clipiqa}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccc}
@@ -447,14 +540,16 @@ C3 (TCAS) & $0.4906 \pm 0.0028$ & $0.4903 \pm 0.0025$ & 94.0\% \\
 }
 \end{table}
 
-Table~\ref{tab:clipiqa} shows that C3 achieves a foreground CLIP-IQA score of 0.4906 versus 0.4860 for $s = 2.50$, scoring higher on 47 of the 50 objects (94.0\%). The paired comparison uses a two-sided paired $t$-test over objects ($t(49)=10.52$, $p\approx3.6\times10^{-14}$), and the 95\% confidence interval of the paired mean difference is constructed by object-level percentile bootstrap with 10{,}000 resamples, giving $[0.0037,\,0.0054]$, which excludes zero. The ordering $s = 1.25$ $>$ C3 $>$ $s = 2.50$ supports the diagnosis that aggressive scaling reduces perceptual quality, while TCAS recovers most of this loss with stronger geometry than conservative scaling.
+\DIFadd{Table~\ref{tab:clipiqa} shows that C3 achieves a foreground CLIP-IQA score of 0.4906 versus 0.4860 for $s = 2.50$, scoring higher on 47 of the 50 objects (94.0\%). The paired comparison uses a two-sided paired $t$-test over objects ($t(49)=10.52$, $p\approx3.6\times10^{-14}$), and the 95\% confidence interval of the paired mean difference is constructed by object-level percentile bootstrap with 10}{\DIFadd{,}}\DIFadd{000 resamples, giving $[0.0037,\,0.0054]$, which excludes zero. The ordering $s = 1.25$ $>$ C3 $>$ $s = 2.50$ supports the diagnosis that aggressive scaling reduces perceptual quality, while TCAS recovers most of this loss with stronger geometry than conservative scaling.
+}
 
-\paragraph{Blinded preference study}
-To further examine whether the diagnostic texture differences are perceptually meaningful, we conducted a blinded three-alternative forced-choice (3AFC) preference study on 30 validation objects. Twenty-four participants viewed, for each object and each of the three criteria (texture naturalness, shape consistency, overall quality), the anonymized outputs of conservative uniform scaling, aggressive uniform scaling, and C3 side by side; the left-to-right order of the three conditions was randomized independently per trial, and participants were not informed which method produced which image or how many conditions existed. Instructions asked participants to select the best image for the stated criterion only. Each participant judged all 30 objects for all three criteria, yielding 720 valid first-choice decisions for each criterion. The study complements the proxy diagnostics by testing whether the observed texture and structure differences are reflected in human preference.
+\paragraph{\DIFadd{Blinded preference study}}
+\DIFadd{To further examine whether the diagnostic texture differences are perceptually meaningful, we conducted a blinded three-alternative forced-choice (3AFC) preference study on 30 validation objects. Twenty-four participants viewed, for each object and each of the three criteria (texture naturalness, shape consistency, overall quality), the anonymized outputs of conservative uniform scaling, aggressive uniform scaling, and C3 side by side; the left-to-right order of the three conditions was randomized independently per trial, and participants were not informed which method produced which image or how many conditions existed. Instructions asked participants to select the best image for the stated criterion only. Each participant judged all 30 objects for all three criteria, yielding 720 valid first-choice decisions for each criterion. The study complements the proxy diagnostics by testing whether the observed texture and structure differences are reflected in human preference.
+}
 
 \begin{table}[!htbp]
 \centering
-\caption{Blinded three-alternative first-choice preference study. Percentages are computed over 720 valid decisions per criterion.}
+\caption{\DIFaddFL{Blinded three-alternative first-choice preference study. Percentages are computed over 720 valid decisions per criterion.}}
 \label{tab:preference}
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{lccc}
@@ -468,20 +563,51 @@ C3 (TCAS) & 284/720 (39.4\%) & 293/720 (40.7\%) & $\mathbf{418/720\ (58.1\%)}$ \
 \end{tabular}%
 }
 \end{table}
-\FloatBarrier
+\DIFaddend \FloatBarrier
 
-The preference pattern in Table~\ref{tab:preference} follows the intended trade-off. Conservative scaling is most often selected for texture naturalness, while aggressive scaling is most often selected for shape consistency. C3 stays close to both single-scale baselines on their respective strengths and receives the highest overall preference, with 58.1\% of all overall-quality votes. Thus, TCAS is not claimed to maximize every individual criterion; it provides a perceptually preferred balance between geometric adherence and texture preservation.
+\DIFaddbegin \DIFadd{The preference pattern in Table~\ref{tab:preference} follows the intended trade-off. Conservative scaling is most often selected for texture naturalness, while aggressive scaling is most often selected for shape consistency. C3 stays close to both single-scale baselines on their respective strengths and receives the highest overall preference, with 58.1\% of all overall-quality votes. Thus, TCAS is not claimed to maximize every individual criterion; it provides a perceptually preferred balance between geometric adherence and texture preservation.
+}
 
-Because first-choice decisions are clustered within both participants and objects, we additionally report 95\% confidence intervals obtained by a two-level cluster bootstrap (resampling participants and objects with replacement, 10{,}000 resamples). C3's overall-quality share is 58.0\% (95\% CI $[50.1\%, 65.8\%]$), exceeding the conservative and aggressive baselines by $+33.6$ (CI $[19.3, 47.2]$) and $+40.5$ percentage points (CI $[29.4, 51.8]$); both differences exclude zero, so the overall-preference advantage of C3 is significant under cluster-aware inference. By contrast, the baselines' single-criterion advantages are not significant (texture naturalness: $s = 1.25$ over C3 $+6.7$ points, CI $[-7.9, 21.5]$; shape consistency: $s = 2.50$ over C3 $+5.3$ points, CI $[-6.7, 17.9]$). Overall quality is therefore the only criterion with a significant preference, supporting the interpretation of TCAS as the perceptually preferred balance rather than a per-criterion maximum.
+\DIFadd{Because first-choice decisions are clustered within both participants and objects, we additionally report 95\% confidence intervals obtained by a two-level cluster bootstrap (resampling participants and objects with replacement, 10}{\DIFadd{,}}\DIFadd{000 resamples). C3's overall-quality share is 58.0\% (95\% CI $[50.1\%, 65.8\%]$), exceeding the conservative and aggressive baselines by $+33.6$ (CI $[19.3, 47.2]$) and $+40.5$ percentage points (CI $[29.4, 51.8]$); both differences exclude zero, so the overall-preference advantage of C3 is significant under cluster-aware inference. By contrast, the baselines' single-criterion advantages are not significant (texture naturalness: $s = 1.25$ over C3 $+6.7$ points, CI $[-7.9, 21.5]$; shape consistency: $s = 2.50$ over C3 $+5.3$ points, CI $[-6.7, 17.9]$). Overall quality is therefore the only criterion with a significant preference, supporting the interpretation of TCAS as the perceptually preferred balance rather than a per-criterion maximum.
+}
 
-\subsection{FAC Adaptive Correction Extension: A Controlled Re-examination}
+\DIFaddend \subsection{FAC Adaptive Correction Extension\DIFaddbegin \DIFadd{: A Controlled Re-examination}\DIFaddend }
 \label{subsec:facexp}
 
-TCAS uses a fixed three-stage scale, which has the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To examine whether stage-wise adapter control can be extended to learned adaptive correction, we trained the FAC extension---LTAG for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2{,}000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
+TCAS uses a fixed three-stage scale, which has the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To \DIFdelbegin \DIFdel{verify }\DIFdelend \DIFaddbegin \DIFadd{examine }\DIFaddend whether stage-wise adapter control can be \DIFdelbegin \DIFdel{further extended , we evaluate FAC adaptive correctionon the 300-object validation set. FAC does not modify the base multi-view diffusion model, VAE, or original GeoTex-Adapter weights. Instead, it introduces lightweight modules on top of the TCAS temporal schedule: LTAG }\DIFdelend \DIFaddbegin \DIFadd{extended to learned adaptive correction, we trained the FAC extension---LTAG }\DIFaddend for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction \DIFdelbegin \DIFdel{. Because FAC learns a small number of additional parameters, it is treated only as an extension experiment, while the main method remains the training-free TCAS.
+}%DIFDELCMD < 
 
-In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning the most favourable training conditions we could construct: joint training of all controllers; a two-stage scheme with the temporal gate warm-started at the exact C3 envelope and frozen while the spatial and frequency controllers train; an envelope penalty that constrains the gate to remain near C3 during joint training; a fidelity-weighted objective; and a gently scheduled variant with fourfold-reduced training. Their paired deficits relative to the TCAS baseline range from $-1.1$ to $-2.9$~dB PSNR (win rates at most 16\%), increasing monotonically with the amount of controller training. A warm-start control in which the gate is left untrained at the exact C3 envelope is statistically indistinguishable from TCAS (paired $\Delta=-0.18$~dB on the 12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero), validating the evaluation path. The complete dose--response study is provided in the supplementary material.
+%DIFDELCMD < \begin{table}[h!]
+%DIFDELCMD < \centering
+%DIFDELCMD < %%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Ablation results of the FAC adaptive correction extension on the 300-object validation set. Full FAC adds spatial gating and frequency-selective correction on top of the TCAS temporal schedule.}}
+%DIFAUXCMD
+%DIFDELCMD < \label{tab:fac}
+%DIFDELCMD < \resizebox{\columnwidth}{!}{%
+%DIFDELCMD < \begin{tabular}{lcccc}
+%DIFDELCMD < \toprule
+%DIFDELCMD < Variant & PSNR$\uparrow$ & SSIM$\uparrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ \\
+%DIFDELCMD < \midrule
+%DIFDELCMD < TCAS (baseline) & 18.86 & 0.8737 & 11.66 & 0.4755 \\
+%DIFDELCMD < LTAG only & 17.87 & 0.8732 & 10.47 & 0.4635 \\
+%DIFDELCMD < LTAG + GSG & 18.09 & 0.8794 & 10.43 & 0.4640 \\
+%DIFDELCMD < Full FAC & 19.28 & 0.8793 & 11.77 & 0.4830 \\
+%DIFDELCMD < \bottomrule
+%DIFDELCMD < \end{tabular}%
+%DIFDELCMD < }
+%DIFDELCMD < \end{table}
+%DIFDELCMD < 
 
-The outcome delimits the scenario in which learned modulation affects the paper's conclusions. Preserving the temporal envelope is necessary but not sufficient: with the envelope preserved and the controllers untrained, the extension neither helps nor harms, while every trained configuration degraded fidelity, indicating that the remaining damage is driven by the learned-modulation training signal itself, which trades foreground fidelity for denoising-objective loss. Learning a modulation that improves upon the C3 schedule therefore requires a training signal that does not trade away foreground fidelity (e.g., fidelity-weighted objectives, envelope-preserving constraints, or post-hoc rather than gradient-learned gates), which we identify as future work. With the tested lightweight controllers, the fixed schedule is the stronger default, and TCAS, which is training-free and plug-and-play, remains the main and sole method of this paper.
+%DIFDELCMD < %%%
+\DIFdel{Table~\ref{tab:fac} reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, FG-PSNR, and FG-SSIM remain lower than TCAS, showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793}\DIFdelend \DIFaddbegin \DIFadd{on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2}{\DIFaddend ,\DIFdelbegin \DIFdel{FG-PSNR increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830. }\DIFdelend \DIFaddbegin }\DIFadd{000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{Object-level statistics further show that Full FAC outperforms TCAS on 81.3\% and 72.0\% of objects in PSNR and FG-SSIM, respectively, and paired significance tests for both metrics are significant ($p < 0.0001$). This indicates that }\DIFdelend \DIFaddbegin \DIFadd{In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning the most favourable training conditions we could construct: joint training of all controllers; a two-stage scheme with the temporal gate warm-started at the exact C3 envelope and frozen while the spatial and frequency controllers train; an envelope penalty that constrains the gate to remain near C3 during joint training; a fidelity-weighted objective; and a gently scheduled variant with fourfold-reduced training. Their paired deficits relative to the TCAS baseline range from $-1.1$ to $-2.9$~dB PSNR (win rates at most 16\%), increasing monotonically with the amount of controller training. A warm-start control in which the gate is left untrained at the exact C3 envelope is statistically indistinguishable from TCAS (paired $\Delta=-0.18$~dB on }\DIFaddend the \DIFdelbegin \DIFdel{gains of FAC are stable across most objects rather than being driven by a small number of samples. }\DIFdelend \DIFaddbegin \DIFadd{12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero), validating the evaluation path. The complete dose--response study is provided in the supplementary material.
+}\DIFaddend 
+
+\DIFdelbegin \DIFdel{Therefore, FAC does not change the main conclusion of this paper. TCAS remains the main method because it }\DIFdelend \DIFaddbegin \DIFadd{The outcome delimits the scenario in which learned modulation affects the paper's conclusions. Preserving the temporal envelope is necessary but not sufficient: with the envelope preserved and the controllers untrained, the extension neither helps nor harms, while every trained configuration degraded fidelity, indicating that the remaining damage is driven by the learned-modulation training signal itself, which trades foreground fidelity for denoising-objective loss. Learning a modulation that improves upon the C3 schedule therefore requires a training signal that does not trade away foreground fidelity (e.g., fidelity-weighted objectives, envelope-preserving constraints, or post-hoc rather than gradient-learned gates), which we identify as future work. With the tested lightweight controllers, the fixed schedule is the stronger default, and TCAS, which }\DIFaddend is training-free and plug-and-play\DIFdelbegin \DIFdel{. FAC serves as an extension experiment, showing that stage-wise adapter control can be further generalized to lightweight learned spatial and frequency adaptive correction}\DIFdelend \DIFaddbegin \DIFadd{, remains the main and sole method of this paper}\DIFaddend .
 
 \FloatBarrier
 
@@ -498,10 +624,11 @@ Moreover, a stage ablation shows that even \emph{which denoising stage is most s
 
 Despite this variability, in every regime where scaling had a non-negligible effect, the temporal low-high-low schedule C3 yielded the best shape-texture balance. This indicates that TCAS's value is structural rather than incidental: by relying on the diffusion process's stage-dependent roles (global layout $\to$ geometry refinement $\to$ texture synthesis), it mitigates the harm of high-scale intervention regardless of the adapter's specific failure mode. The failure mode (flatten vs.\ artifact vs.\ no-op), its strength, and its temporal location are all adapter-dependent; but the middle denoising stage being the optimal window for geometric correction appears to be a property of the diffusion process itself.
 
-Two further robustness checks were performed on the strong-residual, per-layer-capped adapter instance described above. First, a boundary/peak sensitivity sweep (three high-scale windows $[0.25,0.75)$, $[1/3,2/3)$, $[0.4,0.6)$ $\times$ five peak scales from 2.00 to 3.00, fifteen candidates on the 24-object probe protocol) shows that the canonical middle-third window lies in the stable high-performance region: its 2.50 setting achieves 16.71~dB PSNR, the best setting in the same window (2.75) achieves 16.79~dB with worse texture diagnostics and lower FG-SSIM, and the broader and narrower windows reach at most 16.73 and 16.62~dB. C3 is therefore a robust middle-stage choice rather than a boundary-sensitive point estimate. Second, because the 24-object probe is part of the 300-object pool, transfer claims were re-verified on the disjoint 276-object holdout ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$): C3 improves PSNR over the strongest non-C3 probe candidates by $+0.258$~dB (95\% CI $[0.207,0.308]$, 206/276 wins) over a trapezoid schedule and $+0.324$~dB ($[0.281,0.367]$, 232/276 wins) over a Gaussian-peak schedule, and over the reviewer-relevant generic schedules by $+0.323$~dB ($[0.263,0.386]$, 214/276 wins, FG-SSIM statistically tied) over linear warm-up and $+0.902$~dB ($[0.824,0.981]$, 253/276 wins, FG-SSIM $+0.046$) over the cosine bump. The holdout ordering matches the probe: warm-up approaches C3 in structure but loses in signal fidelity, and the smooth bump loses in both because its effective high-scale duration is shorter than the full middle third.
+\DIFaddbegin \DIFadd{Two further robustness checks were performed on the strong-residual, per-layer-capped adapter instance described above. First, a boundary/peak sensitivity sweep (three high-scale windows $[0.25,0.75)$, $[1/3,2/3)$, $[0.4,0.6)$ $\times$ five peak scales from 2.00 to 3.00, fifteen candidates on the 24-object probe protocol) shows that the canonical middle-third window lies in the stable high-performance region: its 2.50 setting achieves 16.71~dB PSNR, the best setting in the same window (2.75) achieves 16.79~dB with worse texture diagnostics and lower FG-SSIM, and the broader and narrower windows reach at most 16.73 and 16.62~dB. C3 is therefore a robust middle-stage choice rather than a boundary-sensitive point estimate. Second, because the 24-object probe is part of the 300-object pool, transfer claims were re-verified on the disjoint 276-object holdout ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$): C3 improves PSNR over the strongest non-C3 probe candidates by $+0.258$~dB (95\% CI $[0.207,0.308]$, 206/276 wins) over a trapezoid schedule and $+0.324$~dB ($[0.281,0.367]$, 232/276 wins) over a Gaussian-peak schedule, and over the reviewer-relevant generic schedules by $+0.323$~dB ($[0.263,0.386]$, 214/276 wins, FG-SSIM statistically tied) over linear warm-up and $+0.902$~dB ($[0.824,0.981]$, 253/276 wins, FG-SSIM $+0.046$) over the cosine bump. The holdout ordering matches the probe: warm-up approaches C3 in structure but loses in signal fidelity, and the smooth bump loses in both because its effective high-scale duration is shorter than the full middle third.
+}
 
 
-\section{Limitations}
+\DIFaddend \section{Limitations}
 \label{sec:limitations}
 
 This paper mainly focuses on inference-time adapter scaling and does not retrain the base multi-view diffusion model or the adapter. Therefore, TCAS can alleviate texture degradation under high scales---which may manifest as flattening or artifact amplification depending on the adapter's residual properties---but it cannot fundamentally solve the limitations of the base model in invisible-region completion, complex material synthesis, and cross-view detail consistency.
@@ -510,7 +637,7 @@ Second, Laplacian variance, RGB standard deviation, and gradient magnitude are p
 
 In addition, the current TCAS uses fixed stage boundaries and a fixed scale combination, C3 = (1.25, 2.50, 1.25). This setting is simple and stable, but it should be understood as a validated inference strategy for the studied geometry-adapter pipeline rather than a universally optimal schedule. As shown in Section~\ref{subsec:adapterdep}, the failure mode of high-scale intervention is adapter-dependent, and even the most sensitive denoising stage differs across adapters; yet C3's middle-stage concentration remains optimal in all tested regimes, suggesting that its temporal structure is robust even when specific failure mechanisms vary. It has not yet been adapted to object complexity, material type, input reference image quality, or different sampler families. Future work could study content-adaptive stage boundaries, SNR-aware scaling, and learned scale selection strategies.
 
-Finally, our controlled re-examination of the learned FAC extension indicates that unconstrained lightweight gating can flatten the temporal envelope that makes TCAS effective; learned modulation is therefore promising only under envelope-preserving constraints, which we identify as a concrete direction for future work, while TCAS remains the main training-free method.
+Finally, \DIFdelbegin \DIFdel{although the FAC extension demonstrates the potential of learned spatial and frequency correction, it requires additional training of a small number of parameters and therefore cannot replace the }\DIFdelend \DIFaddbegin \DIFadd{our controlled re-examination of the learned FAC extension indicates that unconstrained lightweight gating can flatten the temporal envelope that makes TCAS effective; learned modulation is therefore promising only under envelope-preserving constraints, which we identify as a concrete direction for future work, while TCAS remains the main }\DIFaddend training-free \DIFdelbegin \DIFdel{property of TCAS . We treat FAC as an extension validation rather than the main }\DIFdelend method.
 
 
 \section{Conclusion}
@@ -522,7 +649,7 @@ To address this shape-texture trade-off, we propose Timestep-Conditioned Adapter
 
 Therefore, the core contribution of this paper is not to claim that the generated results are visually close to the ground truth in all cases, nor to present TCAS as a universal replacement for all guidance schedules. Instead, the contribution is to reveal and validate a hidden shape-texture trade-off caused by geometry-adapter residual injection, and to show that a simple non-monotonic inference schedule can mitigate this trade-off better than fixed high-scale control and other tested scheduling variants. This conclusion suggests that, in geometry-controlled multi-view diffusion models, adapter strength should be treated as a stage-dependent inference control variable rather than a single fixed hyperparameter.
 
-As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and the training-free TCAS remains the main and sole method.
+\DIFdelbegin \DIFdel{The FAC extension further demonstrates that }\DIFdelend \DIFaddbegin \DIFadd{As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and }\DIFaddend the \DIFdelbegin \DIFdel{stage-wise adapter control idea can not only be used as a fixed inference schedule, but can also be generalized to lightweight learned spatial and frequency adaptive correction, providing a direction for future content-adaptive texture generation}\DIFdelend \DIFaddbegin \DIFadd{training-free TCAS remains the main and sole method}\DIFaddend .
 
 
 \begin{thebibliography}{35}
