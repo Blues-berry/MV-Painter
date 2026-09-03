@@ -1,7 +1,7 @@
 \documentclass[times,twocolumn,final]{elsarticle}
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL final.tex        Thu Aug 13 12:42:27 2026
-%DIF ADD final_0903.tex   Thu Sep  3 07:38:11 2026
+%DIF ADD final_0903.tex   Thu Sep  3 07:57:06 2026
 
 \usepackage{cag}
 \usepackage{framed,multirow}
@@ -11,12 +11,18 @@
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{placeins}
-
-%DIF 12a12-14
+%DIF 11a11-19
+\setcounter{totalnumber}{6} %DIF > 
+\setcounter{topnumber}{4} %DIF > 
+\setcounter{bottomnumber}{4} %DIF > 
+\renewcommand{\topfraction}{0.92} %DIF > 
+\renewcommand{\textfraction}{0.05} %DIF > 
+\renewcommand{\floatpagefraction}{0.85} %DIF > 
+ %DIF > 
 \newtheorem{proposition}{Proposition} %DIF > 
 \newtheorem{remark}{Remark} %DIF > 
- %DIF > 
 %DIF -------
+
 \journal{Computers \& Graphics}
 %DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
 %DIF UNDERLINE PREAMBLE %DIF PREAMBLE
@@ -346,12 +352,19 @@ Overall, the FG-SSIM improvement is stable, but the marginal benefit becomes sma
 
 To determine whether the FG-SSIM gain at high scales reflects better visual quality, we further conduct a texture audit on 26 objects, comparing texture metrics and foreground shape changes for $s = 2.50$ relative to $s = 1.25$. Figure~\ref{fig:qualitative} should be read as a local texture comparison rather than as a claim that any method fully matches the ground truth: the key evidence is the progressive loss of color variation, material marks, and high-frequency patterns inside the marked regions as the scale increases. The conservative scale $s = 1.25$ better preserves color variation and local texture, while $s = 2.50$ more easily produces uniform and smooth surfaces.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig4.pdf}
-\caption{Texture degradation under different adapter scales. Each row shows one object; large crops highlight local texture regions (thumbnails below indicate crop locations). Green borders denote conservative scaling $s = 1.25$; red borders denote aggressive scaling $s = 2.50$. Within each row, increasing the adapter scale causes progressive loss of color variation and high-frequency detail: surfaces become more uniform and color-saturated, indicating that stronger geometric correction suppresses the base model's texture synthesis capability.}
+\DIFdelbegin %DIFDELCMD < \begin{figure*}[t]
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \begin{figure}[!t]
+\DIFaddendFL \centering
+\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{figures/fig4.pdf}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\columnwidth]{figures/fig4.pdf}
+\DIFaddendFL \caption{Texture degradation under different adapter scales. Each row shows one object; large crops highlight local texture regions (thumbnails below indicate crop locations). Green borders denote conservative scaling $s = 1.25$; red borders denote aggressive scaling $s = 2.50$. Within each row, increasing the adapter scale causes progressive loss of color variation and high-frequency detail: surfaces become more uniform and color-saturated, indicating that stronger geometric correction suppresses the base model's texture synthesis capability.}
 \label{fig:qualitative}
-\end{figure*}
+\DIFdelbeginFL %DIFDELCMD < \end{figure*}
+%DIFDELCMD < %%%
+\DIFdelend \DIFaddbegin \end{figure}
+\DIFaddend 
 
 The results show that 24 out of 26 objects (92\%) exhibit a pattern of ``texture loss without true shape gain.'' Only two objects show comparable texture quality, and no object shows a clear texture improvement from the high scale. Here, ``true shape gain'' is not equivalent to an increase in FG-SSIM. It refers to whether the high scale brings substantive improvement in effective foreground area, contour structure, or geometric detail compared with the conservative scale. If the metric improvement mainly comes from smoothed foreground boundaries or averaged contour errors without visible geometric improvement, it is categorized as having no true shape gain. Therefore, although a high adapter scale can improve structural metrics, such improvement does not necessarily indicate better visual shape or texture quality. Figure~\ref{fig:audit} further quantifies this texture loss.
 
@@ -574,8 +587,7 @@ C3 (TCAS) & 284/720 (39.4\%) & 293/720 (40.7\%) & $\mathbf{418/720\ (58.1\%)}$ \
 \DIFaddend \subsection{FAC Adaptive Correction Extension\DIFaddbegin \DIFadd{: A Controlled Re-examination}\DIFaddend }
 \label{subsec:facexp}
 
-TCAS uses a fixed three-stage scale, which has the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To \DIFdelbegin \DIFdel{verify }\DIFdelend \DIFaddbegin \DIFadd{examine }\DIFaddend whether stage-wise adapter control can be \DIFdelbegin \DIFdel{further extended , we evaluate FAC adaptive correctionon the 300-object validation set. FAC does not modify the base multi-view diffusion model, VAE, or original GeoTex-Adapter weights. Instead, it introduces lightweight modules on top of the TCAS temporal schedule: LTAG }\DIFdelend \DIFaddbegin \DIFadd{extended to learned adaptive correction, we trained the FAC extension---LTAG }\DIFaddend for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction \DIFdelbegin \DIFdel{. Because FAC learns a small number of additional parameters, it is treated only as an extension experiment, while the main method remains the training-free TCAS.
-}%DIFDELCMD < 
+TCAS uses a fixed three-stage scale, which has the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To \DIFdelbegin \DIFdel{verify }\DIFdelend \DIFaddbegin \DIFadd{examine }\DIFaddend whether stage-wise adapter control can be \DIFdelbegin \DIFdel{further extended , we evaluate FAC adaptive correctionon the 300-object validation set. FAC does not modify the base multi-view diffusion model, VAE, or original GeoTex-Adapter weights. Instead, it introduces lightweight modules on top of the TCAS temporal schedule: LTAG }\DIFdelend \DIFaddbegin \DIFadd{extended to learned adaptive correction, we trained the FAC extension---LTAG }\DIFaddend for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction \DIFdelbegin \DIFdel{. Because FAC learns a small number of additional parameters, it is treated only as an extension experiment, while the main method remains the training-free TCAS }\DIFdelend \DIFaddbegin \DIFadd{on top of the TCAS temporal schedule}\DIFaddend . \DIFdelbegin %DIFDELCMD < 
 
 %DIFDELCMD < \begin{table}[h!]
 %DIFDELCMD < \centering
@@ -601,7 +613,7 @@ TCAS uses a fixed three-stage scale, which has the advantages of requiring no tr
 %DIFDELCMD < 
 
 %DIFDELCMD < %%%
-\DIFdel{Table~\ref{tab:fac} reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, FG-PSNR, and FG-SSIM remain lower than TCAS, showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793}\DIFdelend \DIFaddbegin \DIFadd{on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2}{\DIFaddend ,\DIFdelbegin \DIFdel{FG-PSNR increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830. }\DIFdelend \DIFaddbegin }\DIFadd{000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
+\DIFdel{Table~\ref{tab:fac} reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, FG-PSNR, and FG-SSIM remain lower than TCAS, showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793}\DIFdelend \DIFaddbegin \DIFadd{The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter (Adam, 2}{\DIFaddend ,\DIFdelbegin \DIFdel{FG-PSNR increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830. }\DIFdelend \DIFaddbegin }\DIFadd{000 steps) on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated on the strong-residual adapter instance of Section~\ref{subsec:adapterdep} under a strictly paired protocol (identical objects, seeds, and evaluation code).
 }\DIFaddend 
 
 \DIFdelbegin \DIFdel{Object-level statistics further show that Full FAC outperforms TCAS on 81.3\% and 72.0\% of objects in PSNR and FG-SSIM, respectively, and paired significance tests for both metrics are significant ($p < 0.0001$). This indicates that }\DIFdelend \DIFaddbegin \DIFadd{In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning the most favourable training conditions we could construct: joint training of all controllers; a two-stage scheme with the temporal gate warm-started at the exact C3 envelope and frozen while the spatial and frequency controllers train; an envelope penalty that constrains the gate to remain near C3 during joint training; a fidelity-weighted objective; and a gently scheduled variant with fourfold-reduced training. Their paired deficits relative to the TCAS baseline range from $-1.1$ to $-2.9$~dB PSNR (win rates at most 16\%), increasing monotonically with the amount of controller training. A warm-start control in which the gate is left untrained at the exact C3 envelope is statistically indistinguishable from TCAS (paired $\Delta=-0.18$~dB on }\DIFaddend the \DIFdelbegin \DIFdel{gains of FAC are stable across most objects rather than being driven by a small number of samples. }\DIFdelend \DIFaddbegin \DIFadd{12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero), validating the evaluation path. The complete dose--response study is provided in the supplementary material.
