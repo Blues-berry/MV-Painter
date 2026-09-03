@@ -63,6 +63,25 @@ def build_eval_timesteps(model, num_eval_steps=50):
     return sched.timesteps  # float tensor, decreasing
 
 
+def c3_targets(model, eval_ts):
+    """C3 effective per-adapter targets on the eval grid (after per-layer caps)."""
+    ltag = model.correction_controller.ltag
+    dev = next(ltag.parameters()).device
+    n = len(eval_ts); n_adapters = ltag.num_adapters
+    mid = slice(n // 3, 2 * n // 3)
+    adapter_max = {}
+    for module in model.unet.modules():
+        if isinstance(module, GeoTexResnetWrapper):
+            adapter_max[module.adapter_idx] = module._max_scale
+    targets = torch.full((n, n_adapters), 1.25, device=dev)
+    targets[mid, :] = 2.50
+    for idx in range(n_adapters):
+        cap = adapter_max.get(idx)
+        if cap is not None:
+            targets[:, idx] = targets[:, idx].clamp(max=cap)
+    return targets
+
+
 def warmstart_ltag_to_c3(model, eval_ts, fit_steps=200, lr=1e-2):
     """Supervisedly fit LTAG weights to C3's *effective* per-layer schedule.
 
@@ -142,6 +161,9 @@ def main():
     parser.add_argument('--freeze_ltag', action='store_true',
                         help='two-stage: after the C3 warm-start, freeze LTAG and train only GSG/FSC '
                              '(tests whether envelope-preserving learned refinement can improve on TCAS)')
+    parser.add_argument('--envelope_penalty', type=float, default=0.0,
+                        help='if >0, add lambda * mean((ltag(t)-C3_target)^2) over the full eval grid '
+                             'to the loss, keeping the learned temporal gate near the C3 envelope')
     parser.add_argument('--eval_steps', type=int, default=50,
                         help='number of eval steps whose Euler timesteps are used for t-sampling')
     parser.add_argument('--grad_accum', type=int, default=1)
@@ -214,6 +236,14 @@ def main():
             raise ValueError("--freeze_ltag requires --enable_ltag")
         model.correction_controller.ltag.requires_grad_(False)
         print("  Two-stage mode: LTAG FROZEN at the C3 envelope; training GSG/FSC only")
+
+    env_targets = None
+    if args.envelope_penalty > 0:
+        if not args.enable_ltag:
+            raise ValueError("--envelope_penalty requires --enable_ltag")
+        env_targets = c3_targets(model, eval_ts)
+        print(f"  Envelope penalty {args.envelope_penalty}: early/late target "
+              f"{tuple(round(v,2) for v in env_targets[0].tolist())} -> mid {tuple(round(v,2) for v in env_targets[len(eval_ts)//2].tolist())}")
 
     # ============ Optimizer + EMA (controller only) ============
     trainable_params = [p for p in model.correction_controller.parameters() if p.requires_grad]
@@ -333,6 +363,12 @@ def main():
                 reg_weight=args.reg_weight,
                 step=step, device=device,
             )
+
+            if env_targets is not None:
+                gate_pred = model.correction_controller.ltag(eval_ts.float())
+                env_pen = args.envelope_penalty * (gate_pred - env_targets).pow(2).mean()
+                loss = loss + env_pen
+                loss_dict['train/env_pen'] = float(env_pen.item())
 
             scaled_loss = loss / args.grad_accum
             if torch.isnan(scaled_loss) or torch.isinf(scaled_loss):
