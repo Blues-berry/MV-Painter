@@ -139,6 +139,9 @@ def main():
     parser.add_argument('--warmup_steps', type=int, default=100)
     parser.add_argument('--no_warmstart_c3', action='store_true',
                         help='disable supervised LTAG warm-start to the C3 piecewise schedule')
+    parser.add_argument('--freeze_ltag', action='store_true',
+                        help='two-stage: after the C3 warm-start, freeze LTAG and train only GSG/FSC '
+                             '(tests whether envelope-preserving learned refinement can improve on TCAS)')
     parser.add_argument('--eval_steps', type=int, default=50,
                         help='number of eval steps whose Euler timesteps are used for t-sampling')
     parser.add_argument('--grad_accum', type=int, default=1)
@@ -205,6 +208,12 @@ def main():
         warmstart_ltag_to_c3(model, eval_ts)
     elif args.enable_ltag:
         print("  LTAG warm-start to C3 disabled (--no_warmstart_c3)")
+
+    if args.freeze_ltag:
+        if not args.enable_ltag:
+            raise ValueError("--freeze_ltag requires --enable_ltag")
+        model.correction_controller.ltag.requires_grad_(False)
+        print("  Two-stage mode: LTAG FROZEN at the C3 envelope; training GSG/FSC only")
 
     # ============ Optimizer + EMA (controller only) ============
     trainable_params = [p for p in model.correction_controller.parameters() if p.requires_grad]
