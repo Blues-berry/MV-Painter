@@ -108,7 +108,7 @@ This paper builds on the MVPainter-style geometry-controlled multi-view texture 
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig1.pdf}
+\includegraphics[width=\textwidth]{fig1.pdf}
 \caption{Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the residual strength according to denoising stages to balance geometric consistency and texture fidelity. The final multi-view outputs are projected and baked into a textured 3D mesh.}
 \label{fig:overview}
 \end{figure*}
@@ -246,7 +246,7 @@ As the scale increases from $s = 0.75$ to $s = 2.50$, $\Delta$FG-SSIM rises from
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig2.pdf}
+\includegraphics[width=\columnwidth]{fig2.pdf}
 \caption{Structural metric changes under uniform adapter scaling. The curves show that FG-SSIM keeps increasing with adapter scale, while Crop-SSIM saturates and slightly decreases at high scales. Stronger geometric control therefore mainly improves structural alignment, but does not necessarily keep improving local foreground quality.}
 \label{fig:curve}
 \end{figure}
@@ -255,7 +255,7 @@ Overall, the FG-SSIM improvement is stable, but the marginal benefit becomes sma
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig3.pdf}
+\includegraphics[width=\columnwidth]{fig3.pdf}
 \caption{$\Delta$FG-SSIM heatmap for 50 objects under 13 adapter scales. Most objects obtain higher structural gains as the scale increases, but there are clear object-level differences.}
 \label{fig:heatmap}
 \end{figure}
@@ -267,7 +267,7 @@ To determine whether the FG-SSIM gain at high scales reflects better visual qual
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig4.pdf}
+\includegraphics[width=\columnwidth]{fig4.pdf}
 \caption{Texture degradation under different adapter scales. Each row shows one object; large crops highlight local texture regions (thumbnails below indicate crop locations). Green borders denote conservative scaling $s = 1.25$; red borders denote aggressive scaling $s = 2.50$. Within each row, increasing the adapter scale causes progressive loss of color variation and high-frequency detail: surfaces become more uniform and color-saturated, indicating that stronger geometric correction suppresses the base model's texture synthesis capability.}
 \label{fig:qualitative}
 \end{figure}
@@ -276,7 +276,7 @@ The results show that 24 out of 26 objects (92\%) exhibit a pattern of ``texture
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig5.pdf}
+\includegraphics[width=\columnwidth]{fig5.pdf}
 \caption{Texture flattening at $s = 2.50$. Top: RGB standard deviation ratio on 26 objects ($s = 2.50$ / $s = 1.25$). Bottom: gradient magnitude ratio. Values below 1.0 indicate texture loss. Even the four best-improvement objects (green) show 24\% to 30\% texture loss despite positive FG-SSIM gains.}
 \label{fig:audit}
 \end{figure}
@@ -320,7 +320,7 @@ Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and unif
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig6.pdf}
+\includegraphics[width=\columnwidth]{fig6.pdf}
 \caption{Qualitative comparison between C3 and uniform adapter scaling. Large crops show local texture regions (thumbnails below indicate crop locations). Columns: GT (gray), $s = 1.25$ (green), $s = 2.50$ (red), and C3 (orange). Compared with $s = 2.50$, C3 retains more local color variation and material texture while preserving stronger geometric correction than the conservative scale.}
 \label{fig:c3compare}
 \end{figure}
@@ -329,7 +329,7 @@ Figure~\ref{fig:pareto} further shows the distribution of the 17 variants in the
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig7.pdf}
+\includegraphics[width=\columnwidth]{fig7.pdf}
 \caption{Shape-texture Pareto trade-off among 17 variants. The horizontal axis is shape gain, where farther right is better; therefore, the bottom-right region represents a more desirable compromise. C3 (star) lies in the Promising region, with high shape gain and nearly zero texture loss. Most high-shape-gain variants fall into the Trap region, where structural scores are obtained at the cost of large texture loss. Variants such as B6 have smaller texture degradation but almost no shape gain.}
 \label{fig:pareto}
 \end{figure}
