@@ -311,7 +311,7 @@ The specific configuration of C3 uses the conservative scale $s = 1.25$ in the e
 
 Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and uniform adapter scaling. The red-boxed zoom-in regions make the intended comparison visible: conservative scaling preserves more color variation but provides weaker structural correction, whereas aggressive scaling strengthens geometric constraints but flattens surface texture. C3 applies strong geometric correction in the middle stage and reduces adapter intervention in the late stage, thereby preserving more local texture than $s = 2.50$ while retaining stronger geometric correction than the conservative scale.
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig6.pdf}
 \caption{Qualitative comparison between C3 and uniform adapter scaling. Large crops show local texture regions (thumbnails below indicate crop locations). Columns: GT (gray), $s = 1.25$ (green), $s = 2.50$ (red), and C3 (orange). Compared with $s = 2.50$, C3 retains more local color variation and material texture while preserving stronger geometric correction than the conservative scale.}
@@ -320,7 +320,7 @@ Figure~\ref{fig:c3compare} provides a qualitative comparison between C3 and unif
 
 Figure~\ref{fig:pareto} further shows the distribution of the 17 variants in the shape-texture space. Most variants with high shape gain are accompanied by large texture loss and fall into the Trap region, whereas C3 maintains a relatively high shape gain while keeping texture loss near zero. Thus, the value of C3 is not that it maximizes every metric, but that it avoids the trap of ``higher structural scores but flattened texture,'' resulting in a more stable shape-texture compromise.
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{figures/fig7.pdf}
 \caption{Shape-texture Pareto trade-off among 17 variants. The horizontal axis is shape gain, where farther right is better; therefore, the bottom-right region represents a more desirable compromise. C3 (star) lies in the Promising region, with high shape gain and nearly zero texture loss. Most high-shape-gain variants fall into the Trap region, where structural scores are obtained at the cost of large texture loss. Variants such as B6 have smaller texture degradation but almost no shape gain.}
