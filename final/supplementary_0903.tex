@@ -14,17 +14,17 @@
 \end{center}
 
 \section{S1.\ \ Protocol}
-All variants are trained and evaluated under the strictly paired protocol of Sec.~4.6 of the main manuscript: the base model, VAE, and GeoTex-Adapter remain frozen; only the LTAG/GSG/FSC controllers (roughly $6\times10^{3}$ parameters) are trained with the same enhanced denoising objective as the base adapter (Adam), on the adapter's training pool, which is strictly disjoint from all evaluation objects; evaluation uses 300 objects, the Euler discrete scheduler with 50 steps, seed 42, and identical evaluation code for every variant. Deficits are paired per object against the training-free TCAS baseline ($C3=(1.25,2.50,1.25)$).
+All variants are trained and evaluated under the strictly paired protocol of Sec.~4.6 of the main manuscript: the base model, VAE, and GeoTex-Adapter remain frozen; only the LTAG/GSG/FSC controllers (roughly $6\times10^{3}$ parameters) are trained with the same enhanced denoising objective as the base adapter (a latent noise-prediction MSE with $1.7\times$ foreground and $1.3\times$ edge spatial reweighting plus a latent-SSIM term; AdamW, peak learning rate $10^{-4}$ with 100 warm-up steps), on the adapter's training pool, which is strictly disjoint from all evaluation objects; evaluation uses 300 objects, the Euler discrete scheduler with 50 steps, seed 42, and identical evaluation code for every variant. Deficits are paired per object against the training-free TCAS baseline ($C3=(1.25,2.50,1.25)$).
 
 \section{S2.\ \ Dose--response over seven trained configurations}
 
 \begin{table}[h]
 \centering\small
-\caption{FAC controlled re-examination: seven trained configurations, all evaluated under the strictly paired protocol. $\Delta$PSNR and $\Delta$FG-SSIM are paired mean differences relative to the training-free TCAS baseline; the win rate is the fraction of objects on which the variant improves foreground PSNR. The untrained warm-start control (12-object paired subset, gate fixed at the exact C3 envelope) is reported in the text: $\Delta$FG-PSNR $=-0.18$~dB, 95\% CI $[-0.42,+0.05]$, statistically indistinguishable from the baseline.}
+\caption{FAC controlled re-examination: seven trained configurations, all evaluated under the strictly paired protocol. FG-PSNR and FG-SSIM are foreground-masked absolute values; $\Delta$FG-PSNR is the paired mean difference relative to the training-free TCAS baseline; the win rate is the fraction of objects on which the variant improves foreground PSNR. The untrained warm-start control (12-object paired subset, gate fixed at the exact C3 envelope) is reported in the text: $\Delta$FG-PSNR $=-0.18$~dB, 95\% CI $[-0.42,+0.05]$, statistically indistinguishable from the baseline.}
 \label{tab:fac_dose}
 \begin{tabular}{llcccc}
 \toprule
-Configuration & Temporal gate & FG-PSNR & FG-SSIM & $\Delta$PSNR & Win rate \\
+Configuration & Temporal gate & FG-PSNR & FG-SSIM & $\Delta$FG-PSNR & Win rate \\
 \midrule
 TCAS baseline (C3) & fixed C3 & 9.88 & 0.3681 & -- & -- \\
 \midrule
