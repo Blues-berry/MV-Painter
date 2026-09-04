@@ -10,7 +10,7 @@ Manuscript: *Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Mu
 
 Dear Editors and Reviewers,
 
-We thank the CAD/Graphics 2026 program committee for recommending this manuscript, upon revision, for publication in *Computers & Graphics*, and we thank all three reviewers for their careful and constructive comments. **This revised manuscript is recommended by CAD/Graphics 2026.** All main TCAS results and conclusions are retained; following the reviewers' suggestions we have added new analyses, documentation, and controlled experiments, as detailed below. For transparency: an initial FAC comparison under our earlier, less controlled protocol had suggested a positive effect; the strictly paired, strictly disjoint re-examination in Sec. 4.6 reverses that preliminary observation, and we report only the controlled results (see R1-C1).
+We thank the CAD/Graphics 2026 program committee for recommending this manuscript, upon revision, for publication in *Computers & Graphics*, and we thank all three reviewers for their careful and constructive comments. **This revised manuscript is recommended by CAD/Graphics 2026.** All main TCAS results and conclusions are retained; following the reviewers' suggestions we have added new analyses, documentation, and controlled experiments, as detailed below. For transparency: the learned FAC extension, initially positive under our earlier protocol, is now re-examined under the strictly paired, disjoint protocol with a negative outcome (Sec. 4.6; see R1-C1).
 
 ## Summary of additions
 
