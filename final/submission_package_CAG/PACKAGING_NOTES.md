@@ -42,6 +42,7 @@
   7. Proposition 1 维持 0903 晚已修的 ε 等价边界版本（Remark 1: CI 下界 +0.006 dB ≪ ε=0.1 dB），未再改动。
 - 2026-09-04 三次更新（摘要语病最小修复，正文仍 **14 页**、marked 15 页、合并稿 21 页、0 错误）：摘要 243 词（<250 官方上限）。仅修零争议语病，不动结构与限定语：① "without re-search" 自造连字符词消除（摘要/贡献(3)/§4.1/§4.5 共 4 处统一为 "without further search / without any further schedule search / not searched again"）；② 摘要 "chosen only on" → "selected using only"（与 §4.1 措辞统一，消歧义）；③ "being preferred" → "receiving higher preference"（平行结构）。第一句结构、结尾双重限定语、guardrails 短语、"a blunt control" 隐喻均**刻意保留**（R2 防御策略与增量原则）。信与补充材料无 re-search、未引用摘要原文，无需同步。
 - 2026-09-04 四次更新（Demo 同步）：`TCAS_Demo_fixed.pptx` 第 10 页旧术语与论文新稿冲突，已改——"the 300-object validation set, with no re-search on the validation objects" → "**the 300-object evaluation pool, with no further search on the evaluation objects**"（与摘要/正文/信完全同措辞）；其余 12 页核查无冲突（slide12 FAC 标题已与 §4.6 一致）。`TCAS_Demo.mp4` 由更新后 pptx 重导：LibreOffice→PDF→PNG→ffmpeg，参数与旧版一致（1920×1080, 30fps, 60.2s，13 页轮播）。根目录旧版 `TCAS_Demo.pptx`（slide10 存在文字重复 bug）已用最新版覆盖，两处 md5 一致（799df40a…），不再存在新旧两版。
+- 2026-09-04 五次更新（配音版 Demo）：新增 `TCAS_Demo_narrated.mp4`（1920×1080/30fps，**2 分 53 秒**，5.0MB）与配音稿 `TCAS_Demo_narration.md`。制作链：piper 本地 TTS（en_US-lessac-medium，模型 63MB 于 /tmp）→ 13 段 wav（Σ162.2s）→ 页间 0.8s/首 0.6s/尾 1.0s 静音 → 画面 ffconcat 按"页时长=配音+0.8s"合成。讲解词与修订稿措辞严格一致（evaluation pool / no further search / 58.1% cluster bootstrap / TCAS main and sole method）。edge-tts 因微软 WSS 域被网络策略拦截不可用；重合成命令链见 HANDOFF_SUBMISSION_0904.md。
 
 ## 四、EM 上传对照表
 
@@ -57,7 +58,8 @@
 | Highlights | highlights_CAG.docx / .md（5 条，每条 ≤85 字符） |
 | Graphical Abstract | graphical_abstract_CAG.pdf |
 | Declaration of Interest | Declaration_of_Interest_Statement.docx |
-| Video / 演示材料（可选附件） | TCAS_Demo.mp4（由 TCAS_Demo_fixed.pptx 导出） |
+| Video / 演示材料（可选附件） | TCAS_Demo.mp4（静音轮播，由 TCAS_Demo_fixed.pptx 导出）；TCAS_Demo_narrated.mp4（英文配音讲解版，2 分 53 秒，可选其一或都传） |
+| Demo 讲解稿 | TCAS_Demo_narration.md（13 页配音文本，英/中对照；改词后可重合成） |
 
 - 合并稿 `final_0903_with_letter.pdf`（**21 页 = 回复信 7 页 + 正文 14 页**）按会议要求"信附于修改稿开头"制作，现**已放入本包**；EM 上传时可将合并稿作为 Manuscript PDF 上传（同时照常提供 latex.zip 源码），信另在 Response to Reviewers 项单独上传，两种方式均满足会议字面要求。
 - Article Type 步骤选择 **VSI: CAG_SS_CAD/Graphics 2026**。
