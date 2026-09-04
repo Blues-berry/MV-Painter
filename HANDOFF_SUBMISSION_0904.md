@@ -27,6 +27,16 @@
 
 **Demo 同步（2026-09-04）**：`TCAS_Demo_fixed.pptx` 13 页中仅第 10 页曾含旧术语，已改为 "the 300-object evaluation pool, with no further search on the evaluation objects"；`TCAS_Demo.mp4` 用 LibreOffice→PDF→pdftoppm -r 144→ffmpeg 重导（1920×1080/30fps/60.2s 与旧版同参）。若再改 pptx 文字，重导链：`soffice --headless --convert-to pdf` → `pdftoppm -png -r 144` → `ffmpeg -framerate 13/60.2 -i slide-%02d.png -vf "scale=1920:1080:...,format=yuv420p" -r 30 -t 60.2`。
 
+**配音版 Demo（2026-09-04）**：包内 `TCAS_Demo_narrated.mp4`（1080p/30fps，2 分 53 秒）+ 配音稿 `TCAS_Demo_narration.md`（13 页英/中对照）。TTS 用 **piper 本地合成**（en_US-lessac-medium；二进制 + 模型在 /tmp/demobuild/tts，/tmp 清理后需重下：piper 二进制 `github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_x86_64.tar.gz`，模型 `huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx`+`.json`）。重合成链：
+```
+./piper/piper -m en_US-lessac-medium.onnx -f pageNN.wav <<< "文本"   # 13 段
+ffmpeg -f lavfi -i anullsrc=r=22050:cl=mono -t 0.8 -c:a pcm_s16le sil.wav
+# 音频: sil_lead + p01 + sil + ... + p13 + sil (concat demuxer, pcm copy)
+# 视频: ffconcat 每页 duration=配音+0.8s(首页+0.6s), fps=30, scale/pad 1920x1080
+# 合并: -c:v copy -c:a aac -movflags +faststart
+```
+讲解词改动 → 只改 narration.md 对应页 → 重新跑该页 piper + 两条 ffmpeg。注意 edge-tts 在本机网络不可用（微软 WSS 被拦）。
+
 ## 2. 关键事实链（数字出处，改稿时勿凭记忆写数）
 
 - **数据**：`data/train_data/rendered_full/`。训练池 1,118（主 adapter）/ 1,706（strong-residual v2 实例，`train_objects_2000.txt`）；评估池 300 = `test_objects_300.txt`（固定顺序，前 24 = probe obj_0000–0023，后 276 = holdout）。训练/评估 overlap = 0（已复核）。类别 composition 元数据仓库不存在 → 复现表只写可验证事实。
