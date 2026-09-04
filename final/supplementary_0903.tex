@@ -45,4 +45,39 @@ Three observations follow from Table~\ref{tab:fac_dose}. First, the warm-start c
 
 The mechanism is consistent with the controllers optimizing the denoising objective at the expense of foreground fidelity: gradient training on the same loss as the base adapter has no term that protects the fixed schedule's balance, so the learned modulation migrates away from the operating point that makes TCAS effective. We therefore identify, as future work, training signals that do not trade away foreground fidelity (fidelity-weighted or structure-aware objectives), envelope-preserving parameterizations and constraints, and post-hoc rather than gradient-learned gates. With the tested lightweight controllers, the training-free TCAS remains the main and sole method of the paper, and all its conclusions are unaffected by this negative result.
 
+\section{S4.\ \ Reproducibility details}
+
+Table~\ref{tab:repro} consolidates the data, checkpoint, and inference details requested by the reviewers. All identifiers refer to the internal object list of the 300-object evaluation pool; checkpoint files and evaluation code are made available upon reasonable request.
+
+\begin{table}[h]
+\centering\small
+\caption{Consolidated reproducibility table.}
+\label{tab:repro}
+\begin{tabular}{p{4.3cm}p{10.8cm}}
+\toprule
+Item & Setting \\
+\midrule
+Data source & Objaverse 3D asset collection (including ABO subset assets), rendered offline \\
+Rendering & Blender (Cycles engine), 17 views, $512\times512$, white background \\
+Training pool (main adapter) & 1{,}118 rendered objects (all main-text tables) \\
+Training pool (strong-residual instance) & 1{,}706 rendered objects from the same source; used by the strong-residual, per-layer-capped instance of Sec.~4.7, the FAC extension, and this supplementary study \\
+Evaluation pool & 300 rendered objects in a fixed ordered list; probe $=$ first 24 identifiers (obj$_{0000}$--obj$_{0023}$), held-out test $=$ remaining 276 (obj$_{0024}$--obj$_{0299}$) \\
+Train--evaluation overlap & Zero (training and evaluation identifier sets verified to intersect in zero objects) \\
+Base pipeline & MVPainter-style geometry-controlled multi-view diffusion model; joint six-view latent UNet (pipeline class \texttt{MVPainter\_Pipeline}, diffusers 0.20.0) \\
+Base checkpoint & Local MVPainter snapshot (fine-tuned UNet, VAE, and dual CLIP vision encoders; loaded frozen) \\
+Adapter checkpoint (main tables) & GeoTex-Adapter \texttt{refattn\_v1} (\texttt{geotex\_step\_0002000.pt}); requested scale applied multiplicatively at every injected layer \\
+Adapter checkpoint (Sec.~4.7 / FAC / supp.) & \texttt{geotex\_v2\_ema\_final.pt} (MD5 \texttt{a74cc1d16cb473a95022bdcbc58e1b22}, 8.86~MB), applied with per-layer caps deep 3.0 / middle 3.5 / shallow 0.8 \\
+Resolution & $512\times512$ for rendering, generation, and evaluation \\
+Views & 17 rendered; 6 target views (front, front-right, right, back, left, front-left) used throughout \\
+Scheduler / steps / seed & Euler discrete; 50 denoising steps; fixed seed 42 shared by all schedules within an experiment (identical initial latents) \\
+Text prompt & None (reference-image-conditioned) \\
+Appearance condition & Fixed reference rendering of the object (MVPainter's fixed reference-view input), identical across all compared schedules and methods \\
+Geometry condition & 3-channel normal map $+$ 1-channel depth map $+$ 1-channel foreground mask \\
+Metrics & FG-/Edge-SSIM, PSNR, FG-LPIPS (AlexNet) on foreground-masked regions; foreground Laplacian variance, RGB standard deviation, gradient magnitude on foreground pixels \\
+Statistics & Two-sided paired tests; object-level percentile bootstrap 95\% CIs, 10{,}000 resamples; two-level (participant- and object-level) cluster bootstrap for the preference study \\
+Code & Evaluation scripts (\texttt{geotex/}) and pipeline/configurations (\texttt{MVPainter/}) available with the checkpoints upon reasonable request (repository snapshot 194bce2) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \end{document}
