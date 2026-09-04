@@ -32,6 +32,14 @@
 - 解包至全新目录，`pdflatex final_0903.tex` 连续两遍（无 bibtex 依赖）：**14 页**、0 错误、无未定义引用；表体全部恢复后仅剩标题区 logo 两处 <1.1pt 的历史 overfull（无实质影响），表格无超宽。
 - 排版基准：8 张表均不含 `\resizebox`；多数表 `\small`，3 张宽表（probe/CLIP-IQA/preference）用 `\footnotesize` + 收紧 `\tabcolsep`（3–4pt）以适配单栏宽。
 - 2026-09-04 更新：恢复 7 张表体（源自 0902 结构版与 final_submit 版的同源数据，已与 CSV/正文逐项核对）、FAC 反转说明段、fig1 裁切内嵌 caption、fig7 caption 方向修正、补引 6 篇文献（T2I-Adapter/Kynkääniemi 2024/Paint3D/MVPaint/Hunyuan3D 2.0/CLIP-IQA）、58.1%/+40.6 数字统一；页数 13 → **14**；marked 版 15 页；合并稿 21 页（信 7 + 正文 14）。信 PDF 由 response_letter_CAG_plain.md 经 pandoc(xelatex, 12pt, linestretch 1.25) 重新生成。
+- 2026-09-04 二次更新（外部意见核查后收口，正文仍 **14 页**、marked 15 页、合并稿 21 页、0 错误）：
+  1. 术语统一：全文 "300-object validation set/pool" 改为 **"300-object evaluation pool"**（摘要、贡献 (3)(4)、§4.1 四集合定义、§4.3/4.4/4.5、结论；probe=前 24 + holdout=276 已在首现处标注），Table 4/5 caption 注明 pooled statistics 含 24 个 probe 对象；不再把含 probe 的 300 称为独立 validation。
+  2. 新增 **Table 9（§4.7）**：disjoint 276-object holdout 调度迁移表（trapezoid/Gaussian peak/linear warm-up/cosine bump vs C3，FG-SSIM、PSNR、ΔPSNR 95% CI、win 数）；数字与 holdout_summary.json 及 §4.7 文字逐项一致（+0.258/+0.324/+0.323/+0.902 dB，206/232/214/253 wins）。
+  3. §4.6 补句：**"No configuration or hyperparameter was selected on any evaluation object"**（七配置全部报告于补充材料，关闭模型选择 leakage 质疑）。
+  4. Limitations 补句：schedule **"has not yet been validated on a different geometry-conditioned multi-view diffusion backbone"**（与信 R2-1 一致）。
+  5. 信四处同步：R2-1 弱化 "diffusion process itself" 过强句（正文同款已删，信漏改）；R1-2 补充材料复现表指引；R1-3 "30 objects drawn from the evaluation pool"；R3-1 指引 Table 9。
+  6. Supplementary 新增 **S4 Reproducibility table**（数据源/渲染/双训练池 1118+1706/300 池 24+276 划分/零重叠/base pipeline 与 checkpoint/adapter checkpoint refattn_v1 与 geotex_v2_ema_final.pt（MD5 a74cc1d1…）/分辨率/views/scheduler/50 步/seed 42/无 text prompt/外观与几何条件/指标实现/统计口径/代码 snapshot 194bce2）；supplementary 现 2 页。
+  7. Proposition 1 维持 0903 晚已修的 ε 等价边界版本（Remark 1: CI 下界 +0.006 dB ≪ ε=0.1 dB），未再改动。
 
 ## 四、EM 上传对照表
 
