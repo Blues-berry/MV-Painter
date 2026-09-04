@@ -29,9 +29,9 @@
 
 ## 三、验证方式
 
-- 解包至全新目录，`pdflatex final_0903.tex` 连续两遍（无 bibtex 依赖）：13 页、0 错误、无未定义引用，表格无超宽（overfull alignment = 0）。
-- 编译产物与正式提交 PDF 字节数一致（3,657,659 字节基准），即 zip 内容与已编译 PDF 完全同源。
-- 排版基准：全部 8 张表格统一使用 `\small` 字号、不含 `\resizebox` 缩放（避免各表字号不一）；表格列宽天然适配单栏宽度。
+- 解包至全新目录，`pdflatex final_0903.tex` 连续两遍（无 bibtex 依赖）：**14 页**、0 错误、无未定义引用；表体全部恢复后仅剩标题区 logo 两处 <1.1pt 的历史 overfull（无实质影响），表格无超宽。
+- 排版基准：8 张表均不含 `\resizebox`；多数表 `\small`，3 张宽表（probe/CLIP-IQA/preference）用 `\footnotesize` + 收紧 `\tabcolsep`（3–4pt）以适配单栏宽。
+- 2026-09-04 更新：恢复 7 张表体（源自 0902 结构版与 final_submit 版的同源数据，已与 CSV/正文逐项核对）、FAC 反转说明段、fig1 裁切内嵌 caption、fig7 caption 方向修正、补引 6 篇文献（T2I-Adapter/Kynkääniemi 2024/Paint3D/MVPaint/Hunyuan3D 2.0/CLIP-IQA）、58.1%/+40.6 数字统一；页数 13 → **14**；marked 版 15 页；合并稿 21 页（信 7 + 正文 14）。信 PDF 由 response_letter_CAG_plain.md 经 pandoc(xelatex, 12pt, linestretch 1.25) 重新生成。
 
 ## 四、EM 上传对照表
 
@@ -49,12 +49,12 @@
 | Declaration of Interest | Declaration_of_Interest_Statement.docx |
 | Video / 演示材料（可选附件） | TCAS_Demo.mp4（由 TCAS_Demo_fixed.pptx 导出） |
 
-- 合并稿 `final_0903_with_letter.pdf`（20 页 = 回复信 6 页 + 正文 14 页）按会议要求"信附于修改稿开头"制作，存于 `final/` 根目录；若 EM 按分件上传则以上表为准，不重复上传合并稿。
+- 合并稿 `final_0903_with_letter.pdf`（**21 页 = 回复信 7 页 + 正文 14 页**）按会议要求"信附于修改稿开头"制作，现**已放入本包**；EM 上传时可将合并稿作为 Manuscript PDF 上传（同时照常提供 latex.zip 源码），信另在 Response to Reviewers 项单独上传，两种方式均满足会议字面要求。
 - Article Type 步骤选择 **VSI: CAG_SS_CAD/Graphics 2026**。
 
 ## 五、注意事项
 
 1. 上传 demo 请用包内 `TCAS_Demo_fixed.pptx` / `TCAS_Demo.mp4`；仓库根目录的 `TCAS_Demo.pptx` 为旧版，勿传。
-2. `figures/` 子目录仅用于本地编译（`final/figures/`），不属于 EM 上传内容。
+2. 包内已无 `figures/` 子目录（2026-09-04 清理）；fig1–7.pdf 平铺置于包根目录并与 latex.zip 内文件 md5 一致，手工上传时直接选取根目录文件即可。
 3. latex.zip 内不要加顶层目录前缀，也不要再塞入子文件夹，否则 EM 构建失败。
 4. 如 EM Build PDF 出现引用问号，通常是 bib 未编译所致；本稿参考文献内嵌，不受影响。
