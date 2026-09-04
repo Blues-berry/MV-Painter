@@ -23,7 +23,9 @@
 - `final/final_0903_diff.pdf/tex` —— 08:04 旧 diff 产物，外部"0904意见"就是看它写的，已被 `final_0903_marked.*` 取代。
 - `final/final.tex`、`final/revision_structured_0902.tex` —— 旧版正文，仅作 latexdiff 的 diff 基线（左侧）。
 - `final/final_submit.tex` —— 另一代实验（artifact-amplification），仅 CLIP-IQA/偏好两表与主线同源，其余数字不可混用。
-- 根目录 `TCAS_Demo.pptx`（旧版，提交用包内 `_fixed` 版导出的 mp4）。
+- 根目录 `TCAS_Demo.pptx` 已于 2026-09-04 用包内最新版覆盖（md5 一致 799df40a），不再有新旧两版；demo 改法见第 4 节末尾。
+
+**Demo 同步（2026-09-04）**：`TCAS_Demo_fixed.pptx` 13 页中仅第 10 页曾含旧术语，已改为 "the 300-object evaluation pool, with no further search on the evaluation objects"；`TCAS_Demo.mp4` 用 LibreOffice→PDF→pdftoppm -r 144→ffmpeg 重导（1920×1080/30fps/60.2s 与旧版同参）。若再改 pptx 文字，重导链：`soffice --headless --convert-to pdf` → `pdftoppm -png -r 144` → `ffmpeg -framerate 13/60.2 -i slide-%02d.png -vf "scale=1920:1080:...,format=yuv420p" -r 30 -t 60.2`。
 
 ## 2. 关键事实链（数字出处，改稿时勿凭记忆写数）
 

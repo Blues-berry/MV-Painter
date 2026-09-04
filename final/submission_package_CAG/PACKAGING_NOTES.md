@@ -41,6 +41,7 @@
   6. Supplementary 新增 **S4 Reproducibility table**（数据源/渲染/双训练池 1118+1706/300 池 24+276 划分/零重叠/base pipeline 与 checkpoint/adapter checkpoint refattn_v1 与 geotex_v2_ema_final.pt（MD5 a74cc1d1…）/分辨率/views/scheduler/50 步/seed 42/无 text prompt/外观与几何条件/指标实现/统计口径/代码 snapshot 194bce2）；supplementary 现 2 页。
   7. Proposition 1 维持 0903 晚已修的 ε 等价边界版本（Remark 1: CI 下界 +0.006 dB ≪ ε=0.1 dB），未再改动。
 - 2026-09-04 三次更新（摘要语病最小修复，正文仍 **14 页**、marked 15 页、合并稿 21 页、0 错误）：摘要 243 词（<250 官方上限）。仅修零争议语病，不动结构与限定语：① "without re-search" 自造连字符词消除（摘要/贡献(3)/§4.1/§4.5 共 4 处统一为 "without further search / without any further schedule search / not searched again"）；② 摘要 "chosen only on" → "selected using only"（与 §4.1 措辞统一，消歧义）；③ "being preferred" → "receiving higher preference"（平行结构）。第一句结构、结尾双重限定语、guardrails 短语、"a blunt control" 隐喻均**刻意保留**（R2 防御策略与增量原则）。信与补充材料无 re-search、未引用摘要原文，无需同步。
+- 2026-09-04 四次更新（Demo 同步）：`TCAS_Demo_fixed.pptx` 第 10 页旧术语与论文新稿冲突，已改——"the 300-object validation set, with no re-search on the validation objects" → "**the 300-object evaluation pool, with no further search on the evaluation objects**"（与摘要/正文/信完全同措辞）；其余 12 页核查无冲突（slide12 FAC 标题已与 §4.6 一致）。`TCAS_Demo.mp4` 由更新后 pptx 重导：LibreOffice→PDF→PNG→ffmpeg，参数与旧版一致（1920×1080, 30fps, 60.2s，13 页轮播）。根目录旧版 `TCAS_Demo.pptx`（slide10 存在文字重复 bug）已用最新版覆盖，两处 md5 一致（799df40a…），不再存在新旧两版。
 
 ## 四、EM 上传对照表
 
@@ -63,7 +64,7 @@
 
 ## 五、注意事项
 
-1. 上传 demo 请用包内 `TCAS_Demo_fixed.pptx` / `TCAS_Demo.mp4`；仓库根目录的 `TCAS_Demo.pptx` 为旧版，勿传。
+1. 上传 demo 请用包内 `TCAS_Demo_fixed.pptx` / `TCAS_Demo.mp4`（2026-09-04 已同步最新术语）；根目录 `TCAS_Demo.pptx` 现为同一最新版的副本，可传可不传。
 2. 包内已无 `figures/` 子目录（2026-09-04 清理）；fig1–7.pdf 平铺置于包根目录并与 latex.zip 内文件 md5 一致，手工上传时直接选取根目录文件即可。
 3. latex.zip 内不要加顶层目录前缀，也不要再塞入子文件夹，否则 EM 构建失败。
 4. 如 EM Build PDF 出现引用问号，通常是 bib 未编译所致；本稿参考文献内嵌，不受影响。
