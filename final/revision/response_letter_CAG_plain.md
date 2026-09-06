@@ -8,9 +8,9 @@ We thank the CAD/Graphics 2026 program committee for recommending this manuscrip
 
 Best regards
 
-First Author: Xueyuan Che
+The Authors
 
-Corresponding author: Libo Sun (sunlibo@seu.edu.cn)
+(Author identities and acknowledgements are provided on the separately uploaded title page, per the journal's double-anonymized review process.)
 
 ---
 

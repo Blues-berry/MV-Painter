@@ -26,11 +26,8 @@
 
 \title{Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation}
 
-\author[a]{Xueyuan Che}
-\author[a]{Libo Sun\corref{cor1}}
-\cortext[cor1]{Corresponding author.}
-\ead{sunlibo@seu.edu.cn}
-\address[a]{School of Instrument Science and Engineering, Southeast University, Nanjing 210096, China}
+% Double-anonymized review: author names, affiliations, and acknowledgements
+% (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
 Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout (pooled 300-object statistics also reported). TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable rather than a fixed hyperparameter, at least for adapter-conditioned multi-view texture generation.

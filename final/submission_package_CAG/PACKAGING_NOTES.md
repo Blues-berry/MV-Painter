@@ -63,6 +63,14 @@
   5. **信 R2-2 同步**（CAG_plain）：两阶段规则句补 Pareto 比较说明；late-stage 推导改为 "estimated utility 0.077 dB below epsilon = 0.1 dB with a statistically insignificant FG-SSIM change …, with confidence intervals serving only as auxiliary uncertainty information outside the epsilon-equivalence condition"。信内一律 ASCII "epsilon"。信重编 7 页；docx 同步重生成。
   6. marked 版手工同步四处（Proposition/proof/Remark 位于既有 \DIFadd{} 内直改；§4.5 标题与两处 caption 按 CFONT 规范补 \DIFdel/\DIFadd 标记），15 页 0 错误 0 未定义引用。
   7. zip 解包零编译 15 页 0 错误 0 未定义引用；包内外 tex md5 对齐；submission_0907/ 五个文件（Revised manuscript / with letter / Marked-up / response pdf+docx / latex.zip）已同步覆盖。
+- 2026-09-06 四次更新（双盲合规整改 + 致谢填入 title page；正文 **15 页**、marked 15 页、合并稿 **22 页**、title page 1 页、0 错误）：
+  1. **核实 CAG Guide for Authors：double anonymized review**（官方原文："The title page (including author details) and anonymized manuscript (excluding author details) need to be submitted as separate files"、"Include acknowledgements only in the title page"、"anonymized manuscript and any supplementary materials do not contain any identifying information... or acknowledgements"）。据此确认刘立奥稿件不写作者的做法正确，且发现我方主稿 frontmatter 仍带作者块（desk-reject 风险）。
+  2. **主稿 final_0903.tex 删除作者块**（\author/\cortext/\ead/\address 全部移除，保留 \title；代之以双盲说明注释）；marked 版同步删除（原 CFONT diff 中 "Xueyuan Che/Libo Sun" 以蓝色新增文字送审可见，整块移除后新旧两版均匿名，diff 无作者区）。
+  3. **response letter 签名匿名化**（CAG_plain）：删 "First Author: Xueyuan Che / Corresponding author: Libo Sun (sunlibo@seu.edu.cn)"，改为 "The Authors" + 一行说明作者信息在单独 title page；letter 会随审稿人版本分发，必须匿名。
+  4. **致谢/基金只填入 title_page_CAG.tex**（CAG 明确禁止出现在正文中）：四项江苏省项目——Key R&D Program of Jiangsu Province BE2023010-3、Basic Research Program of Jiangsu BK20253037、Advanced Technology Research and Development Program of Jiangsu BF2025018、Modern Agricultural Machinery Equipment and Technology Promotion Project of Jiangsu NJ2025-10。Titlepage 0907.pdf 重编译更新（1 页）。
+  5. **匿名核查**：正文/marked/letter/supplementary 的 pdftotext 全文 0 处姓名与单位；四个 PDF 无 Author 元数据；title page 含基金号（仅该文件不送审）。cover letter 保留作者信息（该文件按 Elsevier 规则不送审）。EM 系统作者元数据照常填写（与双盲不冲突）；注意 EM 默认把投稿人标为 Corresponding Author，可在系统内改为 Libo Sun 与 title page 一致。
+  6. **Supplementary 位置确认**：按 CAG Guide 作为单独文件随稿上传（submission_0907/ 已有 "Supplementary material 0907.pdf" 独立条目），正文 §4.1.3/§4.6 已引用——**不并入论文 PDF 之后**。
+  7. zip 重打包并解包零编译 15 页 0 错误；submission_0907/ 六个文件（Revised manuscript / with letter / Marked-up / Titlepage / response pdf+docx / latex.zip）md5 对齐覆盖。
 
 ## 四、EM 上传对照表
 
