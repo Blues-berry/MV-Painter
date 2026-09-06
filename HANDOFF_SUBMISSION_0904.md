@@ -1,7 +1,7 @@
 # 投稿交接文档（HANDOFF）— 2026-09-04
 
 > 目标：任何人（或下一个 AI 会话）拿到本文档后，5 分钟内能安全接手后续修改。
-> 状态：**可提交**。正文 14 页 0 错误 / marked 15 页 / 信 7 页 / 合订 21 页 / supp 2 页。git `new0529` 分支，最新 commit `96eddaf`。
+> 状态：**可提交**。正文 15 页 0 错误 / marked 15 页（CFONT 纯颜色标注）/ 信 7 页 / 合订 22 页 / supp 2 页。git `new0529` 分支，最新 commit 见 git log（0906 意见已处理：Proposition 1 两阶段化、摘要直击 276 holdout、marked 版去划线改颜色）。
 
 ---
 
@@ -60,11 +60,12 @@ ffmpeg -f lavfi -i anullsrc=r=22050:cl=mono -t 0.8 -c:a pcm_s16le sil.wav
 ```
 1. 编辑 final/final_0903.tex（同一文件多处改动必须串行 Edit，写后 grep 验证）
 2. cd final && pdflatex -interaction=nonstopmode final_0903.tex ×2
-   验收：grep -c '^!' log = 0；页数 14（±）；Overfull 仅剩 logo 区 2 处 <1.1pt
-3. 重生成 marked：latexdiff --encoding=utf8 final.tex final_0903.tex > final_0903_marked.tex
+   验收：grep -c '^!' log = 0；页数 15（0906 起基准）；Overfull 仅剩 logo 区 2 处 <1.1pt
+3. 重生成 marked（**CFONT 纯颜色标注：新增蓝/删除红小字，无下划线无删除线**）：
+   latexdiff --type=CFONT --encoding=utf8 final.tex final_0903.tex > final_0903_marked.tex
    然后 sed 修 DIFdel 悬空引用：
    sed -i 's/\\DIFdel{Table~\\ref{tab:fac} reports/\\DIFdel{Table~7 reports/' final_0903_marked.tex
-   pdflatex ×2，验收 0 错误、log 无 '??'
+   pdflatex ×2，验收 0 错误、log 无 '??'（overfull 十几处属 CFONT 固有：scriptsize 换行差 + 首页浮动 vbox，内容完整可接受）
 4. 同步包：cp final_0903{,.pdf} final_0903_marked{,.tex,.pdf}… → submission_package_CAG/
    （supp 改了则连 supplementary_0903.pdf 一起）
 5. 重打 zip：cd submission_package_CAG && rm latex.zip && zip -j latex.zip final_0903.tex elsarticle.cls cag.sty cag-logo.pdf elsevier-logo.pdf fig{1..7}.pdf
@@ -83,7 +84,7 @@ pandoc response_letter_CAG_plain.md -o ../submission_package_CAG/response_to_rev
 ## 5. 坑清单（历次踩过，勿重踩）
 
 - 同一文件并行 Edit 会写回竞态（后写覆盖先写），必须串行。
-- 信含 Δ、×、→ 等 Unicode：pandoc 必须 `--pdf-engine=xelatex`；信内幂指数写 ASCII `10^-4`（上标 ⁴ 会被 lmroman 静默丢字）。
+- 信含 Δ、×、→、ε 等 Unicode：pandoc 必须 `--pdf-engine=xelatex`；**ε (U+03B5) 会被 lmroman 静默丢弃**（pandoc WARNING "Missing character"）→ 信内一律写 ASCII "epsilon"；上标写 `10^-4`。
 - `final/*` 被 gitignore，`final/revision/` 信源与 `final/*.tex/pdf` 需 `git add -f`（包目录已强制跟踪）。
 - pdftotext 会在短语中间换行，grep 长短语 0 匹配 ≠ 内容缺失（如 "Table 9\nin Section 4.7"）。
 - latexdiff 重生成后 DIFdel 内悬空 `\ref{tab:fac}` 每次都会重现，sed 修一次即可（见 SOP 第 3 步）。
