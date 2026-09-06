@@ -76,6 +76,12 @@
   2. **Cover letter 旧术语修复**：'chosen only on a 24-object probe set and transferred unchanged to a 300-object validation set without re-search' → 'selected using only a 24-object probe set and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout (pooled 300-object statistics also reported)'（与摘要/正文 0906 口径统一）。
   3. **Highlights 术语同步**：第 4 条 'without re-search' → 'no further search'（保持 ≤85 字符），重生成 highlights_CAG.docx；cover letter 重生成 cover_letter_CAG.docx；0907 包内 'Research Highlights 0907.docx'、'Cover letter 0907.docx' 已覆盖。
   4. **待作者确认（不阻塞上传）**：(a) 若本稿为 CAD/Graphics 2026 Paper 75 扩展版，指南要求正文明确引用会议版并说明扩展点、随投稿附会议原稿副本、≥30% 新材料（该通道 'anonymization policy does not hold'，但保持匿名不违规）；(b) 若写作过程使用生成式 AI 工具，需在参考文献前加 Declaration of generative AI 节，未用则不加；(c) 图形摘要 h:w≈0.303，指南建议 531×1328 px（h×w≈0.4）或等比更大，可选择性微调；(d) demo 视频为可选项，若上传需附 still 图并在正文提及；(e) CRediT 贡献声明在 EM 系统内填写，不写入匿名主稿。
+- 2026-09-06 六次更新（图形摘要重修 + latex 源全文一致性核查；正文 **15 页**、marked 15 页、合并稿 22 页、GA 1 页、0 错误）：
+  1. **图形摘要确认存在实际缺陷并重修**（作者指出生成物有问题）：300 dpi 放大检查发现编译产物中 Panel A/B 两个坐标轴**叠画在同一位置**（两组刻度 1/3、2/3 与 1、1.5、2、2.5 混排、图例压住 Panel A 标题）——根因是 pgfplots `at={(x,y)}` 轴定位被静默忽略，该图自初次编译起即坏。修复：两轴改用 `\begin{scope}[shift=...]` 包裹（纯 TikZ 定位，100% 可靠），Panel A 图例改 `legend style={at={(0.04,0.98)},anchor=north west}` 置于绘图区内空白处，不再触碰标题；Panel C 文案采用作者 IDE 内改进版（"Evaluation: 300 objects + disjoint holdout" + "No further search: 24-object probe → disjoint 276-object holdout"，与正文 276-holdout 口径一致）。
+  2. **GA 比例达标**：`\useasboundingbox (-0.1,1.05) rectangle (22.5,-7.9)` 固定画布，页尺寸 644.6×257.7 pt，h:w=**0.3998**（指南 0.4）✓；逐面板 200/300 dpi 渲染目检 0 遮挡 0 重叠。
+  3. **latex 源一致性核查发现单点分歧**：zip 内 tex 与工作区 tex 在 L318 差一个词（"large-scale evaluation" vs "large-scale validation"——作者在 IDE 已改为 evaluation 且重建过部分产物）。按全文术语约定统一为 **"before large-scale evaluation"**：clean tex 直改；marked 版同句按 CFONT 规范补 \DIFdel{validation}/\DIFadd{evaluation} 标注。除此之外 zip tex 与 package tex **逐字节一致**（diff 仅此一处）。
+  4. **全量重建（单一状态源）**：主稿/marked 15 页 0 错误 0 未定义引用；信 7 页重编（docx 重生成）；合并稿 22 页首页为信 ✓；latex.zip 重打包；GA PDF 重编译同步。
+  5. **submission_0907/ 终检**：7 个 PDF 页数符合预期（15/15/22/7/1/1/2）；送审文件姓名 0 命中（Titlepage 3 处属预期，该文件不送审）；合并稿第一页为 Response to Reviewers ✓；6 项产物 package↔0907 md5 对齐 ✓；4 个 docx zip 完整性 ✓；GA 源码 final/graphical_abstract_CAG.tex 强制入库（此前被 ignore，含作者 IDE 改动与本次修复）。
 
 ## 四、EM 上传对照表
 
