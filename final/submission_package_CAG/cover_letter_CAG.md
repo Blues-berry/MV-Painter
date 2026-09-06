@@ -12,6 +12,6 @@ Thank you very much for your attention and consideration.
 
 Sincerely,
 
-Xueyuan Che (School of Instrument Science and Engineering, Southeast University)
+The Authors
 
-Libo Sun (Corresponding author, School of Instrument Science and Engineering, Southeast University, Nanjing 210096, China; sunlibo@seu.edu.cn)
+(Per the journal's double-anonymized review policy, this cover letter contains no author details; author names, affiliations, and the corresponding author's contact information are provided on the separately uploaded title page and in Editorial Manager.)

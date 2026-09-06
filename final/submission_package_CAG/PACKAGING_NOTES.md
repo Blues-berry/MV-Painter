@@ -82,6 +82,10 @@
   3. **latex 源一致性核查发现单点分歧**：zip 内 tex 与工作区 tex 在 L318 差一个词（"large-scale evaluation" vs "large-scale validation"——作者在 IDE 已改为 evaluation 且重建过部分产物）。按全文术语约定统一为 **"before large-scale evaluation"**：clean tex 直改；marked 版同句按 CFONT 规范补 \DIFdel{validation}/\DIFadd{evaluation} 标注。除此之外 zip tex 与 package tex **逐字节一致**（diff 仅此一处）。
   4. **全量重建（单一状态源）**：主稿/marked 15 页 0 错误 0 未定义引用；信 7 页重编（docx 重生成）；合并稿 22 页首页为信 ✓；latex.zip 重打包；GA PDF 重编译同步。
   5. **submission_0907/ 终检**：7 个 PDF 页数符合预期（15/15/22/7/1/1/2）；送审文件姓名 0 命中（Titlepage 3 处属预期，该文件不送审）；合并稿第一页为 Response to Reviewers ✓；6 项产物 package↔0907 md5 对齐 ✓；4 个 docx zip 完整性 ✓；GA 源码 final/graphical_abstract_CAG.tex 强制入库（此前被 ignore，含作者 IDE 改动与本次修复）。
+- 2026-09-06 七次更新（EM Item Type 对照确认 + Cover letter 匿名化）：
+  1. **EM 文件类型下拉确认**（作者提供完整列表）：可用类型为 Title page with author details / Acknowledgements / **Anonymous Cover Letter - must not contain any author details** / Co-submission to Data in Brief / Declaration of competing interests / **Manuscript without author details** / Highlights / Supplementary material / Research data / Co-submission to MethodsX。**无独立 Response to Reviewers 类型**——回信按会议要求并入修改稿开头（合并稿正是为此准备），作为 Manuscript without author details 上传。
+  2. **Cover letter 匿名化**：按 "Anonymous Cover Letter - must not contain any author details" 要求，删除签名块（Xueyuan Che / Libo Sun / 单位 / 邮箱），改为 "The Authors" + 双盲说明；三要素（贡献综述/最近先行工作/差异）保留。docx 重生成，pdftotext 级验证 0 作者信息，0907 包已覆盖。此前"cover letter 可保留作者信息"的判断被期刊配置推翻，以 EM 下拉说明为准。
+  3. **上传映射**：合并稿→Manuscript without author details（主文件，先传）；latex.zip→Manuscript without author details；Titlepage→Title page with author details；Supplementary→Supplementary material；Highlights→Highlights；Declaration→Declaration of competing interests；Cover letter（匿名版）→Anonymous Cover Letter；Marked-up→Manuscript without author details（无专用类型）；GA→若下拉确无 Graphical abstract 类型则暂入 Supplementary material 并在描述注明，或截图再核。跳过：Acknowledgements（在 title page 内）、Research data（无仓库存储）、两个 Co-submission。
 
 ## 四、EM 上传对照表
 
