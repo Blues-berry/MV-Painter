@@ -50,6 +50,11 @@
   4. **信 R2-2 同步**：Proposition 表述改为两阶段 epsilon-optimal selection rule（middle 0.574>epsilon 必须 high；late 0.077、CI 下界 0.006 远低于 epsilon，fidelity-等价 → risk-dominant conservative）。注意 **ε (U+03B5) 会被 xelatex lmroman 静默丢弃**——信内一律 ASCII "epsilon"（重蹈 10⁴ 覆辙，已修复并验证 0 missing character）。
   5. **marked 版改 CFONT 纯颜色标注**（按作者要求去掉横线/删除线）：`latexdiff --type=CFONT`，新增=**蓝色 sans**、删除=**红色小号**，无下划线无删除线；DIFdel 内 tab:fac→Table 7 悬空引用照例 sed 修复。15 页 0 错误 0 未定义引用；overfull 17 处均为 CFONT 固有特性（DIFdel scriptsize 换行差 + 首页浮动 vbox 28pt），内容完整，属辅助审阅文件可接受。
   6. zip 解包零编译 15 页 0 错误；包内外 tex/pdf md5 对齐；with_letter 22 页（信 7 + 正文 15）。
+- 2026-09-06 二次更新（§4.1 拆分 + 长度合规核验；页数不变 **15**、marked 15、合并稿 22、0 错误）：
+  1. **§4.1 划分为 3 个编号子节**（零内容搬运，仅插标题 + 超长段拆分）：**4.1.1 Experimental protocol and comparisons**（管线总述/固定条件协议/比较定位）、**4.1.2 Evaluation sets and metrics**（四集合/三类指标/FAC 协议）、**4.1.3 Implementation and dataset details**（原 run-in paragraph 升级为编号子节；超长段拆为 3 个自然段：数据与划分 / 模型与推理 / 指标实现与可得性；Statistical reporting 段保留其内）。正文词数 texcount 口径 **8,740 词（text）+117（headers）**，远低于 Elsevier 12,000 词参考线；CAG 无硬性页限，特刊 30% 新材料要求满足。
+  2. **信引用同步**：R1-1/R1-2/R3-3 中 "Implementation and dataset details paragraph in Section 4.1" → "Section 4.1.3"（CAG_plain 3 处 + 工作版 1 处）；信重编 7 页 0 缺字。
+  3. **Demo pptx/视频核查**：13 页幻灯片与配音稿中 **0 处章节号引用**（按实验内容组织），与本次拆分自动统一，无需改动；TCAS_Demo_narrated.mp4 同源不受影响。
+  4. zip 解包零编译 15 页 0 错误；marked（CFONT）15 页 0 错误 0 未定义引用；包内外 md5 对齐；with_letter 22 页。
 
 ## 四、EM 上传对照表
 
