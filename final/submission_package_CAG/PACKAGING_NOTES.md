@@ -125,7 +125,7 @@
 
 依据（Guide for Authors, sciencedirect.com/journal/computers-and-graphics/publish/guide-for-authors）：
 
-1. **(1) 标题须与会议版不同** → 标题已改：`Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation`（原题与会议版 Paper 75 一字不差；会议原稿认定为 `anonymous_submission_0709_final.pdf`，12 页，PDF CreationDate 2026-07-09）。
+1. **(1) 标题须与会议版不同** → 标题已改：`Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation`（原题与会议版 Paper 75 一字不差；会议原稿认定为 `anonymous_submission_0709_final.pdf`，12 页，PDF CreationDate 2026-07-09。**2026-09-06 作者已确认：该文件即投稿会议时上传并经审稿人评审的版本（CMT Paper 75）**）。
 2. **(2) 明引 + 扩展声明 + 附原稿副本** → 引言新增扩展段（"A preliminary version of this study was submitted to CAD/Graphics 2026 (Paper 75)"，逐条列 (i)(ii)(iii) 扩展点）；参考文献新增 [41]（Anonymous, Submission \#75 of CAD/Graphics 2026, 2026，`thebibliography` 计数 40→41）；摘要改写（"extending our preliminary conference version"，删 pooled 括注，**249 词 ≤ 250**）；结论新增扩展句；cover letter 与回信开头各加"会议原稿已作为补充材料附上"一句。
 3. **(3) ≥30% 新材料** → 会议版内容指纹（pdftotext 计数）：Proposition=0、holdout=0、276=0、epsilon=0，即 Prop 1 两阶段 epsilon-optimal 规则与 276-object holdout 协议均为期刊版新增；FAC 与 300-object pool 会议版已有（61/10 次提及），未声称新增；页数 12 → 15。
 4. **双盲豁免**：条款确认（"for these extended submissions the anonymization policy does not hold"），但 EM 对本 Article Type 仍强制匿名文件结构 → 维持匿名三件套不变，会议自引不入作者名。
