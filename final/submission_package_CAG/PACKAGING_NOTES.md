@@ -71,6 +71,11 @@
   5. **匿名核查**：正文/marked/letter/supplementary 的 pdftotext 全文 0 处姓名与单位；四个 PDF 无 Author 元数据；title page 含基金号（仅该文件不送审）。cover letter 保留作者信息（该文件按 Elsevier 规则不送审）。EM 系统作者元数据照常填写（与双盲不冲突）；注意 EM 默认把投稿人标为 Corresponding Author，可在系统内改为 Libo Sun 与 title page 一致。
   6. **Supplementary 位置确认**：按 CAG Guide 作为单独文件随稿上传（submission_0907/ 已有 "Supplementary material 0907.pdf" 独立条目），正文 §4.1.3/§4.6 已引用——**不并入论文 PDF 之后**。
   7. zip 重打包并解包零编译 15 页 0 错误；submission_0907/ 六个文件（Revised manuscript / with letter / Marked-up / Titlepage / response pdf+docx / latex.zip）md5 对齐覆盖。
+- 2026-09-06 五次更新（对照 sciencedirect 版 Guide for Authors 全文逐项核查；合规收口）：
+  1. **合规确认项**：摘要 248 词 <250 ✓；关键词 7 个（上限 7，无 and/of 多词组）✓；Highlights 5 条且最长 82 字符 ≤85 ✓；图形摘要为 PDF（推荐格式）✓；表格 booktabs 无竖线、无 resizebox、正文全引用 ✓；fig1–7 为矢量 PDF 且文件名规范 ✓；正文编号分节 4.1.1 式 ✓；LaTeX 可编辑源码平铺 12 文件 ✓；Research data Option C 以 §4.1.3 "available upon reasonable request" + supp 复现表满足 ✓；fig5.pdf 元数据 Author=anonymous 无碍，其余图与主 PDF 无作者元数据 ✓；cover letter 含三要素（贡献综述/最近先行工作+状态/差异说明）且无基金信息 ✓；Declaration of Interest 为独立 .docx ✓。
+  2. **Cover letter 旧术语修复**：'chosen only on a 24-object probe set and transferred unchanged to a 300-object validation set without re-search' → 'selected using only a 24-object probe set and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout (pooled 300-object statistics also reported)'（与摘要/正文 0906 口径统一）。
+  3. **Highlights 术语同步**：第 4 条 'without re-search' → 'no further search'（保持 ≤85 字符），重生成 highlights_CAG.docx；cover letter 重生成 cover_letter_CAG.docx；0907 包内 'Research Highlights 0907.docx'、'Cover letter 0907.docx' 已覆盖。
+  4. **待作者确认（不阻塞上传）**：(a) 若本稿为 CAD/Graphics 2026 Paper 75 扩展版，指南要求正文明确引用会议版并说明扩展点、随投稿附会议原稿副本、≥30% 新材料（该通道 'anonymization policy does not hold'，但保持匿名不违规）；(b) 若写作过程使用生成式 AI 工具，需在参考文献前加 Declaration of generative AI 节，未用则不加；(c) 图形摘要 h:w≈0.303，指南建议 531×1328 px（h×w≈0.4）或等比更大，可选择性微调；(d) demo 视频为可选项，若上传需附 still 图并在正文提及；(e) CRediT 贡献声明在 EM 系统内填写，不写入匿名主稿。
 
 ## 四、EM 上传对照表
 
