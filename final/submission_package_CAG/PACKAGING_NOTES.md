@@ -86,6 +86,10 @@
   1. **EM 文件类型下拉确认**（作者提供完整列表）：可用类型为 Title page with author details / Acknowledgements / **Anonymous Cover Letter - must not contain any author details** / Co-submission to Data in Brief / Declaration of competing interests / **Manuscript without author details** / Highlights / Supplementary material / Research data / Co-submission to MethodsX。**无独立 Response to Reviewers 类型**——回信按会议要求并入修改稿开头（合并稿正是为此准备），作为 Manuscript without author details 上传。
   2. **Cover letter 匿名化**：按 "Anonymous Cover Letter - must not contain any author details" 要求，删除签名块（Xueyuan Che / Libo Sun / 单位 / 邮箱），改为 "The Authors" + 双盲说明；三要素（贡献综述/最近先行工作/差异）保留。docx 重生成，pdftotext 级验证 0 作者信息，0907 包已覆盖。此前"cover letter 可保留作者信息"的判断被期刊配置推翻，以 EM 下拉说明为准。
   3. **上传映射**：合并稿→Manuscript without author details（主文件，先传）；latex.zip→Manuscript without author details；Titlepage→Title page with author details；Supplementary→Supplementary material；Highlights→Highlights；Declaration→Declaration of competing interests；Cover letter（匿名版）→Anonymous Cover Letter；Marked-up→Manuscript without author details（无专用类型）；GA→若下拉确无 Graphical abstract 类型则暂入 Supplementary material 并在描述注明，或截图再核。跳过：Acknowledgements（在 title page 内）、Research data（无仓库存储）、两个 Co-submission。
+- 2026-09-06 八次更新（GA 重设计为"方法+结果"两栏大字版；回应作者三连问：符合要求吗/为何不用论文方法图/与修改稿对应吗）：
+  1. **数字对应性核对通过**：GA 全部数字与修订稿一致——Lap var 67.8%/83.5%、RGB std 64.3%/97.0%（§4.4 L429 retention 段）、+0.96 dB（摘要）、58.1%＝418/720（preference 表）、24-probe→disjoint 276-holdout（摘要）。
+  2. **可读性才是真缺陷**：旧三栏版画布 22.6 cm 宽，缩到指南要求的 13 cm 展示时 \tiny 有效字号仅约 3 pt，不可读。**重设计为两栏大字版**：左栏 = 方法核心（TCAS low–high–low 调度图，即论文方法图的简化重绘，含 layout/geometry refinement/texture 三段角色与 C3=(1.25,2.50,1.25)），右栏 = 四条结果（uniform high scale 代价 / C3 增益 / 58.1% 偏好 / no-re-search holdout 框架），底部全文标题。画布 13.99×5.64 cm，h:w=**0.4032** ✓；**按 13 cm 实际显示尺寸渲染逐字可读** ✓。
+  3. **为何不用 fig1 方法总览图**：(a) fig1 含 FAC 模块，修订稿已将 FAC 降级为负结果扩展，放进 GA 会误导权重；(b) GA 指南要求概括全文（问题→方法→证据），纯架构图不传达结论；(c) fig1 比例 0.62、小字密集，不满足 5×13 cm 可读与 0.4 比例；(d) 新 GA 左栏即方法图 TCAS 部分的简化版，方法已体现。fig1 保留在正文 Figure 1 不动。
 
 ## 四、EM 上传对照表
 
