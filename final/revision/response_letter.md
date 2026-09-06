@@ -10,7 +10,7 @@
 
 **Response to Reviewers**
 
-Manuscript: *Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation* (CAD/Graphics 2026, Paper 75; recommended to *Computers & Graphics* as VSI: CAG_SS_CAD/Graphics 2026)
+Manuscript: *Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation* (CAD/Graphics 2026, Paper 75; recommended to *Computers & Graphics* as VSI: CAG_SS_CAD/Graphics 2026)
 
 Dear Editors and Reviewers,
 

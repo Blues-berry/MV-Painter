@@ -120,3 +120,29 @@
 2. 包内已无 `figures/` 子目录（2026-09-04 清理）；fig1–7.pdf 平铺置于包根目录并与 latex.zip 内文件 md5 一致，手工上传时直接选取根目录文件即可。
 3. latex.zip 内不要加顶层目录前缀，也不要再塞入子文件夹，否则 EM 构建失败。
 4. 如 EM Build PDF 出现引用问号，通常是 bib 未编译所致；本稿参考文献内嵌，不受影响。
+
+## 六、2026-09-06 会议扩展版合规修订（CG "Extended Versions of Conference Papers" 专款）
+
+依据（Guide for Authors, sciencedirect.com/journal/computers-and-graphics/publish/guide-for-authors）：
+
+1. **(1) 标题须与会议版不同** → 标题已改：`Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation`（原题与会议版 Paper 75 一字不差；会议原稿认定为 `anonymous_submission_0709_final.pdf`，12 页，PDF CreationDate 2026-07-09）。
+2. **(2) 明引 + 扩展声明 + 附原稿副本** → 引言新增扩展段（"A preliminary version of this study was submitted to CAD/Graphics 2026 (Paper 75)"，逐条列 (i)(ii)(iii) 扩展点）；参考文献新增 [41]（Anonymous, Submission \#75 of CAD/Graphics 2026, 2026，`thebibliography` 计数 40→41）；摘要改写（"extending our preliminary conference version"，删 pooled 括注，**249 词 ≤ 250**）；结论新增扩展句；cover letter 与回信开头各加"会议原稿已作为补充材料附上"一句。
+3. **(3) ≥30% 新材料** → 会议版内容指纹（pdftotext 计数）：Proposition=0、holdout=0、276=0、epsilon=0，即 Prop 1 两阶段 epsilon-optimal 规则与 276-object holdout 协议均为期刊版新增；FAC 与 300-object pool 会议版已有（61/10 次提及），未声称新增；页数 12 → 15。
+4. **双盲豁免**：条款确认（"for these extended submissions the anonymization policy does not hold"），但 EM 对本 Article Type 仍强制匿名文件结构 → 维持匿名三件套不变，会议自引不入作者名。
+
+产物更新（全部重编译/重生成）：
+
+- `final_0903.tex/pdf`：15 页 0 错 0 未定义引用，[41] 解析成功；摘要 249 词。
+- marked：`latexdiff --type=CFONT final.tex final_0903.tex`（基线不变），16 页 0 错 0 未定义；`tab:fac` 悬空引用照例修复为 Table 7；标题区新旧题并存属 diff 特性。
+- `final_0903_with_letter.pdf`：22 页 = 信 7 + 正文 15。
+- **信 PDF 重建配方勘误**：`pandoc --pdf-engine=xelatex -V fontsize=12pt -V linestretch=1.25 -V geometry:margin=2.5cm`——`geometry:margin=2.5cm` 此前未记录，缺它信会膨胀到 10–11 页；CAG_plain 7 页、0903 会议侧 8 页。
+- `title_page_CAG.tex/pdf` 新标题同步（final/ 根与 package 两份源均改）；`cover_letter_CAG.md/docx`、`revision/response_letter{,_0903,_CAG_plain}.md/pdf`、`response_to_reviewers_CAG.docx/pdf` 全部同步。
+- `latex.zip` 更新（12 文件平铺不变）；`submission_0907/` 全量覆盖并**新增 `Original conference paper 0907.pdf`**（= anonymous_submission_0709_final.pdf）。
+- 校验：四个送审 PDF 作者信息 0 命中（Titlepage 3 处属预期，不送审）；新标题在 clean/marked/titlepage 齐备；会议引文与扩展声明稿内可检索；两个 docx zip 完整性 OK。
+
+EM 上传注意（本轮变化）：
+
+- EM 内**替换**上传：Revised manuscript 0907 / with letter 0907 / Marked-up 0907 / Titlepage 0907 / Cover letter 0907 / response to comments 0907（docx+pdf）。
+- **新增上传**：`Original conference paper 0907.pdf` → Item type **Supplementary material**，Description 注明 "Original conference paper (CAD/Graphics 2026, Paper #75), required per Extended Versions of Conference Papers guidelines"。
+- Details 步骤 Title 手动更新为新标题；Abstract 文本同步更新（249 词）。
+- latex.zip 初次投稿不上传（PDF-only，EM 允许），留待修改阶段再传。

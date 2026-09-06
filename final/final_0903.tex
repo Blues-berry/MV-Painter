@@ -24,13 +24,13 @@
 
 \begin{frontmatter}
 
-\title{Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation}
+\title{Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation}
 
 % Double-anonymized review: author names, affiliations, and acknowledgements
 % (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout (pooled 300-object statistics also reported). TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable rather than a fixed hyperparameter, at least for adapter-conditioned multi-view texture generation.
+Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and, extending our preliminary conference version, derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable rather than a fixed hyperparameter, at least for adapter-conditioned multi-view texture generation.
 \end{abstract}
 
 \begin{keyword}
@@ -68,6 +68,8 @@ The main contributions of this paper are as follows:
 (3) Through uniform scale sweeps, texture audits, a 24-object probe analysis of 17 uniform, layer-wise, and temporal scaling variants, and a 300-object evaluation pool without any further schedule search, we show why fixed high scales and simple stage transfers of guidance scheduling are insufficient for the shape-texture trade-off.
 
 (4) We further provide a large-scale texture preservation analysis on the 300-object evaluation pool, showing that TCAS substantially reduces texture flattening compared with full high-scale scaling: C3 outperforms $s = 2.50$ on 87.7\%, 95.0\%, and 83.0\% of objects in Laplacian variance, RGB standard deviation, and gradient magnitude, respectively, while the 95\% confidence interval for the FG-SSIM difference crosses zero, indicating no significant difference in structural similarity.
+
+A preliminary version of this study was submitted to CAD/Graphics 2026 (Paper 75) \cite{cadgraphics2026p75}. This article extends that submission substantially: (i) the TCAS schedule is now grounded in an explicit two-stage epsilon-optimal selection rule (Proposition 1) with assumptions and proofs; (ii) the empirical protocol now separates a strictly disjoint 276-object holdout from the 24-object probe set, and C3 is evaluated unchanged on this holdout, with pooled 300-object statistics reported alongside; and (iii) the presentation, including the abstract, introduction, and conclusions, is substantially rewritten to state these extensions.
 
 \section{Related Work}
 \label{sec:related}
@@ -547,10 +549,10 @@ To address this shape-texture trade-off, we propose Timestep-Conditioned Adapter
 
 Therefore, the core contribution of this paper is not to claim that the generated results are visually close to the ground truth in all cases, nor to present TCAS as a universal replacement for all guidance schedules. Instead, the contribution is to reveal and validate a hidden shape-texture trade-off caused by geometry-adapter residual injection, and to show that a simple non-monotonic inference schedule can mitigate this trade-off better than fixed high-scale control and other tested scheduling variants. This conclusion suggests that, in the geometry-controlled multi-view pipeline studied here---and plausibly in similar geometry-conditioned texture pipelines---adapter strength is better treated as a stage-dependent inference control variable than as a single fixed hyperparameter.
 
-As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and the training-free TCAS remains the main and sole method.
+As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and the training-free TCAS remains the main and sole method. Relative to the preliminary conference version \cite{cadgraphics2026p75}, this article adds the two-stage epsilon-optimal selection rule behind TCAS and the strictly disjoint 276-object holdout evaluation, and the presentation has been rewritten accordingly.
 
 
-\begin{thebibliography}{40}
+\begin{thebibliography}{41}
 
 
 \bibitem{liu2023zero1to3}
@@ -672,6 +674,9 @@ Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing the look and feel of i
 
 \bibitem{radford2021clip}
 Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
+
+\bibitem{cadgraphics2026p75}
+Anonymous. Adapter scaling trade-off and timestep-conditioned scheduling in multi-view diffusion texture generation. Submission \#75 of CAD/Graphics 2026, 2026.
 
 \end{thebibliography}
 \end{document}
