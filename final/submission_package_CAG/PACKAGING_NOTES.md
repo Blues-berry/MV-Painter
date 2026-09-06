@@ -55,6 +55,14 @@
   2. **信引用同步**：R1-1/R1-2/R3-3 中 "Implementation and dataset details paragraph in Section 4.1" → "Section 4.1.3"（CAG_plain 3 处 + 工作版 1 处）；信重编 7 页 0 缺字。
   3. **Demo pptx/视频核查**：13 页幻灯片与配音稿中 **0 处章节号引用**（按实验内容组织），与本次拆分自动统一，无需改动；TCAS_Demo_narrated.mp4 同源不受影响。
   4. zip 解包零编译 15 页 0 错误；marked（CFONT）15 页 0 错误 0 未定义引用；包内外 md5 对齐；with_letter 22 页。
+- 2026-09-06 三次更新（外部"0906二轮意见"硬逻辑修复；正文 **15 页**、marked 15 页、合并稿 **22 页**、0 错误）：
+  1. **Proposition 1 条件改为点估计**（0906 二轮意见核心项，修复 "CI lower bound < ε 推不出 Ūk ≤ ε" 的形式逻辑漏洞，反例 Ūk=0.20/CI=[0.05,0.35]/ε=0.1）：第三种情形 "whose utility's 95% CI lower bound lies below ε" → **"whose estimated utility satisfies 0<U_k<ε"**；proof 同步（"estimated utility 0<U_k<ε contributes at most ε when dropped"）；命题末尾新增一句 **"Measured confidence intervals serve as auxiliary uncertainty information and do not enter the membership condition of F_ε"**；Remark 1 late-stage 句改为 **"U_l=0.077<ε=0.1 dB while its FG-SSIM change is statistically insignificant … reduces texture risk"**（数据句中 CI [0.006,0.149] 保留为辅助报告）。数字全部未动（0.077<0.1 本就成立）。
+  2. **补 texture-deviation risk R 的比较规则**（0906 二轮意见第 2 条）：§3.3 R 定义后新增一句 **"Risk is compared by a non-worsening (Pareto) rule rather than a weighted scalarization: one assignment has lower risk than another only if it is no worse on every diagnostic and strictly better on at least one, so no artificial weights are introduced"**；R 定义括号展开为三个 foreground texture diagnostics（Laplacian variance / RGB Std / Grad Mag）。
+  3. **§4.5 标题 "Large-scale Validation" → "Large-scale Pooled Evaluation"**（0906 二轮意见第 3 条，进一步避免 300-object pool 与 276 holdout 语义混淆）；Table 4/5 caption 同步 "validation" → "pooled evaluation / pooled texture-preservation evaluation"。正文 §4.5 内部表述不变（0904 已统一为 evaluation pool）。
+  4. **Table 9 不扩**（0906 二轮意见第 8 条：仅 structure+PSNR 不再算问题）：仓库与补充材料均无 276-holdout 的 Lap Var/RGB Std 数据，按"不为录用重跑大实验"原则维持现状；正文 "shape-texture balance" 结论由 Table 5/6 texture 证据支撑，未做结构性调整。
+  5. **信 R2-2 同步**（CAG_plain）：两阶段规则句补 Pareto 比较说明；late-stage 推导改为 "estimated utility 0.077 dB below epsilon = 0.1 dB with a statistically insignificant FG-SSIM change …, with confidence intervals serving only as auxiliary uncertainty information outside the epsilon-equivalence condition"。信内一律 ASCII "epsilon"。信重编 7 页；docx 同步重生成。
+  6. marked 版手工同步四处（Proposition/proof/Remark 位于既有 \DIFadd{} 内直改；§4.5 标题与两处 caption 按 CFONT 规范补 \DIFdel/\DIFadd 标记），15 页 0 错误 0 未定义引用。
+  7. zip 解包零编译 15 页 0 错误 0 未定义引用；包内外 tex md5 对齐；submission_0907/ 五个文件（Revised manuscript / with letter / Marked-up / response pdf+docx / latex.zip）已同步覆盖。
 
 ## 四、EM 上传对照表
 
