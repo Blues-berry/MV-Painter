@@ -1,0 +1,309 @@
+三、目前最危险的问题 1：仍然没有真正解决 Reviewer #2 的“跨模型泛化”
+
+目前新增的 Section 4.7 很有价值，但仔细看仍然是：
+
+同一类 MVPainter-style pipeline；
+不同 adapter checkpoints；
+不同 residual magnitude；
+不同 layer scale semantics。
+
+也就是说，你证明了：
+
+TCAS 对同一种 pipeline 内 adapter residual 性质的变化具有一定 robustness。
+
+但还没有真正证明：
+
+TCAS 是不同 geometry-conditioned multi-view diffusion architectures 的共同规律。
+
+而 Reviewer #2 原话中特别强调：
+
+single MVPainter-style pipeline
+backbone, adapter architecture, sampling configuration
+
+这一点目前仍然成立。事实上你们自己在 Limitations 里也承认，目前还没有验证 different sampler families。
+
+这里有一句话我建议一定改掉：
+
+“the middle denoising stage being the optimal window for geometric correction appears to be a property of the diffusion process itself.”
+
+目前实验不足以支撑“property of the diffusion process itself”这个结论。你们只测试了同类 architecture 的 adapter checkpoints。
+
+这句话非常容易刺激 Reviewer #2，因为它恰好把他担心的“过度泛化”再次说出来了。
+
+我建议改成类似：
+
+“These results suggest that mid-stage concentration is relatively robust to variations in residual magnitude and scale semantics within the studied geometry-adapter family.”
+
+或者稍微强一点：
+
+“This suggests that the mid-stage concentration principle may extend beyond a single adapter checkpoint, although its generalization to different multi-view diffusion backbones and sampler families remains to be established.”
+
+这样反而更加可信。
+
+如果实验条件允许，最值得补的一个实验不是继续增加几十种 C3 参数，而是增加一个第二 geometry-conditioned diffusion backbone。哪怕只做 50–100 objects，只比较：
+
+C3、uniform 1.25、uniform 2.50、linear warm-up、cosine bump
+
+都比再做 20 个同一 backbone 的 ablation 更有价值。
+
+这一个实验会最直接地改变 Reviewer #2 的判断。
+
+
+四、目前最危险的问题2:新增加的Proposition1存在明显的逻辑矛
+盾
+这是我认为现在必须修正的问题。
+你们新加入:
+Proposition 1 (Guardrailed bang-bang optimality)
+其中定义:
+2t = 1[Uk > 0 and stage k admissible]
+然后又规定，如果U。的CI包含0,可以用conservative scale做风险 tie-break。
+U1 = +0.077 dB,
+可是 Remark 1 给出的 late-stage utility 是:
+95%CI = [0.006,0.149).
+final_0903_diff
+这个区间没有包含0。
+
+因此按照你们自己定义的Proposition:
+U1>0
+而且如果late stage 没有违反guardrail，那么理论上应该:
+2=1,
+即late stage应该使用high scale。
+但下一句却说:
+"the late stage takes the conservative tie-break."
+这在数学上与Proposition的条件直接冲突。
+Reviewer #2本来就批评:
+"technical novelty is limited""design remains largely heuristic"
+如果他发现为了增强理论性而加入的Proposition本自洽，反而会比没有理论更糟。
+
+
+
+
+
+如果他发现为了增强理论性而加入的Proposition本身不自洽，反而会比没有理论更糟。
+我更建议不要硬做一个“最优性定理”
+对 Computers & Graphics /CAD/Graphics 这种论文而言, TCAS 本来就是一个empirically grounded
+inference strategy，并不需要强行把它证明成一个理论最优控制问题。
+最稳妥的方式是把:
+Proposition 1 (Guardrailed bang-bang optimality)
+改成:
+Stage-wise Utility Analysis
+然后写成:
+Ue=-0.788,Um =+0.574, U1=+0.077.
+解释:
+early high:显著有害;
+middle high:收益最大且稳定;
+late high:PSNR收益非常小，而且结构收益不，同时增加texture-risk;
+因此 Pareto/risk trade-off 下选择 low-high-low。
+
+
+这样已经足以回答 Reviewer #2的“为什么是 middlethird”。
+如果你们坚持保留数学形式，那么建议把objective 改为risk-adjusted utility，例如:
+Jk = APSNRk - ADtexture,k - uDstructure,k.
+这样 late stage 即使+0.077 dB PSNR, 也可能因为 texture deviation penalty 而得到:
+J<0.
+于是C3才能严格推出。
+我个人更推荐第一种:**去掉"optimality theorem”的包装,保留empirical stage utility + sensitivityanalysis。 **目前的 boundary sweep 已经足够有说服力:不同 window 和 peak scale 下,中间third 位于一个稳定高性能区域，而不是偶然的单点hyperparameter。 final _0903_diff
+这比一个假设很强、结论近乎直接由定义得到的bang-bangproposition更符合这篇论文的气质。
+另外，第5页还有:
+"Why mid-stage concentration is selected: the CAl model.."
+"CAImodel"在这里没有清楚定义，而且有两个句号。
+9 final 0903 diff
+这个标题也要彻底清理。
+
+五、目前最危险的问题3:FAC部分现在出现了明显的新旧结论冲突
+这是final_0903_diff 当前最明显的文字层面问题。
+Section4.6前一部分还保留了原来的结论:
+Full FAC increases PSNR from 18.86 to 19.28...
+随后修改文本却变成:
+"In this controlled setting, no learned variant reached the training-free schedule."
+并进一步说七种 learned configurations 相对TCAS都下降了约1.1-2.9 dB。
+ final 0903 diff
+这两个结论显然不能同时成立。
+我检查了修改稿实际渲染页面，第12-13页新旧文字混杂得非常明显，所以**fina1_0903_diff.pdf 绝对不能直接作为clean revised manuscript提交**。如果这个文件只是你们内部或给编辑看的diff版本，问题不
+大;最终clean manuscript必须把旧结论完全删干净。
+从论文策略上，我反而建议进一步弱化FAC。
+
+
+
+原因是 TCAS 本身有三个很好的 selling points：
+
+training-free + plug-and-play + negligible overhead。
+
+而 FAC 一旦进入主文，就必须回答：
+
+training objective；
+learning rate；
+batch size；
+optimizer；
+training steps；
+model-selection procedure；
+train/tuning/test split；
+parameter number；
+hyperparameter search。
+
+现在只写了 frozen base model、约 \(6\times10^3\) parameters、Adam、training pool 和大约 2,000 steps，但还远没有达到 Reviewer #1 所说的：
+
+“fully described training objective and separate train, tuning, and test sets.”
+
+尤其是 manuscript 现在说“tested seven configurations”，但并没有明确说明这七个 configuration 的选择和 tuning 是否使用了 300/276 evaluation objects。这仍可能被质疑 leakage。
+
+我建议：
+
+FAC 移到 supplementary 或保留为 negative-control extension，不再作为贡献点。
+
+主文最多一句：
+
+“We additionally examined learned spatial/frequency modulation; under our controlled setting it did not consistently outperform the fixed TCAS schedule, further supporting the robustness of the training-free temporal schedule. Details are provided in the supplementary material.”
+
+这样反而让论文更干净。
+
+六、数据划分已经大幅改善，但“300-object validation”这个叫法需要重新处理
+
+这是另一个容易被忽略的问题。
+
+你们现在明确说：
+
+24-object probe = obj0000–obj0023
+remaining 276 = obj0024–obj0299 holdout.
+
+也就是说，24-object probe 本身属于所谓的 300-object validation pool。
+
+那么严格来说：
+
+“selected on 24 objects and independently validated on 300 objects”
+
+并不成立。
+
+因为 300 里面包含了用于 schedule selection 的 24 个。
+
+好消息是，你们后来增加了真正独立的 276-object holdout，而且结果很好。
+
+所以解决方案非常简单，但很重要：
+
+把术语统一改成：
+
+300-object evaluation pool
+
+其中：
+
+24-object probe/tuning set + 276-object held-out test set
+
+然后主结论最好优先报告：
+
+276-object held-out validation/test results
+
+而不是继续把 300 objects 称为 independent validation。
+
+原来的 300-object 表可以保留为 pooled analysis，但应该说明：
+
+“For completeness, pooled statistics on all 300 objects are also reported.”
+
+这样 Reviewer #1 的 leakage concern 会被真正解决。
+
+事实上，从审稿策略看，276-object holdout 的说服力比原来的 300-object table 更强。
+七、Reviewer #1 的 implementation concern 还差最后一点
+
+修改稿现在已经有：
+
+Objaverse；
+Blender Cycles；
+512×512；
+17 views；
+six target views；
+Euler discrete scheduler；
+50 steps；
+seed 42；
+normal/depth/mask；
+LPIPS AlexNet；
+foreground normalization。
+
+已经很好。
+
+但 Reviewer 明确要求：
+
+exact implementation and checkpoints, conditioning, resolution, sampler, scheduler, prompts or references
+
+目前“exact checkpoint”仍然没有真正给出来。文中只是：
+
+MVPainter-style
+joint six-view latent UNet
+GeoTex-Adapter
+
+没有明确：
+
+base UNet checkpoint/version；
+VAE checkpoint；
+adapter checkpoint ID；
+code commit；
+pretrained source；
+是否使用 text prompt；
+如果没有 text prompt，要明确写 “No text prompt is used.”
+reference image 是 Objaverse 哪一个 view，如何选；
+300 objects 如何从 Objaverse 采样；
+是否做 geometry filtering。
+
+并且 Reviewer #3 还要求了 category composition；目前没有看到 object category distribution。
+
+最简单的办法是在 Supplementary 做一个 Reproducibility Table：
+
+| Item                 | Setting               |
+| -------------------- | --------------------- |
+| Data source          | Objaverse             |
+| Sampling/filtering   | …                     |
+| Train                | 1118                  |
+| Probe                | 24                    |
+| Held-out test        | 276                   |
+| Base checkpoint      | exact name/hash       |
+| Adapter checkpoint   | exact name/hash       |
+| VAE                  | exact name            |
+| Resolution           | 512×512               |
+| Views                | 6                     |
+| Scheduler            | Euler discrete        |
+| Steps                | 50                    |
+| Seed                 | 42                    |
+| Text prompt          | None / exact template |
+| Appearance condition | reference image …     |
+| Geometry condition   | normal + depth + mask |这个表非常值得加。
+
+八、Reviewer #3 的 schedule 实验建议虽然已经做了，但最好“表格化”
+
+现在 276-object holdout 上的结果已经相当强，但全部藏在 Section 4.7 的一段文字里：
+
+trapezoid；
+Gaussian peak；
+linear warm-up；
+cosine bump。
+
+Reviewer #3 原本明确要求：
+
+“I suggest evaluating at least representative competitors such as cosine bump and linear warm-up on the 300-object validation set.”
+
+从审稿心理上，不要让 reviewer 去段落里找他要求的数字。
+
+建议新增一个非常小的表：
+
+Table X. Scheduling transfer on the 276-object held-out set
+
+Schedule	FG-SSIM ↑	PSNR ↑	LPIPS ↓	Lap Var ↑	RGB Std ↑
+Linear warm-up	…	…	…	…	…
+Cosine bump	…	…	…	…	…
+Trapezoid	…	…	…	…	…
+Gaussian peak	…	…	…	…	…
+C3	…	…	…	…	…
+
+尤其不要只报 PSNR。Reviewer #2 很可能会说：
+
+“You selected metrics favorable to TCAS.”
+
+直接把 structure + signal + texture 三类指标全部放进去，反而最干净。
+十、我建议提交前只优先做5件事
+1.**修正或删除Proposition1。**这是当前最明确的逻辑硬伤;U1的CI不含0,却用"CI contains
+zero”的tie-break推出late-low，必须解决。2.**把24+276的关系彻底说清楚。**不要再把含probe 的全部300 objects 称为 strictly independentvalidation;主要 generalization 结果放到 276 held-out objects.3.**彻底整理 FAC。**新旧结论二选一，我更建议将FAC 降级为supplementary negative/extension4.**删除"property of diffusion process itself"这种过强表述。**在没有第二 backbone 的情况下，把结
+experiment, TCAS 保持唯一 main method。
+论限定为”robust within tested adapter regimes”。如果能补第二 backbone,则这是最值得补的新实
+验。
+5. **增加一张 reproducibility table + -张 276-object schedule comparison table。 *这两小表分别直接回应 Reviewer #1和 Reviewer #3。
+
+但我特别强调：**不要原样提交目前的 final_0903_diff.pdf。**第 5 页的 Proposition、第 12–13 页 FAC 新旧描述以及若干 red-diff 文字需要整理成一份逻辑完全一致的 clean manuscript。论文现在不是缺实验量，而是需要最后一次“逻辑收口”。
+
+如果只能再做一个新增实验，我建议优先级不是 FAC，也不是更多 C3 参数，而是第二个独立 geometry-conditioned multi-view diffusion / adapter backbone 上的 TCAS transfer experiment。这一项最可能直接把 Reviewer #2 从 Borderline Reject 推到 Borderline Accept/Accept。
