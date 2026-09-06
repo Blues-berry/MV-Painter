@@ -58,20 +58,23 @@
 
 ## 四、EM 上传对照表
 
-| EM 上传项（Item/类型） | 本包文件 |
-|---|---|
-| Manuscript（LaTeX 主文件） | final_0903.tex（+ latex.zip 或逐个上传 tex/cls/sty/logo/fig1–7） |
-| Manuscript PDF（系统 Build PDF 后核准） | final_0903.pdf |
-| Response to Reviewers | response_to_reviewers_CAG.pdf（docx 备用） |
-| Marked-up version（修订标注版） | final_0903_marked.pdf |
-| Supplementary material | supplementary_0903.pdf（FAC 七配置剂量-反应表，正文 §4.6 所引） |
-| Title page | title_page_CAG.pdf |
-| Cover Letter | cover_letter_CAG.docx / .md |
-| Highlights | highlights_CAG.docx / .md（5 条，每条 ≤85 字符） |
-| Graphical Abstract | graphical_abstract_CAG.pdf |
-| Declaration of Interest | Declaration_of_Interest_Statement.docx |
-| Video / 演示材料（可选附件） | TCAS_Demo.mp4（静音轮播，由 TCAS_Demo_fixed.pptx 导出）；TCAS_Demo_narrated.mp4（英文配音讲解版，2 分 53 秒，可选其一或都传） |
-| Demo 讲解稿 | TCAS_Demo_narration.md（13 页配音文本，英/中对照；改词后可重合成） |
+> **2026-09-07 起最终上传集迁移至 `final/submission_0907/`**（按师兄 `submissions revise.zip` 模板重命名：自然语言文件名 + 0907 后缀；tex 源码只存在于 latex.zip 内，不散放）。`final/submission_package_CAG/` 保留为工作区与制作源（pptx/narration/md 等），**不再直接用于 EM 上传**。
+
+| EM 上传项（Item/类型） | 0907 包文件（submission_0907/） | 工作区源文件（submission_package_CAG/） |
+|---|---|---|
+| Manuscript（LaTeX 主文件） | latex.zip（12 文件平铺：final_0903.tex + cls/sty/logo/fig1–7） | 同左 |
+| Manuscript PDF（合并稿，信在开头） | Revised manuscript with response letter 0907.pdf | final_0903_with_letter.pdf |
+| Manuscript PDF（备选：仅正文） | Revised manuscript 0907.pdf | final_0903.pdf |
+| Marked-up version（修订标注版，CFONT 纯颜色） | Marked-up manuscript 0907.pdf | final_0903_marked.pdf |
+| Response to Reviewers | response to comments of reviewers 0907.pdf（.docx 备用） | response_to_reviewers_CAG.pdf / .docx |
+| Supplementary material | Supplementary material 0907.pdf | supplementary_0903.pdf（FAC 剂量-反应表 + S4 复现表，正文 §4.1.3/§4.6 与信所引） |
+| Title page | Titlepage 0907.pdf | title_page_CAG.pdf |
+| Cover Letter | Cover letter 0907.docx | cover_letter_CAG.docx / .md |
+| Highlights | Research Highlights 0907.docx | highlights_CAG.docx / .md |
+| Graphical Abstract | Graphical abstract 0907.pdf | graphical_abstract_CAG.pdf |
+| Declaration of Interest | Declaration of Interest Statement.docx | 同左 |
+| Video / 演示材料（可选） | demo.mp4（静音 60s）；demo with narration 0907.mp4（英文配音 2m53s） | TCAS_Demo.mp4 / TCAS_Demo_narrated.mp4 |
+| Demo 制作源（不上传） | — | TCAS_Demo_fixed.pptx、TCAS_Demo_narration.md |
 
 - 合并稿 `final_0903_with_letter.pdf`（**22 页 = 回复信 7 页 + 正文 15 页**）按会议要求"信附于修改稿开头"制作，现**已放入本包**；EM 上传时可将合并稿作为 Manuscript PDF 上传（同时照常提供 latex.zip 源码），信另在 Response to Reviewers 项单独上传，两种方式均满足会议字面要求。
 - Article Type 步骤选择 **VSI: CAG_SS_CAD/Graphics 2026**。

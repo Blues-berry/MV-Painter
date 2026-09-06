@@ -7,17 +7,21 @@
 
 ## 1. 权威文件地图（只认这些）
 
-| 用途 | 唯一权威路径 | 页数 |
+> **2026-09-07 起分两级**：
+> - **`final/submission_0907/` = EM 上传集（14 个文件，20MB，按师兄模板重命名 + 0907 后缀）**。上传时只从该目录取文件，对照表见 PACKAGING_NOTES.md 第四节。
+> - `final/submission_package_CAG/` = 工作区与制作源（tex/cls/fig 散件、pptx、narration、PACKAGING_NOTES），**不再直接上传**。
+> - `final/final_0903.tex` = 正文唯一源文件（latex.zip 内副本与其 md5 一致）。
+
+| 用途 | 0907 上传集文件 | 工作区源 |
 |---|---|---|
-| 修改稿源文件 | `final/final_0903.tex` | — |
-| 修改稿 PDF | `final/submission_package_CAG/final_0903.pdf`（与 `final/final_0903.pdf` md5 相同） | 14 |
-| 回复信源文件 | `final/revision/response_letter_CAG_plain.md` | — |
-| 回复信 PDF/docx | `final/submission_package_CAG/response_to_reviewers_CAG.pdf` / `.docx` | 7 |
-| 修订标注版（latexdiff） | `final/submission_package_CAG/final_0903_marked.pdf` / `.tex` | 15 |
-| 补充材料 | `final/supplementary_0903.tex` → 包内 `supplementary_0903.pdf` | 2 |
-| 合订稿（信+正文） | 包内 `final_0903_with_letter.pdf` | 21 |
-| LaTeX 源码包 | 包内 `latex.zip`（12 文件平铺，解包零编译验证过） | — |
-| 打包说明日志 | 包内 `PACKAGING_NOTES.md`（每轮变更已记录） | — |
+| 合并稿（信 7 + 正文 15 = 22 页） | `Revised manuscript with response letter 0907.pdf` | final_0903_with_letter.pdf |
+| 正文 PDF | `Revised manuscript 0907.pdf` | final_0903.pdf |
+| 修订标注版（CFONT 纯颜色） | `Marked-up manuscript 0907.pdf` | final_0903_marked.pdf |
+| 回复信 | `response to comments of reviewers 0907.pdf/.docx` | response_to_reviewers_CAG.pdf/.docx（源 md: final/revision/response_letter_CAG_plain.md） |
+| Supplementary（剂量-反应 + 复现表） | `Supplementary material 0907.pdf` | supplementary_0903.pdf（源: supplementary_0903.tex） |
+| LaTeX 源码 | `latex.zip`（12 文件平铺） | final_0903.tex 等 |
+| Title page / GA / Highlights / Cover letter / Declaration | `Titlepage 0907.pdf`、`Graphical abstract 0907.pdf`、`Research Highlights 0907.docx`、`Cover letter 0907.docx`、`Declaration of Interest Statement.docx` | 同名 _CAG 文件 |
+| Demo | `demo.mp4`（静音 60s）、`demo with narration 0907.mp4`（配音 2m53s） | TCAS_Demo.mp4 / TCAS_Demo_narrated.mp4（制作源: TCAS_Demo_fixed.pptx + TCAS_Demo_narration.md） |
 
 **废弃文件黑名单（勿看勿用勿提交）**：
 - `final/final_0903_diff.pdf/tex` —— 08:04 旧 diff 产物，外部"0904意见"就是看它写的，已被 `final_0903_marked.*` 取代。
