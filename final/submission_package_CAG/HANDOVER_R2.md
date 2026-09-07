@@ -1,5 +1,14 @@
 # 交接文档：CAG-S-26-01522 一审提交状态 与 二轮审稿预案
 
+> **【2026-09-07 更新：R2 预案已失效，转为 resubmit as new】**
+> 编辑决定（CAG-D-26-00954，非审稿意见）：参考文献质量整改后按**新投稿**重投。已执行：
+> 1. 删除参考文献 [41]（CAD/Graphics 2026 Submission #75）及摘要/引言/结论全部"会议扩展版"表述，按原创投稿口径处理；
+> 2. 九条 arXiv 引用更新为正式发表版（SyncDreamer ICLR24、Wonder3D CVPR24、Era3D NeurIPS24、Text2Tex ICCV23、TEXTure SIGGRAPH23、T2I-Adapter AAAI24、DoRA ICML24、Castillo AAAI25、MV-Adapter ICCV25），修正 [8] 作者名（Ke Q→Li P）与 [27] 作者名（Legenstein→Kohler）、[26] CFG 年份（2022→2021 workshop）、[31] FLUX 补 URL；确为预印本的（Zero123++/ImageDream/MVPainter/Hunyuan3D2.0/IP-Adapter）保留 arXiv 标识；
+> 3. 新增 5 篇期刊引用（Perla CGF26 综述、Guzmán C&G26、Lv TVC25、Liu SIGGRAPH Asia24、WonderTex TVCG26），文献总数 41→45，45 条引用与条目一一对应；
+> 4. 编辑在 marked 稿里发现的 [8]/[28] 乱码根因是 latexdiff 把旧版参考文献删除文本混入新条目——新投稿不再提交 marked 稿与 response letter；
+> 5. Cover letter 已重写（原创口径 + 参考文献整改说明 + 中性披露会议投稿副本），标题页/图表摘要/补充材料/演示视频未变、全部复用。
+> 新投稿包：`final/submission_new_0907/`（12 文件，泄露扫描全 0，主稿 15 页 0 错，摘要 245 词）。EM 元数据摘要需同步删去扩展版措辞；旧包 `submission_0907/` 仅作存档，勿再上传。本节以下 R2 流程描述仅供历史参考。
+
 更新：2026-09-06。本文档是二轮审稿（R2）的唯一交接入口；打包细节另见 `PACKAGING_NOTES.md` 第六节。
 
 ---
