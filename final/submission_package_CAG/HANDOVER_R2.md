@@ -1,5 +1,13 @@
 # 交接文档：CAG-S-26-01522 一审提交状态 与 二轮审稿预案
 
+> **【2026-09-07 复核通过：新投稿包已终审】**
+> 对编辑 5 项意见做了全量复核（dblp API + Crossref API 逐条核实），结论：
+> 1. [41] 与扩展版表述已删净；45 条引用与正文 \cite 一一对应（双向均无孤儿）；
+> 2. 9 条 arXiv 转正式版全部正确；DreamFusion=ICLR 2023 经 dblp 确认正确（官方项目页引用块未更新，勿据此"改回"arXiv）；MV-Adapter=ICCV 2025 (pp.16377-16387, DOI 10.1109/ICCV51701.2025.01520)、Castillo=AAAI 2025 (Kohler 作者名正确)、Perla=CGF 2026 e70392 (DOI 10.1111/cgf.70392)、Lv=TVC 41(13):11195-11205 均 Crossref/dblp 核实无误；
+> 3. **已修**：Guzmán C&G 2026 文章号 104509→104490（104509 是同期另一篇特刊前言的编号，数字颠倒——提交前最后一处隐患）；WonderTex TVCG 补全 32(7): 5815-5825；
+> 4. 重编译 15 页 0 错 0 未定义引用，泄露扫描 0，包内 Manuscript 0907.pdf 与源 md5 一致（299b8e7）。
+> EM 上传提醒：补充材料 Description 口径 'Original conference SUBMISSION (CAD/Graphics 2026, Paper #75)'；EM 元数据摘要无扩展版措辞；Article Type 选 'VSI: CAG_SS_CAD/Graphics 2026'；不传 latex.zip/marked/response letter；EM 框内文件平铺无子文件夹。
+
 > **【2026-09-07 更新：R2 预案已失效，转为 resubmit as new】**
 > 编辑决定（CAG-D-26-00954，非审稿意见）：参考文献质量整改后按**新投稿**重投。已执行：
 > 1. 删除参考文献 [41]（CAD/Graphics 2026 Submission #75）及摘要/引言/结论全部"会议扩展版"表述，按原创投稿口径处理；
