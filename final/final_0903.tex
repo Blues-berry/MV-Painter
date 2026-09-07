@@ -30,7 +30,7 @@
 % (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and, extending our preliminary conference version, derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable rather than a fixed hyperparameter, at least for adapter-conditioned multi-view texture generation.
+Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable rather than a fixed hyperparameter, at least for adapter-conditioned multi-view texture generation.
 \end{abstract}
 
 \begin{keyword}
@@ -69,17 +69,15 @@ The main contributions of this paper are as follows:
 
 (4) We further provide a large-scale texture preservation analysis on the 300-object evaluation pool, showing that TCAS substantially reduces texture flattening compared with full high-scale scaling: C3 outperforms $s = 2.50$ on 87.7\%, 95.0\%, and 83.0\% of objects in Laplacian variance, RGB standard deviation, and gradient magnitude, respectively, while the 95\% confidence interval for the FG-SSIM difference crosses zero, indicating no significant difference in structural similarity.
 
-A preliminary version of this study was submitted to CAD/Graphics 2026 (Paper 75) \cite{cadgraphics2026p75}. This article extends that submission substantially: (i) the TCAS schedule is now grounded in an explicit two-stage epsilon-optimal selection rule (Proposition 1) with assumptions and proofs; (ii) the empirical protocol now separates a strictly disjoint 276-object holdout from the 24-object probe set, and C3 is evaluated unchanged on this holdout, with pooled 300-object statistics reported alongside; and (iii) the presentation, including the abstract, introduction, and conclusions, is substantially rewritten to state these extensions.
-
 \section{Related Work}
 \label{sec:related}
 
 \subsection{3D Texture Generation and Multi-view Diffusion}
 \label{subsec:3dtex}
 
-Single-image 3D generation is often decomposed into geometry generation and texture generation. In recent years, single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have made notable progress in structural stability, shape completeness, and cross-category generalization \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. Nevertheless, high-quality texture generation remains a key bottleneck for the realism and usability of 3D content. Existing texture generation methods usually rely on 2D diffusion models to synthesize RGB images from multiple views, and then project or bake these images onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. While this strategy inherits the strong generative capability of image diffusion models, it still suffers from reference appearance misalignment, geometry-texture inconsistency, and insufficient local texture detail.
+Single-image 3D generation is often decomposed into geometry generation and texture generation. In recent years, single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have made notable progress in structural stability, shape completeness, and cross-category generalization \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. Nevertheless, high-quality texture generation remains a key bottleneck for the realism and usability of 3D content, as reflected by recent surveys of neural 3D mesh texturing \cite{perla2026survey}. Existing texture generation methods usually rely on 2D diffusion models to synthesize RGB images from multiple views, and then project or bake these images onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. While this strategy inherits the strong generative capability of image diffusion models, it still suffers from reference appearance misalignment, geometry-texture inconsistency, and insufficient local texture detail. Beyond these diffusion pipelines, the graphics community continues to advance surface appearance synthesis more broadly, from exemplar-based texture synthesis \cite{guzman2026adaptive} to diffusion-based procedural material generation \cite{lv2025interpretable}.
 
-To address these issues, methods such as Paint3D, MVPaint, Hunyuan3D 2.0, and MVPainter formulate 3D texture generation as a geometry-controlled multi-view diffusion task, generating multi-view images under geometric control and baking them into UV textures \cite{zeng2024paint3d,cheng2024mvpaint,lai2025hunyuan3d,shao2025mvpainter}. MV-Adapter further shows that adapter-style multi-view control can enhance cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}. By injecting geometric information such as normals and depth maps into the diffusion model as conditional signals, the generated results better follow the 3D surface structure and remain consistent across views. Unlike prior methods that focus mainly on multi-view image generation or general 3D reconstruction, these works emphasize precise alignment between texture and geometry as well as local detail recovery, significantly improving 3D texture generation quality. However, they mainly answer how to introduce geometric conditions and how to construct a texture generation pipeline, while the influence of geometric control strength at inference time on shape and texture quality remains underexplored.
+To address these issues, methods such as Paint3D, MVPaint, Hunyuan3D 2.0, and MVPainter formulate 3D texture generation as a geometry-controlled multi-view diffusion task, generating multi-view images under geometric control and baking them into UV textures \cite{zeng2024paint3d,cheng2024mvpaint,lai2025hunyuan3d,shao2025mvpainter}. MV-Adapter further shows that adapter-style multi-view control can enhance cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}, and recent texturing systems strengthen consistency during texture synthesis itself, for example through synchronized multi-view diffusion \cite{liu2024synchronized} or consistent-and-seamless text-guided multi-view generation \cite{xu2026wondertex}. By injecting geometric information such as normals and depth maps into the diffusion model as conditional signals, the generated results better follow the 3D surface structure and remain consistent across views. Unlike prior methods that focus mainly on multi-view image generation or general 3D reconstruction, these works emphasize precise alignment between texture and geometry as well as local detail recovery, significantly improving 3D texture generation quality. However, they mainly answer how to introduce geometric conditions and how to construct a texture generation pipeline, while the influence of geometric control strength at inference time on shape and texture quality remains underexplored.
 
 \subsection{Adapter-augmented Diffusion Models and Geometric Control}
 \label{subsec:adapter}
@@ -549,7 +547,7 @@ To address this shape-texture trade-off, we propose Timestep-Conditioned Adapter
 
 Therefore, the core contribution of this paper is not to claim that the generated results are visually close to the ground truth in all cases, nor to present TCAS as a universal replacement for all guidance schedules. Instead, the contribution is to reveal and validate a hidden shape-texture trade-off caused by geometry-adapter residual injection, and to show that a simple non-monotonic inference schedule can mitigate this trade-off better than fixed high-scale control and other tested scheduling variants. This conclusion suggests that, in the geometry-controlled multi-view pipeline studied here---and plausibly in similar geometry-conditioned texture pipelines---adapter strength is better treated as a stage-dependent inference control variable than as a single fixed hyperparameter.
 
-As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and the training-free TCAS remains the main and sole method. Relative to the preliminary conference version \cite{cadgraphics2026p75}, this article adds the two-stage epsilon-optimal selection rule behind TCAS and the strictly disjoint 276-object holdout evaluation, and the presentation has been rewritten accordingly.
+As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and the training-free TCAS remains the main and sole method.
 
 \section*{Data availability}
 
@@ -560,7 +558,7 @@ All data included in this study are available upon request by contact with the c
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 
-\begin{thebibliography}{41}
+\begin{thebibliography}{45}
 
 
 \bibitem{liu2023zero1to3}
@@ -570,10 +568,10 @@ Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object
 Shi R, Chen H, Zhang Z, et al. Zero123++: A single image to consistent multi-view diffusion base model. arXiv:2310.15110, 2023.
 
 \bibitem{liu2023syncdreamer}
-Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. arXiv:2309.03453, 2023.
+Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. \textit{International Conference on Learning Representations}, 2024.
 
 \bibitem{long2023wonder3d}
-Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. arXiv:2310.15008, 2023.
+Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
 
 \bibitem{shi2024mvdream}
 Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for 3D generation. \textit{International Conference on Learning Representations}, 2024.
@@ -585,19 +583,28 @@ Wang P, et al. ImageDream: Image-prompt multi-view diffusion for 3D generation. 
 Xu J, et al. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. \textit{Advances in Neural Information Processing Systems}, 2024.
 
 \bibitem{ke2024era3d}
-Ke Q, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. arXiv:2405.11616, 2024.
+Li P, Liu Y, Long X, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. \textit{Advances in Neural Information Processing Systems}, 2024.
 
 \bibitem{chen2023text2tex}
-Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. arXiv preprint, 2023.
+Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
 
 \bibitem{richardson2023texture}
-Richardson E, et al. TEXTure: Semantic texture transfer using diffusion models. arXiv preprint, 2023.
+Richardson E, Metzer G, Alaluf Y, et al. TEXTure: Text-guided texturing of 3D shapes. \textit{ACM SIGGRAPH 2023 Conference Proceedings}, 2023.
 
 \bibitem{poole2023dreamfusion}
 Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-to-3D using 2D diffusion. \textit{International Conference on Learning Representations}, 2023.
 
 \bibitem{chen2023fantasia3d}
 Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance for high-quality text-to-3D content creation. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{perla2026survey}
+Perla S R K, Zhang H, Mahdavi-Amiri A. Advances in neural 3D mesh texturing: A survey. \textit{Computer Graphics Forum}, 2026, e70392.
+
+\bibitem{guzman2026adaptive}
+Guzm\'an J E, Mould D, Paquette E. Adaptive multiresolution exemplar-based texture synthesis on animated fluids. \textit{Computers \& Graphics}, 2026, 134: 104509.
+
+\bibitem{lv2025interpretable}
+Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
 
 \bibitem{shao2025mvpainter}
 Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
@@ -612,10 +619,16 @@ Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for pai
 Zhao Z, Lai Z, Lin Q, et al. Hunyuan3D 2.0: Scaling diffusion models for high resolution textured 3D assets generation. arXiv:2501.12202, 2025.
 
 \bibitem{huang2024mvadapter}
-Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. arXiv:2412.03632, 2024.
+Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
+
+\bibitem{liu2024synchronized}
+Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
+
+\bibitem{xu2026wondertex}
+Xu Q, Han X G, Zhang L. WonderTex: Consistent-and-seamless texture generation with text-guided multi-view image diffusion models. \textit{IEEE Transactions on Visualization and Computer Graphics}, 2026.
 
 \bibitem{mou2023t2iadapter}
-Mou C, Wang X, Xie L, et al. T2I-Adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. arXiv:2302.08453, 2023.
+Mou C, Wang X, Xie L, et al. T2I-Adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2024.
 
 \bibitem{zhang2023controlnet}
 Zhang L, Rao A, Agrawala M. Adding conditional control to text-to-image diffusion models. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
@@ -627,7 +640,7 @@ Ye H, Zhang J, Liu S, Han X, Yang W. IP-Adapter: Text compatible image prompt ad
 Hu E J, Shen Y, Wallis P, et al. LoRA: Low-rank adaptation of large language models. \textit{International Conference on Learning Representations}, 2022.
 
 \bibitem{liu2024dora}
-Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. arXiv:2402.09353, 2024.
+Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. \textit{International Conference on Machine Learning}, 2024.
 
 \bibitem{zhang2023adalora}
 Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
@@ -639,10 +652,10 @@ Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advanc
 Song J, Meng C, Ermon S. Denoising diffusion implicit models. \textit{International Conference on Learning Representations}, 2021.
 
 \bibitem{ho2022cfg}
-Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop}, 2022.
+Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop on Deep Generative Models and Downstream Applications}, 2021. arXiv:2207.12598.
 
 \bibitem{castillo2023adaptive}
-Castillo A, Legenstein R, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. arXiv:2312.12487, 2023.
+Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.
 
 \bibitem{kynkanniemi2024limited}
 Kynk\"a\"anniemi T, Aittala M, Karras T, et al. Applying guidance in a limited interval improves sample and distribution quality in diffusion models. \textit{Advances in Neural Information Processing Systems}, 2024.
@@ -654,7 +667,7 @@ Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthe
 Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow transformers for high-resolution image synthesis. \textit{International Conference on Machine Learning}, 2024.
 
 \bibitem{blackforestlabs2024flux}
-Black Forest Labs. FLUX: Flow matching for image generation. 2024.
+Black Forest Labs. FLUX: Flow matching for image generation. https://github.com/black-forest-labs/flux, 2024.
 
 \bibitem{loshchilov2019decoupled}
 Loshchilov I, Hutter F. Decoupled weight decay regularization. \textit{International Conference on Learning Representations}, 2019.
@@ -682,9 +695,6 @@ Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing the look and feel of i
 
 \bibitem{radford2021clip}
 Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
-
-\bibitem{cadgraphics2026p75}
-Anonymous. Adapter scaling trade-off and timestep-conditioned scheduling in multi-view diffusion texture generation. Submission \#75 of CAD/Graphics 2026, 2026.
 
 \end{thebibliography}
 \end{document}
