@@ -60,10 +60,9 @@ events.out.tfevents*
 
 # Paper (keep locally in final/, do not upload to GitHub)
 final/*
-# Exception: final submission package must be tracked for backup
-!final/submission_package_CAG
-# Exception: EM upload set (0907 renamed per senior's template) must be tracked
-!final/submission_0907
+# Exception: authoritative EM upload package (submission_new_0907) must be tracked for backup
+!final/submission_new_0907
+!final/revision/response_letter_new0907.md
 
 # Archive
 archive/
