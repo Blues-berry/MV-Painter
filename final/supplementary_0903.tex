@@ -64,9 +64,9 @@ Training pool (strong-residual instance) & 1{,}706 rendered objects from the sam
 Evaluation pool & 300 rendered objects in a fixed ordered list; probe $=$ first 24 identifiers (obj$_{0000}$--obj$_{0023}$), held-out test $=$ remaining 276 (obj$_{0024}$--obj$_{0299}$) \\
 Train--evaluation overlap & Zero (training and evaluation identifier sets verified to intersect in zero objects) \\
 Base pipeline & MVPainter-style geometry-controlled multi-view diffusion model; joint six-view latent UNet (pipeline class \texttt{MVPainter\_Pipeline}, diffusers 0.20.0) \\
-Base checkpoint & Local MVPainter snapshot (fine-tuned UNet, VAE, and dual CLIP vision encoders; loaded frozen) \\
-Adapter checkpoint (main tables) & GeoTex-Adapter \texttt{refattn\_v1} (\texttt{geotex\_step\_0002000.pt}); requested scale applied multiplicatively at every injected layer \\
-Adapter checkpoint (Sec.~4.7 / FAC / supp.) & \texttt{geotex\_v2\_ema\_final.pt} (MD5 \texttt{a74cc1d16cb473a95022bdcbc58e1b22}, 8.86~MB), applied with per-layer caps deep 3.0 / middle 3.5 / shallow 0.8 \\
+Base checkpoint & Local MVPainter snapshot (\texttt{checkpoints/hf\_repo}; fine-tuned UNet, VAE, and dual CLIP vision encoders; loaded frozen) \\
+Adapter checkpoint (main tables) & GeoTex-Adapter \texttt{geotex\_refattn\_v1/geotex\_step\_0002000.pt}; requested scale applied multiplicatively at every injected layer \\
+Adapter checkpoint (Sec.~4.7 / FAC / supp.) & \texttt{mvpoutput/geotex\_v2/checkpoints/geotex\_v2\_ema\_final.pt} (MD5 \texttt{a74cc1d16cb473a95022bdcbc58e1b22}, 8.86~MB), applied with per-layer caps deep 3.0 / middle 3.5 / shallow 0.8 \\
 Resolution & $512\times512$ for rendering, generation, and evaluation \\
 Views & 17 rendered; 6 target views (front, front-right, right, back, left, front-left) used throughout \\
 Scheduler / steps / seed & Euler discrete; 50 denoising steps; fixed seed 42 shared by all schedules within an experiment (identical initial latents) \\
