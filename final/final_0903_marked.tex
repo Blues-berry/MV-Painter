@@ -1,7 +1,7 @@
 \documentclass[times,twocolumn,final]{elsarticle}
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL final.tex        Thu Aug 13 12:42:27 2026
-%DIF ADD final_0903.tex   Sun Sep  6 08:55:00 2026
+%DIF ADD final_0903.tex   Mon Sep  7 12:39:08 2026
 
 \usepackage{cag}
 \usepackage{framed,multirow}
@@ -12,15 +12,15 @@
 \usepackage{booktabs}
 \usepackage{placeins}
 %DIF 11a11-19
-\setcounter{totalnumber}{6} %DIF > 
-\setcounter{topnumber}{4} %DIF > 
-\setcounter{bottomnumber}{4} %DIF > 
-\renewcommand{\topfraction}{0.92} %DIF > 
-\renewcommand{\textfraction}{0.05} %DIF > 
-\renewcommand{\floatpagefraction}{0.85} %DIF > 
- %DIF > 
-\newtheorem{proposition}{Proposition} %DIF > 
-\newtheorem{remark}{Remark} %DIF > 
+\setcounter{totalnumber}{6} %DIF >
+\setcounter{topnumber}{4} %DIF >
+\setcounter{bottomnumber}{4} %DIF >
+\renewcommand{\topfraction}{0.92} %DIF >
+\renewcommand{\textfraction}{0.05} %DIF >
+\renewcommand{\floatpagefraction}{0.85} %DIF >
+ %DIF >
+\newtheorem{proposition}{Proposition} %DIF >
+\newtheorem{remark}{Remark} %DIF >
 %DIF -------
 
 \journal{Computers \& Graphics}
@@ -115,8 +115,9 @@
 %DIF >  (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Multi-view diffusion \DIFdelbegin \DIFdel{models have become an important approach to }\DIFdelend \DIFaddbegin \DIFadd{pipelines for }\DIFaddend 3D \DIFdelbegin \DIFdel{texture generation, where adapter modules are commonly used to }\DIFdelend \DIFaddbegin \DIFadd{asset texturing commonly }\DIFaddend inject geometric conditions\DIFdelbegin \DIFdel{such as normals }\DIFdelend \DIFaddbegin \DIFadd{, such as normal }\DIFaddend and depth maps\DIFdelbegin \DIFdel{to improve cross-view consistency and geometric alignment. However, the adapter scaling strength during inference is often selected empirically, and its influence on shape fidelity and texture detail remains insufficiently analyzed. This paper systematically studies adapter scaling in geometry-controlled multi-view texturegeneration. We find that a larger adapter scale can improve }\DIFdelend \DIFaddbegin \DIFadd{, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves }\DIFaddend structural metrics such as \DIFaddbegin \DIFadd{foreground structural similarity (}\DIFaddend FG-SSIM\DIFdelbegin \DIFdel{, but it may also suppress }\DIFdelend \DIFaddbegin \DIFadd{) but suppresses }\DIFaddend the texture synthesis capability of the base \DIFdelbegin \DIFdel{diffusion model, leading to weakened color variation, }\DIFdelend \DIFaddbegin \DIFadd{model, causing }\DIFaddend flattened surfaces, \DIFaddbegin \DIFadd{reduced color variation, }\DIFaddend and loss of high-frequency details. \DIFdelbegin \DIFdel{This observation indicates that adapter scaling is not merely a structure-enhancement parameter, but a key control variable that governs the balance between shape consistency and texture preservation. Rather than treating this as a generic guidance-scheduling problem, we }\DIFdelend \DIFaddbegin \DIFadd{We further }\DIFaddend identify an adapter-specific temporal conflict: geometric residuals \DIFdelbegin \DIFdel{injected into intermediate features }\DIFdelend are most useful for mid-stage structure refinement, whereas \DIFdelbegin \DIFdel{excessive }\DIFdelend \DIFaddbegin \DIFadd{strong }\DIFaddend residual injection in \DIFaddbegin \DIFadd{the }\DIFaddend early or late stages \DIFdelbegin \DIFdel{can respectively disturb }\DIFdelend \DIFaddbegin \DIFadd{disturbs }\DIFaddend global formation or \DIFdelbegin \DIFdel{suppress }\DIFdelend \DIFaddbegin \DIFadd{suppresses }\DIFaddend texture synthesis. \DIFdelbegin \DIFdel{To mitigate this conflict, we propose }\DIFdelend \DIFaddbegin \DIFadd{We introduce a measurable stage-utility analysis with structural guardrails and, extending our preliminary conference version, derive }\DIFaddend Timestep-Conditioned Adapter Scaling (TCAS), a training-free \DIFdelbegin \DIFdel{inference strategy }\DIFdelend \DIFaddbegin \DIFadd{low--high--low schedule }\DIFaddend that concentrates strong geometric correction in the middle denoising stage and uses conservative scales \DIFdelbegin \DIFdel{in the early and late stages. The selected }\DIFdelend \DIFaddbegin \DIFadd{otherwise. The }\DIFaddend schedule C3 \DIFdelbegin \DIFdel{is chosen only on }\DIFdelend \DIFaddbegin \DIFadd{$=(1.25, 2.50, 1.25)$ is selected using only }\DIFaddend a 24-object probe set \DIFdelbegin \DIFdel{by analyzing }\DIFdelend \DIFaddbegin \DIFadd{from }\DIFaddend 17 scaling variants and \DIFdelbegin \DIFdel{is then transferred unchangedto a 300-object validation set, where no parameter searchis performed. Experiments show that TCAS maintains shape fidelity close }\DIFdelend \DIFaddbegin \DIFadd{then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. TCAS achieves FG-SSIM comparable }\DIFaddend to aggressive uniform scaling while \DIFdelbegin \DIFdel{achieving better signal fidelity and more stable texturepreservation}\DIFdelend \DIFaddbegin \DIFadd{improving the peak signal-to-noise ratio (PSNR) by 0.96~dB, retaining substantially more texture, and receiving higher preference in a blinded human study}\DIFaddend . These results suggest \DIFdelbegin \DIFdel{that, in adapter-augmented multi-view diffusion pipelines, adapter strength should be treated }\DIFdelend \DIFaddbegin \DIFadd{treating adapter strength }\DIFaddend as a stage-dependent inference control variable rather than a fixed hyperparameter\DIFdelbegin \DIFdel{. TCAS requires no retraining, introduces negligible computational overhead, and can be used as a plug-and-play strategy for geometry-controlled }\DIFdelend \DIFaddbegin \DIFadd{, at least for adapter-conditioned }\DIFaddend multi-view texture generation\DIFdelbegin \DIFdel{tasks}\DIFdelend .
-\end{abstract}
+Multi-view diffusion \DIFdelbegin \DIFdel{models have become an important approach to }\DIFdelend \DIFaddbegin \DIFadd{pipelines for }\DIFaddend 3D \DIFdelbegin \DIFdel{texture generation, where adapter modules are commonly used to }\DIFdelend \DIFaddbegin \DIFadd{asset texturing commonly }\DIFaddend inject geometric conditions\DIFdelbegin \DIFdel{such as normals }\DIFdelend \DIFaddbegin \DIFadd{, such as normal }\DIFaddend and depth maps\DIFdelbegin \DIFdel{to improve cross-view consistency and geometric alignment. However, the adapter scaling strength during inference is often selected empirically, and its influence on shape fidelity and texture detail remains insufficiently analyzed. This paper systematically studies adapter scaling in geometry-controlled multi-view texturegeneration. We find that a larger adapter scale can improve }\DIFdelend \DIFaddbegin \DIFadd{, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves }\DIFaddend structural metrics such as \DIFaddbegin \DIFadd{foreground structural similarity (}\DIFaddend FG-SSIM\DIFdelbegin \DIFdel{, but it may also suppress }\DIFdelend \DIFaddbegin \DIFadd{) but suppresses }\DIFaddend the texture synthesis capability of the base \DIFdelbegin \DIFdel{diffusion model, leading to weakened color variation, }\DIFdelend \DIFaddbegin \DIFadd{model, causing }\DIFaddend flattened surfaces, \DIFaddbegin \DIFadd{reduced color variation, }\DIFaddend and loss of high-frequency details. \DIFdelbegin \DIFdel{This observation indicates that adapter scaling is not merely a structure-enhancement parameter, but a key control variable that governs the balance between shape consistency and texture preservation. Rather than treating this as a generic guidance-scheduling problem, we }\DIFdelend \DIFaddbegin \DIFadd{We further }\DIFaddend identify an adapter-specific temporal conflict: geometric residuals \DIFdelbegin \DIFdel{injected into intermediate features }\DIFdelend are most useful for mid-stage structure refinement, whereas \DIFdelbegin \DIFdel{excessive }\DIFdelend \DIFaddbegin \DIFadd{strong }\DIFaddend residual injection in \DIFaddbegin \DIFadd{the }\DIFaddend early or late stages \DIFdelbegin \DIFdel{can respectively disturb }\DIFdelend \DIFaddbegin \DIFadd{disturbs }\DIFaddend global formation or \DIFdelbegin \DIFdel{suppress }\DIFdelend \DIFaddbegin \DIFadd{suppresses }\DIFaddend texture synthesis. \DIFdelbegin \DIFdel{To mitigate this conflict, we propose }\DIFdelend \DIFaddbegin \DIFadd{We introduce a measurable stage-utility analysis with structural guardrails and derive }\DIFaddend Timestep-Conditioned Adapter Scaling (TCAS), a training-free \DIFdelbegin \DIFdel{inference strategy }\DIFdelend \DIFaddbegin \DIFadd{low--high--low schedule }\DIFaddend that concentrates strong geometric correction in the middle denoising stage and uses conservative scales \DIFdelbegin \DIFdel{in the early and late stages. The selected }\DIFdelend \DIFaddbegin \DIFadd{otherwise. The }\DIFaddend schedule C3 \DIFdelbegin \DIFdel{is chosen only on }\DIFdelend \DIFaddbegin \DIFadd{$=(1.25, 2.50, 1.25)$ is selected using only }\DIFaddend a 24-object probe set \DIFdelbegin \DIFdel{by analyzing }\DIFdelend \DIFaddbegin \DIFadd{from }\DIFaddend 17 scaling variants and \DIFdelbegin \DIFdel{is then transferred unchangedto a }\DIFdelend \DIFaddbegin \DIFadd{then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. On the full }\DIFaddend 300-object \DIFdelbegin \DIFdel{validation set, where no parameter searchis performed. Experiments show that TCAS maintains shape fidelity close }\DIFdelend \DIFaddbegin \DIFadd{pooled evaluation with the main adapter, TCAS achieves FG-SSIM comparable }\DIFaddend to aggressive uniform scaling while \DIFdelbegin \DIFdel{achieving better signal fidelity and more stable texture preservation}\DIFdelend \DIFaddbegin \DIFadd{improving the peak signal-to-noise ratio (PSNR) by 0.96~dB; it also retains substantially more texture and receives higher preference in a blinded human study}\DIFaddend . These results suggest \DIFdelbegin \DIFdel{that, in adapter-augmented multi-view diffusion pipelines, adapter strength should be treated }\DIFdelend \DIFaddbegin \DIFadd{treating adapter strength }\DIFaddend as a stage-dependent inference control variable \DIFdelbegin \DIFdel{rather than }\DIFdelend \DIFaddbegin \DIFadd{within the tested MVPainter-style architecture family rather than as }\DIFaddend a fixed hyperparameter.
+\DIFdelbegin \DIFdel{TCAS requires no retraining, introduces negligible computational overhead, and can be used as a plug-and-play strategy for geometry-controlled multi-view texture generation tasks.
+}\DIFdelend \end{abstract}
 
 \begin{keyword}
 \KWD
@@ -141,7 +142,7 @@ In multi-view texture generation, however, stronger adapter scaling is not neces
 Therefore, adapter scaling in geometry-controlled multi-view diffusion deserves further analysis. Compared with prior work that mainly studies how to build texture generation pipelines, how to introduce geometric conditions, and how to improve overall generation quality, adapter strength is a fine-grained inference-time control problem. It directly affects the balance between shape consistency and texture detail, and is an easily overlooked factor in multi-view texture generation quality.
 
 This problem is related to, but not solved by, existing guidance scheduling strategies. CFG scheduling changes the extrapolation between conditional and unconditional predictions, while a geometry adapter injects residuals into intermediate representations. Generic ControlNet or adapter scale scheduling similarly treats condition strength mainly as a condition-adherence knob. In texture generation, however, the key question is not only how strongly to follow the geometry, but also when geometric residuals should dominate and when they should recede so that the base model can synthesize color, material, and high-frequency texture. Simple monotonic schedules such as linear or cosine decay do not explicitly address this non-monotonic requirement. \DIFaddbegin \DIFadd{Even the recent finding that classifier-free guidance is most useful only in a limited noise interval \cite{kynkanniemi2024limited} does not answer this question: it identifies where conditioning helps for CFG, but not which stages of a geometry-conditioned texture pipeline require strong geometric residuals, where the late-stage risk is texture suppression rather than diversity loss.
-}\DIFaddend 
+}\DIFaddend
 
 The goal of this paper is not to propose a new full texture generation system, but to analyze and improve inference-time adapter scaling within a fixed geometry-controlled multi-view diffusion pipeline.
 
@@ -155,18 +156,16 @@ The main contributions of this paper are as follows:
 
 (4) We further provide a large-scale texture preservation analysis on the 300-object \DIFdelbegin \DIFdel{validation set}\DIFdelend \DIFaddbegin \DIFadd{evaluation pool}\DIFaddend , showing that TCAS substantially reduces texture flattening compared with full high-scale scaling: C3 outperforms $s = 2.50$ on 87.7\%, 95.0\%, and 83.0\% of objects in Laplacian variance, RGB standard deviation, and gradient magnitude, respectively, while the 95\% confidence interval for the FG-SSIM difference crosses zero, indicating no significant difference in structural similarity.
 
-\DIFaddbegin \DIFadd{A preliminary version of this study was submitted to CAD/Graphics 2026 (Paper 75) \cite{cadgraphics2026p75}. This article extends that submission substantially: (i) the TCAS schedule is now grounded in an explicit two-stage epsilon-optimal selection rule (Proposition 1) with assumptions and proofs; (ii) the empirical protocol now separates a strictly disjoint 276-object holdout from the 24-object probe set, and C3 is evaluated unchanged on this holdout, with pooled 300-object statistics reported alongside; and (iii) the presentation, including the abstract, introduction, and conclusions, is substantially rewritten to state these extensions.
-}
-
-\DIFaddend \section{Related Work}
+\section{Related Work}
 \label{sec:related}
 
 \subsection{3D Texture Generation and Multi-view Diffusion}
 \label{subsec:3dtex}
 
-Single-image 3D generation is often decomposed into geometry generation and texture generation. In recent years, single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have made notable progress in structural stability, shape completeness, and cross-category generalization \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. Nevertheless, high-quality texture generation remains a key bottleneck for the realism and usability of 3D content. Existing texture generation methods usually rely on 2D diffusion models to synthesize RGB images from multiple views, and then project or bake these images onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. While this strategy inherits the strong generative capability of image diffusion models, it still suffers from reference appearance misalignment, geometry-texture inconsistency, and insufficient local texture detail.
+Single-image 3D generation is often decomposed into geometry generation and texture generation. In recent years, single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have made notable progress in structural stability, shape completeness, and cross-category generalization \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. Nevertheless, high-quality texture generation remains a key bottleneck for the realism and usability of 3D content\DIFaddbegin \DIFadd{, as reflected by recent surveys of neural 3D mesh texturing \cite{perla2026survey}}\DIFaddend . Existing texture generation methods usually rely on 2D diffusion models to synthesize RGB images from multiple views, and then project or bake these images onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. While this strategy inherits the strong generative capability of image diffusion models, it still suffers from reference appearance misalignment, geometry-texture inconsistency, and insufficient local texture detail. \DIFaddbegin \DIFadd{Beyond these diffusion pipelines, the graphics community continues to advance surface appearance synthesis more broadly, from exemplar-based texture synthesis \cite{guzman2026adaptive} to diffusion-based procedural material generation \cite{lv2025interpretable}.
+}\DIFaddend
 
-To address these issues, methods such as \DIFaddbegin \DIFadd{Paint3D, MVPaint, Hunyuan3D 2.0, and }\DIFaddend MVPainter formulate 3D texture generation as a geometry-controlled multi-view diffusion task\DIFdelbegin \DIFdel{\cite{shao2025mvpainter}}\DIFdelend \DIFaddbegin \DIFadd{, generating multi-view images under geometric control and baking them into UV textures \cite{zeng2024paint3d,cheng2024mvpaint,lai2025hunyuan3d,shao2025mvpainter}}\DIFaddend . MV-Adapter further shows that adapter-style multi-view control can enhance cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}. By injecting geometric information such as normals and depth maps into the diffusion model as conditional signals, the generated results better follow the 3D surface structure and remain consistent across views. Unlike prior methods that focus mainly on multi-view image generation or general 3D reconstruction, these works emphasize precise alignment between texture and geometry as well as local detail recovery, significantly improving 3D texture generation quality. However, they mainly answer how to introduce geometric conditions and how to construct a texture generation pipeline, while the influence of geometric control strength at inference time on shape and texture quality remains underexplored.
+To address these issues, methods such as \DIFaddbegin \DIFadd{Paint3D, MVPaint, Hunyuan3D 2.0, and }\DIFaddend MVPainter formulate 3D texture generation as a geometry-controlled multi-view diffusion task\DIFdelbegin \DIFdel{\cite{shao2025mvpainter}}\DIFdelend \DIFaddbegin \DIFadd{, generating multi-view images under geometric control and baking them into UV textures \cite{zeng2024paint3d,cheng2024mvpaint,lai2025hunyuan3d,shao2025mvpainter}}\DIFaddend . MV-Adapter further shows that adapter-style multi-view control can enhance cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}\DIFaddbegin \DIFadd{, and recent texturing systems strengthen consistency during texture synthesis itself, for example through synchronized multi-view diffusion \cite{liu2024synchronized} or consistent-and-seamless text-guided multi-view generation \cite{xu2026wondertex}}\DIFaddend . By injecting geometric information such as normals and depth maps into the diffusion model as conditional signals, the generated results better follow the 3D surface structure and remain consistent across views. Unlike prior methods that focus mainly on multi-view image generation or general 3D reconstruction, these works emphasize precise alignment between texture and geometry as well as local detail recovery, significantly improving 3D texture generation quality. However, they mainly answer how to introduce geometric conditions and how to construct a texture generation pipeline, while the influence of geometric control strength at inference time on shape and texture quality remains underexplored.
 
 \subsection{Adapter-augmented Diffusion Models and Geometric Control}
 \label{subsec:adapter}
@@ -294,18 +293,18 @@ Accordingly, the comparisons in this paper are comparisons among inference-time 
 
 Evaluation metrics are divided into three categories: shape and structure metrics (FG-SSIM, Edge-SSIM, and Crop-SSIM), signal and perceptual metrics (PSNR and LPIPS), and texture diagnostic metrics (Laplacian variance, RGB standard deviation, and gradient magnitude). All metrics are first computed over six target views and then averaged over views and objects. For texture-related conclusions, we report means, object-level win rates, and significance tests to avoid judging generation quality based on a single structural score.
 
-The FAC extension uses the same object list and evaluation protocol as the 300-object \DIFdelbegin \DIFdel{validation}\DIFdelend \DIFaddbegin \DIFadd{evaluation pool, and its lightweight modules are trained only on the adapter's training pool, which is disjoint from all evaluation objects}\DIFaddend . TCAS is used as the main baseline, while LTAG, LTAG+GSG, and Full FAC are evaluated as ablation variants \DIFdelbegin \DIFdel{. Full FAC adds GSG and FSC on top of the TCAS temporal schedule}\DIFdelend \DIFaddbegin \DIFadd{under the same paired protocol}\DIFaddend . The base model and original adapter remain frozen, and only lightweight adaptive correction parameters are learned\DIFdelbegin \DIFdel{to verify the extensibility of the TCAS idea toward learned spatial and frequency correction}\DIFdelend \DIFaddbegin \DIFadd{.
+The FAC extension uses the same object list and evaluation protocol as the 300-object \DIFdelbegin \DIFdel{validation}\DIFdelend \DIFaddbegin \DIFadd{evaluation pool, and its lightweight modules are trained only on the 1,706-object training pool for the strong-residual adapter instance, which is disjoint from all evaluation objects}\DIFaddend . TCAS is used as the main baseline, while LTAG, LTAG+GSG, and Full FAC are evaluated as ablation variants \DIFdelbegin \DIFdel{. Full FAC adds GSG and FSC on top of the TCAS temporal schedule}\DIFdelend \DIFaddbegin \DIFadd{under the same paired protocol}\DIFaddend . The base model and original adapter remain frozen, and only lightweight adaptive correction parameters are learned\DIFdelbegin \DIFdel{to verify the extensibility of the TCAS idea toward learned spatial and frequency correction}\DIFdelend \DIFaddbegin \DIFadd{.
 }
 
 \subsubsection{\DIFadd{Implementation and dataset details}}
 
-\DIFadd{All objects are drawn from the Objaverse 3D asset collection: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $512\times512$, white background), and six target views (front, front-right, right, back, left, front-left) are used throughout the paper. The adapter's training pool contains 1}{\DIFadd{,}}\DIFadd{118 rendered objects and the evaluation pools described above are drawn independently; we verified that the training and evaluation identifier sets intersect in zero objects, so no evaluation object is seen during adapter training. Within the 300-object evaluation pool, the 24-object probe set corresponds to the first 24 identifiers ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$) and the remaining 276 identifiers ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$) form a holdout that is strictly disjoint from the probe; Section~\ref{subsec:adapterdep} reports transfer statistics on this disjoint holdout for the strong-residual, per-layer-capped adapter instance, in addition to the full-pool tables. The 50-object scale-sweep set comprises the first 50 objects of the pool ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0049}$), and the 26-object audit set is a purposive subset of these 50 objects, selected to span the observed range of per-object $\Delta$FG-SSIM behavior for manual inspection; all evaluation sets are subsets of the 300-object pool, and no training object appears in any of them.
+\DIFadd{All objects are drawn from the Objaverse 3D asset collection: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $512\times512$, white background), and six target views (front, front-right, right, back, left, front-left) are used throughout the paper. The main adapter's training pool contains 1}{\DIFadd{,}}\DIFadd{118 rendered objects, while the strong-residual v2 instance used in Section~\ref{subsec:adapterdep} and the FAC experiments is trained on a separate 1}{\DIFadd{,}}\DIFadd{706-object pool from the same source. Both training pools are disjoint from the evaluation pool; we verified that each training/evaluation identifier intersection is zero. Within the 300-object evaluation pool, the 24-object probe set corresponds to the first 24 identifiers ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$) and the remaining 276 identifiers ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$) form a holdout that is strictly disjoint from the probe; Section~\ref{subsec:adapterdep} reports transfer statistics on this disjoint holdout for the strong-residual, per-layer-capped adapter instance, in addition to the full-pool tables. The 50-object scale-sweep set comprises the first 50 objects of the pool ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0049}$), and the 26-object audit set is a purposive subset of these 50 objects, selected to span the observed range of per-object $\Delta$FG-SSIM behavior for manual inspection; all evaluation sets are subsets of the 300-object pool, and no training object appears in any of them.
 }
 
-\DIFadd{The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a joint six-view latent UNet, used frozen together with its VAE. The pipeline is reference-image-conditioned; no text prompts are used. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), produces a multi-scale residual pyramid, and injects corrections into multiple UNet resolution levels; for the adapter studied in the main tables, the requested scale is applied multiplicatively at every injected layer. Inference uses the Euler discrete scheduler with 50 denoising steps and a fixed random seed (42) shared by all schedules within an experiment, so all variants share the same initial latents; the model generates six views per object.
+\DIFadd{The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a joint six-view latent UNet, loaded from the local \texttt{MVPainter\_Pipeline} snapshot under \texttt{checkpoints/hf\_repo} with diffusers 0.20.0, and used frozen together with its VAE. The pipeline is reference-image-conditioned; no text prompts are used. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), produces a multi-scale residual pyramid, and injects corrections into multiple UNet resolution levels; for the adapter studied in the main tables, the requested scale is applied multiplicatively at every injected layer. Inference uses the Euler discrete scheduler with 50 denoising steps and a fixed random seed (42) shared by all schedules within an experiment, so all variants share the same initial latents; the model generates six views per object.
 }
 
-\DIFadd{FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the texture diagnostics (foreground Laplacian variance, RGB standard deviation, gradient magnitude) are computed on foreground pixels and compared against the same ground-truth renderings under identical views and masks. The adapter checkpoint used for all tables is the GeoTex-Adapter trained on the 1,118-object training pool described above; the checkpoint and evaluation code will be made available upon reasonable request, and a consolidated reproducibility table (data subsets, checkpoint identifiers, scheduler, seed, and metric implementations) is provided in the supplementary material.
+\DIFadd{FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the texture diagnostics (foreground Laplacian variance, RGB standard deviation, gradient magnitude) are computed on foreground pixels and compared against the same ground-truth renderings under identical views and masks. The main tables use GeoTex-Adapter \texttt{geotex\_refattn\_v1/geotex\_step\_0002000.pt} trained on the 1}{\DIFadd{,}}\DIFadd{118-object pool; the strong-residual analyses use \texttt{mvpoutput/geotex\_v2/checkpoints/geotex\_v2\_ema\_final.pt} (MD5 \texttt{a74cc1d16cb473a95022bdcbc58e1b22}) trained on the 1}{\DIFadd{,}}\DIFadd{706-object pool. The checkpoint files and evaluation code will be made available upon reasonable request, and a consolidated reproducibility table (data subsets, checkpoint identifiers, scheduler, seed, and metric implementations) is provided in the supplementary material.
 }
 
 \paragraph{\DIFadd{Statistical reporting}}
@@ -403,7 +402,7 @@ To determine whether the FG-SSIM gain at high scales reflects better visual qual
 \DIFdelbeginFL %DIFDELCMD < \end{figure*}
 %DIFDELCMD < %%%
 \DIFdelend \DIFaddbegin \end{figure}
-\DIFaddend 
+\DIFaddend
 
 The results show that 24 out of 26 objects (92\%) exhibit a pattern of ``texture loss without true shape gain.'' Only two objects show comparable texture quality, and no object shows a clear texture improvement from the high scale. Here, ``true shape gain'' is not equivalent to an increase in FG-SSIM. It refers to whether the high scale brings substantive improvement in effective foreground area, contour structure, or geometric detail compared with the conservative scale. If the metric improvement mainly comes from smoothed foreground boundaries or averaged contour errors without visible geometric improvement, it is categorized as having no true shape gain. Therefore, although a high adapter scale can improve structural metrics, such improvement does not necessarily indicate better visual shape or texture quality. Figure~\ref{fig:audit} further quantifies this texture loss.
 
@@ -495,7 +494,7 @@ Figure~\ref{fig:pareto} further shows the distribution of the 17 variants in the
 
 Mechanistically, the advantage of C3 is not simply the result of hyperparameter tuning; it comes from the functional alignment between adapter correction and the diffusion process's stage-dependent objective. A natural hypothesis might be that correction should be strongest where the correction-to-noise ratio is highest. However, under the Euler sigma schedule, this ratio increases monotonically throughout denoising (from approximately 8 at full noise to over 400 near completion), which would predict that late-stage correction is most effective---a prediction inconsistent with the scheduling-variant results. The correct explanation involves \emph{functional alignment} rather than signal-to-noise ratio. The adapter correction is derived from geometric conditions (normals, depth, contours) and is therefore constructive only when the diffusion process is actively refining geometric structure. In the early stage ($\sigma > 5$), global structure has not yet emerged, so the correction has no stable target to reinforce and instead disrupts layout formation. In the middle stage ($\sigma \approx 5$--$1.2$), coarse structure is established and the denoiser is performing geometric refinement---the adapter correction direction aligns with this objective, making it maximally constructive. In the late stage ($\sigma < 1.2$), generation shifts to color, material, and fine texture synthesis; geometric correction is orthogonal to this objective and competes with the texture formation process. C3's low-high-low schedule therefore allocates strong correction proportional to functional alignment, not to signal clarity. \DIFaddbegin \DIFadd{Notably, this allocation is the reverse of limited-interval CFG guidance \cite{kynkanniemi2024limited}: under adapter residual injection, geometric correction must also be withdrawn near the end of sampling, because the late-stage risk is competition with texture synthesis rather than diversity loss. }\DIFaddend The schedule is tied to the denoising process's functional role at each stage rather than to validation-set-specific tuning or a generic monotonic guidance rule.
 
-This explanation is consistent with the scheduling-variant results. Early high-scale or early-and-late high-scale variants provide limited structural gain, indicating that early strong intervention is unstable. The late-stage high-scale configuration C4 obtains a high structural score but shows a significant decrease in Laplacian variance, making it a typical Trap variant where structural metrics improve while texture is flattened. Uniform high-scale variants similarly improve condition adherence but lose texture detail, showing that the issue is not solved by a stronger ControlNet-like scale. An aggressive C3 variant further increases the middle-stage strength but reduces signal fidelity, suggesting that even middle-stage correction has diminishing returns and can lead to over-constraint.
+This explanation is consistent with the scheduling-variant results. Early high-scale or early-and-late high-scale variants provide limited structural gain, indicating that early strong intervention is unstable. The late-stage high-scale configuration C4 obtains a high structural score but shows a \DIFdelbegin \DIFdel{significant }\DIFdelend \DIFaddbegin \DIFadd{substantial }\DIFaddend decrease in Laplacian variance, making it a typical Trap variant where structural metrics improve while texture is flattened. Uniform high-scale variants similarly improve condition adherence but lose texture detail, showing that the issue is not solved by a stronger ControlNet-like scale. An aggressive C3 variant further increases the middle-stage strength but reduces signal fidelity, suggesting that even middle-stage correction has diminishing returns and can lead to over-constraint.
 
 \FloatBarrier
 
@@ -539,7 +538,7 @@ This explanation is consistent with the scheduling-variant results. Early high-s
 \label{subsec:largescale}
 
 Finally, as a transfer test rather than another search, we compare conservative uniform scaling ($s = 1.25$), aggressive uniform scaling ($s = 2.50$), and selected C3 (TCAS) on 300 objects. C3 is not \DIFdelbegin \DIFdel{re-searched }\DIFdelend \DIFaddbegin \DIFadd{searched again }\DIFaddend on the 300-object set; it directly uses the timestep schedule selected on the 24-object probe set to evaluate the transferability of the strategy to a larger object set. \DIFaddbegin \DIFadd{Because the 24-object probe is a subset of the 300-object pool, the main-table comparison is not probe-disjoint; a disjoint holdout re-verification is provided in Section~\ref{subsec:adapterdep}.
-}\DIFaddend 
+}\DIFaddend
 
 \begin{table}[t]
 \centering
@@ -629,13 +628,13 @@ Object-level statistics further show that C3 outperforms $s = 2.50$ on 87.7\%, 9
 
 In summary, the 300-object experiments demonstrate that adapter scaling affects both structural alignment and texture detail preservation. Full high-scale scaling strengthens edge constraints but is more likely to cause texture flattening. TCAS strengthens geometric correction in the middle stage and reduces adapter intervention in the late stage, thereby maintaining structural alignment while substantially reducing texture loss. It should be noted that C3 still has some texture decrease relative to $s = 1.25$; therefore, we do not claim that TCAS completely eliminates texture loss, but rather that it significantly reduces texture degradation compared with full high-scale scaling.
 
-\DIFaddbegin \paragraph{\DIFadd{Perceptual validation with CLIP-IQA}}
+\DIFaddbegin \paragraph{\DIFadd{Perceptual evaluation with CLIP-IQA}}
 \DIFadd{To address the concern that proxy texture statistics do not directly measure perceptual quality, we additionally evaluate CLIP-IQA \cite{wang2023clipiqa}, which builds on CLIP image--text representations \cite{radford2021clip}, on a 50-object subset of the evaluation pool as a complementary no-reference perceptual signal. CLIP-IQA is used as complementary perceptual evidence rather than a complete replacement for human preference evaluation.
 }
 
 \begin{table}[t]
 \centering
-\caption{\DIFaddFL{CLIP-IQA perceptual validation on 50 objects from the evaluation pool. Scores are reported for foreground regions and full rendered views; $\pm$ denotes the standard deviation across the 50 objects. Higher is better.}}
+\caption{\DIFaddFL{CLIP-IQA perceptual evaluation on 50 objects from the evaluation pool. Scores are reported for foreground regions and full rendered views; $\pm$ denotes the standard deviation across the 50 objects. Higher is better.}}
 \label{tab:clipiqa}
 \footnotesize\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lccc}
@@ -705,14 +704,14 @@ TCAS uses a fixed three-stage scale, which has the advantages of requiring no tr
 %DIFDELCMD < \end{tabular}%
 %DIFDELCMD < }
 %DIFDELCMD < \end{table}
-%DIFDELCMD < 
+%DIFDELCMD <
 
 %DIFDELCMD < %%%
 \DIFdel{Table~7 reports the controlled ablation results. The TCAS baseline already achieves strong performance. LTAG only performs worse than TCAS on all metrics, suggesting that learned temporal gating alone cannot stably replace the fixed three-stage schedule. LTAG+GSG improves SSIM to 0.8794, but its PSNR, }\DIFdelend \DIFaddbegin \DIFadd{In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning the most favorable training conditions we could construct: joint training of all controllers; a two-stage scheme with the temporal gate warm-started at the exact C3 envelope and frozen while the spatial and frequency controllers train; an envelope penalty that constrains the gate to remain near C3 during joint training; a fidelity-weighted objective; and a gently scheduled variant with fourfold-reduced training. Their paired deficits relative to the TCAS baseline range from $-1.1$ to $-2.9$~dB foreground PSNR (}\DIFaddend FG-PSNR\DIFdelbegin \DIFdel{, and FG-SSIM remain lower than TCAS , showing that spatial gating alone is insufficient to improve foreground quality. Full FAC, which adds spatial gating and frequency-selective correction on top of TCAS, achieves the strongest overall performance among these ablations: PSNR increases from 18.86 to 19.28, SSIM remains comparable at 0.8793, }\DIFdelend \DIFaddbegin \DIFadd{; win rates at most 16\%), increasing monotonically with the amount of controller training. A warm-start control in which the gate is left untrained at the exact C3 envelope is statistically indistinguishable from TCAS (paired }\DIFaddend FG-PSNR \DIFdelbegin \DIFdel{increases from 11.66 to 11.77, and FG-SSIM increases from 0.4755 to 0.4830}\DIFdelend \DIFaddbegin \DIFadd{$\Delta=-0.18$~dB on the 12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero), validating the evaluation path. No configuration or hyperparameter was selected on any evaluation object; the complete dose--response study over all seven configurations is provided in the supplementary material}\DIFaddend .
 
 \DIFdelbegin \DIFdel{Object-level statistics further show that Full FAC outperforms TCAS on 81.3\% and 72.0\% of objects in PSNR and FG-SSIM, respectively, and paired significance tests for both metrics are significant ($p < 0.0001$). This indicates that the gains of FAC are stable across most objects rather than being driven by a small number of samples.
-}\DIFdelend \DIFaddbegin \DIFadd{For transparency, we note that an earlier version of this extension, evaluated on the main adapter under our initial protocol before the strictly paired and strictly disjoint training controls were adopted, had suggested a positive FAC gain. That preliminary comparison differed in both evaluation protocol and adapter instance, and it does not meet the controls we now consider necessary for a transfer claim; under the strictly paired, strictly disjoint protocol above, no trained configuration replicates the gain. We therefore report only the controlled re-examination and treat the earlier comparison as superseded.
-}\DIFaddend 
+}\DIFdelend \DIFaddbegin \DIFadd{For transparency, we note that an initial evaluation of the FAC extension, conducted on the main adapter under our earlier protocol before the strictly paired and strictly disjoint training controls were adopted, had suggested a positive gain. That initial comparison differed in both evaluation protocol and adapter instance, and it does not meet the controls we now consider necessary for a transfer claim; under the strictly paired, strictly disjoint protocol above, no trained configuration replicates the gain. We therefore report only the controlled re-examination and treat the initial comparison as superseded.
+}\DIFaddend
 
 \DIFdelbegin \DIFdel{Therefore, FAC does not change the main conclusion of this paper.TCAS remains the main method because it }\DIFdelend \DIFaddbegin \DIFadd{The outcome delimits the scenario in which learned modulation affects the paper's conclusions. Preserving the temporal envelope is necessary but not sufficient: with the envelope preserved and the controllers untrained, the extension neither helps nor harms, while every trained configuration degraded fidelity, indicating that the remaining damage is driven by the learned-modulation training signal itself, which trades foreground fidelity for denoising-objective loss. Learning a modulation that improves upon the C3 schedule therefore requires a training signal that does not trade away foreground fidelity (e.g., fidelity-weighted objectives, envelope-preserving constraints, or post-hoc rather than gradient-learned gates), which we identify as future work. With the tested lightweight controllers, the fixed schedule is the stronger default, and TCAS, which }\DIFaddend is training-free and plug-and-play\DIFdelbegin \DIFdel{. FAC serves as an extension experiment, showing that stage-wise adapter control can be further generalized to lightweight learned spatial and frequency adaptive correction}\DIFdelend \DIFaddbegin \DIFadd{, remains the main and sole method of this paper}\DIFaddend .
 
@@ -729,13 +728,12 @@ A residual-magnitude sweep further shows that the intervention \emph{strength} i
 
 Moreover, a \DIFaddbegin \DIFadd{six-object }\DIFaddend stage ablation shows that even \emph{which denoising stage is most sensitive to high scale} is adapter-dependent: on the artifact-prone adapter, early-stage high scale reproduced nearly all of the damage (FG-SSIM $\downarrow$ from 0.266 to 0.187) while late-stage high scale was nearly harmless (FG-SSIM 0.261), whereas on the paper's main adapter the late stage was the primary source of texture loss.
 
-Despite this variability, in every regime where scaling had a non-negligible effect, the temporal low-high-low schedule C3 yielded the best shape-texture balance. This indicates that TCAS's value is structural rather than incidental: by relying on the diffusion process's stage-dependent roles (global layout $\to$ geometry refinement $\to$ texture synthesis), it mitigates the harm of high-scale intervention regardless of the adapter's specific failure mode. The failure mode (flatten vs.\ artifact vs.\ no-op), its strength, and its temporal location are all adapter-dependent; \DIFdelbegin \DIFdel{but }\DIFdelend \DIFaddbegin \DIFadd{what remains stable in our experiments is that across the tested regimes }\DIFaddend the middle denoising stage \DIFdelbegin \DIFdel{being }\DIFdelend \DIFaddbegin \DIFadd{consistently emerged as }\DIFaddend the optimal window for geometric correction\DIFdelbegin \DIFdel{appears to be a property of the diffusion process itself. }\DIFdelend \DIFaddbegin \DIFadd{, although whether this holds across adapter families remains an open question for future work.
+Despite this variability, in every regime where scaling had a non-negligible effect, the temporal low-high-low schedule C3 yielded the best shape-texture balance. This indicates that TCAS's value is structural rather than incidental: by relying on the diffusion process's stage-dependent roles (global layout $\to$ geometry refinement $\to$ texture synthesis), it mitigates the harm of high-scale intervention \DIFdelbegin \DIFdel{regardless of the adapter's specific failure mode}\DIFdelend \DIFaddbegin \DIFadd{across the tested adapter regimes, despite their adapter-specific failure modes}\DIFaddend . The failure mode (flatten vs.\ artifact vs.\ no-op), its strength, and its temporal location are all adapter-dependent; \DIFdelbegin \DIFdel{but }\DIFdelend \DIFaddbegin \DIFadd{what remains stable in our experiments is that }\DIFaddend the middle denoising stage \DIFdelbegin \DIFdel{being the optimal }\DIFdelend \DIFaddbegin \DIFadd{was the best-performing tested }\DIFaddend window for geometric correction\DIFdelbegin \DIFdel{appears to be a property of the diffusion process itself}\DIFdelend \DIFaddbegin \DIFadd{, although whether this holds across adapter families remains an open question for future work.
 }
 
-\DIFadd{Two further robustness checks were performed on the strong-residual, per-layer-capped adapter instance described above. First, a boundary/peak sensitivity sweep (three high-scale windows $[0.25,0.75)$, $[1/3,2/3)$, $[0.4,0.6)$ $\times$ five peak scales from 2.00 to 3.00, fifteen candidates on the 24-object probe protocol) shows that the canonical middle-third window lies in the stable high-performance region: its 2.50 setting achieves 16.71~dB whole-image PSNR, the best setting in the same window (2.75) achieves 16.79~dB with worse texture diagnostics and lower FG-SSIM, and the broader and narrower windows reach at most 16.73 and 16.62~dB. C3 is therefore a robust middle-stage choice rather than a boundary-sensitive point estimate. Second, because the 24-object probe is part of the 300-object pool, transfer claims were re-verified on the disjoint 276-object holdout ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$), summarized in Table~\ref{tab:holdoutsched}: C3 improves PSNR over the strongest non-C3 probe candidates by $+0.258$~dB (95\% CI $[0.207,0.308]$, 206/276 wins) over a trapezoid schedule and $+0.324$~dB ($[0.281,0.367]$, 232/276 wins) over a Gaussian-peak schedule, and over the reviewer-relevant generic schedules by $+0.323$~dB ($[0.263,0.386]$, 214/276 wins, FG-SSIM statistically tied) over linear warm-up and $+0.902$~dB ($[0.824,0.981]$, 253/276 wins, FG-SSIM $+0.046$) over the cosine bump. The holdout ordering matches the probe: warm-up approaches C3 in structure but loses in signal fidelity, and the smooth bump loses in both because its effective high-scale duration is shorter than the full middle third.
-}
+\DIFadd{Two further robustness checks were performed on the strong-residual, per-layer-capped adapter instance described above. First, a boundary/peak sensitivity sweep (three high-scale windows $[0.25,0.75)$, $[1/3,2/3)$, $[0.4,0.6)$ $\times$ five peak scales from 2.00 to 3.00, fifteen candidates on the 24-object probe protocol) shows that the canonical middle-third window lies in the stable high-performance region: its 2.50 setting achieves 16.71~dB whole-image PSNR, the best setting in the same window (2.75) achieves 16.79~dB with worse texture diagnostics and lower FG-SSIM, and the broader and narrower windows reach at most 16.73 and 16.62~dB. C3 is therefore a robust middle-stage choice rather than a boundary-sensitive point estimate. Second, because the 24-object probe is part of the 300-object pool, transfer claims were re-verified on the disjoint 276-object holdout ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$), summarized in Table~\ref{tab:holdoutsched}: C3 improves PSNR over the strongest non-C3 probe candidates by $+0.258$~dB (95\% CI $[0.207,0.308]$, 206/276 wins) over a trapezoid schedule and $+0.324$~dB ($[0.281,0.367]$, 232/276 wins) over a Gaussian-peak schedule, and over the reviewer-relevant generic schedules by $+0.323$~dB ($[0.263,0.386]$, 214/276 wins, FG-SSIM statistically tied) over linear warm-up and $+0.902$~dB ($[0.824,0.981]$, 253/276 wins, FG-SSIM $+0.046$) over the cosine bump. The holdout ordering matches the probe: warm-up approaches C3 in structure but loses in signal fidelity, and the smooth bump loses in both because its effective high-scale duration is shorter than the full middle third}\DIFaddend .
 
-\begin{table}[t]
+\DIFaddbegin \begin{table}[t]
 \centering
 \caption{\DIFaddFL{Scheduling transfer on the disjoint 276-object holdout ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$; strong-residual, per-layer-capped adapter instance of Section~\ref{subsec:adapterdep}). $\Delta$PSNR (dB) is the paired C3-minus-competitor difference (positive favors C3); 95\% CIs use object-level percentile bootstrap with 10}{\DIFaddFL{,}}\DIFaddFL{000 resamples. Absolute metrics are means over holdout objects and views.}}
 \label{tab:holdoutsched}
@@ -752,10 +750,9 @@ Despite this variability, in every regime where scaling had a non-negligible eff
 \bottomrule
 \end{tabular}
 \end{table}
-\DIFaddend 
 
 
-\section{Limitations}
+\DIFaddend \section{Limitations}
 \label{sec:limitations}
 
 This paper mainly focuses on inference-time adapter scaling and does not retrain the base multi-view diffusion model or the adapter. Therefore, TCAS can alleviate texture degradation under high scales---which may manifest as flattening or artifact amplification depending on the adapter's residual properties---but it cannot fundamentally solve the limitations of the base model in invisible-region completion, complex material synthesis, and cross-view detail consistency.
@@ -772,17 +769,18 @@ Finally, \DIFdelbegin \DIFdel{although the FAC extension demonstrates the potent
 
 This paper presents a systematic experimental analysis of adapter scaling in multi-view diffusion texture generation. The experiments show that higher adapter scales continuously improve structural metrics such as FG-SSIM, but such improvement can mask texture quality degradation. In the 26-object texture audit, 92\% of objects show texture flattening and high-frequency detail loss under $s = 2.50$. This reveals an adapter-specific temporal conflict that is not captured by simply treating the scale as a generic guidance strength.
 
-To address this shape-texture trade-off, we propose Timestep-Conditioned Adapter Scaling (TCAS). The selected configuration, C3, applies strong adapter correction in the middle denoising stage and uses conservative scales in the early and late stages. The 24-object probe set is used only to select C3 from 17 scaling variants that include uniform, layer-wise, and temporal alternatives. With this schedule fixed, the 300-object \DIFdelbegin \DIFdel{validation }\DIFdelend \DIFaddbegin \DIFadd{evaluation pool }\DIFaddend further shows that C3 achieves FG-SSIM comparable to aggressive uniform scaling $s = 2.50$ while improving PSNR by 0.96 dB.
+To address this shape-texture trade-off, we propose Timestep-Conditioned Adapter Scaling (TCAS). The selected configuration, C3, applies strong adapter correction in the middle denoising stage and uses conservative scales in the early and late stages. The 24-object probe set is used only to select C3 from 17 scaling variants that include uniform, layer-wise, and temporal alternatives. With this schedule fixed, the 300-object \DIFdelbegin \DIFdel{validation }\DIFdelend \DIFaddbegin \DIFadd{evaluation pool }\DIFaddend further shows that C3 achieves FG-SSIM comparable to aggressive uniform scaling $s = 2.50$ while improving PSNR by 0.96\DIFaddbegin \DIFadd{~}\DIFaddend dB.
 
 Therefore, the core contribution of this paper is not to claim that the generated results are visually close to the ground truth in all cases, nor to present TCAS as a universal replacement for all guidance schedules. Instead, the contribution is to reveal and validate a hidden shape-texture trade-off caused by geometry-adapter residual injection, and to show that a simple non-monotonic inference schedule can mitigate this trade-off better than fixed high-scale control and other tested scheduling variants. This conclusion suggests that, in \DIFaddbegin \DIFadd{the }\DIFaddend geometry-controlled multi-view \DIFdelbegin \DIFdel{diffusion models, adapter strength should be }\DIFdelend \DIFaddbegin \DIFadd{pipeline studied here---and plausibly in similar geometry-conditioned texture pipelines---adapter strength is better }\DIFaddend treated as a stage-dependent inference control variable \DIFdelbegin \DIFdel{rather than }\DIFdelend \DIFaddbegin \DIFadd{than as }\DIFaddend a single fixed hyperparameter.
 
-\DIFdelbegin \DIFdel{The FAC extension further demonstrates that }\DIFdelend \DIFaddbegin \DIFadd{As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and }\DIFaddend the \DIFdelbegin \DIFdel{stage-wise adapter control idea can not only be used as a fixed inference schedule, but can also be generalized to lightweight learned spatial and frequency adaptive correction, providing a direction for future content-adaptive texture generation}\DIFdelend \DIFaddbegin \DIFadd{training-free TCAS remains the main and sole method. Relative to the preliminary conference version \cite{cadgraphics2026p75}, this article adds the two-stage epsilon-optimal selection rule behind TCAS and the strictly disjoint 276-object holdout evaluation, and the presentation has been rewritten accordingly}\DIFaddend .
+\DIFdelbegin \DIFdel{The FAC extension further demonstrates that }\DIFdelend \DIFaddbegin \DIFadd{As an additional check, a controlled re-examination of the learned-correction extension (FAC) under a strictly paired protocol showed that unconstrained lightweight gating does not preserve the schedule's shape; the analysis delimits the scenario in which learned modulation helps---only under envelope-preserving constraints---and }\DIFaddend the \DIFdelbegin \DIFdel{stage-wise adapter control idea can not only be used as a fixed inference schedule, but can also be generalized to lightweight learned spatial and frequency adaptive correction, providing a direction for future content-adaptive texture generation}\DIFdelend \DIFaddbegin \DIFadd{training-free TCAS remains the main and sole method}\DIFaddend .
 
 \DIFdelbegin %DIFDELCMD < \begin{thebibliography}{35}
 %DIFDELCMD < %%%
 \DIFdelend \DIFaddbegin \section*{\DIFadd{Data availability}}
+\DIFaddend
 
-\DIFadd{All data included in this study are available upon request by contact with the corresponding author.
+\DIFaddbegin \DIFadd{All data included in this study are available upon request by contact with the corresponding author.
 }
 
 \section*{\DIFadd{Declaration of competing interests}}
@@ -791,21 +789,22 @@ Therefore, the core contribution of this paper is not to claim that the generate
 }
 
 
-\begin{thebibliography}{41}
-\DIFaddend 
-
-
-\bibitem{liu2023zero1to3}
+\begin{thebibliography}{45}
+\DIFaddend \bibitem{liu2023zero1to3}
 Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
 
 \bibitem{shi2023zero123pp}
 Shi R, Chen H, Zhang Z, et al. Zero123++: A single image to consistent multi-view diffusion base model. arXiv:2310.15110, 2023.
 
 \bibitem{liu2023syncdreamer}
-Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. arXiv:2309.03453, 2023.
+Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. \DIFdelbegin \DIFdel{arXiv:2309.03453, 2023.
+}\DIFdelend \DIFaddbegin \DIFadd{\textit{International Conference on Learning Representations}, 2024.
+}\DIFaddend
 
 \bibitem{long2023wonder3d}
-Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. arXiv:2310.15008, 2023.
+Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. \DIFdelbegin \DIFdel{arXiv:2310.15008, 2023.
+}\DIFdelend \DIFaddbegin \DIFadd{\textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+}\DIFaddend
 
 \bibitem{shi2024mvdream}
 Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for 3D generation. \textit{International Conference on Learning Representations}, 2024.
@@ -817,24 +816,23 @@ Wang P, et al. ImageDream: Image-prompt multi-view diffusion for 3D generation. 
 Xu J, et al. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. \textit{Advances in Neural Information Processing Systems}, 2024.
 
 \bibitem{ke2024era3d}
-Ke Q, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. arXiv:2405.11616, 2024.
+\DIFdelbegin \DIFdel{Ke Q}\DIFdelend \DIFaddbegin \DIFadd{Li P, Liu Y, Long X}\DIFaddend , et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. \DIFdelbegin \DIFdel{arXiv:2405.11616, 2024.
+}%DIFDELCMD <
 
-\DIFdelbegin %DIFDELCMD < \bibitem{shao2025mvpainter}
+%DIFDELCMD < \bibitem{shao2025mvpainter}
 %DIFDELCMD < %%%
 \DIFdel{Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
-}%DIFDELCMD < 
+}%DIFDELCMD <
 
 %DIFDELCMD < \bibitem{huang2024mvadapter}
 %DIFDELCMD < %%%
-\DIFdel{Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. arXiv:2412.03632, 2024.
-}%DIFDELCMD < 
+\DIFdel{Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. arXiv:2412.03632}\DIFdelend \DIFaddbegin \DIFadd{\textit{Advances in Neural Information Processing Systems}}\DIFaddend , 2024.
 
-%DIFDELCMD < %%%
-\DIFdelend \bibitem{chen2023text2tex}
-Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. arXiv preprint, 2023.
+\bibitem{chen2023text2tex}
+Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. \DIFdelbegin \DIFdel{arXiv preprint}\DIFdelend \DIFaddbegin \DIFadd{\textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}}\DIFaddend , 2023.
 
 \bibitem{richardson2023texture}
-Richardson E, et al. TEXTure: Semantic texture transfer using diffusion models. arXiv preprint, 2023.
+Richardson E, \DIFaddbegin \DIFadd{Metzer G, Alaluf Y, }\DIFaddend et al. TEXTure: \DIFdelbegin \DIFdel{Semantic texture transfer using diffusion models. arXiv preprint}\DIFdelend \DIFaddbegin \DIFadd{Text-guided texturing of 3D shapes. \textit{ACM SIGGRAPH 2023 Conference Proceedings}}\DIFaddend , 2023.
 
 \bibitem{poole2023dreamfusion}
 Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-to-3D using 2D diffusion. \textit{International Conference on Learning Representations}, 2023.
@@ -844,6 +842,22 @@ Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance
 
 \DIFaddbegin \bibitem{shao2025mvpainter}
 \DIFadd{Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
+}
+
+\bibitem{kynkanniemi2024limited}
+\DIFadd{Kynk\"a\"anniemi T, Aittala M, Karras T, et al. Applying guidance in a limited interval improves sample and distribution quality in diffusion models. \textit{Advances in Neural Information Processing Systems}, 2024.
+}
+
+\bibitem{perla2026survey}
+\DIFadd{Perla S R K, Zhang H, Mahdavi-Amiri A. Advances in neural 3D mesh texturing: A survey. \textit{Computer Graphics Forum}, 2026, e70392.
+}
+
+\bibitem{guzman2026adaptive}
+\DIFadd{Guzm\'an J E, Mould D, Paquette E. Adaptive multiresolution exemplar-based texture synthesis on animated fluids. \textit{Computers \& Graphics}, 2026, 134: 104490.
+}
+
+\bibitem{lv2025interpretable}
+\DIFadd{Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
 }
 
 \bibitem{zeng2024paint3d}
@@ -859,11 +873,19 @@ Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance
 }
 
 \bibitem{huang2024mvadapter}
-\DIFadd{Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. arXiv:2412.03632, 2024.
+\DIFadd{Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
+}
+
+\bibitem{liu2024synchronized}
+\DIFadd{Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
+}
+
+\bibitem{xu2026wondertex}
+\DIFadd{Xu Q, Han X G, Zhang L. WonderTex: Consistent-and-seamless texture generation with text-guided multi-view image diffusion models. \textit{IEEE Transactions on Visualization and Computer Graphics}, 2026, 32(7): 5815--5825.
 }
 
 \bibitem{mou2023t2iadapter}
-\DIFadd{Mou C, Wang X, Xie L, et al. T2I-Adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. arXiv:2302.08453, 2023.
+\DIFadd{Mou C, Wang X, Xie L, et al. T2I-Adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2024.
 }
 
 \DIFaddend \bibitem{zhang2023controlnet}
@@ -876,7 +898,7 @@ Ye H, Zhang J, Liu S, Han X, Yang W. IP-Adapter: Text compatible image prompt ad
 Hu E J, Shen Y, Wallis P, et al. LoRA: Low-rank adaptation of large language models. \textit{International Conference on Learning Representations}, 2022.
 
 \bibitem{liu2024dora}
-Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. arXiv:2402.09353, 2024.
+Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. \DIFdelbegin \DIFdel{arXiv:2402.09353}\DIFdelend \DIFaddbegin \DIFadd{\textit{International Conference on Machine Learning}}\DIFaddend , 2024.
 
 \bibitem{zhang2023adalora}
 Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
@@ -888,31 +910,33 @@ Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advanc
 Song J, Meng C, Ermon S. Denoising diffusion implicit models. \textit{International Conference on Learning Representations}, 2021.
 
 \bibitem{ho2022cfg}
-Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop}, 2022.
+Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop \DIFaddbegin \DIFadd{on Deep Generative Models and Downstream Applications}\DIFaddend }, \DIFdelbegin \DIFdel{2022.
+}\DIFdelend \DIFaddbegin \DIFadd{2021. arXiv:2207.12598.
+}\DIFaddend
 
 \bibitem{castillo2023adaptive}
-Castillo A, Legenstein R, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. arXiv:2312.12487, 2023.
+Castillo A, \DIFdelbegin \DIFdel{Legenstein R}\DIFdelend \DIFaddbegin \DIFadd{Kohler J, P\'erez J C}\DIFaddend , et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \DIFdelbegin \DIFdel{arXiv:2312.12487, 2023.}
+\DIFdelend \DIFaddbegin \DIFadd{\textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.}\DIFaddend
 
-\DIFdelbegin %DIFDELCMD < \bibitem{wang2004ssim}
+%DIFDELCMD < \bibitem{wang2004ssim}
 %DIFDELCMD < %%%
 \DIFdel{Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{IEEE Transactions on Image Processing}, 2004, 13(4): 600--612.
-}%DIFDELCMD < 
+}\DIFdelend
 
 %DIFDELCMD < \bibitem{zhang2018lpips}
 %DIFDELCMD < %%%
 \DIFdel{Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2018.
-}%DIFDELCMD < 
+}%DIFDELCMD <
 
 %DIFDELCMD < \bibitem{radford2021clip}
 %DIFDELCMD < %%%
 \DIFdel{Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
-}%DIFDELCMD < 
+}%DIFDELCMD <
 
 %DIFDELCMD < \bibitem{oquab2024dinov2}
 %DIFDELCMD < %%%
-\DIFdel{Oquab M, Darcet T, Moutakanni }\DIFdelend \DIFaddbegin \bibitem{kynkanniemi2024limited}
-\DIFadd{Kynk\"a\"anniemi T, Aittala M, Karras }\DIFaddend T, et al. \DIFdelbegin \DIFdel{DINOv2: Learning robust visual features without supervision. }\DIFdelend \DIFaddbegin \DIFadd{Applying guidance in a limited interval improves sample and distribution quality in diffusion models. }\DIFaddend \textit{\DIFdelbegin \DIFdel{Transactions on Machine Learning Research}\DIFdelend \DIFaddbegin \DIFadd{Advances in Neural Information Processing Systems}\DIFaddend }, 2024.
-
+\DIFdel{Oquab M, Darcet T, Moutakanni T, et al. DINOv2: Learning robust visual features without supervision. \textit{Transactions on Machine Learning Research}, 2024.
+}\DIFdelend
 \bibitem{rombach2022ldm}
 Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthesis with latent diffusion models. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2022.
 
@@ -920,7 +944,7 @@ Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthe
 Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow transformers for high-resolution image synthesis. \textit{International Conference on Machine Learning}, 2024.
 
 \bibitem{blackforestlabs2024flux}
-Black Forest Labs. FLUX: Flow matching for image generation. 2024.
+Black Forest Labs. FLUX: Flow matching for image generation. \DIFaddbegin \DIFadd{https://github.com/black-forest-labs/flux, }\DIFaddend 2024.
 
 \bibitem{loshchilov2019decoupled}
 Loshchilov I, Hutter F. Decoupled weight decay regularization. \textit{International Conference on Learning Representations}, 2019.
@@ -936,7 +960,7 @@ Saharia C, Chan W, Saxena S, et al. Photorealistic text-to-image diffusion model
 
 \bibitem{peebles2023scalable}
 Peebles W, Xie S. Scalable diffusion models with transformers. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
-\DIFaddbegin 
+\DIFaddbegin
 
 \bibitem{wang2004ssim}
 \DIFadd{Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{IEEE Transactions on Image Processing}, 2004, 13(4): 600--612.
@@ -952,11 +976,7 @@ Peebles W, Xie S. Scalable diffusion models with transformers. \textit{Proceedin
 
 \bibitem{radford2021clip}
 \DIFadd{Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
-}
-
-\bibitem{cadgraphics2026p75}
-\DIFadd{Anonymous. Adapter scaling trade-off and timestep-conditioned scheduling in multi-view diffusion texture generation. Submission \#75 of CAD/Graphics 2026, 2026.
-}\DIFaddend 
+}\DIFaddend
 
 \end{thebibliography}
 \end{document}
