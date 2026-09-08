@@ -13,7 +13,7 @@ EM 稿件编号：**CAG-S-26-01522**（见根目录 CAG-S-26-01522(1).pdf，EM �
 | Manuscript 0907.pdf | 15 页，6 关键词 | ff54eead |
 | response to comments of reviewers 0907.pdf/.docx | 8 页终版信 | 1b297896 |
 | Manuscript with response letter 0907.pdf | 23 页 = 信 8 + 稿 15 | 802afb3f |
-| Marked-up manuscript 0907.pdf | 16 页，0 ?? | 79ef835a |
+| Marked-up manuscript 0907.pdf | 15 页，仅蓝色标新增、删除内容不显示，0 ?? | b8af03c3 |
 | latex.zip | 12 文件平铺 | 5ae4b9ec |
 | Supplementary material 0907.pdf | 2 页 | 7c666d71 |
 | Cover letter 0907.pdf/.docx | 匿名，含 CAG-D-26-00954 透明句 | 55c65b5c |
@@ -33,7 +33,7 @@ EM 稿件编号：**CAG-S-26-01522**（见根目录 CAG-S-26-01522(1).pdf，EM �
 | 源 | 说明 |
 |---|---|
 | final/final_0903.tex | 正文唯一源（pdflatex/latexmk）→ final_0903.pdf → 同步为包内 Manuscript 0907.pdf |
-| final/final_0903_marked.tex | latexdiff 生成后经参考文献整体替换 + tab:fac→Table 7 手术，勿重跑 latexdiff |
+| final/final_0903_marked.tex + final_0903_marked_addonly.tex | 前者为 latexdiff 全量标记源（经参考文献整体替换 + tab:fac→Table 7 手术），后者由 strip_difdel.py 剥离删除内容生成（投稿用）；勿重跑 latexdiff |
 | final/supplementary_0903.tex | 补充材料源（含复现表：checkpoint MD5、种子、协议） |
 | final/revision/response_letter_new0907.md | 回复信唯一源（已入库）：pandoc 直转 docx；pandoc --pdf-engine=xelatex 转 PDF |
 | final/revision/cover_letter_new0907.md | 封面信源 |
@@ -45,6 +45,7 @@ EM 稿件编号：**CAG-S-26-01522**（见根目录 CAG-S-26-01522(1).pdf，EM �
 
     latexmk -pdf -interaction=nonstopmode final_0903.tex
     latexmk -pdf -interaction=nonstopmode final_0903_marked.tex
+    python3 strip_difdel.py && latexmk -pdf -interaction=nonstopmode final_0903_marked_addonly.tex
     pandoc revision/response_letter_new0907.md -o "submission_new_0907/response to comments of reviewers 0907.docx"
     pandoc revision/response_letter_new0907.md -o "submission_new_0907/response to comments of reviewers 0907.pdf" --pdf-engine=xelatex
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="submission_new_0907/Manuscript with response letter 0907.pdf" "submission_new_0907/response to comments of reviewers 0907.pdf" "submission_new_0907/Manuscript 0907.pdf"
