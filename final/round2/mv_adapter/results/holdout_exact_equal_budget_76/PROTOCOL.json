@@ -1,0 +1,26 @@
+{
+  "protocol_label": "equal-mean-budget-mechanism-follow-up-v1",
+  "status": "pre_registered_before_run",
+  "interpretation": "Targeted follow-up analysis on an already-used holdout; not the originally frozen confirmatory protocol.",
+  "split": "obj_0024-obj_0099",
+  "object_count": 76,
+  "geometry_source": "exact_mesh",
+  "mean_scale": "5/6 = 0.8333333333333334",
+  "conditions": {
+    "fixed_mean": {"schedule_label": "fixed_0.8333333333333334", "stages": [0.8333333333333334, 0.8333333333333334, 0.8333333333333334]},
+    "HLL": {"stages": [1.0, 0.75, 0.75]},
+    "LHL": {"stages": [0.75, 1.0, 0.75], "csv_reused_from": "../holdout_exact_lhl_shape_transfer_76/per_object_metrics.csv"},
+    "LLH": {"stages": [0.75, 0.75, 1.0]}
+  },
+  "stage_boundaries": [0.3333333333333333, 0.6666666666666666],
+  "new_schedules_to_run": ["fixed_0.8333333333333334", "HLL", "LLH"],
+  "seed": 20260928,
+  "inference_steps": 50,
+  "reference_image_and_geometry_conditioning": "same as holdout_exact_76",
+  "runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+  "geometry_scale_sha256": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4",
+  "manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5",
+  "model_provenance": "final/round2/mv_adapter/BASE_MODEL_VERIFICATION.json",
+  "selection_policy": "All four conditions were fixed before running; none may be removed based on observed results.",
+  "bootstrap": {"unit": "object", "resamples": 10000, "seed": 20260928, "confidence": 0.95}
+}

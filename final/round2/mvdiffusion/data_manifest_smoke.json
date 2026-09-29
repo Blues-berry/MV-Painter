@@ -1,0 +1,96 @@
+{
+  "protocol": "mvdiffusion-depth-mvpainter-interop-v1",
+  "source_manifest": "/4T/CXY/MV-Painter/final/round2/mv_adapter/data_manifest.json",
+  "split": "holdout",
+  "view_ids": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    9,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "target_view_ids": [
+    0,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "objects": [
+    {
+      "object": "obj_0024",
+      "source_uid": "eecbe65a172a475aa9fc21f4e412530a",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/smoke/obj_0024",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eecbe65a172a475aa9fc21f4e412530a",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "compatibility_note": "MVDiffusion was trained for perspective ScanNet scenes; the frozen MVPainter renders are orthographic. The exported pinhole K is an orthographic-equivalent approximation and must not be pooled with the native MVPainter/MV-Adapter absolute-score table."
+}

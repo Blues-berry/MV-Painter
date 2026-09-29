@@ -1,0 +1,33 @@
+{
+  "status": "completed_provisional_mixed_geometry",
+  "calibration_rule": "calibration_rule.json",
+  "calibration_rule_sha256": "8f471160e3501a08c71f4201143fd21df1a1b79b3152e2ed6c8283ffd27adf29",
+  "result_csv": "results/calibration_mixed_proxy_50/per_object_metrics.csv",
+  "result_csv_sha256": "85dbe1b0146b41fe72691164d4f99d06e7216733f1754be3a5029ca5acf00302",
+  "run_config": "results/calibration_mixed_proxy_50/run_config.json",
+  "run_config_sha256": "04f9f4c9361416acd44b661fcc2e2b6c1adc39e3ba95b6622335f2dcfe877a7b",
+  "analysis": "results/calibration_mixed_proxy_50/calibration_analysis.json",
+  "analysis_sha256": "d718148f974e0e3592b95f9ad3f8c27757af6ad147cbc73355c4c416baaee588",
+  "rows": 288,
+  "schedules": 12,
+  "objects_per_schedule": 24,
+  "geometry_source_counts": {
+    "exact_mesh": 264,
+    "proxy_depth_convex_hull": 24
+  },
+  "fixed_scale_selection": {
+    "status": "NO_CLEAR_TRADEOFF",
+    "pareto_front": ["fixed_1.0"],
+    "conservative": null,
+    "aggressive": null
+  },
+  "stage_selection": {
+    "status": "not_uniquely_defined_by_frozen_rule",
+    "all_eight_combinations_reported": true
+  },
+  "protocol_limitations": [
+    "Ten original meshes remain unavailable; the 24 proxy rows are reconstructed from each object's rendered depth views.",
+    "This is not an exact-geometry calibration result.",
+    "Because the frozen fixed-scale rule returns NO_CLEAR_TRADEOFF and the frozen stage rule does not define a unique winner, no conservative/aggressive pair or CAI schedule is fabricated."
+  ]
+}

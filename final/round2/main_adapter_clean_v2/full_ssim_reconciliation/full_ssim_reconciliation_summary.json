@@ -1,0 +1,679 @@
+{
+  "protocol": "clean-v2-full-ssim-reconciliation-v1",
+  "provenance": {
+    "A": "recorded original float-eval per-object CSV full_ssim",
+    "B": "original consolidated metrics/image_metrics.py on reloaded saved PNG panels",
+    "C": "current audit_clean_v2_raw_metrics.py SSIM on PNG predictions and raw RGBA/white GT",
+    "no_compensation": true,
+    "original_metrics_sha256": "b20135f643ca7977827c5a4affdad7e4e39880e98563c3579533db1e2800b3c6",
+    "raw_audit_script_sha256": "4ff9c152beafb4d7b843685a897f0f8fddb4e5b1cf4acb2ba91dd1f1d3604489"
+  },
+  "n_objects": 300,
+  "fixed12_indices": [
+    13,
+    15,
+    38,
+    48,
+    54,
+    66,
+    68,
+    78,
+    82,
+    83,
+    110,
+    111
+  ],
+  "representations": {
+    "original_float_ssim": {
+      "no_adapter": {
+        "n": 300,
+        "mean": 0.7273340282837549,
+        "std": 0.04314945334247079,
+        "min": 0.5634867548942566,
+        "max": 0.8159028887748718
+      },
+      "fixed_low": {
+        "n": 300,
+        "mean": 0.8504385848840078,
+        "std": 0.030655908955671506,
+        "min": 0.7669549584388733,
+        "max": 0.9316810965538025
+      },
+      "fixed_high": {
+        "n": 300,
+        "mean": 0.822610857685407,
+        "std": 0.04124622097093106,
+        "min": 0.7472628355026245,
+        "max": 0.9397919774055481
+      },
+      "c3": {
+        "n": 300,
+        "mean": 0.8550017859538396,
+        "std": 0.03016630198657883,
+        "min": 0.7729750275611877,
+        "max": 0.9423139691352844
+      }
+    },
+    "png_original_impl_ssim": {
+      "no_adapter": {
+        "n": 300,
+        "mean": 0.7641744522253672,
+        "std": 0.046864244772419864,
+        "min": 0.588135838508606,
+        "max": 0.8639493584632874
+      },
+      "fixed_low": {
+        "n": 300,
+        "mean": 0.8820583858092625,
+        "std": 0.0408712768734882,
+        "min": 0.7669894695281982,
+        "max": 0.9891716837882996
+      },
+      "fixed_high": {
+        "n": 300,
+        "mean": 0.8576806243260702,
+        "std": 0.05153432783377469,
+        "min": 0.7475119829177856,
+        "max": 0.9855316877365112
+      },
+      "c3": {
+        "n": 300,
+        "mean": 0.8814665428797404,
+        "std": 0.04016907344214322,
+        "min": 0.7729582190513611,
+        "max": 0.9895212650299072
+      }
+    },
+    "raw_audit_ssim": {
+      "no_adapter": {
+        "n": 300,
+        "mean": 0.7640672604242961,
+        "std": 0.04688974025410803,
+        "min": 0.587477445602417,
+        "max": 0.8638503551483154
+      },
+      "fixed_low": {
+        "n": 300,
+        "mean": 0.8819136488437652,
+        "std": 0.04090033724815035,
+        "min": 0.7668477296829224,
+        "max": 0.9890426993370056
+      },
+      "fixed_high": {
+        "n": 300,
+        "mean": 0.8574689549207687,
+        "std": 0.05154393825410839,
+        "min": 0.7473475933074951,
+        "max": 0.9854085445404053
+      },
+      "c3": {
+        "n": 300,
+        "mean": 0.8813268196582794,
+        "std": 0.040197162504302233,
+        "min": 0.772815465927124,
+        "max": 0.9894139170646667
+      }
+    },
+    "delta_png_minus_original": {
+      "no_adapter": {
+        "mean": 0.036840423941612244,
+        "mean_abs": 0.036840423941612244,
+        "p05": 0.027863866090774535,
+        "p50": 0.03735095262527466,
+        "p95": 0.04431954026222229,
+        "max_abs": 0.04865837097167969,
+        "over_threshold": 300,
+        "threshold": 0.01
+      },
+      "fixed_low": {
+        "mean": 0.03161980092525482,
+        "mean_abs": 0.0316302623351415,
+        "p05": -8.046627044677687e-06,
+        "p50": 0.0388912558555603,
+        "p95": 0.056807088851928714,
+        "max_abs": 0.06187194585800171,
+        "over_threshold": 232,
+        "threshold": 0.01
+      },
+      "fixed_high": {
+        "mean": 0.03506976664066315,
+        "mean_abs": 0.03507341166337331,
+        "p05": 0.00018470287322998048,
+        "p50": 0.04253894090652466,
+        "p95": 0.051134446263313295,
+        "max_abs": 0.054642319679260254,
+        "over_threshold": 252,
+        "threshold": 0.01
+      },
+      "c3": {
+        "mean": 0.02646475692590078,
+        "mean_abs": 0.026482120951016742,
+        "p05": -8.663833141326904e-05,
+        "p50": 0.03326275944709778,
+        "p95": 0.05000322461128235,
+        "max_abs": 0.05725836753845215,
+        "over_threshold": 206,
+        "threshold": 0.01
+      }
+    },
+    "delta_raw_minus_png": {
+      "no_adapter": {
+        "mean": -0.000107191801071167,
+        "mean_abs": 0.0001227251688639323,
+        "p05": -0.0003195255994796753,
+        "p50": -8.982419967651367e-05,
+        "p95": 6.603598594665528e-05,
+        "max_abs": 0.0006583929061889648,
+        "over_threshold": 0,
+        "threshold": 0.001
+      },
+      "fixed_low": {
+        "mean": -0.0001447369654973348,
+        "mean_abs": 0.0001504733165105184,
+        "p05": -0.0003261536359786987,
+        "p50": -0.00012946128845214844,
+        "p95": 2.4172663688659675e-05,
+        "max_abs": 0.0007880926132202148,
+        "over_threshold": 0,
+        "threshold": 0.001
+      },
+      "fixed_high": {
+        "mean": -0.00021166940530141195,
+        "mean_abs": 0.0002117691437403361,
+        "p05": -0.00046653151512145993,
+        "p50": -0.00018486380577087402,
+        "p95": -3.1268596649169916e-05,
+        "max_abs": 0.0010105371475219727,
+        "over_threshold": 1,
+        "threshold": 0.001
+      },
+      "c3": {
+        "mean": -0.00013972322146097818,
+        "mean_abs": 0.00014534552892049154,
+        "p05": -0.0003389507532119751,
+        "p50": -0.00012749433517456055,
+        "p95": 2.184808254241944e-05,
+        "max_abs": 0.0007448196411132812,
+        "over_threshold": 0,
+        "threshold": 0.001
+      }
+    },
+    "delta_raw_minus_original": {
+      "no_adapter": {
+        "mean": 0.036733232140541076,
+        "mean_abs": 0.036733232140541076,
+        "p05": 0.027747714519500734,
+        "p50": 0.0373290479183197,
+        "p95": 0.04422673583030701,
+        "max_abs": 0.048559367656707764,
+        "over_threshold": 300,
+        "threshold": 0.01
+      },
+      "fixed_low": {
+        "mean": 0.031475063959757486,
+        "mean_abs": 0.031504286527633665,
+        "p05": -0.00011278986930847168,
+        "p50": 0.03875857591629028,
+        "p95": 0.05666729807853699,
+        "max_abs": 0.06167030334472656,
+        "over_threshold": 232,
+        "threshold": 0.01
+      },
+      "fixed_high": {
+        "mean": 0.034858097235361735,
+        "mean_abs": 0.03487241228421529,
+        "p05": -2.5817751884460438e-05,
+        "p50": 0.042315542697906494,
+        "p95": 0.05101034939289093,
+        "max_abs": 0.05433613061904907,
+        "over_threshold": 252,
+        "threshold": 0.01
+      },
+      "c3": {
+        "mean": 0.0263250337044398,
+        "mean_abs": 0.02637109696865082,
+        "p05": -0.00018475353717803956,
+        "p50": 0.03315627574920654,
+        "p95": 0.049930679798126223,
+        "max_abs": 0.0570908784866333,
+        "over_threshold": 206,
+        "threshold": 0.01
+      }
+    }
+  },
+  "paired": {
+    "original_float_ssim": {
+      "c3_vs_fixed_low": {
+        "n": 300,
+        "mean": 0.004563201069831848,
+        "ci95": [
+          0.003908597548802693,
+          0.005209823618332545
+        ],
+        "win_rate_left_higher": 0.82,
+        "ties": 0,
+        "representation": "original_float_ssim",
+        "left": "c3",
+        "right": "fixed_low"
+      },
+      "c3_vs_fixed_high": {
+        "n": 300,
+        "mean": 0.032390928268432616,
+        "ci95": [
+          0.02960258486866951,
+          0.035301389719049135
+        ],
+        "win_rate_left_higher": 0.9466666666666667,
+        "ties": 0,
+        "representation": "original_float_ssim",
+        "left": "c3",
+        "right": "fixed_high"
+      }
+    },
+    "png_original_impl_ssim": {
+      "c3_vs_fixed_low": {
+        "n": 300,
+        "mean": -0.0005918429295221965,
+        "ci95": [
+          -0.0009882444341977438,
+          -0.00019433612128098816
+        ],
+        "win_rate_left_higher": 0.4633333333333333,
+        "ties": 0,
+        "representation": "png_original_impl_ssim",
+        "left": "c3",
+        "right": "fixed_low"
+      },
+      "c3_vs_fixed_high": {
+        "n": 300,
+        "mean": 0.023785918553670248,
+        "ci95": [
+          0.021717729414502777,
+          0.025935527493556338
+        ],
+        "win_rate_left_higher": 0.99,
+        "ties": 0,
+        "representation": "png_original_impl_ssim",
+        "left": "c3",
+        "right": "fixed_high"
+      }
+    },
+    "raw_audit_ssim": {
+      "c3_vs_fixed_low": {
+        "n": 300,
+        "mean": -0.0005868291854858399,
+        "ci95": [
+          -0.0009835291306177776,
+          -0.00018844278156757355
+        ],
+        "win_rate_left_higher": 0.4633333333333333,
+        "ties": 0,
+        "representation": "raw_audit_ssim",
+        "left": "c3",
+        "right": "fixed_low"
+      },
+      "c3_vs_fixed_high": {
+        "n": 300,
+        "mean": 0.02385786473751068,
+        "ci95": [
+          0.021791696762045225,
+          0.026007804165283838
+        ],
+        "win_rate_left_higher": 0.99,
+        "ties": 0,
+        "representation": "raw_audit_ssim",
+        "left": "c3",
+        "right": "fixed_high"
+      }
+    }
+  },
+  "checks": {
+    "window": "3x3 box average_pool2d, stride=1, padding=1, count_include_pad=True",
+    "gaussian_diagnostic": "11x11 Gaussian sigma=1.5, reflect padding, not used for primary result",
+    "constants": "C1=0.01^2, C2=0.03^2, data range implied as [0,1]",
+    "clamp": "SSIM map clamp [0,1]",
+    "montage": "3x2 panel 768x512 from six 256x256 views",
+    "per_view": "mean of six per-view scores, reported as diagnostic only",
+    "padding_crop": "no crop; same saved panel dimensions and no montage padding"
+  },
+  "subset_summaries": {
+    "all300": {
+      "n_objects": 300,
+      "representations": {
+        "original_float_ssim": {
+          "no_adapter": {
+            "mean": 0.7273340282837549,
+            "std": 0.04314945334247079
+          },
+          "fixed_low": {
+            "mean": 0.8504385848840078,
+            "std": 0.030655908955671506
+          },
+          "fixed_high": {
+            "mean": 0.822610857685407,
+            "std": 0.04124622097093106
+          },
+          "c3": {
+            "mean": 0.8550017859538396,
+            "std": 0.03016630198657883
+          }
+        },
+        "png_original_impl_ssim": {
+          "no_adapter": {
+            "mean": 0.7641744522253672,
+            "std": 0.046864244772419864
+          },
+          "fixed_low": {
+            "mean": 0.8820583858092625,
+            "std": 0.0408712768734882
+          },
+          "fixed_high": {
+            "mean": 0.8576806243260702,
+            "std": 0.05153432783377469
+          },
+          "c3": {
+            "mean": 0.8814665428797404,
+            "std": 0.04016907344214322
+          }
+        },
+        "raw_audit_ssim": {
+          "no_adapter": {
+            "mean": 0.7640672604242961,
+            "std": 0.04688974025410803
+          },
+          "fixed_low": {
+            "mean": 0.8819136488437652,
+            "std": 0.04090033724815035
+          },
+          "fixed_high": {
+            "mean": 0.8574689549207687,
+            "std": 0.05154393825410839
+          },
+          "c3": {
+            "mean": 0.8813268196582794,
+            "std": 0.040197162504302233
+          }
+        }
+      },
+      "paired": {
+        "original_float_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 300,
+            "mean": 0.004563201069831848,
+            "ci95": [
+              0.003908597548802693,
+              0.005209823618332545
+            ],
+            "win_rate_left_higher": 0.82,
+            "ties": 0,
+            "representation": "original_float_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 300,
+            "mean": 0.032390928268432616,
+            "ci95": [
+              0.02960258486866951,
+              0.035301389719049135
+            ],
+            "win_rate_left_higher": 0.9466666666666667,
+            "ties": 0,
+            "representation": "original_float_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        },
+        "png_original_impl_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 300,
+            "mean": -0.0005918429295221965,
+            "ci95": [
+              -0.0009882444341977438,
+              -0.00019433612128098816
+            ],
+            "win_rate_left_higher": 0.4633333333333333,
+            "ties": 0,
+            "representation": "png_original_impl_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 300,
+            "mean": 0.023785918553670248,
+            "ci95": [
+              0.021717729414502777,
+              0.025935527493556338
+            ],
+            "win_rate_left_higher": 0.99,
+            "ties": 0,
+            "representation": "png_original_impl_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        },
+        "raw_audit_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 300,
+            "mean": -0.0005868291854858399,
+            "ci95": [
+              -0.0009835291306177776,
+              -0.00018844278156757355
+            ],
+            "win_rate_left_higher": 0.4633333333333333,
+            "ties": 0,
+            "representation": "raw_audit_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 300,
+            "mean": 0.02385786473751068,
+            "ci95": [
+              0.021791696762045225,
+              0.026007804165283838
+            ],
+            "win_rate_left_higher": 0.99,
+            "ties": 0,
+            "representation": "raw_audit_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        }
+      }
+    },
+    "fixed12": {
+      "n_objects": 12,
+      "representations": {
+        "original_float_ssim": {
+          "no_adapter": {
+            "mean": 0.7513443132241567,
+            "std": 0.019733372107311027
+          },
+          "fixed_low": {
+            "mean": 0.8677576531966528,
+            "std": 0.028383076183369528
+          },
+          "fixed_high": {
+            "mean": 0.8218311866124471,
+            "std": 0.045488502857465085
+          },
+          "c3": {
+            "mean": 0.8684653043746948,
+            "std": 0.026776434011968983
+          }
+        },
+        "png_original_impl_ssim": {
+          "no_adapter": {
+            "mean": 0.7906057188908259,
+            "std": 0.021001197134460664
+          },
+          "fixed_low": {
+            "mean": 0.8953357835610708,
+            "std": 0.03280639645383464
+          },
+          "fixed_high": {
+            "mean": 0.85772176583608,
+            "std": 0.0517480987258698
+          },
+          "c3": {
+            "mean": 0.8919054716825485,
+            "std": 0.03394633317141677
+          }
+        },
+        "raw_audit_ssim": {
+          "no_adapter": {
+            "mean": 0.7905994306008021,
+            "std": 0.02101467760355962
+          },
+          "fixed_low": {
+            "mean": 0.895303542415301,
+            "std": 0.03283799993734221
+          },
+          "fixed_high": {
+            "mean": 0.8576328903436661,
+            "std": 0.05176857789504217
+          },
+          "c3": {
+            "mean": 0.8918712834517161,
+            "std": 0.033976667790495
+          }
+        }
+      },
+      "paired": {
+        "original_float_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 12,
+            "mean": 0.0007076511780420939,
+            "ci95": [
+              -0.002501987790067991,
+              0.003428525353471438
+            ],
+            "win_rate_left_higher": 0.6666666666666666,
+            "ties": 0,
+            "representation": "original_float_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 12,
+            "mean": 0.04663411776224772,
+            "ci95": [
+              0.028388670459389687,
+              0.06546904357771079
+            ],
+            "win_rate_left_higher": 0.9166666666666666,
+            "ties": 0,
+            "representation": "original_float_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        },
+        "png_original_impl_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 12,
+            "mean": -0.0034303118785222373,
+            "ci95": [
+              -0.005780767649412155,
+              -0.0013407184431950255
+            ],
+            "win_rate_left_higher": 0.25,
+            "ties": 0,
+            "representation": "png_original_impl_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 12,
+            "mean": 0.034183705846468605,
+            "ci95": [
+              0.02155734474460284,
+              0.047627842302123705
+            ],
+            "win_rate_left_higher": 1.0,
+            "ties": 0,
+            "representation": "png_original_impl_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        },
+        "raw_audit_ssim": {
+          "c3_vs_fixed_low": {
+            "n": 12,
+            "mean": -0.0034322589635849,
+            "ci95": [
+              -0.005782751614848773,
+              -0.0013388829926649732
+            ],
+            "win_rate_left_higher": 0.25,
+            "ties": 0,
+            "representation": "raw_audit_ssim",
+            "left": "c3",
+            "right": "fixed_low"
+          },
+          "c3_vs_fixed_high": {
+            "n": 12,
+            "mean": 0.034238393108050026,
+            "ci95": [
+              0.021599426368872323,
+              0.04769514699776967
+            ],
+            "win_rate_left_higher": 1.0,
+            "ties": 0,
+            "representation": "raw_audit_ssim",
+            "left": "c3",
+            "right": "fixed_high"
+          }
+        }
+      }
+    }
+  },
+  "paired_delta_change": {
+    "c3_vs_fixed_low": {
+      "png_original_impl_ssim_minus_original_float_ssim": {
+        "mean_change": -0.005155043999354045,
+        "ci95_change": [
+          -0.006198068052530288,
+          -0.004102933670083682
+        ]
+      },
+      "raw_audit_ssim_minus_png_original_impl_ssim": {
+        "mean_change": 5.013744036356615e-06,
+        "ci95_change": [
+          -0.0007891930093367895,
+          0.0007998016526301703
+        ]
+      },
+      "raw_audit_ssim_minus_original_float_ssim": {
+        "mean_change": -0.005150030255317688,
+        "ci95_change": [
+          -0.006193352748950322,
+          -0.0040970403303702664
+        ]
+      }
+    },
+    "c3_vs_fixed_high": {
+      "png_original_impl_ssim_minus_original_float_ssim": {
+        "mean_change": -0.008605009714762368,
+        "ci95_change": [
+          -0.013583660304546358,
+          -0.003667057375113171
+        ]
+      },
+      "raw_audit_ssim_minus_png_original_impl_ssim": {
+        "mean_change": 7.194618384043228e-05,
+        "ci95_change": [
+          -0.004143830731511113,
+          0.00429007475078106
+        ]
+      },
+      "raw_audit_ssim_minus_original_float_ssim": {
+        "mean_change": -0.008533063530921935,
+        "ci95_change": [
+          -0.01350969295700391,
+          -0.0035947807033856714
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "_class_name": "StableDiffusionPipeline",
+  "_diffusers_version": "0.10.0.dev0",
+  "feature_extractor": [
+    "transformers",
+    "CLIPImageProcessor"
+  ],
+  "requires_safety_checker": false,
+  "safety_checker": [
+    null,
+    null
+  ],
+  "scheduler": [
+    "diffusers",
+    "PNDMScheduler"
+  ],
+  "text_encoder": [
+    "transformers",
+    "CLIPTextModel"
+  ],
+  "tokenizer": [
+    "transformers",
+    "CLIPTokenizer"
+  ],
+  "unet": [
+    "diffusers",
+    "UNet2DConditionModel"
+  ],
+  "vae": [
+    "diffusers",
+    "AutoencoderKL"
+  ],
+  "mvdiffusion_compatibility": {
+    "source_base": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/sd21_base",
+    "unet_input_channels": 5,
+    "depth_channel_initialization": "zeros",
+    "native_official_depth_base": false
+  }
+}

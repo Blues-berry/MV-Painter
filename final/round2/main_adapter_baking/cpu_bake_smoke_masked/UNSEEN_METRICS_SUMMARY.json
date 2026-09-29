@@ -1,0 +1,33 @@
+{
+  "protocol": "codex-d-cpu-bake-unseen-evaluation-v1",
+  "objects": [
+    "obj_0015",
+    "obj_0013"
+  ],
+  "methods": [
+    "gt",
+    "no_adapter",
+    "fixed_low",
+    "fixed_high",
+    "c3"
+  ],
+  "unseen_views": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "lpips": "lpips_alex_cpu",
+  "dists": "unavailable: ModuleNotFoundError(\"No module named 'DISTS_pytorch'\")",
+  "object_metric_rows": 10,
+  "per_view_metric_rows": 110,
+  "gt_to_gt_sanity_rows": 2,
+  "note": "GT is a bake implementation sanity check, not a method advantage claim; rows are emitted only when gt is requested."
+}

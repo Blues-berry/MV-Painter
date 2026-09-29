@@ -1,0 +1,33 @@
+diff --git a/geotex/metrics/image_metrics.py b/geotex/metrics/image_metrics.py
+--- a/geotex/metrics/image_metrics.py
++++ b/geotex/metrics/image_metrics.py
+@@ -37,4 +37,9 @@ def compute_psnr(pred, target, mask=None)
+     Returns:
+         PSNR value (float). Returns 0.0 for empty mask.
+     """
++    # Candidate hardening only: validate against the original float run first.
++    pred = pred.float()
++    target = target.float()
++    if mask is not None:
++        mask = mask.float()
+     if mask is not None:
+@@ -65,4 +65,9 @@ def compute_ssim(pred, target, mask=None)
+     Returns:
+         SSIM value (float). Returns 0.0 for empty mask.
+     """
++    # Keep reductions and local statistics in float32 across CPU/GPU backends.
++    pred = pred.float()
++    target = target.float()
++    if mask is not None:
++        mask = mask.float()
+     C1, C2 = 0.01 ** 2, 0.03 ** 2
+diff --git a/geotex/metrics/mask_ops.py b/geotex/metrics/mask_ops.py
+--- a/geotex/metrics/mask_ops.py
++++ b/geotex/metrics/mask_ops.py
+@@ -47,4 +47,6 @@ def compute_edge_mask(depth_or_normal, threshold=0.1)
+     Returns:
+         Binary edge mask tensor [B, 1, H, W] with values in {0, 1}
+     """
++    # Candidate hardening only: avoid dtype-dependent Sobel reductions.
++    depth_or_normal = depth_or_normal.float()
+     if depth_or_normal.shape[1] == 3:

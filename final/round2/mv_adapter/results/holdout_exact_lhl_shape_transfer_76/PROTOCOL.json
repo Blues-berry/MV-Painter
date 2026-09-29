@@ -1,0 +1,32 @@
+{
+  "protocol_label": "direct-lhl-shape-transfer-diagnostic-v1",
+  "status": "pre_registered_before_run",
+  "split": "obj_0024-obj_0099",
+  "object_count": 76,
+  "geometry_source": "exact_mesh",
+  "schedule": "LHL",
+  "low": 0.75,
+  "high": 1.0,
+  "schedule_definition": {
+    "early": "low",
+    "middle": "high",
+    "late": "low",
+    "stage_boundaries": [0.3333333333333333, 0.6666666666666666],
+    "function": "stage_schedule(low=0.75, high=1.0, label='LHL')"
+  },
+  "seed": 20260928,
+  "inference_steps": 50,
+  "reference_image_and_geometry_conditioning": "same as holdout_exact_76",
+  "runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+  "geometry_scale_sha256": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4",
+  "manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5",
+  "comparators": ["fixed_low", "fixed_1.0", "linear_warmup", "cosine_bump", "no_geometry"],
+  "bootstrap": {
+    "unit": "object",
+    "resamples": 10000,
+    "seed": 20260928,
+    "confidence": 0.95,
+    "direction": "LHL minus comparator, direction-aware for lower-is-better metrics"
+  },
+  "interpretation": "Direct LHL shape-transfer diagnostic; not CAI-calibrated because the frozen stage rule has no unique winner."
+}

@@ -4,25 +4,22 @@ Produces a grid image showing 4 methods × N objects for the paper.
 """
 import os
 import sys
-import types
+from pathlib import Path
+
 import numpy as np
 import torch
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
-# Setup SF3D
-sys.path.insert(0, '/home/ubuntu/ssd_work/projects/stable-fast-3d')
-dummy = types.ModuleType('sf3d.material_refine')
-dummy.MaterialRefinementPipeline = None
-sys.modules['sf3d.material_refine'] = dummy
-from sf3d.system import SF3D
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import nvdiffrast renderer from eval script
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from scripts.eval_sf3d_baseline import render_mesh_to_view, load_camera
+from geotex.runtime import require_cuda  # noqa: E402
+from scripts.eval_sf3d_baseline import load_camera, load_sf3d_class, render_mesh_to_view  # noqa: E402
 
-DATA_ROOT = '/4T/CXY/MV-Painter/data/train_data/rendered_full'
-SAMPLES_C3 = '/4T/CXY/MV-Painter/mvpoutput/geotex_v2/eval300v2_c3/samples'
-SAMPLES_NOA = '/4T/CXY/MV-Painter/mvpoutput/geotex_v2/eval300v2_no_adapter/samples'
+DATA_ROOT = PROJECT_ROOT / 'data/train_data/rendered_full'
+SAMPLES_C3 = PROJECT_ROOT / 'mvpoutput/geotex_v2/eval300v2_c3/samples'
+SAMPLES_NOA = PROJECT_ROOT / 'mvpoutput/geotex_v2/eval300v2_no_adapter/samples'
 
 
 def load_gt_grid(obj, data_root, target_views, size=256):
@@ -82,11 +79,13 @@ def main():
     target_views = [0, 15, 12, 15, 13, 14]
     size = 128  # smaller per-view for compact figure
 
+    device = require_cuda('cuda:0', 'SF3D comparison figure')
     print("Loading SF3D model...")
+    SF3D = load_sf3d_class()
     model = SF3D.from_pretrained(
         "stabilityai/stable-fast-3d",
         config_name="config.yaml", weight_name="model.safetensors")
-    model.to('cuda:0').eval()
+    model.to(device).eval()
     print("SF3D loaded")
 
     methods = ['GT', 'C3 (TCAS)', 'No adapter', 'SF3D']
@@ -129,11 +128,11 @@ def main():
             canvas.paste(noa_img, (2 * (grid_w + 30), y_offset))
 
         # SF3D
-        sf3d_grid = render_sf3d_views(model, obj, DATA_ROOT, target_views, size)
+        sf3d_grid = render_sf3d_views(model, obj, DATA_ROOT, target_views, size, device)
         if sf3d_grid:
             canvas.paste(sf3d_grid, (3 * (grid_w + 30), y_offset))
 
-    out_path = '/4T/CXY/MV-Painter/mvpoutput/comparison_figure.png'
+    out_path = PROJECT_ROOT / 'mvpoutput/comparison_figure.png'
     canvas.save(out_path)
     print(f"Saved: {out_path} ({canvas.size})")
 

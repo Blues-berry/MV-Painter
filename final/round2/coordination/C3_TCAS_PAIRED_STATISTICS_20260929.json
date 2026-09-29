@@ -1,0 +1,501 @@
+{
+  "main": {
+    "c3_lhl_minus_fixed_mean": {
+      "full_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.5563689142033674,
+        "ci95_raw_delta": [
+          0.5255202243941417,
+          0.5892195161701976
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.5563689142033674,
+        "ci95_delta_favoring_left": [
+          0.5255202243941417,
+          0.5892195161701976
+        ],
+        "wins_favoring_left": 271,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9818840579710145,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.5028747194919033,
+        "ci95_raw_delta": [
+          0.4620183881750141,
+          0.5422438523205726
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.5028747194919033,
+        "ci95_delta_favoring_left": [
+          0.4620183881750141,
+          0.5422438523205726
+        ],
+        "wins_favoring_left": 263,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9528985507246377,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.03208317715620649,
+        "ci95_raw_delta": [
+          0.028965608962555078,
+          0.03517179186253444
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.03208317715620649,
+        "ci95_delta_favoring_left": [
+          0.028965608962555078,
+          0.03517179186253444
+        ],
+        "wins_favoring_left": 246,
+        "ties": 0,
+        "win_rate_favoring_left": 0.8913043478260869,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "edge_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.0016960118343864663,
+        "ci95_raw_delta": [
+          0.0006112538844994876,
+          0.0027816991767157678
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.0016960118343864663,
+        "ci95_delta_favoring_left": [
+          0.0006112538844994876,
+          0.0027816991767157678
+        ],
+        "wins_favoring_left": 141,
+        "ties": 0,
+        "win_rate_favoring_left": 0.5108695652173914,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.003797267752605072,
+        "ci95_raw_delta": [
+          -0.00434126789526393,
+          -0.0032596048696533495
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": 0.003797267752605072,
+        "ci95_delta_favoring_left": [
+          0.0032596048696533495,
+          0.00434126789526393
+        ],
+        "wins_favoring_left": 214,
+        "ties": 0,
+        "win_rate_favoring_left": 0.7753623188405797,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "full_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.0014203614622786424,
+        "ci95_raw_delta": [
+          0.0007777805197174135,
+          0.0020724438704496275
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": -0.0014203614622786424,
+        "ci95_delta_favoring_left": [
+          -0.0020724438704496275,
+          -0.0007777805197174136
+        ],
+        "wins_favoring_left": 107,
+        "ties": 0,
+        "win_rate_favoring_left": 0.38768115942028986,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    },
+    "c3_lhl_minus_hll": {
+      "full_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 1.470777275769607,
+        "ci95_raw_delta": [
+          1.4079732515889665,
+          1.5392008915111637
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 1.470777275769607,
+        "ci95_delta_favoring_left": [
+          1.4079732515889665,
+          1.5392008915111637
+        ],
+        "wins_favoring_left": 276,
+        "ties": 0,
+        "win_rate_favoring_left": 1.0,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 1.176507005441016,
+        "ci95_raw_delta": [
+          1.1111670122684343,
+          1.2422061663228965
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 1.176507005441016,
+        "ci95_delta_favoring_left": [
+          1.1111670122684343,
+          1.2422061663228965
+        ],
+        "wins_favoring_left": 274,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9927536231884058,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.08935416716596355,
+        "ci95_raw_delta": [
+          0.08331853140388494,
+          0.09542344691083375
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.08935416716596355,
+        "ci95_delta_favoring_left": [
+          0.08331853140388494,
+          0.09542344691083375
+        ],
+        "wins_favoring_left": 273,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9891304347826086,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "edge_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.03669762719368589,
+        "ci95_raw_delta": [
+          0.034683660814619585,
+          0.03870521243391694
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.03669762719368589,
+        "ci95_delta_favoring_left": [
+          0.034683660814619585,
+          0.03870521243391694
+        ],
+        "wins_favoring_left": 275,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9963768115942029,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.010154891671423895,
+        "ci95_raw_delta": [
+          -0.011075140530601197,
+          -0.009251412092640564
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": 0.010154891671423895,
+        "ci95_delta_favoring_left": [
+          0.009251412092640564,
+          0.011075140530601197
+        ],
+        "wins_favoring_left": 250,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9057971014492754,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "full_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.012541140551152437,
+        "ci95_raw_delta": [
+          -0.01330931105758941,
+          -0.011795119163107829
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": 0.012541140551152437,
+        "ci95_delta_favoring_left": [
+          0.011795119163107829,
+          0.01330931105758941
+        ],
+        "wins_favoring_left": 268,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9710144927536232,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    },
+    "c3_lhl_minus_llh": {
+      "full_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.2681004353191542,
+        "ci95_raw_delta": [
+          -0.31110121298959287,
+          -0.22779656212398972
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": -0.2681004353191542,
+        "ci95_delta_favoring_left": [
+          -0.31110121298959287,
+          -0.22779656212398972
+        ],
+        "wins_favoring_left": 41,
+        "ties": 0,
+        "win_rate_favoring_left": 0.14855072463768115,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_psnr": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.1770841492258984,
+        "ci95_raw_delta": [
+          -0.23053924671873666,
+          -0.13078351310737757
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": -0.1770841492258984,
+        "ci95_delta_favoring_left": [
+          -0.23053924671873666,
+          -0.13078351310737757
+        ],
+        "wins_favoring_left": 79,
+        "ties": 0,
+        "win_rate_favoring_left": 0.286231884057971,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.008850816394323889,
+        "ci95_raw_delta": [
+          -0.011455190815436452,
+          -0.006290964089145048
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": -0.008850816394323889,
+        "ci95_delta_favoring_left": [
+          -0.011455190815436452,
+          -0.006290964089145048
+        ],
+        "wins_favoring_left": 101,
+        "ties": 0,
+        "win_rate_favoring_left": 0.36594202898550726,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "edge_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.035301148891448975,
+        "ci95_raw_delta": [
+          -0.036580946112888445,
+          -0.034030556349434714
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": -0.035301148891448975,
+        "ci95_delta_favoring_left": [
+          -0.036580946112888445,
+          -0.034030556349434714
+        ],
+        "wins_favoring_left": 0,
+        "ties": 0,
+        "win_rate_favoring_left": 0.0,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "fg_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.0018963524970509436,
+        "ci95_raw_delta": [
+          0.001204823399303427,
+          0.002578195356308361
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": -0.0018963524970509436,
+        "ci95_delta_favoring_left": [
+          -0.002578195356308361,
+          -0.0012048233993034272
+        ],
+        "wins_favoring_left": 93,
+        "ties": 0,
+        "win_rate_favoring_left": 0.33695652173913043,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      },
+      "full_lpips": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.008658262941500416,
+        "ci95_raw_delta": [
+          0.007464538564554591,
+          0.00983114887798286
+        ],
+        "direction": "lower",
+        "mean_delta_favoring_left": -0.008658262941500416,
+        "ci95_delta_favoring_left": [
+          -0.00983114887798286,
+          -0.007464538564554592
+        ],
+        "wins_favoring_left": 60,
+        "ties": 0,
+        "win_rate_favoring_left": 0.21739130434782608,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    }
+  },
+  "main_serialized_full_ssim": {
+    "c3_lhl_minus_fixed_mean": {
+      "full_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.007485531162524569,
+        "ci95_raw_delta": [
+          0.006736267142105794,
+          0.008262033614775408
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.007485531162524569,
+        "ci95_delta_favoring_left": [
+          0.006736267142105794,
+          0.008262033614775408
+        ],
+        "wins_favoring_left": 250,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9057971014492754,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    },
+    "c3_lhl_minus_hll": {
+      "full_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": 0.021508081235747406,
+        "ci95_raw_delta": [
+          0.019844880090027616,
+          0.023185068800829458
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": 0.021508081235747406,
+        "ci95_delta_favoring_left": [
+          0.019844880090027616,
+          0.023185068800829458
+        ],
+        "wins_favoring_left": 275,
+        "ties": 0,
+        "win_rate_favoring_left": 0.9963768115942029,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    },
+    "c3_lhl_minus_llh": {
+      "full_ssim": {
+        "n": 276,
+        "mean_raw_delta_left_minus_right": -0.0016965086477390234,
+        "ci95_raw_delta": [
+          -0.0020466000219618065,
+          -0.0013403296956549524
+        ],
+        "direction": "higher",
+        "mean_delta_favoring_left": -0.0016965086477390234,
+        "ci95_delta_favoring_left": [
+          -0.0020466000219618065,
+          -0.0013403296956549524
+        ],
+        "wins_favoring_left": 55,
+        "ties": 0,
+        "win_rate_favoring_left": 0.19927536231884058,
+        "bootstrap": {
+          "unit": "object-level paired differences",
+          "resamples": 10000,
+          "seed": 20260928,
+          "confidence": 0.95
+        }
+      }
+    }
+  }
+}

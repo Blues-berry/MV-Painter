@@ -1,0 +1,265 @@
+{
+  "audit": "strict-trb-development-v2",
+  "pilot_results": "/4T/tmp/mvpainter-adaptive-control/outputs/trb_clean_v2_dev24_seed42_lpips_r1/pilot_results.json",
+  "integrity": {
+    "passed": true,
+    "checks": {
+      "protocol": true,
+      "primary_metric": true,
+      "lpips_direction": true,
+      "target_view_mode": true,
+      "num_steps": true,
+      "seed": true,
+      "methods": true,
+      "object_list_exists": true,
+      "object_list_sha256": true,
+      "checkpoint_exists": true,
+      "checkpoint_sha256": true,
+      "object_list_count": true,
+      "object_list_unique": true,
+      "paired_object_sets": true,
+      "calibration_records": true,
+      "calibration_forward_steps": true,
+      "calibration_cost_accounted": true,
+      "map_count": true,
+      "budget_count": true
+    },
+    "errors": [],
+    "map_count": 168,
+    "expected_map_count": 168,
+    "budget_count": 24
+  },
+  "summary": {
+    "fixed_low": {
+      "fg_lpips": 0.1403980062653621,
+      "psnr": 22.261095941066742,
+      "fg_ssim": 0.5732844937592745,
+      "edge_ssim": 0.5896740530927976,
+      "fg_mae": 0.5782117073734602,
+      "fg_lap_var": 0.011548717816670736,
+      "fg_lap_corr": 0.1362256381350259,
+      "inference_seconds_mean": 6.14454619892543,
+      "controller_total_seconds_mean": 6.14454619892543
+    },
+    "C3_TCAS": {
+      "fg_lpips": 0.13358720081547895,
+      "psnr": 22.970905601978302,
+      "fg_ssim": 0.5895757588247458,
+      "edge_ssim": 0.5954922772943974,
+      "fg_mae": 0.5398274095108112,
+      "fg_lap_var": 0.008570512135823568,
+      "fg_lap_corr": 0.13377166772261262,
+      "inference_seconds_mean": 6.074976704680012,
+      "controller_total_seconds_mean": 6.074976704680012
+    },
+    "HLL_eq": {
+      "fg_lpips": 0.14814060212423405,
+      "psnr": 21.110972464084625,
+      "fg_ssim": 0.5729312561452389,
+      "edge_ssim": 0.5879582067330679,
+      "fg_mae": 0.6777498715867599,
+      "fg_lap_var": 0.009171605110168457,
+      "fg_lap_corr": 0.14555978340407214,
+      "inference_seconds_mean": 6.064801512955455,
+      "controller_total_seconds_mean": 6.064801512955455
+    },
+    "LLH_eq": {
+      "fg_lpips": 0.12307959826042254,
+      "psnr": 24.369058559338253,
+      "fg_ssim": 0.5986504753430685,
+      "edge_ssim": 0.6149048147102197,
+      "fg_mae": 0.4751433140287797,
+      "fg_lap_var": 0.008042256037394205,
+      "fg_lap_corr": 0.13607490854337811,
+      "inference_seconds_mean": 6.098589427405386,
+      "controller_total_seconds_mean": 6.098589427405386
+    },
+    "TRB_TCAS": {
+      "fg_lpips": 0.13488954647133747,
+      "psnr": 22.699790745973587,
+      "fg_ssim": 0.5901962282756964,
+      "edge_ssim": 0.5949558739860853,
+      "fg_mae": 0.5598272650192181,
+      "fg_lap_var": 0.00882705052693685,
+      "fg_lap_corr": 0.14288327776982138,
+      "inference_seconds_mean": 6.260163804681118,
+      "controller_total_seconds_mean": 12.34228548706839
+    }
+  },
+  "comparisons": {
+    "fixed_low": {
+      "comparator": "fixed_low",
+      "metrics": {
+        "fg_lpips": {
+          "label": "FG-LPIPS",
+          "direction": "lower",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": -0.005508459794024627,
+          "ci95_raw_delta": [
+            -0.00782967401513209,
+            -0.003390914605309566
+          ],
+          "direction_aware_win_rate": 0.8333333333333334,
+          "primary_gate_improvement": true
+        },
+        "psnr": {
+          "label": "normalized-image PSNR (not FG-PSNR)",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.4386948049068451,
+          "ci95_raw_delta": [
+            0.24312676489353183,
+            0.6406154880921046
+          ],
+          "direction_aware_win_rate": 0.8333333333333334,
+          "primary_gate_improvement": null
+        },
+        "fg_ssim": {
+          "label": "FG-SSIM",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.016911734516421955,
+          "ci95_raw_delta": [
+            0.011555582921331128,
+            0.02274036115656296
+          ],
+          "direction_aware_win_rate": 0.9583333333333334,
+          "primary_gate_improvement": null
+        },
+        "edge_ssim": {
+          "label": "Edge-SSIM",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.005281820893287659,
+          "ci95_raw_delta": [
+            0.0032981464018424353,
+            0.007286576585223277
+          ],
+          "direction_aware_win_rate": 0.875,
+          "primary_gate_improvement": null
+        },
+        "fg_mae": {
+          "label": "foreground colour-error proxy (MAE)",
+          "direction": "lower",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": -0.018384442354242008,
+          "ci95_raw_delta": [
+            -0.031042812873298922,
+            -0.004301343004529678
+          ],
+          "direction_aware_win_rate": 0.75,
+          "primary_gate_improvement": null
+        }
+      }
+    },
+    "C3_TCAS": {
+      "comparator": "C3_TCAS",
+      "metrics": {
+        "fg_lpips": {
+          "label": "FG-LPIPS",
+          "direction": "lower",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.0013023456558585167,
+          "ci95_raw_delta": [
+            9.162233521540959e-05,
+            0.002537659447019298
+          ],
+          "direction_aware_win_rate": 0.4166666666666667,
+          "primary_gate_improvement": false
+        },
+        "psnr": {
+          "label": "normalized-image PSNR (not FG-PSNR)",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": -0.27111485600471497,
+          "ci95_raw_delta": [
+            -0.38472537075479823,
+            -0.1522375618418058
+          ],
+          "direction_aware_win_rate": 0.16666666666666666,
+          "primary_gate_improvement": null
+        },
+        "fg_ssim": {
+          "label": "FG-SSIM",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.0006204694509506226,
+          "ci95_raw_delta": [
+            -0.0033191224560141564,
+            0.004441519671430189
+          ],
+          "direction_aware_win_rate": 0.625,
+          "primary_gate_improvement": null
+        },
+        "edge_ssim": {
+          "label": "Edge-SSIM",
+          "direction": "higher",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": -0.0005364033083120981,
+          "ci95_raw_delta": [
+            -0.0018079346666733424,
+            0.0006205380583802859
+          ],
+          "direction_aware_win_rate": 0.5833333333333334,
+          "primary_gate_improvement": null
+        },
+        "fg_mae": {
+          "label": "foreground colour-error proxy (MAE)",
+          "direction": "lower",
+          "n": 24,
+          "mean_raw_delta_trb_minus_comparator": 0.019999855508406956,
+          "ci95_raw_delta": [
+            0.00859887427650392,
+            0.0309805018051217
+          ],
+          "direction_aware_win_rate": 0.25,
+          "primary_gate_improvement": null
+        }
+      }
+    }
+  },
+  "primary_gate": {
+    "metric": "fg_lpips",
+    "rule": "TRB must have a paired 95% bootstrap CI strictly better than both fixed-low and C3_TCAS",
+    "fixed_low": {
+      "label": "FG-LPIPS",
+      "direction": "lower",
+      "n": 24,
+      "mean_raw_delta_trb_minus_comparator": -0.005508459794024627,
+      "ci95_raw_delta": [
+        -0.00782967401513209,
+        -0.003390914605309566
+      ],
+      "direction_aware_win_rate": 0.8333333333333334,
+      "primary_gate_improvement": true
+    },
+    "C3_TCAS": {
+      "label": "FG-LPIPS",
+      "direction": "lower",
+      "n": 24,
+      "mean_raw_delta_trb_minus_comparator": 0.0013023456558585167,
+      "ci95_raw_delta": [
+        9.162233521540959e-05,
+        0.002537659447019298
+      ],
+      "direction_aware_win_rate": 0.4166666666666667,
+      "primary_gate_improvement": false
+    },
+    "passed": false
+  },
+  "cost": {
+    "calibration_seconds_mean": 6.082121682387272,
+    "fixed_low_inference_seconds_mean": 6.14454619892543,
+    "C3_TCAS_inference_seconds_mean": 6.074976704680012,
+    "TRB_inference_seconds_mean": 6.260163804681118,
+    "TRB_total_seconds_mean": 12.34228548706839,
+    "TRB_total_over_fixed_low_inference": 2.0086569597648776
+  },
+  "secondary_metric_caveat": "The pilot's psnr field is the normalized-image PSNR emitted by compute_probes, not a foreground-masked FG-PSNR; it was not used for the promotion gate.",
+  "decision": "do_not_promote",
+  "bootstrap": {
+    "seed": 20260929,
+    "repetitions": 10000,
+    "unit": "object-level paired differences"
+  }
+}

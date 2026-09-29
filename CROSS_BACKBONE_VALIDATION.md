@@ -1,0 +1,102 @@
+# Cross-backbone validation audit
+
+This audit separates a genuine transfer experiment from a model that merely
+generates multiple views. The machine-readable preflight is
+`release/round2_repro/cross_backbone_preflight.json`; rerun it with:
+
+```bash
+python scripts/cross_backbone_preflight.py \
+  --output release/round2_repro/cross_backbone_preflight.json
+```
+
+## What is already usable
+
+| Candidate | Why it fits | Local status | Paper-safe role |
+|---|---|---|---|
+| MVPainter + GeoTex-Adapter | The anchor method: five-channel geometry residuals injected into a joint six-view UNet | Main 276-object clean-v2 artifacts are present | Main absolute table |
+| Official MV-Adapter SD2.1 | Independent SD2.1 multi-view adapter with an explicit image+geometry branch; its residual scale can be exposed per denoising step | Official source, base, adapter weights, manifests and Exact holdout are present | Primary second-backbone diagnostic |
+| Official MVDiffusion depth branch | Independent correspondence-aware depth-conditioned multi-view diffusion model | Official source pinned; 75-object ScanNet-compatible interop run completed at 50 steps with finite metrics; current SD2.1 depth base is explicitly marked compatibility-only | Interop deployment diagnostic; no pooled absolute score |
+| Wonder3D v1.0 | Local six-view model, Objaverse inputs and nearly complete six-view output inventory | 299 inputs and 1,794 RGB outputs are present | Boundary/generation baseline only |
+
+The MV-Adapter Exact holdout currently contains 76 objects and five defined
+conditions (380 rows), all tagged `exact_mesh` and finite. Its exact unified
+holdout means are approximately:
+
+| Condition | PSNR | FG-SSIM |
+|---|---:|---:|
+| no geometry | 13.1142 | 0.4985 |
+| fixed-low (0.75) | 13.3572 | 0.5275 |
+| fixed-1.0 | 13.3176 | 0.5273 |
+| LHL (0.75, 1.0, 0.75) | 13.3441 | 0.5283 |
+| equal-budget fixed mean | 13.3372 | 0.5278 |
+
+These numbers support a restrained statement: placement changes are measurable
+within MV-Adapter, but the frozen CAI rule did not select a unique stage
+schedule and LHL does not establish a uniform practical gain. The current
+results should therefore strengthen the paper's *scope and boundary* claim,
+not be rewritten as a positive replication of the main C3 optimum.
+
+## Candidate ranking for further work
+
+1. **Keep MV-Adapter SD2.1 as the main cross-backbone evidence.** The official
+   geometry-guided branch, exact meshes, fixed calibration/holdout split and
+   per-step residual-scale patch are already deployed. Report paired deltas
+   within this backbone; never pool its absolute PSNR with MVPainter.
+
+2. **Best additional deployment: MVDiffusion depth-conditioned generation.** Its
+   official implementation is a separate correspondence-aware multi-view
+   diffusion model that takes depth sequences and is explicitly used for mesh
+   texturing. This is the closest additional architecture for a geometry
+   control study, and the existing 17-view depth/camera exports can be
+   converted to its scene-style inputs. The 75-object deployment is complete,
+   but its text/scene conditioning differs from the reference-image protocol,
+   and the current run uses an explicitly marked SD2.1 compatibility base;
+   therefore it remains a follow-up interop diagnostic rather than a drop-in
+   replacement or paper-quality absolute baseline. The deployment keeps the
+   orthographic-to-pinhole conversion and the excluded all-invalid-depth
+   object explicit in its manifest.
+
+3. **NVS-Adapter SD2.1 + depth ControlNet is a lower-cost adapter diagnostic.**
+   The official project provides an SD2.1 NVS-Adapter and an optional depth
+   ControlNet path, but it uses a four-query/view setup and the depth path is
+   SD1.5-specific. It needs a four-view subset and an explicit version-matched
+   protocol; it should not be presented as the same six-view geometry-texture
+   task without that adaptation.
+
+4. **Do not prioritize Era3D or Wonder3D for TCAS transfer.** They are useful
+   multi-view generation references, but their released inference paths do not
+   expose the external geometry residual adapter whose strength TCAS controls.
+   A condition-input scale sweep would answer a different question.
+
+5. **Defer MVEdit/3D-Adapter for this revision.** The official repository
+   describes a 24-GB-class UI and notes that the GRM-based adapter weights are
+   not released. It is not a clean, reproducible candidate for the current
+   controlled schedule table.
+
+## Tests and deployment boundary
+
+- `pytest -q geotex/tests final/round2/mv_adapter/tests/test_geometry_scale.py`:
+  **57 passed**.
+- The MV-Adapter protocol generator and all relevant Python entry points pass
+  syntax compilation.
+- The local Wonder3D source and existing output inventory pass the preflight;
+  no new Wonder3D TCAS result is claimed because it has no matching geometry
+  residual interface.
+- The restricted sandbox has no `/dev/nvidia*`, but the approved external
+  execution path sees two RTX 5090 devices. MVDiffusion strict checkpoint load,
+  single-object smoke, and the 75-object/50-step run all passed on that path;
+  the output inventory is complete and all interop metrics are finite. The
+  current base is `native_official_depth_base=false`, so these results are
+  deployment evidence only and are not pooled with absolute backbone scores.
+
+## Recommended manuscript wording
+
+> On an independent SD2.1 geometry-conditioned multi-view adapter (MV-Adapter),
+> stage placement produced measurable but non-uniform changes across structure
+> and texture metrics. The prespecified rule did not identify a unique optimal
+> placement, so we treat this experiment as evidence that temporal placement is
+> backbone- and adapter-dependent, while the conservative--high--conservative
+> pattern remains a validated result for the main MVPainter/GeoTex regime.
+
+This wording is deliberately narrower than claiming that TCAS universally
+transfers or that the second backbone reproduces C3.

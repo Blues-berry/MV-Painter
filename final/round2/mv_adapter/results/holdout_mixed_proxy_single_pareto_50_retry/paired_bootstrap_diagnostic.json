@@ -1,0 +1,97 @@
+{
+  "status": "diagnostic_mixed_proxy_holdout",
+  "csv": "final/round2/mv_adapter/results/holdout_mixed_proxy_single_pareto_50_retry/per_object_metrics.csv",
+  "left": "fixed_1.0",
+  "right": "no_geometry",
+  "object_count": 76,
+  "geometry_source_counts": {
+    "exact_mesh": 136,
+    "proxy_depth_convex_hull": 16
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20260928,
+    "confidence": 0.95
+  },
+  "paired_left_minus_right_direction_aware": {
+    "psnr": {
+      "n": 76,
+      "mean": 1.0591025770830262,
+      "ci95": [
+        0.4391293958182388,
+        1.743364717725354
+      ],
+      "wins": 55,
+      "ties": 0,
+      "win_rate": 0.7236842105263158,
+      "seed": 20260928,
+      "resamples": 10000
+    },
+    "fg_ssim": {
+      "n": 76,
+      "mean": 0.03041353800105291,
+      "ci95": [
+        0.021512421605222157,
+        0.039474300945508536
+      ],
+      "wins": 59,
+      "ties": 0,
+      "win_rate": 0.7763157894736842,
+      "seed": 20260928,
+      "resamples": 10000
+    },
+    "edge_ssim": {
+      "n": 76,
+      "mean": 0.007165731216797181,
+      "ci95": [
+        0.002702280296127132,
+        0.012029712064918782
+      ],
+      "wins": 51,
+      "ties": 0,
+      "win_rate": 0.6710526315789473,
+      "seed": 20260928,
+      "resamples": 10000
+    },
+    "fg_lpips": {
+      "n": 76,
+      "mean": 0.0041966815348260175,
+      "ci95": [
+        -0.008445498821346145,
+        0.017155325855597574
+      ],
+      "wins": 40,
+      "ties": 0,
+      "win_rate": 0.5263157894736842,
+      "seed": 20260928,
+      "resamples": 10000
+    },
+    "ciede2000": {
+      "n": 76,
+      "mean": 1.4972513537657886,
+      "ci95": [
+        0.5753457286705572,
+        2.3769672226487533
+      ],
+      "wins": 57,
+      "ties": 0,
+      "win_rate": 0.75,
+      "seed": 20260928,
+      "resamples": 10000
+    },
+    "gt_relative_texture_error": {
+      "n": 76,
+      "mean": -0.16538622843068854,
+      "ci95": [
+        -0.6291386329233425,
+        0.2625152196937583
+      ],
+      "wins": 53,
+      "ties": 0,
+      "win_rate": 0.6973684210526315,
+      "seed": 20260928,
+      "resamples": 10000
+    }
+  },
+  "note": "This is not the frozen six-comparison holdout because calibration returned NO_CLEAR_TRADEOFF and no unique CAI stage schedule."
+}

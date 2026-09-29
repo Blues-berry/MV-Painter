@@ -1,0 +1,63 @@
+{
+  "protocol": "codex-d-cpu-texture-bake-v1",
+  "handoff": "/4T/CXY/MV-Painter/final/round2/main_adapter_baking/BAKE_INPUT_HANDOFF.json",
+  "objects": [
+    "obj_0015"
+  ],
+  "methods": [
+    "c3"
+  ],
+  "texture_resolution": 1024,
+  "render_resolution": 512,
+  "implementation": "Blender glTF import/export + NumPy CPU z-buffer/UV bilinear splat/rasterizer",
+  "records": [
+    {
+      "object": "obj_0015",
+      "method": "c3",
+      "input_exact_glb": "/4T/CXY/MV-Painter/final/round2/main_adapter_clean_v2/exact_glbs/eda4277e-9984-5ff7-9891-ad816c3f09fc.glb",
+      "output_textured_glb": "/4T/CXY/MV-Painter/final/round2/main_adapter_baking/cpu_bake_inpaint32/c3/obj_0015/obj_0015_c3_textured.glb",
+      "texture_path": "/4T/CXY/MV-Painter/final/round2/main_adapter_baking/cpu_bake_inpaint32/c3/obj_0015/obj_0015_c3_texture.png",
+      "coverage_path": "/4T/CXY/MV-Painter/final/round2/main_adapter_baking/cpu_bake_inpaint32/c3/obj_0015/obj_0015_c3_coverage.png",
+      "unseen_render_dir": "/4T/CXY/MV-Painter/final/round2/main_adapter_baking/cpu_bake_inpaint32/c3/obj_0015/unseen_renders",
+      "mesh_object_count": 1,
+      "triangle_count": 27520,
+      "texture_resolution": 1024,
+      "render_resolution": 512,
+      "source_views": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "unseen_views": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "texture_coverage": 0.3088254928588867,
+      "texture_coverage_after_inpaint": 0.7761993408203125,
+      "inpainted_fraction": 0.4673738479614258,
+      "cross_view_texel_variance": 0.012744329003926615,
+      "uv_seam_discontinuity": 0.0,
+      "inpainting": {
+        "iterations": 32,
+        "rule": "explicit 4-neighbor UV propagation",
+        "raw_coverage_preserved": true,
+        "inpainted_fraction": 0.4673738479614258
+      },
+      "blend": "uniform visible-pixel UV bilinear splat; no inpainting",
+      "exported_glb_image_texture_verified": true,
+      "material_name": "CPU_Baked_obj_0015_c3_texture"
+    }
+  ]
+}

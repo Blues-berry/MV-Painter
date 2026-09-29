@@ -1,0 +1,96 @@
+{
+  "status": "complete",
+  "objects": 12,
+  "methods": [
+    "no_adapter",
+    "fixed_low",
+    "fixed_high",
+    "c3"
+  ],
+  "prediction_variants": [
+    "A_fp16",
+    "A_fp32",
+    "B_fp16",
+    "B_fp32",
+    "C_fp32"
+  ],
+  "ground_truth_variants": [
+    "gt_float32",
+    "gt_png_float32"
+  ],
+  "same_generation": true,
+  "a_b_max_abs": 0.0,
+  "combinations_mean_ssim": {
+    "A_fp16__gt_float32": {
+      "no_adapter": 0.7462185621261597,
+      "fixed_low": 0.8683173060417175,
+      "fixed_high": 0.8229715128739675,
+      "c3": 0.8687151372432709
+    },
+    "A_fp16__gt_png_float32": {
+      "no_adapter": 0.7461512386798859,
+      "fixed_low": 0.8682474543650945,
+      "fixed_high": 0.822945257027944,
+      "c3": 0.8686503767967224
+    },
+    "A_fp32__gt_float32": {
+      "no_adapter": 0.7859632074832916,
+      "fixed_low": 0.8964265783627828,
+      "fixed_high": 0.8589274883270264,
+      "c3": 0.8928278187910715
+    },
+    "A_fp32__gt_png_float32": {
+      "no_adapter": 0.785847450296084,
+      "fixed_low": 0.8963565280040106,
+      "fixed_high": 0.8589009642601013,
+      "c3": 0.8927627901236216
+    },
+    "C_fp32__gt_float32": {
+      "no_adapter": 0.7854156792163849,
+      "fixed_low": 0.8961216509342194,
+      "fixed_high": 0.8585836539665858,
+      "c3": 0.8925705154736837
+    },
+    "C_fp32__gt_png_float32": {
+      "no_adapter": 0.785300225019455,
+      "fixed_low": 0.8960519880056381,
+      "fixed_high": 0.8585572391748428,
+      "c3": 0.892505610982577
+    }
+  },
+  "decomposition_mean_effects": {
+    "dtype_A_fp16_minus_A_fp32_fixed_float_gt": -0.03198064366976419,
+    "prediction_png_quantization_C_minus_A_fixed_float_gt": -0.00036339834332466125,
+    "gt_png_serialization_fixed_A_fp32": -6.934007008871368e-05,
+    "full_observed_C_png_prediction_and_gt": -0.0004325074454148703
+  },
+  "paired_c3_differences": {
+    "A_fp16__gt_float32": {
+      "c3_minus_fixed_low": 0.0003978312015533447,
+      "c3_minus_fixed_high": 0.04574362436930338
+    },
+    "A_fp16__gt_png_float32": {
+      "c3_minus_fixed_low": 0.00040292243162790936,
+      "c3_minus_fixed_high": 0.04570511976877848
+    },
+    "A_fp32__gt_float32": {
+      "c3_minus_fixed_low": -0.003598759571711222,
+      "c3_minus_fixed_high": 0.033900330464045204
+    },
+    "A_fp32__gt_png_float32": {
+      "c3_minus_fixed_low": -0.0035937378803888955,
+      "c3_minus_fixed_high": 0.0338618258635203
+    },
+    "C_fp32__gt_float32": {
+      "c3_minus_fixed_low": -0.003551135460535685,
+      "c3_minus_fixed_high": 0.03398686150709788
+    },
+    "C_fp32__gt_png_float32": {
+      "c3_minus_fixed_low": -0.0035463770230611167,
+      "c3_minus_fixed_high": 0.03394837180773417
+    }
+  },
+  "source_trace": "/4T/CXY/MV-Painter/final/round2/main_adapter_clean_v2/float_png_trace_12_controlled_20260929/float_png_serialization_manifest.json",
+  "source_csv": "/4T/CXY/MV-Painter/final/round2/main_adapter_clean_v2/float_png_trace_12_controlled_20260929/FIXED_GT_SSIM_DECOMPOSITION.csv",
+  "no_model_inference": true
+}

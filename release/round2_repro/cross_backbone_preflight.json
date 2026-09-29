@@ -1,0 +1,271 @@
+{
+  "protocol": "cross-backbone-preflight-v1",
+  "root": "/4T/CXY/MV-Painter",
+  "runtime": {
+    "nvidia_smi": "/usr/bin/nvidia-smi",
+    "torch_cuda_available": true,
+    "torch_device_count": 2,
+    "torch_version": "2.7.1+cu128",
+    "nvidia_smi_returncode": 0,
+    "nvidia_smi_output": "GPU 0: NVIDIA GeForce RTX 5090 (UUID: GPU-ba120e01-77cd-7656-ffef-04ab75bbc7e6)\nGPU 1: NVIDIA GeForce RTX 5090 (UUID: GPU-2abab5d9-0ecf-fcff-c0f1-95921fe8c165)"
+  },
+  "claim_policy": {
+    "absolute_scores_across_backbones": false,
+    "shared_factors_required_for_paired_claim": [
+      "object identifiers",
+      "seed and initial latent",
+      "target camera IDs",
+      "resolution and denoising steps",
+      "metric implementation and foreground mask"
+    ],
+    "ready_does_not_mean_positive_transfer": true
+  },
+  "candidates": [
+    {
+      "name": "mvpainter_geotex",
+      "paper_fit": "anchor",
+      "condition_interface": "five-channel GeoTex residual adapter in a joint six-view UNet",
+      "official_source": "local MVPainter implementation",
+      "official_paper": "https://arxiv.org/abs/2505.12635",
+      "local_paths": [
+        {
+          "declared": "MVPainter/configs/mvpainter-geotex-full-train.yaml",
+          "resolved": "/4T/CXY/MV-Painter/MVPainter/configs/mvpainter-geotex-full-train.yaml",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+          "resolved": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "final/round2/main_adapter_clean_v2/main_adapter_clean_v2_strict276.csv",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/main_adapter_clean_v2/main_adapter_clean_v2_strict276.csv",
+          "exists": true,
+          "kind": "file"
+        }
+      ],
+      "evidence_role": "main-backbone anchor; absolute scores are reported only here",
+      "next_action": "keep as the reference protocol and do not merge absolute scores with other backbones",
+      "all_declared_paths_present": true,
+      "result_check": {
+        "status": "anchor_artifacts_ready",
+        "row_count": 4,
+        "interpretation": "main-backbone anchor; use its own absolute-score protocol"
+      }
+    },
+    {
+      "name": "mv_adapter_sd21",
+      "paper_fit": "strict cross-backbone",
+      "condition_interface": "official image+geometry adapter on SD2.1 with per-step residual scaling",
+      "official_source": "https://github.com/huanngzh/MV-Adapter",
+      "official_paper": "https://arxiv.org/abs/2412.03632",
+      "local_paths": [
+        {
+          "declared": "final/round2/mv_adapter/upstream",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/upstream",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "final/round2/mv_adapter/models/sd21_base",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/sd21_base",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "final/round2/mv_adapter/data_manifest.json",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/data_manifest.json",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "final/round2/mv_adapter/results/holdout_exact_76/per_object_metrics.csv",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/results/holdout_exact_76/per_object_metrics.csv",
+          "exists": true,
+          "kind": "file"
+        }
+      ],
+      "evidence_role": "primary second-backbone diagnostic; paired within-backbone deltas only",
+      "next_action": "use the existing Exact 24/76 results, but report stage effects without claiming a unique TCAS winner",
+      "all_declared_paths_present": true,
+      "result_check": {
+        "status": "ready",
+        "row_count": 380,
+        "object_count": 76,
+        "schedule_count": 5,
+        "schedules": [
+          "cosine_bump",
+          "fixed_1.0",
+          "fixed_low",
+          "linear_warmup",
+          "no_geometry"
+        ],
+        "all_exact_mesh": true,
+        "all_numeric_values_finite": true,
+        "interpretation": "diagnostic stage-placement evidence; no unique CAI winner"
+      }
+    },
+    {
+      "name": "mvdiffusion_depth",
+      "paper_fit": "high task fit, interop diagnostic completed",
+      "condition_interface": "multi-view depth-conditioned diffusion with correspondence-aware attention",
+      "official_source": "https://github.com/Tangshitao/MVDiffusion",
+      "official_paper": "https://arxiv.org/abs/2307.01097",
+      "local_paths": [
+        {
+          "declared": "final/round2/mvdiffusion/upstream",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "final/round2/mvdiffusion/models/sd21_depth_compat",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
+          "exists": true,
+          "kind": "file"
+        },
+        {
+          "declared": "final/round2/mvdiffusion/data/scannet/holdout_exact_75",
+          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_75",
+          "exists": true,
+          "kind": "directory"
+        }
+      ],
+      "evidence_role": "independent geometry-conditioned interop diagnostic; not a pooled absolute baseline",
+      "next_action": "rerun with the native official SD2-depth base before making a paper-quality absolute claim; preserve the text/depth and orthographic-to-pinhole distinction",
+      "all_declared_paths_present": true,
+      "result_check": {
+        "status": "ready",
+        "row_count": 75,
+        "object_count": 75,
+        "expected_object_count": 75,
+        "complete_object_set": true,
+        "all_numeric_values_finite": true,
+        "mean": {
+          "interop_psnr": 10.103600331478647,
+          "interop_fg_ssim": 0.31535168272753555,
+          "interop_edge_ssim": 0.21892540913489134
+        },
+        "steps": 50,
+        "native_official_depth_base": false,
+        "interpretation": "interop diagnostic only; absolute scores are not pooled across backbones"
+      }
+    },
+    {
+      "name": "nvs_adapter_sd21",
+      "paper_fit": "adapter transfer candidate",
+      "condition_interface": "SD2.1 NVS-Adapter; optional depth ControlNet is a separate SD1.5 path",
+      "official_source": "https://github.com/POSTECH-CVLab/nvsadapter",
+      "official_paper": "https://arxiv.org/abs/2309.03453",
+      "local_paths": [],
+      "evidence_role": "low-cost adapter-strength diagnostic, not a direct six-view geometry-texture replication",
+      "next_action": "only stage after fixing the view-count and SD-version mismatch; use a four-view subset and label it exploratory",
+      "all_declared_paths_present": null,
+      "result_check": {
+        "status": "not_staged",
+        "reason": "no local source/weights registered"
+      }
+    },
+    {
+      "name": "wonder3d",
+      "paper_fit": "boundary baseline",
+      "condition_interface": "cross-domain image-conditioned multi-view UNet; no external geometry residual adapter",
+      "official_source": "https://github.com/xxlong0/Wonder3D",
+      "official_paper": "https://arxiv.org/abs/2310.15008",
+      "local_paths": [
+        {
+          "declared": "/4T/CXY/Wonder3D",
+          "resolved": "/4T/CXY/Wonder3D",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "mvpoutput/wonder3d_tcas/input_images_shard000",
+          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/input_images_shard000",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "mvpoutput/wonder3d_tcas/input_images_shard150",
+          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/input_images_shard150",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "mvpoutput/wonder3d_tcas/outputs_shard000/cropsize-192-cfg3.0",
+          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/outputs_shard000/cropsize-192-cfg3.0",
+          "exists": true,
+          "kind": "directory"
+        },
+        {
+          "declared": "mvpoutput/wonder3d_tcas/outputs_shard150/cropsize-192-cfg3.0",
+          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/outputs_shard150/cropsize-192-cfg3.0",
+          "exists": true,
+          "kind": "directory"
+        }
+      ],
+      "evidence_role": "deployment/data-pipeline boundary check only; do not call condition scaling TCAS transfer",
+      "next_action": "retain the 299-object output inventory as a baseline asset, but do not add it to the adapter-stage table",
+      "all_declared_paths_present": true,
+      "result_check": {
+        "status": "baseline_inventory_ready",
+        "input_count": 299,
+        "rgb_output_count": 1794,
+        "expected_six_view_output_count": 1794,
+        "complete_six_view_sets": true,
+        "interpretation": "generation baseline only; no geometry-residual TCAS semantics"
+      }
+    },
+    {
+      "name": "era3d",
+      "paper_fit": "multi-view baseline, weak TCAS fit",
+      "condition_interface": "high-resolution image-conditioned six-view diffusion; no explicit mesh residual adapter",
+      "official_source": "https://github.com/pengHTYX/Era3D",
+      "official_paper": "https://arxiv.org/abs/2405.11616",
+      "local_paths": [],
+      "evidence_role": "quality/reference baseline only",
+      "next_action": "do not prioritize for this revision; it adds a generator comparison, not a clean adapter-strength test",
+      "all_declared_paths_present": null,
+      "result_check": {
+        "status": "not_staged",
+        "reason": "no local source/weights registered"
+      }
+    },
+    {
+      "name": "mvedit_3d_adapter",
+      "paper_fit": "geometry-consistent but operationally unsuitable",
+      "condition_interface": "optimization-based 3D-Adapter/MVEdit around off-the-shelf multi-view priors",
+      "official_source": "https://github.com/Lakonik/MVEdit",
+      "official_paper": "https://arxiv.org/abs/2410.18974",
+      "local_paths": [],
+      "evidence_role": "not suitable for the current controlled TCAS table",
+      "next_action": "defer: official README notes the GRM-based adapter release limitation and requires at least 24GB GPU memory",
+      "all_declared_paths_present": null,
+      "result_check": {
+        "status": "not_staged",
+        "reason": "no local source/weights registered"
+      }
+    }
+  ]
+}

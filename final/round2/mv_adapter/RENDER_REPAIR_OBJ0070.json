@@ -1,0 +1,20 @@
+{
+  "object": "obj_0070",
+  "source_uid": "f7ef602b19214debb0b350db9af55ff2",
+  "original_input_status": "all_17_rgba_masks_empty",
+  "original_input_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f7ef602b19214debb0b350db9af55ff2",
+  "mesh_path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-146/f7ef602b19214debb0b350db9af55ff2.glb",
+  "repair_script": "repair_empty_render.py",
+  "repair_method": "direct_world_space_normalization_before_render",
+  "camera_protocol": {
+    "resolution": [512, 512],
+    "projection": "orthographic",
+    "ortho_scale": 1.0,
+    "view_count": 17,
+    "cycles_samples": 128,
+    "hdri": "/home/ubuntu/ssd_work/projects/spar3d/demo_files/hdri/studio_small_08_1k.hdr"
+  },
+  "repaired_mask_nonzero_pixels": [900, 1219, 1221, 895, 1223, 1219, 1474, 1369, 1453, 1216, 1631, 1201, 1304, 895, 1306, 947, 935],
+  "status": "installed_into_manifest_render_root",
+  "limitation": "The original render was invalid and could not be used; this repaired render is recorded separately and is not an untouched source-render artifact."
+}

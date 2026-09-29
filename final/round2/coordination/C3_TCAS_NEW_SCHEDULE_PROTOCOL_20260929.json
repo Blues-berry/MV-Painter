@@ -1,0 +1,68 @@
+{
+  "protocol": "c3-tcas-schedule-followup-development-v1",
+  "status": "protocol_frozen_before_new_inference",
+  "purpose": "development-only inference-time schedule screening after the existing C3 baseline audit",
+  "scope": {
+    "cohort": "clean-v2 probe 24",
+    "object_list": "final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+    "object_count": 24,
+    "holdouts_locked": [
+      "clean-v2 strict 276",
+      "MV-Adapter Exact 76"
+    ]
+  },
+  "invariants": {
+    "checkpoint": "existing controlled clean-v2 checkpoint; no retraining",
+    "data": "unchanged clean-v2 data and unique6 views",
+    "seed": 42,
+    "steps": 50,
+    "primary_metric": "fg_lpips",
+    "primary_direction": "lower_is_better",
+    "secondary_metrics": [
+      "psnr",
+      "fg_ssim",
+      "edge_ssim",
+      "fg_mae"
+    ],
+    "bootstrap": {
+      "unit": "object",
+      "resamples": 10000,
+      "seed": 20260929,
+      "confidence": 0.95
+    }
+  },
+  "conditions_fixed_before_run": {
+    "baselines": [
+      "fixed_low",
+      "C3_TCAS",
+      "HLL_eq",
+      "LLH_eq"
+    ],
+    "new_schedule_family": [
+      {
+        "name": "LLH_ramp_eq",
+        "definition": "fixed-low for first 33 steps; linear ramp from 1.25 to 3.6029411764705883 over final 17 steps",
+        "nominal_scale_sum": 82.5,
+        "purpose": "test whether a smooth late high avoids the abrupt LLH transition while preserving nominal budget"
+      },
+      {
+        "name": "LLH_cosine_eq",
+        "definition": "fixed-low until the final third; cosine half-ramp from 1.25 with peak 3.6029411764705883 over final 17 steps",
+        "nominal_scale_sum": 82.5,
+        "purpose": "test a smooth late-peaked schedule at the same nominal scale budget"
+      }
+    ]
+  },
+  "promotion_gate": {
+    "no_holdout_access": true,
+    "primary": "new schedule must have paired 95% FG-LPIPS CI strictly below zero versus both C3_TCAS and fixed_low",
+    "guardrails": "report PSNR, FG-SSIM, Edge-SSIM and FG-MAE; any unfavorable guardrail is retained and not hidden",
+    "failure_action": "do_not_promote; do not run strict 276 or Exact 76 for this candidate",
+    "interpretation": "development screening only; passing does not create a CAI winner or a cross-backbone claim"
+  },
+  "provenance": {
+    "controller_implementation": "/4T/tmp/mvpainter-adaptive-control/geotex/residual_budget_pilot.py",
+    "controller_sha256": "2d11700f40a7edd195471571a7a331171fca91bbd6da6a095b0df2708adfb5aa",
+    "main_worktree_policy": "do not modify the frozen main-adapter or MV-Adapter artifacts"
+  }
+}
