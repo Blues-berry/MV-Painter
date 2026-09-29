@@ -68,3 +68,32 @@ budget. However, the current pilot is still insufficient for a paper claim:
 Until these gates pass, the correct status is **promising method prototype,
 not submission-ready evidence**. The previous round2 evidence-cleaned branch
 remains unchanged.
+
+## Equal-budget follow-up
+
+The follow-up used the same 12 objects, seed, checkpoint, and 50-step protocol.
+HLL and LLH were adjusted to 17 high-scale steps so their scale sum is exactly
+`742.5`, matching C3's nominal schedule sum. Results:
+
+| condition | FG-SSIM | PSNR | LapCorr | FG MAE |
+|---|---:|---:|---:|---:|
+| C3 (LHL) | 0.3062 | 20.769 | 0.1485 | 0.6476 |
+| HLL-eq | 0.3175 | 21.104 | 0.1637 | 0.6136 |
+| LLH-eq | 0.3128 | 21.637 | 0.1559 | 0.5802 |
+| TRB | 0.3122 | 21.075 | 0.1612 | 0.6135 |
+
+TRB's actual applied scale sum was approximately `568.0` per object because
+the trust region shrinks many C3 mid-stage scales and the shallow cap is active;
+it is therefore not an equal-budget comparison to C3. The paired result also
+shows that TRB does not beat the equal-budget schedule alternatives: HLL-eq
+has higher mean SSIM and LLH-eq has higher mean PSNR and lower MAE. This is a
+blocking result for a strong claim that the residual controller has discovered
+a uniquely preferable stage placement.
+
+The independent expert review therefore rates the current method as
+`borderline → weak reject` for a method-focused venue. The next valid move is
+to either (a) redesign the controller with an explicitly equalized residual
+budget and validate it on a locked holdout, or (b) honestly reposition the
+paper as an auditable inference-control/measurement study. Do not run a
+strict-276 claim-expansion experiment until one of these two directions is
+selected and the budget definition is fixed.

@@ -42,6 +42,13 @@ def schedule_value(name, progress):
         return 1.25
     if name == "C3_TCAS":
         return 2.50 if stage_name(progress) == "mid" else 1.25
+    # For 50 denoising steps, the thirds contain 17/16/17 steps.  Using
+    # 2.426470588 in the 17-step high segment makes HLL/LLH have the same
+    # total scale sum as C3's 16-step high segment (82.5 over 50 steps).
+    if name == "HLL_eq":
+        return 2.426470588 if stage_name(progress) == "early" else 1.25
+    if name == "LLH_eq":
+        return 2.426470588 if stage_name(progress) == "late" else 1.25
     raise ValueError(name)
 
 
@@ -155,12 +162,16 @@ def generate(model, batch, device, weight_dtype, geo_feats, num_steps,
                     }
                 if scaled is not None:
                     scaled_f = scaled.detach().float()
+                    if controller is not None:
+                        applied_scale = getattr(module, "_runtime_effective_scale", 0.0)
+                    else:
+                        applied_scale = min(float(getattr(module, "_adapter_scale", 0.0)),
+                                            float(module._max_scale))
                     scaled_step[module.adapter_idx] = {
                         "depth": module.depth_group,
                         "mean_abs": float(scaled_f.abs().mean().item()),
                         "rms": float(scaled_f.pow(2).mean().sqrt().item()),
-                        "scale": float(getattr(module, "_runtime_effective_scale",
-                                                getattr(module, "_adapter_scale", 0.0))),
+                        "scale": float(applied_scale),
                     }
             logs["raw"][step_idx] = raw_step
             logs["residual"][step_idx] = scaled_step
@@ -220,7 +231,8 @@ def main():
     model, config = ec.load_model(args.config, args.checkpoint, device)
     dataset = ec.instantiate_from_config(config.data.params.validation)
     num_objects = min(args.num_objects, len(dataset))
-    methods = ["no_adapter", "fixed_low", "C3_TCAS", "RB_TCAS", "SRB_TCAS", "TRB_TCAS"]
+    methods = ["no_adapter", "fixed_low", "C3_TCAS", "HLL_eq", "LLH_eq",
+               "RB_TCAS", "SRB_TCAS", "TRB_TCAS"]
     if args.methods:
         requested = [m.strip() for m in args.methods.split(",") if m.strip()]
         unknown = sorted(set(requested) - set(methods))
