@@ -91,9 +91,17 @@ def load_model(config_path, checkpoint_path, device):
     if checkpoint_path and os.path.exists(checkpoint_path):
         print(f"Loading checkpoint: {checkpoint_path}")
         state = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
-        if 'adapters' in state:
+        # Current GeoTex checkpoints store one state dict per injected adapter
+        # under ``adapters`` and the encoder under ``encoder``.  Older pilot
+        # checkpoints used module state-dicts instead.  Delegate list-format
+        # loading to the model helper so this evaluator does not silently
+        # assume ``adapters`` is a single Module state_dict.
+        if 'adapters' in state and isinstance(state['adapters'], list):
+            model.load_geotex_weights(checkpoint_path)
+        elif 'adapters' in state:
             model.adapters.load_state_dict(state['adapters'])
-            model.geo_encoder.load_state_dict(state['geo_encoder'])
+            encoder_key = 'geo_encoder' if 'geo_encoder' in state else 'encoder'
+            model.geo_encoder.load_state_dict(state[encoder_key])
         else:
             model.load_geotex_weights(checkpoint_path)
 

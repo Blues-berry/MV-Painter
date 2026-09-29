@@ -312,7 +312,9 @@ class GeoTexResnetWrapper(nn.Module):
         self._max_scale = self.LAYER_MAX_SCALES.get(depth_group, 3.0)
         self._current_geo_feats = None
         self._last_correction = None  # For residual regularization
+        self._last_raw_correction = None  # Before temporal/runtime scaling
         self._correction_controller = None  # Set externally for adaptive correction
+        self._runtime_scale_controller = None  # Optional residual-aware pilot controller
 
     def set_geo_feats(self, geo_feats):
         """Set geometry features for the current forward pass."""
@@ -322,6 +324,7 @@ class GeoTexResnetWrapper(nn.Module):
         """Clear geometry features after forward pass."""
         self._current_geo_feats = None
         self._last_correction = None
+        self._last_raw_correction = None
 
     def forward(self, *args, **kwargs):
         # Run original resnet
@@ -343,12 +346,27 @@ class GeoTexResnetWrapper(nn.Module):
                     )
                 # Compute correction and store for regularization
                 correction = self.adapter.compute_correction(hidden_states, geo_feat)
+                self._last_raw_correction = correction
 
-                # Apply static _adapter_scale first (TCAS temporal schedule)
-                # Clamp to per-layer maximum to prevent texture damage in shallow layers
-                if hasattr(self, '_adapter_scale'):
-                    effective_scale = min(self._adapter_scale, self._max_scale)
+                # A runtime controller can replace the static schedule with a
+                # scale derived from the current residual and hidden state.
+                # It is intentionally opt-in so all legacy evaluations remain
+                # bit-for-bit on the same code path when no controller is set.
+                if self._runtime_scale_controller is not None:
+                    effective_scale = self._runtime_scale_controller(
+                        correction, hidden_states, geo_feat, self,
+                    )
+                    effective_scale = float(max(0.0, min(
+                        float(effective_scale), self._max_scale)))
                     correction = correction * effective_scale
+                    self._runtime_effective_scale = effective_scale
+                else:
+                    # Apply static _adapter_scale (TCAS temporal schedule).
+                    # Clamp to per-layer maximum to prevent texture damage in
+                    # shallow layers.
+                    if hasattr(self, '_adapter_scale'):
+                        effective_scale = min(self._adapter_scale, self._max_scale)
+                        correction = correction * effective_scale
 
                 # Then apply adaptive correction (GSG/FSC) on top if controller is set
                 # Note: LTAG in controller provides its own scale, so when LTAG is enabled
