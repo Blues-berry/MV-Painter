@@ -1,0 +1,124 @@
+                                             1
+
+
+
+Reviewer 1
+
+Comments
+
+Reviewer 1 - Initial submission, 14/09/2026
+This paper presents TCAS, a training-free schedule for multi-view diffusion that balances
+structural alignment and texture quality. The authors report improved PSNR and texture
+retention relative to aggressive uniform scaling, alongside favorable overall human
+preference.
+
+The revision strengthens the submission through cluster-aware preference analysis,
+investigation of adapter-dependent failure modes, and transparent reporting of
+unsuccessful FAC experiments. The method is promising, but the following concerns
+should be addressed before publication:
+
+- Figures 4 and 6 show pronounced purple color shifts, repeated patterns, and substantial
+discrepancies from the reference appearance. Please provide full-object comparisons
+across a broader set of objects, including the unmodified pipeline and a competitive
+fixed-scale baseline. Baked meshes rendered from unseen viewpoints and an assessment
+of seams or cross-view consistency would help establish practical value. The
+supplementary video could not be assessed.
+
+- Tables 4–6 evaluate the main adapter on 300 objects, including the 24 schedule-
+selection objects; Tables 7–8 use subsets of that pool. Table 9 uses the probe-disjoint 276-
+object subset but changes the adapter and competing schedules. It therefore does not
+directly confirm the main adapter’s reported 0.96 dB gain outside the selection set. Please
+evaluate the main adapter and relevant baselines under the same held-out protocol.
+
+- The paper acknowledges PSNR’s limitations and includes perceptual evaluations.
+However, the connection between the metric gains and faithful texture reproduction
+remains unclear given the visible artifacts. Please distinguish texture variation from
+texture fidelity: larger gradients or Laplacian variance can reflect unwanted artifacts as
+well as meaningful detail.
+
+- A confidence interval crossing zero for the FG-SSIM difference does not establish
+equivalence or non-inferiority. Table 4 also shows lower Edge-SSIM for TCAS than for
+aggressive scaling, 0.529 versus 0.559. Please report paired intervals, acknowledge this
+trade-off, and either justify a non-inferiority margin or moderate the preservation claim.
+
+- Section 4.1.3 provides useful details, but it is still hard to reproduce the FAC
+experiments. The code is encouraged to be released,
+
+TCAS is a potentially useful, low-cost intervention. Consistent held-out comparisons,
+clearer metric interpretation, and stronger qualitative evidence are needed to establish its
+practical benefit for 3D texturing.
+
+Reviewer 2
+
+Comments
+                                            2
+
+
+Reviewer 2 - Initial submission, 24/09/2026
+Summary
+This paper studies inference-time adapter scaling in geometry-conditioned multi-view
+diffusion for 3D texture generation. The key observation is that uniformly increasing the
+adapter scale improves structural metrics such as FG-SSIM, but may suppress texture
+synthesis, leading to flattened appearance, reduced color variation, or other high-
+frequency degradation. Based on this observation, the paper proposes Timestep-
+Conditioned Adapter Scaling (TCAS), which adopts a low–high–low schedule over the
+early, middle, and late denoising stages, with the selected configuration C3=(1.25, 2.50,
+1.25). The authors further introduce a Correction–Alignment–Interference (CAI) stage-
+utility analysis to motivate this schedule, and evaluate the method on a 24-object probe
+set, a disjoint 276-object holdout set, and a pooled 300-object evaluation set. The revised
+manuscript is substantially more careful than the earlier version in terms of experimental
+protocol, statistical analysis, and claim scope. In particular, the authors now explicitly
+separate the 24-object probe set from a strictly disjoint 276-object holdout for schedule
+transfer, provide more detailed implementation information, use cluster-aware statistics
+for the user study, and re-examine the learned FAC extension under a stricter paired and
+disjoint protocol. However, I still have significant concerns regarding the methodological
+novelty, the interpretation of the CAI formulation, and the lack of cross-backbone
+validation. The revision makes the empirical claims considerably more trustworthy, but it
+does not fundamentally change the nature of the contribution: TCAS remains a manually
+discretized three-stage inference schedule identified within one MVPainter-style
+architecture family.
+
+Strengths
+First, I appreciate that the revised version substantially improves the experimental rigor.
+The authors explicitly disclose that the 24-object probe set is part of the 300-object pool
+and re-evaluate competing schedules on the strictly disjoint 276-object holdout. This is a
+meaningful improvement over evaluating schedule-selection conclusions only on the
+same pool used for tuning. The holdout transfer experiments against linear warm-up,
+cosine bump, trapezoid, and Gaussian-peak schedules are useful and make the empirical
+comparison more convincing.
+Second, the paper identifies a practically relevant failure mode. The observation that
+stronger geometry-conditioned residual injection may improve structural alignment while
+simultaneously degrading texture richness is useful for practitioners working with
+ControlNet-/adapter-like multi-view texture pipelines. The use of multiple texture
+diagnostics rather than a single structural metric is also appropriate.
+Third, I appreciate the authors’ treatment of the FAC extension. In the previous version,
+FAC was presented as a learned extension that improved over TCAS. In the revised
+manuscript, the authors re-evaluate FAC under a stricter paired and disjoint setting and
+report that none of the trained FAC variants outperforms the training-free schedule. The
+paper now clearly states that TCAS remains the main and sole method.
+
+Major Concerns
+1. The core methodological contribution remains quite limited. I am not yet convinced
+that this constitutes a sufficiently substantial methodological contribution beyond
+schedule selection for an existing adapter.
+2. The CAI formulation appears to formalize an empirically selected schedule rather than
+derive it independently.
+3. Cross-backbone generalization remains the most important missing experiment. The
+main experiments are conducted within a single MVPainter-style architecture family.
+Section 4.7 expands the analysis to adapters with different residual magnitudes and scale
+                                             3
+
+
+semantics, and shows three possible high-scale behaviors: texture flattening, high-
+frequency artifact amplification, or negligible effect. This analysis is interesting, but it
+does not substitute for evaluation on a genuinely different geometry-conditioned multi-
+view diffusion backbone.
+
+Reviewer 3
+
+Comments
+
+Reviewer 3 - Initial submission, 28/09/2026
+In this revision, the authors have paid efforts in addressing the concerns in the last round.
+The revision now looks good for publication.
+

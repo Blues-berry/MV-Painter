@@ -1,0 +1,138 @@
+{
+  "rule_version": "mv-adapter-cai-calibration-v1",
+  "input_csv": "final/round2/mv_adapter/results/calibration_mixed_proxy_50/per_object_metrics.csv",
+  "row_count": 288,
+  "schedule_row_counts": {
+    "fixed_low": 24,
+    "fixed_1.0": 24,
+    "fixed_1.25": 24,
+    "fixed_high": 24,
+    "LLL": 24,
+    "LLH": 24,
+    "LHL": 24,
+    "LHH": 24,
+    "HLL": 24,
+    "HLH": 24,
+    "HHL": 24,
+    "HHH": 24
+  },
+  "geometry_source_counts": {
+    "exact_mesh": 264,
+    "proxy_depth_convex_hull": 24
+  },
+  "fixed_scale_summary": {
+    "fixed_low": {
+      "structure_utility": 0.3969513454164068,
+      "psnr": 14.057882087892862,
+      "fg_lpips": 0.20141780909357798,
+      "gt_relative_texture_error": 2.009270040070644,
+      "reference_fidelity_utility": 0.41125325295046045,
+      "normalized_fidelity_components": {
+        "psnr": 0.4631813539795734,
+        "fg_lpips": 0.7230488834691036,
+        "gt_relative_texture_error": 0.047529521402704424
+      }
+    },
+    "fixed_1.0": {
+      "structure_utility": 0.397245273563183,
+      "psnr": 14.093568433814971,
+      "fg_lpips": 0.20130391887182164,
+      "gt_relative_texture_error": 2.0113716325412123,
+      "reference_fidelity_utility": 0.6666666666666666,
+      "normalized_fidelity_components": {
+        "psnr": 1.0,
+        "fg_lpips": 1.0,
+        "gt_relative_texture_error": 0.0
+      }
+    },
+    "fixed_1.25": {
+      "structure_utility": 0.3968028756013761,
+      "psnr": 14.061481841470409,
+      "fg_lpips": 0.20147412435229248,
+      "gt_relative_texture_error": 1.9791044702759129,
+      "reference_fidelity_utility": 0.6110629973444573,
+      "normalized_fidelity_components": {
+        "psnr": 0.5173313318373092,
+        "fg_lpips": 0.5861049602930344,
+        "gt_relative_texture_error": 0.7297526999030287
+      }
+    },
+    "fixed_high": {
+      "structure_utility": 0.3966140271578398,
+      "psnr": 14.027090962909925,
+      "fg_lpips": 0.20171514747845423,
+      "gt_relative_texture_error": 1.9671550612704418,
+      "reference_fidelity_utility": 0.3333333333333333,
+      "normalized_fidelity_components": {
+        "psnr": 0.0,
+        "fg_lpips": 0.0,
+        "gt_relative_texture_error": 1.0
+      }
+    }
+  },
+  "fixed_scale_pareto_front": [
+    "fixed_1.0"
+  ],
+  "fixed_scale_selection": {
+    "status": "NO_CLEAR_TRADEOFF",
+    "conservative": null,
+    "aggressive": null,
+    "pareto_scales": [
+      1.0
+    ]
+  },
+  "stage_full_factorial": {
+    "LLL": {
+      "structure_utility": 0.3969513454164068,
+      "psnr": 14.057882087892862,
+      "fg_lpips": 0.20141780909357798,
+      "gt_relative_texture_error": 2.009270040070644
+    },
+    "LLH": {
+      "structure_utility": 0.3976903354697343,
+      "psnr": 14.094593747716765,
+      "fg_lpips": 0.2017353439069767,
+      "gt_relative_texture_error": 1.9562549133967957
+    },
+    "LHL": {
+      "structure_utility": 0.39722245199502343,
+      "psnr": 14.07686773804224,
+      "fg_lpips": 0.20138557092286646,
+      "gt_relative_texture_error": 1.9875331383647408
+    },
+    "LHH": {
+      "structure_utility": 0.39777231407869196,
+      "psnr": 14.094783200732136,
+      "fg_lpips": 0.20178617332001322,
+      "gt_relative_texture_error": 1.9779137162286216
+    },
+    "HLL": {
+      "structure_utility": 0.39573989285983974,
+      "psnr": 14.024879427670598,
+      "fg_lpips": 0.2012891974300146,
+      "gt_relative_texture_error": 2.017894663154706
+    },
+    "HLH": {
+      "structure_utility": 0.3965849720148577,
+      "psnr": 14.05443442906036,
+      "fg_lpips": 0.2016609850236111,
+      "gt_relative_texture_error": 1.9756725093792973
+    },
+    "HHL": {
+      "structure_utility": 0.3961951592937112,
+      "psnr": 14.014579063152455,
+      "fg_lpips": 0.2013306798891992,
+      "gt_relative_texture_error": 1.9823129020696122
+    },
+    "HHH": {
+      "structure_utility": 0.3966140271578398,
+      "psnr": 14.027090962909925,
+      "fg_lpips": 0.20171514747845423,
+      "gt_relative_texture_error": 1.9671550612704418
+    }
+  },
+  "stage_selection": {
+    "status": "not_uniquely_defined_by_frozen_rule",
+    "note": "The frozen rule requires direct reporting of all eight combinations but does not specify a winner or tie-break rule."
+  }
+}

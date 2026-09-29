@@ -1,0 +1,53 @@
+{
+  "rule_version": "mv-adapter-cai-calibration-v1",
+  "status": "frozen_before_calibration",
+  "calibration_split": "obj_0000-obj_0023",
+  "candidate_fixed_scales": [0.75, 1.0, 1.25, 1.5],
+  "stage_boundaries": [0.3333333333333333, 0.6666666666666666],
+  "stage_labels": ["early", "middle", "late"],
+  "binary_schedule_order": ["LLL", "LLH", "LHL", "LHH", "HLL", "HLH", "HHL", "HHH"],
+  "structure_utility": {
+    "metrics": ["fg_ssim", "edge_ssim"],
+    "direction": "higher_is_better",
+    "aggregation": "equal_mean_of_object_level_metric_means"
+  },
+  "reference_fidelity_utility": {
+    "metrics": ["psnr", "fg_lpips", "gt_relative_texture_error"],
+    "directions": {
+      "psnr": "higher_is_better",
+      "fg_lpips": "lower_is_better",
+      "gt_relative_texture_error": "lower_is_better"
+    },
+    "aggregation": "equal_mean_after_within_calibration_candidate_minmax_normalization"
+  },
+  "selection_rule": {
+    "pareto_objectives": ["structure_utility", "reference_fidelity_utility"],
+    "dominance": "strictly_better_in_at_least_one_and_not_worse_in_the_other",
+    "conservative": "smallest_candidate_scale_on_pareto_front",
+    "aggressive": "largest_candidate_scale_on_pareto_front",
+    "no_clear_tradeoff": "if_pareto_front_has_fewer_than_two_distinct_scales",
+    "no_post_hoc_rule_changes": true
+  },
+  "stage_utility_rule": {
+    "method": "full_factorial_eight_schedule_object_level_means",
+    "interaction": "report_directly_from_eight_combinations",
+    "additivity_assumption": false,
+    "middle_stage_not_preassigned_high": true
+  },
+  "holdout_freeze_rule": {
+    "split": "obj_0024-obj_0099",
+    "comparisons": [
+      "no_geometry_guidance",
+      "fixed_conservative",
+      "fixed_aggressive",
+      "linear_warmup",
+      "cosine_bump",
+      "cai_calibrated_schedule"
+    ],
+    "post_hoc_additions": false,
+    "absolute_cross_backbone_comparison": false,
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260928,
+    "confidence": 0.95
+  }
+}

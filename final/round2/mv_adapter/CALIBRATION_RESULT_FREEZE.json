@@ -1,0 +1,53 @@
+{
+  "status": "frozen_after_mixed_geometry_calibration",
+  "pre_calibration_freeze": {
+    "file": "CALIBRATION_FREEZE.json",
+    "repository_head": "d9379fe93e51a5dbf28cc1bfce9bd72b80bdbc48",
+    "calibration_rule_sha256": "8f471160e3501a08c71f4201143fd21df1a1b79b3152e2ed6c8283ffd27adf29",
+    "data_manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5"
+  },
+  "calibration_run": {
+    "split": "obj_0000-obj_0023",
+    "geometry_source": "mixed",
+    "seed": 20260928,
+    "steps": 50,
+    "low": 0.75,
+    "high": 1.5,
+    "schedule_count": 12,
+    "rows": 288,
+    "geometry_source_counts": {
+      "exact_mesh": 264,
+      "proxy_depth_convex_hull": 24
+    },
+    "manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5",
+    "proxy_manifest_sha256": "247f29774fde2c440bdb07fc6938b77f4b195c9f7325c10af96a6afe8c9591ff",
+    "run_config_sha256": "04f9f4c9361416acd44b661fcc2e2b6c1adc39e3ba95b6622335f2dcfe877a7b",
+    "per_object_csv_sha256": "85dbe1b0146b41fe72691164d4f99d06e7216733f1754be3a5029ca5acf00302",
+    "analysis_sha256": "d718148f974e0e3592b95f9ad3f8c27757af6ad147cbc73355c4c416baaee588"
+  },
+  "fixed_scale_selection": {
+    "status": "NO_CLEAR_TRADEOFF",
+    "pareto_front": ["fixed_1.0"],
+    "conservative": null,
+    "aggressive": null
+  },
+  "stage_selection": {
+    "status": "not_uniquely_defined_by_frozen_rule",
+    "all_eight_combinations_reported": true,
+    "post_hoc_selection": false
+  },
+  "holdout_status": {
+    "formal_six_comparison": "not_run_because_required_schedule_labels_are_not_defined",
+    "diagnostic_file": "results/holdout_mixed_proxy_single_pareto_50_retry/paired_bootstrap_diagnostic.json",
+    "diagnostic_geometry_source": "mixed",
+    "diagnostic_rows": 152,
+    "diagnostic_csv_sha256": "bbac69367542a116dc3cf6b54830d6e2bc4576eb1734e1811f7953358380d9fd",
+    "diagnostic_bootstrap_sha256": "57a8230444695c0ee4379c2768491829e0e76d85d01c80e0c3a76b6d7a6f9196"
+  },
+  "limitations": [
+    "Ten original meshes are unavailable and proxy geometry is not exact geometry.",
+    "obj_0070 uses a separately recorded repaired render because its legacy input views were fully transparent.",
+    "The resolved SD2.1 base is a public re-host, not a Stability AI-owned Hub repository.",
+    "The local base directory contains symlinks to two large model components outside this workspace."
+  ]
+}

@@ -1,0 +1,269 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.2cm]{geometry}
+\setlength{\emergencystretch}{2em}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{font=small}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Supplementary Material}\\[4pt]
+{\large\bfseries Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation}
+\end{center}
+
+\section{S1. Frozen protocols and provenance}
+
+The main clean-v2 evaluation uses the controlled-retraining checkpoint with
+SHA-256:
+\begin{center}
+\texttt{0618d6b284ab47aa16d7a89dc447f5ba}\\
+\texttt{4455ff6c9d918e5e129478a99e0114c0}
+\end{center}
+The strict holdout contains 276 objects and has ordered-list SHA-256:
+\begin{center}
+\texttt{a6aa8ab6e475763e1b5e67dc8c712ec8}\\
+\texttt{f1940e3952d65897c820887554bbd044}
+\end{center}
+All image evaluations use six unique views $(0,15,12,16,13,14)$, 50
+denoising steps, seed 42, and object-level paired bootstrap with 10,000
+resamples and seed 20260928. The main four-condition run and the
+stage-placement follow-up are separate protocol surfaces. Their repeated C3
+outputs are not identical and are therefore not pooled.
+
+The complete records/CSV/PNG/hash audit is in
+\texttt{coordination/E0A\_EVIDENCE\_FREEZE\_20260929.json}. It verifies 276
+record JSON files, 1,104 stage rows, 1,104 serialized Full-SSIM rows, and
+exact object--condition pairing. The follow-up uses early/middle/late step
+counts 17/16/17. Nominal scale summaries are:
+
+\begin{table}[h]
+\centering\small
+\caption{Nominal and recorded budget quantities for the stage-placement follow-up.}
+\begin{tabular}{lrrrr}
+\toprule
+Schedule & Step mean & Scale sum & Squared-scale sum & Actual L2 mean \\
+\midrule
+Fixed mean & 1.6667 & 83.3333 & 138.8889 & 8936.92 \\
+HLL & 1.6750 & 83.7500 & 157.8125 & 9239.76 \\
+LHL & 1.6500 & 82.5000 & 153.1250 & 8799.86 \\
+LLH & 1.6750 & 83.7500 & 157.8125 & 8777.53 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The residual norms are descriptive measures of effective intervention
+intensity; they do not identify residual-direction alignment or establish a
+causal mechanism.
+
+\section{S2. Complete stage-placement metrics}
+
+The follow-up means are reproduced below. LPIPS is lower-is-better. The six
+non-SSIM metrics all favor LLH over LHL under their intended directions.
+
+\begin{table}[h]
+\centering\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Schedule & Full-PSNR & Full-SSIM (pre-save) & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+Fixed mean & 14.311 & 0.8435 & 0.188 & 6.257 & 0.316 & 0.205 & 0.499 \\
+HLL & 13.397 & 0.8252 & 0.202 & 5.583 & 0.259 & 0.212 & 0.464 \\
+LHL & 14.868 & 0.8546 & 0.190 & 6.760 & 0.348 & 0.201 & 0.500 \\
+LLH & 15.136 & 0.8518 & 0.181 & 6.937 & 0.357 & 0.200 & 0.536 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The saved-artifact Full-SSIM means are fixed-mean 0.87395, HLL 0.85993, LHL
+0.88144, and LLH 0.88313. LHL minus fixed-mean is $+0.00749$
+([0.00674,0.00826]), LHL minus HLL is $+0.02151$ ([0.01984,0.02319]), and
+LHL minus LLH is $-0.00170$ ([-0.00205,-0.00134]). These are paired
+object-level 95\% bootstrap intervals, not equivalence tests.
+
+\section{S3. Fixed-GT Full-SSIM decomposition}
+
+The controlled 12-object trace saved A (pre-save prediction), B (PNG encoder
+input), C (PNG-reloaded prediction), the original float GT, and the
+PNG-reloaded GT. A and B are exactly equal. With the GT held fixed, the mean
+SSIM effects are:
+
+\begin{table}[h]
+\centering\small
+\caption{Mean Full-SSIM changes in the fixed-GT 12-object decomposition.}
+\begin{tabular}{lr}
+\toprule
+Comparison & Mean change \\
+\midrule
+A fp16 $\rightarrow$ A fp32, original GT fixed & $+0.03198$ \\
+A fp32 $\rightarrow$ C fp32, original GT fixed & $-0.00036$ \\
+Original GT $\rightarrow$ PNG GT, A fp32 fixed & $-0.00007$ \\
+A/original GT $\rightarrow$ C/PNG GT & $-0.00043$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This decomposition is diagnostic and does not recover historical 300-object
+pre-save tensors. The machine-readable rows are in
+\texttt{FIXED\_GT\_SSIM\_DECOMPOSITION.csv/json} under the controlled trace
+directory.
+
+\section{S4. Twelve-object Exact-GLB baking audit}
+
+The stratified case study contains 12 frozen Exact-GLB objects, four generated
+conditions, 48 exported textured GLBs, and 528 unseen-view rows (11 views per
+object--condition). Six source views were used for baking. The object-level
+means are:
+
+\begin{table}[h]
+\centering\small
+\caption{Unseen-view baking means for the selected case-study cohort.}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Masked PSNR & CIEDE2000 & FG-LPIPS & Silhouette IoU \\
+\midrule
+No adapter & 11.824 & 18.200 & 0.156 & 0.99968 \\
+Fixed-low & 6.001 & 48.623 & 0.199 & 0.99968 \\
+Fixed-high & 3.891 & 60.420 & 0.216 & 0.99968 \\
+C3/LHL & 5.638 & 51.183 & 0.201 & 0.99968 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Coverage, post-inpainting coverage, seam definitions, and per-object rows are
+provided in the \texttt{cpu\_bake\_12} audit directory. DISTS was
+unavailable; the cohort has no generated 12-object GT bake. Blender reindexed
+vertices for \texttt{obj\_0048}; this is not a byte-identity guarantee.
+Generated renders show source-fusion colour inconsistency, so this audit is
+implementation/case-study evidence, not a population-level TCAS advantage.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Concrete object-level baking failure boundaries. Values are
+object means over 11 unseen views; paired entries are fixed-low/C3.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Object & Raw cov. & Inpaint frac. & Masked PSNR & CIEDE2000 & FG-LPIPS & Boundary \\
+\midrule
+\texttt{obj\_0048} & 0.1547 & 0.8441 & 5.090/4.927 & 53.328/54.339 & 0.388/0.375 & Blender reindexing \\
+\texttt{obj\_0078} & 0.0328 & 0.2802 & 4.278/3.879 & 58.822/61.431 & 0.066/0.068 & very low raw coverage \\
+\texttt{obj\_0082} & 0.0286 & 0.4951 & 4.144/3.823 & 55.558/57.364 & 0.081/0.082 & very low raw coverage \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+These cases make the failure boundary concrete: the low-coverage objects
+remain limited even after propagation, while \texttt{obj\_0048} obtains most
+of its final texture coverage from inpainting. The GT-to-GT sanity check was
+only a two-object smoke (\texttt{obj\_0013} and \texttt{obj\_0015}); it is not
+a 12-object GT bake. The bake handoff has blank canonical
+\texttt{source\_asset\_sha256} fields, and the saved seam scalar does not
+include a seam-pair count, so source identity and seam denominators remain
+audit limitations.
+
+\section{S4a. Complete-object and unseen-view index}
+
+Figure~\ref{fig:allobjects} provides the complete 12-object contact sheet
+used to select the qualitative panels in the main paper. Individual full-size
+PNG panels are retained under
+\texttt{main\_adapter\_clean\_v2/comparisons/}, with one file per object and
+the columns GT, no adapter, fixed-low, fixed-high, and C3. The object IDs are
+the frozen stratified baking cohort and the same IDs are used by the
+object-level CSV rows in \texttt{cpu\_bake\_12}. The unseen-view directory
+contains 11 rendered views per object--condition; missing or low-coverage
+rows are retained as limited observations and are not converted to zero
+scores.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth,height=0.72\textheight,keepaspectratio]{round2/main_adapter_clean_v2/comparisons/exact_cohort_contact_sheet.png}
+\caption{Complete 12-object comparison contact sheet. This is the full
+qualitative cohort, not a success-only selection; object-level baking metrics
+and coverage are reported separately in S4.}
+\label{fig:allobjects}
+\end{figure*}
+
+\section{S5. Generic schedule audit from the original protocol}
+
+The first-round request for generic schedules is answered with the retained
+strong-residual, per-layer-capped audit rather than by mixing it into the
+clean-v2 main table. It compares the frozen C3 schedule with a linear warm-up
+and a cosine bump on the original 276-object record. C3 minus each competitor
+is positive for PSNR in the paired bootstrap comparison, but the adapter
+instance, protocol, and metric path are distinct from the clean-v2 panel.
+These values support a bounded comparison of schedule families, not a new
+claim of cross-protocol transfer.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Original-protocol generic schedule comparison.}
+\begin{tabular}{lrrrr}
+\toprule
+Schedule & FG-SSIM & PSNR & $\Delta$PSNR vs. C3 & C3 wins \\
+\midrule
+Linear warm-up & 0.377 & 18.97 & +0.323 [0.263,0.386] & 214/276 \\
+Cosine bump & 0.330 & 18.39 & +0.902 [0.824,0.981] & 253/276 \\
+C3 (TCAS) & 0.376 & 19.29 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The original record also contains trapezoid and Gaussian-peak controls; their
+complete rows remain in the internal evidence freeze. The linear warm-up is
+close in FG-SSIM but lower in PSNR, while the cosine bump is lower on both
+values. We retain this as evidence that TCAS is meaningfully comparable to
+common smooth schedules, without claiming optimality across adapters.
+
+\section{S6. Independent MV-Adapter audit}
+
+The Exact 76-object audit records 11 evaluated conditions/schedules and
+separates high-scale 1.50 and high-scale 1.00 families. The selected-pair CAI rule is
+\texttt{undefined\_set\_valued}. The LHL direct transfer has no clear
+practical gain over fixed-low or fixed mean; confidence intervals crossing
+zero are not interpreted as equivalence. Official pretraining UID
+disjointness is unknown. Absolute PSNR and other scores are not compared with
+the main MVPainter-style backbone. The full evidence is in
+\texttt{MV\_ADAPTER\_UNIFIED\_RESULTS.csv} and
+\texttt{MV\_ADAPTER\_PAIRED\_COMPARISONS.json}.
+The original \texttt{results/holdout\_exact\_76/PROTOCOL.json} is absent;
+\texttt{run\_config.json} and \texttt{paired\_bootstrap\_exact.json} provide
+the available partial provenance.
+
+\section{S7. FAC controlled re-examination}
+
+FAC is a separate learned extension protocol, not a main contribution. The
+base model, VAE, and adapter are frozen; only lightweight controllers are
+trained on a disjoint training pool. Under the paired re-examination, no
+trained configuration improves the training-free schedule. The paired
+foreground-PSNR deficits range from $-1.10$ to $-2.94$ dB, while the
+untrained exact-envelope control has $\Delta=-0.18$ dB with 95\% CI
+$[-0.42,+0.05]$. The interval crossing zero is not an equivalence claim.
+The complete dose--response records are retained as a negative extension
+audit; the earlier positive FAC comparison used a different protocol and is
+not used in the revised claims.
+
+\section{S8. Bounded residual-budget controller pilot}
+
+We tested one residual-budget controller extension (TRB-TCAS) on the
+24-object clean-v2 development probe before considering any holdout run. The
+run used 50 denoising steps, six unique target views, seed 42, shared
+per-object batches and initial latents, and fixed-low, C3/LHL, HLL and LLH
+controls. FG-LPIPS was the pre-specified primary metric. TRB obtained
+FG-LPIPS $0.1349$, compared with $0.1404$ for fixed-low and $0.1336$ for C3;
+its PSNR was $22.700$ dB, compared with $22.261$ dB for fixed-low and
+$22.971$ dB for C3. The calibration pass approximately doubled the mean
+controller time per object (12.342 s versus 6.075 s for C3). Since TRB did
+not improve the existing C3 schedule and added cost, the branch was stopped
+before a holdout run. These results are retained as a negative method-iteration
+record, not as a claim about the main TCAS method.
+
+The machine-readable output is
+\texttt{TRB\_DEV24\_GATE\_20260929.md} and the independent pilot
+\texttt{pilot\_results.json}. The pilot does not justify relabelling LLH as a
+CAI-selected schedule: LLH is reported only as a fixed schedule control.
+
+\end{document}

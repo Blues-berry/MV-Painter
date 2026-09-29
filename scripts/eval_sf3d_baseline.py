@@ -15,24 +15,44 @@ import sys
 import json
 import argparse
 import types
+from pathlib import Path
+
 import numpy as np
 import torch
-import torch.nn.functional as F
 from PIL import Image
-from torchvision.transforms import v2
 
-# Bypass missing sf3d.material_refine
-sys.path.insert(0, '/home/ubuntu/ssd_work/projects/stable-fast-3d')
-dummy = types.ModuleType('sf3d.material_refine')
-dummy.MaterialRefinementPipeline = None
-sys.modules['sf3d.material_refine'] = dummy
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
-from sf3d.system import SF3D
+from geotex.metrics import compute_psnr, compute_ssim  # noqa: E402
+from geotex.runtime import require_cuda  # noqa: E402
 
-# TCAS metrics
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'geotex'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
-from metrics import compute_psnr, compute_ssim
+
+def load_sf3d_class(sf3d_root: Path | None = None):
+    """Import SF3D from an explicit checkout or an installed package."""
+    candidates = []
+    if sf3d_root is not None:
+        candidates.append(sf3d_root)
+    if os.environ.get("SF3D_ROOT"):
+        candidates.append(Path(os.environ["SF3D_ROOT"]))
+    candidates.append(PROJECT_ROOT.parent / "stable-fast-3d")
+    for candidate in candidates:
+        if (candidate / "sf3d").is_dir():
+            sys.path.insert(0, str(candidate.resolve()))
+            break
+
+    # Some SF3D snapshots import an optional refinement module at import time.
+    dummy = types.ModuleType("sf3d.material_refine")
+    dummy.MaterialRefinementPipeline = None
+    sys.modules.setdefault("sf3d.material_refine", dummy)
+    try:
+        from sf3d.system import SF3D
+    except ModuleNotFoundError as exc:
+        raise RuntimeError(
+            "SF3D is not importable. Pass --sf3d-root pointing to the SF3D "
+            "checkout or set SF3D_ROOT."
+        ) from exc
+    return SF3D
 
 
 def load_camera(cam_path):
@@ -41,15 +61,17 @@ def load_camera(cam_path):
     return cam
 
 
-import nvdiffrast.torch as dr
-
 _glctx = None
+_nvdiffrast = None
 
 def get_glctx():
-    global _glctx
+    global _glctx, _nvdiffrast
     if _glctx is None:
-        _glctx = dr.RasterizeCudaContext()
-    return _glctx
+        import nvdiffrast.torch as nvdiffrast_torch
+
+        _nvdiffrast = nvdiffrast_torch
+        _glctx = _nvdiffrast.RasterizeCudaContext()
+    return _glctx, _nvdiffrast
 
 
 def render_mesh_to_view(mesh, cam, img_size=256, device='cuda:0'):
@@ -57,7 +79,7 @@ def render_mesh_to_view(mesh, cam, img_size=256, device='cuda:0'):
 
     Returns RGB image as numpy array [H,W,3] in [0,1], white background.
     """
-    glctx = get_glctx()
+    glctx, dr = get_glctx()
 
     # Extract mesh data. SF3D outputs meshes in ~[-0.4, 0.4] range;
     # TCAS cameras assume Objaverse normalization (~unit sphere).
@@ -135,15 +157,18 @@ def render_mesh_to_view(mesh, cam, img_size=256, device='cuda:0'):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_root', default='/4T/CXY/MV-Painter/data/train_data/rendered_full')
-    parser.add_argument('--objects_file', default='/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt')
-    parser.add_argument('--output_dir', default='mvpoutput/sf3d_baseline')
+    parser.add_argument('--data_root', type=Path, default=PROJECT_ROOT / 'data/train_data/rendered_full')
+    parser.add_argument('--objects_file', type=Path, default=PROJECT_ROOT / 'data/train_data/rendered_full/test_objects_300.txt')
+    parser.add_argument('--output_dir', type=Path, default=PROJECT_ROOT / 'mvpoutput/sf3d_baseline')
     parser.add_argument('--num_objects', type=int, default=30)
     parser.add_argument('--bake_resolution', type=int, default=512)
     parser.add_argument('--device', default='cuda:0')
+    parser.add_argument('--sf3d-root', type=Path, default=None,
+                        help='SF3D checkout; defaults to SF3D_ROOT or common sibling paths')
     args = parser.parse_args()
 
-    os.makedirs(args.output_dir, exist_ok=True)
+    device = require_cuda(args.device, 'SF3D evaluation')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
 
     # Load objects
     with open(args.objects_file) as f:
@@ -156,12 +181,13 @@ def main():
 
     # Load SF3D model
     print("Loading SF3D model...")
+    SF3D = load_sf3d_class(args.sf3d_root)
     model = SF3D.from_pretrained(
         "stabilityai/stable-fast-3d",
         config_name="config.yaml",
         weight_name="model.safetensors",
     )
-    model.to(args.device)
+    model.to(device)
     model.eval()
     print("SF3D loaded")
 
@@ -202,7 +228,7 @@ def main():
                 gt_path = os.path.join(obj_dir, 'image', f'{view_idx:03d}.png')
 
                 cam = load_camera(cam_path)
-                rendered = render_mesh_to_view(mesh, cam, img_size=256)
+                rendered = render_mesh_to_view(mesh, cam, img_size=256, device=device)
                 rendered_views.append(rendered)
 
                 # Load GT

@@ -1,0 +1,60 @@
+{
+  "source": {
+    "repository": "https://github.com/huanngzh/MV-Adapter",
+    "commit": "4277e0018232bac82bb2c103caf0893cedb711be",
+    "snapshot": "official main branch source snapshot"
+  },
+  "models": {
+    "base_model": "stabilityai/stable-diffusion-2-1-base",
+    "adapter_repository": "huanngzh/mv-adapter",
+    "adapter_weight": "mvadapter_ig2mv_sd21.safetensors",
+    "base_model_sha256": "SEE_BASE_MODEL_VERIFICATION_JSON",
+    "adapter_sha256": "a26fcabcce6e53bd31677074e067030fc93af33381a5559365581e793cc78ae2"
+  },
+  "resolved_base_model": {
+    "repository": "Manojb/stable-diffusion-2-1-base",
+    "commit": "0094d483a120f3f33dafbd187ea4aa60d10de75c",
+    "local_path": "final/round2/mv_adapter/models/sd21_base",
+    "verification_record": "BASE_MODEL_VERIFICATION.json"
+  },
+  "official_inference_defaults": {
+    "num_views": 6,
+    "num_inference_steps": 50,
+    "guidance_scale": 3.0,
+    "seed": -1,
+    "height": 512,
+    "width": 512,
+    "scheduler_argument": null,
+    "shift_snr_mode": "interpolated",
+    "shift_snr_scale": 8.0,
+    "control_conditioning_scale": 1.0,
+    "control_conditioning_factor": 1.0,
+    "reference_conditioning_scale": 1.0,
+    "lora_scale": 1.0,
+    "camera_elevation_deg": [0, 0, 0, 0, 89.99, -89.99],
+    "camera_azimuth_deg": [-90, 0, 90, 180, 90, 90]
+  },
+  "source_sha256": {
+    "requirements.txt": "709ecec7196550339f4dfe43174174cb63db6662971aef01e07e2cecf7cd2915",
+    "official_inference_ig2mv_sd.py": "d4c23bdf0060bc968a556b49f6fb8b73b5ed3b30521bd2d8047bb9c390a1096d",
+    "official_pipeline_i2mv_sd.py": "41ec387660b921c49c0ac251475ca2abe914d71c5aa9536e4a25684213bb49b3"
+  },
+  "patched_sha256": {
+    "inference_ig2mv_sd.py": "b3a5ad818860642138e71bebd91398bdb23412d2c8b15051939ec53fe9b26f65",
+    "pipeline_mvadapter_i2mv_sd.py": "8814354aacf317d45411cb72a8daa5a4e08b47546cb1271d967e74f7c5977c9c",
+    "geometry_scale.py": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4"
+  },
+  "environment_audit": {
+    "torch": "2.7.1+cu128",
+    "diffusers": "0.37.0",
+    "transformers": "4.57.6",
+    "accelerate": "1.13.0",
+    "safetensors": "0.7.0",
+    "opencv-python": "4.13.0.92",
+    "scikit-image": "0.26.0",
+    "trimesh": "4.4.1",
+    "einops": "0.7.0",
+    "kornia": "0.8.2",
+    "nvdiffrast": "0.4.0"
+  }
+}

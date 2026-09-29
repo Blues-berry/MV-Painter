@@ -1,0 +1,5046 @@
+{
+  "protocol": "mvdiffusion-depth-mvpainter-interop-v1",
+  "source_manifest": "/4T/CXY/MV-Painter/final/round2/mv_adapter/data_manifest.json",
+  "split": "holdout",
+  "view_ids": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    7,
+    9,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "target_view_ids": [
+    0,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "objects": [
+    {
+      "object": "obj_0024",
+      "source_uid": "eecbe65a172a475aa9fc21f4e412530a",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0024",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eecbe65a172a475aa9fc21f4e412530a",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0025",
+      "source_uid": "eedcc1ad568f41ba8540ed8e89bc5479",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0025",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eedcc1ad568f41ba8540ed8e89bc5479",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0026",
+      "source_uid": "eef01b5f8ab14e3d8304bf6b437f2760",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0026",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eef01b5f8ab14e3d8304bf6b437f2760",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0027",
+      "source_uid": "ef3d9479093d4f8ca50c9788db9eaf50",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0027",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ef3d9479093d4f8ca50c9788db9eaf50",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0028",
+      "source_uid": "ef76282850be4509b0a0d54453e5b324",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0028",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ef76282850be4509b0a0d54453e5b324",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0029",
+      "source_uid": "ef9493fe1120496495ae7a9407eb0951",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0029",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ef9493fe1120496495ae7a9407eb0951",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0030",
+      "source_uid": "efd1e09f4a2f4fa9b0ed0122d77d1e6e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0030",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/efd1e09f4a2f4fa9b0ed0122d77d1e6e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0031",
+      "source_uid": "eff549610fee4f20904f7b388a3a0830",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0031",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eff549610fee4f20904f7b388a3a0830",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0032",
+      "source_uid": "effd25a508d7400b96da30391db448e6",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0032",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/effd25a508d7400b96da30391db448e6",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0033",
+      "source_uid": "f09c68b9bcc747e68a5021d7789d6e4d",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0033",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f09c68b9bcc747e68a5021d7789d6e4d",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0034",
+      "source_uid": "f0b7fdaaacd2473f877f62f350a766a5",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0034",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f0b7fdaaacd2473f877f62f350a766a5",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0035",
+      "source_uid": "f0c2b3a028e340b5a3167cd79d98979e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0035",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f0c2b3a028e340b5a3167cd79d98979e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0036",
+      "source_uid": "f0da8751cb0f436ea106a2088a5179e7",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0036",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f0da8751cb0f436ea106a2088a5179e7",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0037",
+      "source_uid": "f0ef4adc17ee4929b40e894c608061ea",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0037",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f0ef4adc17ee4929b40e894c608061ea",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0038",
+      "source_uid": "f1d9357b-e4dc-5795-8f21-83f1fd367732",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0038",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f1d9357b-e4dc-5795-8f21-83f1fd367732",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0039",
+      "source_uid": "f1ec3599a75941b1ba52d8bee4f32ab0",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0039",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f1ec3599a75941b1ba52d8bee4f32ab0",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0040",
+      "source_uid": "f257c97cdeff438fb6a24c9924db71fc",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0040",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f257c97cdeff438fb6a24c9924db71fc",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0041",
+      "source_uid": "f266cfb9baab4f7390c08724aea78b5b",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0041",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f266cfb9baab4f7390c08724aea78b5b",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0042",
+      "source_uid": "f30973a5e4894bf09064e4d78b278a2c",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0042",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f30973a5e4894bf09064e4d78b278a2c",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0043",
+      "source_uid": "f320bd39d30e4e3d81562953796bbf85",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0043",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f320bd39d30e4e3d81562953796bbf85",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0044",
+      "source_uid": "f38944bdd22b45b5aad63ea553b2d8f2",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0044",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f38944bdd22b45b5aad63ea553b2d8f2",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0045",
+      "source_uid": "f3c09183979240288d33e6e989d89882",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0045",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f3c09183979240288d33e6e989d89882",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0046",
+      "source_uid": "f3f9a46fd3b3482c9cdc9df373760374",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0046",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f3f9a46fd3b3482c9cdc9df373760374",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0047",
+      "source_uid": "f414b8aac0754a3db8d678ef6470db65",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0047",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f414b8aac0754a3db8d678ef6470db65",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0048",
+      "source_uid": "f41b5880-69c0-5c0e-846f-f631250acde3",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0048",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f41b5880-69c0-5c0e-846f-f631250acde3",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0049",
+      "source_uid": "f41e8f481c53484187cec67bb1083726",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0049",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f41e8f481c53484187cec67bb1083726",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0050",
+      "source_uid": "f42f0a645b50450db016be0a300e4656",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0050",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f42f0a645b50450db016be0a300e4656",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0051",
+      "source_uid": "f46ed5762dbe4ff889b6a4b7566c5037",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0051",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f46ed5762dbe4ff889b6a4b7566c5037",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0052",
+      "source_uid": "f486a170b8954c4cb225265092060d2e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0052",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f486a170b8954c4cb225265092060d2e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0053",
+      "source_uid": "f49a08efb8a544efb98d4d806b0d1c27",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0053",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f49a08efb8a544efb98d4d806b0d1c27",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0054",
+      "source_uid": "f49b18b0-4668-569f-84a7-4338339bf65d",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0054",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f49b18b0-4668-569f-84a7-4338339bf65d",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0055",
+      "source_uid": "f4d7ceb2804149d7b847de9964fc738e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0055",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f4d7ceb2804149d7b847de9964fc738e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0056",
+      "source_uid": "f509ef30f41748dcae356758aea9089e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0056",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f509ef30f41748dcae356758aea9089e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0057",
+      "source_uid": "f5264be0a5a24290b2c3563b7d563616",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0057",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f5264be0a5a24290b2c3563b7d563616",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0058",
+      "source_uid": "f53637e885f249788f563732eb2015e6",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0058",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f53637e885f249788f563732eb2015e6",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0059",
+      "source_uid": "f5b73e33b87644a697daea7b02102958",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0059",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f5b73e33b87644a697daea7b02102958",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0060",
+      "source_uid": "f5e6108aa95544d5bfd2c030b783c523",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0060",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f5e6108aa95544d5bfd2c030b783c523",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0061",
+      "source_uid": "f5fb519d1e8e4fc8b599714ecd344d72",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0061",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f5fb519d1e8e4fc8b599714ecd344d72",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0062",
+      "source_uid": "f63daf968be34047bc513feb756b5828",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0062",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f63daf968be34047bc513feb756b5828",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0063",
+      "source_uid": "f6b76042dd444cd395b76fc73e2f22b5",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0063",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f6b76042dd444cd395b76fc73e2f22b5",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0064",
+      "source_uid": "f7186597c70646e484ec53a78fc59894",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0064",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f7186597c70646e484ec53a78fc59894",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0065",
+      "source_uid": "f72bdc6ca4954532a6d3ab03cb40f3db",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0065",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f72bdc6ca4954532a6d3ab03cb40f3db",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0066",
+      "source_uid": "f74207ca-8dd4-50f8-b0fd-eea2eac89270",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0066",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f74207ca-8dd4-50f8-b0fd-eea2eac89270",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0067",
+      "source_uid": "f767e0ca9ab6491d9172f68d05c2ba55",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0067",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f767e0ca9ab6491d9172f68d05c2ba55",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0068",
+      "source_uid": "f79d049c-b5aa-554e-aeff-c315e64d034b",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0068",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f79d049c-b5aa-554e-aeff-c315e64d034b",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0069",
+      "source_uid": "f7e2456a807b4452b0602c9eb48d3668",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0069",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f7e2456a807b4452b0602c9eb48d3668",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0070",
+      "source_uid": "f7ef602b19214debb0b350db9af55ff2",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0070",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f7ef602b19214debb0b350db9af55ff2",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0071",
+      "source_uid": "f8016f7ec0024cabaf06d1f6d15ac65e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0071",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f8016f7ec0024cabaf06d1f6d15ac65e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0072",
+      "source_uid": "f84886c899764d629dc89e3c8564d72b",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0072",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f84886c899764d629dc89e3c8564d72b",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0073",
+      "source_uid": "f86788d97a9f479f80efc227a43f4b1f",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0073",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f86788d97a9f479f80efc227a43f4b1f",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0074",
+      "source_uid": "f88382f18b934826bc8d06c8d862fbb9",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0074",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f88382f18b934826bc8d06c8d862fbb9",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0075",
+      "source_uid": "f8d2af8d4b2848c4bb1db77920197110",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0075",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f8d2af8d4b2848c4bb1db77920197110",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0076",
+      "source_uid": "f93983d6ecf44f40b096b71a63e06e3e",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0076",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f93983d6ecf44f40b096b71a63e06e3e",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0077",
+      "source_uid": "f9535215f5144d6ca6e844f31d28dcc7",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0077",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f9535215f5144d6ca6e844f31d28dcc7",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0078",
+      "source_uid": "f979eb16-0223-54c9-bb01-a2fb908a0ea5",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0078",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f979eb16-0223-54c9-bb01-a2fb908a0ea5",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0079",
+      "source_uid": "f9ac1cc416a24c47a980df4d3ad8f514",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0079",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f9ac1cc416a24c47a980df4d3ad8f514",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0080",
+      "source_uid": "f9bef8d737af4f80a33616d7ba49b2ca",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0080",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f9bef8d737af4f80a33616d7ba49b2ca",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0081",
+      "source_uid": "f9cc5f021c044a25b2c89029448d9602",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0081",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/f9cc5f021c044a25b2c89029448d9602",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0082",
+      "source_uid": "fa0ecf81-8069-59fc-bda2-7a734833388b",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0082",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fa0ecf81-8069-59fc-bda2-7a734833388b",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0083",
+      "source_uid": "fa19ccee-da9b-5b19-9b9d-f67548eb10ed",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0083",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fa19ccee-da9b-5b19-9b9d-f67548eb10ed",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0084",
+      "source_uid": "fa600041decf4d47ab5c8e4c36e82284",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0084",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fa600041decf4d47ab5c8e4c36e82284",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0085",
+      "source_uid": "fac80ddedbe24f289527c8e4f759d003",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0085",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fac80ddedbe24f289527c8e4f759d003",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0086",
+      "source_uid": "fad0fc53450c43ceb7ea12db8008cbf0",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0086",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fad0fc53450c43ceb7ea12db8008cbf0",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0087",
+      "source_uid": "faf4ccac6fb44f6789561afa99a4b7e6",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0087",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/faf4ccac6fb44f6789561afa99a4b7e6",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0088",
+      "source_uid": "fb0e9f294446465583516faf36e6767b",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0088",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fb0e9f294446465583516faf36e6767b",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0089",
+      "source_uid": "fb470c22efb24214829eaff4d65fef02",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0089",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fb470c22efb24214829eaff4d65fef02",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0090",
+      "source_uid": "fb669d51b8eb43969e0c07285f772f01",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0090",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fb669d51b8eb43969e0c07285f772f01",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0091",
+      "source_uid": "fbd54cf97a2a4354a8d7a8ceb00faf27",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0091",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fbd54cf97a2a4354a8d7a8ceb00faf27",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0092",
+      "source_uid": "fbfe002d0ec34a819046c78493ae0178",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0092",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fbfe002d0ec34a819046c78493ae0178",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0093",
+      "source_uid": "fc28c7110c15496dbe05d9cff4ba6a21",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0093",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fc28c7110c15496dbe05d9cff4ba6a21",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0094",
+      "source_uid": "fc2efa48cfb944ebb055f040dd4d3a14",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0094",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fc2efa48cfb944ebb055f040dd4d3a14",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0095",
+      "source_uid": "fca01409374441619292c5c397f3ca16",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0095",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fca01409374441619292c5c397f3ca16",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0096",
+      "source_uid": "fce3d47b8a6b4f8ea3e727af33f5d3af",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0096",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fce3d47b8a6b4f8ea3e727af33f5d3af",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0097",
+      "source_uid": "fd19033428694bb5a1999754635f2e4d",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0097",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fd19033428694bb5a1999754635f2e4d",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0098",
+      "source_uid": "fd3417f969ca4256bfdb1125f32b9daf",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0098",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fd3417f969ca4256bfdb1125f32b9daf",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "object": "obj_0099",
+      "source_uid": "fd6eb6cff0a44166a4d57a7287182a41",
+      "scene_dir": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_76/obj_0099",
+      "source_render_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full/fd6eb6cff0a44166a4d57a7287182a41",
+      "source_view_ids": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_view_ids": [
+        0,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "target_local_indices": [
+        0,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "resolution_source": [
+        512,
+        512
+      ],
+      "prompt": "A high quality studio product photograph of a 3D object on a plain background.",
+      "depth_encoding": {
+        "source": "uint16 normalized [0,65535], 65535 invalid",
+        "target": "uint16 millimetres, zero invalid",
+        "near_m": 2.0,
+        "far_m": 4.0
+      },
+      "pose_encoding": "inverse of the stored world-to-camera extrinsic",
+      "intrinsic_encoding": "ortho_equivalent",
+      "intrinsic_source": [
+        [
+          1396.3636474609375,
+          0.0,
+          255.5
+        ],
+        [
+          0.0,
+          1396.3636474609375,
+          255.5
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "compatibility_note": "MVDiffusion was trained for perspective ScanNet scenes; the frozen MVPainter renders are orthographic. The exported pinhole K is an orthographic-equivalent approximation and must not be pooled with the native MVPainter/MV-Adapter absolute-score table."
+}

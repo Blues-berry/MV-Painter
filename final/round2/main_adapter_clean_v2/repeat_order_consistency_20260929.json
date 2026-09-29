@@ -1,0 +1,80 @@
+{
+  "protocol": "round2-repeat-reverse-order-v1",
+  "config": "final/round2/main_adapter_clean_v2/mvpainter-geotex-full-train.clean_v2_snapshot.yaml",
+  "checkpoint": "mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "object_list_file": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+  "steps": 50,
+  "device": "cuda:0",
+  "schedules": [
+    "fixed_low",
+    "c3"
+  ],
+  "rows": [
+    {
+      "object_index": 0,
+      "object_id": "obj_0000",
+      "shared_input_hashes": {
+        "target": "444c168026c9be7f8e4b67c7c8943f1c50a8b48f62c634f1bdf60db44005a123",
+        "geo_input": "8f86da09222328861e4f7e0587f91fe0c2e947f2a9dc555fa0159d2bf77bbeed",
+        "geo_features": "6881bc75ba0966df200d8c31292bc5c05b8351e378193606ab7ced04a4dbdae1",
+        "initial_latent": "d04e595f64776a52f37d957df5d0b0c580a7cdb41cfbf9d48b12d08ac7af21d3"
+      },
+      "fixed_low_repeat": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "c3_repeat": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "fixed_low_order_reversal": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "c3_order_reversal": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "fixed_low_output_hash": "54c1082a66794e2586918f3d69f2084a0904ffef29c15de0de930fb2b7f48e6c",
+      "c3_output_hash": "ffae7c65e9a22e24d653431ff0ad5d4fc1bfde0c11e0ae1ff7dbbcb05d592c24"
+    },
+    {
+      "object_index": 1,
+      "object_id": "obj_0001",
+      "shared_input_hashes": {
+        "target": "06f51436f9030f93411b74eb2e096929929db96d10fbcd213b1e066144912dbf",
+        "geo_input": "7d7d28d4e1efe463282fc77590a5710ac7c9ae0d21c013e77e97611823b838f0",
+        "geo_features": "9ac64c210f272022f6c2362e6538c5dcb71a94dc89a994ca0a166982194edd7a",
+        "initial_latent": "d04e595f64776a52f37d957df5d0b0c580a7cdb41cfbf9d48b12d08ac7af21d3"
+      },
+      "fixed_low_repeat": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "c3_repeat": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "fixed_low_order_reversal": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "c3_order_reversal": {
+        "exact": true,
+        "max_abs": 0.0,
+        "mean_abs": 0.0
+      },
+      "fixed_low_output_hash": "0555c0bad10a56ace52485f282d61b902ab25354faa779850850005c0ee06bcd",
+      "c3_output_hash": "05dd09854566dacf56febc4b811e1fd3ffa3f32668ea19c1d7e6300f66690ea2"
+    }
+  ],
+  "pass_criteria": "all exact flags true and max_abs <= 0.0 for repeated and reversed outputs",
+  "passed": true
+}

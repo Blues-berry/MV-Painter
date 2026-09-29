@@ -1,0 +1,25 @@
+{
+  "protocol_label": "selected-pair-stage-ablation-v1",
+  "status": "pre_registered_before_run",
+  "parent_calibration": "final/round2/mv_adapter/results/calibration_exact_24",
+  "frozen_rule": "final/round2/mv_adapter/calibration_rule.json",
+  "rule_change": false,
+  "split": "obj_0000-obj_0023",
+  "object_count": 24,
+  "geometry_source": "exact_mesh",
+  "low": 0.75,
+  "high": 1.0,
+  "schedule_order": ["LLL", "HLL", "LHL", "LLH", "HHL", "HLH", "LHH", "HHH"],
+  "seed": 20260928,
+  "inference_steps": 50,
+  "reference_image_and_geometry_conditioning": "same as calibration_exact_24",
+  "runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+  "geometry_scale_sha256": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4",
+  "manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5",
+  "interpretation": {
+    "purpose": "Directly report the eight binary schedules at the selected fixed-scale pair.",
+    "cai_selection": "undefined_set_valued",
+    "post_hoc_stage_selection": false,
+    "note": "The frozen rule defines no unique winner or tie-break among the eight stage combinations; this directory is an amendment/ablation report and does not change the frozen rule."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "status": "PARTIALLY_CONFIRMED",
+  "sample_objects": [
+    "obj_0001",
+    "obj_0028",
+    "obj_0037",
+    "obj_0056",
+    "obj_0069",
+    "obj_0139",
+    "obj_0178",
+    "obj_0209",
+    "obj_0211",
+    "obj_0238",
+    "obj_0257"
+  ],
+  "n_objects": 11,
+  "n_rows": 44,
+  "original_float_prediction_tensor_paths_under_eval_dir": [],
+  "original_float_tensor_available": false,
+  "dtype_failures": [],
+  "means": {
+    "recorded_float_eval_ssim": 0.833496328104626,
+    "existing_reconciliation_png_original_impl_ssim": 0.864573217251084,
+    "existing_reconciliation_raw_audit_ssim": 0.8644261292435906,
+    "original_impl_png_saved_gt_float32": 0.864573217251084,
+    "original_impl_png_saved_gt_float64": 0.8645835358016104,
+    "independent_numpy_png_saved_gt_float32": 0.8645647262985056,
+    "independent_numpy_png_saved_gt_float64": 0.8645835358016106
+  },
+  "mean_abs_deltas": {
+    "original_impl_float32_minus_recorded_float": 0.03111705725843256,
+    "original_impl_float64_minus_recorded_float": 0.03112722625163661,
+    "original_impl_float64_minus_float32": 2.1167223977726485e-05,
+    "independent_numpy_float32_minus_original_impl_float32": 2.4614008990201082e-05,
+    "independent_numpy_float64_minus_original_impl_float64": 1.993354976031531e-16
+  },
+  "paired_c3_minus_baseline": {
+    "recorded_float_eval": {
+      "fixed_low": 0.0068813074718822136,
+      "fixed_high": 0.03149648146195845
+    },
+    "original_impl_png_saved_gt_float32": {
+      "fixed_low": 0.0012051517313176935,
+      "fixed_high": 0.027269959449768066
+    },
+    "original_impl_png_saved_gt_float64": {
+      "fixed_low": 0.0012065709950537643,
+      "fixed_high": 0.02726566845899504
+    },
+    "independent_numpy_png_saved_gt_float32": {
+      "fixed_low": 0.0011979070576754484,
+      "fixed_high": 0.02723850445313887
+    }
+  },
+  "implementation_facts": {
+    "data_range": "inputs normalized to [0,1]; C1=0.01^2 and C2=0.03^2",
+    "window": "3x3 average/box window, stride=1, zero padding=1, count_include_pad=True",
+    "gaussian": "not used by the primary original implementation; 11x11 sigma=1.5 remains diagnostic only",
+    "aggregation": "complete 3x2 saved montage; per-view mean is diagnostic only",
+    "alpha": "Full SSIM branch uses saved RGB ground-truth montage; no alpha mask is applied",
+    "png": "saved prediction and saved GT are reloaded as 8-bit RGB and divided by 255"
+  }
+}

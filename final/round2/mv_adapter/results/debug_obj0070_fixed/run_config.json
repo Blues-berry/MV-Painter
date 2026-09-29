@@ -1,0 +1,21 @@
+{
+  "manifest": "final/round2/mv_adapter/data_manifest.json",
+  "base_model": "final/round2/mv_adapter/models/sd21_base",
+  "adapter_path": "final/round2/mv_adapter/models/mv-adapter",
+  "output_dir": "final/round2/mv_adapter/results/debug_obj0070_fixed",
+  "split": "holdout",
+  "geometry_source": "mixed",
+  "proxy_manifest": "final/round2/mv_adapter/proxy_manifest.json",
+  "object_ids": [
+    "obj_0070"
+  ],
+  "device": "cuda:0",
+  "seed": 20260928,
+  "steps": 50,
+  "low": 0.75,
+  "high": 1.5,
+  "schedule": [
+    "no_geometry",
+    "fixed_1.0"
+  ]
+}
