@@ -14,6 +14,18 @@ import torch.nn.functional as F
 _lpips_fn = None
 
 
+def _move_lpips_model(model, device):
+    """Move LPIPS parameters and its non-registered scaling tensors together."""
+    target = torch.device(device)
+    model.to(target)
+    scaling_layer = getattr(model, "scaling_layer", None)
+    for name in ("shift", "scale"):
+        value = getattr(scaling_layer, name, None)
+        if isinstance(value, torch.Tensor) and value.device != target:
+            setattr(scaling_layer, name, value.to(target))
+    return model
+
+
 def compute_psnr(pred, target, mask=None):
     """PSNR in [0,1] range. Returns 100.0 for near-identical images.
 
@@ -113,10 +125,10 @@ def get_lpips_fn(device):
     if _lpips_fn is None:
         try:
             import lpips
-            _lpips_fn = lpips.LPIPS(net='alex').to(device).eval()
+            _lpips_fn = lpips.LPIPS(net='alex').eval()
         except ImportError:
             return None
-    return _lpips_fn
+    return _move_lpips_model(_lpips_fn, device).eval()
 
 
 def compute_lpips(pred, target, mask=None, lpips_fn=None, device=None):
@@ -138,6 +150,7 @@ def compute_lpips(pred, target, mask=None, lpips_fn=None, device=None):
         lpips_fn = get_lpips_fn(device)
     if lpips_fn is None:
         return None
+    lpips_fn = _move_lpips_model(lpips_fn, pred.device)
     # LPIPS expects [-1, 1]
     p = pred * 2 - 1
     t = target * 2 - 1

@@ -1,0 +1,815 @@
+{
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config": "../MVPainter/configs/mvpainter-geotex-full-train.yaml",
+  "num_objects": 300,
+  "rows": 1200,
+  "unique_object_method_records": 1200,
+  "duplicate_object_method_records": 0,
+  "methods": [
+    "c3",
+    "fixed_high",
+    "fixed_low",
+    "no_adapter"
+  ],
+  "object_ids_complete": true,
+  "numeric_fields_finite": true,
+  "bad_image_dimensions": [],
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "target_views_unique": true,
+  "shared_initial_latents": true,
+  "shared_reference_gt_camera": true,
+  "seed": 42,
+  "resolution": 256,
+  "steps": 50,
+  "train_uid_count": 1118,
+  "eval_uid_count": 300,
+  "train_eval_overlap_count": 101,
+  "strict_holdout_train_overlap_count": 79,
+  "probe_train_overlap_count": 22,
+  "train_eval_overlap_objects": [
+    "obj_0000",
+    "obj_0001",
+    "obj_0002",
+    "obj_0003",
+    "obj_0004",
+    "obj_0005",
+    "obj_0006",
+    "obj_0007",
+    "obj_0008",
+    "obj_0009",
+    "obj_0010",
+    "obj_0011",
+    "obj_0012",
+    "obj_0014",
+    "obj_0016",
+    "obj_0017",
+    "obj_0018",
+    "obj_0019",
+    "obj_0020",
+    "obj_0021",
+    "obj_0022",
+    "obj_0023",
+    "obj_0024",
+    "obj_0025",
+    "obj_0026",
+    "obj_0027",
+    "obj_0028",
+    "obj_0029",
+    "obj_0030",
+    "obj_0031",
+    "obj_0032",
+    "obj_0033",
+    "obj_0034",
+    "obj_0035",
+    "obj_0036",
+    "obj_0037",
+    "obj_0039",
+    "obj_0040",
+    "obj_0041",
+    "obj_0042",
+    "obj_0043",
+    "obj_0044",
+    "obj_0045",
+    "obj_0046",
+    "obj_0047",
+    "obj_0049",
+    "obj_0050",
+    "obj_0051",
+    "obj_0052",
+    "obj_0053",
+    "obj_0055",
+    "obj_0056",
+    "obj_0057",
+    "obj_0058",
+    "obj_0059",
+    "obj_0060",
+    "obj_0061",
+    "obj_0062",
+    "obj_0063",
+    "obj_0064",
+    "obj_0065",
+    "obj_0067",
+    "obj_0069",
+    "obj_0070",
+    "obj_0071",
+    "obj_0072",
+    "obj_0073",
+    "obj_0074",
+    "obj_0075",
+    "obj_0076",
+    "obj_0077",
+    "obj_0079",
+    "obj_0080",
+    "obj_0081",
+    "obj_0084",
+    "obj_0085",
+    "obj_0086",
+    "obj_0087",
+    "obj_0088",
+    "obj_0089",
+    "obj_0090",
+    "obj_0091",
+    "obj_0092",
+    "obj_0093",
+    "obj_0094",
+    "obj_0095",
+    "obj_0096",
+    "obj_0097",
+    "obj_0098",
+    "obj_0099",
+    "obj_0100",
+    "obj_0101",
+    "obj_0102",
+    "obj_0103",
+    "obj_0104",
+    "obj_0105",
+    "obj_0106",
+    "obj_0107",
+    "obj_0108",
+    "obj_0109",
+    "obj_0112"
+  ],
+  "strict_holdout_overlap_objects": [
+    "obj_0024",
+    "obj_0025",
+    "obj_0026",
+    "obj_0027",
+    "obj_0028",
+    "obj_0029",
+    "obj_0030",
+    "obj_0031",
+    "obj_0032",
+    "obj_0033",
+    "obj_0034",
+    "obj_0035",
+    "obj_0036",
+    "obj_0037",
+    "obj_0039",
+    "obj_0040",
+    "obj_0041",
+    "obj_0042",
+    "obj_0043",
+    "obj_0044",
+    "obj_0045",
+    "obj_0046",
+    "obj_0047",
+    "obj_0049",
+    "obj_0050",
+    "obj_0051",
+    "obj_0052",
+    "obj_0053",
+    "obj_0055",
+    "obj_0056",
+    "obj_0057",
+    "obj_0058",
+    "obj_0059",
+    "obj_0060",
+    "obj_0061",
+    "obj_0062",
+    "obj_0063",
+    "obj_0064",
+    "obj_0065",
+    "obj_0067",
+    "obj_0069",
+    "obj_0070",
+    "obj_0071",
+    "obj_0072",
+    "obj_0073",
+    "obj_0074",
+    "obj_0075",
+    "obj_0076",
+    "obj_0077",
+    "obj_0079",
+    "obj_0080",
+    "obj_0081",
+    "obj_0084",
+    "obj_0085",
+    "obj_0086",
+    "obj_0087",
+    "obj_0088",
+    "obj_0089",
+    "obj_0090",
+    "obj_0091",
+    "obj_0092",
+    "obj_0093",
+    "obj_0094",
+    "obj_0095",
+    "obj_0096",
+    "obj_0097",
+    "obj_0098",
+    "obj_0099",
+    "obj_0100",
+    "obj_0101",
+    "obj_0102",
+    "obj_0103",
+    "obj_0104",
+    "obj_0105",
+    "obj_0106",
+    "obj_0107",
+    "obj_0108",
+    "obj_0109",
+    "obj_0112"
+  ],
+  "raw_exact_glb_existing_count": 99,
+  "raw_exact_glb_existing_examples": [
+    {
+      "object": "obj_0000",
+      "uid": "ea16fb954f224f32b11197124fa25cca",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-021/ea16fb954f224f32b11197124fa25cca.glb"
+    },
+    {
+      "object": "obj_0001",
+      "uid": "ea2fe260ba5844d8be4fe34ce48e8af6",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/ea2fe260ba5844d8be4fe34ce48e8af6.glb"
+    },
+    {
+      "object": "obj_0002",
+      "uid": "ea331140af3c47ea9591d881db21a2f8",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/ea331140af3c47ea9591d881db21a2f8.glb"
+    },
+    {
+      "object": "obj_0003",
+      "uid": "ea7601dbeb2c46188571cb86e8fdb5bf",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/ea7601dbeb2c46188571cb86e8fdb5bf.glb"
+    },
+    {
+      "object": "obj_0004",
+      "uid": "eac4b392b7b448a2b6ec77e8936abe1b",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-021/eac4b392b7b448a2b6ec77e8936abe1b.glb"
+    },
+    {
+      "object": "obj_0005",
+      "uid": "eb16fa3a7bfb4087ba3e567cd1243c40",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/eb16fa3a7bfb4087ba3e567cd1243c40.glb"
+    },
+    {
+      "object": "obj_0006",
+      "uid": "eb5a75501e3642e8ac48e9403b88626d",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/eb5a75501e3642e8ac48e9403b88626d.glb"
+    },
+    {
+      "object": "obj_0007",
+      "uid": "eb6010a0aeb04a03abd728db04a45f01",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-021/eb6010a0aeb04a03abd728db04a45f01.glb"
+    },
+    {
+      "object": "obj_0008",
+      "uid": "eb721ae631e749dba32482db7303b33b",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-021/eb721ae631e749dba32482db7303b33b.glb"
+    },
+    {
+      "object": "obj_0009",
+      "uid": "ebe2a3d402c5411eab46dc477aa55124",
+      "path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-020/ebe2a3d402c5411eab46dc477aa55124.glb"
+    }
+  ],
+  "camera_roles_sample": {
+    "obj_0000": [
+      {
+        "id": 0,
+        "azimuth": 0.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 1,
+        "azimuth": 60.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 2,
+        "azimuth": 120.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 3,
+        "azimuth": 180.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 4,
+        "azimuth": 240.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 5,
+        "azimuth": 300.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 6,
+        "azimuth": 30.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 7,
+        "azimuth": 90.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 8,
+        "azimuth": 150.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 9,
+        "azimuth": 210.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 10,
+        "azimuth": 270.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 11,
+        "azimuth": 330.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 12,
+        "azimuth": 90.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 13,
+        "azimuth": 180.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 14,
+        "azimuth": 270.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 15,
+        "azimuth": 0.0,
+        "elevation": 90.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 16,
+        "azimuth": 0.0,
+        "elevation": -90.0,
+        "camera": "ortho",
+        "distance": 3.0
+      }
+    ],
+    "obj_0001": [
+      {
+        "id": 0,
+        "azimuth": 0.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 1,
+        "azimuth": 60.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 2,
+        "azimuth": 120.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 3,
+        "azimuth": 180.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 4,
+        "azimuth": 240.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 5,
+        "azimuth": 300.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 6,
+        "azimuth": 30.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 7,
+        "azimuth": 90.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 8,
+        "azimuth": 150.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 9,
+        "azimuth": 210.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 10,
+        "azimuth": 270.0,
+        "elevation": 20.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 11,
+        "azimuth": 330.0,
+        "elevation": -10.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 12,
+        "azimuth": 90.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 13,
+        "azimuth": 180.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 14,
+        "azimuth": 270.0,
+        "elevation": 0.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 15,
+        "azimuth": 0.0,
+        "elevation": 90.0,
+        "camera": "ortho",
+        "distance": 3.0
+      },
+      {
+        "id": 16,
+        "azimuth": 0.0,
+        "elevation": -90.0,
+        "camera": "ortho",
+        "distance": 3.0
+      }
+    ]
+  },
+  "baking_candidate_audit": {
+    "strict_exact_uv_complete_count": 43,
+    "all_strict_exact_uv_candidates_overlap_training": true,
+    "formal_3d_baking_status": "BLOCKED_FOR_INDEPENDENT_HOLDOUT_EVIDENCE"
+  },
+  "metric_implementation": {
+    "full_psnr": "compute_psnr(pred,target) over all RGB pixels",
+    "fg_psnr": "compute_psnr(pred,target,mask), mask expanded to RGB and thresholded >0.5",
+    "full_ssim": "3x3 local SSIM map mean over all pixels/channels",
+    "fg_ssim": "3x3 local SSIM map, mask max-pooled 3x3 then mean over dilated foreground",
+    "full_lpips": "LPIPS Alex on full image in [-1,1]",
+    "fg_lpips": "LPIPS Alex after zeroing background with foreground mask",
+    "mask_source": "alpha_masks from target images; resized to model image size by prepare_batch",
+    "edge_source": "Sobel edge mask from depth if available else normal",
+    "aggregation": "one row per object after six-view mosaic metrics; bootstrap resamples objects"
+  },
+  "texture_fidelity_limits": {
+    "dists_available": false,
+    "ciede2000_available_in_current_main_csv": false,
+    "gt_relative_texture_errors_available": true,
+    "hf_energy_error_preserved": true
+  },
+  "source_sha256": {
+    "eval_runner": "91b687d45e6129aacd921ad6b67c7a2e365bba55b3a4b69dacd48c6b7c7ecbc9",
+    "historical_eval": "c5480af7c9666d2b2b34a8011e57fdfcc82c49d698a0807ad5e5a84271ac3709",
+    "historical_metrics": "a7b563665397f4ef598899c1667817aef3a47d4a4258cc1c7d2b3e8b0ab37a07",
+    "extended_metrics": "ee32281fbee97e71050e8b2d74bbf6bc476efd372f6a898f1e0a3078863bb2b5",
+    "dataset": "c16545cd60f8d022483e69bb16bfd7027603a2a4f6ca6037c1fe287064f94285",
+    "checkpoint": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0"
+  },
+  "missing_required_render_files": [],
+  "extra_nonprotocol_render_files_note": "These entries are extra depth_png files beyond the required protocol files 000..016; no required protocol file is missing.",
+  "extra_nonprotocol_render_files": [
+    {
+      "object": "obj_0007",
+      "uid": "eb6010a0aeb04a03abd728db04a45f01",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0009",
+      "uid": "ebe2a3d402c5411eab46dc477aa55124",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0010",
+      "uid": "ec2d3e523c7f49fc9a15d97140e9dbaa",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0011",
+      "uid": "ec983fdea9144beda3a6a52e9f82af77",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0012",
+      "uid": "ed600cc9d91448939edeeb3a6d858448",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0014",
+      "uid": "ed8ca1be383643dfac8b56149e70bdd8",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0017",
+      "uid": "edaf81b5c83e46368ab102237aa115b7",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0020",
+      "uid": "edfd8a41dc2743028b333ae784f90df8",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0021",
+      "uid": "ee3c66008189490d85fb53c6b0044392",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0023",
+      "uid": "ee7ad3e221f64b51b6c2e1e51c02e102",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0024",
+      "uid": "eecbe65a172a475aa9fc21f4e412530a",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0026",
+      "uid": "eef01b5f8ab14e3d8304bf6b437f2760",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0027",
+      "uid": "ef3d9479093d4f8ca50c9788db9eaf50",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0032",
+      "uid": "effd25a508d7400b96da30391db448e6",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0033",
+      "uid": "f09c68b9bcc747e68a5021d7789d6e4d",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0035",
+      "uid": "f0c2b3a028e340b5a3167cd79d98979e",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0041",
+      "uid": "f266cfb9baab4f7390c08724aea78b5b",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0042",
+      "uid": "f30973a5e4894bf09064e4d78b278a2c",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0044",
+      "uid": "f38944bdd22b45b5aad63ea553b2d8f2",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0047",
+      "uid": "f414b8aac0754a3db8d678ef6470db65",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0050",
+      "uid": "f42f0a645b50450db016be0a300e4656",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0051",
+      "uid": "f46ed5762dbe4ff889b6a4b7566c5037",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0055",
+      "uid": "f4d7ceb2804149d7b847de9964fc738e",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0063",
+      "uid": "f6b76042dd444cd395b76fc73e2f22b5",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0070",
+      "uid": "f7ef602b19214debb0b350db9af55ff2",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0071",
+      "uid": "f8016f7ec0024cabaf06d1f6d15ac65e",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0072",
+      "uid": "f84886c899764d629dc89e3c8564d72b",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0074",
+      "uid": "f88382f18b934826bc8d06c8d862fbb9",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0075",
+      "uid": "f8d2af8d4b2848c4bb1db77920197110",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0084",
+      "uid": "fa600041decf4d47ab5c8e4c36e82284",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0088",
+      "uid": "fb0e9f294446465583516faf36e6767b",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0089",
+      "uid": "fb470c22efb24214829eaff4d65fef02",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0091",
+      "uid": "fbd54cf97a2a4354a8d7a8ceb00faf27",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0100",
+      "uid": "fd9fdf81ab624a66897bbd8ac299e26f",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0102",
+      "uid": "fdb8d15f54784b4a9e94319dd26cbea4",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0103",
+      "uid": "fe18cb3d8a974906b77e1ab5bd17b41a",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0104",
+      "uid": "fe4b685c0c6e48db96e598c34000c895",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0105",
+      "uid": "fe79ccb4481b40ab99b35646eebdaafc",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0107",
+      "uid": "ff53345f3ac24bb1bdb300c41460f9d8",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0108",
+      "uid": "ff79f84eef294f46a68cb86836a9efb3",
+      "type": "depth_png",
+      "count": 18
+    },
+    {
+      "object": "obj_0112",
+      "uid": "ffed56f45b594dada306fb25e13d7994",
+      "type": "depth_png",
+      "count": 18
+    }
+  ],
+  "camera_input_mapping_audit": {
+    "reverse_count": 219,
+    "normal_count": 81,
+    "tie_count": 0,
+    "alpha_available_count": 300,
+    "reference_view": "000 if alpha_zero_count(000) <= alpha_zero_count(014), else 014",
+    "target_views": [
+      0,
+      15,
+      12,
+      16,
+      13,
+      14
+    ],
+    "target_includes_reference_view": true,
+    "strictly_unseen_target_views_per_object": 5,
+    "unseen_claim_note": "The six target views include the selected reference view; only five of six targets are unseen relative to the reference, and the remaining 11 of 17 cameras were not evaluated."
+  }
+}
