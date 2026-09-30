@@ -1,6 +1,6 @@
 {
   "protocol": "cross-backbone-preflight-v1",
-  "root": "/4T/CXY/MV-Painter",
+  "root": "<repo-root>",
   "runtime": {
     "nvidia_smi": "/usr/bin/nvidia-smi",
     "torch_cuda_available": true,
@@ -30,19 +30,19 @@
       "local_paths": [
         {
           "declared": "MVPainter/configs/mvpainter-geotex-full-train.yaml",
-          "resolved": "/4T/CXY/MV-Painter/MVPainter/configs/mvpainter-geotex-full-train.yaml",
+          "resolved": "<repo-root>/MVPainter/configs/mvpainter-geotex-full-train.yaml",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
-          "resolved": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+          "resolved": "<repo-root>/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "final/round2/main_adapter_clean_v2/main_adapter_clean_v2_strict276.csv",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/main_adapter_clean_v2/main_adapter_clean_v2_strict276.csv",
+          "resolved": "<repo-root>/final/round2/main_adapter_clean_v2/main_adapter_clean_v2_strict276.csv",
           "exists": true,
           "kind": "file"
         }
@@ -65,31 +65,31 @@
       "local_paths": [
         {
           "declared": "final/round2/mv_adapter/upstream",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/upstream",
+          "resolved": "<repo-root>/final/round2/mv_adapter/upstream",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "final/round2/mv_adapter/models/sd21_base",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/sd21_base",
+          "resolved": "<repo-root>/final/round2/mv_adapter/models/sd21_base",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
+          "resolved": "<repo-root>/final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "final/round2/mv_adapter/data_manifest.json",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/data_manifest.json",
+          "resolved": "<repo-root>/final/round2/mv_adapter/data_manifest.json",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "final/round2/mv_adapter/results/holdout_exact_76/per_object_metrics.csv",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mv_adapter/results/holdout_exact_76/per_object_metrics.csv",
+          "resolved": "<repo-root>/final/round2/mv_adapter/results/holdout_exact_76/per_object_metrics.csv",
           "exists": true,
           "kind": "file"
         }
@@ -123,31 +123,31 @@
       "local_paths": [
         {
           "declared": "final/round2/mvdiffusion/upstream",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream",
+          "resolved": "<repo-root>/final/round2/mvdiffusion/upstream",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "final/round2/mvdiffusion/models/sd21_depth_compat",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+          "resolved": "<repo-root>/final/round2/mvdiffusion/models/sd21_depth_compat",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
+          "resolved": "<repo-root>/final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
+          "resolved": "<repo-root>/final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
           "exists": true,
           "kind": "file"
         },
         {
           "declared": "final/round2/mvdiffusion/data/scannet/holdout_exact_75",
-          "resolved": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data/scannet/holdout_exact_75",
+          "resolved": "<repo-root>/final/round2/mvdiffusion/data/scannet/holdout_exact_75",
           "exists": true,
           "kind": "directory"
         }
@@ -195,32 +195,32 @@
       "official_paper": "https://arxiv.org/abs/2310.15008",
       "local_paths": [
         {
-          "declared": "/4T/CXY/Wonder3D",
-          "resolved": "/4T/CXY/Wonder3D",
+          "declared": "<external-root>/Wonder3D",
+          "resolved": "<external-root>/Wonder3D",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "mvpoutput/wonder3d_tcas/input_images_shard000",
-          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/input_images_shard000",
+          "resolved": "<repo-root>/mvpoutput/wonder3d_tcas/input_images_shard000",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "mvpoutput/wonder3d_tcas/input_images_shard150",
-          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/input_images_shard150",
+          "resolved": "<repo-root>/mvpoutput/wonder3d_tcas/input_images_shard150",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "mvpoutput/wonder3d_tcas/outputs_shard000/cropsize-192-cfg3.0",
-          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/outputs_shard000/cropsize-192-cfg3.0",
+          "resolved": "<repo-root>/mvpoutput/wonder3d_tcas/outputs_shard000/cropsize-192-cfg3.0",
           "exists": true,
           "kind": "directory"
         },
         {
           "declared": "mvpoutput/wonder3d_tcas/outputs_shard150/cropsize-192-cfg3.0",
-          "resolved": "/4T/CXY/MV-Painter/mvpoutput/wonder3d_tcas/outputs_shard150/cropsize-192-cfg3.0",
+          "resolved": "<repo-root>/mvpoutput/wonder3d_tcas/outputs_shard150/cropsize-192-cfg3.0",
           "exists": true,
           "kind": "directory"
         }
