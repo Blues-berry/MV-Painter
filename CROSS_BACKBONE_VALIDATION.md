@@ -55,11 +55,14 @@ raw-PNG audit independently checks RGB reconstruction, masks, depth-derived
 Edge-SSIM and view ordering; its values are kept separate from the original
 float-evaluation table because PNG quantization changes some SSIM values.
 
-Unseen-view baking is not yet a validated MVPainter result. Twelve exact GLB
-cases and their original UV/camera records are prepared, but a calibrated
-visibility-aware renderer is required before reporting texture-bake or unseen-
-view numbers. The six-view target panel also contains the selected reference
-view; only the other target views are unseen relative to that reference.
+The current MVPainter evidence includes a completed 12-object stratified
+baking and unseen-view case study, including same-draw comparisons between
+global and layer-wise controls (frozen records:
+`final/round2/coordination/bake_layerwise_20260930/`). This establishes an
+operational and comparative case-study result, but not population-level 3D
+superiority; no generated GT bake or DISTS evaluation is available. The
+six-view target panel also contains the selected reference view; only the
+other target views are unseen relative to that reference.
 
 Detailed source: `final/round2/main_adapter_clean_v2/MAIN_ADAPTER_CLEAN_V2_FINAL_AUDIT.md`.
 
