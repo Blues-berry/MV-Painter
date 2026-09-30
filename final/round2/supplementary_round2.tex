@@ -401,10 +401,11 @@ dominates every metric.
 
 \section{S11. Strict-276 confirmation of pre-registered layer-wise candidates}
 
-The confirmation set re-runs layer-LLH, layer-fixed-mean, and a layer-LHL
-replica in one seeded runner (276 strict-holdout objects, unique6 views, 50
-Euler steps, seed 42; per-object seeds fixed before dataset access, the
-initial latent, and the condition-VAE path). The protocol was frozen in
+The confirmation set re-runs layer-LLH, layer-fixed-mean, a layer-LHL
+replica, and the global fixed-low control in one seeded runner (276
+strict-holdout objects, unique6 views, 50 Euler steps, seed 42; per-object
+seeds fixed before dataset access, the initial latent, and the condition-VAE
+path). The protocol was frozen in
 \texttt{coordination/revision\_next\_20260930/EXPERIMENT\_PROTOCOL\_LOCK.md}
 before any of these holdout numbers existed; candidates were selected only on
 probe FG-LPIPS. Raw rows, CSVs, manifests, and the analysis JSON are in
@@ -418,6 +419,7 @@ probe FG-LPIPS. Raw rows, CSVs, manifests, and the analysis JSON are in
 \toprule
 Schedule & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
 \midrule
+Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
 Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
 Layer-LHL (replica) & 19.635 & 0.8486 & 0.2278 & 12.974 & 0.4445 & 0.1719 & 0.5273 \\
 Layer-LLH & 20.828 & 0.8514 & 0.1988 & 13.975 & 0.4620 & 0.1610 & 0.5476 \\
@@ -440,6 +442,24 @@ direction):
   Full-LPIPS $-0.02897$; FG-PSNR $+1.001$ $[+0.907,+1.097]$, 261/276;
   FG-SSIM $+0.01744$; FG-LPIPS $-0.01097$ $[-0.0118,-0.0101]$, 264/276;
   Edge-SSIM $+0.02031$).
+\item \textbf{LLH $-$ global fixed-low:} all seven metrics favor LLH
+  (Full-PSNR $+2.599$ $[+2.353,+2.838]$, 249/276; Full-SSIM $+0.00763$;
+  Full-LPIPS $-0.01189$; FG-PSNR $+3.244$ $[+2.936,+3.542]$, 242/276;
+  FG-SSIM $+0.0633$; FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$, 261/276;
+  Edge-SSIM $+0.0276$ $[+0.0242,+0.0308]$).
+\item \textbf{Fixed-mean $-$ global fixed-low:} all seven metrics favor
+  fixed-mean (Full-PSNR $+1.288$ $[+1.108,+1.461]$, 225/276; FG-PSNR
+  $+2.369$ $[+2.155,+2.576]$, 245/276; FG-LPIPS $-0.0219$
+  $[-0.0236,-0.0201]$, 254/276; Full-LPIPS $-0.00263$
+  $[-0.0045,-0.0006]$; Full-SSIM $+0.00637$; FG-SSIM $+0.0563$;
+  Edge-SSIM $+0.0162$).
+\item \textbf{Layer-LHL replica $-$ global fixed-low:} mixed. The replica is
+  better on Full-PSNR ($+1.406$ $[+1.212,+1.592]$, 227/276), Full-SSIM
+  ($+0.00483$), FG-PSNR ($+2.244$ $[+2.009,+2.468]$, 234/276), FG-SSIM
+  ($+0.0458$), FG-LPIPS ($-0.0198$ $[-0.0216,-0.0180]$, 250/276), and
+  Edge-SSIM ($+0.0072$ $[+0.0050,+0.0095]$, 181/276); the global control is
+  better on Full-LPIPS ($+0.0170$ $[+0.0138,+0.0206]$ in the
+  replica-minus-global direction, 80/276 for the replica).
 \item \textbf{Fixed-mean $-$ layer-LHL replica:} mixed. Fixed-mean is better
   on FG-LPIPS ($+0.00208$ $[+0.0017,+0.0025]$, 202/276), FG-PSNR ($+0.126$),
   Full-SSIM ($+0.00166$), Full-LPIPS ($-0.01961$), FG-SSIM ($+0.01043$), and
