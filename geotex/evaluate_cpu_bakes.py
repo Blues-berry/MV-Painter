@@ -97,10 +97,16 @@ def main() -> None:
     handoff = json.loads(args.handoff.resolve().read_text())
     requested = [value.strip() for value in args.objects.split(",") if value.strip()]
     requested_methods = [value.strip() for value in args.methods.split(",") if value.strip()]
-    invalid_methods = [method for method in requested_methods if method not in METHODS]
+    records = {record["object"]: record for record in handoff["objects"]}
+    handoff_conditions = set()
+    for record in records.values():
+        handoff_conditions.update(record.get("generated_conditions", {}).keys())
+    invalid_methods = [
+        method for method in requested_methods
+        if method not in set(METHODS) | handoff_conditions
+    ]
     if invalid_methods:
         raise ValueError(f"unsupported methods: {invalid_methods}")
-    records = {record["object"]: record for record in handoff["objects"]}
     missing = [object_id for object_id in requested if object_id not in records]
     if missing:
         raise KeyError(f"objects not in handoff: {missing}")
