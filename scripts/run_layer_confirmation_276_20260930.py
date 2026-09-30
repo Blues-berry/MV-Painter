@@ -55,6 +55,15 @@ def stage(progress: float, early: float, middle: float, late: float) -> float:
     return late
 
 
+def global_fixed_low(progress: float) -> float:
+    """Reviewer-1 global control at the frozen fixed-low scale (1.25).
+
+    Added for the final-acceptance same-runner comparison; scale semantics
+    (per-group caps) are the wrapper's, identical to the layer schedules.
+    """
+    return 1.25
+
+
 def layer_llh(progress: float) -> dict[str, float]:
     return {
         "deep": stage(progress, 1.25, 1.25, 2.50),
@@ -78,6 +87,7 @@ def layer_lhl(progress: float) -> dict[str, float]:
 
 
 SCHEDULES = {
+    "global_fixed_low": global_fixed_low,
     "layer_llh": layer_llh,
     "layer_fixed_mean": layer_fixed_mean,
     "layer_lhl": layer_lhl,
@@ -116,6 +126,7 @@ def protocol_manifest() -> dict:
         "status": "confirmation_only; schedule pre-registered on development probes",
         "schedule": SCHEDULE_NAME,
         "schedule_values": {
+            "global_fixed_low": 1.25,
             "layer_llh": {
                 "deep": [1.25, 1.25, 2.50],
                 "middle": [1.25, 1.25, 2.50],
