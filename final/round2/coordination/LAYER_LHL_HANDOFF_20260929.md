@@ -1,11 +1,27 @@
 # Layer-LHL evidence handoff
 
-Date: 2026-09-29 UTC  
-Status: **VERIFIED FOR HANDOFF / PAPER NARRATIVE REVISION REQUIRED**
+Date: 2026-09-29 UTC; scope correction 2026-09-30 UTC  
+Status: **CANDIDATE RESULT VERIFIED / COMPLETE ABLATION PENDING**
 
 This handoff records a temporary, inference-only layer-wise schedule result. It
 does not modify the manuscript, response letter, checkpoint, or existing
 baseline tables.
+
+## Scope correction
+
+The 276-object result below verifies one layer-LHL candidate; it is not a
+complete layer-wise ablation. The previously reported global HLL/LLH rows are
+not substitutes for layer-wise HLL/LLH because they use one scale for all
+depth groups. The missing binary temporal patterns must be evaluated under the
+same layer-wise low/high values before selecting or naming a layer-wise
+schedule in the paper. In particular, layer-wise LLL and HHH are required
+controls, together with LHH, HLH and HHL; the existing layer-wise development
+rows already cover LLL, LHL and LLH.
+
+The current candidate result remains valid as an isolated transfer record, but
+the earlier wording “verified for handoff” is superseded for paper-level
+selection claims. A complete binary-factorial probe is being run separately
+under the frozen checkpoint and protocol.
 
 ## Frozen protocol
 

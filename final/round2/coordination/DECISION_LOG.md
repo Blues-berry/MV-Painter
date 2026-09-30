@@ -233,3 +233,17 @@ revert or overwrite pre-existing worktree changes.
   evidence/audit directory recorded there. No manuscript or source-code edit
   is implied by this handoff; any paper revision requires author review.
 
+## 2026-09-30 — D18: reopen layer-wise selection for complete binary ablation
+
+- Correction: the prior layer-LHL handoff verified only one candidate schedule.
+  The existing global HLL/LLH experiments cannot stand in for layer-wise HLL/
+  LLH, and layer-wise LLL/HHH/LHH/HLH/HHL were not all present.
+- Decision: do not use layer-LHL as a selected or “stronger replacement” method
+  claim yet. Enumerate all eight layer-wise temporal patterns
+  `LLL/LLH/LHL/LHH/HLL/HLH/HHL/HHH` with the fixed low/high values, shared
+  inputs, three seeds and the 24-object probe. The strict holdout remains
+  locked for confirmation and cannot be used to choose the schedule.
+- The candidate's existing strict-276 result remains preserved as a valid
+  single-condition transfer record. No manuscript/source edit is authorized
+  until the complete ablation and its audit are finished.
+
