@@ -309,4 +309,117 @@ The shallow group uses the implementation cap of 0.8; the largest layer-LHL
 shallow value is 0.75, so no candidate value is clipped. This ablation supports
 layer-wise adapter scaling, but it does not establish a unique temporal optimum.
 
+\paragraph{Runner sensitivity of the probe.} The reference conditioning image
+undergoes a random stretch/compress (scale 0.5--1.5$\times$) inside the
+dataset loader; targets, masks, depths, and view order are deterministic.
+Consequently all methods within one run are strictly paired, but absolute
+values are not comparable across separate runner invocations. A second,
+independent shared-input probe run of the same schedules (conducted for the
+complete factorial below) reproduces the LLH-over-LHL direction but changes
+the sign of the small LHL-vs-constant-low difference; we therefore claim only
+directions that hold in both runs and on the holdout.
+
+\section{S10. Complete binary temporal-pattern factorial (layer-wise)}
+
+The complete enumeration uses the same checkpoint, probe objects, seeds
+(42, 43, 44), unique6 views, 50 Euler steps, shared per-object inputs, and
+metric path as S9. The two levels are low = (deep 1.25, middle 1.25, shallow
+0.50) and high = (deep 2.50, middle 2.50, shallow 0.75); each pattern assigns
+one level to each of the 17/16/17 early/middle/late step segments. The
+protocol manifest records that holdout selection is forbidden
+(development-only surface). Raw rows, manifests, and SHA-256 sums are in
+\texttt{coordination/layer\_factorial\_v1\_20260930/}.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Complete binary layer-wise factorial; means over 72 object--seed
+pairs. Lower is better for LPIPS.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Pattern & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+LLL & 20.801 & 0.8759 & 0.2200 & 16.020 & 0.6112 & 0.1124 & 0.5942 \\
+LLH & 21.856 & 0.8832 & 0.1805 & 17.466 & 0.6219 & 0.1046 & 0.6131 \\
+LHL & 20.561 & 0.8784 & 0.2008 & 15.661 & 0.6038 & 0.1193 & 0.5887 \\
+LHH & 21.413 & 0.8837 & 0.1734 & 17.171 & 0.6194 & 0.1093 & 0.6113 \\
+HLL & 18.433 & 0.8636 & 0.2246 & 14.082 & 0.5951 & 0.1295 & 0.5849 \\
+HLH & 19.321 & 0.8721 & 0.1860 & 15.382 & 0.6132 & 0.1206 & 0.6089 \\
+HHL & 18.155 & 0.8675 & 0.2092 & 13.747 & 0.5894 & 0.1355 & 0.5796 \\
+HHH & 18.828 & 0.8731 & 0.1828 & 15.064 & 0.6114 & 0.1248 & 0.6073 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Paired bootstrap comparisons on FG-LPIPS (first minus second; positive means
+the first is worse because lower is better): LHL$-$LLH $+0.01472$
+([$+0.01168,+0.01864$]), LHL$-$LHH $+0.01008$ ([$+0.00799,+0.01226$]),
+LHL$-$LLL $+0.00693$ ([$+0.00419,+0.01076$]), LHL$-$HLL $-0.01012$
+([$-0.01286,-0.00736$]), LHL$-$HLH $-0.00123$ ([$-0.00401,+0.00168$]),
+LHL$-$HHL $-0.01612$ ([$-0.01940,-0.01283$]), LHL$-$HHH $-0.00547$
+([$-0.00847,-0.00221$]). LLH is the strongest pattern on five of seven
+metrics and LHH on the remaining two (Full-SSIM, Full-LPIPS); no pattern
+dominates every metric.
+
+\section{S11. Strict-276 confirmation of pre-registered layer-wise candidates}
+
+The confirmation set re-runs layer-LLH, layer-fixed-mean, and a layer-LHL
+replica in one seeded runner (276 strict-holdout objects, unique6 views, 50
+Euler steps, seed 42; per-object seeds fixed before dataset access, the
+initial latent, and the condition-VAE path). The protocol was frozen in
+\texttt{coordination/revision\_next\_20260930/EXPERIMENT\_PROTOCOL\_LOCK.md}
+before any of these holdout numbers existed; candidates were selected only on
+probe FG-LPIPS. Raw rows, CSVs, manifests, and the analysis JSON are in
+\texttt{mvpainter-layer-confirmation-20260930}/ (copies in
+\texttt{coordination/layer\_confirmation\_20260930/}).
+
+\begin{table}[h]
+\centering\small
+\caption{Strict-276 same-runner confirmation means.}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Schedule & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
+Layer-LHL (replica) & 19.635 & 0.8486 & 0.2278 & 12.974 & 0.4445 & 0.1719 & 0.5273 \\
+Layer-LLH & 20.828 & 0.8514 & 0.1988 & 13.975 & 0.4620 & 0.1610 & 0.5476 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Paired object-level 95\% bootstrap intervals (10,000 resamples, seed
+20260930; positive values favor the first schedule under its metric
+direction):
+
+\begin{itemize}
+\item \textbf{LLH $-$ fixed-mean:} all seven metrics favor LLH
+  (Full-PSNR $+1.311$ $[+1.219,+1.400]$, 275/276; Full-SSIM $+0.00114$
+  $[+0.00062,+0.00164]$; Full-LPIPS $-0.00936$; FG-PSNR $+0.875$
+  $[+0.769,+0.982]$, 240/276; FG-SSIM $+0.00701$; FG-LPIPS $-0.00889$
+  $[-0.0097,-0.0081]$, 258/276; Edge-SSIM $+0.01133$).
+\item \textbf{LLH $-$ layer-LHL replica:} all seven metrics favor LLH
+  (Full-PSNR $+1.193$ $[+1.123,+1.262]$, 276/276; Full-SSIM $+0.00280$;
+  Full-LPIPS $-0.02897$; FG-PSNR $+1.001$ $[+0.907,+1.097]$, 261/276;
+  FG-SSIM $+0.01744$; FG-LPIPS $-0.01097$ $[-0.0118,-0.0101]$, 264/276;
+  Edge-SSIM $+0.02031$).
+\item \textbf{Fixed-mean $-$ layer-LHL replica:} mixed. Fixed-mean is better
+  on FG-LPIPS ($+0.00208$ $[+0.0017,+0.0025]$, 202/276), FG-PSNR ($+0.126$),
+  Full-SSIM ($+0.00166$), Full-LPIPS ($-0.01961$), FG-SSIM ($+0.01043$), and
+  Edge-SSIM ($+0.00897$); the replica is better on Full-PSNR ($+0.119$
+  $[+0.084,+0.153]$).
+\end{itemize}
+
+\paragraph{Cross-runner replica check.} The archived layer-LHL record used
+an unseeded Python RNG for the reference preprocessing draw and therefore has
+different draws from the replica. Their object-level Pearson correlation on
+FG-PSNR is $0.66$ ($n=276$); the replica's mean FG-PSNR is 12.97 versus the
+archived 14.78. Both records are retained; the archived record is a single
+unseeded run whose absolute values do not reproduce on restart, and all
+paired conclusions above come from the seeded same-runner set.
+
+These results confirm the development-probe direction for the two promoted
+candidates on the holdout. They do not re-open schedule selection, do not
+compare absolute values across runners, and do not establish equivalence for
+any interval that crosses zero.
+
 \end{document}

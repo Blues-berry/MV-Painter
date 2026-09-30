@@ -52,6 +52,12 @@ targets, masks, depths, and view order are deterministic. Consequences:
   **layer-fixed-mean** (constant-scale control, best non-LLH constant in the
   6-method run). NOT promoted: layer-LHH (secondary in only one probe run),
   all early-high patterns.
+- Amendment (still before any new holdout observation): the archived
+  layer-LHL strict-276 record did not seed the Python RNG, so its reference
+  draws cannot be reproduced in a new process. To keep the holdout comparison
+  same-runner paired, layer-LHL is re-run under this protocol as a replica.
+  The archived record stays in the evidence freeze; agreement between the two
+  is reported as a runner-reproducibility check, not pooled.
 - Selection rule: fixed before observation; no hyperparameter of the
   schedules is re-tuned on the holdout; no additional pattern may be added to
   the holdout after seeing its result.
@@ -84,7 +90,8 @@ reported separately.
 
 - [x] Protocol written before new holdout runs
 - [x] Candidates fixed by development metric
-- [ ] Determinism smoke
-- [ ] layer-LLH strict-276 (276/276)
-- [ ] layer-fixed-mean strict-276 (276/276)
-- [ ] Equal-budget pilot completed (276/276)
+- [x] Determinism smoke (same-GPU duplicate: PASS after seeding python/np per object)
+- [x] layer-LLH strict-276 (276/276)
+- [x] layer-fixed-mean strict-276 (276/276)
+- [x] layer-LHL same-runner replica strict-276 (276/276)
+- [ ] Equal-budget pilot completed (276/276) — NOT run: no resume support (restart = 3.5 h), prior attempt lacks checkpoint provenance; kept as internal partial record
