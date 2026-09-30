@@ -1,0 +1,65 @@
+{
+  "checkpoint": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "condition_vae_seed_reset_before_each_method": true,
+  "high_values": {
+    "deep": 2.5,
+    "middle": 2.5,
+    "shallow": 0.75
+  },
+  "holdout_selection": "forbidden; strict-276 is not used to choose a schedule",
+  "low_values": {
+    "deep": 1.25,
+    "middle": 1.25,
+    "shallow": 0.5
+  },
+  "methods": [
+    "lll",
+    "llh",
+    "lhl",
+    "lhh",
+    "hll",
+    "hlh",
+    "hhl",
+    "hhh"
+  ],
+  "object_count": 24,
+  "object_list": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+  "object_list_sha256": "187185c6e94d5cf72a647b7c150b338429cee15d82da449678896bfb181f79f6",
+  "protocol": "layer-wise-binary-full-factorial-probe-v1",
+  "resolution": [
+    256,
+    256
+  ],
+  "seeds": [
+    43,
+    44
+  ],
+  "selection_metric": "fg_lpips (lower is better), with PSNR/SSIM and edge metrics reported as secondary",
+  "shared_inputs": "one collated batch, geo features and initial latent per seed/object reused by all methods",
+  "stage_boundaries": {
+    "early": [
+      0,
+      16
+    ],
+    "late": [
+      33,
+      49
+    ],
+    "middle": [
+      17,
+      32
+    ]
+  },
+  "status": "development_only",
+  "steps": 50,
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ]
+}
