@@ -18,6 +18,84 @@ python scripts/cross_backbone_preflight.py \
 | Official MVDiffusion depth branch | Independent correspondence-aware depth-conditioned multi-view diffusion model | Official source pinned; 75-object ScanNet-compatible interop run completed at 50 steps with finite metrics; current SD2.1 depth base is explicitly marked compatibility-only | Interop deployment diagnostic; no pooled absolute score |
 | Wonder3D v1.0 | Local six-view model, Objaverse inputs and nearly complete six-view output inventory | 299 inputs and 1,794 RGB outputs are present | Boundary/generation baseline only |
 
+## Deployment and validation records
+
+### MVPainter / GeoTex-Adapter
+
+The main MVPainter deployment is the controlled GeoTex-Adapter checkpoint at
+training step 2000. It is not presented as a recovered historical checkpoint.
+
+| Item | Frozen record |
+|---|---|
+| Checkpoint | `mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt` |
+| Checkpoint SHA-256 | `0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0` |
+| Source commit | `f2f0019a008277213af0127fa7cb628cb5fa1eef` |
+| Conditioning | 3-channel normal + 1-channel depth + 1-channel foreground mask |
+| Output protocol | joint six-view UNet, 256×256 per view, `unique6` order `[0,15,12,16,13,14]` |
+| Sampler / steps / seed | Euler, 50 steps, seed 42; shared initial latent per object and condition |
+| Evaluation cohort | 300 clean-v2 objects: 24 probe objects and 276 strict holdout objects |
+| Conditions | no adapter, fixed-low `1.25`, fixed-high `2.50`, C3 `(1.25,2.50,1.25)` |
+
+Deployment and inference validation passed: the checkpoint loads, the complete
+300-object × 4-condition artifact is present, per-object rows are finite, and
+the clean-v2 object list is disjoint from the historical 1,118-object training
+list. The strict 276-object means are:
+
+| Condition | Full PSNR | FG-PSNR | Full SSIM | FG-SSIM | FG-LPIPS | Edge-SSIM |
+|---|---:|---:|---:|---:|---:|---:|
+| No adapter | 10.514 | 8.776 | 0.726 | 0.478 | 0.207 | 0.479 |
+| Fixed low | 15.086 | 7.030 | 0.850 | 0.355 | 0.202 | 0.500 |
+| Fixed high | 13.365 | 5.410 | 0.823 | 0.229 | 0.210 | 0.494 |
+| C3 | 14.875 | 6.763 | 0.855 | 0.348 | 0.201 | 0.500 |
+
+These results validate the main deployment and the conditional C3 trade-off,
+not a uniformly dominant method: C3 improves full-image and edge-related
+measurements while its foreground PSNR/FG-SSIM remain below fixed-low. The
+raw-PNG audit independently checks RGB reconstruction, masks, depth-derived
+Edge-SSIM and view ordering; its values are kept separate from the original
+float-evaluation table because PNG quantization changes some SSIM values.
+
+Unseen-view baking is not yet a validated MVPainter result. Twelve exact GLB
+cases and their original UV/camera records are prepared, but a calibrated
+visibility-aware renderer is required before reporting texture-bake or unseen-
+view numbers. The six-view target panel also contains the selected reference
+view; only the other target views are unseen relative to that reference.
+
+Detailed source: `final/round2/main_adapter_clean_v2/MAIN_ADAPTER_CLEAN_V2_FINAL_AUDIT.md`.
+
+### MVDiffusion depth branch
+
+MVDiffusion was deployed as an isolated official depth-branch interop test. It
+is not pooled with MVPainter or MV-Adapter absolute scores because its input
+and camera assumptions differ.
+
+| Item | Frozen record |
+|---|---|
+| Upstream commit | `4cd4e513e259be07a6c5e6a813258f77374afa59` |
+| Checkpoint | official `depth_gen_new.pth`, SHA-256 `a90b6f900896e57e5688e1e1543e4992d87c4824cc00dc53cff46bea15f02765` |
+| Input conversion | 12 source views `[0,1,2,4,5,7,9,12,13,14,15,16]`, ScanNet-style depth/camera export |
+| Evaluation targets | six RGB-withheld targets `[0,12,13,14,15,16]`; target depth remains provided |
+| Geometry / steps | orthographic source converted to equivalent pinhole; 50 steps |
+| Cohort | 75 objects; `obj_0070` excluded because its repaired render has no valid depth |
+| Compatibility base | local `sd21_depth_compat`, `native_official_depth_base=false`; extra depth channel zero-initialized |
+
+The strict checkpoint load, five-step smoke test and full 75-object CUDA run
+completed successfully; all objects have the expected 12 predicted views and
+all interop metrics are finite:
+
+| Objects | Steps | Interop PSNR | Interop foreground SSIM | Interop Edge-SSIM |
+|---:|---:|---:|---:|---:|
+| 75 | 50 | 10.1036 | 0.3154 | 0.2189 |
+
+This is an interface/deployment diagnostic under known target geometry, not a
+strict geometry-held-out novel-view test. The orthographic-to-pinhole
+conversion, compatibility base and zero-initialized depth channel prevent a
+paper-quality absolute comparison. A native official SD2-depth-base rerun
+would be required before MVDiffusion could be reported as a matched baseline.
+
+Detailed source and reproduction commands:
+`final/round2/mvdiffusion/MVDIFFUSION_INTEROP.md`.
+
 The MV-Adapter Exact holdout currently contains 76 objects and five defined
 conditions (380 rows), all tagged `exact_mesh` and finite. Its exact unified
 holdout means are approximately:
