@@ -1,0 +1,54 @@
+{
+  "checkpoint": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "metric_path": "geotex.eval_exploration.compute_metrics",
+  "object_list": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/strict_holdout_objects_276_clean_v2.txt",
+  "object_list_sha256": "a6aa8ab6e475763e1b5e67dc8c712ec8f1940e3952d65897c820887554bbd044",
+  "pre_registration": "final/round2/coordination/revision_next_20260930/EXPERIMENT_PROTOCOL_LOCK.md",
+  "protocol": "layer-confirmation-strict276-v1",
+  "reference_augmentation_note": "cond image stretch is random per load; paired within run only",
+  "resolution": [
+    256,
+    256
+  ],
+  "row_count": 276,
+  "scale_semantics": "effective = min(requested, cap deep 3.0 / middle 3.5 / shallow 0.8)",
+  "schedule": "layer_llh",
+  "schedule_values": {
+    "layer_fixed_mean": {
+      "deep": 1.65,
+      "middle": 1.65,
+      "shallow": 0.58
+    },
+    "layer_llh": {
+      "deep": [
+        1.25,
+        1.25,
+        2.5
+      ],
+      "middle": [
+        1.25,
+        1.25,
+        2.5
+      ],
+      "shallow": [
+        0.5,
+        0.5,
+        0.75
+      ]
+    }
+  },
+  "seed": 42,
+  "stage_partition": "step/49; early<1/3, middle<2/3 => 17/16/17",
+  "status": "complete",
+  "steps": 50,
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ]
+}
