@@ -201,13 +201,13 @@ which come from an earlier runner with different reference draws.
 \begin{table}[h]
 \centering\small
 \caption{Same-draw unseen-view bake means over the 12-object cohort
-(layer-wise extension). GLOBAL-BAKE-ROWS}
+(layer-wise extension; 11 unseen views per object--condition).}
 \begin{tabular}{lrrrr}
 \toprule
 Method & Masked PSNR$\uparrow$ & CIEDE2000$\downarrow$ & FG-LPIPS$\downarrow$ & Texture coverage \\
 \midrule
-Global fixed-low (same-draw) & GFL-ROW \\
-Global C3 (same-draw) & GC3-ROW \\
+Global fixed-low (same-draw) & 10.763 & 26.287 & 0.1705 & 0.1574 \\
+Global C3 (same-draw) & 12.565 & 21.643 & 0.1562 & 0.1574 \\
 Layer-LHL & 15.005 & 16.922 & 0.1420 & 0.1574 \\
 Layer-LLH & 16.679 & 14.186 & 0.1215 & 0.1574 \\
 \bottomrule
@@ -215,7 +215,9 @@ Layer-LLH & 16.679 & 14.186 & 0.1215 & 0.1574 \\
 \end{table}
 
 Layer-LLH beats layer-LHL on masked PSNR (12/12 objects), CIEDE2000
-(12/12), and FG-LPIPS (12/12), including the failure-boundary objects
+(12/12), and FG-LPIPS (12/12), and also beats the same-draw global C3 control
+(12/12 on all three); the global C3-vs-fixed-low ordering is preserved
+(12/12). The ordering holds on the failure-boundary objects
 \texttt{obj\_0048} (14.97 vs 13.67 dB), \texttt{obj\_0078} (12.02 vs
 9.18 dB), and \texttt{obj\_0082} (11.01 vs 8.63 dB). As in S4, this is a
 stratified case study: no generated GT bake, no DISTS, seam scalars without
