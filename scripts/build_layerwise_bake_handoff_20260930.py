@@ -18,7 +18,7 @@ FROZEN = ROOT / "final/round2/main_adapter_baking/BAKE_INPUT_HANDOFF.json"
 PANELS = Path("/4T/tmp/mvpainter-layer-bake-input-20260930")
 OUT = ROOT / "final/round2/main_adapter_baking/BAKE_INPUT_HANDOFF_LAYERWISE_20260930.json"
 VIEW_OUT = ROOT / "final/round2/main_adapter_baking/frozen_views"
-NEW_METHODS = ("layer_llh", "layer_lhl")
+NEW_METHODS = ("layer_llh", "layer_lhl", "global_fixed_low", "global_c3")
 
 
 def sha256(path: Path) -> str:

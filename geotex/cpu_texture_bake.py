@@ -593,10 +593,20 @@ def main() -> None:
     handoff = json.loads(args.handoff.read_text())
     requested_objects = [value.strip() for value in args.objects.split(",") if value.strip()]
     requested_methods = [value.strip() for value in args.methods.split(",") if value.strip()]
-    invalid_methods = [method for method in requested_methods if method not in METHODS]
-    if invalid_methods:
-        raise ValueError(f"unsupported methods: {invalid_methods}; choose from {METHODS}")
     records = object_records(handoff, requested_objects)
+    # Allow any method whose per-view inputs exist in the handoff record
+    # (extension point for layer-wise conditions); keep the classic names too.
+    handoff_conditions = set()
+    for record in records:
+        handoff_conditions.update(record.get("generated_conditions", {}).keys())
+    invalid_methods = [
+        method for method in requested_methods
+        if method not in set(METHODS) | handoff_conditions
+    ]
+    if invalid_methods:
+        raise ValueError(
+            f"unsupported methods: {invalid_methods}; choose from {sorted(set(METHODS) | handoff_conditions)}"
+        )
     args.output_dir.mkdir(parents=True, exist_ok=True)
     all_metadata = []
     for record in records:
