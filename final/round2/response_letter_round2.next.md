@@ -32,17 +32,27 @@ competitive fixed-low baseline; (b) the full 12-object contact sheet
 selection; (c) a CPU bake with 48 exported textured GLBs and 528 unseen-view
 renders (11 unseen views per object–condition).
 
-**What the 3D evidence does and does not show.** The bake is an operational
-case study of the four *global* conditions (no adapter, fixed-low,
-fixed-high, C3). It does not show a C3 advantage: descriptive masked PSNR is
-11.824 (no adapter) vs 6.001 (fixed-low) vs 5.638 (C3); CIEDE2000 and
-FG-LPIPS order the same way. Visual inspection found cross-view
-source-fusion colour inconsistency and the purple-shift/repeated-pattern
-artifacts the reviewer flagged; obj\_0048 has 0.8441 inpainted fraction and
-exporter vertex reindexing; obj\_0078/obj\_0082 have raw coverage below
-0.04. The layer-wise schedules do **not** yet have a baked-mesh evaluation;
-the manuscript states this boundary in the baking section and in
-Limitations, so the bake is never cited as 3D validation of the new method.
+**What the 3D evidence does and does not show.** Two bake evidence layers
+are reported, and neither is a population-level quality claim.
+
+1. *Original global case study (unchanged scope).* Four global conditions
+   (no adapter, fixed-low, fixed-high, C3) on the stratified cohort: masked
+   PSNR 11.824 (no adapter) vs 6.001 (fixed-low) vs 5.638 (C3); CIEDE2000
+   and FG-LPIPS order the same way. No C3 advantage; visual inspection found
+   cross-view source-fusion colour inconsistency; obj\_0048 has 0.8441
+   inpainted fraction and exporter vertex reindexing; obj\_0078/obj\_0082
+   have raw coverage below 0.04.
+2. *New layer-wise bake extension (same-draw controls).* The layer-wise
+   schedules were baked on the same 12 Exact-GLB objects under the same
+   bake protocol, together with fresh global fixed-low/C3 controls generated
+   by the SAME seeded runner (same per-object reference draws), because the
+   reference-preprocessing draw shifts absolute values between runners.
+   Within this same-draw set, layer-LLH beats layer-LHL on masked PSNR
+   (16.679 vs 15.005), CIEDE2000 (14.186 vs 16.922), and FG-LPIPS (0.1215 vs
+   0.142) with 12/12 paired object wins on all three metrics, including the
+   hard cases obj\_0048, obj\_0078, obj\_0082. This is the first 3D
+   evidence for the layer-wise family; it is still a 12-object stratified
+   case study (no GT bake, no DISTS) and is labeled as such.
 
 **Seams and video.** The seam scalar saved by the bake audit has no seam-pair
 denominator, so we report the zero seam values with their definition and
