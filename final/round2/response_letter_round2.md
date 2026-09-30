@@ -11,7 +11,8 @@ shared-layer TCAS/C3 schedule is retained as a baseline rather than as the
 claimed optimum. New evidence since the previous package: (i) a complete
 binary enumeration of all eight temporal patterns on the 24-object probe with
 three seeds (576 paired records); (ii) a pre-registered strict-276-object
-confirmation of the development-selected pattern under a single runner;
+confirmation of the development-selected pattern under a single runner,
+including the requested global fixed-low control;
 (iii) explicit runner-sensitivity documentation; and (iv) patched Figure 1
 and rewritten method/limitations sections. All legacy numbers (+0.96 dB,
 CLIP-IQA, preference study) are removed from the deliverable source, not just
@@ -95,7 +96,20 @@ Supplementary S4a retains the complete contact sheet.
    276/276 wins; FG-PSNR +1.001 dB, 261/276; FG-LPIPS −0.0110, 264/276;
    Edge-SSIM +0.0203) and is mixed against layer-fixed-mean (fixed-mean
    better on FG-LPIPS/FG-PSNR/Edge-SSIM, replica better on Full-PSNR),
-   matching the metric-dependent development picture. The replica's absolute
+   matching the metric-dependent development picture. Against the
+   global fixed-low control, re-run in the SAME seeded runner and protocol
+   (constant 1.25, same wrapper cap semantics), layer-LLH is better on all
+   seven metrics with intervals excluding zero: FG-PSNR +3.244 dB
+   [+2.936,+3.542], 242/276 wins; FG-LPIPS −0.0308 [−0.0331,−0.0283],
+   261/276; Full-PSNR +2.599 dB [+2.353,+2.838], 249/276; Full-LPIPS −0.0119
+   [−0.0141,−0.0098]; Full-SSIM +0.0076; FG-SSIM +0.0633; Edge-SSIM +0.0276
+   [+0.0242,+0.0308]. Layer-fixed-mean is likewise better on all seven
+   metrics (FG-PSNR +2.369 dB [+2.155,+2.576]); the layer-LHL replica is
+   better on six of seven, while the global control retains better
+   Full-LPIPS (+0.0170 [+0.0138,+0.0206] in the replica-minus-global
+   direction). Per-object raw records and hashes:
+   coordination/final_acceptance_20260930/STRICT276_GLOBAL_FIXED_LOW_{RAW.csv,MANIFEST.json,CONFIRMATION.md}.
+   The replica's absolute
    means are lower than the archived unseeded layer-LHL record (FG-PSNR
    12.97 vs 14.78, Pearson r=0.66 over objects), which quantifies the
    reference-preprocessing draw sensitivity between runners; the archived

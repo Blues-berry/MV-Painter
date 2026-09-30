@@ -472,9 +472,9 @@ list, unique6 cameras, and 50-step protocol, but was produced by an independent
 candidate runner that, as later audits found, did not seed the Python RNG
 governing the reference-image preprocessing draw; a restart of that runner
 would not reproduce its exact outputs. It is therefore reported as an
-independent holdout record, not as a paired replacement for the clean-v2
-four-condition table, and all holdout conclusions below rest on the seeded,
-same-runner confirmation set (Section~\ref{subsec:confirmation}). Its means
+independent-protocol record on the same cohort, not as a paired replacement
+for the clean-v2 four-condition table, and all holdout conclusions below rest
+on the seeded, same-runner confirmation set (Section~\ref{subsec:confirmation}). Its means
 are Full-PSNR 22.052, Full-SSIM 0.8841, Full-LPIPS 0.1857, FG-PSNR 14.776,
 FG-SSIM 0.5510, FG-LPIPS 0.1338, and Edge-SSIM 0.5533. The shared-input
 development ablation above confirms the direction of the foreground gain but
@@ -559,10 +559,10 @@ Because the development probes select layer-LLH, we confirm the
 development-selected candidates on the strict 276-object holdout under a
 protocol written before any holdout number was observed
 (Section~\ref{subsec:layerablation} candidates; Supplementary S11). The
-confirmation set re-runs layer-LLH, layer-fixed-mean, and a layer-LHL replica
-in one seeded runner (per-object seeds fixed for the reference preprocessing
-draw, initial latent, and condition-VAE path), so all comparisons below are
-same-runner paired. Table~\ref{tab:confirmation} reports the means; paired
+confirmation set re-runs layer-LLH, layer-fixed-mean, a layer-LHL replica,
+and the global fixed-low control in one seeded runner (per-object seeds fixed
+for the reference preprocessing draw, initial latent, and condition-VAE
+path), so all comparisons below are same-runner paired. Table~\ref{tab:confirmation} reports the means; paired
 object-level 95\% bootstrap intervals (10,000 resamples) are given in the
 text.
 
@@ -579,6 +579,7 @@ runner invocations; different reference-preprocessing draws).}
 \toprule
 Schedule & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
 \midrule
+Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
 Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
 Layer-LHL (replica) & 19.635 & 0.849 & 0.2278 & 12.974 & 0.445 & 0.1719 & 0.5273 \\
 Layer-LLH & 20.828 & 0.8514 & 0.1988 & 13.975 & 0.4620 & 0.1610 & 0.5476 \\
@@ -604,8 +605,16 @@ consistently lower than the archived unseeded layer-LHL record
 (e.g.\ FG-PSNR 12.97 vs 14.78; Pearson $r=0.66$ over objects), confirming
 that the reference-preprocessing draw shifts absolute values between runners
 while the within-run orderings above are paired and seeded.
-These holdout results confirm the development-probe directions for the two
-promoted candidates; they do not re-open schedule selection, and the archived
+Against the global fixed-low control, layer-LLH is better on all seven
+metrics with intervals excluding zero: FG-PSNR $+3.244$~dB $[+2.936,+3.542]$
+(242/276 wins), FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$ (261/276), Full-PSNR
+$+2.599$~dB $[+2.353,+2.838]$ (249/276), Edge-SSIM $+0.0276$
+$[+0.0242,+0.0308]$, and Full-LPIPS $-0.0119$; layer-fixed-mean is likewise
+better on all seven metrics (FG-PSNR $+2.369$~dB $[+2.155,+2.576]$),
+while the layer-LHL replica is better on six of seven and the global control
+retains better Full-LPIPS ($+0.0170$ in the replica-minus-global direction,
+$[+0.0138,+0.0206]$). These holdout results confirm the development-probe
+directions for the two promoted candidates; they do not re-open schedule selection, and the archived
 layer-LHL record (whose runner did not seed the reference-preprocessing draw
 and whose absolute values are not reproducible on restart) remains in the
 evidence package as an independent single-run record.
