@@ -187,6 +187,42 @@ and coverage are reported separately in S4.}
 \label{fig:allobjects}
 \end{figure*}
 
+\section{S4b. Layer-wise bake extension with same-draw global controls}
+
+The layer-wise bake uses the same 12 Exact-GLB objects, the same bake
+protocol (1024 texture resolution, 512 render resolution, 6 source views,
+11 unseen views), and the same frozen handoff geometry/UV/cameras/GT as S4.
+The layer-wise panels and fresh global fixed-low/C3 controls were generated
+by ONE seeded runner (per-object seeds fix the reference preprocessing draw,
+the initial latent, and the condition-VAE path), so the rows below are
+directly comparable; they are NOT comparable with the absolute values in S4,
+which come from an earlier runner with different reference draws.
+
+\begin{table}[h]
+\centering\small
+\caption{Same-draw unseen-view bake means over the 12-object cohort
+(layer-wise extension). GLOBAL-BAKE-ROWS}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Masked PSNR$\uparrow$ & CIEDE2000$\downarrow$ & FG-LPIPS$\downarrow$ & Texture coverage \\
+\midrule
+Global fixed-low (same-draw) & GFL-ROW \\
+Global C3 (same-draw) & GC3-ROW \\
+Layer-LHL & 15.005 & 16.922 & 0.1420 & 0.1574 \\
+Layer-LLH & 16.679 & 14.186 & 0.1215 & 0.1574 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Layer-LLH beats layer-LHL on masked PSNR (12/12 objects), CIEDE2000
+(12/12), and FG-LPIPS (12/12), including the failure-boundary objects
+\texttt{obj\_0048} (14.97 vs 13.67 dB), \texttt{obj\_0078} (12.02 vs
+9.18 dB), and \texttt{obj\_0082} (11.01 vs 8.63 dB). As in S4, this is a
+stratified case study: no generated GT bake, no DISTS, seam scalars without
+a seam-pair denominator, and the same inpainting rule for all conditions.
+The per-object and per-view rows are in
+\texttt{cpu\_bake\_12\_layerwise/}.
+
 \section{S5. Generic schedule audit from the original protocol}
 
 The first-round request for generic schedules is answered with the retained
