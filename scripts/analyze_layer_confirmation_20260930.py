@@ -50,7 +50,9 @@ def paired(a: dict, b: dict, metric: str) -> dict:
 
 
 def main() -> None:
-    schedules = {name: load_schedule(name) for name in ("layer_llh", "layer_fixed_mean", "layer_lhl")}
+    names = [n for n in ("layer_llh", "layer_fixed_mean", "layer_lhl")
+             if (OUT / f"{n}_rows.json").exists()]
+    schedules = {name: load_schedule(name) for name in names}
     summary = {"protocol": "layer-confirmation-strict276-v1", "n_objects": {k: len(v) for k, v in schedules.items()}}
 
     means = {}
@@ -60,6 +62,8 @@ def main() -> None:
 
     comparisons = {}
     for a, b in (("layer_llh", "layer_lhl"), ("layer_fixed_mean", "layer_lhl"), ("layer_llh", "layer_fixed_mean")):
+        if a not in schedules or b not in schedules:
+            continue
         comparisons[f"{a}_minus_{b}"] = {m: paired(schedules[a], schedules[b], m) for m in METRICS}
     summary["paired_comparisons"] = comparisons
 
@@ -68,7 +72,17 @@ def main() -> None:
     with ARCHIVED_LHL.open() as handle:
         for row in csv.DictReader(handle):
             archived[int(row["object_idx"])] = row  # both CSVs index 0..275 (object = obj_{idx+24:04d})
+    if "layer_lhl" not in schedules:
+        print("layer_lhl replica not finished; skipping cross-runner check")
+        summary["cross_runner_lhl_check"] = {"status": "pending"}
+        (OUT / "confirmation_analysis.json").write_text(json.dumps(summary, indent=2) + "\n")
+        return
     common = sorted(set(archived) & set(schedules["layer_lhl"]))
+    if len(common) < 10:
+        summary["cross_runner_lhl_check"] = {"status": "pending", "n_common": len(common)}
+        (OUT / "confirmation_analysis.json").write_text(json.dumps(summary, indent=2) + "\n")
+        print("cross-runner check pending; n_common =", len(common))
+        return
     rep = [float(schedules["layer_lhl"][k]["fg_psnr"]) for k in common]
     arc = [float(archived[k]["fg_psnr"]) for k in common]
     mean_rep, mean_arc = statistics.mean(rep), statistics.mean(arc)

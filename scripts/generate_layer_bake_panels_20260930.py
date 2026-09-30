@@ -133,7 +133,7 @@ def main() -> None:
                 init_latents.clone(), {},
             )
             save_image(pred, out_path, nrow=2)
-            print(f"{name} {object_id} saved; fg_psnr={ee.compute_metrics(pred, target, mask, None, None, device)['fg_psnr']:.3f}", flush=True)
+            print(f"{name} {object_id} saved", flush=True)
             del pred, batch, target, real_depth, geo_input, mask, geo_feats, init_latents
             torch.cuda.empty_cache()
     print("cohort panels complete", flush=True)
