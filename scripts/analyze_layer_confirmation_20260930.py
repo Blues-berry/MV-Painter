@@ -43,6 +43,7 @@ def paired(a: dict, b: dict, metric: str) -> dict:
     return {
         "metric": metric,
         "mean_diff": sum(diffs) / n,
+        "median_diff": statistics.median(diffs),
         "ci95": [boots[250], boots[9750]],
         "win_rate": f"{wins}/{n}",
         "n": n,
@@ -50,7 +51,7 @@ def paired(a: dict, b: dict, metric: str) -> dict:
 
 
 def main() -> None:
-    names = [n for n in ("layer_llh", "layer_fixed_mean", "layer_lhl")
+    names = [n for n in ("layer_llh", "layer_fixed_mean", "layer_lhl", "global_fixed_low")
              if (OUT / f"{n}_rows.json").exists()]
     schedules = {name: load_schedule(name) for name in names}
     summary = {"protocol": "layer-confirmation-strict276-v1", "n_objects": {k: len(v) for k, v in schedules.items()}}
@@ -61,7 +62,9 @@ def main() -> None:
     summary["means"] = means
 
     comparisons = {}
-    for a, b in (("layer_llh", "layer_lhl"), ("layer_fixed_mean", "layer_lhl"), ("layer_llh", "layer_fixed_mean")):
+    for a, b in (("layer_llh", "layer_lhl"), ("layer_fixed_mean", "layer_lhl"), ("layer_llh", "layer_fixed_mean"),
+                 ("layer_llh", "global_fixed_low"), ("layer_lhl", "global_fixed_low"),
+                 ("layer_fixed_mean", "global_fixed_low")):
         if a not in schedules or b not in schedules:
             continue
         comparisons[f"{a}_minus_{b}"] = {m: paired(schedules[a], schedules[b], m) for m in METRICS}
