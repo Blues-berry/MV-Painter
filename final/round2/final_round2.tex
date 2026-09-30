@@ -663,9 +663,13 @@ seeded runner (identical per-object reference draws, latents, and seeds), so
 the four conditions are directly comparable. Within this same-draw set,
 layer-LLH beats layer-LHL on masked PSNR (16.679 vs 15.005), CIEDE2000
 (14.186 vs 16.922), and FG-LPIPS (0.1215 vs 0.1420), with 12/12 paired
-object wins on all three metrics; the development-selected pattern is also
-the stronger bake on the failure-boundary objects. The comparison against
-the same-draw global controls is GLOBAL-BAKE-ROWS. This extension remains a
+object wins on all three metrics, and it also beats the same-draw global
+controls: layer-LLH vs global C3 is 16.679 vs 12.565 dB masked PSNR, 14.186
+vs 21.643 CIEDE2000, and 0.1215 vs 0.1562 FG-LPIPS (12/12 object wins on all
+three), and the global C3-vs-fixed-low ordering is preserved (12/12 wins).
+The four means are strictly ordered (fixed-low 10.763 / C3 12.565 /
+layer-LHL 15.005 / layer-LLH 16.679 dB; CIEDE2000 26.287 / 21.643 / 16.922 /
+14.186). This extension remains a
 stratified 12-object case study with the same limitations as above (no GT
 bake, no DISTS), so it is evidence about the layer-wise comparison, not a
 population-level 3D advantage claim.
@@ -823,7 +827,7 @@ supplementary video is part of this revision.
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 
-\begin{thebibliography}{45}
+\begin{thebibliography}{43}
 \bibitem{liu2023zero1to3}
 Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
 
@@ -952,12 +956,6 @@ Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From er
 
 \bibitem{zhang2018lpips}
 Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2018.
-
-\bibitem{wang2023clipiqa}
-Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing the look and feel of images. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2023.
-
-\bibitem{radford2021clip}
-Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
 
 \end{thebibliography}
 \end{document}
