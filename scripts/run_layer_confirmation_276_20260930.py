@@ -67,7 +67,21 @@ def layer_fixed_mean(progress: float) -> dict[str, float]:
     return {"deep": 1.65, "middle": 1.65, "shallow": 0.58}
 
 
-SCHEDULES = {"layer_llh": layer_llh, "layer_fixed_mean": layer_fixed_mean}
+def layer_lhl(progress: float) -> dict[str, float]:
+    # Same-runner replica of the archived layer-LHL official record (which did
+    # not seed the Python RNG and therefore cannot be paired across processes).
+    return {
+        "deep": stage(progress, 1.25, 2.50, 1.25),
+        "middle": stage(progress, 1.25, 2.50, 1.25),
+        "shallow": stage(progress, 0.50, 0.75, 0.50),
+    }
+
+
+SCHEDULES = {
+    "layer_llh": layer_llh,
+    "layer_fixed_mean": layer_fixed_mean,
+    "layer_lhl": layer_lhl,
+}
 
 
 def sha256(path: Path) -> str:
@@ -108,6 +122,11 @@ def protocol_manifest() -> dict:
                 "shallow": [0.50, 0.50, 0.75],
             },
             "layer_fixed_mean": {"deep": 1.65, "middle": 1.65, "shallow": 0.58},
+            "layer_lhl": {
+                "deep": [1.25, 2.50, 1.25],
+                "middle": [1.25, 2.50, 1.25],
+                "shallow": [0.50, 0.75, 0.50],
+            },
         },
         "checkpoint": str(CHECKPOINT),
         "checkpoint_sha256": sha256(CHECKPOINT),
