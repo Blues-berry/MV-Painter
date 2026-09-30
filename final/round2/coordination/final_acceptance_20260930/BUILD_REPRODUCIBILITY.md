@@ -47,5 +47,20 @@ Working directory: `/4T/CXY/MV-Painter/final/round2`
 | supplementary_round2.pdf | `ad97f1cee9d3b72996fd6766803d8ea90aa457b9b060531331cd07664b221695` |
 | fig1_layerwise_20260930.pdf | `83085718f0dd38329509ff6e651ca99b588d12fcf65110f739c91327f032ce9f` |
 
-Note: PDF hashes will be updated again in Phase 12 (final build) if the TeX
-files change during later phases; this file records the Phase 1 baseline.
+## Phase 12 final-build hashes (supersedes the baseline above)
+
+Source commit: `2b788e6` (paper sync). Working tree clean at build time;
+TeX identical to the committed version.
+
+| File | SHA-256 |
+|---|---|
+| final_round2.tex | `7164cac3e6b8d97de4aaee4c746192e2459a92303b171f868a847f6ff45382a1` |
+| final_round2.pdf | `30150d0efadd1ebf8621112c16aade00573a67b8c8a17d9581b006a371b55aee` |
+| supplementary_round2.tex | `be0fb55892771d28e00b609a3ec822e76140aade941e1e2aff745d4c66294a58` |
+| supplementary_round2.pdf | `28a623a85d4d98616fb353df7590a2025e1d059697271869dca4f252cfe381cb` |
+| response_letter_round2.md | `de5ec77a55a87945ca39a9ccc81b2614a219f4be86756106724e73a85489c287` |
+
+Final build: 0 errors, 0 undefined references/citations, main 13pp,
+supplementary 7pp; PDF metadata contains no author identity (Creator=TeX,
+Producer=pdfTeX-1.40.20). Bibliography: 43 entries (1:1 with the frozen
+reference list).
