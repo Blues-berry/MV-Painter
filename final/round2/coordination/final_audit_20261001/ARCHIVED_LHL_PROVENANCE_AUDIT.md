@@ -93,3 +93,23 @@ therefore handled under **Case B** of the audit plan — see
 reference for quantitative claims. Note this refines, without weakening, the earlier
 EVAL_AUGMENTATION_AUDIT wording: unseeded realization explains cross-restart
 irreproducibility (r=0.66 scatter), not the mean-level gap.
+
+## 8. Update (2026-10-01 evidence convergence): stage-2 discriminating run EXECUTED
+
+The parallel task's stage-2 GPU experiment (defined as optional here) has since been
+executed and committed at `75a4068`
+(`core7_same_runner_completion_20261001/lhl_forensics/stage2_regen.json`, `stage2.log`,
+12 stratified objects; full write-up in
+`core7_same_runner_completion_20261001/ARCHIVED_LHL_PROVENANCE_AUDIT.md` §B.3):
+
+1. aug-ON regeneration reproduces the frozen seeded rows **bit-exactly** (+0.000 dB on
+   all 12 objects) — independent re-validation of the frozen protocol's determinism.
+2. aug-OFF regeneration still misses the archived record by −2.57 dB overall and
+   **−6.96 dB on the hexuid group** (aug-ON: −6.94 dB) — disabling the cond
+   augmentation moves results by only −0.02 to −0.16 dB.
+
+Consequence: the "cond-augmentation path state" hypothesis is **experimentally
+refuted**, joining the excluded causes in §5. The Case-B ruling and the exclusion are
+**unchanged and strengthened**: both plausible benign explanations are now excluded by
+direct experiment, and the root cause remains bounded to an unreconstructible
+runner-time code state. No further mechanism experiment is anticipated.

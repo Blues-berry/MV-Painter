@@ -35,7 +35,7 @@ This framing is exactly what the evidence now supports:
 | "CAI automatically discovers the schedule" | "CAI provides diagnostic motivation; the frozen CAI selection rule is set-valued and did not uniquely select a schedule" | Ledger row NOT_SUPPORTED (undefined_set_valued) |
 | "universal optimal schedule" / "the optimal LLH" | "an architecture-dependent effective residual allocation pattern; on the main pipeline the late-stage-high/low-shallow profile is best of seven same-runner conditions" | MV-Adapter temporal ns; MVDiffusion negative; factorial direction flips |
 | "improves texture quality" (unqualified) | "yields generated texture statistics closest to GT (distance-to-GT framing: CIEDE2000 and Laplacian/gradient variance distances), with listed exceptions" | Texture audit; hf_energy cells favor LFM/LHL; grad favors HLL |
-| "robust to arbitrary layer grouping" | "invariant to the exact layer partition: the alternative partition is statistically indistinguishable (6/6 metrics) and the degenerate partition bitwise identical; PSNR significance weakens under the re-partition" | Mapping-sensitivity report |
+| "robust to arbitrary layer grouping" | "robust to the tested contiguous layer partitions: the budget-neutral re-partition is statistically indistinguishable (6/6 metrics), the degenerate partition bitwise identical, and the frozen-value re-assignment (M3) preserves the direction with slightly stronger primary effects; PSNR significance weakens under the budget-neutral re-partition" | Mapping-sensitivity reports (B′ + M3, both committed) |
 | "robust to reference-preprocessing randomness" alone (as LHL anomaly explanation) | "the archived historical record is excluded because complete provenance cannot be guaranteed" — never attribute the gap to augmentation randomness | Case-B forensics: realization lottery is mean-neutral (0.03 dB); unseeded-realization wording retired |
 | "+0.96 dB" / archived 14.78 numbers | never quote; all baselines come from the Core-7 same-runner table | Case-B exclusion + UID overlap |
 | "robust/stable conclusions" (blanket) | "conclusions stable across two frozen realization sets (R0/R1): all paired deltas STABLE_STRONG on 27/28 cells, 1 STABLE_DIRECTIONAL" | Robustness-1 summary |
@@ -47,7 +47,9 @@ This framing is exactly what the evidence now supports:
 2. **Stochastic stability**: R0/R1 realizations; realization mean-neutrality now
    quantified (0.03 dB).
 3. **Texture response**: distance-to-GT framing, two independent metric surfaces.
-4. **Cross-backbone**: MV-Adapter layer-wise SUPPORTED with mapping-invariance; the
+4. **Cross-backbone**: MV-Adapter layer-wise SUPPORTED with robustness across the
+   tested contiguous layer partitions (budget-neutral B′ indistinguishable; frozen-value
+   M3 direction-preserving and slightly stronger); the
    temporal dimension separates across backbones; MVDiffusion as a stated negative.
 5. **Bake**: 12-object case study with seam/cross-view consistency descriptors
    (descriptive only).
@@ -60,22 +62,29 @@ This framing is exactly what the evidence now supports:
    family — the Core-7 matrix replaces them.
 3. Downgrade the three claim wordings in section 2 rows 1-3 wherever they appear
    (check intro/conclusion/limitations).
-4. Add one sentence on mapping-invariance (MV-Adapter) where the cross-backbone
-   transfer is claimed.
+4. Add one sentence on mapping-robustness (MV-Adapter) where the cross-backbone
+   transfer is claimed — at the tested-partition width (B′ + M3), never "invariant to
+   the exact layer partition".
 5. Add the texture distance-to-GT summary (one row: CIEDE2000 + one probe) if the
    texture concern response needs strengthening; keep the exceptions.
 6. Verify Supplementary disclosure still matches the frozen realization protocol
    (S9/S10 wording — unchanged by this audit).
 7. If the 3D-baking paragraph cites seam/consistency behavior, cite
-   `baking_consistency_report.md` descriptors, not the removed DISTS claims.
+   `baking_consistency_report.md` descriptors, not the removed DISTS claims. Name the
+   cross-view metric a *render-time cross-view color-stability descriptor* (supplementary
+   grade); only the UV-seam ΔE00 metric is direct texture-space evidence.
 
-## 5. Additional experiments still recommended (post-audit, optional)
+## 5. Additional experiments (post-audit status, updated at evidence convergence)
 
-1. **M3 mapping run** (parallel task's frozen protocol, 3x76): completes the
-   frozen-value re-assignment axis; my budget-neutral B-prime axis is already closed.
-2. **LHL-forensics stage-2** (12-object discriminating run, scripts defined by the
-   parallel task): only if a reviewer asks for the archived-record mechanism; not
-   needed for the exclusion itself.
+1. ~~**M3 mapping run**~~ — **DONE**: committed at `75a4068` (3 × 76 = 228 rows;
+   16/18 MAPPING_STABLE; primary effects slightly stronger). Incorporated into
+   `MVADAPTER_LAYER_MAPPING_SENSITIVITY_REPORT.md` and this document.
+2. ~~**LHL-forensics stage-2**~~ — **DONE**: committed at `75a4068`
+   (`core7_same_runner_completion_20261001/lhl_forensics/`); aug-ON regen bit-exact,
+   aug-OFF still −6.96 dB on hexuid → cond-augmentation hypothesis refuted; Case B
+   unchanged and strengthened.
 3. **MVDiffusion depth-concat variant** exploration: only if a reviewer demands a
    positive cross-backbone result; current boundary framing is sufficient and honest.
-4. No further GPU runs are required for the current claim set.
+4. No further GPU runs are required for the current claim set. **The experiment phase
+   is frozen: no fourth backbone, no schedule search, no strict-276 seed expansion, no
+   bake enlargement without an explicit reviewer requirement.**

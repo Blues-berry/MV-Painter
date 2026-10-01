@@ -58,15 +58,28 @@ the two partitions are statistically indistinguishable on every surface.
   (+0.0966* / +0.1005*), is directionally consistent but not significant under B′
   (+0.0655 / +0.0694).
 - Combined with the D≡C bitwise identity, the layer-wise effect on MV-Adapter is
-  **independent of the exact layer partition**: the three defensible partitions produce
-  either bitwise-identical results (D) or statistically indistinguishable ones (B′ vs
-  C), and the layer-vs-global advantage survives the re-partition.
+  **robust to the tested contiguous layer partitions**: the three defensible
+  partitions produce either bitwise-identical results (D) or statistically
+  indistinguishable ones (B′ vs C), and the layer-vs-global advantage survives the
+  re-partition. This is a statement about the tested partitions, not a claim of
+  invariance over all conceivable assignments.
 
-> Allowed wording: "Layer redistribution transfers independent of the exact layer
-> partition" — with the PSNR-significance nuance if PSNR is cited.
+> Allowed wording: "Layer redistribution transfers robustly across the tested
+> contiguous layer partitions" (or "is not driven by a single arbitrary partition") —
+> with the PSNR-significance nuance if PSNR is cited. Avoid "invariant to the exact
+> layer partition".
 
 A companion variant (M3, frozen-value re-assignment, mean 0.8065) is pre-registered in
 `coordination/core7_same_runner_completion_20261001/MAPPING_SENSITIVITY_PROTOCOL.md`
-by the parallel task; it changes the overall residual budget as well as the assignment
-and is reported separately when its runs land. No post-hoc partition selection is made
-in either direction.
+by the parallel task; it changes the overall residual budget as well as the assignment.
+**Update (2026-10-01 evidence convergence): the M3 runs have landed** — 3 × 76 = 228
+rows committed at `75a4068`
+(`results/holdout_exact_mapM3_{llh,lhl,fix}_76/`, 77-row per-object CSVs each) and
+reported in `core7_same_runner_completion_20261001/MAPPING_SENSITIVITY_REPORT.md`:
+**16/18 MAPPING_STABLE**, 1 ATTENUATED (edge_ssim, |Δ| ≤ 0.001), 1 magnitude-trivial
+LPIPS flip (|Δ| ≤ 0.001; M1 LPIPS already ns). Under M3 the layer-vs-global primary
+effects are slightly **stronger** (P1 PSNR +0.10 → +0.15, CIEDE2000 +0.34 → +0.48,
+GT-texture +0.31 → +0.41). M3 is a *budget-changing* axis (per-point mean 0.8065 ≠ 1)
+and must not be mixed with B′'s budget-neutral comparison; the frozen M1 mapping
+remains the pre-registered mapping of record, and no post-hoc partition selection is
+made in either direction.

@@ -17,10 +17,17 @@ metrics delta = B − A, so positive always means "the first-named condition is 
 
 ## Findings
 
-1. **All active surfaces share one convention.** Any "delta" in the active evidence base
-   reads as: *positive = the first-named/left condition is better on that metric*,
-   regardless of the metric's native direction. Win rates, stability labels, and rankings
-   apply the same transform (verified in each script listed above).
+1. **All active analyses are direction-consistent, but two presentation conventions
+   coexist.** Every active surface is unambiguous about which condition is better:
+   (a) *benefit-oriented* surfaces (confirmation, robustness, MV-Adapter, MVDiffusion,
+   texture audit) report deltas already transformed so that **positive = the
+   first-named/left condition is better**, regardless of native metric direction;
+   (b) *Core-7* reports **raw arithmetic deltas with an explicit per-metric direction
+   annotation** (e.g. FG-LPIPS −0.0449* means LLH is better by 0.0449). Raw and
+   benefit-oriented deltas agree in sign for higher-better metrics and differ in sign
+   for lower-better metrics; the Core-7 JSON header and report annotate this per cell.
+   Win rates, stability labels, and rankings apply the same transform as their parent
+   surface (verified in each script listed above).
 2. **Reading hazard (documented, not an error):** direction-adjusted deltas must not be
    read as raw metric arithmetic. The most exposed instance is FG-LPIPS: a table entry
    `+0.0308` corresponds to a raw LPIPS difference of `−0.0308`. The robustness erratum
@@ -35,3 +42,8 @@ metrics delta = B − A, so positive always means "the first-named condition is 
    inconsistently between surfaces (FG-/Full-/Edge-SSIM and PSNR higher-better
    everywhere; LPIPS/ΔE00/GT-texture lower-better everywhere).
 5. No direction error was found. No correction is required.
+6. **Manuscript rule (release gate):** the paper must use **one** presentation
+   convention throughout — the benefit-oriented convention (a). Any number taken from
+   the Core-7 surface must be re-expressed benefit-oriented (or the table must carry a
+   single explicit convention note) at manuscript-rewrite time, so that readers never
+   see e.g. "+0.0308 LPIPS = better" and "−0.0449 LPIPS = better" side by side.
