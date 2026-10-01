@@ -1,14 +1,18 @@
-# Final Round-2 Evidence Inventory (final_audit_20261001)
+# Final Round-2 Evidence Inventory (final_audit_20261001, RE-SIGNED)
 
-Audit date: 2026-10-01. Branch: `codex/round2-evidence-integrated-20261001`, HEAD `d30ed4f`.
-Purpose: freeze the complete evidence baseline for the Round-2 final audit. No manuscript
-text was modified. Companion files: `FINAL_REPRODUCIBILITY_MANIFEST.json`,
-`claim_evidence_matrix.md`, `rescued_tmp_20261001/SHA256_MANIFEST.txt`.
+Audit date: 2026-10-01 (re-signed at the evidence-convergence commit). Branch:
+`codex/round2-evidence-integrated-20261001`, **evidence freeze HEAD `0d308b5`**
+(convergence commit: M3 + stage-2 formalized into the governance layer, wording gates
+closed, `MANUSCRIPT_RELEASE_GATE.md` issued). Purpose: freeze the complete evidence
+baseline for Round-2. No manuscript text was modified. Companion files:
+`FINAL_REPRODUCIBILITY_MANIFEST.json` (phase-0 record, `git_head_at_audit` =
+`d30ed4f…` is that phase's historical record, deliberately not rewritten),
+`claim_evidence_matrix.md`, `MANUSCRIPT_RELEASE_GATE.md`,
+`rescued_tmp_20261001/SHA256_MANIFEST.txt`.
 
 Status vocabulary: `PASS` = complete, frozen, hash-verified; `RESCUED` = recovered from
 volatile storage into this directory this audit; `AUDIT NEEDED` = evidence exists but a
-named gap is closed by this audit; `IN PROGRESS (EXTERNAL)` = owned by another agent with
-a locked protocol; `EXCLUDED` = not admissible for quantitative claims.
+named gap is closed by this audit; `EXCLUDED` = not admissible for quantitative claims.
 
 | # | Evidence | Dataset | Backbone | Status | Reviewer concern |
 |---|---|---|---|---|---|
@@ -19,11 +23,13 @@ a locked protocol; `EXCLUDED` = not admissible for quantitative claims.
 | 5 | Robustness R0/R1 stochastic-stability replication (seeds 42+idx / 10042+idx) | same 276 | MVPainter (main) | PASS — `coordination/main_backbone_robustness1_20260930/` (report, paired bootstrap, per-object CSV, SHAs, sign-convention erratum) | R1 stochastic stability |
 | 6 | Reference-realization difference R0 vs R1 (cond stretch realizations quantified: cond MAE median 0.031, cond-lat cosine median 0.940) | same 276 | MVPainter (main) | PASS — `REFERENCE_REALIZATION_DIFFERENCE{.csv,_summary.json}` in the same directory | Phase-1 LHL anomaly forensics |
 | 7 | MV-Adapter cross-backbone layer-wise panel (R0, G-FL, G-LHL, G-LLH, L-FIX, L-LHL, L-LLH), 76-object Exact holdout, seed 20260928 | 76 Exact holdout | MV-Adapter (secondary) | PASS — `final/round2/mv_adapter/` (protocol, identity audit 9/9 bitwise, paired bootstrap JSON, hash manifest) | R2 cross-backbone transfer |
-| 8 | MV-Adapter mapping sensitivity (budget-neutral partition (2,1,1) × 76 + degenerate-partition bitwise identity) | same 76 | MV-Adapter (secondary) | RESOLVED — executed in this audit: B'−C indistinguishable on 6/6 metrics, D ≡ C bitwise, layer advantage replicates → `MVADAPTER_LAYER_MAPPING_SENSITIVITY_REPORT.md` | R2 mapping-choice robustness — CLOSED (M3 frozen-value variant pending in parallel task) |
+| 8 | MV-Adapter mapping sensitivity — **both axes complete** | same 76 | MV-Adapter (secondary) | RESOLVED — Axis 1 budget-neutral (this audit): B'−C indistinguishable on 6/6 metrics, D ≡ C bitwise, layer advantage replicates → `MVADAPTER_LAYER_MAPPING_SENSITIVITY_REPORT.md`. Axis 2 frozen-value M3 (row 13): direction-preserving, primary effects slightly stronger | R2 mapping-choice robustness — CLOSED (both tested axes) |
 | 9 | MVDiffusion cross-backbone panel (α-interface, 6 conditions × 75 objects; identity 36/36 bitwise; native mirror equivalent) | 75-object holdout | MVDiffusion (boundary) | PASS (negative/mixed result preserved) — `final/round2/mvdiffusion/` | Applicability boundary (R2) |
-| 10 | CPU bake, 12-object stratified cohort, 8 method variants (`cpu_bake_12`, `cpu_bake_12_layerwise`), textured GLBs + unseen-view renders | 12 stratified objects | MVPainter (main) | RESOLVED — seam / cross-view consistency audited this audit (`baking_consistency_report.md`) | R1 practical quality |
-| 11 | Historical official layer-LHL strict-276 record (FG-PSNR ≈14.78) | legacy 276 pool | MVPainter (main) | EXCLUDED — provenance audited in Phase 1 (`ARCHIVED_LHL_PROVENANCE_AUDIT.md`, `historical_result_exclusion_reason.md`); record rescued to `rescued_tmp_20261001/official_lhl_v2_merged/` | Legacy anomaly |
+| 10 | CPU bake, 12-object stratified cohort, 8 method variants (`cpu_bake_12`, `cpu_bake_12_layerwise`), textured GLBs + unseen-view renders | 12 stratified objects | MVPainter (main) | RESOLVED — seam / cross-view consistency audited this audit (`baking_consistency_report.md`); cross-view values are render-time color-stability descriptors (vertex-colored rendering), seam ΔE00 is the direct texture-space evidence | R1 practical quality |
+| 11 | Historical official layer-LHL strict-276 record (FG-PSNR ≈14.78) | legacy 276 pool | MVPainter (main) | EXCLUDED — provenance audited in Phase 1 (`ARCHIVED_LHL_PROVENANCE_AUDIT.md`, `historical_result_exclusion_reason.md`); record rescued to `rescued_tmp_20261001/official_lhl_v2_merged/`; stage-2 discriminating run (row 14) refutes the last benign hypothesis and strengthens the exclusion | Legacy anomaly |
 | 12 | Eval-augmentation / shared-input determinism audits (cond `random_stretch_or_compress` provenance; object_seed=42+idx freezing) | — | MVPainter (main) | PASS — `coordination/final_acceptance_20260930/{EVAL_AUGMENTATION_AUDIT,SHARED_INPUT_DETERMINISM_AUDIT}.md` | LHL anomaly root cause |
+| 13 | MV-Adapter M3 frozen-value mapping run (3 × 76 = 228 rows; committed at `75a4068`, formalized at convergence) | same 76 | MV-Adapter (secondary) | PASS — `final/round2/mv_adapter/results/holdout_exact_mapM3_{llh,lhl,fix}_76/` (77-row per-object CSVs each), profile `layer_profile_transfer_mappingM3.json`, pre-registered protocol + report `coordination/core7_same_runner_completion_20261001/MAPPING_SENSITIVITY_{PROTOCOL,REPORT}.md`: 16/18 MAPPING_STABLE, 1 ATTENUATED (edge_ssim, |Δ|≤0.001), 1 magnitude-trivial LPIPS flip; per-point mean 0.8065 ≠ 1 → budget-changing axis, kept separate from B′ | R2 mapping-choice robustness (axis 2) |
+| 14 | LHL-forensics stage-2 discriminating run (12 stratified objects; committed at `75a4068`, formalized at convergence) | 12-object forensic cohort | MVPainter (main) | PASS — `coordination/core7_same_runner_completion_20261001/lhl_forensics/` (`stage2_regen.json`, `stage2.log`, 24 pred PNGs): aug-ON regen bit-exact vs frozen seeded rows; aug-OFF still −6.96 dB on hexuid → cond-augmentation hypothesis REFUTED; Case B strengthened (`ARCHIVED_LHL_PROVENANCE_AUDIT.md` §8) | Legacy anomaly mechanism |
 
 ## Volatile-storage rescue log
 
@@ -37,6 +43,19 @@ At audit start the following paper-facing artifacts existed only under `/4T/tmp/
 Note: the Core-7 runner also references `/4T/tmp/.../clean_holdout.yaml` — the rescued
 copy now backs this dependency.
 
+## Convergence re-verification (this re-signature)
+
+Deliverable index of `final_audit_20261001/` re-checked against the tree at freeze
+HEAD `0d308b5`: 13 reports + 3 data directories (`bake_consistency/`, `texture_audit/`,
+`rescued_tmp_20261001/`) + `FINAL_REPRODUCIBILITY_MANIFEST.json` all present. M3 and
+stage-2 artifacts re-verified on disk: three 77-row `mapM3` per-object CSVs, M3 profile
+JSON, `MAPPING_SENSITIVITY_{PROTOCOL,REPORT}.md`, `lhl_forensics/stage2_regen.json` +
+`stage2.log`. Governance documents aligned at this HEAD: readiness report (re-issue
+note), claim matrix ("no pending rows remain"), mapping report (M3 update +
+tested-partition width), metric-direction audit (two-convention wording + manuscript
+rule), bake report (descriptor rule), narrative recommendation (experiment freeze),
+release gate (`MANUSCRIPT_RELEASE_GATE.md`).
+
 ## Known gaps recorded honestly
 
 1. Same-runner confirmation generation images were purged before this audit (2 objects
@@ -47,3 +66,7 @@ copy now backs this dependency.
    recomputes them under the documented deterministic rule or states the deviation.
 3. The equal-budget pilot (#3) has no checkpoint provenance for part of its rows
    (per 0930 decision) and stays out of paper-facing tables.
+4. The bake cross-view metric uses vertex-colored rendering (environment limitation);
+   values are render-time stability descriptors, never texture-fidelity metrics.
+5. The historical archived record's exact runner-time state is unreconstructible
+   (Case B); the record is excluded rather than explained.
