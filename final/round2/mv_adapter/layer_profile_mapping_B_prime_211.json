@@ -1,0 +1,43 @@
+{
+  "source": "frozen MVPainter layer-wise profile — mapping-sensitivity variant B-prime (2,1,1)",
+  "frozen_before_mapB_results": true,
+  "normalization": "weighted_mean_1",
+  "normalization_detail": {
+    "source_profile_name": "layer_fixed_mean",
+    "source_values": {
+      "deep": 1.65,
+      "middle": 1.65,
+      "shallow": 0.58
+    },
+    "target_group_assignment": {
+      "shallow": [0, 1],
+      "middle": [2],
+      "deep": [3]
+    },
+    "per_point_source_values": [0.58, 0.58, 1.65, 1.65],
+    "weighted_mean_before": 1.115,
+    "weights_rationale": "Partition (2,1,1): shallow={320@64, 640@32}, middle={1280@16}, deep={1280@8}. Group values are the frozen source group values; the normalized weighted mean over the 4 target injection points is exactly 1.0.",
+    "formula": "normalized(point) = source(group(point)) / mean(per_point_source_values)"
+  },
+  "target_mapping": {
+    "rule": "Pre-registered alternative partition of the 4 MV-Adapter injection points by decreasing resolution: shallow={down_blocks.0, down_blocks.1}, middle={down_blocks.2}, deep={down_blocks.3}. Topology/resolution/relative-depth only; no metric was consulted.",
+    "points": [
+      {"index": 0, "unet_module": "down_blocks.0", "block_type": "CrossAttnDownBlock2D", "channels": 320, "resolution_at_512": "64x64", "group": "shallow"},
+      {"index": 1, "unet_module": "down_blocks.1", "block_type": "CrossAttnDownBlock2D", "channels": 640, "resolution_at_512": "32x32", "group": "shallow"},
+      {"index": 2, "unet_module": "down_blocks.2", "block_type": "CrossAttnDownBlock2D", "channels": 1280, "resolution_at_512": "16x16", "group": "middle"},
+      {"index": 3, "unet_module": "down_blocks.3", "block_type": "DownBlock2D", "channels": 1280, "resolution_at_512": "8x8", "group": "deep"}
+    ],
+    "per_point_multipliers": {
+      "shallow": 0.5201793721973094,
+      "middle": 1.4798206278026904,
+      "deep": 1.4798206278026904
+    },
+    "per_point_multiplier_list_by_adapter_state_index": [0.5201793721973094, 0.5201793721973094, 1.4798206278026904, 1.4798206278026904]
+  },
+  "semantics": "effective_scale(injection_point, t) = layer_multiplier(point) * temporal_scale(t); temporal schedules frozen at low=0.75, high=1.00. Model weights stay frozen; scaling is inference-only; no recalibration.",
+  "provenance": {
+    "parent_profile": "final/round2/mv_adapter/layer_profile_transfer.json (sha256 862af4b39460f61d4996d4c347891c605e6328a1e0c6c2b1ef95141e148f6bfe)",
+    "protocol": "final/round2/mv_adapter/MVADAPTER_MAPPING_SENSITIVITY_PROTOCOL.md",
+    "note": "Only the group-to-point assignment differs from the reference mapping C=(1,1,2); the normalization rule, source values, caps, and temporal schedules are unchanged."
+  }
+}
