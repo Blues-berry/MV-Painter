@@ -1,0 +1,189 @@
+{
+  "protocol": "mvdiffusion-scheduled-alpha-v1",
+  "condition": "G-LHL",
+  "condition_definition": {
+    "mode": "global",
+    "schedule": "LHL"
+  },
+  "strict_identity": false,
+  "temporal_freeze": {
+    "low": 0.75,
+    "high": 1.0,
+    "fixed_mean": 0.8333333333333334,
+    "boundaries": [
+      0.3333333333333333,
+      0.6666666666666666
+    ]
+  },
+  "layer_multipliers": {
+    "deep": 1.3502454991816693,
+    "middle": 1.3502454991816693,
+    "shallow": 0.4746317512274959
+  },
+  "scheduled_groups": {
+    "cp_blocks_mid": "deep",
+    "cp_blocks_decoder.0": "deep",
+    "cp_blocks_decoder.1": "middle",
+    "cp_blocks_decoder.2": "shallow",
+    "cp_blocks_decoder.3": "shallow"
+  },
+  "first_step_alphas": {
+    "cp_blocks_mid": 0.75,
+    "cp_blocks_decoder.0": 0.75,
+    "cp_blocks_decoder.1": 0.75,
+    "cp_blocks_decoder.2": 0.75,
+    "cp_blocks_decoder.3": 0.75
+  },
+  "patched_modules": [
+    "cp_blocks_mid",
+    "cp_blocks_decoder.0",
+    "cp_blocks_decoder.1",
+    "cp_blocks_decoder.2",
+    "cp_blocks_decoder.3"
+  ],
+  "data_manifest": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
+  "checkpoint": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
+  "checkpoint_load": {
+    "mode": "strict_after_explicit_key_migration",
+    "source_key_count": 1553,
+    "loaded_key_count": 1552,
+    "renamed_key_count": 16,
+    "dropped_key_count": 1,
+    "renamed_keys": {
+      "vae.encoder.mid_block.attentions.0.query.weight": "vae.encoder.mid_block.attentions.0.to_q.weight",
+      "vae.encoder.mid_block.attentions.0.query.bias": "vae.encoder.mid_block.attentions.0.to_q.bias",
+      "vae.encoder.mid_block.attentions.0.key.weight": "vae.encoder.mid_block.attentions.0.to_k.weight",
+      "vae.encoder.mid_block.attentions.0.key.bias": "vae.encoder.mid_block.attentions.0.to_k.bias",
+      "vae.encoder.mid_block.attentions.0.value.weight": "vae.encoder.mid_block.attentions.0.to_v.weight",
+      "vae.encoder.mid_block.attentions.0.value.bias": "vae.encoder.mid_block.attentions.0.to_v.bias",
+      "vae.encoder.mid_block.attentions.0.proj_attn.weight": "vae.encoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.encoder.mid_block.attentions.0.proj_attn.bias": "vae.encoder.mid_block.attentions.0.to_out.0.bias",
+      "vae.decoder.mid_block.attentions.0.query.weight": "vae.decoder.mid_block.attentions.0.to_q.weight",
+      "vae.decoder.mid_block.attentions.0.query.bias": "vae.decoder.mid_block.attentions.0.to_q.bias",
+      "vae.decoder.mid_block.attentions.0.key.weight": "vae.decoder.mid_block.attentions.0.to_k.weight",
+      "vae.decoder.mid_block.attentions.0.key.bias": "vae.decoder.mid_block.attentions.0.to_k.bias",
+      "vae.decoder.mid_block.attentions.0.value.weight": "vae.decoder.mid_block.attentions.0.to_v.weight",
+      "vae.decoder.mid_block.attentions.0.value.bias": "vae.decoder.mid_block.attentions.0.to_v.bias",
+      "vae.decoder.mid_block.attentions.0.proj_attn.weight": "vae.decoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.decoder.mid_block.attentions.0.proj_attn.bias": "vae.decoder.mid_block.attentions.0.to_out.0.bias"
+    },
+    "dropped_keys": [
+      "text_encoder.text_model.embeddings.position_ids"
+    ]
+  },
+  "config": {
+    "dataset": {
+      "name": "scannet",
+      "num_views": 12,
+      "image_dir": "final/round2/mvdiffusion/data/scannet/holdout_exact_75",
+      "resolution_h": 192,
+      "resolution_w": 256,
+      "data_load_mode": "fix_frame",
+      "test_interval": -1,
+      "gen_data_ratio": 1.0
+    },
+    "train": {
+      "lr": 0.0002,
+      "max_epochs": 1
+    },
+    "model": {
+      "model_id": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+      "depth_config": "configs/depth_preprocessor_config.json",
+      "guidance_scale": 9.0,
+      "diff_timestep": 50,
+      "model_type": "depth",
+      "overlap_filter": 0.3
+    }
+  },
+  "base_provenance": {
+    "model_id": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+    "native_official_depth_base": false,
+    "compatibility": {
+      "source_base": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/sd21_base",
+      "unet_input_channels": 5,
+      "depth_channel_initialization": "zeros",
+      "native_official_depth_base": false
+    }
+  },
+  "device": "cuda:0",
+  "steps": 50,
+  "seed": 42,
+  "objects": [
+    "obj_0024",
+    "obj_0025",
+    "obj_0026",
+    "obj_0027",
+    "obj_0028",
+    "obj_0029",
+    "obj_0030",
+    "obj_0031",
+    "obj_0032",
+    "obj_0033",
+    "obj_0034",
+    "obj_0035",
+    "obj_0036",
+    "obj_0037",
+    "obj_0038",
+    "obj_0039",
+    "obj_0040",
+    "obj_0041",
+    "obj_0042",
+    "obj_0043",
+    "obj_0044",
+    "obj_0045",
+    "obj_0046",
+    "obj_0047",
+    "obj_0048",
+    "obj_0049",
+    "obj_0050",
+    "obj_0051",
+    "obj_0052",
+    "obj_0053",
+    "obj_0054",
+    "obj_0055",
+    "obj_0056",
+    "obj_0057",
+    "obj_0058",
+    "obj_0059",
+    "obj_0060",
+    "obj_0061",
+    "obj_0062",
+    "obj_0063",
+    "obj_0064",
+    "obj_0065",
+    "obj_0066",
+    "obj_0067",
+    "obj_0068",
+    "obj_0069",
+    "obj_0071",
+    "obj_0072",
+    "obj_0073",
+    "obj_0074",
+    "obj_0075",
+    "obj_0076",
+    "obj_0077",
+    "obj_0078",
+    "obj_0079",
+    "obj_0080",
+    "obj_0081",
+    "obj_0082",
+    "obj_0083",
+    "obj_0084",
+    "obj_0085",
+    "obj_0086",
+    "obj_0087",
+    "obj_0088",
+    "obj_0089",
+    "obj_0090",
+    "obj_0091",
+    "obj_0092",
+    "obj_0093",
+    "obj_0094",
+    "obj_0095",
+    "obj_0096",
+    "obj_0097",
+    "obj_0098",
+    "obj_0099"
+  ],
+  "runner_sha256": "db1e38971346a249ac172db563e388b82ff03139e98d8d00d2a8e23fad04a7ff"
+}
