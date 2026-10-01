@@ -74,3 +74,29 @@ session's files are by path; no content duplication.
 - `BAKE_SEAM_AUDIT_20261001/`, `bake_layerwise_20260930/` (bake artifacts)
 - MV-Adapter / MVDiffusion panels under `final/round2/` (cross-backbone deliverables)
 - `final/round2/final_round2.tex` / `supplementary_round2.tex` (read-only)
+
+## 6. Final audit branch creation (2026-10-01)
+
+At integration, the active evidence branch was
+`codex/round2-evidence-integrated-20261001` at `ce4831f40c723631e395f86268dca13afe9d07e9`.
+The requested audit branch was created directly at that commit as
+`codex/round2-final-forensic-audit-20261001`; therefore it contains all commits
+and formal experiment evidence in the integrated parent history. No merge was
+performed in this step, so there were no merge conflicts or conflict
+resolutions. New audit corrections are recorded on this branch without editing
+the three manuscript files. The `.codex/` and `.trae/` untracked directories
+pre-existed and were left untouched.
+
+Cached remote-tracking refs at the time of branch creation were:
+
+| remote-tracking ref | SHA | interpretation |
+|---|---|---|
+| `mvpainter/codex/round2-evidence-integrated-20261001` | `ce4831f40c723631e395f86268dca13afe9d07e9` | integrated parent was present in local remote-tracking state |
+| `origin/codex/main-backbone-robustness1-20260930` | `99d6c88f28050a3fb74a04d74f555ba30f27ff3e` | Robustness-1 evidence ref present |
+| `mvpainter/codex/next-review-response-20260930` | `4f312566ed42a7b56fae9f11d91d4591d71fd1f2` | cross-backbone evidence ref present |
+
+Live `ls-remote` verification could not be completed because network access / DNS
+resolution failed. Thus the evidence commits are proven present in the local
+integrated history and cached remote refs, while current server-side remote SHAs
+remain `UNKNOWN` at this audit time. The three manuscript files remain
+unmodified by this audit.

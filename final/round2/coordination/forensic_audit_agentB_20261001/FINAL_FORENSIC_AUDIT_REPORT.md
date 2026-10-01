@@ -7,10 +7,11 @@ files. Manuscript blob SHAs verified unchanged (FINAL_EVIDENCE_BRANCH_PROVENANCE
 
 ## 1. Executive verdict
 
-**YES — the paper can enter the final revision window**, conditional on the
-revision-window items in §14 being executed (they are text/table substitutions
-from already-frozen artifacts; none requires a new inference). No
-experiment-blocking P0 remains open.
+**YES — the paper can enter the final revision window; NO — the current draft
+has not passed final acceptance.** The revision-window items in §14 are
+mandatory text/table and traceability corrections from frozen artifacts; none
+requires new inference. The final-acceptance gate remains closed until those
+items are resolved and active paper numbers trace only to admissible evidence.
 
 ## 2. Scientific conclusions that survived audit
 
@@ -164,3 +165,54 @@ FOREGROUND_BACKGROUND_METRIC_AUDIT / PAPER_NUMBER_TRACEABILITY.json /
 FINAL_EVIDENCE_AUTHORITY / SKEPTICAL_REVIEWER_CHALLENGE /
 FINAL_SCIENTIFIC_NARRATIVE_STUDY (+ scripts phase1a/1b15/phase5/phase7/phase16
 and their JSON/CSV outputs).
+
+## 16. Final integration check and correction (2026-10-01)
+
+The requested final audit branch was created at the integrated evidence HEAD:
+`codex/round2-final-forensic-audit-20261001` → `ce4831f40c723631e395f86268dca13afe9d07e9`.
+That HEAD contains `99d6c88` (Robustness-1), `4f31256` (cross-backbone), and
+`75a4068` (audit follow-ups) as ancestors. Cached remote-tracking refs show
+Robustness-1 on `origin`, cross-backbone on `mvpainter`, and the integrated
+HEAD on `mvpainter`; live remote SHA verification was unavailable because
+network name resolution/access failed during this audit. No evidence-only
+local commit was found in the checked branch graph. Manuscript files were not
+modified in this audit; the tree has only pre-existing untracked `.codex/` and
+`.trae/` directories.
+
+One correction is required to the prior interactive audit narrative. Source
+inspection confirms that `layer_lhl_ablation_shared.py`, the complete
+factorial runner, and the formal confirmation runner all load through
+`eval_exploration.load_model`, which leaves the UNet in training mode. A
+different loader, `explore_contradiction.load_model`, calls `unet.eval()`, but
+it is not the loader used by those three runners. Therefore, no train/eval
+mode mismatch has been established between the development runs compared in
+the prior discussion, and it cannot explain their metric difference. Static
+source inspection found no BatchNorm, nonzero Dropout, or
+`self.training`-dependent branch on the evaluated UNet/adapter path, and
+generation explicitly passes `is_training=False`; this is a code-based
+assessment, not a GPU mode-pair measurement. The exact cause of the earlier
+development discrepancy remains unknown. Separately, the archived strict-276
+LHL record remains `QUARANTINED` under Case B because its execution state is
+unreconstructible. The complete 8-pattern factorial in
+`layer_factorial_v1_20260930/` remains development-only; its within-run
+comparisons are admissible only as probe evidence, not as strict-holdout
+confirmation.
+
+### Acceptance status clarification
+
+The experiment/evidence audit is complete for the frozen claim set, and no new
+inference is required to enter the manuscript revision window. The current
+manuscript is **not yet at final acceptance**: the existing release gate lists
+mandatory revision items, including removal of quarantined archived-LHL means
+and retired RNG-causality wording, correction or disclosure of the legacy
+uncapped global panels, cross-panel scale-regime disclosure, and the obj_0066
+figure provenance/caption correction. These are editorial/evidence-trace
+closures, not permission to cite quarantined numbers. Final acceptance remains
+`NO` until those items are resolved and all active paper numbers trace to
+admissible artifacts.
+
+Live remote verification and formal-run prediction-image inspection remain
+limitations. A GPU-based train/eval numerical comparison was not needed to
+resolve the runner question above because the three relevant runners use the
+same loader; it would still be needed before claiming empirical equivalence
+between those distinct loaders.
