@@ -1,0 +1,88 @@
+{
+  "audit": "Phase 17 — paper-number traceability (agent B, 2026-10-01)",
+  "rule": "every active paper table/number must trace TeX cell -> summary -> per-object rows -> runner -> checkpoint/config -> dataset object; provenance classes: SAME_RUNNER_FROZEN_CAPS, LEGACY_UNCAPPED_PANEL, DEV_PROBE, CASE_STUDY, CROSS_BACKBONE, QUARANTINED",
+  "tables": {
+    "tab:confirmation_and_paired_text": {
+      "tex": "final_round2.tex ~L571-611; supplementary L417-443",
+      "provenance": "SAME_RUNNER_FROZEN_CAPS",
+      "chain": ["final_acceptance_20260930/STRICT276_GLOBAL_FIXED_LOW_RAW.csv", "layer_confirmation_20260930/*_rows.json", "core7_same_runner_completion_20261001/formal_*", "core7 paired_bootstrap_core7.json"],
+      "checkpoint": "geotex_step_0002000.pt 0618d6b2",
+      "runner": "run_layer_confirmation_276_20260930.py 273c2f75 (frozen path, capped wrapper)",
+      "independent_recompute": "agent B phase1a/1b15/phase16 scripts reproduce LLH-GFL +3.244 (242/276), LLH-LFM Full-PSNR +1.311 (275/276), LLH-LHL +1.193 (276/276) digit-for-digit",
+      "status": "VALIDATED"
+    },
+    "tab:strict276": {
+      "tex": "final_round2.tex L446-462",
+      "provenance": "LEGACY_UNCAPPED_PANEL",
+      "chain": ["mvpoutput/reviewer1_main_rerun_20260928/eval300_clean_v2_unique6/per_object_*.csv", "MAIN_ADAPTER_CLEAN_V2_FINAL_AUDIT.md"],
+      "checkpoint": "same 0618d6b2",
+      "runner": "round2_main_eval.py via /tmp/mv_main_rerun code (legacy uncapped wrapper, no depth caps)",
+      "warning": "global-condition absolute levels are regime-specific; fixed_low FG-PSNR 7.030 here vs 10.731 capped (+3.70); ordering vs fixed_high flips; see CROSS_RUNNER_SCALE_SEMANTICS_AUDIT.md",
+      "status": "VALID_WITH_LIMITATIONS (within-panel paired only; absolute levels must not be compared across panels)"
+    },
+    "tab:stage276_and_tab:serialized276": {
+      "tex": "final_round2.tex L483-499, L517-532",
+      "provenance": "LEGACY_UNCAPPED_PANEL",
+      "chain": ["stage_placement_276_20260929/per_object_*.csv", "stage_placement_276_20260929/serialized_full_ssim_per_object.csv"],
+      "runner": "/tmp/mv_main_rerun code (uncapped)",
+      "warning": "global schedules uncapped; within-panel paired conclusions (LLH vs LHL/HLL/fixed_mean direction) stand; absolute levels regime-specific; serialized SSIM branch labeled PNG_RELOAD",
+      "status": "VALID_WITH_LIMITATIONS"
+    },
+    "robustness_R0_R1": {
+      "tex": "robustness claims in confirmation section/letter",
+      "provenance": "SAME_RUNNER_FROZEN_CAPS",
+      "chain": ["main_backbone_robustness1_20260930/per_object_metrics.csv", "R0_R1_STABILITY_SUMMARY.json", "REFERENCE_REALIZATION_DIFFERENCE.csv"],
+      "independent_recompute": "agent B phase7: drift medians 0.06-0.09 dB reproduced; image pairs hashed",
+      "status": "VALIDATED"
+    },
+    "core7_matrix": {
+      "tex": "confirmation text (no_adapter/GFH rows), letter",
+      "provenance": "SAME_RUNNER_FROZEN_CAPS",
+      "chain": ["core7_same_runner_completion_20261001/formal_no_adapter", "formal_global_fixed_high", "PAIRED_BOOTSTRAP_CORE7.csv", "SHARED_INPUT_AUDIT_CORE7.json"],
+      "independent_recompute": "agent B: no_adapter 8.826/10.563, GFH 13.153/18.242, gradient ratios 0.89/1.11 reproduced",
+      "status": "VALIDATED"
+    },
+    "S9_dev_ablation_and_factorial": {
+      "tex": "supplementary L319-330, L373-399",
+      "provenance": "DEV_PROBE",
+      "chain": ["coordination/layer_lhl_v1/raw_csv", "factorial CSVs (layer_factorial_v1_20260930)"],
+      "status": "VALIDATED as development evidence (24 probe objects, labeled)"
+    },
+    "bake_tables": {
+      "tex": "final_round2.tex L634; supplementary baking sections",
+      "provenance": "CASE_STUDY",
+      "chain": ["bake_layerwise_20260930/UNSEEN_OBJECT_METRICS.csv", "BAKE_SEAM_AUDIT_20261001/SEAM_AUDIT_PER_OBJECT.csv", "baking_consistency_report.md"],
+      "warning": "archived uv_seam_discontinuity=0.0 is INVALID (degenerate pairing); use corrected seam dE00; cross_view_texel_variance = source-view disagreement semantics",
+      "status": "VALIDATED_WITH_LIMITATIONS (12-object descriptive)"
+    },
+    "MVAdapter_panel": {
+      "tex": "final_round2.tex L720",
+      "provenance": "CROSS_BACKBONE",
+      "chain": ["mv_adapter/MVADAPTER_STANDARD_PANEL_76.csv", "MVADAPTER_LAYERWISE_HASH_MANIFEST.json", "bootstrap JSON"],
+      "status": "VALIDATED (identity 9/9 bitwise; layer-wise SUPPORTED metric-dependent)"
+    },
+    "MVDiffusion_panel": {
+      "tex": "not tabulated; letter/claims",
+      "provenance": "CROSS_BACKBONE",
+      "chain": ["mvdiffusion/MVDIFFUSION_STANDARD_PANEL_RESULTS.csv", "MVDIFFUSION_PAIRED_BOOTSTRAP.json", "phase_c equivalence records"],
+      "status": "VALIDATED as boundary experiment (NOT_REPLICATED preserved)"
+    },
+    "archived_LHL_quote": {
+      "tex": "final_round2.tex L470-481",
+      "provenance": "QUARANTINED",
+      "warning": "Case-B excluded record; means quoted in prose (FG-PSNR 14.776 etc.) + refuted RNG-causality sentence still present; revision required",
+      "status": "QUARANTINED"
+    },
+    "letter_legacy_numbers": {
+      "tex": "response_letter_round2.md L17/L69-73",
+      "provenance": "QUARANTINED (retirement statements only)",
+      "status": "VALIDATED (documents retirement, does not reuse)"
+    }
+  },
+  "gate_summary": {
+    "SAME_RUNNER_FROZEN_CAPS": "all digit chains verified",
+    "LEGACY_UNCAPPED_PANEL": "within-panel valid; cross-panel absolute use forbidden",
+    "QUARANTINED_active_in_tex": 1,
+    "open_items": ["archived LHL prose quote (P0 revision item)", "tab:strict276 capped replacement or caption disclosure", "cross-panel disclosure upgrade (dB magnitude)"]
+  }
+}
