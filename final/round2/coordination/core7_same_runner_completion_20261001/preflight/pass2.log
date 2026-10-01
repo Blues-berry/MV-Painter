@@ -1,0 +1,388 @@
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:00,  6.72it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:00,  6.00it/s]Loading pipeline components...:  43%|████▎     | 3/7 [00:01<00:02,  1.41it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:02<00:00,  2.40it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:02<00:00,  2.82it/s]
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+Loaded GeoTex weights from /4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt
+============= length of dataset 276 =============
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /home/ubuntu/anaconda3/lib/python3.13/site-packages/lpips/weights/v0.1/alex.pth
+core7 run: device=cuda:0 schedules=['global_fixed_high', 'global_fixed_low', 'no_adapter'] objects=10 done=0/30
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227931 206577
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227931 206577
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227931 206577
+reverse true
+[3/30] obj_0035 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226345 233989
+reverse false
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226345 233989
+reverse false
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226345 233989
+reverse false
+[6/30] obj_0049 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199623 198733
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199623 198733
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199623 198733
+reverse true
+[9/30] obj_0137 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201583 195179
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201583 195179
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201583 195179
+reverse true
+[12/30] obj_0165 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202761 196739
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202761 196739
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202761 196739
+reverse true
+[15/30] obj_0181 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201865 199831
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201865 199831
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201865 199831
+reverse true
+[18/30] obj_0231 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257298 236800
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257298 236800
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257298 236800
+reverse true
+[21/30] obj_0238 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195639 177120
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195639 177120
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195639 177120
+reverse true
+[24/30] obj_0260 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252146 201107
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252146 201107
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252146 201107
+reverse true
+[27/30] obj_0263 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206410 179973
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206410 179973
+reverse true
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206410 179973
+reverse true
+[30/30] obj_0280 device=cuda:0
+saved 30 rows (schedules=['global_fixed_high', 'global_fixed_low', 'no_adapter'])

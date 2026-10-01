@@ -1,0 +1,330 @@
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  43%|████▎     | 3/7 [00:00<00:00, 14.43it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:01<00:00,  3.69it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:02<00:00,  2.92it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:02<00:00,  3.39it/s]
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+Loaded GeoTex weights from /4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /home/ubuntu/anaconda3/lib/python3.13/site-packages/lpips/weights/v0.1/alex.pth
+============= length of dataset 276 =============
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212305 223342
+reverse false
+augON idx=  0 hexuid    regen= 13.141 seeded= 13.141 archived= 20.299
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226818 233095
+reverse false
+augON idx=  1 hexuid    regen=  9.814 seeded=  9.814 archived= 17.594
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219577 228840
+reverse false
+augON idx= 30 hexuid    regen= 12.796 seeded= 12.796 archived= 21.038
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221324 234597
+reverse false
+augON idx= 60 hexuid    regen= 15.053 seeded= 15.053 archived= 19.639
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 192864 196051
+reverse false
+augON idx= 89 abo       regen= 13.383 seeded= 13.383 archived= 13.106
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257332 231209
+reverse true
+augON idx=100 abo       regen= 12.136 seeded= 12.136 archived= 10.130
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206054 199922
+reverse true
+augON idx=130 abo       regen= 15.143 seeded= 15.143 archived= 14.056
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257364 213766
+reverse true
+augON idx=150 objaverse regen= 12.788 seeded= 12.788 archived= 17.058
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196065 255715
+reverse false
+augON idx=200 objaverse regen= 14.814 seeded= 14.814 archived= 16.691
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196980 205339
+reverse false
+augON idx=250 objaverse regen= 14.076 seeded= 14.076 archived= 14.305
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255913 184987
+reverse true
+augON idx=273 abo       regen= 14.964 seeded= 14.964 archived= 15.804
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 215461 208329
+reverse true
+augON idx=275 objaverse regen= 13.078 seeded= 13.078 archived= 11.807
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+============= length of dataset 276 =============
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212305 223342
+reverse false
+augOFF idx=  0 hexuid    regen= 12.983 seeded= 13.141 archived= 20.299
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226818 233095
+reverse false
+augOFF idx=  1 hexuid    regen=  9.820 seeded=  9.814 archived= 17.594
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219577 228840
+reverse false
+augOFF idx= 30 hexuid    regen= 12.857 seeded= 12.796 archived= 21.038
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221324 234597
+reverse false
+augOFF idx= 60 hexuid    regen= 15.058 seeded= 15.053 archived= 19.639
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 192864 196051
+reverse false
+augOFF idx= 89 abo       regen= 13.333 seeded= 13.383 archived= 13.106
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257332 231209
+reverse true
+augOFF idx=100 abo       regen= 12.099 seeded= 12.136 archived= 10.130
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206054 199922
+reverse true
+augOFF idx=130 abo       regen= 15.187 seeded= 15.143 archived= 14.056
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257364 213766
+reverse true
+augOFF idx=150 objaverse regen= 12.732 seeded= 12.788 archived= 17.058
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196065 255715
+reverse false
+augOFF idx=200 objaverse regen= 14.703 seeded= 14.814 archived= 16.691
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196980 205339
+reverse false
+augOFF idx=250 objaverse regen= 14.034 seeded= 14.076 archived= 14.305
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255913 184987
+reverse true
+augOFF idx=273 abo       regen= 14.813 seeded= 14.964 archived= 15.804
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 215461 208329
+reverse true
+augOFF idx=275 objaverse regen= 13.124 seeded= 13.078 archived= 11.807
+stage2 complete -> /4T/CXY/MV-Painter/final/round2/coordination/core7_same_runner_completion_20261001/lhl_forensics/stage2_regen.json
