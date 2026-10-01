@@ -1,0 +1,226 @@
+{
+  "protocol": "MVADAPTER_MAPPING_SENSITIVITY_PROTOCOL",
+  "n_objects": 76,
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20260928
+  },
+  "comparisons": [
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "psnr",
+      "mean_delta": 0.06552864456995791,
+      "ci95": [
+        -0.00547605843924508,
+        0.14159641336977138
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "46/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "fg_ssim",
+      "mean_delta": -0.004117259988561275,
+      "ci95": [
+        -0.007467256518991728,
+        -0.0010645846552378901
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "35/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "edge_ssim",
+      "mean_delta": -0.0009080215373583003,
+      "ci95": [
+        -0.001925386072610289,
+        6.413183710129728e-05
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "38/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "fg_lpips",
+      "mean_delta": -0.00020217865280676282,
+      "ci95": [
+        -0.002513753424864263,
+        0.0016925905876090366
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "36/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "ciede2000",
+      "mean_delta": 0.28444823465849217,
+      "ci95": [
+        0.12989033052795795,
+        0.4589494420509586
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "50/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-FL",
+      "metric": "gt_relative_texture_error",
+      "mean_delta": 0.2768700399537641,
+      "ci95": [
+        0.11625762809661956,
+        0.4674187372532862
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "40/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "psnr",
+      "mean_delta": 0.06940041628773568,
+      "ci95": [
+        -0.004838184521428456,
+        0.14926947953701603
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "44/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "fg_ssim",
+      "mean_delta": -0.004392034468126666,
+      "ci95": [
+        -0.007660976896908041,
+        -0.0013869638108493158
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "29/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "edge_ssim",
+      "mean_delta": -0.0008848693687468765,
+      "ci95": [
+        -0.0018635944359151541,
+        5.209299566207766e-05
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "37/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "fg_lpips",
+      "mean_delta": 0.00045140406725470704,
+      "ci95": [
+        -0.0015769002286425246,
+        0.002224794666899628
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "39/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "ciede2000",
+      "mean_delta": 0.29202773069080523,
+      "ci95": [
+        0.13010371316943214,
+        0.47254225839125447
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "49/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus G-LLH",
+      "metric": "gt_relative_texture_error",
+      "mean_delta": 0.25175306865478286,
+      "ci95": [
+        0.07532300039594407,
+        0.4614831902579726
+      ],
+      "ci_excludes_zero": true,
+      "win_rate_left": "38/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "psnr",
+      "mean_delta": -0.03109054250908109,
+      "ci95": [
+        -0.07838629355840772,
+        0.01946256741365527
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "29/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "fg_ssim",
+      "mean_delta": -0.0001425668352136576,
+      "ci95": [
+        -0.0017881202707557375,
+        0.0016113870186943511
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "40/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "edge_ssim",
+      "mean_delta": 0.00018990148479739832,
+      "ci95": [
+        -0.0006904075449136551,
+        0.0013583797922668362
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "38/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "fg_lpips",
+      "mean_delta": -0.0001637455843911884,
+      "ci95": [
+        -0.0008706292986875944,
+        0.0005519720718566841
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "38/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "ciede2000",
+      "mean_delta": -0.059974006916347265,
+      "ci95": [
+        -0.15804260745644566,
+        0.034984947113614474
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "27/76",
+      "direction": "positive_favors_left"
+    },
+    {
+      "comparison": "L-LLH(B') minus L-LLH(C)",
+      "metric": "gt_relative_texture_error",
+      "mean_delta": -0.03390546487229972,
+      "ci95": [
+        -0.13237103850563026,
+        0.05847479683961921
+      ],
+      "ci_excludes_zero": false,
+      "win_rate_left": "40/76",
+      "direction": "positive_favors_left"
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "protocol": "final_audit_20261001/STRICT276_TEXTURE_FIDELITY_AUDIT",
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20260930,
+    "method": "object-level percentile"
+  },
+  "partA": {
+    "n_objects": 276,
+    "probes": [
+      "fg_rgb_std",
+      "fg_grad_mag",
+      "fg_lap_var",
+      "fg_hf_energy"
+    ],
+    "distance": "abs(gen - gt), runtime tensors (no PNG reload)",
+    "comparisons": {
+      "layer_llh_minus_global_fixed_low:dist_fg_rgb_std": {
+        "metric": "dist_fg_rgb_std",
+        "mean_delta": 0.002452017766410026,
+        "ci95": [
+          0.0017244371713773497,
+          0.0031754509910293244
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "186/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_global_fixed_low:dist_fg_grad_mag": {
+        "metric": "dist_fg_grad_mag",
+        "mean_delta": 0.057641982492329415,
+        "ci95": [
+          0.046578340046107766,
+          0.06797409538665543
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "215/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_global_fixed_low:dist_fg_lap_var": {
+        "metric": "dist_fg_lap_var",
+        "mean_delta": 0.0047723869033886685,
+        "ci95": [
+          0.003540841019644901,
+          0.005981707132203788
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "211/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_global_fixed_low:dist_fg_hf_energy": {
+        "metric": "dist_fg_hf_energy",
+        "mean_delta": 0.013668103278547094,
+        "ci95": [
+          0.011424415923007157,
+          0.015794686857017053
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "215/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_fixed_mean:dist_fg_rgb_std": {
+        "metric": "dist_fg_rgb_std",
+        "mean_delta": 0.0037422699826783028,
+        "ci95": [
+          0.0032724609261081702,
+          0.004205297918288387
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "223/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_fixed_mean:dist_fg_grad_mag": {
+        "metric": "dist_fg_grad_mag",
+        "mean_delta": 0.009675877249759176,
+        "ci95": [
+          0.006667931264509326,
+          0.012672095902372097
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "183/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_fixed_mean:dist_fg_lap_var": {
+        "metric": "dist_fg_lap_var",
+        "mean_delta": 0.0004910866179894925,
+        "ci95": [
+          0.00031844898539534565,
+          0.0006735537794209421
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "179/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_fixed_mean:dist_fg_hf_energy": {
+        "metric": "dist_fg_hf_energy",
+        "mean_delta": -0.0008090351154838784,
+        "ci95": [
+          -0.001291294603784015,
+          -0.00031505366922288716
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "100/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_lhl:dist_fg_rgb_std": {
+        "metric": "dist_fg_rgb_std",
+        "mean_delta": -9.464356454386227e-05,
+        "ci95": [
+          -0.0007365385664330012,
+          0.0005749605758034657
+        ],
+        "ci_excludes_zero": false,
+        "win_rate_base": "106/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_lhl:dist_fg_grad_mag": {
+        "metric": "dist_fg_grad_mag",
+        "mean_delta": 0.012130755013313847,
+        "ci95": [
+          0.007316202014360738,
+          0.016760645469353682
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "192/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_lhl:dist_fg_lap_var": {
+        "metric": "dist_fg_lap_var",
+        "mean_delta": 0.0004575442694856421,
+        "ci95": [
+          0.00011732365866022968,
+          0.0008182454195828513
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "156/276",
+        "sign_convention": "positive = base better"
+      },
+      "layer_llh_minus_layer_lhl:dist_fg_hf_energy": {
+        "metric": "dist_fg_hf_energy",
+        "mean_delta": -0.001346407269222149,
+        "ci95": [
+          -0.0020782961793567823,
+          -0.0005944396193692653
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "113/276",
+        "sign_convention": "positive = base better"
+      }
+    }
+  },
+  "partB": {
+    "n_objects": 276,
+    "n_used": 275,
+    "n_excluded_empty_eroded_mask": [
+      "obj_0069"
+    ],
+    "mask_source": "dataset alpha branch, unique6, CPU deterministic",
+    "metric_surface": "3x2 view grid (768x512), identical arrangement to the runner",
+    "validation": {
+      "note": "PNG-reload + erosion-convention deviation vs runtime tensors",
+      "objects": {
+        "laplacian_variance": {
+          "max_abs_deviation_sampled": 0.10196993593126535,
+          "sampled": [
+            "obj_0024",
+            "obj_0074",
+            "obj_0161",
+            "obj_0224",
+            "obj_0299"
+          ]
+        },
+        "rgb_std": {
+          "max_abs_deviation_sampled": 0.23196008056402206,
+          "sampled": [
+            "obj_0024",
+            "obj_0074",
+            "obj_0161",
+            "obj_0224",
+            "obj_0299"
+          ]
+        },
+        "gradient_magnitude": {
+          "max_abs_deviation_sampled": 0.0924038290977478,
+          "sampled": [
+            "obj_0024",
+            "obj_0074",
+            "obj_0161",
+            "obj_0224",
+            "obj_0299"
+          ]
+        }
+      }
+    },
+    "comparisons": {
+      "llh_minus_fixed_mean:ciede2000": {
+        "metric": "ciede2000",
+        "mean_delta": 2.7910088591142133,
+        "ci95": [
+          2.5531147161830554,
+          3.047778314070268
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "271/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_fixed_mean:logerr_laplacian_variance": {
+        "metric": "logerr_laplacian_variance",
+        "mean_delta": 0.19434052524116657,
+        "ci95": [
+          0.17807275731186367,
+          0.20975127070895938
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "253/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_fixed_mean:logerr_rgb_std": {
+        "metric": "logerr_rgb_std",
+        "mean_delta": 0.001722082216205604,
+        "ci95": [
+          -0.01592540386009583,
+          0.0193364379314237
+        ],
+        "ci_excludes_zero": false,
+        "win_rate_base": "121/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_fixed_mean:logerr_gradient_magnitude": {
+        "metric": "logerr_gradient_magnitude",
+        "mean_delta": 0.0008935839398937517,
+        "ci95": [
+          -0.007261912005019125,
+          0.008533159576530384
+        ],
+        "ci_excludes_zero": false,
+        "win_rate_base": "148/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_c3_lhl:ciede2000": {
+        "metric": "ciede2000",
+        "mean_delta": 0.2723912637883967,
+        "ci95": [
+          0.09847914869135077,
+          0.46903690078041765
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "138/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_c3_lhl:logerr_laplacian_variance": {
+        "metric": "logerr_laplacian_variance",
+        "mean_delta": 0.2679079103290276,
+        "ci95": [
+          0.24884600176535168,
+          0.28594514558907785
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "257/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_c3_lhl:logerr_rgb_std": {
+        "metric": "logerr_rgb_std",
+        "mean_delta": -0.00333026501716179,
+        "ci95": [
+          -0.03555791750159738,
+          0.028820545906272088
+        ],
+        "ci_excludes_zero": false,
+        "win_rate_base": "130/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_c3_lhl:logerr_gradient_magnitude": {
+        "metric": "logerr_gradient_magnitude",
+        "mean_delta": 0.03487420963161358,
+        "ci95": [
+          0.02424060223652256,
+          0.04553346801155639
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "194/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_hll:ciede2000": {
+        "metric": "ciede2000",
+        "mean_delta": 4.992558357932351,
+        "ci95": [
+          4.576621950843118,
+          5.425487174467606
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "268/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_hll:logerr_laplacian_variance": {
+        "metric": "logerr_laplacian_variance",
+        "mean_delta": 0.2915939034212166,
+        "ci95": [
+          0.26563184543740304,
+          0.3169000559507829
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "249/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_hll:logerr_rgb_std": {
+        "metric": "logerr_rgb_std",
+        "mean_delta": 0.0013036537089804639,
+        "ci95": [
+          -0.030132606838703082,
+          0.03243857262850586
+        ],
+        "ci_excludes_zero": false,
+        "win_rate_base": "126/275",
+        "sign_convention": "positive = base better"
+      },
+      "llh_minus_hll:logerr_gradient_magnitude": {
+        "metric": "logerr_gradient_magnitude",
+        "mean_delta": -0.046844995055217435,
+        "ci95": [
+          -0.06571915700111575,
+          -0.028104940632952293
+        ],
+        "ci_excludes_zero": true,
+        "win_rate_base": "113/275",
+        "sign_convention": "positive = base better"
+      }
+    }
+  }
+}
