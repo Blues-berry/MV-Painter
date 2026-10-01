@@ -143,7 +143,7 @@ and inject the adapter residual as
 \mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_{l}(p_t)\,A_l(\mathbf{h}_{l,t},\mathbf{G}),
 \label{eq:layer_tcas}
 \end{equation}
-where $A_l$ denotes the adapter correction injected at depth group $l$ and $s_l(p)$ can be fixed or stage-dependent. We call this control L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling). The formulation makes two control axes explicit: redistributing residual strength across depth groups (the row-wise structure of $S$) and placing high or low scales along denoising stages (the column-wise structure of $S$). Shared-layer TCAS and any globally fixed scale are special cases of $S$ with identical rows; the layer-LHL and layer-LLH schedules used in the experiments are two particular column assignments.
+where $A_l$ denotes the adapter correction injected at depth group $l$ and $s_l(p)$ can be fixed or stage-dependent. We call this formulation L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling). L-TCAS is a unifying framework for describing and comparing inference-time residual-allocation policies, not a learned or optimized controller: the entries of $S$ are selected from a small set of evaluated schedules, and no training or optimization is involved in constructing $S$. The formulation makes two control axes explicit: redistributing residual strength across depth groups (the row-wise structure of $S$) and placing high or low scales along denoising stages (the column-wise structure of $S$). Shared-layer TCAS and any globally fixed scale are special cases of $S$ with identical rows; the layer-LHL and layer-LLH schedules used in the experiments are two particular column assignments.
 
 \subsection{Implementation Semantics and Cost}
 \label{subsec:impl}
