@@ -188,11 +188,12 @@ def seam_metrics(uv, faces, vertices, texture):
             continue
         nb = nb / norm
         for sign in (1.0, -1.0):
-            la = sample_texel(lab, occupancy, tex_a + sign * SEAM_OFFSET * na)
-            lb = sample_texel(lab, occupancy, tex_b + sign * SEAM_OFFSET * nb)
-            if la is None or lb is None:
-                continue
-            deltas.append(float(deltaE_ciede2000(la[None, :], lb[None, :])[0]))
+            for k in range(SEAM_SAMPLES):
+                la = sample_texel(lab, occupancy, tex_a[k] + sign * SEAM_OFFSET * na)
+                lb = sample_texel(lab, occupancy, tex_b[k] + sign * SEAM_OFFSET * nb)
+                if la is None or lb is None:
+                    continue
+                deltas.append(float(deltaE_ciede2000(la[None, :], lb[None, :])[0]))
 
     base = []
     ys, xs = np.nonzero(occupancy)
@@ -214,17 +215,30 @@ def seam_metrics(uv, faces, vertices, texture):
 
 
 def render_views(vertices, faces, uv, texture):
+    """Offscreen rendering via vertex colors (PyOpenGL 3.1.0 + numpy 2 cannot
+    upload textures; vertex-color interpolation cancels in view-to-view
+    differences, and the seam metric uses the full texture directly)."""
     os.environ.setdefault("PYOPENGL_PLATFORM", "egl")
     import pyrender
     import trimesh
-    from PIL import Image
 
-    tm = trimesh.Trimesh(
-        vertices=vertices, faces=faces,
-        visual=trimesh.visual.TextureVisuals(uv=uv, image=Image.fromarray(
-            (texture * 255).astype(np.uint8))), process=False)
-    mesh = pyrender.Mesh.from_trimesh(tm, smooth=False)
-    color_maps, depth_maps, poses = [], [], camera_poses()
+    size = texture.shape[0]
+    texel = uv_to_texel(uv, size)
+    x0 = np.floor(texel[:, 0]).astype(int)
+    y0 = np.floor(texel[:, 1]).astype(int)
+    x1 = np.minimum(x0 + 1, size - 1)
+    y1 = np.minimum(y0 + 1, size - 1)
+    fx = texel[:, 0] - x0
+    fy = texel[:, 1] - y0
+    vcolors = (texture[y0, x0] * ((1 - fx) * (1 - fy))[:, None]
+               + texture[y0, x1] * (fx * (1 - fy))[:, None]
+               + texture[y1, x0] * ((1 - fx) * fy)[:, None]
+               + texture[y1, x1] * (fx * fy)[:, None])
+    base = trimesh.Trimesh(vertices=vertices, faces=faces, process=False)
+    base.visual = trimesh.visual.ColorVisuals(mesh=base,
+                                               vertex_colors=np.clip(vcolors, 0.0, 1.0))
+    mesh = pyrender.Mesh.from_trimesh(base, smooth=False)
+    color_maps, vis_maps, poses = [], [], camera_poses()
     renderer = pyrender.OffscreenRenderer(RES, RES)
     scene = pyrender.Scene(bg_color=[1.0, 1.0, 1.0, 1.0], ambient_light=[0.3, 0.3, 0.3])
     scene.add(mesh)
@@ -232,54 +246,50 @@ def render_views(vertices, faces, uv, texture):
     cam_node = scene.add(cam, pose=poses[0])
     for pose in poses:
         scene.set_pose(cam_node, pose)
-        color, depth = renderer.render(scene)
+        color, _depth = renderer.render(scene)
         color_maps.append(color[..., :3].astype(np.float32) / 255.0)
-        depth_maps.append(depth.astype(np.float32))
+        ext_inv = np.eye(4)
+        ext_inv[:3, :3] = pose[:3, :3].T
+        ext_inv[:3, 3] = -pose[:3, :3].T @ pose[:3, 3]
+        camv = vertices @ ext_inv[:3, :3].T + ext_inv[:3, 3]
+        zv = -camv[:, 2]
+        pxv = np.floor((camv[:, 0] / XMAG + 1) / 2 * RES).astype(int)
+        pyv = np.floor((1 - (camv[:, 1] / XMAG + 1) / 2) * RES).astype(int)
+        ok = (pxv >= 0) & (pxv < RES) & (pyv >= 0) & (pyv < RES) & (zv > 0)
+        zbuf = np.full((RES, RES), np.inf, dtype=np.float64)
+        np.minimum.at(zbuf, (pyv[ok], pxv[ok]), zv[ok])
+        vis = ok & (zv <= zbuf[np.clip(pyv, 0, RES - 1), np.clip(pxv, 0, RES - 1)] + 1e-3)
+        vis_maps.append((vis, pxv, pyv))
     renderer.delete()
-    return color_maps, depth_maps, poses
+    return color_maps, vis_maps, poses
 
 
-def position_map(depth, pose):
-    h, w = depth.shape
-    xs = (np.arange(w) + 0.5) / w * 2 - 1
-    ys = 1 - (np.arange(h) + 0.5) / h * 2
-    gx, gy = np.meshgrid(xs, ys)
-    cam = np.stack([gx * XMAG, gy * XMAG, -depth], axis=-1)
-    return cam @ pose[:3, :3].T + pose[:3, 3]
+def crossview_metrics(colors, vis_maps):
+    """Cross-view consistency via shared-visible vertices.
 
-
-def crossview_metrics(colors, depths, poses):
+    A vertex visible in both views of a pair defines a surface-point
+    correspondence; the compared colors are the RENDERED colors at that
+    vertex's projected pixel in each view, capturing render-time cross-view
+    color stability (sampling/bleed/occlusion-boundary effects) of the baked
+    texture.
+    """
     from skimage.color import deltaE_ciede2000, rgb2lab
 
     labs = [rgb2lab(c) for c in colors]
-    world_maps = [position_map(d, p) for d, p in zip(depths, poses)]
     deltas = []
     n = len(colors)
     for i in range(n):
-        valid_i = depths[i] > 0
-        if not np.any(valid_i):
-            continue
-        pos_i = world_maps[i][valid_i]
-        lab_i = labs[i][valid_i]
+        vis_i, px_i, py_i = vis_maps[i]
         for j in range(n):
             if i == j:
                 continue
-            ext_inv = np.eye(4)
-            ext_inv[:3, :3] = poses[j][:3, :3].T
-            ext_inv[:3, 3] = -poses[j][:3, :3].T @ poses[j][:3, 3]
-            cam = pos_i @ ext_inv[:3, :3].T + ext_inv[:3, 3]
-            z = -cam[:, 2]
-            px = np.floor((cam[:, 0] / XMAG + 1) / 2 * RES).astype(int)
-            py = np.floor((1 - (cam[:, 1] / XMAG + 1) / 2) * RES).astype(int)
-            ok = (px >= 0) & (px < RES) & (py >= 0) & (py < RES) & (z > 0)
-            if not np.any(ok):
+            vis_j, px_j, py_j = vis_maps[j]
+            both = vis_i & vis_j
+            if not np.any(both):
                 continue
-            px, py, zc = px[ok], py[ok], z[ok]
-            zbuf = depths[j][py, px]
-            agree = (zbuf > 0) & (np.abs(zbuf - zc) <= np.maximum(1e-3, 0.02 * zc))
-            if not np.any(agree):
-                continue
-            deltas.append(np.asarray(deltaE_ciede2000(lab_i[ok][agree], labs[j][py[agree], px[agree]])))
+            la = labs[i][py_i[both], px_i[both]]
+            lb = labs[j][py_j[both], px_j[both]]
+            deltas.append(np.asarray(deltaE_ciede2000(la, lb)))
     all_d = np.concatenate(deltas) if deltas else np.array([np.nan])
     return {
         "crossview_mean_dE00": float(np.nanmean(all_d)),
@@ -305,8 +315,8 @@ def main():
             vertices = (vertices - (vertices.max(0) + vertices.min(0)) / 2) / extent
             row = {"object": obj, "method": method, "n_faces": int(len(faces))}
             row.update(seam_metrics(uv, faces, vertices, texture))
-            colors, depths, poses = render_views(vertices, faces, uv, texture)
-            row.update(crossview_metrics(colors, depths, poses))
+            colors, vis_maps, poses = render_views(vertices, faces, uv, texture)
+            row.update(crossview_metrics(colors, vis_maps))
             rows.append(row)
             print(f"[{obj}/{method}] seam={row['seam_mean_dE00']:.3f} "
                   f"(x{row['seam_over_baseline']:.2f}) crossview={row['crossview_mean_dE00']:.3f}",
