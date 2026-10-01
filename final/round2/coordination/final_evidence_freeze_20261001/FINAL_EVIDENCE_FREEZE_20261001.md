@@ -8,7 +8,7 @@ real-object rebake was run.
 
 | Gate | Status | Blocking? | Determination |
 |---|---|---:|---|
-| 0. Remote provenance | **FAIL / live check pending** | Yes | Public target `origin` and private `mvpainter` are distinct. `git ls-remote` failed due network/DNS; live branch SHA cannot be asserted. |
+| 0. Remote provenance | **PASS** | No | The independent freeze branch is on public `origin`; post-push `git ls-remote` matched the published audit commit to local HEAD. Required evidence commits are ancestors of that branch. The older forensic branch name remains on private `mvpainter`. |
 | 1. Cap chronology | **PASS with limitation** | No for Core-7; yes for old cross-panel manuscript claims | Core-7 uses one capped path. Cap history is outcome-informed at development level; no strict-276 cap retuning found. Earlier uncapped panels cannot be pooled with Core-7. |
 | 2. Core-7 provenance/statistics | **PASS with serialized-input limitation** | No | 276×7 rows; independent statistics reconcile on 42 shared pair/metric rows; source CSV and protocol audit retained. Five original Core-5 arms lack full 276-row tensor hashes. |
 | 3. Historical LHL quarantine | **FAIL / active-source cleanup required** | Yes | Active TeX, Supplementary, and response letter still quote quarantined means and the refuted unseeded-RNG cause. They were not edited by instruction. |
@@ -66,8 +66,8 @@ real-object rebake was run.
 - `obj_0066` is rank 2/276 under the current LLH−GFL FG-PSNR comparison and
   should not remain an unqualified “representative” example.
 - Active paper sources still contain historical LHL values/causality and
-  uncapped-era cross-panel claims. Gate 3 and the live public-remote check
-  remain open. The requested manuscript rewrite is a separate task.
+  uncapped-era cross-panel claims. Gate 3 remains open. The requested
+  manuscript rewrite is a separate task.
 
 ## Remaining experiments and stop rule
 
@@ -76,8 +76,8 @@ corrected seam metric passed two synthetic controls plus the existing 12-object
 row audit. This audit performed CPU-only statistics and synthetic GLB controls;
 it ran no model inference and no real-object bake.
 
-`EVIDENCE_FREEZE = NO` for now, due to Gate 0 live remote verification and
-Gate 3 active manuscript-source cleanup—not due to a missing experiment.
+`EVIDENCE_FREEZE = NO` for now, due to Gate 3 active manuscript-source
+cleanup—not due to a missing experiment or a remote-provenance gap.
 Do not restart experiment agents or expand the matrix absent a new P0
 data/code discrepancy. Complete the separate manuscript rewrite, then
 re-run only the repository/paper-source closure checks and live remote check.
