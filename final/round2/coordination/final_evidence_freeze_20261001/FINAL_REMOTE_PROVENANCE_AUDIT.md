@@ -33,7 +33,7 @@ matched its *local cached* tracking ref at `450389f`. The cached public
 forensic commits `ce4831f` and `450389f` were not shown in the cached public
 ref listing. A tracking ref is not proof of current live remote state.
 
-## Live verification result
+## Live verification result at task entry
 
 The required commands were attempted:
 
@@ -46,14 +46,35 @@ Therefore this run cannot attest the live remote branch HEAD SHA or live
 equality for either remote. The last locally cached forensic branch SHA equals
 the task-entry local HEAD, but that is explicitly only cached evidence.
 
+## Final freeze-branch publication and verification
+
+The user-designated delivery branch is
+`codex/final-evidence-freeze-20261001`. Audit-package commit
+`edaebb6fb88018a966ef52483895ff2af624f71d` was pushed to the public `origin`
+and immediately verified with a live `git ls-remote`; the returned branch SHA
+exactly matched local `HEAD` at that checkpoint. The required evidence commits
+`99d6c88`, `4f31256`, `ce4831f`, and the task-entry forensic commit `450389f`
+are all ancestors of the published branch.
+
+The prior branch name `codex/round2-final-forensic-audit-20261001` remains at
+`450389f` on private `mvpainter`; it is not separately published under that
+name on `origin`. Its content is present in the public freeze branch ancestry.
+The public branch is the canonical delivery for this task.
+
+After the public push, the repository-local policy was verified as
+`remote.pushDefault=origin`, `push.default=current`, and
+`push.autoSetupRemote=true`. Future plain pushes in this repository therefore
+target the public repository; no global Git setting was changed.
+
 ## Gate 0 disposition
 
-`FAIL — LIVE_REMOTE_UNVERIFIED / REPOSITORY_MISMATCH_PENDING`.
+`PASS` for the final evidence delivery branch: its live public ref matched the
+published audit commit, and the required evidence history is reachable from
+that ref. The earlier forensic branch name itself remains on the private
+remote as noted above; do not confuse that branch-name location with the
+public final delivery branch.
 
-The evidence commits and local source paths are identified, but the required
-live remote check was unavailable. The task target is the public
-`Blues-berry/MV-Painter`; the previously used private `mvpainter` remote is a
-different repository. Do not describe the current forensic branch as frozen on
-the public target unless an explicit `origin` push succeeds and its resulting
-SHA is verified. The final freeze report records any follow-on commit and push
-attempt separately.
+The task target is the public `Blues-berry/MV-Painter`; the previously used
+private `mvpainter` remote is a different repository. The public branch's
+current terminal SHA is reported in the task handoff because any later
+documentation-only closure commit necessarily advances that ref.
