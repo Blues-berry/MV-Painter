@@ -3,16 +3,23 @@
 ## Editorial note
 
 We thank all reviewers. This revision repositions the paper around
-**layer-wise stage-aware adapter scaling**: a training-free inference control
-that assigns each UNet depth group its own stage-dependent residual scale,
+**L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling)**: a training-free
+inference control that formulates adapter strength as a layer-by-stage
+residual allocation matrix $S=[s_{l,k}]$, assigning each UNet depth group its
+own stage-dependent residual scale,
 $h'_{l,t}=h_{l,t}+s_l(p_t)A_l(h_{l,t},G)$, with per-group implementation caps
 (deep 3.0, middle 3.5, shallow 0.8) and no change to any network weight. The
-shared-layer TCAS/C3 schedule is retained as a baseline rather than as the
-claimed optimum. New evidence since the previous package: (i) a complete
-binary enumeration of all eight temporal patterns on the 24-object probe with
-three seeds (576 paired records); (ii) a pre-registered strict-276-object
-confirmation of the development-selected pattern under a single runner,
-including the requested global fixed-low control;
+paper title changes to "Layer-wise Timestep-Conditioned Adapter Scaling for
+Multi-view Diffusion Texture Generation"; the shared-layer TCAS/C3 schedule
+is retained as a special case and baseline rather than as the claimed
+optimum. The renaming is a formal generalization prompted by the reviewer's
+methodological concern, not a post-hoc renaming: the underlying runs,
+checkpoints, and schedules are unchanged. New evidence since the previous
+package: (i) a complete binary enumeration of all eight temporal patterns on
+the 24-object probe with three seeds (576 paired records); (ii) a
+pre-registered strict-276-object confirmation of the development-selected
+pattern under a single runner, extended to the seven-condition Core-7
+baseline-family matrix, including the requested global fixed-low control;
 (iii) explicit runner-sensitivity documentation; and (iv) patched Figure 1
 and rewritten method/limitations sections. All legacy numbers (+0.96 dB,
 CLIP-IQA, preference study) are removed from the deliverable source, not just
@@ -184,7 +191,10 @@ ways.
    injected at three up-blocks with different spatial resolution and roles
    (global structure / shape / fine texture); the implementation applies
    per-group caps (3.0/3.5/0.8), so a global scale is already an implicit
-   layer allocation. The method makes this explicit: $s_l(p)$ per group.
+   layer allocation. The method now makes this explicit as an allocation
+   matrix $S=[s_{l,k}]$ (L-TCAS), of which the shared-layer schedule
+   $s_l(p)$ per group and any globally fixed scale are special cases with
+   identical rows.
 2. *Shared-input ablation separates the effects.* With per-object shared
    targets/features/latents: layer redistribution alone (layer-fixed-low
    vs global fixed-low) improves foreground fidelity; constant vs scheduled
@@ -210,38 +220,64 @@ undefined/set-valued. CAI appears in no contribution statement.
 
 ### R2.3 — Cross-backbone validation
 
-**Direct answer.** The second-backbone evidence remains a *global
-stage-position replication*, and we now say so in the section title context,
-the text, and Limitations. Concretely: the MV-Adapter deployment applies one
-scalar to all injected residuals; the injected residuals are technically a
-per-block list that could be scaled element-wise, but a layer-wise mapping
-would require a depth-group allocation, a recalibrated low/high pair, and a
-full 76-object rerun, which we have not done. Within the global audit,
-paired differences are metric-specific (LHL's Edge-SSIM advantage
+**Direct answer.** The transfer evidence is now reported for two additional
+interfaces, with all comparisons within-backbone and no absolute cross-backbone
+pooling. (i) *MV-Adapter.* The global stage-position audit (76 objects) shows
+metric-specific paired differences (LHL's Edge-SSIM advantage
 +0.000613 [+0.000135,+0.001217] over HLL; LLH highest PSNR and lowest
-GT-relative texture error), the frozen CAI rule is undefined/set-valued,
-official pretraining UID disjointness is unknown, and absolute scores are
-never compared across backbones. The MVDiffusion deployment remains an
-interface diagnostic and is never used as a quantitative second backbone.
+GT-relative texture error), and the frozen CAI rule is undefined/set-valued.
+A layer-wise validation was subsequently performed under a *prespecified
+topology-derived grouping* (shallow/middle/deep from the four ordered
+injection points, written before the first layer-wise holdout rows; profiles
+from the frozen main-backbone profile with point-count normalization): the
+layer-wise effect is supported with metric-dependent direction (PSNR,
+ΔE00, and GT-relative texture error favor layer-wise with CIs excluding
+zero; FG-/Edge-SSIM favor global by a small margin; FG-LPIPS ns), and
+temporal position is not consistently separated. The mapping conclusion is
+robust across the tested contiguous mapping choices (frozen-value
+reassignment: 16/18 stable with slightly stronger primary effects; a
+separate budget-neutral regrouping is indistinguishable from the registered
+mapping); we do not claim mapping-independent transfer. (ii) *MVDiffusion.*
+Its CPBlock intervention scales a serial correspondence module rather than
+an additive geometry residual, the deployment path injects depth through
+latent concatenation where scaling is not admissible, and α≡1 exactly
+reproduces the official path; the experiment is therefore an interface
+boundary, and on it the layer-wise result does not replicate (PSNR/SSIM/
+ΔE00 favor global, GT-relative texture error slightly favors layer-wise) —
+preserved as found. Official pretraining UID disjointness for MV-Adapter
+remains unknown.
 
 ## Reviewer 3
 
 We thank Reviewer 3 for the positive assessment. The current revision
-additionally strengthens the method section (layer-wise formulation,
-depth-group mapping, caps, run cost), replaces the retired historical
-results with protocol-separated tables, and adds the complete temporal-
-pattern ablation and pre-registered holdout confirmation described in our
-responses to Reviewers 1 and 2.
+additionally strengthens the method section (L-TCAS allocation-matrix
+formulation, depth-group mapping, caps, run cost), replaces the retired
+historical results with protocol-separated tables, and adds the complete
+temporal-pattern ablation and the pre-registered strict-276 Core-7
+same-runner holdout described in our responses to Reviewers 1 and 2.
 
 ## Package changes
 
-- final_round2.tex: layer-wise centred rewrite (method, Figure 1, metrics
-  taxonomy, complete factorial, confirmation, second-backbone boundary,
-  limitations, conclusion, data availability); all \iffalse legacy blocks
-  stripped from the source.
-- supplementary_round2.tex: S1 protocol hashes; S9 shared-input ablation +
-  runner-sensitivity paragraph; S10 complete binary factorial; S11 strict-276
-  confirmation; S4/S4a bake audit and contact sheet; S5–S8 unchanged scope.
+- final_round2.tex: L-TCAS restructure — title and abstract rewritten around
+  the layer-by-stage allocation matrix $S=[s_{l,k}]$ (TCAS/C3 as shared-layer
+  special case); method reorganized (pipeline, allocation matrix,
+  implementation semantics, metric dimensions, CAI as diagnostic);
+  single strict-276 Core-7 same-runner table as the current baseline-family
+  authority (pre-registered candidates plus completed no-adapter/GFH/GC3
+  arms); legacy uncapped clean-v2 and stage-placement panels moved to the
+  supplementary; new texture/robustness audits (GT-distance probes, offline
+  CIEDE2000, R0/R1 stability), corrected UV-seam audit, and an expanded
+  transfer section (MV-Adapter layer-wise under a prespecified
+  topology-derived grouping; MVDiffusion interface boundary); limitations
+  and conclusion updated; data availability unchanged.
+- supplementary_round2.tex: S1 protocol hashes; S2 now hosts the legacy
+  uncapped panels (clean-v2 four-condition and stage-placement with
+  saved-artifact Full-SSIM); S9 shared-input ablation + runner-sensitivity
+  paragraph; S10 complete binary factorial; S11 strict-276 confirmation with
+  a note relating its protocol-locked bootstrap to the Core-7 matrix run;
+  S12 robustness and stability audits (R0/R1, M3 mapping sensitivity,
+  budget-neutral regrouping); S4/S4a bake audit and contact sheet;
+  S5–S8 unchanged scope (S7 now carries the FAC training details).
 - coordination/revision_next_20260930/: REVIEWER_ACTION_MATRIX.md,
   METHOD_IMPLEMENTATION_AUDIT.md, EXPERIMENT_PROTOCOL_LOCK.md.
 - coordination/layer_factorial_v1_20260930/ and layer confirmation records:

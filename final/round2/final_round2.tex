@@ -25,13 +25,13 @@
 
 \begin{frontmatter}
 
-\title{Layer-wise Stage-aware Adapter Scaling for Multi-view Diffusion Texture Generation}
+\title{Layer-wise Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation}
 
 % Double-anonymized review: author names, affiliations, and acknowledgements
 % (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Multi-view diffusion pipelines for 3D asset texturing inject geometric conditions through adapter modules, and the strength of these residuals is usually a single global scale, although residuals act at different UNet depths and denoising stages. We study layer-wise stage-aware adapter scaling, a training-free inference control that assigns each UNet depth group its own stage-dependent residual scale, $\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)A_l(\mathbf{h}_{l,t},\mathbf{G})$, with per-group implementation caps and no change to any network weight. On a shared-input 24-object, three-seed development ablation, depth-group redistribution improves foreground fidelity over a global fixed-low baseline, and a complete binary enumeration of temporal patterns shows that late-stage high scale helps while early-stage high scale hurts; the strongest pattern (layer-LLH) wins five of seven development metrics, while layer-LHL is not a unique optimum. In the capped strict-276 Core-7, LLH has the best mean on four of seven metrics, with explicit metric-dependent reversals on the other three. A global stage-placement follow-up and a second-backbone audit bound where stage effects replicate. We report a reusable layer-wise inference control, metric-dependent trade-offs, a 12-object 3D baking case study, and explicit negative results rather than a universal schedule selector.
+Multi-view diffusion pipelines for 3D asset texturing inject geometric conditions through adapter modules, and the strength of these residuals is usually a single global scale, although residuals act at different UNet depths and denoising stages. We formulate adapter scaling as a layer-by-stage residual allocation problem rather than a single global magnitude, and study L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling), a training-free inference control that assigns each UNet depth group its own stage-dependent residual scale, $\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)A_l(\mathbf{h}_{l,t},\mathbf{G})$, with per-group implementation caps and no change to any network weight. On a shared-input 24-object, three-seed development ablation, a complete binary enumeration of temporal patterns shows that late-stage high scale helps while early-stage high scale hurts; the development-selected allocation is then confirmed on a pre-registered 276-object strict holdout in one seeded runner (the seven-condition Core-7), where it improves the primary reference-fidelity metrics over both the unmodified pipeline and competitive fixed-scale controls, while several structural and perceptual metrics retain explicit trade-offs. Cross-backbone experiments show that layer redistribution transfers to one additional adapter architecture under a prespecified topology-derived grouping, temporal placement is architecture-dependent, and a third non-isomorphic control interface provides a negative applicability boundary. A 12-object 3D baking case study with corrected UV-seam measurement, explicit metric-dependent reversals, and negative learned-modulation results are reported rather than a universal schedule claim.
 \end{abstract}
 
 \begin{keyword}
@@ -56,23 +56,19 @@ In multi-view texture generation, however, stronger adapter scaling is not neces
 
 Therefore, adapter scaling in geometry-controlled multi-view diffusion deserves further analysis. Compared with prior work that mainly studies how to build texture generation pipelines, how to introduce geometric conditions, and how to improve overall generation quality, adapter strength is a fine-grained inference-time control problem. It directly affects the balance between shape consistency and texture detail, and is an easily overlooked factor in multi-view texture generation quality.
 
-This problem is related to, but not solved by, existing guidance scheduling strategies. CFG scheduling changes the extrapolation between conditional and unconditional predictions, while a geometry adapter injects residuals into intermediate representations. Generic ControlNet or adapter scale scheduling similarly treats condition strength mainly as a condition-adherence knob. In texture generation, however, the key question is not only how strongly to follow the geometry, but also when geometric residuals should dominate and when they should recede so that the base model can synthesize color, material, and high-frequency texture. Simple monotonic schedules such as linear or cosine decay do not explicitly address this non-monotonic requirement. Even the recent finding that classifier-free guidance is most useful only in a limited noise interval \cite{kynkanniemi2024limited} does not answer this question: it identifies where conditioning helps for CFG, but not which stages of a geometry-conditioned texture pipeline require strong geometric residuals, where the late-stage risk is texture suppression rather than diversity loss.
+This problem is related to, but not solved by, existing guidance scheduling strategies. CFG scheduling changes the extrapolation between conditional and unconditional predictions, while a geometry adapter injects residuals into intermediate representations. Generic ControlNet or adapter scale scheduling similarly treats condition strength mainly as a condition-adherence knob. In texture generation, however, the key question is not only how strongly to follow the geometry, but also where in network depth and when along the denoising trajectory geometric residuals should dominate and recede so that the base model can synthesize color, material, and high-frequency texture. Simple monotonic schedules such as linear or cosine decay do not explicitly address this non-monotonic requirement. Even the recent finding that classifier-free guidance is most useful only in a limited noise interval \cite{kynkanniemi2024limited} does not answer this question: it identifies where conditioning helps for CFG, but not which stages and depth groups of a geometry-conditioned texture pipeline require strong geometric residuals, where the late-stage risk is texture suppression rather than diversity loss.
 
 The goal of this paper is not to propose a new full texture generation system, but to analyze and improve inference-time adapter scaling within a fixed geometry-controlled multi-view diffusion pipeline.
 
 The main contributions of this paper are as follows:
 
-(1) We identify and quantify the shape-texture trade-off caused by adapter scaling in multi-view diffusion texture generation, showing why a single scale magnitude is an incomplete inference control, and we separate structure, reference-fidelity, texture-variation, and 3D-output evidence dimensions.
+(1) We identify and quantify the shape--texture and reference-fidelity trade-off caused by adapter scaling in multi-view diffusion texture generation, and show why structural metrics and texture-variation metrics alone are insufficient; we keep structure, reference-fidelity, texture-variation, and 3D-output evidence dimensions explicitly separate.
 
-(2) We formulate training-free layer-wise stage-aware adapter residual scaling with an explicit scale function $s_l(p)$ over UNet depth groups and denoising stages, per-group implementation caps, and no added network forward; the method requires no retraining.
+(2) We formulate a training-free layer $\times$ timestep adapter residual allocation control $S=[s_{l,k}]$ (L-TCAS) over UNet depth groups and denoising stages, with per-group implementation caps and no added network forward; the previously studied shared-layer stage-aware schedule TCAS (C3) is the special case with a single shared schedule across depth groups.
 
-(3) We separate layer redistribution from temporal placement with shared-input paired ablations: a complete binary enumeration of all eight temporal patterns shows robust directions (late-high helps, early-high hurts), with layer-LLH, layer-LHH, and constant layer-LLL as explicit counterexamples to any layer-LHL optimum, and we confirm the development-selected pattern on a strict 276-object holdout under a pre-registered protocol.
+(3) We separate layer redistribution from temporal placement with shared-input paired ablations: a complete binary enumeration of all eight temporal patterns shows robust directions (late-high helps, early-high hurts), with layer-LLH, layer-LHH, and constant layer-LLL as explicit counterexamples to any layer-LHL optimum, and we confirm the development-selected allocation on a strict 276-object holdout in one seeded runner under a pre-registered protocol (the Core-7 matrix).
 
-(4) We map the evidence boundary honestly: a 12-object GLB baking and
-unseen-view case study extended to the layer-wise family with same-draw
-global controls, a global stage-placement follow-up, and a second-backbone
-audit that replicates the global stage effect but not yet the layer-wise
-method.
+(4) We map the evidence boundary honestly: layer redistribution transfers to one additional adapter architecture under a prespecified topology-derived grouping while temporal placement does not consistently separate there, the negative MVDiffusion result is preserved as an interface boundary, and a 12-object GLB baking and unseen-view case study with corrected UV-seam measurement provides bounded practical evidence.
 
 \section{Related Work}
 \label{sec:related}
@@ -111,7 +107,7 @@ This paper builds on the MVPainter-style geometry-controlled multi-view texture 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{fig1_layerwise_20260930.pdf}
-\caption{Method overview. The frozen multi-view diffusion UNet receives geometry-conditioned residuals from the GeoTex-Adapter at three UNet depth groups (deep, middle, shallow). Layer-wise stage-aware adapter scaling assigns each depth group its own stage-dependent scale $s_l(p_t)$; the example shows the layer-LHL schedule and the per-group caps. Scales are assigned per denoising step; no network weight is modified. The final multi-view outputs are projected and baked into a textured 3D mesh.}
+\caption{Method overview. The frozen multi-view diffusion UNet receives geometry-conditioned residuals from the GeoTex-Adapter at three UNet depth groups (deep, middle, shallow). L-TCAS assigns each depth group its own stage-dependent scale $s_l(p_t)$, collected in the allocation matrix $S=[s_{l,k}]$; the example shows the layer-LHL schedule and the per-group caps. Scales are assigned per denoising step; no network weight is modified. The final multi-view outputs are projected and baked into a textured 3D mesh.}
 \label{fig:overview}
 \end{figure*}
 
@@ -126,6 +122,58 @@ The geometric adapter maps these conditions to a residual correction term and in
 \label{eq:injection}
 \end{equation}
 where $\mathbf{h}_t$ and $\mathbf{h}'_t$ denote the hidden states before and after injection, $p_t$ denotes the sampling progress, and $s(p_t)$ is the adapter scaling strength at the current denoising stage. This formulation highlights a key difference from CFG-style guidance: changing $s(p_t)$ does not reweight two predicted scores, but changes the magnitude of a geometry-conditioned residual added to the feature stream. A larger $s$ usually enhances geometric condition adherence. However, if strong residuals are continuously applied in the late denoising stage, they may suppress the synthesis of color, material, and high-frequency details by the base diffusion model. This paper therefore studies how to schedule $s$ during denoising to balance shape consistency and texture detail preservation.
+
+\subsection{Layer-wise Timestep-Conditioned Adapter Scaling}
+\label{subsec:tcas}
+
+The diffusion denoising process is stage-dependent: early steps mainly establish the global layout and coarse contours; middle steps refine geometric structure and cross-view alignment; late steps are more responsible for color, material, and local texture synthesis. We first introduce Timestep-Conditioned Adapter Scaling (TCAS), the shared-layer form that replaces a globally fixed adapter scale with a stage-dependent scale function; TCAS is retained as the shared-layer baseline throughout the experiments. TCAS is not intended as a generic smooth guidance schedule. Its low-high-low form encodes the adapter-specific hypothesis that geometry residuals should be strongest only after coarse structure becomes stable and before late texture synthesis dominates. To avoid ambiguity caused by different raw timestep directions in different schedulers, we use sampling progress $p$ to represent the denoising process, where $p = 0$ denotes the start from noise and $p = 1$ denotes the end of sampling close to the final image state. TCAS divides denoising into early, middle, and late stages:
+\begin{equation}
+s(p) = \begin{cases} s_e, & 0 \leq p < 1/3 \\ s_m, & 1/3 \leq p < 2/3 \\ s_l, & 2/3 \leq p \leq 1 \end{cases},
+\label{eq:tcas}
+\end{equation}
+and the previously studied shared-layer C3 configuration is $(s_e, s_m, s_l) = (1.25, 2.50, 1.25)$. This design follows the hypothesis that early correction can disturb global formation, middle correction can strengthen geometric alignment, and late correction can compete with texture synthesis.
+
+The main object of this paper is the layer-wise generalization of this control. We collect the per-group, per-stage scales into an allocation matrix
+\begin{equation}
+S=[s_{l,k}],\quad l\in\{\text{deep},\text{middle},\text{shallow}\},\ k\in\{\text{early},\text{middle},\text{late}\},
+\label{eq:allocation}
+\end{equation}
+and inject the adapter residual as
+\begin{equation}
+\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_{l}(p_t)\,A_l(\mathbf{h}_{l,t},\mathbf{G}),
+\label{eq:layer_tcas}
+\end{equation}
+where $A_l$ denotes the adapter correction injected at depth group $l$ and $s_l(p)$ can be fixed or stage-dependent. We call this control L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling). The formulation makes two control axes explicit: redistributing residual strength across depth groups (the row-wise structure of $S$) and placing high or low scales along denoising stages (the column-wise structure of $S$). Shared-layer TCAS and any globally fixed scale are special cases of $S$ with identical rows; the layer-LHL and layer-LLH schedules used in the experiments are two particular column assignments.
+
+\subsection{Implementation Semantics and Cost}
+\label{subsec:impl}
+
+Concretely, the adapter residuals are injected through wrapped residual blocks of the three UNet up-blocks; the injection blocks map to depth groups as
+$\mathrm{up}_0\to$ deep, $\mathrm{up}_1\to$ middle, and
+$\mathrm{up}_2\to$ shallow. The development-selected, holdout-frozen
+implementation caps are $c_l=3.0,3.5,0.8$ for deep, middle, and shallow;
+they were selected during development and frozen before strict-276 evaluation, with no cap retuning on that
+cohort. At stage $k$, the effective scale is
+$\tilde{s}_{l,k}=\min(s_{l,k},c_l)$. The representative layer-LHL configuration uses
+$(1.25,2.50,1.25)$ for deep and middle groups and $(0.50,0.75,0.50)$ for the
+shallow group; none of these values reaches a cap. All seven conditions in
+the strict-276 Core-7 use this same capped implementation. The earlier
+clean-v2 and stage-placement panels used uncapped legacy semantics and are
+retained only as within-panel diagnostics, not pooled with Core-7. The
+shared-input ablation also evaluates
+layer-fixed-low, layer-fixed-mean (the exact 17/16/17 step means of
+layer-LHL: 1.65 for deep/middle and 0.58 for shallow), and layer-LLH
+controls. These controls are essential because they distinguish the benefit
+of reducing shallow residuals from the benefit of placing a high scale in a
+particular denoising stage.
+
+The method introduces no new trainable parameters and does not modify the
+base model, VAE, or adapter weights; it only updates residual multipliers
+during inference. Because the adapter correction $A_l(\mathbf{h}_{l,t},
+\mathbf{G})$ is computed whenever geometry conditioning is active, with or
+without scaling, the overhead of layer-wise scheduling is limited to per-step
+scale assignment (at most one multiplier per wrapped residual block) and does
+not add a network forward or measurable memory cost.
 
 \subsection{Shape-Texture Diagnostic Metrics}
 \label{subsec:metrics}
@@ -151,59 +199,8 @@ M_\text{tex} = \text{Var}(\text{Lap}(I_\text{out} \odot G_\text{mask})),
 \end{equation}
 where Lap denotes the Laplacian filter, $G_\text{mask}$ denotes the foreground mask, and Var denotes spatial variance. A larger $M_\text{tex}$ usually corresponds to richer local high-frequency variation. If structural metrics improve while Laplacian variance, RGB standard deviation, or gradient magnitude decreases, the improvement may mainly come from contour smoothing or boundary convergence rather than true texture quality improvement.
 
-\subsection{Stage-aware Adapter Scaling: Shared-layer TCAS and the Layer-wise Form}
-\label{subsec:tcas}
-
-The diffusion denoising process is stage-dependent: early steps mainly establish the global layout and coarse contours; middle steps refine geometric structure and cross-view alignment; late steps are more responsible for color, material, and local texture synthesis. Based on this observation, we first introduce Timestep-Conditioned Adapter Scaling (TCAS), the shared-layer form that replaces a globally fixed adapter scale with a stage-dependent scale function; TCAS is retained as the shared-layer baseline throughout the experiments. TCAS is not intended as a generic smooth guidance schedule. Its low-high-low form encodes the adapter-specific hypothesis that geometry residuals should be strongest only after coarse structure becomes stable and before late texture synthesis dominates. The layer-wise form defined next---assigning each depth group its own schedule---is the main method of this paper.
-
-To avoid ambiguity caused by different raw timestep directions in different schedulers, we use sampling progress $p$ to represent the denoising process, where $p = 0$ denotes the start from noise and $p = 1$ denotes the end of sampling close to the final image state. TCAS divides denoising into early, middle, and late stages:
-\begin{equation}
-s(p) = \begin{cases} s_e, & 0 \leq p < 1/3 \\ s_m, & 1/3 \leq p < 2/3 \\ s_l, & 2/3 \leq p \leq 1 \end{cases}.
-\label{eq:tcas}
-\end{equation}
-
-The previously studied shared-layer C3 configuration is:
-\begin{equation}
-(s_e, s_m, s_l) = (1.25, 2.50, 1.25).
-\end{equation}
-
-This design follows the hypothesis that early correction can disturb global
-formation, middle correction can strengthen geometric alignment, and late
-correction can compete with texture synthesis. The new layer-wise form makes
-this control explicit. For a UNet depth group $l\in\{\text{deep},\text{middle},
-\text{shallow}\}$, we use
-\begin{equation}
-\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)\,A_l(\mathbf{h}_{l,t},\mathbf{G}),
-\label{eq:layer_tcas}
-\end{equation}
-where $s_l(p)$ can be fixed or stage-dependent. Concretely, the adapter
-residuals are injected through wrapped residual blocks of the three UNet
-up-blocks; the injection blocks map to depth groups as
-$\mathrm{up}_0\to$ deep, $\mathrm{up}_1\to$ middle, and
-$\mathrm{up}_2\to$ shallow. The development-selected, holdout-frozen
-implementation caps are $c_l=3.0,3.5,0.8$ for deep, middle, and shallow;
-they were frozen before strict-276 evaluation, with no cap retuning on that
-cohort. At stage $k$, the effective scale is
-$\tilde{s}_{l,k}=\min(s_{l,k},c_l)$. The representative layer-LHL configuration uses
-$(1.25,2.50,1.25)$ for deep and middle groups and $(0.50,0.75,0.50)$ for the
-shallow group; none of these values reaches a cap. All seven conditions in
-the strict-276 Core-7 use this same capped implementation. The earlier
-clean-v2 and stage-placement panels used uncapped legacy semantics and are
-retained only as within-panel diagnostics, not pooled with Core-7. The
-shared-input ablation also evaluates
-layer-fixed-low, layer-fixed-mean (the exact 17/16/17 step means of
-layer-LHL: 1.65 for deep/middle and 0.58 for shallow), and layer-LLH
-controls. These controls are essential because they distinguish the benefit
-of reducing shallow residuals from the benefit of placing a high scale in a
-particular denoising stage.
-
-The method introduces no new trainable parameters and does not modify the
-base model, VAE, or adapter weights; it only updates residual multipliers
-during inference. Because the adapter correction $A_l(\mathbf{h}_{l,t},
-\mathbf{G})$ is computed whenever geometry conditioning is active, with or
-without scaling, the overhead of layer-wise scheduling is limited to per-step
-scale assignment (at most one multiplier per wrapped residual block) and does
-not add a network forward or measurable memory cost.
+\subsection{Schedule Interpretation and Learned Extensions}
+\label{subsec:cai}
 
 \paragraph{How the stage schedule is selected: the CAI interpretation}
 We use Correction--Alignment--Interference (CAI) as an empirical diagnostic, not as a theorem or a guaranteed selector. The stage utility notation $U_k=Q(\text{high scale only in }k)-Q(L)$ is useful for describing the results. LLH--GFL is a combined allocation effect. Controlled contrasts show that depth redistribution and temporal placement are experimentally distinguishable control axes, but the current evidence does not identify additive causal contributions in dB. The shared-input ablation shows that layer-fixed-mean and layer-LLH can outperform layer-LHL, so CAI does not identify a unique temporal schedule. Texture diagnostics are treated as variation indicators; fidelity is assessed separately with masked perceptual and color-error metrics. In the independent MV-Adapter audit, the pre-specified CAI rule is set-valued/undefined.
@@ -212,16 +209,8 @@ We use Correction--Alignment--Interference (CAI) as an empirical diagnostic, not
 The CAI interpretation is adapter-dependent. Changing the adapter, residual magnitude, layer semantics, or backbone requires re-estimating the stage utilities and repeating the paired comparison. Confidence intervals describe uncertainty in the measured utilities; they do not establish equivalence or non-inferiority. The independent-backbone experiment therefore tests whether stage-position effects are observable under another implementation, not whether C3, LHL, or layer-LHL is a universal choice.
 \end{remark}
 
-\subsection{GeoTex-Adapter and FAC Adaptive Extension}
-\label{subsec:fac}
-
-GeoTex-Adapter, the scaling controls, and FAC correspond to three complementary dimensions of adapter control. GeoTex-Adapter determines what geometric residual correction should be injected. The shared-layer TCAS and the layer-wise form determine when and where the residual should be strengthened or weakened. FAC further modulates the residual in a fine-grained manner along spatial positions and frequency components.
-
-GeoTex-Adapter is used as a fixed geometric residual backbone. It receives a 5-channel geometric input consisting of a 3-channel normal map, a 1-channel depth map, and a 1-channel foreground mask. A multi-scale geometric encoder produces a feature pyramid, and residual corrections are injected into multiple resolution levels of the UNet. The stage-aware scaling acts on the temporal and per-depth-group scale of these residuals to control the influence of geometric conditions without changing the adapter architecture.
-
-To further examine whether stage-wise adapter control can be extended to learned adaptive correction, we also conduct experiments with Full Adaptive Correction (FAC). FAC contains three lightweight modules: LTAG learns timestep-dependent gating, GSG generates spatial gates from geometric features, and FSC performs frequency-selective correction on adapter residuals. Unlike the fixed schedules, FAC finely modulates adapter residuals in the temporal, spatial, and frequency domains. In the extension experiments, FAC uses the shared-layer TCAS schedule as its base and further adds GSG and FSC for spatial and frequency correction.
-
-It should be emphasized that FAC requires learning a small number of additional parameters, whereas the training-free scaling family (shared-layer and layer-wise) is the main method of this paper. FAC is used only as a learned adaptive extension; Section~\ref{subsec:facexp} reports a controlled re-examination that delimits when learned modulation can be expected to help.
+\paragraph{GeoTex-Adapter and the learned FAC extension}
+GeoTex-Adapter is the fixed geometric residual backbone of this study: it receives a 5-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), and a multi-scale geometric encoder produces a feature pyramid whose residual corrections are injected into multiple UNet resolution levels; L-TCAS acts only on the temporal and per-depth-group scale of these residuals. To examine whether stage-wise control extends to learned modulation, we also evaluate Full Adaptive Correction (FAC), which adds three lightweight modules on top of the shared-layer TCAS base: LTAG (timestep gating), GSG (spatial gating), and FSC (frequency-selective correction). FAC requires learning a small number of additional parameters, whereas the training-free allocation family is the main method of this paper; Section~\ref{subsec:facexp} reports a controlled re-examination that delimits when learned modulation can be expected to help, and the training details are in Supplementary S7.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -235,7 +224,7 @@ Experiments are conducted using an MVPainter-style geometry-controlled multi-vie
 
 Except for the FAC extension experiment, the saved clean-v2 scaling records keep the object list, fetched reference/conditioning batch, target views, PyTorch initial latent, base UNet, VAE, adapter weights, and number of denoising steps fixed within each object; only the adapter scale or schedule is changed. Those historical records predate explicit Python/NumPy dataset-side seed control, so they are not presented as exact-repeat determinism evidence. All new reruns use Python, NumPy, and PyTorch seeds fixed before dataset construction and before each object. The number of sampling steps is 50. The historical 24-object probe nominated C3 before the larger evaluation records were generated. Current baseline-family claims use the capped strict-276 Core-7; the earlier clean-v2 and stage-placement tables are legacy uncapped diagnostics and are interpretable only within their respective panels. The probe-to-holdout protocol isolates the effect of adapter scaling from changes in model architecture, training data, sampling budget, or evaluation-set tuning.
 
-Accordingly, the comparisons in this paper are comparisons among inference-time adapter scaling strategies under the same base pipeline, rather than a system-level benchmark among different texture generation architectures. Uniform adapter scales serve as the primary deployment baselines because they correspond to the most direct way of choosing a single fixed adapter strength at inference time. The probe variants further test whether the trade-off can be resolved by simple alternatives such as globally high scales, layer-wise redistribution, or moving high adapter strength to early, late, or multiple denoising stages. Stage-aware scaling changes only how this strength is scheduled across denoising stages and depth groups.
+Accordingly, the comparisons in this paper are comparisons among inference-time adapter scaling strategies under the same base pipeline, rather than a system-level benchmark among different texture generation architectures. Uniform adapter scales serve as the primary deployment baselines because they correspond to the most direct way of choosing a single fixed adapter strength at inference time. The probe variants further test whether the trade-off can be resolved by simple alternatives such as globally high scales, layer-wise redistribution, or moving high adapter strength to early, late, or multiple denoising stages. L-TCAS changes only how this strength is scheduled across denoising stages and depth groups.
 
 \subsubsection{Evaluation sets and metrics}
 
@@ -254,7 +243,9 @@ The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion
 FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the three foreground variation diagnostics are computed on foreground pixels and are not interpreted as texture fidelity without their GT-relative errors. The main tables use GeoTex-Adapter \texttt{geotex\_refattn\_v1/geotex\_step\_0002000.pt} trained on the 1{,}118-object pool. The separate strong-residual/FAC records are labeled as an independent extension protocol and are not pooled with the clean-v2 main-adapter tables. Checkpoint and object-list hashes are recorded in the round-two evidence freeze and reproducibility package.
 
 \paragraph{Statistical reporting}
-Object-level paired comparisons report 95\% percentile bootstrap confidence intervals with 10{,}000 resamples, a fixed seed, and object win rates; the direction is reversed for lower-is-better metrics. A confidence interval crossing zero is described as no detected difference, not as evidence of equivalence or non-inferiority. Where a mean is accompanied by $\pm$, the quantity is the standard deviation across objects. The stage-placement follow-up is labeled as such and is not treated as a blind confirmation.\subsection{Visible complete-object evidence}
+Object-level paired comparisons report 95\% percentile bootstrap confidence intervals with 10{,}000 resamples, a fixed seed, and object win rates; the direction is reversed for lower-is-better metrics. A confidence interval crossing zero is described as no detected difference, not as evidence of equivalence or non-inferiority. Where a mean is accompanied by $\pm$, the quantity is the standard deviation across objects. The stage-placement follow-up is labeled as such and is not treated as a blind confirmation.
+
+\subsection{Visible complete-object evidence}
 \label{subsec:visual}
 
 The numerical comparisons are accompanied by complete-object panels so that
@@ -298,6 +289,51 @@ stage-conditioned control, but are not relabeled as clean-v2 aggregate
 evidence. In particular, visual texture preservation is interpreted together
 with the fixed-low and LLH counterexamples in the current tables.
 
+\subsection{Core-7: pre-registered same-runner holdout on the strict cohort}
+\label{subsec:core7}
+\label{subsec:confirmation}
+
+Because the development probes select layer-LLH (Section~\ref{subsec:layerablation}), we evaluate the allocation on the strict 276-object holdout under a protocol written before any holdout number was observed (Supplementary S11). The Core-7 matrix runs seven conditions in one seeded runner under the same capped implementation semantics (Section~\ref{subsec:impl}): the unmodified pipeline (no adapter), the three global schedules (fixed-low, fixed-high, C3), and three layer-wise schedules (fixed-mean, the layer-LHL replica, and the development-selected layer-LLH). Four of these rows---global fixed-low, layer-fixed-mean, the layer-LHL replica, and layer-LLH---are the pre-registered confirmation candidates; the no-adapter, global fixed-high, and global C3 arms complete the baseline family under the same frozen protocol (object seeds $42+\mathrm{idx}$, latent seed 42, 50 Euler steps, unique6 views). Per-object seeds fix the reference preprocessing draw, the initial latent, and the condition-VAE path, so all comparisons below are same-runner paired. Table~\ref{tab:core7} reports the means; paired object-level 95\% bootstrap intervals (10,000 resamples) are given in the text.
+
+\begin{table}[t]
+\centering
+\caption{Strict-276 Core-7 same-runner matrix under the capped implementation (means over 276 objects). Rows GFL/LFM/LHL(replica)/LLH are the pre-registered confirmation candidates; No adapter, GFH, and GC3 complete the baseline family under the same frozen protocol. Best value per column in bold. Absolute values are not pooled with the legacy uncapped panels (Supplementary S2--S3).}
+\label{tab:core7}
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Condition & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
+\midrule
+No adapter & 10.563 & 0.7282 & 0.6260 & 8.826 & \textbf{0.4799} & 0.2059 & 0.4794 \\
+Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
+Global fixed-high & 18.242 & 0.8498 & \textbf{0.1967} & 13.153 & 0.4783 & 0.1677 & \textbf{0.5538} \\
+Global C3 & 18.968 & 0.8510 & 0.2029 & 11.939 & 0.4296 & 0.1817 & 0.5278 \\
+Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
+Layer-LHL (replica) & 19.635 & 0.8486 & 0.2278 & 12.974 & 0.4445 & 0.1719 & 0.5273 \\
+Layer-LLH & \textbf{20.828} & \textbf{0.8514} & 0.1988 & \textbf{13.975} & 0.4620 & \textbf{0.1610} & 0.5476 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The four primary reference-fidelity metrics all favor layer-LLH: FG-PSNR 13.975, FG-LPIPS 0.1610, Full-PSNR 20.828, and Full-SSIM 0.8514 are the best of the seven same-runner conditions. We do not claim dominance across all metrics: the unmodified pipeline retains the best FG-SSIM (0.4799), and global fixed-high retains the best Full-LPIPS (0.1967) and Edge-SSIM (0.5538). Layer-LLH thus provides the strongest overall reference-fidelity profile among the seven conditions while retaining explicit metric-dependent trade-offs.
+
+For the three arms that complete the baseline family, paired contrasts (layer-LLH minus the comparator; positive values favor LLH under the metric direction) are as follows. Against no adapter, FG-PSNR is $+5.149$~dB $[+4.896,+5.396]$, Full-PSNR $+10.265$~dB $[+10.106,+10.421]$, and Edge-SSIM $+0.068$, while the unmodified pipeline is better on FG-SSIM ($-0.018$), consistent with its globally smoother outputs. Against global fixed-high, FG-PSNR is $+0.822$~dB $[+0.617,+1.033]$ (148/128 wins) and Full-PSNR $+2.585$~dB $[+2.400,+2.769]$ (272/4), while global fixed-high retains better FG-SSIM ($-0.016$), Full-LPIPS ($-0.002$), and Edge-SSIM ($-0.006$); global fixed-high versus global fixed-low itself shows no detected Full-PSNR difference, so its FG-PSNR advantage is not a full-baseline improvement. Against global C3, FG-PSNR is $+2.037$~dB $[+1.807,+2.261]$ (227/49) with no detected Full-SSIM difference.
+
+The pre-registered confirmation contrasts keep their protocol-locked analysis. Layer-LLH is better than layer-fixed-mean on all seven metrics, with paired 95\% intervals excluding zero: Full-PSNR $+1.311$~dB $[+1.219,+1.400]$ (275/276 wins), FG-PSNR $+0.875$~dB $[+0.769,+0.982]$ (240/276), FG-LPIPS $-0.0089$ $[-0.0097,-0.0081]$ (258/276), Edge-SSIM $+0.0113$ $[+0.0101,+0.0125]$, Full-LPIPS $-0.0094$, Full-SSIM $+0.0011$, and FG-SSIM $+0.0070$. Layer-LLH is also better than the layer-LHL replica on all seven metrics with intervals excluding zero: Full-PSNR $+1.193$~dB $[+1.123,+1.262]$ (276/276 wins), FG-PSNR $+1.001$~dB $[+0.907,+1.097]$ (261/276), FG-LPIPS $-0.0110$ $[-0.0118,-0.0101]$ (264/276), Edge-SSIM $+0.0203$ $[+0.0187,+0.0219]$, Full-SSIM $+0.0028$, Full-LPIPS $-0.0290$, and FG-SSIM $+0.0174$. Layer-fixed-mean versus the replica is mixed---fixed-mean is better on FG-LPIPS ($+0.0021$), FG-PSNR ($+0.126$), and Edge-SSIM ($+0.0090$), while the replica is better on Full-PSNR ($+0.119$)---matching the metric-dependent development picture. The seeded layer-LHL replica is the only layer-LHL row retained for quantitative confirmation; the earlier historical record is excluded because its complete runner-time provenance cannot be reconstructed, and preprocessing-realization audits do not explain that discrepancy. Against the global fixed-low control, layer-LLH is better on all seven metrics with intervals excluding zero: FG-PSNR $+3.244$~dB $[+2.936,+3.542]$ (242/276 wins), FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$ (261/276), Full-PSNR $+2.599$~dB $[+2.353,+2.838]$ (249/276), Edge-SSIM $+0.0276$ $[+0.0242,+0.0308]$, and Full-LPIPS $-0.0119$; layer-fixed-mean is likewise better on all seven metrics (FG-PSNR $+2.369$~dB $[+2.155,+2.576]$), while the layer-LHL replica is better on six of seven and the global control retains better Full-LPIPS ($+0.0170$ in the replica-minus-global direction, $[+0.0138,+0.0206]$). These holdout results confirm the development-probe directions for the promoted candidates; they do not re-open schedule selection.
+
+Two earlier strict-276 panels---the clean-v2 four-condition table and the stage-placement follow-up with its saved-artifact Full-SSIM branch---were produced under the earlier uncapped runner semantics. They are retained as legacy within-panel diagnostics in Supplementary S2 and S3, are not pooled with the Core-7, and no current baseline-family ranking is taken from them. The follow-up retains one bounded use as a within-panel stage-placement sensitivity check and a CAI counterexample (LLH better than LHL on all six non-SSIM metrics within that panel, including the budget-matched HLL--LLH pair).
+
+\paragraph{Comparison with generic schedules.}
+The original-protocol schedule audit also includes linear warm-up and cosine
+bump controls, reported separately in Supplementary S5. Those results are
+useful as a schedule-family comparison within the strong-residual audit, but
+they do not constitute a new clean-v2 experiment and are not pooled with
+Table~\ref{tab:core7}. Thus, the evidence supports L-TCAS as a concrete
+alternative to both fixed scales and common monotone/smooth schedules under
+the tested adapter, not as a universally superior schedule family.
+
+\FloatBarrier
 \subsection{Shared-input layer-wise ablation}
 \label{subsec:layerablation}
 
@@ -431,198 +467,46 @@ shared-input probe runs of overlapping schedules show that the LLH-over-LHL
 direction is stable in both, whereas small differences among
 \{LLL, LHL, layer-fixed-mean\} change sign between probe runs
 (Supplementary S10). We therefore claim only the robust directions---late-high
-helps, early-high hurts, layer-wise beats global fixed-low---and we confirm
-the development-selected pattern on the strict holdout below.
+helps, early-high hurts, layer-wise beats global fixed-low---and we evaluate
+the development-selected pattern on the strict holdout
+(Section~\ref{subsec:core7}).
 
-\subsection{Strict holdout and stage-placement evidence}
-\label{subsec:largescale}
+\subsection{Texture and robustness audits}
+\label{subsec:texture}
 
-The current main-adapter evidence is reported in two explicitly separated
-panels, both retained as legacy uncapped diagnostics under the earlier
-runner semantics. The first is the strict-276 slice of the clean-v2
-four-condition run (no adapter, fixed-low, fixed-high, and C3), evaluated
-with the pre-save float metric path. The second is a targeted
-stage-placement follow-up on the same 276 object IDs, with fixed-mean, HLL,
-LHL, and LLH generated in one run. The repeated C3 outputs are not identical
-across these two runners (for example, the mean absolute Full-SSIM
-difference on the common objects is 0.00395), so absolute values are not
-pooled across panels, and neither panel is pooled with the capped
-strict-276 Core-7 confirmation (Section~\ref{subsec:confirmation}). All
-paired comparisons within a panel use the same object IDs and seed.
+Two complementary texture audits and one realization-robustness check bound
+the texture claims; the two texture surfaces use different metric conventions
+and are never mixed or pooled.
 
-\begin{table}[t]
-\centering
-\caption{Strict-276 main-adapter clean-v2 panel (LEGACY UNCAPPED DIAGNOSTIC --- WITHIN-PANEL ONLY). Metrics are pre-save float-evaluation means over the same six unique views; the Full-SSIM column is retained as an audit value and is not silently substituted for the saved-artifact branch. This panel uses the earlier uncapped runner semantics and its values are not directly comparable with the capped strict-276 Core-7 confirmation.}
-\label{tab:strict276}
-\scriptsize
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrrrrrr}
-\toprule
-Method & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
-\midrule
-No adapter & 10.514 & 0.726 & 0.627 & 8.776 & 0.478 & 0.207 & 0.479 \\
-Fixed-low & 15.086 & 0.850 & 0.194 & 7.030 & 0.355 & 0.202 & 0.500 \\
-Fixed-high & 13.365 & 0.823 & 0.190 & 5.410 & 0.229 & 0.210 & 0.494 \\
-C3 (LHL) & 14.875 & 0.855 & 0.190 & 6.763 & 0.348 & 0.201 & 0.500 \\
-\bottomrule
-\end{tabular}}
-\end{table}
+\paragraph{Part A: same-runner GT-distance probes.}
+On the strict-276 Core-7 runner, texture descriptors are evaluated as
+GT-relative distances (absolute value of the generated-minus-GT symmetric
+log-ratio). Layer-LLH is significantly closer to the GT statistics than
+global fixed-low on all four probes (e.g.\ gradient-magnitude distance
+$+0.0576$ in LLH's favor), while against layer-fixed-mean and the layer-LHL
+replica the high-frequency-energy probe reverses in their favor
+($-0.00081$ and $-0.00135$) and the RGB-standard-deviation probe shows no
+detected difference against the replica. We therefore describe the texture
+result as closest-to-GT statistics with listed exceptions, not as an
+unqualified texture improvement.
 
-Within this legacy uncapped panel, the four-condition comparison is a
-non-dominance result: C3 is above fixed-high on foreground PSNR/SSIM and is
-close to fixed-low on foreground LPIPS and Edge-SSIM, but fixed-low has
-higher Full-PSNR, FG-PSNR, and FG-SSIM. This non-dominance reading holds
-within the legacy uncapped panel only; the current baseline-family ranking
-is taken from the capped strict-276 Core-7 confirmation
-(Section~\ref{subsec:confirmation}), not from this table.
+\paragraph{Part B: offline CIEDE2000 audit of the stage-placement panel.}
+A separate offline audit recomputes CIEDE2000 color error on the saved
+stage-placement images (legacy uncapped panel; one out-of-distribution
+foreground excluded, $n=275$). Layer-LLH minus fixed-mean is
+$+2.791$ $[+2.553,+3.048]$ (271/275 wins) and layer-LLH minus HLL is
+$+4.993$ $[+4.577,+5.425]$ (268/275), while layer-LLH minus the panel's
+C3/LHL row is $+0.272$ $[+0.098,+0.469]$ (138/275), a small within-family
+margin. Part A and Part B differ in mask erosion, value convention, and
+cohort, so their numbers are reported side by side but never combined.
 
-An earlier layer-LHL record was excluded from all quantitative claims
-because its runner-time code state cannot be assigned complete reproducible
-provenance. All current holdout comparisons therefore use the seeded
-same-runner records described below
-(Section~\ref{subsec:confirmation}). The shared-input development ablation
-above confirms the direction of the foreground gain but also shows that
-layer-LHL is not the unique best temporal schedule.
-
-\begin{table}[t]
-\centering
-\caption{Stage-placement follow-up on the strict 276-object cohort (LEGACY UNCAPPED DIAGNOSTIC --- WITHIN-PANEL ONLY). These are the six non-SSIM metrics from one paired run; the schedules are GLOBAL (one scale per stage applied to all depth groups), with 17/16/17 early/middle/late steps. Lower is better for LPIPS. Values use the earlier uncapped runner semantics and are not directly comparable with the capped strict-276 Core-7 confirmation.}
-\label{tab:stage276}
-\scriptsize
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrrrrr}
-\toprule
-Schedule & Full-PSNR$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
-\midrule
-Fixed mean & 14.311 & 0.188 & 6.257 & 0.316 & 0.205 & 0.499 \\
-HLL & 13.397 & 0.202 & 5.583 & 0.259 & 0.212 & 0.464 \\
-LHL (C3) & 14.868 & 0.190 & 6.760 & 0.348 & 0.201 & 0.500 \\
-LLH & 15.136 & 0.181 & 6.937 & 0.357 & 0.200 & 0.536 \\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-As a legacy uncapped diagnostic, the follow-up provides within-panel
-evidence that stage placement matters, but it does not
-establish LHL as a universal choice, and its absolute values are not
-compared with the capped Core-7. LLH is better than LHL on all six metrics in
-Table~\ref{tab:stage276} under their intended directions. This is the central
-counterexample to interpreting CAI as a unique LHL selector. Notably, HLL and
-LLH have identical nominal budgets (mean 1.675, squared-scale sum 157.8125,
-16 high-scale steps each) and differ only in whether the high block sits
-early or late; LLH is better on all six non-SSIM metrics and on the
-saved-artifact Full-SSIM branch (0.88313 vs 0.85993), so the placement effect
-already appears under this budget-matched global pair. The nominal
-budgets are also not strictly equal: fixed mean has scale mean 1.6667 and
-squared-scale sum 138.8889; HLL and LLH have means 1.675 and squared-scale
-sum 157.8125; LHL has mean 1.650 and squared-scale sum 153.125. The recorded
-actual residual L2/RMS summaries show further stage-dependent differences, so
-the result is a stage-placement sensitivity study rather than a perfectly
-equal-effective-budget intervention.
-
-\begin{table}[t]
-\centering
-\caption{Saved-artifact Full-SSIM in the stage-placement follow-up (legacy uncapped semantics; within-panel only). Prediction is PNG-reloaded float32; GT is the original RGBA composited over white in float32. C3 deltas use object-level paired bootstrap with 10,000 resamples and seed 20260928.}
-\label{tab:serialized276}
-\small
-\begin{tabular}{lcc}
-\toprule
-Schedule & Full-SSIM$\uparrow$ & C3 paired difference \\
-\midrule
-Fixed mean & 0.87395 & +0.00749 \\
-HLL & 0.85993 & +0.02151 \\
-LHL (C3) & 0.88144 & reference \\
-LLH & 0.88313 & $-$0.00170 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The corresponding 95\% CIs for C3 minus fixed mean, HLL, and LLH are
-$[+0.00674,+0.00826]$, $[+0.01984,+0.02319]$, and
-$[-0.00205,-0.00134]$, respectively. The last interval is a detected loss for
-C3 on this saved-artifact Full-SSIM branch, not evidence that the schedules
-are equivalent. A 12-object saved-tensor decomposition fixes the GT branch
-before comparing representations: A fp16 to A fp32 changes mean SSIM by
-$+0.03198$; prediction PNG quantization changes it by $-0.00036$; and GT PNG
-serialization changes it by $-0.00007$. These diagnostic effects are not used
-to retrofit the historical 300-object table.
-
-\paragraph{Comparison with generic schedules.}
-The original-protocol schedule audit also includes linear warm-up and cosine
-bump controls, reported separately in Supplementary S5. Those results are
-useful as a schedule-family comparison within the strong-residual audit, but
-they do not constitute a new clean-v2 experiment and are not pooled with
-Table~\ref{tab:strict276}. Thus, the evidence supports stage-aware scaling as a concrete
-alternative to both fixed scales and common monotone/smooth schedules under
-the tested adapter, not as a universally superior schedule family.
-
-\FloatBarrier
-
-\subsubsection{Pre-registered confirmation on the strict holdout}
-\label{subsec:confirmation}
-
-Because the development probes select layer-LLH, we confirm the
-development-selected candidates on the strict 276-object holdout under a
-protocol written before any holdout number was observed
-(Section~\ref{subsec:layerablation} candidates; Supplementary S11). The
-confirmation set re-runs layer-LLH, layer-fixed-mean, a layer-LHL replica,
-and the global fixed-low control in one seeded runner (per-object seeds fixed
-for the reference preprocessing draw, initial latent, and condition-VAE
-path), so all comparisons below are same-runner paired. Table~\ref{tab:confirmation} reports the means; paired
-object-level 95\% bootstrap intervals (10,000 resamples) are given in the
-text.
-
-\begin{table}[t]
-\centering
-\caption{Strict-276 same-runner confirmation of the pre-registered layer-wise
-candidates (seeded capped protocol; means over 276 objects). Absolute values
-are not pooled with Tables~\ref{tab:strict276}--\ref{tab:stage276}, which are
-legacy uncapped diagnostics from different runner invocations.}
-\label{tab:confirmation}
-\scriptsize
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{lrrrrrrr}
-\toprule
-Schedule & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
-\midrule
-Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
-Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
-Layer-LHL (replica) & 19.635 & 0.849 & 0.2278 & 12.974 & 0.445 & 0.1719 & 0.5273 \\
-Layer-LLH & 20.828 & 0.8514 & 0.1988 & 13.975 & 0.4620 & 0.1610 & 0.5476 \\
-\bottomrule
-\end{tabular}}
-\end{table}
-
-Layer-LLH is better than layer-fixed-mean on all seven metrics, with paired
-95\% intervals excluding zero: Full-PSNR $+1.311$~dB $[+1.219,+1.400]$
-(275/276 wins), FG-PSNR $+0.875$~dB $[+0.769,+0.982]$ (240/276), FG-LPIPS
-$-0.0089$ $[-0.0097,-0.0081]$ (258/276), Edge-SSIM $+0.0113$
-$[+0.0101,+0.0125]$, Full-LPIPS $-0.0094$, Full-SSIM $+0.0011$, and FG-SSIM
-$+0.0070$. Layer-LLH is also better than the layer-LHL replica on all seven metrics
-with intervals excluding zero: Full-PSNR $+1.193$~dB $[+1.123,+1.262]$
-(276/276 wins), FG-PSNR $+1.001$~dB $[+0.907,+1.097]$ (261/276), FG-LPIPS
-$-0.0110$ $[-0.0118,-0.0101]$ (264/276), Edge-SSIM $+0.0203$
-$[+0.0187,+0.0219]$, Full-SSIM $+0.0028$, Full-LPIPS $-0.0290$, and FG-SSIM
-$+0.0174$. Layer-fixed-mean versus the replica is mixed---fixed-mean is
-better on FG-LPIPS ($+0.0021$), FG-PSNR ($+0.126$), and Edge-SSIM
-($+0.0090$), while the replica is better on Full-PSNR ($+0.119$)---matching
-the metric-dependent development picture. The seeded layer-LHL replica is
-the only layer-LHL row retained for quantitative confirmation. The earlier
-historical record is excluded because its complete runner-time provenance
-cannot be reconstructed; preprocessing-realization audits do not explain
-that discrepancy. The within-run orderings above are paired and seeded.
-Against the global fixed-low control, layer-LLH is better on all seven
-metrics with intervals excluding zero: FG-PSNR $+3.244$~dB $[+2.936,+3.542]$
-(242/276 wins), FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$ (261/276), Full-PSNR
-$+2.599$~dB $[+2.353,+2.838]$ (249/276), Edge-SSIM $+0.0276$
-$[+0.0242,+0.0308]$, and Full-LPIPS $-0.0119$; layer-fixed-mean is likewise
-better on all seven metrics (FG-PSNR $+2.369$~dB $[+2.155,+2.576]$),
-while the layer-LHL replica is better on six of seven and the global control
-retains better Full-LPIPS ($+0.0170$ in the replica-minus-global direction,
-$[+0.0138,+0.0206]$). These holdout results confirm the development-probe
-directions for the two promoted candidates; they do not re-open schedule
-selection, and the earlier historical layer-LHL record is excluded from all
-quantitative claims and retained only as a forensic artifact.
+\paragraph{Realization robustness.}
+The paired conclusions are stable across two frozen preprocessing
+realization sets (R0/R1): 27 of 28 audited contrasts are STABLE\_STRONG and
+one is STABLE\_DIRECTIONAL. Preprocessing-realization audits do not explain
+the earlier historical layer-LHL discrepancy described in
+Section~\ref{subsec:core7}; that record remains excluded from quantitative
+claims.
 
 \subsection{Baking and unseen-view case study}
 \label{subsec:baking}
@@ -688,10 +572,24 @@ stratified 12-object case study with the same limitations as above (no GT
 bake, no DISTS), so it is evidence about the layer-wise comparison, not a
 population-level 3D advantage claim.
 
+\paragraph{Corrected UV-seam audit.}
+A corrected seam metric with an explicit seam-pair denominator was validated
+on positive and negative controls and applied to the 96 exported GLBs of the
+bake queue in texture space. Within the same-draw generation (fresh global
+and layer-wise conditions plus the no-adapter reference), the seam
+$\Delta E_{00}$ mean-of-means ordering is layer-LLH 4.885 $<$ layer-LHL
+5.598 $<$ no adapter 6.467 $<$ global C3 7.545 $<$ global fixed-low 8.865;
+layer-LLH also has the lowest 90th-percentile seam error (14.56), while the
+tail fraction above 10 is comparable between layer-LLH (0.186) and layer-LHL
+(0.181). The earlier four-condition bake generation reports seam scalars
+under a denominator-free definition and is not pooled with these values.
+This is direct texture-space evidence within the case study; it does not
+extend to a population-level seam claim.
+
 \subsection{FAC Adaptive Correction Extension: A Controlled Re-examination}
 \label{subsec:facexp}
 
-The training-free schedules use fixed scale patterns, which have the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To examine whether stage-wise adapter control can be extended to learned adaptive correction, we trained the FAC extension---LTAG for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter---a latent noise-prediction MSE with $1.7\times$ foreground and $1.3\times$ edge spatial reweighting plus a latent-SSIM term---using AdamW (peak learning rate $10^{-4}$, 100 warm-up steps) for 2{,}000 steps on the adapter's training pool, which is strictly disjoint from all evaluation objects, and all variants are evaluated under the separately documented strong-residual, per-layer-capped audit protocol with identical objects, seeds, and evaluation code.
+The training-free schedules use fixed scale patterns, which have the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To examine whether stage-wise adapter control can be extended to learned adaptive correction, we trained the FAC extension---LTAG for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter on the adapter's training pool, which is strictly disjoint from all evaluation objects; training hyperparameters and the protocol details are in Supplementary S7, and all variants are evaluated under the separately documented strong-residual, per-layer-capped audit protocol with identical objects, seeds, and evaluation code.
 
 In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning joint, envelope-preserving, fidelity-weighted, and gently scheduled controllers. Their paired deficits relative to the training-free schedule range from $-1.1$ to $-2.9$~dB foreground PSNR (FG-PSNR; win rates at most 16\%). A warm-start control in which the gate is left untrained at the exact C3 envelope shows no detected difference from the fixed schedule (paired FG-PSNR $\Delta=-0.18$~dB on the 12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero); this interval does not prove equivalence or validate transfer. No configuration or hyperparameter was selected on any evaluation object; the complete dose--response study is provided in the supplementary material.
 
@@ -699,26 +597,17 @@ For transparency, we note that an initial evaluation of the FAC extension, condu
 
 The outcome delimits the tested extension and does not identify a causal mechanism: every trained configuration degraded the measured fidelity under this protocol, while the untrained envelope control did not show a detected difference. Learning a modulation that improves upon the fixed layer-wise controls therefore requires a training signal that protects foreground fidelity; this is future work. The FAC results are reported as a negative, separate extension study, not as a claim that the fixed schedules are the only viable methods.
 
-\FloatBarrier\subsection{Second-backbone audit and contribution boundary}
+\FloatBarrier\subsection{Transfer to other adapter interfaces}
 \label{subsec:adapterdep}
 
-We audited the stage-position question on an independent MV-Adapter
-implementation using an Exact-GLB cohort of 76 objects and 11 recorded
-conditions. The full table and paired bootstrap output are provided in the
-reproducibility package. Dynamic schedules with high scale 1.50 and 1.00 are
+We audited the allocation question on two additional interfaces: an
+MV-Adapter deployment (Exact-GLB cohort of 76 objects, 11 recorded global
+conditions) and an MVDiffusion deployment (75 objects). All cross-backbone
+comparisons are within-backbone paired contrasts; absolute scores are never
+pooled across backbones. Dynamic schedules with high scale 1.50 and 1.00 are
 kept as separate scale families; their rows are not pooled. The table below
-shows the paired schedule comparison and the conservative controls.
-
-One boundary must be stated before reading the table: this audit replicates
-the \emph{global} stage-position experiment on the second backbone. The
-MV-Adapter deployment applies one scalar to all injected residuals
-(ControlNet-style condition scaling), and although the injected residuals are
-technically a per-block list that could be scaled element-wise, a layer-wise
-mapping would additionally require a depth-group allocation, a recalibrated
-low/high pair, and a full rerun; this has not been done. The audit is
-therefore a global stage-position replication, not a cross-backbone
-validation of the layer-wise method, and the MVDiffusion deployment remains
-an interface diagnostic only.
+shows the paired global schedule comparison and the conservative controls on
+the MV-Adapter deployment.
 
 \begin{table}[t]
 \centering
@@ -740,17 +629,67 @@ LLH & 13.353 & 0.528 & 0.240 & 0.188 & 20.157 & 2.199 \\
 \end{tabular}}
 \end{table}
 
-The audit supports an observable stage-position effect within this backbone,
-but not a uniform practical gain. LHL has slightly higher FG-SSIM and
-Edge-SSIM than HLL and LLH in the paired schedule comparison, while LLH has the
-highest PSNR among those four and lower GT-relative texture error than LHL.
-LHL has no clear advantage over fixed-low or fixed mean under the paired
-confidence intervals. The frozen CAI rule is
+The global audit supports an observable stage-position effect within this
+backbone, but not a uniform practical gain. LHL has slightly higher FG-SSIM
+and Edge-SSIM than HLL and LLH in the paired schedule comparison, while LLH
+has the highest PSNR among those four and lower GT-relative texture error
+than LHL. LHL has no clear advantage over fixed-low or fixed mean under the
+paired confidence intervals. The frozen CAI rule is
 \texttt{undefined\_set\_valued}, and the
 official MV-Adapter pretraining UID list was unavailable, so pretraining
-disjointness is not asserted. We therefore treat this result as a within-
-backbone diagnostic, not as a cross-backbone causal validation or a unique
-schedule-selection result.
+disjointness is not asserted.
+
+\paragraph{Layer-wise transfer under a prespecified mapping.}
+The MV-Adapter injection points (four ordered down-block groups) were grouped
+into three contiguous depth groups by a mechanical topology-derived rule
+(shallow $=\{$p$_0\}$, middle $=\{$p$_1\}$, deep $=\{$p$_2,$p$_3\}$),
+written before the first layer-wise MV-Adapter holdout rows; profile values
+come from the frozen main-backbone layer profile with point-count
+normalization, not from MV-Adapter outcomes. Under this prespecified
+topology-derived grouping, the layer-wise effect is supported with
+metric-dependent direction: paired contrasts of the layer-wise conditions
+against their global counterparts exclude zero in favor of layer-wise
+scaling on PSNR ($+0.097$, $+0.101$, $+0.102$~dB), $\Delta E_{00}$
+($+0.344$, $+0.352$, $+0.313$), and GT-relative texture error ($+0.311$,
+$+0.286$, $+0.289$), while FG-SSIM and Edge-SSIM consistently favor the
+global conditions by a small margin ($-0.004$/$-0.001$) and FG-LPIPS is not
+separated. Temporal position is not consistently separated on this
+interface: the layer-wise LLH-versus-fixed-mean contrast and the global
+LLH-versus-LHL contrast are not separated, with only marginal single-metric
+terms in opposite directions. The mapping conclusion is bounded to the
+tested contiguous alternatives: the layer-wise advantage is robust across
+the tested contiguous mapping choices---a frozen-value reassignment of the
+deep/middle boundary leaves 16 of 18 audited contrasts stable and slightly
+strengthens the primary effects (P1 PSNR $+0.097\to+0.147$~dB,
+$\Delta E_{00}$ $+0.344\to+0.484$). Separately, a budget-neutral
+regrouping is indistinguishable from the registered mapping on all six
+metrics. We do not claim mapping-independent transfer.
+
+\paragraph{MVDiffusion: an interface-boundary experiment.}
+MVDiffusion scales a serial correspondence module, not an independent
+additive geometry residual: its CPBlock intervention interpolates the module
+output, $y'=(1-\alpha)x+\alpha\,\mathrm{CPBlock}(x)$, and the deployment
+path injects depth through latent concatenation, where scaling is not
+admissible; the literal additive branch never activates. The only adjustable
+surface is the replacement semantics of nine CPBlocks with a convex
+combination weight $\alpha$, and $\alpha\equiv 1$ reproduces the official
+path exactly (verified at tensor level, 36/36). This makes the experiment an
+interface boundary rather than a direct replication. Under this interface,
+the layer-wise result is not replicated and is preserved as found: PSNR,
+FG-/Edge-SSIM, and $\Delta E_{00}$ consistently and significantly favor the
+global conditions (e.g.\ L-LLH vs G-FL PSNR $-0.454$~dB, $\Delta E_{00}$
+$-1.373$), GT-relative texture error significantly favors the layer-wise
+conditions ($+0.082$), and FG-LPIPS is not separated. No scale, mapping, or
+schedule was re-searched to reverse this direction.
+
+In sum, layer redistribution partially transfers to MV-Adapter under a
+prespecified topology-derived grouping, with metric-dependent support;
+temporal placement is not consistently separated there. On MVDiffusion's
+non-isomorphic serial correspondence-module interface, the layer-wise result
+does not replicate, defining an architecture-dependent applicability
+boundary. Full per-contrast records, identity audits, and mapping-sensitivity
+protocols for both deployments are provided in the reproducibility package
+(Supplementary S6 and S12).
 
 \section{Limitations}
 \label{sec:limitations}
@@ -758,11 +697,13 @@ schedule-selection result.
 The contributions and the limits of this paper are those of a training-free
 inference control studied on one adapter family. First, the layer-wise
 evidence is bounded: the shared-input development ablation and the complete
-binary factorial are 24-object probe studies, and only the development-selected
-pattern (plus its layer-LHL representative) has strict-276 evidence. The
-development ranking is not a holdout ranking; small differences among
-constant-scale variants changed sign between two independent probe runs, so
-we claim only directions that held in both runs and on the holdout.
+binary factorial are 24-object probe studies, and the strict-276 evidence
+covers the Core-7 matrix---the pre-registered candidates plus the completed
+baseline arms---so the remaining temporal patterns of the factorial have no
+holdout rows. The development ranking is not a holdout ranking; small
+differences among constant-scale variants changed sign between two
+independent probe runs, so we claim only directions that held in both runs
+and on the holdout.
 
 Second, the temporal-placement comparisons are not strict
 equal-effective-budget interventions. The 50-step partition is 17/16/17 and
@@ -780,11 +721,12 @@ generated GT bake, no DISTS, and observed cross-view/source-fusion colour
 inconsistency; it must be read as an operational feasibility case study, not
 as a 3D quality advantage of any schedule.
 
-Fourth, the second-backbone audit replicates only the global stage-position
-experiment; a layer-wise cross-backbone validation would require a per-block
-scale interface, a depth-group allocation, and a recalibrated comparison on
-the MV-Adapter deployment, which we have not performed. Pretraining-UID
-disjointness for the official MV-Adapter release is unknown.
+Fourth, the transfer evidence is interface-bounded. The MV-Adapter layer-wise
+validation holds under the prespecified topology-derived grouping and the
+tested contiguous alternatives, not for arbitrary partitions; the
+MVDiffusion deployment cannot scale its depth pathway at all, so its
+negative result is specific to that serial correspondence-module interface.
+Pretraining-UID disjointness for the official MV-Adapter release is unknown.
 
 Fifth, Laplacian variance, RGB standard deviation, and gradient magnitude are
 variation proxies, not fidelity measures; we report them with GT-relative
@@ -798,29 +740,35 @@ surfaces and are not pooled.
 \section{Conclusion}
 \label{sec:conclusion}
 
-This paper presented layer-wise stage-aware adapter scaling, a training-free
-inference control that assigns each UNet depth group its own stage-dependent
-residual scale. The controlled evidence supports four conclusions. (1)~Moving
-from a global scale to depth-group scales improves foreground fidelity over
-global fixed-low under shared inputs (paired $+3.083$~dB FG-PSNR,
-$-0.0267$ FG-LPIPS on the development probe). (2)~Temporal placement within
-the layer-wise family matters, but the pattern is not unique: the complete
-binary factorial shows late-stage high scale helps and early-stage high scale
-hurts, with layer-LLH strongest on five of seven development metrics.
-(3)~The originally motivated layer-LHL is a representative, not an optimum:
-it is beaten by layer-LLH, layer-LHH, and the constant layer-LLL on the
-probe, and it enters the strict holdout only as a seeded same-runner
-confirmation row rather than as a selection. (4)~These effects are
-adapter- and metric-dependent: on the second backbone only the global
-stage-position effect was replicated, with mixed practical signs.
+This paper presented L-TCAS, a training-free inference control that
+formulates adapter strength as a layer-by-stage residual allocation matrix
+$S=[s_{l,k}]$ over UNet depth groups and denoising stages, with the
+shared-layer TCAS schedule as a special case. The controlled evidence
+supports four conclusions. (1)~Moving from a global scale to depth-group
+scales improves foreground fidelity over global fixed-low under shared
+inputs (paired $+3.083$~dB FG-PSNR, $-0.0267$ FG-LPIPS on the development
+probe). (2)~Temporal placement within the layer-wise family matters, but the
+pattern is not unique: the complete binary factorial shows late-stage high
+scale helps and early-stage high scale hurts, with layer-LLH strongest on
+five of seven development metrics. (3)~On the pre-registered strict-276
+same-runner Core-7, layer-LLH has the best mean on the four primary
+reference-fidelity metrics (FG-PSNR, FG-LPIPS, Full-PSNR, Full-SSIM) among
+the seven same-runner conditions, with explicit metric-dependent reversals
+on FG-SSIM, Full-LPIPS, and Edge-SSIM; the originally motivated layer-LHL
+enters the holdout only as a seeded same-runner confirmation row rather than
+as a selection. (4)~These effects are architecture- and metric-dependent:
+layer redistribution partially transfers to MV-Adapter under a prespecified
+topology-derived grouping, temporal placement does not consistently separate
+there, and the layer-wise result does not replicate on MVDiffusion's serial
+correspondence-module interface.
 
-The defensible contribution is therefore a concrete, reproducible,
-training-free layer-wise residual-scaling method, a complete temporal-pattern
-ablation with explicit counterexamples, and a mapped evidence boundary: no
-unique CAI selector, no universal schedule, no layer-wise cross-backbone
-validation, and no population-level 3D quality claim. The results motivate
-treating adapter strength as a layer- and stage-dependent control variable
-whose useful schedule must be re-estimated for each adapter and protocol.
+A geometry adapter should not be treated as having one inference-time
+strength. Its residuals can be allocated differently across network depth
+and denoising time. On the primary pipeline, layer-aware allocation
+materially improves reference fidelity under a strict same-runner holdout;
+across other interfaces, the layer and temporal components transfer
+differently. This establishes residual allocation as a useful inference
+control and also defines its architecture-dependent limits.
 
 \section*{Data availability}
 
