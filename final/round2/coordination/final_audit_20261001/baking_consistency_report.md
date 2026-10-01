@@ -38,7 +38,11 @@ inferential statistics; the cohort is a stratified case study, not a population 
 ## 3. Reading
 
 1. **layer_llh is the best of all eight variants on seam discontinuity (4.40) and on
-   cross-view color stability (mean 5.41, p90 13.75)**; layer_lhl is second on both.
+   the render-time cross-view color-stability descriptor (mean 5.41, p90 13.75)**;
+   layer_lhl is second on both. Note the evidence-type asymmetry: the seam metric is
+   direct texture-space evidence on the baked texture, while the cross-view metric is
+   a render-time stability descriptor (see §4); the two must not be presented as the
+   same kind of measurement.
 2. The layerwise bake family (bottom four) improves on the corresponding base-bake
    variants (top four) — e.g. global_c3 6.31 vs c3 10.31 seam ΔE00.
 3. The ordering is consistent with the Core-7 texture-energy mechanism note
@@ -58,6 +62,11 @@ inferential statistics; the cohort is a stratified case study, not a population 
   the installed PyOpenGL under numpy 2); the view-to-view difference design makes the
   interpolation choice cancel, but absolute cross-view values should be read as
   render-time stability descriptors, not texture-fidelity metrics.
+- **Manuscript wording rule (release gate):** the cross-view numbers may be cited only
+  as a "render-time cross-view color-stability descriptor" (supplementary-grade
+  evidence). They must NOT be presented as "cross-view texture consistency/fidelity"
+  of the textured renderer, and the seam metric — which *is* direct texture-space
+  evidence — is the primary surface-consistency result.
 - Seam metric operates in texture space on the baked texture with the bake's own
   uv→texel convention; it does not measure geometric seams (mesh cracks), which are
   absent by construction (single watertight Exact-GLB mesh per object).
