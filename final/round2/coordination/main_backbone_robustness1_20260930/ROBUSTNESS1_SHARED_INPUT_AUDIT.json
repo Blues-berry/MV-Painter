@@ -1,0 +1,39 @@
+{
+  "audit": "ROBUSTNESS1_SHARED_INPUT_AUDIT",
+  "seed_rule": "object_seed = 10042 + obj_idx (random/np/torch), latent seed 42",
+  "object_sample_indices": [
+    11,
+    25,
+    113,
+    141,
+    157,
+    207,
+    214,
+    236,
+    239,
+    256
+  ],
+  "same_sample_as_R0_audit": true,
+  "rows_per_pass": 50,
+  "replay_mismatches_pass1_vs_pass2": 0,
+  "replay_mismatch_detail": [],
+  "cross_method_mismatches": 0,
+  "cross_method_mismatch_detail": [],
+  "cross_realization_check": {
+    "deterministic_component_fields_matching_R0": 500,
+    "reference_derived_fields_differing_from_R0": 150,
+    "expected": "500 deterministic matches (10 obj x 10 det fields x 5 methods) and 150 reference-derived differences (10 x 3 x 5)",
+    "anomalies": []
+  },
+  "initial_latent_R1": {
+    "cpu_sha256": "aca807638627956ff9d51ebdb953c9f2ef5782b0dc2c1d8bfc7e25ff007f7b10",
+    "gpu_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd"
+  },
+  "scheduler_R1": {
+    "init_noise_sigma": 25.146116256713867,
+    "sigmas_sha256": "7faef71ea7b80ca8022d15f2bddef0586859c449eb286d10dc57bef12d006bc1",
+    "steps": 50,
+    "timesteps_sha256": "79a41694581e64189868038bde5ba5f85515f3ad3af29cd44ed05505b022b394"
+  },
+  "verdict": "PASS"
+}

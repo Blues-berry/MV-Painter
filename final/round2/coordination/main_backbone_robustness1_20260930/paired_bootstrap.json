@@ -1,0 +1,806 @@
+{
+  "R0": {
+    "layer_llh_minus_global_fixed_low": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 3.244298437367315,
+        "median_diff": 3.3656692504882812,
+        "ci95": [
+          2.93626980289169,
+          3.54243165988853
+        ],
+        "win_rate": "242/276",
+        "losses": "34/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.06327420351621897,
+        "median_diff": 0.06465144455432892,
+        "ci95": [
+          0.05819306530706261,
+          0.06825384681207547
+        ],
+        "win_rate": "252/276",
+        "losses": "24/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.030753512080569846,
+        "median_diff": 0.02774103730916977,
+        "ci95": [
+          0.028334757623573143,
+          0.03310142080906941
+        ],
+        "win_rate": "261/276",
+        "losses": "15/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 2.598840352417766,
+        "median_diff": 2.44709312915802,
+        "ci95": [
+          2.35313371039819,
+          2.8379874730455703
+        ],
+        "win_rate": "249/276",
+        "losses": "27/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.007567356246105139,
+        "median_diff": 0.0070660412311553955,
+        "ci95": [
+          0.00669554156669672,
+          0.008442658445109491
+        ],
+        "win_rate": "245/276",
+        "losses": "31/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.011926288298074749,
+        "median_diff": 0.010386109352111816,
+        "ci95": [
+          0.009753064859820448,
+          0.014074341785432636
+        ],
+        "win_rate": "196/276",
+        "losses": "80/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.027555933789066647,
+        "median_diff": 0.021034806966781616,
+        "ci95": [
+          0.02418546918509663,
+          0.030778396064820496
+        ],
+        "win_rate": "237/276",
+        "losses": "39/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_global_c3": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 2.036527164172435,
+        "median_diff": 1.9600605964660645,
+        "ci95": [
+          1.8026341476302217,
+          2.2642879684766135
+        ],
+        "win_rate": "227/276",
+        "losses": "49/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.032416164632076805,
+        "median_diff": 0.028147295117378235,
+        "ci95": [
+          0.028951721103942913,
+          0.03583208117904006
+        ],
+        "win_rate": "241/276",
+        "losses": "35/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.020719827027937423,
+        "median_diff": 0.01924942433834076,
+        "ci95": [
+          0.019042578171533736,
+          0.0223683776786092
+        ],
+        "win_rate": "260/276",
+        "losses": "16/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.859957752884298,
+        "median_diff": 1.7799651622772217,
+        "ci95": [
+          1.6879563400710837,
+          2.029203314712082
+        ],
+        "win_rate": "245/276",
+        "losses": "31/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.00038347533647564876,
+        "median_diff": 0.0008382499217987061,
+        "ci95": [
+          -0.00027231137821639794,
+          0.0010299306848774786
+        ],
+        "win_rate": "154/276",
+        "losses": "122/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": false
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.004107598080367282,
+        "median_diff": 0.0022405236959457397,
+        "ci95": [
+          0.002364601615978324,
+          0.005823213067175686
+        ],
+        "win_rate": "159/276",
+        "losses": "117/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.019796398238859314,
+        "median_diff": 0.015465542674064636,
+        "ci95": [
+          0.01720253626505534,
+          0.02227958669697029
+        ],
+        "win_rate": "234/276",
+        "losses": "42/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_layer_fixed_mean": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 0.8750078190064084,
+        "median_diff": 0.6096863746643066,
+        "ci95": [
+          0.7687482086644657,
+          0.9817908639493196
+        ],
+        "win_rate": "240/276",
+        "losses": "36/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.0070122700670491095,
+        "median_diff": 0.004391953349113464,
+        "ci95": [
+          0.005199379328152408,
+          0.00885601592776568
+        ],
+        "win_rate": "175/276",
+        "losses": "101/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.008887248326335912,
+        "median_diff": 0.007545746862888336,
+        "ci95": [
+          0.008079445499089965,
+          0.00971472654424176
+        ],
+        "win_rate": "258/276",
+        "losses": "18/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.3112044982288196,
+        "median_diff": 1.2762635946273804,
+        "ci95": [
+          1.2193234545597131,
+          1.4003343037937
+        ],
+        "win_rate": "275/276",
+        "losses": "1/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.0011402698962584786,
+        "median_diff": 0.0016252398490905762,
+        "ci95": [
+          0.0006208856036697609,
+          0.0016421034284259963
+        ],
+        "win_rate": "175/276",
+        "losses": "101/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.00936340586538764,
+        "median_diff": 0.008444339036941528,
+        "ci95": [
+          0.008207845596083696,
+          0.010532125128784042
+        ],
+        "win_rate": "226/276",
+        "losses": "50/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.01133447129657303,
+        "median_diff": 0.010900691151618958,
+        "ci95": [
+          0.010135397962901903,
+          0.012507061055604961
+        ],
+        "win_rate": "237/276",
+        "losses": "39/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_layer_lhl": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 1.0007615409035613,
+        "median_diff": 0.8989882469177246,
+        "ci95": [
+          0.9068509893140931,
+          1.0968791315521018
+        ],
+        "win_rate": "261/276",
+        "losses": "15/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.01744411326944828,
+        "median_diff": 0.01628628373146057,
+        "ci95": [
+          0.015349904534177504,
+          0.019548492965059006
+        ],
+        "win_rate": "237/276",
+        "losses": "39/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.010968089491749803,
+        "median_diff": 0.01058024913072586,
+        "ci95": [
+          0.010105140277764935,
+          0.01183667369996724
+        ],
+        "win_rate": "264/276",
+        "losses": "12/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.1926428304202314,
+        "median_diff": 1.1647498607635498,
+        "ci95": [
+          1.1233339318330737,
+          1.262204703213512
+        ],
+        "win_rate": "276/276",
+        "losses": "0/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.0027980353089346404,
+        "median_diff": 0.003671795129776001,
+        "ci95": [
+          0.002294740383175836,
+          0.003281986799792967
+        ],
+        "win_rate": "210/276",
+        "losses": "66/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.028969731262844543,
+        "median_diff": 0.02268349379301071,
+        "ci95": [
+          0.02616196892399719,
+          0.03192801074381324
+        ],
+        "win_rate": "263/276",
+        "losses": "13/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.020306469305701878,
+        "median_diff": 0.020301252603530884,
+        "ci95": [
+          0.018698486405006355,
+          0.021881759922573532
+        ],
+        "win_rate": "254/276",
+        "losses": "22/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    }
+  },
+  "R1": {
+    "layer_llh_minus_global_fixed_low": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 3.2331516302150227,
+        "median_diff": 3.3822232484817505,
+        "ci95": [
+          2.9281412065029144,
+          3.526765965465186
+        ],
+        "win_rate": "241/276",
+        "losses": "35/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.06315120638928552,
+        "median_diff": 0.06500042974948883,
+        "ci95": [
+          0.058109809712007424,
+          0.06805650428261446
+        ],
+        "win_rate": "255/276",
+        "losses": "21/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.03070659617609952,
+        "median_diff": 0.027941934764385223,
+        "ci95": [
+          0.02830834937133435,
+          0.03306120219707921
+        ],
+        "win_rate": "261/276",
+        "losses": "15/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 2.5874302957368935,
+        "median_diff": 2.4237102270126343,
+        "ci95": [
+          2.3408769524615742,
+          2.8253674766291743
+        ],
+        "win_rate": "246/276",
+        "losses": "30/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.007578499507212984,
+        "median_diff": 0.006717175245285034,
+        "ci95": [
+          0.006681785851285077,
+          0.00846928660420404
+        ],
+        "win_rate": "245/276",
+        "losses": "31/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.011942083339976229,
+        "median_diff": 0.010875217616558075,
+        "ci95": [
+          0.009776542746070503,
+          0.014082672074437141
+        ],
+        "win_rate": "201/276",
+        "losses": "75/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.027571407133254452,
+        "median_diff": 0.020860150456428528,
+        "ci95": [
+          0.02416597803433736,
+          0.030829094242358555
+        ],
+        "win_rate": "237/276",
+        "losses": "39/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_global_c3": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 2.030138194129087,
+        "median_diff": 2.067130208015442,
+        "ci95": [
+          1.7954844711483389,
+          2.2568000032418016
+        ],
+        "win_rate": "224/276",
+        "losses": "52/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.03216882012244584,
+        "median_diff": 0.028524309396743774,
+        "ci95": [
+          0.028716605615572655,
+          0.03555270648844864
+        ],
+        "win_rate": "243/276",
+        "losses": "33/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.020723816554021578,
+        "median_diff": 0.01949155330657959,
+        "ci95": [
+          0.019085999436514532,
+          0.022342888989310333
+        ],
+        "win_rate": "262/276",
+        "losses": "14/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.8527313807736272,
+        "median_diff": 1.7632782459259033,
+        "ci95": [
+          1.6824737536734429,
+          2.0213140136953713
+        ],
+        "win_rate": "242/276",
+        "losses": "34/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.00027957774590754855,
+        "median_diff": 0.0005770325660705566,
+        "ci95": [
+          -0.0003726620605026466,
+          0.0009333201940508857
+        ],
+        "win_rate": "147/276",
+        "losses": "129/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": false
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.003943413415032885,
+        "median_diff": 0.0028987452387809753,
+        "ci95": [
+          0.002194847668642583,
+          0.005655850513257842
+        ],
+        "win_rate": "161/276",
+        "losses": "115/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.019927351155142853,
+        "median_diff": 0.015278548002243042,
+        "ci95": [
+          0.017348406647426495,
+          0.022411853183006893
+        ],
+        "win_rate": "232/276",
+        "losses": "44/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_layer_fixed_mean": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 0.8670674739540487,
+        "median_diff": 0.6078994274139404,
+        "ci95": [
+          0.7618831076483795,
+          0.9724372582159181
+        ],
+        "win_rate": "244/276",
+        "losses": "32/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.006896032776305641,
+        "median_diff": 0.003889709711074829,
+        "ci95": [
+          0.00509891059735547,
+          0.008708651353051697
+        ],
+        "win_rate": "177/276",
+        "losses": "99/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.008896259617978249,
+        "median_diff": 0.007837943732738495,
+        "ci95": [
+          0.008107686104873816,
+          0.009705853324545466
+        ],
+        "win_rate": "262/276",
+        "losses": "14/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.3070577901342642,
+        "median_diff": 1.2358486652374268,
+        "ci95": [
+          1.2160913106324016,
+          1.3951755995335786
+        ],
+        "win_rate": "276/276",
+        "losses": "0/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.001157295660696168,
+        "median_diff": 0.0017056465148925781,
+        "ci95": [
+          0.0006398828565210536,
+          0.0016629188389017961
+        ],
+        "win_rate": "174/276",
+        "losses": "102/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.009280254902399105,
+        "median_diff": 0.008533336222171783,
+        "ci95": [
+          0.008137077471052391,
+          0.010419743189561194
+        ],
+        "win_rate": "228/276",
+        "losses": "48/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.01131500994813615,
+        "median_diff": 0.010852470993995667,
+        "ci95": [
+          0.010090813472651053,
+          0.012505925004033075
+        ],
+        "win_rate": "240/276",
+        "losses": "36/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    },
+    "layer_llh_minus_layer_lhl": {
+      "fg_psnr": {
+        "metric": "fg_psnr",
+        "mean_diff": 0.9919772135174793,
+        "median_diff": 0.8889496326446533,
+        "ci95": [
+          0.8992405322150908,
+          1.0870621558548748
+        ],
+        "win_rate": "260/276",
+        "losses": "16/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_ssim": {
+        "metric": "fg_ssim",
+        "mean_diff": 0.01720774322208287,
+        "median_diff": 0.015107840299606323,
+        "ci95": [
+          0.015120509175070818,
+          0.019272423200849174
+        ],
+        "win_rate": "234/276",
+        "losses": "42/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "fg_lpips": {
+        "metric": "fg_lpips",
+        "mean_diff": 0.010890416848216799,
+        "median_diff": 0.010625630617141724,
+        "ci95": [
+          0.010055028873941173,
+          0.011752720874990675
+        ],
+        "win_rate": "265/276",
+        "losses": "11/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_psnr": {
+        "metric": "full_psnr",
+        "mean_diff": 1.186168971269027,
+        "median_diff": 1.1799728870391846,
+        "ci95": [
+          1.1178171764249387,
+          1.2543978898421577
+        ],
+        "win_rate": "276/276",
+        "losses": "0/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_ssim": {
+        "metric": "full_ssim",
+        "mean_diff": 0.0027039869539979577,
+        "median_diff": 0.003605276346206665,
+        "ci95": [
+          0.0021968935278878694,
+          0.003199601087017336
+        ],
+        "win_rate": "212/276",
+        "losses": "64/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "full_lpips": {
+        "metric": "full_lpips",
+        "mean_diff": 0.028673664167307426,
+        "median_diff": 0.022702962160110474,
+        "ci95": [
+          0.02591979824870393,
+          0.03155299770119398
+        ],
+        "win_rate": "263/276",
+        "losses": "13/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      },
+      "edge_ssim": {
+        "metric": "edge_ssim",
+        "mean_diff": 0.020409715024457462,
+        "median_diff": 0.020635545253753662,
+        "ci95": [
+          0.018790123687274216,
+          0.02199261527562487
+        ],
+        "win_rate": "258/276",
+        "losses": "18/276",
+        "ties": 0,
+        "n": 276,
+        "ci_excludes_zero": true
+      }
+    }
+  }
+}
