@@ -81,3 +81,42 @@ cleanup—not due to a missing experiment or a remote-provenance gap.
 Do not restart experiment agents or expand the matrix absent a new P0
 data/code discrepancy. Complete the separate manuscript rewrite, then
 re-run only the repository/paper-source closure checks and live remote check.
+
+---
+
+# Closure addendum — Gate 3 (2026-10-01, appended; history above unchanged)
+
+The active-source blockers listed above were closed by a targeted cleanup of
+`final_round2.tex`, `supplementary_round2.tex`, and
+`response_letter_round2.md` only — no new inference, no new experiment, no
+schedule search, no cohort change, no full narrative rewrite. Details and the
+per-check table are in `ACTIVE_SOURCE_CLOSURE.md`.
+
+- Historical LHL values (14.776 / 14.78 / 22.052), the 12.97-vs-14.78
+  comparison, r=0.66, and all refuted RNG/preprocessing-draw causal
+  attributions are removed from the active sources; the archived record is
+  described only as an excluded forensic artifact.
+- Clean-v2 and stage-placement panels are marked LEGACY UNCAPPED DIAGNOSTIC —
+  WITHIN-PANEL ONLY and are no longer used for current baseline-family
+  rankings; the capped strict-276 Core-7 is the current baseline authority.
+- Cap wording uses "development-selected, holdout-frozen implementation caps
+  … frozen before strict-276 evaluation, with no cap retuning on that
+  cohort".
+- LLH is not claimed to dominate all metrics: Core-7 best mean on four of
+  seven metrics with explicit metric-dependent reversals.
+- No additive causal dB decomposition remains; LLH−GFL is described as a
+  combined allocation effect with distinguishable control axes.
+- obj_0066 is now described as a high-improvement example, not a
+  representative case. Core-5 tensor-hash retention gap disclosed in the
+  supplementary reproducibility note only (no rerun triggered).
+
+```text
+Gate 3 = PASS
+EVIDENCE_FREEZE = YES
+EXPERIMENT_PHASE = CLOSED
+AUTHORITY_COMPRESSION = AUTHORIZED
+```
+
+Gate 1 remains **PASS WITH LIMITATION**: caps were outcome-informed during
+development, no strict-276 cap retuning was found, and old/new panels are not
+pooled quantitatively.
