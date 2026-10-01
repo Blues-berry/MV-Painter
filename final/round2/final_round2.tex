@@ -31,7 +31,7 @@
 % (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Multi-view diffusion pipelines for 3D asset texturing inject geometric conditions through adapter modules, and the strength of these residuals is usually a single global scale, although residuals act at different UNet depths and denoising stages. We study layer-wise stage-aware adapter scaling, a training-free inference control that assigns each UNet depth group its own stage-dependent residual scale, $\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)A_l(\mathbf{h}_{l,t},\mathbf{G})$, with per-group implementation caps and no change to any network weight. On a shared-input 24-object, three-seed development ablation, depth-group redistribution improves foreground fidelity over a global fixed-low baseline, and a complete binary enumeration of temporal patterns shows that late-stage high scale helps while early-stage high scale hurts; the strongest pattern (layer-LLH) wins five of seven reported metrics, and the originally motivated layer-LHL is a representative rather than an optimum. A pre-registered strict-276-object confirmation transfers the development-selected pattern under the same runner, and a global stage-placement follow-up together with a second-backbone audit bound where stage effects replicate. We report the method as a reusable layer-wise inference control with metric-dependent trade-offs, a 12-object 3D baking case study extended to the layer-wise family with same-draw controls, and explicit negative results, rather than as a universal schedule selector.
+Multi-view diffusion pipelines for 3D asset texturing inject geometric conditions through adapter modules, and the strength of these residuals is usually a single global scale, although residuals act at different UNet depths and denoising stages. We study layer-wise stage-aware adapter scaling, a training-free inference control that assigns each UNet depth group its own stage-dependent residual scale, $\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)A_l(\mathbf{h}_{l,t},\mathbf{G})$, with per-group implementation caps and no change to any network weight. On a shared-input 24-object, three-seed development ablation, depth-group redistribution improves foreground fidelity over a global fixed-low baseline, and a complete binary enumeration of temporal patterns shows that late-stage high scale helps while early-stage high scale hurts; the strongest pattern (layer-LLH) wins five of seven development metrics, while layer-LHL is not a unique optimum. In the capped strict-276 Core-7, LLH has the best mean on four of seven metrics, with explicit metric-dependent reversals on the other three. A global stage-placement follow-up and a second-backbone audit bound where stage effects replicate. We report a reusable layer-wise inference control, metric-dependent trade-offs, a 12-object 3D baking case study, and explicit negative results rather than a universal schedule selector.
 \end{abstract}
 
 \begin{keyword}
@@ -180,14 +180,17 @@ where $s_l(p)$ can be fixed or stage-dependent. Concretely, the adapter
 residuals are injected through wrapped residual blocks of the three UNet
 up-blocks; the injection blocks map to depth groups as
 $\mathrm{up}_0\to$ deep, $\mathrm{up}_1\to$ middle, and
-$\mathrm{up}_2\to$ shallow, and each group carries an implementation cap
-(deep 3.0, middle 3.5, shallow 0.8) so that the effective scale is
-$\min(s_l(p_t),\,c_l)$. The representative layer-LHL configuration uses
+$\mathrm{up}_2\to$ shallow. The development-selected, holdout-frozen
+implementation caps are $c_l=3.0,3.5,0.8$ for deep, middle, and shallow;
+they were frozen before strict-276 evaluation, with no cap retuning on that
+cohort. At stage $k$, the effective scale is
+$\tilde{s}_{l,k}=\min(s_{l,k},c_l)$. The representative layer-LHL configuration uses
 $(1.25,2.50,1.25)$ for deep and middle groups and $(0.50,0.75,0.50)$ for the
-shallow group; none of these values reaches a cap. Global schedules are
-clamped by the same caps, so the historical global fixed-low baseline is
-effectively shallow-capped at 0.8; the layer-fixed-low control isolates
-exactly this difference. The shared-input ablation also evaluates
+shallow group; none of these values reaches a cap. All seven conditions in
+the strict-276 Core-7 use this same capped implementation. The earlier
+clean-v2 and stage-placement panels used uncapped legacy semantics and are
+retained only as within-panel diagnostics, not pooled with Core-7. The
+shared-input ablation also evaluates
 layer-fixed-low, layer-fixed-mean (the exact 17/16/17 step means of
 layer-LHL: 1.65 for deep/middle and 0.58 for shallow), and layer-LLH
 controls. These controls are essential because they distinguish the benefit
@@ -203,7 +206,7 @@ scale assignment (at most one multiplier per wrapped residual block) and does
 not add a network forward or measurable memory cost.
 
 \paragraph{How the stage schedule is selected: the CAI interpretation}
-We use Correction--Alignment--Interference (CAI) as an empirical diagnostic, not as a theorem or a guaranteed selector. The stage utility notation $U_k=Q(\text{high scale only in }k)-Q(L)$ is useful for describing the results, but additive stage effects are only an approximation because denoising stages interact. The shared-input ablation shows that layer-fixed-mean and layer-LLH can outperform layer-LHL, so CAI does not identify a unique temporal schedule. Texture diagnostics are treated as variation indicators; fidelity is assessed separately with masked perceptual and color-error metrics. In the independent MV-Adapter audit, the pre-specified CAI rule is set-valued/undefined.
+We use Correction--Alignment--Interference (CAI) as an empirical diagnostic, not as a theorem or a guaranteed selector. The stage utility notation $U_k=Q(\text{high scale only in }k)-Q(L)$ is useful for describing the results. LLH--GFL is a combined allocation effect. Controlled contrasts show that depth redistribution and temporal placement are experimentally distinguishable control axes, but the current evidence does not identify additive causal contributions in dB. The shared-input ablation shows that layer-fixed-mean and layer-LLH can outperform layer-LHL, so CAI does not identify a unique temporal schedule. Texture diagnostics are treated as variation indicators; fidelity is assessed separately with masked perceptual and color-error metrics. In the independent MV-Adapter audit, the pre-specified CAI rule is set-valued/undefined.
 
 \begin{remark}
 The CAI interpretation is adapter-dependent. Changing the adapter, residual magnitude, layer semantics, or backbone requires re-estimating the stage utilities and repeating the paired comparison. Confidence intervals describe uncertainty in the measured utilities; they do not establish equivalence or non-inferiority. The independent-backbone experiment therefore tests whether stage-position effects are observable under another implementation, not whether C3, LHL, or layer-LHL is a universal choice.
@@ -230,13 +233,13 @@ It should be emphasized that FAC requires learning a small number of additional 
 
 Experiments are conducted using an MVPainter-style geometry-controlled multi-view diffusion pipeline. Each object contains a single reference image and corresponding 3D geometry. During preprocessing, the 3D geometry is rendered into target-view normal maps, depth maps, foreground masks, and ground-truth RGB images. The corrected round-two protocol uses six unique target views, $(0,15,12,16,13,14)$ in the forward order (and $(14,15,0,16,12,13)$ after reversal); the legacy order with a duplicated top view is retained only as an audit condition. All comparisons with ground-truth renderings use the same views, $256\times256$ resolution, and foreground masks.
 
-Except for the FAC extension experiment, the saved clean-v2 scaling records keep the object list, fetched reference/conditioning batch, target views, PyTorch initial latent, base UNet, VAE, adapter weights, and number of denoising steps fixed within each object; only the adapter scale or schedule is changed. Those historical records predate explicit Python/NumPy dataset-side seed control, so they are not presented as exact-repeat determinism evidence. All new reruns use Python, NumPy, and PyTorch seeds fixed before dataset construction and before each object. The number of sampling steps is 50. The historical 24-object probe nominated C3 before the larger evaluation records were generated; the active round-two claims use the strict-276 clean-v2 panel and the separately labeled 276-object stage-placement follow-up. The probe-to-holdout protocol isolates the effect of adapter scaling from changes in model architecture, training data, sampling budget, or evaluation-set tuning.
+Except for the FAC extension experiment, the saved clean-v2 scaling records keep the object list, fetched reference/conditioning batch, target views, PyTorch initial latent, base UNet, VAE, adapter weights, and number of denoising steps fixed within each object; only the adapter scale or schedule is changed. Those historical records predate explicit Python/NumPy dataset-side seed control, so they are not presented as exact-repeat determinism evidence. All new reruns use Python, NumPy, and PyTorch seeds fixed before dataset construction and before each object. The number of sampling steps is 50. The historical 24-object probe nominated C3 before the larger evaluation records were generated. Current baseline-family claims use the capped strict-276 Core-7; the earlier clean-v2 and stage-placement tables are legacy uncapped diagnostics and are interpretable only within their respective panels. The probe-to-holdout protocol isolates the effect of adapter scaling from changes in model architecture, training data, sampling budget, or evaluation-set tuning.
 
 Accordingly, the comparisons in this paper are comparisons among inference-time adapter scaling strategies under the same base pipeline, rather than a system-level benchmark among different texture generation architectures. Uniform adapter scales serve as the primary deployment baselines because they correspond to the most direct way of choosing a single fixed adapter strength at inference time. The probe variants further test whether the trade-off can be resolved by simple alternatives such as globally high scales, layer-wise redistribution, or moving high adapter strength to early, late, or multiple denoising stages. Stage-aware scaling changes only how this strength is scheduled across denoising stages and depth groups.
 
 \subsubsection{Evaluation sets and metrics}
 
-The source protocol records four evaluation sets: (1) a 50-object scale-sweep set; (2) a 26-object texture-audit set; (3) a 24-object probe set for the original schedule nomination; and (4) a 300-object evaluation pool containing a 276-object held-out subset. These exploratory records are retained for provenance; the active round-two results are the strict-276 clean-v2 panel, the separately labeled stage-placement follow-up, and the explicitly bounded extension audits.
+The source protocol records four evaluation sets: (1) a 50-object scale-sweep set; (2) a 26-object texture-audit set; (3) a 24-object probe set for the original schedule nomination; and (4) a 300-object evaluation pool containing a 276-object held-out subset. These exploratory records are retained for provenance. The current main-adapter baseline-family authority is the capped strict-276 Core-7; the earlier clean-v2 and stage-placement panels are legacy uncapped diagnostics, while the other extension audits retain their explicitly bounded roles.
 
 Evaluation metrics are divided into three categories: shape and structure metrics (FG-SSIM, Edge-SSIM, and Crop-SSIM), signal and perceptual metrics (PSNR, masked LPIPS, and, where available, CIEDE2000), and texture-variation diagnostics (Laplacian variance, RGB standard deviation, and gradient magnitude). The three variation diagnostics are not direct measures of texture fidelity; their symmetric log-ratio errors relative to ground truth are reported separately. All image metrics are first computed over six unique target views and then averaged over views and objects. For texture-related conclusions, we report means, paired object-level bootstrap intervals, and win rates; DISTS is unavailable in the current baking environment and is not claimed.
 
@@ -258,18 +261,19 @@ The numerical comparisons are accompanied by complete-object panels so that
 the practical trade-off is visible rather than inferred from a single proxy
 metric. Each panel uses the same reference-conditioned object and target view
 for the ground truth, no-adapter, conservative fixed-low, aggressive
-fixed-high, and C3 outputs. The examples deliberately include a clear
-improvement, a near tie, and a failure-boundary object; they are representative
-qualitative evidence, not a substitute for the paired 276-object statistics.
+fixed-high, and C3 outputs. The examples deliberately include a
+high-improvement case, a near tie, and a failure-boundary object; they are
+illustrative qualitative evidence, not a representative sample and not a
+substitute for the paired 276-object statistics.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.98\textwidth]{main_adapter_clean_v2/comparisons/obj_0066_full_object_comparison.png}
-\caption{Complete-object comparison for a representative object. The same
+\caption{Complete-object comparison for a high-improvement example. The same
 reference and view are shown for all conditions. The shared-layer C3 schedule reduces the
 over-control visible in fixed-high while retaining geometric alignment; the
-panel is qualitative evidence and is not selected as a best-case metric
-example.}
+object was selected as a high-improvement case rather than a representative
+or median case, and the panel is qualitative evidence only.}
 \label{fig:complete0066}
 \end{figure*}
 
@@ -339,8 +343,9 @@ FG-LPIPS, 95\% intervals excluding zero), so the layer-wise redistribution
 itself---not only the temporal pattern---carries the gain. Second, the
 temporal placement matters but is metric-dependent: layer-fixed-mean is
 better than layer-LHL on FG-LPIPS, and layer-LLH is better than layer-LHL on
-every metric in this development comparison. We therefore use layer-LHL as a
-representative transfer record rather than as a uniquely selected optimum.
+every metric in this development comparison. We therefore treat layer-LHL as
+a representative development pattern rather than as a uniquely selected
+optimum.
 Figure~\ref{fig:layerablation} shows the complete six-view output for one
 paired object; the full per-object set and hash records are in Supplementary
 S9.
@@ -423,9 +428,8 @@ none.
 
 The ranking is, however, a development-probe ranking. Two independent
 shared-input probe runs of overlapping schedules show that the LLH-over-LHL
-direction is stable in both, whereas the small differences among
-\{LLL, LHL, layer-fixed-mean\} change sign between runs because the
-reference-image preprocessing draw differs across runner invocations
+direction is stable in both, whereas small differences among
+\{LLL, LHL, layer-fixed-mean\} change sign between probe runs
 (Supplementary S10). We therefore claim only the robust directions---late-high
 helps, early-high hurts, layer-wise beats global fixed-low---and we confirm
 the development-selected pattern on the strict holdout below.
@@ -434,18 +438,21 @@ the development-selected pattern on the strict holdout below.
 \label{subsec:largescale}
 
 The current main-adapter evidence is reported in two explicitly separated
-panels. The first is the strict-276 slice of the clean-v2 four-condition run
-(no adapter, fixed-low, fixed-high, and C3), evaluated with the pre-save float
-metric path. The second is a targeted stage-placement follow-up on the same
-276 object IDs, with fixed-mean, HLL, LHL, and LLH generated in one run. The
-repeated C3 outputs are not identical across these two runners (for example,
-the mean absolute Full-SSIM difference on the common objects is 0.00395), so
-absolute values are not pooled across panels. All paired comparisons within a
-panel use the same object IDs and seed.
+panels, both retained as legacy uncapped diagnostics under the earlier
+runner semantics. The first is the strict-276 slice of the clean-v2
+four-condition run (no adapter, fixed-low, fixed-high, and C3), evaluated
+with the pre-save float metric path. The second is a targeted
+stage-placement follow-up on the same 276 object IDs, with fixed-mean, HLL,
+LHL, and LLH generated in one run. The repeated C3 outputs are not identical
+across these two runners (for example, the mean absolute Full-SSIM
+difference on the common objects is 0.00395), so absolute values are not
+pooled across panels, and neither panel is pooled with the capped
+strict-276 Core-7 confirmation (Section~\ref{subsec:confirmation}). All
+paired comparisons within a panel use the same object IDs and seed.
 
 \begin{table}[t]
 \centering
-\caption{Strict-276 main-adapter clean-v2 panel. Metrics are pre-save float-evaluation means over the same six unique views; the Full-SSIM column is retained as an audit value and is not silently substituted for the saved-artifact branch.}
+\caption{Strict-276 main-adapter clean-v2 panel (LEGACY UNCAPPED DIAGNOSTIC --- WITHIN-PANEL ONLY). Metrics are pre-save float-evaluation means over the same six unique views; the Full-SSIM column is retained as an audit value and is not silently substituted for the saved-artifact branch. This panel uses the earlier uncapped runner semantics and its values are not directly comparable with the capped strict-276 Core-7 confirmation.}
 \label{tab:strict276}
 \scriptsize
 \resizebox{\columnwidth}{!}{%
@@ -461,28 +468,25 @@ C3 (LHL) & 14.875 & 0.855 & 0.190 & 6.763 & 0.348 & 0.201 & 0.500 \\
 \end{tabular}}
 \end{table}
 
-The clean-v2 panel is a non-dominance result: C3 is above fixed-high on
-foreground PSNR/SSIM and is close to fixed-low on foreground LPIPS and
-Edge-SSIM, but fixed-low has higher Full-PSNR, FG-PSNR, and FG-SSIM. Thus the
-main run does not support a blanket claim that the shared-layer schedule improves practical image
-quality over the conservative fixed-low baseline.
+Within this legacy uncapped panel, the four-condition comparison is a
+non-dominance result: C3 is above fixed-high on foreground PSNR/SSIM and is
+close to fixed-low on foreground LPIPS and Edge-SSIM, but fixed-low has
+higher Full-PSNR, FG-PSNR, and FG-SSIM. This non-dominance reading holds
+within the legacy uncapped panel only; the current baseline-family ranking
+is taken from the capped strict-276 Core-7 confirmation
+(Section~\ref{subsec:confirmation}), not from this table.
 
-The layer-wise LHL transfer record uses the same checkpoint, strict-276 object
-list, unique6 cameras, and 50-step protocol, but was produced by an independent
-candidate runner that, as later audits found, did not seed the Python RNG
-governing the reference-image preprocessing draw; a restart of that runner
-would not reproduce its exact outputs. It is therefore reported as an
-independent-protocol record on the same cohort, not as a paired replacement
-for the clean-v2 four-condition table, and all holdout conclusions below rest
-on the seeded, same-runner confirmation set (Section~\ref{subsec:confirmation}). Its means
-are Full-PSNR 22.052, Full-SSIM 0.8841, Full-LPIPS 0.1857, FG-PSNR 14.776,
-FG-SSIM 0.5510, FG-LPIPS 0.1338, and Edge-SSIM 0.5533. The shared-input
-development ablation above confirms the direction of the foreground gain but
-also shows that layer-LHL is not the unique best temporal schedule.
+An earlier layer-LHL record was excluded from all quantitative claims
+because its runner-time code state cannot be assigned complete reproducible
+provenance. All current holdout comparisons therefore use the seeded
+same-runner records described below
+(Section~\ref{subsec:confirmation}). The shared-input development ablation
+above confirms the direction of the foreground gain but also shows that
+layer-LHL is not the unique best temporal schedule.
 
 \begin{table}[t]
 \centering
-\caption{Stage-placement follow-up on the strict 276-object cohort. These are the six non-SSIM metrics from one paired run; the schedules are GLOBAL (one scale per stage applied to all depth groups), with 17/16/17 early/middle/late steps. Lower is better for LPIPS.}
+\caption{Stage-placement follow-up on the strict 276-object cohort (LEGACY UNCAPPED DIAGNOSTIC --- WITHIN-PANEL ONLY). These are the six non-SSIM metrics from one paired run; the schedules are GLOBAL (one scale per stage applied to all depth groups), with 17/16/17 early/middle/late steps. Lower is better for LPIPS. Values use the earlier uncapped runner semantics and are not directly comparable with the capped strict-276 Core-7 confirmation.}
 \label{tab:stage276}
 \scriptsize
 \resizebox{\columnwidth}{!}{%
@@ -498,8 +502,10 @@ LLH & 15.136 & 0.181 & 6.937 & 0.357 & 0.200 & 0.536 \\
 \end{tabular}}
 \end{table}
 
-The follow-up provides evidence that stage placement matters, but it does not
-establish LHL as a universal choice. LLH is better than LHL on all six metrics in
+As a legacy uncapped diagnostic, the follow-up provides within-panel
+evidence that stage placement matters, but it does not
+establish LHL as a universal choice, and its absolute values are not
+compared with the capped Core-7. LLH is better than LHL on all six metrics in
 Table~\ref{tab:stage276} under their intended directions. This is the central
 counterexample to interpreting CAI as a unique LHL selector. Notably, HLL and
 LLH have identical nominal budgets (mean 1.675, squared-scale sum 157.8125,
@@ -516,7 +522,7 @@ equal-effective-budget intervention.
 
 \begin{table}[t]
 \centering
-\caption{Saved-artifact Full-SSIM in the stage-placement follow-up. Prediction is PNG-reloaded float32; GT is the original RGBA composited over white in float32. C3 deltas use object-level paired bootstrap with 10,000 resamples and seed 20260928.}
+\caption{Saved-artifact Full-SSIM in the stage-placement follow-up (legacy uncapped semantics; within-panel only). Prediction is PNG-reloaded float32; GT is the original RGBA composited over white in float32. C3 deltas use object-level paired bootstrap with 10,000 resamples and seed 20260928.}
 \label{tab:serialized276}
 \small
 \begin{tabular}{lcc}
@@ -569,9 +575,9 @@ text.
 \begin{table}[t]
 \centering
 \caption{Strict-276 same-runner confirmation of the pre-registered layer-wise
-candidates (seeded protocol; means over 276 objects). Absolute values are not
-comparable with Tables~\ref{tab:strict276}--\ref{tab:stage276} (different
-runner invocations; different reference-preprocessing draws).}
+candidates (seeded capped protocol; means over 276 objects). Absolute values
+are not pooled with Tables~\ref{tab:strict276}--\ref{tab:stage276}, which are
+legacy uncapped diagnostics from different runner invocations.}
 \label{tab:confirmation}
 \scriptsize
 \resizebox{\columnwidth}{!}{%
@@ -600,11 +606,11 @@ $[+0.0187,+0.0219]$, Full-SSIM $+0.0028$, Full-LPIPS $-0.0290$, and FG-SSIM
 $+0.0174$. Layer-fixed-mean versus the replica is mixed---fixed-mean is
 better on FG-LPIPS ($+0.0021$), FG-PSNR ($+0.126$), and Edge-SSIM
 ($+0.0090$), while the replica is better on Full-PSNR ($+0.119$)---matching
-the metric-dependent development picture. The replica's means are
-consistently lower than the archived unseeded layer-LHL record
-(e.g.\ FG-PSNR 12.97 vs 14.78; Pearson $r=0.66$ over objects), confirming
-that the reference-preprocessing draw shifts absolute values between runners
-while the within-run orderings above are paired and seeded.
+the metric-dependent development picture. The seeded layer-LHL replica is
+the only layer-LHL row retained for quantitative confirmation. The earlier
+historical record is excluded because its complete runner-time provenance
+cannot be reconstructed; preprocessing-realization audits do not explain
+that discrepancy. The within-run orderings above are paired and seeded.
 Against the global fixed-low control, layer-LLH is better on all seven
 metrics with intervals excluding zero: FG-PSNR $+3.244$~dB $[+2.936,+3.542]$
 (242/276 wins), FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$ (261/276), Full-PSNR
@@ -614,10 +620,9 @@ better on all seven metrics (FG-PSNR $+2.369$~dB $[+2.155,+2.576]$),
 while the layer-LHL replica is better on six of seven and the global control
 retains better Full-LPIPS ($+0.0170$ in the replica-minus-global direction,
 $[+0.0138,+0.0206]$). These holdout results confirm the development-probe
-directions for the two promoted candidates; they do not re-open schedule selection, and the archived
-layer-LHL record (whose runner did not seed the reference-preprocessing draw
-and whose absolute values are not reproducible on restart) remains in the
-evidence package as an independent single-run record.
+directions for the two promoted candidates; they do not re-open schedule
+selection, and the earlier historical layer-LHL record is excluded from all
+quantitative claims and retained only as a forensic artifact.
 
 \subsection{Baking and unseen-view case study}
 \label{subsec:baking}
@@ -665,8 +670,8 @@ superiority. Supplementary S4 gives object-level failure boundaries:
 reindexing case.
 
 \paragraph{Layer-wise bake extension with same-draw controls.}
-Because the reference-preprocessing draw shifts absolute values between
-runners, the layer-wise schedules were baked on the same 12 Exact-GLB objects
+Because absolute values are not pooled across separate runner invocations,
+the layer-wise schedules were baked on the same 12 Exact-GLB objects
 together with fresh global fixed-low and C3 controls generated by the SAME
 seeded runner (identical per-object reference draws, latents, and seeds), so
 the four conditions are directly comparable. Within this same-draw set,
@@ -786,9 +791,9 @@ variation proxies, not fidelity measures; we report them with GT-relative
 errors, but they cannot replace human evaluation, particularly for reflective,
 transparent, or highly stylized objects. Finally, the schedules have not been
 validated across sampler families, resolutions, or reference-image quality,
-and the reference-image augmentation draw makes absolute values comparable
-only within a single runner invocation; all cross-runner tables are labeled
-as independent protocol surfaces.
+and absolute values are comparable only within a single seeded runner
+invocation; all cross-runner tables are labeled as independent protocol
+surfaces and are not pooled.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -804,8 +809,8 @@ binary factorial shows late-stage high scale helps and early-stage high scale
 hurts, with layer-LLH strongest on five of seven development metrics.
 (3)~The originally motivated layer-LHL is a representative, not an optimum:
 it is beaten by layer-LLH, layer-LHH, and the constant layer-LLL on the
-probe, and its strict-276 record is retained as a transfer record with a
-same-runner confirmation rather than as a selection. (4)~These effects are
+probe, and it enters the strict holdout only as a seeded same-runner
+confirmation row rather than as a selection. (4)~These effects are
 adapter- and metric-dependent: on the second backbone only the global
 stage-position effect was replicated, with mixed practical signs.
 

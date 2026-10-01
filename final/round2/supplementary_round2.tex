@@ -30,8 +30,16 @@ The strict holdout contains 276 objects and has ordered-list SHA-256:
 All image evaluations use six unique views $(0,15,12,16,13,14)$, 50
 denoising steps, seed 42, and object-level paired bootstrap with 10,000
 resamples and seed 20260928. The main four-condition run and the
-stage-placement follow-up are separate protocol surfaces. Their repeated C3
-outputs are not identical and are therefore not pooled.
+stage-placement follow-up are separate protocol surfaces, both retained as
+legacy uncapped diagnostics. Their repeated C3 outputs are not identical and
+are therefore not pooled, and neither surface is pooled with the capped
+strict-276 Core-7 confirmation.
+
+\paragraph{Reproducibility scope of the Core-7 protocol.} The same-runner
+Core-7 protocol is verified through shared-input audits, protocol identity
+and paired records; full per-object serialized tensor hashes are available
+for the added completion arms but were not retained for all earlier frozen
+Core-5 arms.
 
 The complete records/CSV/PNG/hash audit is in
 \texttt{coordination/E0A\_EVIDENCE\_FREEZE\_20260929.json}. It verifies 276
@@ -60,8 +68,10 @@ causal mechanism.
 
 \section{S2. Complete stage-placement metrics}
 
-The follow-up means are reproduced below. LPIPS is lower-is-better. The six
-non-SSIM metrics all favor LLH over LHL under their intended directions.
+The follow-up means are reproduced below (legacy uncapped diagnostic;
+within-panel only, not pooled with the capped Core-7). LPIPS is
+lower-is-better. The six non-SSIM metrics all favor LLH over LHL under
+their intended directions.
 
 \begin{table}[h]
 \centering\scriptsize
@@ -196,7 +206,7 @@ The layer-wise panels and fresh global fixed-low/C3 controls were generated
 by ONE seeded runner (per-object seeds fix the reference preprocessing draw,
 the initial latent, and the condition-VAE path), so the rows below are
 directly comparable; they are NOT comparable with the absolute values in S4,
-which come from an earlier runner with different reference draws.
+which come from an earlier runner invocation and are not pooled with them.
 
 \begin{table}[h]
 \centering\small
@@ -467,13 +477,10 @@ direction):
   $[+0.084,+0.153]$).
 \end{itemize}
 
-\paragraph{Cross-runner replica check.} The archived layer-LHL record used
-an unseeded Python RNG for the reference preprocessing draw and therefore has
-different draws from the replica. Their object-level Pearson correlation on
-FG-PSNR is $0.66$ ($n=276$); the replica's mean FG-PSNR is 12.97 versus the
-archived 14.78. Both records are retained; the archived record is a single
-unseeded run whose absolute values do not reproduce on restart, and all
-paired conclusions above come from the seeded same-runner set.
+\paragraph{Historical layer-LHL record.} A historical layer-LHL record is
+retained only as a forensic artifact and excluded from quantitative claims
+because its runner-time provenance cannot be reconstructed. All paired
+holdout conclusions use the seeded same-runner protocol.
 
 These results confirm the development-probe direction for the two promoted
 candidates on the holdout. They do not re-open schedule selection, do not
