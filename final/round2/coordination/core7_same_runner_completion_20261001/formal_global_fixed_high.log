@@ -1,0 +1,3606 @@
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:01<00:03,  1.44it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:01<00:01,  2.99it/s]Loading pipeline components...:  71%|███████▏  | 5/7 [00:02<00:00,  2.16it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:02<00:00,  2.92it/s]
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/ubuntu/anaconda3/lib/python3.13/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+Loaded GeoTex weights from /4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt
+============= length of dataset 276 =============
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /home/ubuntu/anaconda3/lib/python3.13/site-packages/lpips/weights/v0.1/alex.pth
+core7 run: device=cuda:0 schedules=['global_fixed_high'] objects=276 done=0/276
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212305 223342
+reverse false
+[1/276] obj_0024 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226818 233095
+reverse false
+[2/276] obj_0025 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206973 199259
+reverse true
+[3/276] obj_0026 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 225956 224684
+reverse true
+[4/276] obj_0027 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221786 220538
+reverse true
+[5/276] obj_0028 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 214550 221989
+reverse false
+[6/276] obj_0029 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227959 231782
+reverse false
+[7/276] obj_0030 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258564 247703
+reverse true
+[8/276] obj_0031 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217452 222620
+reverse false
+[9/276] obj_0032 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 245605 183369
+reverse true
+[10/276] obj_0033 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213167 223701
+reverse false
+[11/276] obj_0034 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227931 206577
+reverse true
+[12/276] obj_0035 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 198918 198775
+reverse true
+[13/276] obj_0036 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 209413 215391
+reverse false
+[14/276] obj_0037 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 188203 203743
+reverse false
+[15/276] obj_0038 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201209 216147
+reverse false
+[16/276] obj_0039 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 189654 191761
+reverse false
+[17/276] obj_0040 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 231168 212818
+reverse true
+[18/276] obj_0041 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 224209 233590
+reverse false
+[19/276] obj_0042 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 228358 209865
+reverse true
+[20/276] obj_0043 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 250084 234099
+reverse true
+[21/276] obj_0044 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 174155 188309
+reverse false
+[22/276] obj_0045 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226382 229452
+reverse false
+[23/276] obj_0046 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 247407 239698
+reverse true
+[24/276] obj_0047 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236896 193588
+reverse true
+[25/276] obj_0048 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226345 233989
+reverse false
+[26/276] obj_0049 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 225708 237680
+reverse false
+[27/276] obj_0050 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 214873 221402
+reverse false
+[28/276] obj_0051 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213977 220240
+reverse false
+[29/276] obj_0052 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 216353 223682
+reverse false
+[30/276] obj_0053 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219577 228840
+reverse false
+[31/276] obj_0054 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 210007 224581
+reverse false
+[32/276] obj_0055 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204111 197992
+reverse true
+[33/276] obj_0056 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257211 245999
+reverse true
+[34/276] obj_0057 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227988 236192
+reverse false
+[35/276] obj_0058 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219386 224679
+reverse false
+[36/276] obj_0059 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 210214 216902
+reverse false
+[37/276] obj_0060 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217499 227069
+reverse false
+[38/276] obj_0061 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221956 159995
+reverse true
+[39/276] obj_0062 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 239771 246886
+reverse false
+[40/276] obj_0063 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 192728 205720
+reverse false
+[41/276] obj_0064 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 225743 236065
+reverse false
+[42/276] obj_0065 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 207793 214093
+reverse false
+[43/276] obj_0066 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212201 216212
+reverse false
+[44/276] obj_0067 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219152 231277
+reverse false
+[45/276] obj_0068 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 259333 254226
+reverse true
+[46/276] obj_0069 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236360 214337
+reverse true
+[47/276] obj_0070 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221617 231625
+reverse false
+[48/276] obj_0071 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253015 259825
+reverse false
+[49/276] obj_0072 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 228852 238815
+reverse false
+[50/276] obj_0073 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201506 223716
+reverse false
+[51/276] obj_0074 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 228045 241690
+reverse false
+[52/276] obj_0075 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202206 207591
+reverse false
+[53/276] obj_0076 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258492 250091
+reverse true
+[54/276] obj_0077 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253120 259815
+reverse false
+[55/276] obj_0078 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221746 230556
+reverse false
+[56/276] obj_0079 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227517 216325
+reverse true
+[57/276] obj_0080 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212435 215665
+reverse false
+[58/276] obj_0081 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258889 249376
+reverse true
+[59/276] obj_0082 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 234423 206174
+reverse true
+[60/276] obj_0083 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221324 234597
+reverse false
+[61/276] obj_0084 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213101 222473
+reverse false
+[62/276] obj_0085 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 205678 209817
+reverse false
+[63/276] obj_0086 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 222531 231131
+reverse false
+[64/276] obj_0087 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202239 211885
+reverse false
+[65/276] obj_0088 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 251115 259077
+reverse false
+[66/276] obj_0089 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 210217 227233
+reverse false
+[67/276] obj_0090 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256551 261337
+reverse false
+[68/276] obj_0091 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253001 239593
+reverse true
+[69/276] obj_0092 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217180 223336
+reverse false
+[70/276] obj_0093 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 214173 221110
+reverse false
+[71/276] obj_0094 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 250837 259316
+reverse false
+[72/276] obj_0095 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 249532 233855
+reverse true
+[73/276] obj_0096 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256614 245110
+reverse true
+[74/276] obj_0097 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 248917 233257
+reverse true
+[75/276] obj_0098 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 218196 234290
+reverse false
+[76/276] obj_0099 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 194847 206377
+reverse false
+[77/276] obj_0100 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204433 228256
+reverse false
+[78/276] obj_0101 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 190292 195785
+reverse false
+[79/276] obj_0102 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 250652 257655
+reverse false
+[80/276] obj_0103 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 235210 224920
+reverse true
+[81/276] obj_0104 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202984 206962
+reverse false
+[82/276] obj_0105 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 245260 225032
+reverse true
+[83/276] obj_0106 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 229360 236762
+reverse false
+[84/276] obj_0107 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227981 235292
+reverse false
+[85/276] obj_0108 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217914 230732
+reverse false
+[86/276] obj_0109 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 209764 224689
+reverse false
+[87/276] obj_0110 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212379 224659
+reverse false
+[88/276] obj_0111 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 205801 219850
+reverse false
+[89/276] obj_0112 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 192864 196051
+reverse false
+[90/276] obj_0113 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 174589 164504
+reverse true
+[91/276] obj_0114 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217326 145591
+reverse true
+[92/276] obj_0115 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 194777 181635
+reverse true
+[93/276] obj_0116 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256694 218096
+reverse true
+[94/276] obj_0117 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195915 254401
+reverse false
+[95/276] obj_0118 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 215561 208686
+reverse true
+[96/276] obj_0119 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 233230 225034
+reverse true
+[97/276] obj_0120 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204926 194497
+reverse true
+[98/276] obj_0121 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257316 204935
+reverse true
+[99/276] obj_0122 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 179222 170307
+reverse true
+[100/276] obj_0123 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257332 231209
+reverse true
+[101/276] obj_0124 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 228095 253533
+reverse false
+[102/276] obj_0125 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 187738 185679
+reverse true
+[103/276] obj_0126 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 234330 224979
+reverse true
+[104/276] obj_0127 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 241216 210906
+reverse true
+[105/276] obj_0128 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 234109 233599
+reverse true
+[106/276] obj_0129 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213378 176982
+reverse true
+[107/276] obj_0130 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 251423 259921
+reverse false
+[108/276] obj_0131 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 208522 194475
+reverse true
+[109/276] obj_0132 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 191703 245847
+reverse false
+[110/276] obj_0133 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 208496 192661
+reverse true
+[111/276] obj_0134 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256529 207152
+reverse true
+[112/276] obj_0135 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 207653 202603
+reverse true
+[113/276] obj_0136 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199623 198733
+reverse true
+[114/276] obj_0137 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256702 214203
+reverse true
+[115/276] obj_0138 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 179139 161832
+reverse true
+[116/276] obj_0139 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 218325 214474
+reverse true
+[117/276] obj_0140 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257236 227818
+reverse true
+[118/276] obj_0141 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255745 202537
+reverse true
+[119/276] obj_0142 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 185215 249336
+reverse false
+[120/276] obj_0143 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 229370 212495
+reverse true
+[121/276] obj_0144 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 222437 236259
+reverse false
+[122/276] obj_0145 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199661 188421
+reverse true
+[123/276] obj_0146 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 192025 196221
+reverse false
+[124/276] obj_0147 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227216 162659
+reverse true
+[125/276] obj_0148 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 222123 234643
+reverse false
+[126/276] obj_0149 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 189951 178443
+reverse true
+[127/276] obj_0150 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257203 212658
+reverse true
+[128/276] obj_0151 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 199077 162373
+reverse true
+[129/276] obj_0152 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253445 227754
+reverse true
+[130/276] obj_0153 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206054 199922
+reverse true
+[131/276] obj_0154 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 242742 206370
+reverse true
+[132/276] obj_0155 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 235714 235789
+reverse false
+[133/276] obj_0156 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 230725 232287
+reverse false
+[134/276] obj_0157 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 216792 207678
+reverse true
+[135/276] obj_0158 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 216914 201687
+reverse true
+[136/276] obj_0159 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 210815 188925
+reverse true
+[137/276] obj_0160 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 197848 246220
+reverse false
+[138/276] obj_0161 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 181666 242201
+reverse false
+[139/276] obj_0162 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 183623 198075
+reverse false
+[140/276] obj_0163 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 225657 188588
+reverse true
+[141/276] obj_0164 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201583 195179
+reverse true
+[142/276] obj_0165 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256607 213896
+reverse true
+[143/276] obj_0166 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 208090 201850
+reverse true
+[144/276] obj_0167 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 245602 234972
+reverse true
+[145/276] obj_0168 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 161175 245524
+reverse false
+[146/276] obj_0169 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 232848 231194
+reverse true
+[147/276] obj_0170 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204554 196820
+reverse true
+[148/276] obj_0171 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252457 167682
+reverse true
+[149/276] obj_0172 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 194252 173669
+reverse true
+[150/276] obj_0173 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257364 213766
+reverse true
+[151/276] obj_0174 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 217874 206839
+reverse true
+[152/276] obj_0175 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 223722 185510
+reverse true
+[153/276] obj_0176 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 245992 203350
+reverse true
+[154/276] obj_0177 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 261554 259859
+reverse true
+[155/276] obj_0178 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 194032 202947
+reverse false
+[156/276] obj_0179 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 259533 254963
+reverse true
+[157/276] obj_0180 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 202761 196739
+reverse true
+[158/276] obj_0181 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 244361 216186
+reverse true
+[159/276] obj_0182 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 210294 184858
+reverse true
+[160/276] obj_0183 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 243415 236889
+reverse true
+[161/276] obj_0184 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256573 215527
+reverse true
+[162/276] obj_0185 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257518 227151
+reverse true
+[163/276] obj_0186 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 214741 194021
+reverse true
+[164/276] obj_0187 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213886 184226
+reverse true
+[165/276] obj_0188 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213454 221766
+reverse false
+[166/276] obj_0189 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204083 184974
+reverse true
+[167/276] obj_0190 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 240093 201127
+reverse true
+[168/276] obj_0191 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 244884 155024
+reverse true
+[169/276] obj_0192 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 259197 224276
+reverse true
+[170/276] obj_0193 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 246302 238062
+reverse true
+[171/276] obj_0194 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253382 211322
+reverse true
+[172/276] obj_0195 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 242580 194922
+reverse true
+[173/276] obj_0196 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 228360 220703
+reverse true
+[174/276] obj_0197 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258191 243491
+reverse true
+[175/276] obj_0198 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 221761 192260
+reverse true
+[176/276] obj_0199 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 223952 211310
+reverse true
+[177/276] obj_0200 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253045 213901
+reverse true
+[178/276] obj_0201 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 251172 200697
+reverse true
+[179/276] obj_0202 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 260561 256019
+reverse true
+[180/276] obj_0203 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 194900 194477
+reverse true
+[181/276] obj_0204 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 254691 214841
+reverse true
+[182/276] obj_0205 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257285 196722
+reverse true
+[183/276] obj_0206 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255976 196205
+reverse true
+[184/276] obj_0207 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258261 245256
+reverse true
+[185/276] obj_0208 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 165919 169403
+reverse false
+[186/276] obj_0209 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258460 238931
+reverse true
+[187/276] obj_0210 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 211951 221971
+reverse false
+[188/276] obj_0211 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 227417 185509
+reverse true
+[189/276] obj_0212 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 224542 188519
+reverse true
+[190/276] obj_0213 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219559 246023
+reverse false
+[191/276] obj_0214 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226616 226334
+reverse true
+[192/276] obj_0215 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252537 200329
+reverse true
+[193/276] obj_0216 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257409 228046
+reverse true
+[194/276] obj_0217 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 224620 221782
+reverse true
+[195/276] obj_0218 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253407 195721
+reverse true
+[196/276] obj_0219 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 249412 214224
+reverse true
+[197/276] obj_0220 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256985 254184
+reverse true
+[198/276] obj_0221 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255758 204187
+reverse true
+[199/276] obj_0222 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256130 234121
+reverse true
+[200/276] obj_0223 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196065 255715
+reverse false
+[201/276] obj_0224 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 244108 234922
+reverse true
+[202/276] obj_0225 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 259669 258350
+reverse true
+[203/276] obj_0226 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 239595 213608
+reverse true
+[204/276] obj_0227 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253934 206232
+reverse true
+[205/276] obj_0228 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 232707 241911
+reverse false
+[206/276] obj_0229 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 243527 223127
+reverse true
+[207/276] obj_0230 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 201865 199831
+reverse true
+[208/276] obj_0231 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 242459 192675
+reverse true
+[209/276] obj_0232 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257496 205301
+reverse true
+[210/276] obj_0233 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 254934 202355
+reverse true
+[211/276] obj_0234 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 235284 227942
+reverse true
+[212/276] obj_0235 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 258584 220438
+reverse true
+[213/276] obj_0236 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257296 210891
+reverse true
+[214/276] obj_0237 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257298 236800
+reverse true
+[215/276] obj_0238 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 246043 179563
+reverse true
+[216/276] obj_0239 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256528 253196
+reverse true
+[217/276] obj_0240 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 204843 179396
+reverse true
+[218/276] obj_0241 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 242837 213278
+reverse true
+[219/276] obj_0242 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252006 193501
+reverse true
+[220/276] obj_0243 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 163182 177474
+reverse false
+[221/276] obj_0244 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236795 256743
+reverse false
+[222/276] obj_0245 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 213848 178085
+reverse true
+[223/276] obj_0246 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 242577 227114
+reverse true
+[224/276] obj_0247 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 229723 221716
+reverse true
+[225/276] obj_0248 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 246004 238442
+reverse true
+[226/276] obj_0249 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 205158 224731
+reverse false
+[227/276] obj_0250 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 223726 248974
+reverse false
+[228/276] obj_0251 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 260800 256101
+reverse true
+[229/276] obj_0252 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 241681 199895
+reverse true
+[230/276] obj_0253 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256211 190803
+reverse true
+[231/276] obj_0254 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236149 257618
+reverse false
+[232/276] obj_0255 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196103 173470
+reverse true
+[233/276] obj_0256 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256646 252381
+reverse true
+[234/276] obj_0257 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 259003 241773
+reverse true
+[235/276] obj_0258 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256747 191952
+reverse true
+[236/276] obj_0259 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195639 177120
+reverse true
+[237/276] obj_0260 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256197 247135
+reverse true
+[238/276] obj_0261 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 237672 186359
+reverse true
+[239/276] obj_0262 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252146 201107
+reverse true
+[240/276] obj_0263 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236061 221392
+reverse true
+[241/276] obj_0264 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 219700 183484
+reverse true
+[242/276] obj_0265 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 249167 181814
+reverse true
+[243/276] obj_0266 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255937 219112
+reverse true
+[244/276] obj_0267 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195131 249481
+reverse false
+[245/276] obj_0268 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 226787 235112
+reverse false
+[246/276] obj_0269 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 207663 173528
+reverse true
+[247/276] obj_0270 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 260314 256172
+reverse true
+[248/276] obj_0271 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 203187 206509
+reverse false
+[249/276] obj_0272 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 252261 230057
+reverse true
+[250/276] obj_0273 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 196980 205339
+reverse false
+[251/276] obj_0274 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 257959 198259
+reverse true
+[252/276] obj_0275 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 222287 210997
+reverse true
+[253/276] obj_0276 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 203540 207469
+reverse false
+[254/276] obj_0277 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255646 192813
+reverse true
+[255/276] obj_0278 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256296 233393
+reverse true
+[256/276] obj_0279 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 206410 179973
+reverse true
+[257/276] obj_0280 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256562 195151
+reverse true
+[258/276] obj_0281 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 245236 250131
+reverse false
+[259/276] obj_0282 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 193638 155483
+reverse true
+[260/276] obj_0283 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 230526 235892
+reverse false
+[261/276] obj_0284 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 195914 226420
+reverse false
+[262/276] obj_0285 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 212735 198254
+reverse true
+[263/276] obj_0286 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253071 204227
+reverse true
+[264/276] obj_0287 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 198968 199835
+reverse false
+[265/276] obj_0288 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 198833 174608
+reverse true
+[266/276] obj_0289 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 200586 197377
+reverse true
+[267/276] obj_0290 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 250401 207680
+reverse true
+[268/276] obj_0291 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 236089 178848
+reverse true
+[269/276] obj_0292 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 256771 241973
+reverse true
+[270/276] obj_0293 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 253220 211703
+reverse true
+[271/276] obj_0294 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 237062 191410
+reverse true
+[272/276] obj_0295 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 208371 161627
+reverse true
+[273/276] obj_0296 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 255913 184987
+reverse true
+[274/276] obj_0297 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 232496 223466
+reverse true
+[275/276] obj_0298 device=cuda:0
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 215461 208329
+reverse true
+[276/276] obj_0299 device=cuda:0
+saved 276 rows (schedules=['global_fixed_high'])
