@@ -1,0 +1,133 @@
+{
+  "manifest": "FINAL_REPRODUCIBILITY_MANIFEST_v1",
+  "generated": "2026-10-01",
+  "audit_dir": "final/round2/coordination/final_audit_20261001",
+  "git_head_at_audit": "d30ed4f40efc6b49d3c4044d1845a67b666038c5",
+  "environment": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cu128",
+    "diffusers": "0.37.0",
+    "cuda": "12.8",
+    "nvidia_driver": "570.172.08",
+    "gpu": "2x NVIDIA GeForce RTX 5090 (32607 MiB each)",
+    "os": "Linux x86_64"
+  },
+  "shared_artifacts": {
+    "checkpoint_main_strict276": {
+      "path": "mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+      "sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+      "sha_verified_this_audit": true
+    },
+    "strict_holdout_object_list": {
+      "path": "final/round2/clean_dataset_v2/strict_holdout_objects_276_clean_v2.txt",
+      "sha256": "a6aa8ab6e475763e1b5e67dc8c712ec8f1940e3952d65897c820887554bbd044",
+      "n_objects": 276
+    },
+    "runner_config_clean_holdout_yaml": {
+      "path_rescued": "rescued_tmp_20261001/clean_holdout.yaml",
+      "original_path": "/4T/tmp/mvpainter-recovery-HLzm9O/scheme_new_schedule/clean_holdout.yaml",
+      "sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b"
+    },
+    "rescued_artifacts_index": "rescued_tmp_20261001/SHA256_MANIFEST.txt"
+  },
+  "experiments": {
+    "strict276_stage_placement_A2_20260929": {
+      "run_dir": "final/round2/stage_placement_276_20260929",
+      "runner": "scripts/run_stage_placement_276_20260929.py",
+      "runner_sha256": "75276a0088331fdc08f0a372e0bc430be86a30f2ad9fbf23183eb5d1b3f5875e",
+      "eval_kernel": "geotex/stage_placement_eval.py",
+      "eval_kernel_sha256": "9d520dae28f50e810600592f950f59c2c6f8d81d9f99fd1086a559213b2c2345",
+      "metric": "geotex.eval_exploration.compute_metrics",
+      "conditions": ["fixed_mean", "c3_lhl", "hll", "llh"],
+      "images_retained": true,
+      "status": "PASS"
+    },
+    "strict276_layer_confirmation_20260930": {
+      "run_dir_rescued": "rescued_tmp_20261001/layer_confirmation_20260930",
+      "protocol": "layer-confirmation-strict276-v1",
+      "pre_registration": "final/round2/coordination/revision_next_20260930/EXPERIMENT_PROTOCOL_LOCK.md",
+      "runner": "scripts/run_layer_confirmation_276_20260930.py",
+      "runner_sha256": "273c2f75b0124d1844fa9dc168a7a27a89ea6a349f8ade0d7f03076b3cfe3914",
+      "analysis_script": "scripts/analyze_layer_confirmation_20260930.py",
+      "analysis_script_sha256": "f39020f6b9374bb072cd567700bfad9682099f2e8418aea49b779b0340ca5a3b",
+      "conditions": ["global_fixed_low", "layer_fixed_mean", "layer_lhl", "layer_llh"],
+      "seed": 42,
+      "object_seed_rule": "42 + idx (R0 namespace)",
+      "steps": 50,
+      "resolution": [256, 256],
+      "target_view_mode": "unique6",
+      "scale_semantics": "effective = min(requested, cap deep 3.0 / middle 3.5 / shallow 0.8)",
+      "stage_partition": "step/49; early<1/3, middle<2/3 => 17/16/17",
+      "bootstrap": {"seed": 20260930, "resamples": 10000, "method": "object-level percentile"},
+      "images_retained": false,
+      "status": "RESCUED"
+    },
+    "global_C3_development_pilot": {
+      "run_dir": "final/round2/coordination/c3_schedule_followup_strict276_20260930_persistent",
+      "protocol": "strict-trb-development-v2",
+      "methods": ["fixed_low", "C3_TCAS", "HLL_eq", "LLH_eq", "LLH_ramp_eq", "LLH_cosine_eq"],
+      "checkpoint_provenance": "partial (per 0930 decision; not paper-facing)",
+      "status": "AUDIT NEEDED"
+    },
+    "core7_same_runner_completion_20261001": {
+      "run_dir": "final/round2/coordination/core7_same_runner_completion_20261001",
+      "protocol_lock": "final/round2/coordination/core7_same_runner_completion_20261001/PROTOCOL_LOCK_CORE7_COMPLETION.md",
+      "runner": "scripts/run_core7_completion_276_20261001.py",
+      "runner_sha256": "ae5d5664e7d0ebcd4bd84c7c7d688c4a8962c6d74463fe88e7a866404911e7e0",
+      "conditions": ["no_adapter", "global_fixed_high(2.50)", "global_fixed_low(1.25) preflight anchor"],
+      "code_path": "verbatim copy of run_layer_confirmation_276_20260930.py, protocol layer-confirmation-strict276-v1, R0 namespace (object_seed=42+idx)",
+      "owner": "external agent (running on both GPUs at audit start 2026-10-01)",
+      "status": "IN PROGRESS (EXTERNAL)"
+    },
+    "robustness_R0_R1_20260930": {
+      "run_dir": "final/round2/coordination/main_backbone_robustness1_20260930",
+      "seed_rules": {"R0": "42+idx", "R1": "10042+idx"},
+      "artifacts": ["MAIN_BACKBONE_ROBUSTNESS1_REPORT.md", "paired_bootstrap.json", "per_object_metrics.csv", "RUN_MANIFEST.json", "ARTIFACT_SHA256SUMS.txt", "METRIC_SIGN_CONVENTION_ERRATUM.md"],
+      "status": "PASS"
+    },
+    "mv_adapter_layerwise_76_20260930": {
+      "run_dir": "final/round2/mv_adapter",
+      "protocol": "final/round2/mv_adapter/MVADAPTER_LAYERWISE_PROTOCOL.md",
+      "hash_manifest": "final/round2/mv_adapter/MVADAPTER_LAYERWISE_HASH_MANIFEST.json",
+      "layer_profile": "final/round2/mv_adapter/layer_profile_transfer.json",
+      "runner": "final/round2/mv_adapter/run_layerwise_experiment.py",
+      "runner_sha256": "441aef4fb4cdac7227fb0befd21b2046a07a5df697f1315deb6738e868e2439b",
+      "panel_runner": "final/round2/mv_adapter/run_experiment.py",
+      "panel_runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+      "conditions": 7,
+      "cohort": "76-object Exact holdout",
+      "seed": 20260928,
+      "steps": 50,
+      "identity_audit": "PASS 9/9 PNG bitwise vs global runner and archived 76-object grids",
+      "status": "PASS"
+    },
+    "mvdiffusion_alpha_panel_75_20261001": {
+      "run_dir": "final/round2/mvdiffusion",
+      "results": "final/round2/mvdiffusion/results/holdout_exact_75_50steps/ + panel_{G-FL,G-LHL,G-LLH,L-FIX,L-LHL,L-LLH}_75/",
+      "identity_audit": "PASS 36/36 bitwise (alpha==1 strict path)",
+      "native_mirror": "SD2-depth post-load 1552/1552 tensors + 12/12 outputs bitwise equal",
+      "conclusion": "layer-wise NOT_REPLICATED (negative preserved)",
+      "status": "PASS"
+    },
+    "baking_12_objects": {
+      "run_dir": "final/round2/main_adapter_baking",
+      "bake_runner": "geotex/cpu_texture_bake.py",
+      "bake_runner_sha256": "c4495ed3ae94330346e43e5378944c5073d8375c75c5dc1c887565d2454a0685",
+      "eval": ["geotex/evaluate_cpu_bakes.py", "geotex/round2_bake_metrics.py"],
+      "cohort": "selected_12_objects.csv (stratified)",
+      "variants": ["cpu_bake_12: c3/fixed_high/fixed_low/no_adapter", "cpu_bake_12_layerwise: global_c3/global_fixed_low/layer_lhl/layer_llh"],
+      "status": "AUDIT NEEDED (consistency metrics added by this audit)"
+    },
+    "historical_official_layer_LHL": {
+      "record_rescued": "rescued_tmp_20261001/official_lhl_v2_merged/per_object_metrics.csv",
+      "archived_fg_psnr_mean": 14.78,
+      "seeded_repro_fg_psnr_mean": 12.97,
+      "status": "EXCLUDED (Phase-1 provenance audit decides Case A/B wording)"
+    }
+  },
+  "hash_sources_reused": {
+    "mv_adapter": "final/round2/mv_adapter/MVADAPTER_LAYERWISE_HASH_MANIFEST.json (protocol/date 2026-09-30)",
+    "final_acceptance_phase12": "final/round2/coordination/final_acceptance_20260930/ (8 audit documents, SHA-256 independently recomputed 2026-09-30)",
+    "robustness1": "final/round2/coordination/main_backbone_robustness1_20260930/ARTIFACT_SHA256SUMS.txt"
+  }
+}
