@@ -100,3 +100,21 @@ being executed in that window. The experiment phase is frozen: no new runs witho
 explicit reviewer requirement. Rewrite order per the narrative recommendation:
 Core-7 main evidence → texture/robustness → MV-Adapter bounded transfer (with the
 mapping-robustness sentence) → MVDiffusion boundary.
+
+## 7. Relation to the 01549 narrative decision report
+
+`01549_MANUSCRIPT_NARRATIVE_DECISION_REPORT.md` (parallel session, snapshot `9388b83`)
+is consistent with this gate and is now satisfied by it:
+
+- Its **Gate 1** (evidence convergence; remove contradictions among inventory, claim
+  matrix, readiness report) — executed by this convergence (`0d308b5` + inventory
+  re-sign).
+- Its **Gate 2** (single paper-facing delta convention) — executed as
+  `metric_direction_audit.md` Finding 6 and §5 here.
+- Its pre-registered **Scenario A** for M3 ("does not reverse the central
+  layer-redistribution conclusion") is the branch realized by the actual M3 outcome
+  (16/18 MAPPING_STABLE, primary effects slightly stronger); its mapping wording rule
+  ("avoid mapping invariant") matches §3 here.
+- Its L-TCAS reframing (residual-allocation matrix over depth × stage) is compatible
+  with the frozen claim widths in §4 and may be adopted in the rewrite window at the
+  narrative-recommendation width (mechanism study, not universal selector).
