@@ -1,0 +1,32 @@
+| comparison | metric | mean delta | median | CI95 | win rate | n | CI excl. 0 |
+|---|---|---:|---:|---|---:|---:|---|
+| P1_L-LLH_vs_G-FL | interop_psnr | -0.453828 | -0.288469 | [-0.752102, -0.160451] | 0.333 | 75 | True |
+| P1_L-LLH_vs_G-FL | interop_fg_ssim | -0.019393 | -0.011493 | [-0.029361, -0.009856] | 0.320 | 75 | True |
+| P1_L-LLH_vs_G-FL | interop_edge_ssim | -0.005941 | -0.006020 | [-0.010305, -0.001382] | 0.347 | 75 | True |
+| P1_L-LLH_vs_G-FL | interop_fg_lpips | -0.002745 | -0.000527 | [-0.007632, 0.001808] | 0.467 | 75 | False |
+| P1_L-LLH_vs_G-FL | interop_ciede2000 | -1.373021 | -1.392883 | [-2.374678, -0.418244] | 0.293 | 75 | True |
+| P1_L-LLH_vs_G-FL | interop_gt_relative_texture_error | 0.082286 | 0.070799 | [0.020073, 0.145316] | 0.600 | 75 | True |
+| P2_L-LLH_vs_G-LLH | interop_psnr | -0.466728 | -0.344608 | [-0.767571, -0.174846] | 0.347 | 75 | True |
+| P2_L-LLH_vs_G-LLH | interop_fg_ssim | -0.019245 | -0.013380 | [-0.029244, -0.009725] | 0.307 | 75 | True |
+| P2_L-LLH_vs_G-LLH | interop_edge_ssim | -0.006207 | -0.006802 | [-0.010601, -0.001620] | 0.387 | 75 | True |
+| P2_L-LLH_vs_G-LLH | interop_fg_lpips | -0.002998 | -0.001314 | [-0.007765, 0.001458] | 0.467 | 75 | False |
+| P2_L-LLH_vs_G-LLH | interop_ciede2000 | -1.377180 | -1.675414 | [-2.393609, -0.400867] | 0.307 | 75 | True |
+| P2_L-LLH_vs_G-LLH | interop_gt_relative_texture_error | 0.064768 | 0.074226 | [0.005093, 0.124369] | 0.600 | 75 | True |
+| P3_L-LLH_vs_L-FIX | interop_psnr | -0.092564 | -0.104492 | [-0.182342, -0.003231] | 0.360 | 75 | True |
+| P3_L-LLH_vs_L-FIX | interop_fg_ssim | 0.000528 | -0.001473 | [-0.003700, 0.004874] | 0.440 | 75 | False |
+| P3_L-LLH_vs_L-FIX | interop_edge_ssim | -0.002828 | -0.003883 | [-0.005185, -0.000405] | 0.333 | 75 | True |
+| P3_L-LLH_vs_L-FIX | interop_fg_lpips | 0.001089 | 0.001216 | [-0.000499, 0.002704] | 0.547 | 75 | False |
+| P3_L-LLH_vs_L-FIX | interop_ciede2000 | -0.082626 | -0.218824 | [-0.410153, 0.235252] | 0.427 | 75 | False |
+| P3_L-LLH_vs_L-FIX | interop_gt_relative_texture_error | 0.037090 | 0.019521 | [-0.000258, 0.081113] | 0.573 | 75 | False |
+| P4_L-LHL_vs_G-LHL | interop_psnr | -0.520646 | -0.492415 | [-0.810872, -0.232104] | 0.307 | 75 | True |
+| P4_L-LHL_vs_G-LHL | interop_fg_ssim | -0.021431 | -0.011928 | [-0.032306, -0.011114] | 0.307 | 75 | True |
+| P4_L-LHL_vs_G-LHL | interop_edge_ssim | -0.007282 | -0.006861 | [-0.011359, -0.003234] | 0.373 | 75 | True |
+| P4_L-LHL_vs_G-LHL | interop_fg_lpips | -0.002491 | -0.002206 | [-0.007174, 0.001895] | 0.427 | 75 | False |
+| P4_L-LHL_vs_G-LHL | interop_ciede2000 | -1.545280 | -1.725380 | [-2.526751, -0.592682] | 0.267 | 75 | True |
+| P4_L-LHL_vs_G-LHL | interop_gt_relative_texture_error | 0.098921 | 0.096060 | [0.044345, 0.154601] | 0.640 | 75 | True |
+| P5_G-LLH_vs_G-LHL | interop_psnr | -0.078763 | -0.041666 | [-0.163889, 0.004507] | 0.400 | 75 | False |
+| P5_G-LLH_vs_G-LHL | interop_fg_ssim | -0.000000 | 0.000036 | [-0.002323, 0.002393] | 0.507 | 75 | False |
+| P5_G-LLH_vs_G-LHL | interop_edge_ssim | -0.001471 | -0.001734 | [-0.003510, 0.000589] | 0.427 | 75 | False |
+| P5_G-LLH_vs_G-LHL | interop_fg_lpips | 0.001371 | 0.001708 | [0.000141, 0.002642] | 0.627 | 75 | True |
+| P5_G-LLH_vs_G-LHL | interop_ciede2000 | -0.015861 | 0.048097 | [-0.299044, 0.264829] | 0.520 | 75 | False |
+| P5_G-LLH_vs_G-LHL | interop_gt_relative_texture_error | 0.032667 | 0.010840 | [-0.002649, 0.068249] | 0.547 | 75 | False |

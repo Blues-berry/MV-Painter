@@ -1,0 +1,73 @@
+{
+  "protocol": "mvdiffusion-depth-mvpainter-interop-v1",
+  "data_manifest": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/data_manifest_holdout_exact_75.json",
+  "checkpoint": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/upstream/weights/depth_gen_new.pth",
+  "checkpoint_load": {
+    "mode": "strict_after_explicit_key_migration",
+    "source_key_count": 1553,
+    "loaded_key_count": 1552,
+    "renamed_key_count": 16,
+    "dropped_key_count": 1,
+    "renamed_keys": {
+      "vae.encoder.mid_block.attentions.0.query.weight": "vae.encoder.mid_block.attentions.0.to_q.weight",
+      "vae.encoder.mid_block.attentions.0.query.bias": "vae.encoder.mid_block.attentions.0.to_q.bias",
+      "vae.encoder.mid_block.attentions.0.key.weight": "vae.encoder.mid_block.attentions.0.to_k.weight",
+      "vae.encoder.mid_block.attentions.0.key.bias": "vae.encoder.mid_block.attentions.0.to_k.bias",
+      "vae.encoder.mid_block.attentions.0.value.weight": "vae.encoder.mid_block.attentions.0.to_v.weight",
+      "vae.encoder.mid_block.attentions.0.value.bias": "vae.encoder.mid_block.attentions.0.to_v.bias",
+      "vae.encoder.mid_block.attentions.0.proj_attn.weight": "vae.encoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.encoder.mid_block.attentions.0.proj_attn.bias": "vae.encoder.mid_block.attentions.0.to_out.0.bias",
+      "vae.decoder.mid_block.attentions.0.query.weight": "vae.decoder.mid_block.attentions.0.to_q.weight",
+      "vae.decoder.mid_block.attentions.0.query.bias": "vae.decoder.mid_block.attentions.0.to_q.bias",
+      "vae.decoder.mid_block.attentions.0.key.weight": "vae.decoder.mid_block.attentions.0.to_k.weight",
+      "vae.decoder.mid_block.attentions.0.key.bias": "vae.decoder.mid_block.attentions.0.to_k.bias",
+      "vae.decoder.mid_block.attentions.0.value.weight": "vae.decoder.mid_block.attentions.0.to_v.weight",
+      "vae.decoder.mid_block.attentions.0.value.bias": "vae.decoder.mid_block.attentions.0.to_v.bias",
+      "vae.decoder.mid_block.attentions.0.proj_attn.weight": "vae.decoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.decoder.mid_block.attentions.0.proj_attn.bias": "vae.decoder.mid_block.attentions.0.to_out.0.bias"
+    },
+    "dropped_keys": [
+      "text_encoder.text_model.embeddings.position_ids"
+    ]
+  },
+  "config": {
+    "dataset": {
+      "name": "scannet",
+      "num_views": 12,
+      "image_dir": "final/round2/mvdiffusion/data/scannet/holdout_exact_75",
+      "resolution_h": 192,
+      "resolution_w": 256,
+      "data_load_mode": "fix_frame",
+      "test_interval": -1,
+      "gen_data_ratio": 1.0
+    },
+    "train": {
+      "lr": 0.0002,
+      "max_epochs": 1
+    },
+    "model": {
+      "model_id": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+      "depth_config": "configs/depth_preprocessor_config.json",
+      "guidance_scale": 9.0,
+      "diff_timestep": 50,
+      "model_type": "depth",
+      "overlap_filter": 0.3
+    }
+  },
+  "base_provenance": {
+    "model_id": "/4T/CXY/MV-Painter/final/round2/mvdiffusion/models/sd21_depth_compat",
+    "native_official_depth_base": false,
+    "compatibility": {
+      "source_base": "/4T/CXY/MV-Painter/final/round2/mv_adapter/models/sd21_base",
+      "unet_input_channels": 5,
+      "depth_channel_initialization": "zeros",
+      "native_official_depth_base": false
+    }
+  },
+  "device": "cuda:0",
+  "steps": 50,
+  "seed": 42,
+  "objects": [
+    "obj_0024"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "audit": "MVDIFFUSION_POSTLOAD_EQUIVALENCE",
+  "verdict": "PASS",
+  "checkpoint_load_compat": {
+    "mode": "strict_after_explicit_key_migration",
+    "source_key_count": 1553,
+    "loaded_key_count": 1552,
+    "renamed_key_count": 16,
+    "dropped_key_count": 1,
+    "renamed_keys": {
+      "vae.encoder.mid_block.attentions.0.query.weight": "vae.encoder.mid_block.attentions.0.to_q.weight",
+      "vae.encoder.mid_block.attentions.0.query.bias": "vae.encoder.mid_block.attentions.0.to_q.bias",
+      "vae.encoder.mid_block.attentions.0.key.weight": "vae.encoder.mid_block.attentions.0.to_k.weight",
+      "vae.encoder.mid_block.attentions.0.key.bias": "vae.encoder.mid_block.attentions.0.to_k.bias",
+      "vae.encoder.mid_block.attentions.0.value.weight": "vae.encoder.mid_block.attentions.0.to_v.weight",
+      "vae.encoder.mid_block.attentions.0.value.bias": "vae.encoder.mid_block.attentions.0.to_v.bias",
+      "vae.encoder.mid_block.attentions.0.proj_attn.weight": "vae.encoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.encoder.mid_block.attentions.0.proj_attn.bias": "vae.encoder.mid_block.attentions.0.to_out.0.bias",
+      "vae.decoder.mid_block.attentions.0.query.weight": "vae.decoder.mid_block.attentions.0.to_q.weight",
+      "vae.decoder.mid_block.attentions.0.query.bias": "vae.decoder.mid_block.attentions.0.to_q.bias",
+      "vae.decoder.mid_block.attentions.0.key.weight": "vae.decoder.mid_block.attentions.0.to_k.weight",
+      "vae.decoder.mid_block.attentions.0.key.bias": "vae.decoder.mid_block.attentions.0.to_k.bias",
+      "vae.decoder.mid_block.attentions.0.value.weight": "vae.decoder.mid_block.attentions.0.to_v.weight",
+      "vae.decoder.mid_block.attentions.0.value.bias": "vae.decoder.mid_block.attentions.0.to_v.bias",
+      "vae.decoder.mid_block.attentions.0.proj_attn.weight": "vae.decoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.decoder.mid_block.attentions.0.proj_attn.bias": "vae.decoder.mid_block.attentions.0.to_out.0.bias"
+    },
+    "dropped_keys": [
+      "text_encoder.text_model.embeddings.position_ids"
+    ]
+  },
+  "checkpoint_load_mirror": {
+    "mode": "strict_after_explicit_key_migration",
+    "source_key_count": 1553,
+    "loaded_key_count": 1552,
+    "renamed_key_count": 16,
+    "dropped_key_count": 1,
+    "renamed_keys": {
+      "vae.encoder.mid_block.attentions.0.query.weight": "vae.encoder.mid_block.attentions.0.to_q.weight",
+      "vae.encoder.mid_block.attentions.0.query.bias": "vae.encoder.mid_block.attentions.0.to_q.bias",
+      "vae.encoder.mid_block.attentions.0.key.weight": "vae.encoder.mid_block.attentions.0.to_k.weight",
+      "vae.encoder.mid_block.attentions.0.key.bias": "vae.encoder.mid_block.attentions.0.to_k.bias",
+      "vae.encoder.mid_block.attentions.0.value.weight": "vae.encoder.mid_block.attentions.0.to_v.weight",
+      "vae.encoder.mid_block.attentions.0.value.bias": "vae.encoder.mid_block.attentions.0.to_v.bias",
+      "vae.encoder.mid_block.attentions.0.proj_attn.weight": "vae.encoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.encoder.mid_block.attentions.0.proj_attn.bias": "vae.encoder.mid_block.attentions.0.to_out.0.bias",
+      "vae.decoder.mid_block.attentions.0.query.weight": "vae.decoder.mid_block.attentions.0.to_q.weight",
+      "vae.decoder.mid_block.attentions.0.query.bias": "vae.decoder.mid_block.attentions.0.to_q.bias",
+      "vae.decoder.mid_block.attentions.0.key.weight": "vae.decoder.mid_block.attentions.0.to_k.weight",
+      "vae.decoder.mid_block.attentions.0.key.bias": "vae.decoder.mid_block.attentions.0.to_k.bias",
+      "vae.decoder.mid_block.attentions.0.value.weight": "vae.decoder.mid_block.attentions.0.to_v.weight",
+      "vae.decoder.mid_block.attentions.0.value.bias": "vae.decoder.mid_block.attentions.0.to_v.bias",
+      "vae.decoder.mid_block.attentions.0.proj_attn.weight": "vae.decoder.mid_block.attentions.0.to_out.0.weight",
+      "vae.decoder.mid_block.attentions.0.proj_attn.bias": "vae.decoder.mid_block.attentions.0.to_out.0.bias"
+    },
+    "dropped_keys": [
+      "text_encoder.text_model.embeddings.position_ids"
+    ]
+  },
+  "total_keys": {
+    "compat": 1552,
+    "mirror": 1552,
+    "shared": 1552
+  },
+  "only_in_compat": [],
+  "only_in_mirror": [],
+  "shape_mismatch": [],
+  "dtype_mismatch": [],
+  "bitwise_identical_tensors": 1552,
+  "value_diffs": [],
+  "n_value_diffs": 0
+}

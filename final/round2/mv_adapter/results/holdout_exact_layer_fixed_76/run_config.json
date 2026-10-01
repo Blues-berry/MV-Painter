@@ -1,0 +1,91 @@
+{
+  "manifest": "final/round2/mv_adapter/data_manifest.json",
+  "base_model": "final/round2/mv_adapter/models/sd21_base",
+  "adapter_path": "final/round2/mv_adapter/models/mv-adapter",
+  "layer_profile": "final/round2/mv_adapter/layer_profile_transfer.json",
+  "output_dir": "final/round2/mv_adapter/results/holdout_exact_layer_fixed_76",
+  "split": "holdout",
+  "geometry_source": "exact",
+  "proxy_manifest": null,
+  "exact_mesh_root": null,
+  "object_ids": null,
+  "device": "cuda:0",
+  "seed": 20260928,
+  "steps": 50,
+  "low": 0.75,
+  "high": 1.0,
+  "schedule": [
+    "FIXED_MEAN"
+  ],
+  "identity": false,
+  "resume": true,
+  "canonical_schedule_labels": {
+    "FIXED_MEAN": "L-FIX"
+  },
+  "layer_profile_sha256": "862af4b39460f61d4996d4c347891c605e6328a1e0c6c2b1ef95141e148f6bfe",
+  "layer_multipliers_by_point": [
+    0.4195298372513563,
+    1.193490054249548,
+    1.193490054249548,
+    1.193490054249548
+  ],
+  "identity_mode": false,
+  "cond_encoder_diagnostics": {
+    "shapes_logged": true,
+    "identity_mode": false,
+    "multipliers": [
+      0.4195298372513563,
+      1.193490054249548,
+      1.193490054249548,
+      1.193490054249548
+    ],
+    "adapter_state_shapes": [
+      [
+        12,
+        320,
+        64,
+        64
+      ],
+      [
+        12,
+        640,
+        32,
+        32
+      ],
+      [
+        12,
+        1280,
+        16,
+        16
+      ],
+      [
+        12,
+        1280,
+        8,
+        8
+      ]
+    ],
+    "first_call_input_norms": [
+      2285.84716796875,
+      1763.89599609375,
+      2535.650390625,
+      2316.997802734375
+    ],
+    "first_call_scaled_norms": [
+      958.9799194335938,
+      2105.1904296875,
+      3026.273193359375,
+      2765.31494140625
+    ],
+    "first_call_norm_ratios": [
+      0.41952932500109474,
+      1.193488978006394,
+      1.193489924537051,
+      1.1934905325084035
+    ]
+  },
+  "rows_written": 76,
+  "rows_finite": 76,
+  "runner_sha256": "441aef4fb4cdac7227fb0befd21b2046a07a5df697f1315deb6738e868e2439b",
+  "global_runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3"
+}
