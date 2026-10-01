@@ -1,0 +1,42 @@
+{
+  "source": "frozen MVPainter layer-wise profile — mapping-sensitivity degenerate variant D (1,2,1)",
+  "frozen_before_mapD_results": true,
+  "normalization": "weighted_mean_1",
+  "normalization_detail": {
+    "source_profile_name": "layer_fixed_mean",
+    "source_values": {
+      "deep": 1.65,
+      "middle": 1.65,
+      "shallow": 0.58
+    },
+    "target_group_assignment": {
+      "shallow": [0],
+      "middle": [1, 2],
+      "deep": [3]
+    },
+    "per_point_source_values": [0.58, 1.65, 1.65, 1.65],
+    "weighted_mean_before": 1.3824999999999998,
+    "degeneracy_proof": "Because the source middle and deep values are both 1.65, the multiset of per-point source values under partition (1,2,1) equals that under the reference partition (1,1,2): [0.58, 1.65, 1.65, 1.65]. The normalization rule divides each point by the same weighted mean 1.3825, so the per-point multiplier list is identical to mapping C. Since run_layerwise_experiment.py applies multipliers per injection point, partition D is predicted to produce bitwise-identical outputs to the already-run mapping C. This file exists to turn that analytic claim into a 3-object identity check.",
+    "formula": "normalized(point) = source(group(point)) / weighted_mean(source, point-count weights)"
+  },
+  "target_mapping": {
+    "rule": "Partition by decreasing resolution: shallow={down_blocks.0}, middle={down_blocks.1, down_blocks.2}, deep={down_blocks.3}.",
+    "points": [
+      {"index": 0, "unet_module": "down_blocks.0", "block_type": "CrossAttnDownBlock2D", "channels": 320, "resolution_at_512": "64x64", "group": "shallow"},
+      {"index": 1, "unet_module": "down_blocks.1", "block_type": "CrossAttnDownBlock2D", "channels": 640, "resolution_at_512": "32x32", "group": "middle"},
+      {"index": 2, "unet_module": "down_blocks.2", "block_type": "CrossAttnDownBlock2D", "channels": 1280, "resolution_at_512": "16x16", "group": "middle"},
+      {"index": 3, "unet_module": "down_blocks.3", "block_type": "DownBlock2D", "channels": 1280, "resolution_at_512": "8x8", "group": "deep"}
+    ],
+    "per_point_multipliers": {
+      "shallow": 0.4195298372513563,
+      "middle": 1.193490054249548,
+      "deep": 1.193490054249548
+    },
+    "per_point_multiplier_list_by_adapter_state_index": [0.4195298372513563, 1.193490054249548, 1.193490054249548, 1.193490054249548]
+  },
+  "semantics": "Identical to layer_profile_transfer.json by construction; see degeneracy_proof.",
+  "provenance": {
+    "parent_profile": "final/round2/mv_adapter/layer_profile_transfer.json (sha256 862af4b39460f61d4996d4c347891c605e6328a1e0c6c2b1ef95141e148f6bfe)",
+    "protocol": "final/round2/mv_adapter/MVADAPTER_MAPPING_SENSITIVITY_PROTOCOL.md"
+  }
+}
