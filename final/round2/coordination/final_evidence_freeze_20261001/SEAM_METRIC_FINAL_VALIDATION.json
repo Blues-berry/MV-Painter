@@ -1,0 +1,78 @@
+{
+  "script": "scripts/validate_bake_seams_20261001.py",
+  "controls": {
+    "positive_seam_color_split": {
+      "n_unique_edges": 5,
+      "n_boundary_edges": 4,
+      "n_interior_edges": 0,
+      "n_seam_edges": 1,
+      "seam_uv_dist_median": 0.7000000104308128,
+      "seam_dE00_mean": 52.881399704556856,
+      "seam_dE00_median": 52.881399704556856,
+      "seam_dE00_p90": 52.881399704556856,
+      "seam_dE00_frac_gt5": 1.0,
+      "seam_dE00_frac_gt10": 1.0,
+      "control_dE00_mean_2px": null,
+      "seam_to_control_ratio": null,
+      "fixture": "positive_control.glb",
+      "pass": true
+    },
+    "negative_uniform_seam_free_texture": {
+      "n_unique_edges": 5,
+      "n_boundary_edges": 4,
+      "n_interior_edges": 0,
+      "n_seam_edges": 1,
+      "seam_uv_dist_median": 0.7000000104308128,
+      "seam_dE00_mean": 0.0,
+      "seam_dE00_median": 0.0,
+      "seam_dE00_p90": 0.0,
+      "seam_dE00_frac_gt5": 0.0,
+      "seam_dE00_frac_gt10": 0.0,
+      "control_dE00_mean_2px": null,
+      "seam_to_control_ratio": null,
+      "fixture": "negative_control.glb",
+      "pass": true
+    },
+    "thresholds": {
+      "positive_mean_dE00_gt": 20.0,
+      "negative_mean_dE00_lt": 0.1
+    }
+  },
+  "existing_12_object_bakes": {
+    "source_csv": "final/round2/coordination/BAKE_SEAM_AUDIT_20261001/SEAM_AUDIT_PER_OBJECT.csv",
+    "rows": 96,
+    "conditions": {
+      "c3": 12,
+      "fixed_high": 12,
+      "fixed_low": 12,
+      "global_c3": 12,
+      "global_fixed_low": 12,
+      "layer_lhl": 12,
+      "layer_llh": 12,
+      "no_adapter": 12
+    },
+    "objects": [
+      "obj_0013",
+      "obj_0015",
+      "obj_0038",
+      "obj_0048",
+      "obj_0054",
+      "obj_0066",
+      "obj_0068",
+      "obj_0078",
+      "obj_0082",
+      "obj_0083",
+      "obj_0110",
+      "obj_0111"
+    ],
+    "expected_rows": 96,
+    "all_rows_have_nonempty_finite_seam_metrics": true,
+    "invalid_findings": []
+  },
+  "sampling_semantics": {
+    "seam_pair": "CIEDE2000 between 3x3-mean samples at chart-side UV midpoints of the same 3-D edge",
+    "seam_surface_distance": "zero; both samples represent the same 3-D edge midpoint",
+    "interior_control_offset_px": 2,
+    "empty_set": "INVALID; no empty-set-to-zero fallback accepted"
+  }
+}
