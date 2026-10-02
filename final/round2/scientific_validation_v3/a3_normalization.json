@@ -1,0 +1,54 @@
+{
+  "rule": "R_l,t=sqrt(sum sq l2 in group), mean over probe-24 a_baseline runs; M_l,w=sum over 10-step window; C=1.25*mean_w M_deep,w (deep keeps frozen A2 delta); delta_l=C/mean_w M_l,w; high_l=LOW_l+delta_l; if any high_l exceeds its native cap the whole A3 map runs uncapped",
+  "dev_run_dir": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/a3_dev_baseline_probe24",
+  "dev_run_manifest_sha256": "428171d13145eefe0d89e2329a00387e08df9ae7b9f0231d29957da84a21e474",
+  "probe_list_sha256": "187185c6e94d5cf72a647b7c150b338429cee15d82da449678896bfb181f79f6",
+  "dev_object_count": 24,
+  "window_M": {
+    "deep": [
+      76750.08648120266,
+      70390.12019826246,
+      62985.41158110724,
+      61166.577511924756,
+      56890.14809993401
+    ],
+    "middle": [
+      13662.892834956323,
+      15759.388861518975,
+      17454.58382768465,
+      15110.364138592731,
+      11457.581577768904
+    ],
+    "shallow": [
+      1863.6788299304262,
+      2949.7945374232017,
+      3194.8768277721406,
+      3182.825979222196,
+      2539.248358965178
+    ]
+  },
+  "mean_M": {
+    "deep": 65636.46877448622,
+    "middle": 14688.962248104315,
+    "shallow": 2746.084906662629
+  },
+  "C": 82045.58596810777,
+  "deltas": {
+    "deep": 1.25,
+    "middle": 5.58552636886899,
+    "shallow": 29.877293950032808
+  },
+  "high_values": {
+    "deep": 2.5,
+    "middle": 6.83552636886899,
+    "shallow": 30.377293950032808
+  },
+  "native_caps": {
+    "deep": 3.0,
+    "middle": 3.5,
+    "shallow": 0.8
+  },
+  "uncapped": true,
+  "frozen_before_fresh_evaluation": true,
+  "seed": 20261002
+}
