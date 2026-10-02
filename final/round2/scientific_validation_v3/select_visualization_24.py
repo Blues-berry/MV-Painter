@@ -120,9 +120,12 @@ def main() -> None:
     # spread across geometry terciles (sort by (geo tercile, perm rank))
     cell_keys = sorted(cells)
     iters = {k: 0 for k in cell_keys}
-    orders = {k: list(rng.permutation(cells[k])) for k in cell_keys}
+    orders = {}
     for k in cell_keys:
-        orders[k].sort(key=lambda u: (geo_t[u], orders[k].index(u)))
+        perm = rng.permutation(len(cells[k]))
+        ordered = [cells[k][int(i)] for i in perm]
+        ordered.sort(key=lambda u: geo_t[u])  # stable: preserves perm within tercile
+        orders[k] = ordered
     while len(selected) < N_SELECT:
         progressed = False
         for k in cell_keys:
