@@ -187,12 +187,17 @@ def build_conditions(include_a3: bool = False) -> dict:
     # Experiment A3: dose-normalized map — registered ONLY when include_a3 is
     # set (i.e., MVP_CONDITIONS names a3_* conditions), which forces the
     # frozen-spec load; the spec must exist and be frozen before any A3 run.
+    # The spec decides whether the A3 map runs under native cap semantics or
+    # the uncapped injection path (pre-registered in a3_normalization.json).
     if include_a3:
-        add("a3_baseline", lambda p: dict(LOW),
+        _ = a3_high("deep")  # force-load the frozen spec before reading flags
+        a3_uncapped = bool(A3_SPEC["uncapped"])
+        add("a3_baseline", lambda p: dict(LOW), uncapped=a3_uncapped,
             spec={"base": LOW, "kind": "layer-fixed-low", "dose": "a3"})
         for layer in ("deep", "middle", "shallow"):
             for w in (1, 2, 3, 4, 5):
                 add(f"a3_{layer}_W{w}", make_window_schedule(layer, w, LOW, a3_high(layer)),
+                    uncapped=a3_uncapped,
                     spec={"base": LOW, "layer": layer, "window": w, "high": a3_high(layer),
                           "kind": "window-intervention", "dose": "a3"})
 
