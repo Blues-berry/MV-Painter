@@ -324,6 +324,22 @@ def write_combined_csv(rows) -> None:
     temporary.replace(RUN_DIR / "per_object_metrics.csv")
 
 
+def rebuild_csvs_from_ledgers() -> None:
+    """Regenerate per-condition and combined CSVs from rows_shard*.json."""
+    all_rows = []
+    for shard in range(int(os.environ.get("MVP_NUM_SHARDS", "1"))):
+        p = RUN_DIR / f"rows_shard{shard}.json"
+        if p.exists():
+            all_rows.extend(json.loads(p.read_text()))
+    if not all_rows:
+        return
+    conditions = sorted({r["condition"] for r in all_rows})
+    for c in conditions:
+        write_condition_csv(all_rows, c)
+    write_combined_csv(all_rows)
+    print(f"rebuilt CSVs for {len(all_rows)} rows, {len(conditions)} conditions", flush=True)
+
+
 def condition_scale_trace(fn) -> list:
     """Requested scale trace per step (50 x 3 groups) for the manifest."""
     trace = []
@@ -381,6 +397,10 @@ def main() -> None:
     RUN_DIR.mkdir(parents=True, exist_ok=True)
     (RUN_DIR / "predictions").mkdir(exist_ok=True)
     (RUN_DIR / "residual_logs").mkdir(exist_ok=True)
+
+    if os.environ.get("MVP_REBUILD_CSVS") == "1":
+        rebuild_csvs_from_ledgers()
+        return
 
     rows_path = RUN_DIR / f"rows_shard{SHARD}.json"
     rows = json.loads(rows_path.read_text()) if rows_path.exists() else []
@@ -502,8 +522,12 @@ def main() -> None:
             rows.append(row)
             rows.sort(key=lambda item: (int(item["object_idx"]), item["condition"]))
             atomic_json(rows_path, rows)
-            write_condition_csv(rows, condition)
-            write_combined_csv(rows)
+            # CSV rewrite is O(total rows): throttle to every 16 completions
+            # (rows.json is the per-row resume ledger; MVP_REBUILD_CSVS=1
+            # regenerates CSVs from ledgers at any time)
+            if len(rows) % 16 == 0 or len(rows) <= 4:
+                write_condition_csv(rows, condition)
+                write_combined_csv(rows)
             del pred, batch, target, real_depth, geo_input, mask, geo_feats, edge, init_latents
             torch.cuda.empty_cache()
         done = sum(1 for o in object_range for c in CONDITIONS
