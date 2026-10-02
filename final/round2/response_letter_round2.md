@@ -282,5 +282,3 @@ same-runner holdout described in our responses to Reviewers 1 and 2.
   METHOD_IMPLEMENTATION_AUDIT.md, EXPERIMENT_PROTOCOL_LOCK.md.
 - coordination/layer_factorial_v1_20260930/ and layer confirmation records:
   raw CSV/JSON, manifests, SHA-256 indexes.
-
-This is an author-review working package; nothing has been submitted.
