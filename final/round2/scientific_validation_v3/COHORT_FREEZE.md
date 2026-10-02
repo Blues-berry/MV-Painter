@@ -1,6 +1,6 @@
 # COHORT_FREEZE — Phase III
 
-Status: **AUDIT IN PROGRESS** (this file will be finalized at cohort freeze)
+Status: **FROZEN** (2026-10-02)
 
 ## Rules (locked)
 
@@ -73,7 +73,22 @@ An object enters the selection pool only if ALL hold:
 
 ## Freeze record
 
-- Final cohort name: TBD
-- N: TBD
-- Selection pipeline commit SHA: TBD
-- Freeze commit SHA: TBD
+- Final cohort name: **FRESH_CONFIRM_300**
+- N: 300 (>= 300 available, so the full FRESH_CONFIRM_300 tier applies)
+- Candidate pool: 508 disjoint UIDs → 507 GLB-load-valid → 493 rendered ok
+  → 450 complete with all-views coverage in [0.02, 0.95] → 300 selected
+- Exclusions at selection stage: 56 coverage-bounds failures, 1 incomplete
+  render, 14 render failures, 1 GLB load failure (all recorded in
+  `technical_validity_audit.json`, `render_log.json`, `depth_convert_log.json`,
+  `glb_load_failures.json`; failures are excluded, never replaced)
+- Selection rule: `numpy.random.default_rng(20261002).choice(sorted_valid_pool, 300, replace=False)`
+  — GT-only, pre-registered, no generated-method information
+- Pipeline scripts: `audit_uid_disjointness.py`, `build_fresh_cohort.py`
+  (this directory); renders at `data/fresh_confirm_v3_renders/`
+  (Blender 4.2.4 Cycles, same settings as `rendered_full`)
+- Freeze artifacts: `fresh_confirm_300.txt`, `fresh_confirm_300_manifest.csv`,
+  `uid_disjointness_audit.json`, `technical_validity_audit.json`,
+  `SHA256SUMS.txt`
+- Freeze commit: this commit (see git log for SHA)
+- Render tree dir count: 507 dirs of which 493 complete; renders stay in
+  place for provenance (not committed to git — data volume)
