@@ -76,6 +76,10 @@ def main() -> None:
                 "MVP_CONDITIONS": ",".join(conditions),
                 "MVP_SAVE_PREDICTED": "1",
                 "MVP_SAVE_RESIDUAL": "1",
+                # cap intra-op threads: N shards x 32 default threads thrash
+                "OMP_NUM_THREADS": "6",
+                "MKL_NUM_THREADS": "6",
+                "MVP_DATA_ROOT": str(ROOT / "data/fresh_confirm_v3_renders"),
             })
             if args.object_limit > 0:
                 env["MVP_OBJECT_LIMIT"] = str(args.object_limit)

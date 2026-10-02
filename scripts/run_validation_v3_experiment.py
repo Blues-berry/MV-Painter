@@ -37,6 +37,9 @@ import torch
 from omegaconf import OmegaConf
 from torchvision.utils import save_image
 
+# cap intra-op threads (multi-shard launches would otherwise thrash 32 cores)
+torch.set_num_threads(int(os.environ.get("MVP_NUM_THREADS", "6")))
+
 ROOT = Path("/4T/CXY/MV-Painter")
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "geotex"))
@@ -390,6 +393,9 @@ def main() -> None:
     validation = config.data.params.validation
     validation.params.target_view_mode = "unique6"
     validation.params.object_list_file = str(OBJECT_LIST.resolve())
+    data_root = os.environ.get("MVP_DATA_ROOT")
+    if data_root:
+        validation.params.root_dir_list = [str(Path(data_root).resolve())]
     dataset = instantiate_from_config(validation)
     lpips_fn = ee.get_lpips_fn(device)
 
