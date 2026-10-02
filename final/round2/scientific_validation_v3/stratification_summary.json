@@ -1,0 +1,37 @@
+{
+  "seed": 20261002,
+  "cohort": "final/round2/scientific_validation_v3/fresh_confirm_300.txt",
+  "cohort_sha256": "b81bd142c0dbe04b6adaef1260a61c33eb1ef93b85c8a7cf5dba2244710f0673",
+  "n_selected": 24,
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "cell_counts": {
+    "tex0_cov0": 24,
+    "tex0_cov1": 29,
+    "tex0_cov2": 47,
+    "tex1_cov0": 28,
+    "tex1_cov1": 46,
+    "tex1_cov2": 26,
+    "tex2_cov0": 48,
+    "tex2_cov1": 25,
+    "tex2_cov2": 27
+  },
+  "selected_per_cell": {
+    "tex0_cov0": 3,
+    "tex0_cov1": 3,
+    "tex0_cov2": 3,
+    "tex1_cov0": 3,
+    "tex1_cov1": 3,
+    "tex1_cov2": 3,
+    "tex2_cov0": 2,
+    "tex2_cov1": 2,
+    "tex2_cov2": 2
+  },
+  "rule": "terciles of GT-only texture/coverage; within-cell order spreads geometry terciles; round-robin across cells; rng seed 20261002; GT-only, frozen before method metrics were read"
+}
