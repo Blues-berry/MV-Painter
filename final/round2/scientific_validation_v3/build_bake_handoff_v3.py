@@ -22,7 +22,6 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-import trimesh
 from PIL import Image
 
 ROOT = Path("/4T/CXY/MV-Painter")
@@ -31,6 +30,7 @@ FORMAL = V3 / "formal"
 RENDER_ROOT = ROOT / "data/fresh_confirm_v3_renders"
 VIZ24 = V3 / "visualization_24.txt"
 OUT = V3 / "bake_handoff"
+GLB_AUDIT = OUT / "blender_glb_uv_material_audit_v3.json"
 UNIQUE6 = (0, 15, 12, 16, 13, 14)
 
 CONDITIONS = ["no_adapter", "native_gfl", "native_gfh", "native_gc3",
@@ -66,6 +66,8 @@ def find_panel(uid, condition):
 
 def main():
     viz24 = [l.strip() for l in VIZ24.open() if l.strip()]
+    global GLB_AUDIT_JSON
+    GLB_AUDIT_JSON = json.loads(GLB_AUDIT.read_text())
     glb_paths = {}
     with (V3 / "fresh_confirm_300_manifest.csv").open() as f:
         for row in csv.DictReader(f):
@@ -78,13 +80,8 @@ def main():
     for uid in viz24:
         obj_dir = RENDER_ROOT / uid
         glb = Path(glb_paths[uid])
-        scene = trimesh.load(str(glb), force="scene", process=False)
-        mesh_material_audit = [
-            {"geometry": name,
-             "faces": int(len(g.faces)) if hasattr(g, "faces") else 0,
-             "has_uv": bool(getattr(g.visual, "uv", None) is not None)}
-            for name, g in (scene.geometry.items() if hasattr(scene, "geometry") else [])
-        ]
+        audit = GLB_AUDIT_JSON[uid]
+        mesh_material_audit = audit["mesh_objects"]
 
         cameras = [camera_record(obj_dir / "camera" / ("%03d.npy" % i)) for i in range(17)]
         alpha_paths = []
@@ -135,9 +132,11 @@ def main():
             "exact_glb_sha256": sha256(glb),
             "original_uv_required": True,
             "mesh_material_audit": mesh_material_audit,
+            "blender_audit_bbox": {"bbox_min": audit["bbox_min"], "bbox_max": audit["bbox_max"]},
             "uv_validation_backend": "Blender 4.2.4 native glTF+Draco import",
-            "normalization": {"meta_values": meta,
+            "normalization": {**audit["historical_normalization"],
                               "normalized_world": "scale*(source_world+offset)",
+                              "meta_values": meta,
                               "meta_path": str(obj_dir / "meta.npy")},
             "camera_poses_17": cameras,
             "camera_pose_files_17": [str(obj_dir / "camera" / ("%03d.npy" % i)) for i in range(17)],
