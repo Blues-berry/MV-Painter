@@ -29,9 +29,27 @@ BOOT_N = 10_000
 
 
 def read_rows(path: Path) -> dict:
-    """Return {object_key: row} keyed by object_uid."""
+    """Return {object_key: row} keyed by object_uid from a CSV."""
     rows = list(csv.DictReader(path.open()))
     return {r["object_uid"]: r for r in rows}
+
+
+def load_condition(run_dir: Path, condition: str) -> dict:
+    """Rows for one condition: per-condition CSV if present, else the
+    rows_shard*.json ledgers (always current; CSVs may lag by <=15 rows
+    due to throttled writes)."""
+    run_dir = Path(run_dir)
+    csv_path = run_dir / f"{condition}_per_object_metrics.csv"
+    if csv_path.exists():
+        return read_rows(csv_path)
+    merged = {}
+    for shard in sorted(run_dir.glob("rows_shard*.json")):
+        for r in json.loads(shard.read_text()):
+            if r["condition"] == condition:
+                merged[r["object_uid"]] = r
+    if not merged:
+        raise FileNotFoundError(f"no rows for condition {condition} in {run_dir}")
+    return merged
 
 
 def paired_bootstrap(deltas: np.ndarray):
@@ -64,8 +82,8 @@ def get_metric(row: dict, key: str) -> float:
 
 
 def cmd_pairwise(args) -> None:
-    ra = read_rows(Path(args.run_dir) / f"{args.a}_per_object_metrics.csv")
-    rb = read_rows(Path(args.run_dir) / f"{args.b}_per_object_metrics.csv")
+    ra = load_condition(Path(args.run_dir), args.a)
+    rb = load_condition(Path(args.run_dir), args.b)
     common = sorted(set(ra) & set(rb))
     missing = (set(ra) ^ set(rb))
     out = {
@@ -118,12 +136,12 @@ WINDOWS = (1, 2, 3, 4, 5)
 def cmd_layermap(args) -> None:
     prefix = args.prefix  # "a" (raw) or "a3"
     base_cond = f"{prefix}_baseline"
-    rb = read_rows(Path(args.run_dir) / f"{base_cond}_per_object_metrics.csv")
+    rb = load_condition(Path(args.run_dir), base_cond)
     cells = {}
     for layer in LAYERS:
         for w in WINDOWS:
             cond = f"{prefix}_{layer}_W{w}"
-            ra = read_rows(Path(args.run_dir) / f"{cond}_per_object_metrics.csv")
+            ra = load_condition(Path(args.run_dir), cond)
             common = sorted(set(ra) & set(rb))
             cells[(layer, w)] = {
                 "condition": cond,
@@ -158,7 +176,7 @@ def cmd_layermap(args) -> None:
     for layer in LAYERS:
         for w in WINDOWS:
             cond = f"{prefix}_{layer}_W{w}"
-            ra = read_rows(Path(args.run_dir) / f"{cond}_per_object_metrics.csv")
+            ra = load_condition(Path(args.run_dir), cond)
             common = sorted(set(ra) & set(rb))
             cell_objects[(layer, w)] = common
             for o in common:
@@ -230,8 +248,8 @@ def cmd_layermap(args) -> None:
 
 # ---------------------------------------------------------------- spearman
 def cmd_spearman(args) -> None:
-    ra = read_rows(Path(args.run_dir) / f"{args.a}_per_object_metrics.csv")
-    rb = read_rows(Path(args.run_dir) / f"{args.b}_per_object_metrics.csv")
+    ra = load_condition(Path(args.run_dir), args.a)
+    rb = load_condition(Path(args.run_dir), args.b)
     common = sorted(set(ra) & set(rb))
     gt_stats = json.loads(Path(args.gt_stats).read_text())
     out = {"a": args.a, "b": args.b, "n": len(common), "tests": {}, "quartiles": {}}
