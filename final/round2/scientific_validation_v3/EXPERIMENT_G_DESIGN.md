@@ -68,3 +68,17 @@ L128-154). Primary for G: fg_lpips (mirrors H1), secondary fg_psnr.
 
 Object-paired bootstrap, 10,000 resamples, seed 20261002, Holm family =
 15 cells + 1 interaction (same layermap machinery as analyze_v3.py).
+
+## Pilot verification (2026-10-04, instrumentation only)
+
+- Runner mechanism verified bit-exactly: scale traces show the requested
+  (layer, window) cell change and NOTHING else; deep-point residual norms
+  scale by exactly 1.0/0.75 during W3; other points bit-identical.
+- Runtime ~21-25 s per object-condition (512x512, 6 views, 50 DDPM steps).
+- Per-point residual magnitudes (g_0000, step 25): shallow(pt0)=1530.6,
+  middle(pt1)=872.8, deep(pts2+3)=2227.8 -> equal-scale dose ratio
+  1 : 0.57 : 1.46 (<2x) -> per the pre-registered rule, NO dose-normalized
+  second map is required for G.
+- Early observation (pilot only, not evidence): a 10-step deep intervention
+  (0.75 -> 1.00) changes outputs only marginally; the formal map on 100
+  fresh objects will quantify this with paired CIs.
