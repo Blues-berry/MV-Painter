@@ -1,0 +1,48 @@
+{
+  "object": "001a6a0890844d8baa564a347548945d",
+  "method": "gt",
+  "input_exact_glb": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-113/001a6a0890844d8baa564a347548945d.glb",
+  "output_textured_glb": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/bake_handoff/cpu_bake_v3/gt/001a6a0890844d8baa564a347548945d/001a6a0890844d8baa564a347548945d_gt_textured.glb",
+  "texture_path": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/bake_handoff/cpu_bake_v3/gt/001a6a0890844d8baa564a347548945d/001a6a0890844d8baa564a347548945d_gt_texture.png",
+  "coverage_path": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/bake_handoff/cpu_bake_v3/gt/001a6a0890844d8baa564a347548945d/001a6a0890844d8baa564a347548945d_gt_coverage.png",
+  "unseen_render_dir": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/bake_handoff/cpu_bake_v3/gt/001a6a0890844d8baa564a347548945d/unseen_renders",
+  "mesh_object_count": 1,
+  "triangle_count": 320,
+  "texture_resolution": 1024,
+  "render_resolution": 512,
+  "source_views": [
+    14,
+    15,
+    0,
+    16,
+    12,
+    13
+  ],
+  "unseen_views": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "texture_coverage": 0.028829574584960938,
+  "texture_coverage_after_inpaint": 0.03990459442138672,
+  "inpainted_fraction": 0.011075019836425781,
+  "cross_view_texel_variance": 0.012950140526711422,
+  "uv_seam_discontinuity": 0.0,
+  "inpainting": {
+    "iterations": 8,
+    "rule": "explicit 4-neighbor UV propagation",
+    "raw_coverage_preserved": true,
+    "inpainted_fraction": 0.011075019836425781
+  },
+  "blend": "uniform visible-pixel UV bilinear splat; optional explicit 4-neighbor UV inpainting",
+  "exported_glb_image_texture_verified": true,
+  "material_name": "CPU_Baked_001a6a0890844d8baa564a347548945d_gt_texture"
+}
