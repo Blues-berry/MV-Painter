@@ -4,7 +4,7 @@
   "source_uid_file_sha256": "b81bd142c0dbe04b6adaef1260a61c33eb1ef93b85c8a7cf5dba2244710f0673",
   "render_root": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders",
   "glb_root": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs",
-  "object_count": 100,
+  "object_count": 99,
   "calibration_objects": [],
   "holdout_objects": [
     "g_0000",
@@ -69,7 +69,6 @@
     "g_0059",
     "g_0060",
     "g_0061",
-    "g_0062",
     "g_0063",
     "g_0064",
     "g_0065",
@@ -2732,48 +2731,6 @@
       "glb_sha256": "bc311707a65fddcb518f3515362aacf5876138c68dea13e92af8ab2a4606d839"
     },
     {
-      "object": "g_0062",
-      "source_uid": "01a04e491cae40c28317fc1c86af9fe6",
-      "render_root": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6",
-      "mesh_path": "/home/ubuntu/.objaverse/hf-objaverse-v1/glbs/000-014/01a04e491cae40c28317fc1c86af9fe6.glb",
-      "mesh_available": true,
-      "render_available": true,
-      "reference_image": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/000.png",
-      "gt_images_round2_order": [
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/000.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/015.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/012.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/016.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/013.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/014.png"
-      ],
-      "gt_images_official_order": [
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/014.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/000.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/012.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/013.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/015.png",
-        "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a04e491cae40c28317fc1c86af9fe6/image/016.png"
-      ],
-      "camera_ids_round2_order": [
-        0,
-        15,
-        12,
-        16,
-        13,
-        14
-      ],
-      "camera_ids_official_order": [
-        14,
-        0,
-        12,
-        13,
-        15,
-        16
-      ],
-      "glb_sha256": "8e84e325ae50d1934ab1b5bcda5db3ceddb957af18675f1fb08226da3aded240"
-    },
-    {
       "object": "g_0063",
       "source_uid": "01a24384c71e473eb9c45cea7321b2e9",
       "render_root": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders/01a24384c71e473eb9c45cea7321b2e9",
@@ -4327,5 +4284,9 @@
       ],
       "glb_sha256": "7003f354d92a39911d8c0dda06b377278734523d3420cc51240ab6c8253bc2da"
     }
-  ]
+  ],
+  "excluded_technical_failures": [
+    "01a04e491cae40c28317fc1c86af9fe6"
+  ],
+  "exclusion_note": "GLBs rejected by the mv-adapter mesh loader (nvdiffrast load_mesh: unknown mesh type) \u2014 pre-generation technical failure, documented, not replaced"
 }

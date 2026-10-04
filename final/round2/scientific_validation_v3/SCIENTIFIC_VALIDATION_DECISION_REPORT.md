@@ -53,14 +53,52 @@ Do NOT edit the manuscript until this report is final (STOP RULE).
   energy helps, early-stage hurts; no interaction term is needed and none
   is supported.
 
-## PENDING (experiments running / queued)
+### Experiment B3 — TRUE-GLOBAL decomposition (CONFIRMATORY, claims 1/5/6)
 
-- [ ] B3: TRUE-GLOBAL diagnostics + native controls (claim 1/6 decomposition)
-- [ ] C: generic schedules under the authoritative runner (H4, claim 7)
-- [ ] D: formal qualitative archive (24-object panels + contact sheet)
-- [ ] E: prospective texture-complexity failure boundary (H5, claim 10)
-- [ ] F: unified same-draw 3D bake (claim 9)
-- [ ] G: MV-Adapter cross-backbone map (claim 8)
+Uniform uncapped scaling is decisively worse; the decomposition is additive:
+  * cap/shallow protection alone: native_gfl vs TRUE-GLOBAL-1.25 = **+1.60 dB** [1.37, 1.82]
+  * layer redistribution at equal budget: LFM-EXACT vs TRUE-GLOBAL-1.675 = **+2.99 dB** [2.43, 3.55]
+  * temporal variation on top (H2): LLH vs LFM-EXACT = +0.43 dB
+  * sum ≈ LLH vs TRUE-GLOBAL-1.675 (+3.43 dB) ✓ no interaction residual
+  * GFH vs TRUE-GLOBAL-2.50 = +4.66 dB; all FG-LPIPS deltas favor layer-aware.
+Residual budgets: log E ratios confirm requested-vs-effective dose accounting;
+no_adapter excluded from ratios (zero residuals).
+
+### H4 (CONFIRMATORY) — LLH vs generic schedules (C)
+
+LLH beats cosine bump (+0.46 dB), trapezoid (+0.30), Gaussian peak (+0.53)
+and ALL budget-matched variants (+0.15..+0.59), Holm family C: 15/16
+rejected at p≤0.0016. **Exception: per-layer linear warm-up is statistically
+equivalent to LLH on FG-PSNR (+0.005, p_holm=0.81)** (FG-LPIPS slightly
+favors LLH, Δ=−0.001, p_holm=0.0016). The advantage over generic families is
+therefore shape-dependent, not universal.
+
+### E (CONFIRMATORY, H5) — prospective texture-complexity failure boundary
+
+REPLICATED on the fresh cohort. Δ(LLH−GFL) vs GT-only texture statistics
+(all Spearman CIs exclude 0):
+  * ΔFG-PSNR ~ GT HF energy rho=−0.691; ~ GT Laplacian var rho=−0.524
+  * ΔFG-LPIPS ~ GT HF energy rho=+0.677; ~ GT Laplacian var rho=+0.604
+Quartiles (GT Laplacian variance): LLH wins +4.14 dB (92% win) in Q1,
++1.13 dB in Q2, and LOSES in Q3 (−0.09) / Q4 (−0.03). LLH's average
+advantage (+1.29 dB) is carried by texture-poor objects; on texture-rich
+objects GFL wins — LLH under-delivers high-frequency detail exactly where
+GT texture is rich.
+
+### D — formal qualitative archive
+
+24 pre-frozen objects × (GT + 7 conditions) panels + contact sheet built
+(formal_qualitative_archive/); 0 missing panels.
+
+## PENDING (running)
+
+- [x] B3, C, D, E complete (above)
+- [ ] G: MV-Adapter cross-backbone map — shard1 complete (800 rows); shard0
+      resumed after excluding 1 GLB rejected by the mesh loader (technical
+      failure, documented in mvadapter_manifest_v3.json)
+- [ ] F: unified same-draw bake — 20/24 objects (4 excluded: mesh without UV
+      layer, original-UV protocol requirement; see excluded_uv_missing.json);
+      unseen-view + seam metrics after bake completes
 
 ## CLAIM TABLE (draft; verdicts finalized at gate)
 
