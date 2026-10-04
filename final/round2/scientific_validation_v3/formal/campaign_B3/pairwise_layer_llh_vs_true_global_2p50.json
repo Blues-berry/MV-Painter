@@ -1,0 +1,33 @@
+{
+  "run_dir": "final/round2/scientific_validation_v3/formal/campaign_B3",
+  "a": "layer_llh",
+  "b": "true_global_2p50",
+  "n_common": 300,
+  "n_disjoint": 0,
+  "tests": {
+    "fg_psnr": {
+      "n": 300,
+      "mean_delta": 4.571118914087614,
+      "median_delta": 5.509606599807739,
+      "ci95": [
+        3.9070150343080363,
+        5.222048937355479
+      ],
+      "win_rate": 0.7766666666666666,
+      "loss_rate": 0.22333333333333333,
+      "p_bootstrap": 0.0001
+    },
+    "fg_lpips": {
+      "n": 300,
+      "mean_delta": -0.01841176504890124,
+      "median_delta": -0.024356506764888763,
+      "ci95": [
+        -0.022652574207633735,
+        -0.01403175465700528
+      ],
+      "win_rate": 0.32666666666666666,
+      "loss_rate": 0.6733333333333333,
+      "p_bootstrap": 0.0001
+    }
+  }
+}

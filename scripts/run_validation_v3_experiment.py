@@ -303,12 +303,15 @@ def write_condition_csv(rows, condition: str) -> None:
     if not subset:
         return
     fields = list(subset[0])
-    temporary = RUN_DIR / f"{condition}_per_object_metrics.csv.tmp"
+    # shard-suffixed names: multiple shards share RUN_DIR; unsuffixed
+    # atomic-replace raced between shards (B1B2 shard0 crash)
+    temporary = RUN_DIR / f".{condition}_shard{SHARD}.csv.tmp"
+    final = RUN_DIR / f"{condition}_per_object_metrics_shard{SHARD}.csv"
     with temporary.open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(subset)
-    temporary.replace(RUN_DIR / f"{condition}_per_object_metrics.csv")
+    temporary.replace(final)
 
 
 def write_combined_csv(rows) -> None:
@@ -316,27 +319,49 @@ def write_combined_csv(rows) -> None:
         return
     subset = [csv_row(r) for r in rows]
     fields = list(subset[0])
-    temporary = RUN_DIR / "per_object_metrics.csv.tmp"
+    temporary = RUN_DIR / f".combined_shard{SHARD}.csv.tmp"
+    final = RUN_DIR / f"per_object_metrics_shard{SHARD}.csv"
     with temporary.open("w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         writer.writerows(subset)
-    temporary.replace(RUN_DIR / "per_object_metrics.csv")
+    temporary.replace(final)
 
 
 def rebuild_csvs_from_ledgers() -> None:
     """Regenerate per-condition and combined CSVs from rows_shard*.json."""
     all_rows = []
+    seen = {}
     for shard in range(int(os.environ.get("MVP_NUM_SHARDS", "1"))):
         p = RUN_DIR / f"rows_shard{shard}.json"
         if p.exists():
-            all_rows.extend(json.loads(p.read_text()))
+            for r in json.loads(p.read_text()):
+                # cross-shard dedup (shard mappings may differ between runs);
+                # identical conditions/seed -> rows are equivalent, keep last
+                seen[(r["object_idx"], r["condition"])] = r
+    all_rows = list(seen.values())
     if not all_rows:
         return
     conditions = sorted({r["condition"] for r in all_rows})
     for c in conditions:
-        write_condition_csv(all_rows, c)
-    write_combined_csv(all_rows)
+        subset = [csv_row(r) for r in all_rows if r["condition"] == c]
+        if not subset:
+            continue
+        final = RUN_DIR / f"{c}_per_object_metrics.csv"
+        tmp = RUN_DIR / f".{c}_merged.csv.tmp"
+        with tmp.open("w", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(subset[0]))
+            writer.writeheader()
+            writer.writerows(subset)
+        tmp.replace(final)
+    subset = [csv_row(r) for r in all_rows]
+    final = RUN_DIR / "per_object_metrics.csv"
+    tmp = RUN_DIR / ".combined_merged.csv.tmp"
+    with tmp.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(subset[0]))
+        writer.writeheader()
+        writer.writerows(subset)
+    tmp.replace(final)
     print(f"rebuilt CSVs for {len(all_rows)} rows, {len(conditions)} conditions", flush=True)
 
 

@@ -1,0 +1,33 @@
+{
+  "run_dir": "final/round2/scientific_validation_v3/formal/campaign_C",
+  "a": "layer_llh",
+  "b": "gen_trapezoid",
+  "n_common": 300,
+  "n_disjoint": 0,
+  "tests": {
+    "fg_psnr": {
+      "n": 300,
+      "mean_delta": 0.30447962085405983,
+      "median_delta": 0.14040887355804443,
+      "ci95": [
+        0.21871971259514492,
+        0.3922473635276158
+      ],
+      "win_rate": 0.5766666666666667,
+      "loss_rate": 0.42333333333333334,
+      "p_bootstrap": 0.0001
+    },
+    "fg_lpips": {
+      "n": 300,
+      "mean_delta": -0.0034833648800849915,
+      "median_delta": -0.003300406038761139,
+      "ci95": [
+        -0.0043044499680399894,
+        -0.0026342497089256846
+      ],
+      "win_rate": 0.29,
+      "loss_rate": 0.71,
+      "p_bootstrap": 0.0001
+    }
+  }
+}
