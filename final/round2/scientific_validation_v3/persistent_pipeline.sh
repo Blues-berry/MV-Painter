@@ -6,10 +6,14 @@
 
 set -u
 cd /4T/CXY/MV-Painter
+# systemd --user has no login env: force the anaconda toolchain first
+export PATH=/home/ubuntu/anaconda3/bin:/usr/local/bin:/usr/bin:/bin
+export LD_LIBRARY_PATH=/home/ubuntu/anaconda3/lib:${LD_LIBRARY_PATH:-}
 V3=final/round2/scientific_validation_v3
 COHORT=$V3/fresh_confirm_300.txt
 LOG=/tmp/persistent_pipeline.log
-export MVP_NUM_THREADS=6 OMP_NUM_THREADS=6 MKL_NUM_THREADS=6
+export MVP_NUM_THREADS=10 OMP_NUM_THREADS=10 MKL_NUM_THREADS=10
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 log() { echo "[$(date -u +%FT%TZ)] $*" >> "$LOG"; }
 
@@ -23,7 +27,7 @@ log "=== persistent pipeline start (pid $$) ==="
 # Stage 1: campaigns B3 (resume) and C
 log "stage1: campaigns B3,C"
 python3 $V3/run_campaigns.py --cohort $COHORT --base-dir $V3/formal \
-  --campaigns B3,C --gpus 0,0,1,1 >> "$LOG" 2>&1
+  --campaigns B3,C --gpus 0,1 >> "$LOG" 2>&1
 log "stage1 rc=$?"
 commit_stage "B3,C"
 

@@ -86,7 +86,7 @@ def main() -> None:
             log = open(run_dir / f"shard{shard}.log", "a")
             procs.append((subprocess.Popen(
                 [sys.executable, str(SCRIPT)], env=env, stdout=log, stderr=log), log, shard))
-            time.sleep(5)  # stagger model loads
+            time.sleep(30)  # stagger model loads (avoid simultaneous CUDA init spikes)
         print(f"[{campaign}] launched {len(procs)} shards -> {run_dir}", flush=True)
         fails = []
         for p, log, shard in procs:
