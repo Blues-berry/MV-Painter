@@ -70,11 +70,18 @@ def paired_log_delta(run_dir: Path, a: str, b: str, uids: list[str]) -> dict:
         for g in LAYERS:
             ea = _energy(pa, g)
             eb = _energy(pb, g)
+            if ea <= 0 or eb <= 0:
+                continue  # zero residuals (e.g., adapter bypassed): ratio undefined
             deltas[g].append(math.log(ea / eb))
-    out = {"a": a, "b": b, "n": len(common), "log_E_ratio": {}}
+    out = {"a": a, "b": b, "n": len(common), "log_E_ratio": {},
+           "note": "objects with zero residual energy in either condition are excluded from ratios"}
     rng = np.random.default_rng(20261002)
     for g in LAYERS:
-        d = np.array(deltas[g])
+        d = np.array(deltas[g]) if deltas[g] else np.array([0.0])
+        if len(deltas[g]) == 0:
+            out["log_E_ratio"][g] = {"mean": None, "ci95": None, "win_rate": None,
+                                     "note": "no comparable objects (zero-energy condition)"}
+            continue
         idx = rng.integers(0, len(d), size=(10000, len(d)))
         boots = d[idx].mean(axis=1)
         lo, hi = np.percentile(boots, [2.5, 97.5])

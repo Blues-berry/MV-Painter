@@ -48,6 +48,16 @@ def load_condition(run_dir: Path, condition: str) -> dict:
             if r["condition"] == condition:
                 merged[r["object_uid"]] = r
     if not merged:
+        # cross-campaign fallback: search sibling campaign dirs (e.g., LLH
+        # rows live in campaign_B1B2 while native_gfl lives in campaign_B3)
+        for sib in sorted(run_dir.parent.glob("campaign_*")):
+            if sib == run_dir:
+                continue
+            for shard in sorted(sib.glob("rows_shard*.json")):
+                for r in json.loads(shard.read_text()):
+                    if r["condition"] == condition:
+                        merged.setdefault(r["object_uid"], r)
+    if not merged:
         raise FileNotFoundError(f"no rows for condition {condition} in {run_dir}")
     return merged
 
