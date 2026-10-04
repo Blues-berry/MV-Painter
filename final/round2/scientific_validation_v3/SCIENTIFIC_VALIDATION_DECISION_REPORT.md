@@ -1,116 +1,187 @@
-# SCIENTIFIC_VALIDATION_DECISION_REPORT — DRAFT (in progress)
+# SCIENTIFIC_VALIDATION_DECISION_REPORT — FINAL
 
-Status: DRAFT — updated as experiments complete. Final gate requires ALL
-experiments terminated (A, B, C, D, E, F, G) and every verdict filled.
-Do NOT edit the manuscript until this report is final (STOP RULE).
-
-- Cohort: FRESH_CONFIRM_300 (frozen, seed 20261002)
+- Date: 2026-10-05
+- Branch: codex/scientific-validation-v3-20261002 (base 29b3a0a)
+- Cohort: FRESH_CONFIRM_300 (frozen, seed 20261002; 508 disjoint candidates →
+  450 technically valid → 300 selected; full audit trail committed)
 - Runner: scripts/run_validation_v3_experiment.py (verbatim Core-7 per-object
-  code path, latent seed 42, unique6, 50 Euler steps)
-- Statistics: PRIMARY_HYPOTHESES.md (pre-registered), paired bootstrap 10k,
-  seed 20261002, Holm per family
+  path; latent seed 42; unique6 [0,15,12,16,13,14]; 50 Euler steps) + G runner
+- Statistics: PRIMARY_HYPOTHESES.md (pre-registered); paired object-level
+  bootstrap 10,000 resamples, seed 20261002; Holm per family
+- Manuscript files were NOT modified in this phase (STOP RULE honored).
+- See also: NARRATIVE_RESTRUCTURE_REQUIRED.md (triggered).
 
-## Confirmed results so far
+Per-claim fields: experiment | cohort | comparator | effect (95% CI) |
+correction | failure cases | allowed wording | forbidden wording.
 
-### Experiment A2 — raw layer × window map (descriptive)
+--------------------------------------------------------------------------------
+CLAIM 1 "Adapter scaling has a layer-dependent effect." → **SUPPORTED**
+--------------------------------------------------------------------------------
+- Experiment: A3 (dose-normalized) + B3 TRUE-GLOBAL decomposition
+- Cohort: FRESH_CONFIRM_300 (n=300)
+- Comparator: equal-dose interventions vs layer-fixed-low baseline;
+  LFM-EXACT / native vs TRUE-GLOBAL
+- Effect: equal-dose layer marginals (FG-PSNR): deep +0.55 dB, middle +0.29 dB,
+  shallow −6.07 dB; LFM-EXACT vs TRUE-GLOBAL-1.675 +2.99 dB [2.43, 3.55]
+- Correction: A3 family (16 tests) Holm; layer effects significant
+- Failure cases: none at the layer level; shallow at high dose is destructive
+  (this is the effect, not a failure)
+- Allowed: "adapter residual effects differ strongly and reproducibly across
+  UNet depth groups at matched residual dose; shallow protection is critical"
+- Forbidden: any claim that the layer map generalizes across backbones (see
+  claim 8); any dose-numbers claim without the uncapped-path caveat
 
-- 15/15 cell effects Holm-significant on FG-LPIPS but tiny
-  (|Δ| ≤ 0.006); Layer×Window interaction NOT supported
-  (SS-interaction cluster bootstrap p=0.50; FG-PSNR p=0.51).
-- Direction pattern: deep/middle late-window injections mildly improve
-  FG-PSNR (middle_W5 +0.52 dB); shallow injections mildly harmful.
+--------------------------------------------------------------------------------
+CLAIM 2 "Adapter effect is timestep-dependent." → **PARTIALLY SUPPORTED (weak)**
+--------------------------------------------------------------------------------
+- Experiment: A2 raw map + B2 temporal-location contrasts
+- Comparator: single-window interventions vs baseline; LLH vs LLL/HLL
+- Effect: A2 cell deltas exist but are tiny (|ΔFG-LPIPS| ≤ 0.006); B2:
+  late-high beats all-low by +0.84 dB [0.75, 0.93] and early-high by +0.85 dB
+  [0.66, 1.05]
+- Correction: Holm (A: 16 tests; B2: 4 tests) — all rejected
+- Failure cases: at equal dose (A3) the window profile within a layer is flat;
+  no window is special
+- Allowed: "a monotone late-increasing temporal profile yields a small real
+  benefit over a constant budget-matched scale"
+- Forbidden: "timestep-specific gating/switching is a discovered mechanism";
+  any per-window tuning claims
 
-### Experiment A3 — dose-normalized map (CONFIRMATORY, primary H1)
+--------------------------------------------------------------------------------
+CLAIM 3 "There is a layer × timestep interaction." → **NOT SUPPORTED**
+--------------------------------------------------------------------------------
+- Experiment: A2 raw + A3 dose-normalized (pre-registered primary H1)
+- Comparator: two-way additive model SS-interaction, object-cluster bootstrap
+- Effect: raw p = 0.50; dose-normalized p = 1.0 (observed additive residual
+  SMALLER than the bootstrap null)
+- Correction: Holm family A (16 tests): interaction p_holm = 1.0
+- Failure cases: none — the null is affirmed by two independent maps
+- Allowed: "we tested for a layer × timestep interaction and found none; the
+  supported structure is additive (layer main effect + temporal profile)"
+- Forbidden: ANY residual interaction narrative, any S=[s_l,k]
+  full-matrix justification, "jointly conditioned" mechanism language
 
-- **Layer×Window interaction: NOT SUPPORTED** (p=1.0; the cell structure is
-  MORE additive than the bootstrap null).
-- Layer effect at EQUAL residual dose is decisive:
-  FG-LPIPS marginals deep −0.0039 / middle −0.0005 / shallow +0.0175;
-  FG-PSNR marginals deep +0.55 dB / middle +0.29 dB / shallow **−6.07 dB**.
-  CIEDE2000: deep improves (W3/W4), middle improves broadly, shallow
-  catastrophic (+15.9) everywhere.
-- a_deep_W* and a3_deep_W* are identical conditions by construction
-  (deep high 2.50 below cap in both maps) — internal consistency check.
+--------------------------------------------------------------------------------
+CLAIM 4 "1/3 stage boundaries reflect the empirical response." → **HEURISTIC ONLY**
+--------------------------------------------------------------------------------
+- Experiment: A2/A3 response maps
+- Comparator: window response profiles vs frozen boundaries at steps 16/17,
+  32/33
+- Effect: no discontinuity or boundary-aligned response at equal dose;
+  profiles are window-flat within layers
+- Correction: descriptive (A3) + Holm family A
+- Allowed: "three-stage boundaries are a design heuristic"
+- Forbidden: "empirically derived/validated boundaries"
 
-### H2 (CONFIRMATORY) — LLH vs LFM-EXACT (exact 17/16/17 mean-matched constant)
+--------------------------------------------------------------------------------
+CLAIM 5 "LLH's gain is not explained by residual budget." → **SUPPORTED (small)**
+--------------------------------------------------------------------------------
+- Experiment: B1 (LFM-EXACT = exact 17/16/17 per-layer means, constant)
+- Cohort: FRESH_CONFIRM_300 (n=300)
+- Effect: LLH − LFM-EXACT = +0.435 dB FG-PSNR [0.356, 0.516]; −0.0045 FG-LPIPS
+  [−0.0052, −0.0039]; Holm family B1 p = 0.0002
+- Correction: Holm family B1 (2 tests)
+- Failure cases: pre-registered equivalence NOT established (PSNR CI upper
+  0.516 > 0.5 margin) — the temporal-variation component is real but small
+  relative to the total LLH−GFL difference (+1.29 dB)
+- Allowed: "LLH retains a small advantage over an exactly budget-matched
+  constant (+0.4 dB); most of the layer allocation benefit is budget-side"
+- Forbidden: "the LLH advantage cannot be explained by budget" (the dominant
+  part CAN; only a +0.4 dB residual is attributable to temporal variation)
 
-- ΔFG-PSNR = +0.435 dB [0.356, 0.516], win 69%; ΔFG-LPIPS = −0.0045
-  [−0.0052, −0.0039]. Holm family B1: both p=0.0002.
-- Pre-registered equivalence NOT established (FG-PSNR CI upper 0.516
-  exceeds the ±0.5 dB margin; FG-LPIPS CI inside ±0.01). Verdict:
-  LLH's advantage over a budget-identical constant is real but small.
+--------------------------------------------------------------------------------
+CLAIM 6 "Layer-wise allocation improves over truly uniform scaling." → **SUPPORTED**
+--------------------------------------------------------------------------------
+- Experiment: B3 TRUE-GLOBAL diagnostics (uncapped, causal-only)
+- Cohort: FRESH_CONFIRM_300 (n=300)
+- Comparator: native/layer conditions vs TRUE-GLOBAL at matched nominal scales
+- Effect: GFL vs TRUE-GLOBAL-1.25 +1.60 dB [1.37, 1.82]; LFM-EXACT vs
+  TRUE-GLOBAL-1.675 +2.99 dB [2.43, 3.55]; GFH vs TRUE-GLOBAL-2.50 +4.66 dB
+  [4.07, 5.23]; FG-LPIPS all favor layer-aware
+- Correction: descriptive decomposition (pre-registered as non-confirmatory);
+  CIs as given
+- Failure cases: TRUE-GLOBAL runs were stable (no NaN); they are diagnostics,
+  not deployment candidates
+- Allowed: "protecting shallow (cap) and redistributing scale across depth
+  groups jointly account for the schedule gains, additively"
+- Forbidden: presenting TRUE-GLOBAL numbers as method variants; pooling
+  capped/uncapped rows
 
-### H3 (CONFIRMATORY) — temporal-location contrasts
+--------------------------------------------------------------------------------
+CLAIM 7 "L-TCAS beats generic schedule families under the authoritative protocol."
+→ **METRIC-DEPENDENT / PARTIAL**
+--------------------------------------------------------------------------------
+- Experiment: C (endpoint- and budget-matched generic families)
+- Cohort: FRESH_CONFIRM_300 (n=300)
+- Comparator: LLH vs linear warm-up / cosine bump / trapezoid / Gaussian peak
+  (both variants)
+- Effect: LLH − generic = +0.30..+0.59 dB FG-PSNR (all Holm-rejected) EXCEPT
+  endpoint-matched linear warm-up: +0.005 dB [−0.10, +0.11], Holm p = 0.81
+  (statistically equivalent); FG-LPIPS favors LLH slightly everywhere
+- Correction: Holm family C (16 tests): 15/16 rejected
+- Failure cases: the linear-ramp equivalence
+- Allowed: "LLH outperforms bump/trapezoid/Gaussian generic shapes and their
+  budget-matched variants; a per-layer linear warm-up performs on par"
+- Forbidden: "LLH universally dominates generic schedules"; hiding the linear
+  equivalence
 
-- LLH > HLL: +0.854 dB [0.658, 1.052]; LLH > LLL: +0.840 dB [0.747, 0.934];
-  (descriptive: LLH > LHL +0.647 dB). All FG-LPIPS deltas favor LLH.
-  Holm family B2: all p=0.0004. Late-high placement is genuinely better.
+--------------------------------------------------------------------------------
+CLAIM 8 "The principle transfers to MV-Adapter." → **UNSUPPORTED (backbone-specific)**
+--------------------------------------------------------------------------------
+- Experiment: G (per-point window map, frozen topology-derived mapping)
+- Cohort: 99 fresh disjoint objects (1 technical exclusion, documented)
+- Comparator: g_baseline vs 15 (group, window) interventions at 0.75→1.00
+- Effect: interaction p = 0.58; cell deltas ~1e-4 (deep/middle ≈ 0; only 3
+  shallow cells Holm-rejected at ~5e-4)
+- Correction: Holm family G (16 tests)
+- Failure cases: the intervention range [0.75, 1.0] may simply be too weak on
+  this backbone — the report must state this scope limit (no dose escalation
+  was run by design; dose ratio <2x pre-registered rule)
+- Allowed: "the main-backbone layer/time structure does not transfer to
+  MV-Adapter under the frozen protocol; the principle is backbone-specific"
+- Forbidden: "architecture-dependent allocation principle" (option A) or
+  "layer-aware scaling transfers" (option B) — neither is supported
 
-### Reconciliation
+--------------------------------------------------------------------------------
+CLAIM 9 "The method improves practical 3D texturing." → **BOUNDED SUPPORT**
+--------------------------------------------------------------------------------
+- Experiment: F unified same-draw bake (one namespace, 11 unseen views)
+- Cohort: 20/24 pre-frozen objects (4 technical exclusions: UV-less meshes)
+- Comparator: adapter conditions vs no_adapter; LLH vs other schedules
+- Effect: adapter vs no_adapter +3.6 dB [2.2, 4.7] (large, unambiguous);
+  LLH vs GFL on unseen views +0.14 dB [−1.29, +1.65] (n.s.); FG-LPIPS favors
+  LLH (−0.024 [−0.032, −0.017]); LLH has the LOWEST UV-seam dE00 of all
+  schedules (vs GFL mean −6.90 [−8.29, −5.47], p90 −17.44 [−21.12, −13.60])
+- Correction: descriptive paired CIs (F was confirmatory only for claim scope)
+- Failure cases: 4 UV-less objects excluded; DISTS unavailable
+- Allowed: "the adapter materially improves 3D texturing; LLH additionally
+  yields better perceptual fidelity and UV-seam cross-view consistency on
+  unseen views (n=20)"
+- Forbidden: population-level LLH PSNR superiority on 3D metrics
 
-- The B-family schedule effects (0.4–0.9 dB) are consistent with the
-  ADDITIVE layer+window structure of the A3 map: late-stage deep/middle
-  energy helps, early-stage hurts; no interaction term is needed and none
-  is supported.
+--------------------------------------------------------------------------------
+CLAIM 10 "Texture-rich objects define a systematic failure boundary." → **REPLICATED**
+--------------------------------------------------------------------------------
+- Experiment: E prospective test (pre-registered H0 rejected)
+- Cohort: FRESH_CONFIRM_300 (n=300, no exclusions)
+- Comparator: Δ(LLH−GFL) vs GT-only texture statistics
+- Effect: Spearman ΔFG-PSNR ~ GT HF energy −0.691 [−0.745, −0.626]; quartiles:
+  Q1 +4.14 dB (92% win) → Q3 −0.09 / Q4 −0.03 (LLH loses); Holm family E: all
+  10 tests rejected
+- Correction: Holm family E (10 tests)
+- Failure cases: none; the boundary IS the finding
+- Allowed: "LLH's advantage concentrates on texture-poor objects and reverses
+  on texture-rich ones, predictable from GT statistics alone"
+- Forbidden: reporting the +1.29 dB average without the boundary; any claim
+  that the average advantage applies to texture-rich content
 
-### Experiment B3 — TRUE-GLOBAL decomposition (CONFIRMATORY, claims 1/5/6)
+--------------------------------------------------------------------------------
+## FINAL RULING ON THE FRAMING
 
-Uniform uncapped scaling is decisively worse; the decomposition is additive:
-  * cap/shallow protection alone: native_gfl vs TRUE-GLOBAL-1.25 = **+1.60 dB** [1.37, 1.82]
-  * layer redistribution at equal budget: LFM-EXACT vs TRUE-GLOBAL-1.675 = **+2.99 dB** [2.43, 3.55]
-  * temporal variation on top (H2): LLH vs LFM-EXACT = +0.43 dB
-  * sum ≈ LLH vs TRUE-GLOBAL-1.675 (+3.43 dB) ✓ no interaction residual
-  * GFH vs TRUE-GLOBAL-2.50 = +4.66 dB; all FG-LPIPS deltas favor layer-aware.
-Residual budgets: log E ratios confirm requested-vs-effective dose accounting;
-no_adapter excluded from ratios (zero residuals).
-
-### H4 (CONFIRMATORY) — LLH vs generic schedules (C)
-
-LLH beats cosine bump (+0.46 dB), trapezoid (+0.30), Gaussian peak (+0.53)
-and ALL budget-matched variants (+0.15..+0.59), Holm family C: 15/16
-rejected at p≤0.0016. **Exception: per-layer linear warm-up is statistically
-equivalent to LLH on FG-PSNR (+0.005, p_holm=0.81)** (FG-LPIPS slightly
-favors LLH, Δ=−0.001, p_holm=0.0016). The advantage over generic families is
-therefore shape-dependent, not universal.
-
-### E (CONFIRMATORY, H5) — prospective texture-complexity failure boundary
-
-REPLICATED on the fresh cohort. Δ(LLH−GFL) vs GT-only texture statistics
-(all Spearman CIs exclude 0):
-  * ΔFG-PSNR ~ GT HF energy rho=−0.691; ~ GT Laplacian var rho=−0.524
-  * ΔFG-LPIPS ~ GT HF energy rho=+0.677; ~ GT Laplacian var rho=+0.604
-Quartiles (GT Laplacian variance): LLH wins +4.14 dB (92% win) in Q1,
-+1.13 dB in Q2, and LOSES in Q3 (−0.09) / Q4 (−0.03). LLH's average
-advantage (+1.29 dB) is carried by texture-poor objects; on texture-rich
-objects GFL wins — LLH under-delivers high-frequency detail exactly where
-GT texture is rich.
-
-### D — formal qualitative archive
-
-24 pre-frozen objects × (GT + 7 conditions) panels + contact sheet built
-(formal_qualitative_archive/); 0 missing panels.
-
-## PENDING (running)
-
-- [x] B3, C, D, E complete (above)
-- [ ] G: MV-Adapter cross-backbone map — shard1 complete (800 rows); shard0
-      resumed after excluding 1 GLB rejected by the mesh loader (technical
-      failure, documented in mvadapter_manifest_v3.json)
-- [ ] F: unified same-draw bake — 20/24 objects (4 excluded: mesh without UV
-      layer, original-UV protocol requirement; see excluded_uv_missing.json);
-      unseen-view + seam metrics after bake completes
-
-## CLAIM TABLE (draft; verdicts finalized at gate)
-
-| Claim | Draft verdict (pending remaining experiments) |
-|-------|-----------------------------------------------|
-| 1 layer-dependent effect | Supported so far (A3 equal-dose marginals; B3 pending) |
-| 2 timestep-dependent effect | Partially supported (A2 window cells; A3 window marginals small) |
-| 3 layer × timestep interaction | **Not supported** (A2 raw p=0.50; A3 dose-normalized p=1.0) |
-| 4 1/3 stage boundaries | Heuristic only so far (no interaction; boundary-aligned responses absent) |
-| 5 LLH gain ≠ budget | Supported, small effect (H2: +0.435 dB over exact mean-match; equivalence marginally not met) |
-| 6 layer allocation > truly uniform | PENDING (B3 TRUE-GLOBAL) |
-| 7 L-TCAS vs generic schedules | PENDING (C) |
-| 8 transfers to MV-Adapter | PENDING (G; pilot suggests weak response in [0.75,1.0] window interventions) |
-| 9 practical 3D texturing | PENDING (F) |
-| 10 texture-rich failure boundary | PENDING (E) |
+Keep "L-TCAS" as a name ONLY if immediately qualified; the supported story is
+"depth-aware adapter scaling with a monotone late-increasing profile":
+layer allocation = first-order effect; temporal profile = small real benefit
+captured by a linear ramp; NO interaction; NO empirical stage boundaries;
+backbone-specific; texture-rich failure boundary mandatory in any deployment
+statement. Manuscript rewriting may now begin ONLY within these constraints
+(see NARRATIVE_RESTRUCTURE_REQUIRED.md).
