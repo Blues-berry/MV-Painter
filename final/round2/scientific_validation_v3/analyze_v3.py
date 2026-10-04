@@ -29,9 +29,9 @@ BOOT_N = 10_000
 
 
 def read_rows(path: Path) -> dict:
-    """Return {object_key: row} keyed by object_uid from a CSV."""
+    """Return {object_key: row} keyed by object_uid (fallback: object)."""
     rows = list(csv.DictReader(path.open()))
-    return {r["object_uid"]: r for r in rows}
+    return {(r["object_uid"] if "object_uid" in r else r["object"]): r for r in rows}
 
 
 def load_condition(run_dir: Path, condition: str) -> dict:
@@ -46,7 +46,7 @@ def load_condition(run_dir: Path, condition: str) -> dict:
     for shard in sorted(run_dir.glob("rows_shard*.json")):
         for r in json.loads(shard.read_text()):
             if r["condition"] == condition:
-                merged[r["object_uid"]] = r
+                merged[r.get("object_uid", r.get("object"))] = r
     if not merged:
         # cross-campaign fallback: search sibling campaign dirs (e.g., LLH
         # rows live in campaign_B1B2 while native_gfl lives in campaign_B3)
@@ -326,7 +326,7 @@ def main() -> None:
 
     p = sub.add_parser("layermap")
     p.add_argument("--run-dir", required=True)
-    p.add_argument("--prefix", default="a", choices=["a", "a3"])
+    p.add_argument("--prefix", default="a", choices=["a", "a3", "g"])
     p.add_argument("--dose", default="raw")
     p.add_argument("--primary-metric", default="fg_lpips")
     p.add_argument("--metrics", default="fg_lpips,fg_psnr,edge_ssim")
