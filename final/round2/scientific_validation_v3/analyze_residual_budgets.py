@@ -25,9 +25,15 @@ STEPS = 50
 
 def cond_budget(run_dir: Path, condition: str, uids: list[str]) -> dict:
     logs_dir = run_dir / "residual_logs" / condition
-    per_layer_E, req_sums, eff_sums, cap_hits, cap_cells = (
-        {g: [] for g in LAYERS}, {g: [] for g in LAYERS},
-        {g: [] for g in LAYERS}, {g: 0 for g in LAYERS}, {g: 0 for g in LAYERS})
+    per_layer_E = {g: [] for g in LAYERS}
+    req_sums = {g: 0.0 for g in LAYERS}
+    eff_sums = {g: 0.0 for g in LAYERS}
+    scale_cells = {g: 0 for g in LAYERS}
+    cap_hits = {g: 0 for g in LAYERS}
+    manifest = json.loads((run_dir / "run_manifest_shard0.json").read_text())
+    if condition not in manifest.get("condition_specs", {}):
+        raise KeyError(f"{condition} missing from run manifest: {run_dir}")
+    uncapped = bool(manifest["condition_specs"][condition].get("uncapped", False))
     n_used = 0
     for uid in uids:
         p = logs_dir / f"{uid}.json"
@@ -40,20 +46,47 @@ def cond_budget(run_dir: Path, condition: str, uids: list[str]) -> dict:
             for e in entries.values():
                 g = e["depth"]
                 sq[g][s] += float(e["l2"]) ** 2
-                cap_cells[g] += 1
-                if float(e["eff_scale"]) < float(e["scale"]) - 1e-9:
+                requested = float(e["scale"])
+                logged_eff = float(e["eff_scale"])
+                actual_eff = requested if uncapped else logged_eff
+                req_sums[g] += requested
+                eff_sums[g] += actual_eff
+                scale_cells[g] += 1
+                # explore_contradiction logs eff_scale=min(requested, cap)
+                # even when the campaign swaps in its uncapped forward. In
+                # that mode the field is hypothetical; the manifest is the
+                # authority for whether the cap was applied.
+                if not uncapped and logged_eff < requested - 1e-9:
                     cap_hits[g] += 1
         n_used += 1
         for g in LAYERS:
             per_layer_E[g].append(math.sqrt(sum(v * v for v in sq[g])))
-    out = {"condition": condition, "n_objects": n_used, "layers": {}}
+    out = {
+        "condition": condition,
+        "n_objects": n_used,
+        "uncapped": uncapped,
+        "effective_scale_source": (
+            "requested scale (cap bypassed); logged eff_scale is hypothetical"
+            if uncapped else "logged eff_scale (post-cap)"
+        ),
+        "layers": {},
+    }
     for g in LAYERS:
         v = np.array(per_layer_E[g])
         out["layers"][g] = {
             "E_mean": float(v.mean()) if len(v) else None,
             "E_median": float(np.median(v)) if len(v) else None,
             "E_log_mean": float(np.log(v).mean()) if len(v) else None,
-            "cap_activation_rate": (cap_hits[g] / cap_cells[g]) if cap_cells[g] else 0.0,
+            "requested_scale_mean": (
+                req_sums[g] / scale_cells[g] if scale_cells[g] else None
+            ),
+            "effective_scale_mean": (
+                eff_sums[g] / scale_cells[g] if scale_cells[g] else None
+            ),
+            "cap_activation_rate": (
+                0.0 if uncapped else
+                (cap_hits[g] / scale_cells[g]) if scale_cells[g] else 0.0
+            ),
         }
     return out
 

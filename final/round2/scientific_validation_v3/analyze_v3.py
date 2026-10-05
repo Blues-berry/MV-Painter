@@ -263,6 +263,7 @@ def cmd_spearman(args) -> None:
     common = sorted(set(ra) & set(rb))
     gt_stats = json.loads(Path(args.gt_stats).read_text())
     out = {"a": args.a, "b": args.b, "n": len(common), "tests": {}, "quartiles": {}}
+    family_p = {}
     for metric in args.metrics.split(","):
         d = np.array([get_metric(ra[o], metric) - get_metric(rb[o], metric) for o in common])
         entry = {"metric": metric}
@@ -276,9 +277,18 @@ def cmd_spearman(args) -> None:
                 idx = rng.integers(0, n, n)
                 boots.append(_spearman(d[idx], v[idx]))
             lo, hi = np.percentile(boots, [2.5, 97.5])
+            n_lower = int((np.array(boots) <= 0).sum())
+            n_upper = int((np.array(boots) >= 0).sum())
+            p_raw = float(2 * min(n_lower, n_upper) / BOOT_N)
+            # Plus-one Monte Carlo correction prevents a finite bootstrap
+            # from reporting p=0 when no resample crosses zero.
+            p_mc = float(min(1.0, 2 * min((n_lower + 1) / (BOOT_N + 1),
+                                         (n_upper + 1) / (BOOT_N + 1))))
+            family_key = f"{metric}__{stat_name}"
+            family_p[family_key] = p_mc
             entry[stat_name] = {"rho": rho, "ci95": [float(lo), float(hi)],
-                                "p_bootstrap": float(2 * min((np.array(boots) <= 0).mean(),
-                                                             (np.array(boots) >= 0).mean()))}
+                                "bootstrap_extreme_count_p_raw": p_raw,
+                                "p_bootstrap_plus_one": p_mc}
         out["tests"][metric] = entry
         # quartile table for the primary GT statistic
         prim = args.gt_primary
@@ -291,9 +301,20 @@ def cmd_spearman(args) -> None:
             qtab[f"Q{q + 1}"] = {
                 "n": int(mask.sum()),
                 "mean_delta": float(d[mask].mean()),
-                "win_rate": float((d[mask] > 0).mean()),
+                "positive_delta_rate": float((d[mask] > 0).mean()),
+                "favorable_object_rate": float((d[mask] < 0).mean() if metric == "fg_lpips"
+                                                else (d[mask] > 0).mean()),
             }
         out["quartiles"][metric] = qtab
+    adjusted = holm(family_p)
+    out["holm_family"] = {
+        "name": "E: two metrics x five GT-only statistics",
+        "size": len(family_p),
+        "alpha": 0.05,
+        "p_value_method": "paired object bootstrap of Spearman rho; two-sided plus-one Monte Carlo correction",
+        "tests": {k: {"p_raw": family_p[k], "p_holm": adjusted[k],
+                       "reject_h0": bool(adjusted[k] < 0.05)} for k in family_p},
+    }
     print(json.dumps(out, indent=2))
     if args.out:
         Path(args.out).write_text(json.dumps(out, indent=2) + "\n")

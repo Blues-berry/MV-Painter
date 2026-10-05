@@ -27,7 +27,8 @@ Does L-TCAS still provide a meaningful advantage once generic schedules are
 tested under the SAME runner, cohort, seeds and budget accounting?
 **Partially**: LLH beats 3 of 4 temporal shapes and all their budget-matched
 variants, but a simple per-layer linear warm-up from the same endpoints is
-statistically equivalent on FG-PSNR. Combined with A3 (no interaction) and B
+statistically equivalent on FG-PSNR. Combined with A3 (interaction real but
+with a collapsed matched-dose variance share — AMENDED P0-1) and B
 (decomposition), the supported structure is: (i) per-layer allocation with
 shallow protection, (ii) a monotone late-increasing temporal profile. The
 specific 3-stage LLH shape adds ~0.4 dB over a constant budget-match but

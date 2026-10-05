@@ -11,7 +11,8 @@
           -0.6025921954688246,
           -0.4345408060089457
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_rgb_std": {
         "rho": -0.38044822720251564,
@@ -19,7 +20,8 @@
           -0.48790637673750803,
           -0.2661661462905082
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_grad_mag": {
         "rho": -0.46389404326713674,
@@ -27,7 +29,8 @@
           -0.5474964055156043,
           -0.3706883187590888
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_hf_energy": {
         "rho": -0.691386793186575,
@@ -35,7 +38,8 @@
           -0.7450035000388722,
           -0.6257760419560076
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "coverage": {
         "rho": -0.1344934943721566,
@@ -43,7 +47,8 @@
           -0.24092731030344228,
           -0.026118501316680698
         ],
-        "p_bootstrap": 0.0174
+        "bootstrap_extreme_count_p_raw": 0.0174,
+        "p_bootstrap_plus_one": 0.017598240175982403
       }
     },
     "fg_lpips": {
@@ -54,7 +59,8 @@
           0.5113990377670744,
           0.6811984799830952
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_rgb_std": {
         "rho": 0.3789313214591186,
@@ -62,7 +68,8 @@
           0.2719137323747979,
           0.4816424515827843
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_grad_mag": {
         "rho": 0.5626764741830336,
@@ -70,7 +77,8 @@
           0.4690724230269118,
           0.6434521272458434
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "gt_fg_hf_energy": {
         "rho": 0.6766377404193223,
@@ -78,7 +86,8 @@
           0.5993247924976807,
           0.7438005533394643
         ],
-        "p_bootstrap": 0.0
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
       },
       "coverage": {
         "rho": -0.11830931454793671,
@@ -86,7 +95,8 @@
           -0.23270324114711852,
           0.00017565750730542357
         ],
-        "p_bootstrap": 0.0506
+        "bootstrap_extreme_count_p_raw": 0.0506,
+        "p_bootstrap_plus_one": 0.050794920507949204
       }
     }
   },
@@ -95,44 +105,110 @@
       "Q1": {
         "n": 75,
         "mean_delta": 4.139544272422791,
-        "win_rate": 0.92
+        "positive_delta_rate": 0.92,
+        "favorable_object_rate": 0.92
       },
       "Q2": {
         "n": 75,
         "mean_delta": 1.1266760985056559,
-        "win_rate": 0.52
+        "positive_delta_rate": 0.52,
+        "favorable_object_rate": 0.52
       },
       "Q3": {
         "n": 75,
         "mean_delta": -0.08661511739095053,
-        "win_rate": 0.41333333333333333
+        "positive_delta_rate": 0.41333333333333333,
+        "favorable_object_rate": 0.41333333333333333
       },
       "Q4": {
         "n": 75,
         "mean_delta": -0.02866214116414388,
-        "win_rate": 0.4533333333333333
+        "positive_delta_rate": 0.4533333333333333,
+        "favorable_object_rate": 0.4533333333333333
       }
     },
     "fg_lpips": {
       "Q1": {
         "n": 75,
         "mean_delta": -0.03745168079932531,
-        "win_rate": 0.02666666666666667
+        "positive_delta_rate": 0.02666666666666667,
+        "favorable_object_rate": 0.9733333333333334
       },
       "Q2": {
         "n": 75,
         "mean_delta": -0.01664981335401535,
-        "win_rate": 0.18666666666666668
+        "positive_delta_rate": 0.18666666666666668,
+        "favorable_object_rate": 0.8133333333333334
       },
       "Q3": {
         "n": 75,
         "mean_delta": -0.006700431009133657,
-        "win_rate": 0.36
+        "positive_delta_rate": 0.36,
+        "favorable_object_rate": 0.64
       },
       "Q4": {
         "n": 75,
         "mean_delta": -0.005204649567604065,
-        "win_rate": 0.49333333333333335
+        "positive_delta_rate": 0.49333333333333335,
+        "favorable_object_rate": 0.5066666666666667
+      }
+    }
+  },
+  "holm_family": {
+    "name": "E: two metrics x five GT-only statistics",
+    "size": 10,
+    "alpha": 0.05,
+    "p_value_method": "paired object bootstrap of Spearman rho; two-sided plus-one Monte Carlo correction",
+    "tests": {
+      "fg_psnr__gt_fg_lap_var": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_rgb_std": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_grad_mag": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_hf_energy": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__coverage": {
+        "p_raw": 0.017598240175982403,
+        "p_holm": 0.03519648035196481,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_lap_var": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_rgb_std": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_grad_mag": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_hf_energy": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__coverage": {
+        "p_raw": 0.050794920507949204,
+        "p_holm": 0.050794920507949204,
+        "reject_h0": false
       }
     }
   }

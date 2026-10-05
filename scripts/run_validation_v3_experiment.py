@@ -66,6 +66,7 @@ SHARD = int(os.environ.get("MVP_SHARD", "0"))
 NUM_SHARDS = int(os.environ.get("MVP_NUM_SHARDS", "1"))
 SAVE_PREDICTED = os.environ.get("MVP_SAVE_PREDICTED", "1") == "1"
 SAVE_RESIDUAL = os.environ.get("MVP_SAVE_RESIDUAL", "1") == "1"
+RESIDUALS_ONLY = os.environ.get("MVP_RESIDUALS_ONLY", "0") == "1"
 A3_SPEC_PATH = Path(os.environ.get(
     "MVP_A3_SPEC", str(V3_DIR / "a3_normalization.json")))
 
@@ -143,6 +144,14 @@ def make_true_global(value: float) -> "callable":
     return fn
 
 
+def make_boundary_onset_pulse(start_step: int) -> "callable":
+    """Native-scale 10-step high pulse at a frozen candidate late-stage onset."""
+    def fn(progress: float) -> dict:
+        step_idx = int(round(progress * (STEPS - 1)))
+        return dict(HIGH if start_step <= step_idx < start_step + 10 else LOW)
+    return fn
+
+
 def load_a3_spec() -> dict:
     if not A3_SPEC_PATH.exists():
         raise RuntimeError(
@@ -210,9 +219,20 @@ def build_conditions(include_a3: bool = False) -> dict:
             spec={"stages": STAGES[name], "kind": "three-stage"})
     add("lfm_exact", lambda p: dict(LLH_BUDGET),
         spec={"requested": LLH_BUDGET, "kind": "exact-mean-matched-constant"})
-    for v, tag in ((1.25, "1p25"), (1.675, "1p675"), (2.50, "2p50")):
+    for v, tag in ((0.80, "0p80"), (1.25, "1p25"), (1.675, "1p675"), (2.50, "2p50")):
         add(f"true_global_{tag}", make_true_global(v), uncapped=True,
             spec={"requested_every_group": v, "cap": "bypassed", "kind": "causal-diagnostic"})
+
+    # Prospective stage-boundary robustness family. Each condition uses the
+    # same 10-step native-scale high pulse, anchored at the late-stage onset
+    # implied by one frozen candidate partition; this is not an optimum search.
+    for partition, start in (("20_60_20", 40), ("30_40_30", 35),
+                             ("34_32_34", 33), ("40_20_40", 30)):
+        add(f"boundary_late_onset_{partition}", make_boundary_onset_pulse(start),
+            spec={"partition_percent": partition.split("_"),
+                  "high_pulse_start_step": start, "high_duration_steps": 10,
+                  "base": LOW, "high": HIGH,
+                  "kind": "fixed-width-boundary-sensitivity-pulse"})
 
     # Experiment C: generic schedules (frozen shapes; native cap semantics)
     for shape_name in GEN_SHAPES:
@@ -282,6 +302,11 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+# Capture at import/launch, before model loading or any output work. The old
+# end-of-run hash read the live path and could describe a later edited file.
+RUNNER_SHA256_AT_START = sha256(Path(__file__).resolve())
 
 
 def h_tensor(t: torch.Tensor) -> str:
@@ -376,6 +401,23 @@ def condition_scale_trace(fn) -> list:
 
 
 def protocol_manifest() -> dict:
+    configured_roots = list(OmegaConf.load(CONFIG).data.params.validation.params.root_dir_list)
+    data_root_override = os.environ.get("MVP_DATA_ROOT")
+    effective_roots = ([str(Path(data_root_override).resolve())] if data_root_override
+                       else [str(Path(p).resolve()) for p in configured_roots])
+    code_sources = {
+        "runner": Path(__file__).resolve(),
+        "generation_logic": ROOT / "geotex/explore_contradiction.py",
+        "adapter_wrapper": ROOT / "MVPainter/mvpainter/model_unet_geotex.py",
+        "data_utils": ROOT / "geotex/data_utils.py",
+        "metric_implementation": ROOT / "geotex/eval_exploration.py",
+        "train_util_dataset_factory": ROOT / "MVPainter/src/utils/train_util.py",
+        "metric_package": ROOT / "geotex/metrics/__init__.py",
+        "metric_image_functions": ROOT / "geotex/metrics/image_metrics.py",
+        "metric_mask_functions": ROOT / "geotex/metrics/mask_ops.py",
+        "metric_region_functions": ROOT / "geotex/metrics/region_metrics.py",
+        "metric_crop_functions": ROOT / "geotex/metrics/crop_ops.py",
+    }
     return {
         "protocol": "layer-confirmation-strict276-v1 (verbatim per-object code path)",
         "phase": "scientific-validation-v3",
@@ -398,6 +440,12 @@ def protocol_manifest() -> dict:
         ),
         "checkpoint": str(CHECKPOINT),
         "checkpoint_sha256": sha256(CHECKPOINT),
+        "config": str(CONFIG),
+        "config_sha256": sha256(CONFIG),
+        "data_root_override": str(Path(data_root_override).resolve()) if data_root_override else None,
+        "effective_data_roots": effective_roots,
+        "code_source_sha256": {k: {"path": str(v), "sha256": sha256(v)}
+                                for k, v in code_sources.items()},
         "object_list": str(OBJECT_LIST),
         "object_list_sha256": sha256(OBJECT_LIST),
         "target_view_mode": "unique6",
@@ -413,7 +461,8 @@ def protocol_manifest() -> dict:
         "metric_path": "geotex.eval_exploration.compute_metrics",
         "shard": SHARD,
         "num_shards": NUM_SHARDS,
-        "runner_script_sha256": sha256(Path(__file__).resolve()),
+        "runner_script_sha256": RUNNER_SHA256_AT_START,
+        "residuals_only": RESIDUALS_ONLY,
     }
 
 
@@ -429,7 +478,13 @@ def main() -> None:
 
     rows_path = RUN_DIR / f"rows_shard{SHARD}.json"
     rows = json.loads(rows_path.read_text()) if rows_path.exists() else []
-    completed = {(int(r["object_idx"]), r["condition"]) for r in rows}
+    if RESIDUALS_ONLY:
+        completed = {
+            (p.stem, p.parent.name)
+            for p in (RUN_DIR / "residual_logs").glob("*/*.json")
+        }
+    else:
+        completed = {(int(r["object_idx"]), r["condition"]) for r in rows}
 
     device = torch.device(os.environ.get("MVP_DEVICE", "cuda:0"))
     dtype = torch.float16
@@ -442,7 +497,7 @@ def main() -> None:
     if data_root:
         validation.params.root_dir_list = [str(Path(data_root).resolve())]
     dataset = instantiate_from_config(validation)
-    lpips_fn = ee.get_lpips_fn(device)
+    lpips_fn = None if RESIDUALS_ONLY else ee.get_lpips_fn(device)
 
     with OBJECT_LIST.open() as f:
         uids = [line.strip() for line in f if line.strip()]
@@ -469,7 +524,8 @@ def main() -> None:
 
     for obj_idx in object_range:
         object_id = object_ids[obj_idx]
-        pending = [c for c in sorted(CONDITIONS) if (obj_idx, c) not in completed]
+        completion_key = object_id if RESIDUALS_ONLY else obj_idx
+        pending = [c for c in sorted(CONDITIONS) if (completion_key, c) not in completed]
         if not pending:
             continue
         object_seed = 42 + obj_idx
@@ -506,7 +562,8 @@ def main() -> None:
             finally:
                 if swapped:
                     restore_forward()
-            metrics = ee.compute_metrics(pred, target, mask, edge, lpips_fn, device)
+            metrics = ({} if RESIDUALS_ONLY else
+                       ee.compute_metrics(pred, target, mask, edge, lpips_fn, device))
             # -------------------------------------------------------------------
             integrity = {
                 "cond": h_tensor(batch["cond_imgs"]),
@@ -528,31 +585,36 @@ def main() -> None:
                 rdir = RUN_DIR / "residual_logs" / condition
                 rdir.mkdir(parents=True, exist_ok=True)
                 atomic_json(rdir / f"{object_id}.json", residual_log)
+            if RESIDUALS_ONLY:
+                if not residual_log:
+                    raise RuntimeError(f"no residual log for {object_id}/{condition}")
+                completed.add((completion_key, condition))
             if SAVE_PREDICTED:
                 pdir = RUN_DIR / "predictions" / condition
                 pdir.mkdir(parents=True, exist_ok=True)
                 save_image(pred, pdir / f"{object_id}.png")
 
-            row = {
-                "object": object_id,
-                "object_uid": object_id,
-                "object_idx": obj_idx,
-                "condition": condition,
-                "uncapped": cfg["uncapped"],
-                "seed_base": 42,
-                "elapsed_seconds": time.time() - started,
-                **{k: float(v) for k, v in metrics.items()},
-                "input_hashes": integrity,
-            }
-            rows.append(row)
-            rows.sort(key=lambda item: (int(item["object_idx"]), item["condition"]))
-            atomic_json(rows_path, rows)
-            # CSV rewrite is O(total rows): throttle to every 16 completions
-            # (rows.json is the per-row resume ledger; MVP_REBUILD_CSVS=1
-            # regenerates CSVs from ledgers at any time)
-            if len(rows) % 16 == 0 or len(rows) <= 4:
-                write_condition_csv(rows, condition)
-                write_combined_csv(rows)
+            if not RESIDUALS_ONLY:
+                row = {
+                    "object": object_id,
+                    "object_uid": object_id,
+                    "object_idx": obj_idx,
+                    "condition": condition,
+                    "uncapped": cfg["uncapped"],
+                    "seed_base": 42,
+                    "elapsed_seconds": time.time() - started,
+                    **{k: float(v) for k, v in metrics.items()},
+                    "input_hashes": integrity,
+                }
+                rows.append(row)
+                rows.sort(key=lambda item: (int(item["object_idx"]), item["condition"]))
+                atomic_json(rows_path, rows)
+                # CSV rewrite is O(total rows): throttle to every 16 completions
+                # (rows.json is the per-row resume ledger; MVP_REBUILD_CSVS=1
+                # regenerates CSVs from ledgers at any time)
+                if len(rows) % 16 == 0 or len(rows) <= 4:
+                    write_condition_csv(rows, condition)
+                    write_combined_csv(rows)
             del pred, batch, target, real_depth, geo_input, mask, geo_feats, edge, init_latents
             torch.cuda.empty_cache()
         done = sum(1 for o in object_range for c in CONDITIONS

@@ -1,6 +1,13 @@
 # SCIENTIFIC_VALIDATION_DECISION_REPORT — FINAL
 
 - Date: 2026-10-05
+- **AMENDED 2026-10-05 (P0-1 closure):** the production interaction test was
+  zero-power (`PRE_ACCEPTANCE_AUDIT_20261005.md` P0-1). CLAIM 2 (failure-
+  cases line), CLAIM 3, CLAIM 8 and the final ruling below are re-derived
+  with the validated cluster-robust Wald test
+  (`audit_scripts/AUDIT_INTERACTION_VALID_TEST.json`,
+  `AUDIT_INTERACTION_VALID_TEST_G.json`). Amendments are marked **[AMENDED
+  P0-1]**. No data row changed; see `PRE_ACCEPTANCE_ISSUE_CLOSURE.md`.
 - Branch: codex/scientific-validation-v3-20261002 (base 29b3a0a)
 - Cohort: FRESH_CONFIRM_300 (frozen, seed 20261002; 508 disjoint candidates →
   450 technically valid → 300 selected; full audit trail committed)
@@ -36,30 +43,54 @@ CLAIM 2 "Adapter effect is timestep-dependent." → **PARTIALLY SUPPORTED (weak)
 --------------------------------------------------------------------------------
 - Experiment: A2 raw map + B2 temporal-location contrasts
 - Comparator: single-window interventions vs baseline; LLH vs LLL/HLL
-- Effect: A2 cell deltas exist but are tiny (|ΔFG-LPIPS| ≤ 0.006); B2:
+- Effect: A2 cell deltas exist but are tiny (|ΔFG-LPIPS| ≤ 0.0064); B2:
   late-high beats all-low by +0.84 dB [0.75, 0.93] and early-high by +0.85 dB
   [0.66, 1.05]
 - Correction: Holm (A: 16 tests; B2: 4 tests) — all rejected
-- Failure cases: at equal dose (A3) the window profile within a layer is flat;
-  no window is special
+- Failure cases: **[AMENDED P0-1]** at equal dose (A3) the *time-structure*
+  variance share is strongly reduced (FG-PSNR interaction share 0.8%,
+  FG-LPIPS 11.9%) but NOT absent — the interaction is statistically
+  significant on the valid Wald test; no single window is special at equal
+  dose within the valid (deep) row
 - Allowed: "a monotone late-increasing temporal profile yields a small real
   benefit over a constant budget-matched scale"
 - Forbidden: "timestep-specific gating/switching is a discovered mechanism";
   any per-window tuning claims
 
 --------------------------------------------------------------------------------
-CLAIM 3 "There is a layer × timestep interaction." → **NOT SUPPORTED**
+CLAIM 3 "There is a layer × timestep interaction." → **SUPPORTED WITH
+QUALIFICATION** **[AMENDED P0-1]**
 --------------------------------------------------------------------------------
 - Experiment: A2 raw + A3 dose-normalized (pre-registered primary H1)
-- Comparator: two-way additive model SS-interaction, object-cluster bootstrap
-- Effect: raw p = 0.50; dose-normalized p = 1.0 (observed additive residual
-  SMALLER than the bootstrap null)
-- Correction: Holm family A (16 tests): interaction p_holm = 1.0
-- Failure cases: none — the null is affirmed by two independent maps
-- Allowed: "we tested for a layer × timestep interaction and found none; the
-  supported structure is additive (layer main effect + temporal profile)"
-- Forbidden: ANY residual interaction narrative, any S=[s_l,k]
-  full-matrix justification, "jointly conditioned" mechanism language
+- Comparator: two-way model; interaction tested with the VALIDATED
+  cluster-robust Wald test (8 Helmert row×col interaction contrasts,
+  object-level sandwich covariance), replacing the zero-power production
+  bootstrap (P0-1)
+- Effect: A2 (native dose): FG-LPIPS W = 481.1, p = 8.0e-99, interaction SS
+  share 43.5%; FG-PSNR W = 1880.0, p ≈ 0, share 56.8% — the interaction is
+  REAL and substantial (cell structure directly visible: deep deltas ×1e-4 =
+  [−29.3, +5.9, +41.3, +35.2, +23.8] across W1–W5, an early→late sign flip).
+  A3 (dose-normalized): still highly significant (FG-LPIPS W = 657.2,
+  p = 1.1e-136, share 11.9%; FG-PSNR W = 1389.1, p = 1.3e-294, share 0.8%)
+  but the time-structure variance share collapses at matched dose.
+  Cross-checks: naive ANOVA F = 117.8 (p = 1.9e-179); subsample- and
+  winsorization-stable; corroborated by B3's independent +0.43 dB temporal
+  component.
+- Correction: the pre-registered H1 family used the defective bootstrap for
+  the interaction member; the Wald test is size-validated (tests A/F) and
+  power-validated (test B ≥ 32/40) — reported here as the authoritative
+  interaction result
+- Qualification: dose normalization is exact only for the deep row
+  (VALID_DOSE_NORMALIZED_CONFIRMATION); middle is approximate (E-ratio 5.1×
+  vs requested 2.73×); shallow is STRESS_TEST_ONLY — "survives dose
+  normalization" is fully valid for deep, approximate for middle
+- Allowed: "a genuine layer × timestep interaction exists at native dose
+  (large variance share); after residual-dose normalization it remains
+  statistically detectable but its variance share collapses, especially on
+  FG-PSNR; the layer main effect dominates at equal dose"
+- Forbidden: "no interaction" / "the supported structure is purely additive"
+  (false); "the interaction is a large practical scheduling lever" (bounded:
+  linear-ramp equivalence, CLAIM 7); per-window tuning claims
 
 --------------------------------------------------------------------------------
 CLAIM 4 "1/3 stage boundaries reflect the empirical response." → **HEURISTIC ONLY**
@@ -69,12 +100,17 @@ CLAIM 4 "1/3 stage boundaries reflect the empirical response." → **HEURISTIC O
   32/33
 - Effect: no discontinuity or boundary-aligned response at equal dose;
   profiles are window-flat within layers
+- **[AMENDED P0-1 note]** the "window-flat at equal dose" reading is fully
+  valid only for the deep row (A3 middle = approximate normalization,
+  shallow = stress-only); the valid A2 map shows a smooth positional
+  response (deep early→late sign flip), not boundary-aligned switches —
+  boundary status unchanged (heuristic)
 - Correction: descriptive (A3) + Holm family A
 - Allowed: "three-stage boundaries are a design heuristic"
 - Forbidden: "empirically derived/validated boundaries"
 
 --------------------------------------------------------------------------------
-CLAIM 5 "LLH's gain is not explained by residual budget." → **SUPPORTED (small)**
+CLAIM 5 "Temporal variation helps beyond the exact per-layer mean." → **SUPPORTED (small)**
 --------------------------------------------------------------------------------
 - Experiment: B1 (LFM-EXACT = exact 17/16/17 per-layer means, constant)
 - Cohort: FRESH_CONFIRM_300 (n=300)
@@ -82,28 +118,36 @@ CLAIM 5 "LLH's gain is not explained by residual budget." → **SUPPORTED (small
   [−0.0052, −0.0039]; Holm family B1 p = 0.0002
 - Correction: Holm family B1 (2 tests)
 - Failure cases: pre-registered equivalence NOT established (PSNR CI upper
-  0.516 > 0.5 margin) — the temporal-variation component is real but small
-  relative to the total LLH−GFL difference (+1.29 dB)
-- Allowed: "LLH retains a small advantage over an exactly budget-matched
-  constant (+0.4 dB); most of the layer allocation benefit is budget-side"
-- Forbidden: "the LLH advantage cannot be explained by budget" (the dominant
-  part CAN; only a +0.4 dB residual is attributable to temporal variation)
+  0.516 > 0.5 margin). LLH−GFL is +1.288 dB; only +0.435 dB is isolated by
+  the exact per-layer-mean temporal contrast. The remaining +0.853 dB
+  LLH−LFM-EXACT vs LFM-EXACT−GFL term changes depth doses and shallow-cap
+  state together; it cannot be labeled “budget alone” or “layer alone.”
+- Allowed: "LLH retains a small advantage over an exactly per-layer-
+  mean-matched constant (+0.4 dB); the larger LLH−GFL difference also changes
+  depth doses and the shallow cap profile."
+- Forbidden: "the LLH−GFL difference is additively decomposed into cap,
+  layer, and temporal contributions" or "the remaining effect is budget
+  alone."
 
 --------------------------------------------------------------------------------
-CLAIM 6 "Layer-wise allocation improves over truly uniform scaling." → **SUPPORTED**
+CLAIM 6 "Named depth/cap policies differ from uncapped uniform controls." → **SUPPORTED (DESCRIPTIVE DIAGNOSTICS)**
 --------------------------------------------------------------------------------
 - Experiment: B3 TRUE-GLOBAL diagnostics (uncapped, causal-only)
 - Cohort: FRESH_CONFIRM_300 (n=300)
-- Comparator: native/layer conditions vs TRUE-GLOBAL at matched nominal scales
+- Comparator: native/capped conditions vs TRUE-GLOBAL at matched requested
+  global scales; these do not match effective shallow scale or total dose
 - Effect: GFL vs TRUE-GLOBAL-1.25 +1.60 dB [1.37, 1.82]; LFM-EXACT vs
   TRUE-GLOBAL-1.675 +2.99 dB [2.43, 3.55]; GFH vs TRUE-GLOBAL-2.50 +4.66 dB
   [4.07, 5.23]; FG-LPIPS all favor layer-aware
-- Correction: descriptive decomposition (pre-registered as non-confirmatory);
-  CIs as given
+- Correction: descriptive diagnostic contrasts only; not a decomposable
+  factorial effect and not a deployment recommendation
 - Failure cases: TRUE-GLOBAL runs were stable (no NaN); they are diagnostics,
   not deployment candidates
-- Allowed: "protecting shallow (cap) and redistributing scale across depth
-  groups jointly account for the schedule gains, additively"
+- Allowed: "at requested global 1.25 and 2.50, the native shallow cap changes
+  the paired FG-PSNR result by +1.60 and +4.66 dB respectively; LFM-EXACT
+  differs from uncapped TGU-1.675 by +2.99 dB while reducing shallow exposure.
+  These are separate contrasts with different endpoints and must not be
+  summed."
 - Forbidden: presenting TRUE-GLOBAL numbers as method variants; pooling
   capped/uncapped rows
 
@@ -129,16 +173,29 @@ CLAIM 7 "L-TCAS beats generic schedule families under the authoritative protocol
 CLAIM 8 "The principle transfers to MV-Adapter." → **UNSUPPORTED (backbone-specific)**
 --------------------------------------------------------------------------------
 - Experiment: G (per-point window map, frozen topology-derived mapping)
-- Cohort: 99 fresh disjoint objects (1 technical exclusion, documented)
+- Cohort: **n = 98/99 planned** after completing 17 of the 18 missing
+  objects. The original 1,600 ledger rows contained 304 exact repeated
+  object-condition rows; 81 unique objects were supplemented by 272 rows for
+  17 further objects. The last planned object (`g_0098`) is a frozen GLB with
+  path geometry and no triangle faces, so the unchanged G loader cannot
+  process it. No substitute input was used; see `g_formal_complete/` and
+  `PRE_ACCEPTANCE_ISSUE_CLOSURE.md` P1-5.
 - Comparator: g_baseline vs 15 (group, window) interventions at 0.75→1.00
-- Effect: interaction p = 0.58; cell deltas ~1e-4 (deep/middle ≈ 0; only 3
-  shallow cells Holm-rejected at ~5e-4)
+- Effect: the production additive-residual bootstrap remains invalid for
+  interaction inference. Exploratory cluster-robust Wald reanalysis on the
+  completed data gives primary FG-LPIPS W = 13.322, p = 0.101 and PSNR
+  W = 7.995, p = 0.434. FG-SSIM is p = 0.039 unadjusted but p = 0.156 after
+  Holm correction across four metrics; no interaction metric survives that
+  exploratory correction. Shallow W3–W5 show small adverse FG-LPIPS deltas
+  (+0.00045 to +0.00046) that survive the registered 15-cell Holm family;
+  deep and middle effects remain near zero.
 - Correction: Holm family G (16 tests)
 - Failure cases: the intervention range [0.75, 1.0] may simply be too weak on
   this backbone — the report must state this scope limit (no dose escalation
   was run by design; dose ratio <2x pre-registered rule)
-- Allowed: "the main-backbone layer/time structure does not transfer to
-  MV-Adapter under the frozen protocol; the principle is backbone-specific"
+- Allowed: "the large main-backbone layer/time response was not reproduced
+  by this frozen MV-Adapter intervention range; only small late shallow
+  FG-LPIPS worsening was detected, and an interaction remains unconfirmed"
 - Forbidden: "architecture-dependent allocation principle" (option A) or
   "layer-aware scaling transfers" (option B) — neither is supported
 
@@ -176,12 +233,19 @@ CLAIM 10 "Texture-rich objects define a systematic failure boundary." → **REPL
   that the average advantage applies to texture-rich content
 
 --------------------------------------------------------------------------------
-## FINAL RULING ON THE FRAMING
+## FINAL RULING ON THE FRAMING **[AMENDED P0-1]**
 
 Keep "L-TCAS" as a name ONLY if immediately qualified; the supported story is
-"depth-aware adapter scaling with a monotone late-increasing profile":
+"depth-aware adapter scaling with a monotone late-increasing temporal
+profile, and a real but dose-dependent layer × time interaction":
 layer allocation = first-order effect; temporal profile = small real benefit
-captured by a linear ramp; NO interaction; NO empirical stage boundaries;
-backbone-specific; texture-rich failure boundary mandatory in any deployment
-statement. Manuscript rewriting may now begin ONLY within these constraints
-(see NARRATIVE_RESTRUCTURE_REQUIRED.md).
+captured by a linear ramp; the Layer × Time interaction EXISTS (large
+variance share at native dose; collapses after dose normalization —
+authoritative Wald re-test), so "no interaction / purely additive" wording is
+FORBIDDEN, but the 2D structure is also not a large practical scheduling
+lever (linear-ramp equivalence stands); NO empirical stage boundaries
+(heuristic only); G supports only a bounded statement for its frozen
+0.75-to-1.00 range (98/99 planned objects), with broad interaction transfer
+unconfirmed; texture-rich failure boundary mandatory in any deployment
+statement. Manuscript rewriting remains gated on completion of the evidence
+closure protocol and evidence freeze (see NARRATIVE_RESTRUCTURE_REQUIRED.md).

@@ -11,12 +11,21 @@ condition-independent), build_gt_stats_json.py.
 Overall paired effect (n=300): LLH − GFL = +1.288 dB FG-PSNR [0.938, 1.635],
 −0.0165 FG-LPIPS [−0.0189, −0.0141].
 
-Spearman (10k bootstrap CIs, all exclude zero):
+Spearman (10k paired-object bootstrap CIs; texture-only correlations below
+exclude zero):
   * ΔFG-PSNR ~ GT HF energy −0.691 [−0.745, −0.626]
   * ΔFG-PSNR ~ GT Laplacian variance −0.524 [−0.603, −0.435]
   * ΔFG-PSNR ~ GT gradient magnitude −0.464; ~ GT RGB std −0.380
   * ΔFG-LPIPS ~ GT HF energy +0.677; ~ GT Laplacian variance +0.604
-  * coverage: weak (−0.13)
+  * coverage: weaker (FG-PSNR rho −0.134; FG-LPIPS rho −0.118 and its CI
+    touches zero)
+
+The canonical reanalysis applies the pre-registered 10-test Holm family and
+plus-one Monte Carlo p-values; nine of ten tests reject at .05. GT coverage is
+significant for FG-PSNR after Holm (p=.0352), but not for FG-LPIPS (p=.0508).
+See `PROSPECTIVE_FAILURE_BOUNDARY_REPORT.md` and the corrected
+`formal/campaign_B3/spearman_texture_boundary.json`. The earlier zero-tail
+bootstrap file is preserved as `spearman_texture_boundary_legacy_unadjusted.json`.
 
 Texture-complexity quartiles (GT Laplacian variance), (mean ΔFG-PSNR, LLH win rate):
   Q1 +4.14 dB (0.92) | Q2 +1.13 dB (0.52) | Q3 −0.09 dB (0.41) | Q4 −0.03 dB (0.45)

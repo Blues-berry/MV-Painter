@@ -27,3 +27,43 @@ Heuristic only / Not replicated.
 - Claim 8 verdict options: interaction-level transfer / layer-only transfer /
   unsupported (framing decides backbone-specific vs general).
 - Claim 9: no population-level 3D claim unless the unified bake supports it.
+
+
+---
+
+## Status addendum — 2026-10-05 (post-campaign; P0-1 re-derivation)
+
+The pre-registered table above is frozen and left untouched. Verdicts after
+campaign completion and the P0-1 interaction re-derivation (validated Wald
+test; `PRE_ACCEPTANCE_ISSUE_CLOSURE.md`):
+
+- Claim 1: **Supported** (deep row confirmatory; middle approximate; shallow
+  stress-test-only) — B3 decomposition decisive.
+- Claim 2: **Partially supported** (small real temporal effect; B2 placement
+  contrasts decisive).
+- Claim 3: **Supported with qualification [RE-DERIVED]** — interaction real
+  (A2 Wald W=481.1/1880; SS shares 43.5%/56.8%); at matched dose still
+  significant but variance share collapses (11.9%/0.8%); dose normalization
+  exact only for the deep row. Interpretation lock satisfied in its letter
+  (the interaction DOES survive residual-dose normalization statistically),
+  but the practical 2D structure is bounded (linear-ramp equivalence).
+- Claim 4: **Heuristic only** (pending §8 boundary test for any stronger
+  wording).
+- Claim 5: **Supported (small)** — +0.435 dB [0.356, 0.516] over exact
+  budget-matched constant; pre-registered equivalence margins not met.
+- Claim 6: **Descriptive support for named cap/exposure contrasts only**.
+  The former “additive cap + layer + temporal decomposition” is withdrawn:
+  the cited pairwise contrasts use different endpoints. FRESH_CONFIRM_B
+  TGU-0.80 remains needed to complete the specified diagnostic family.
+- Claim 7: **Metric-dependent / partial** (linear warm-up equivalence).
+- Claim 8: **Broad transfer unconfirmed; bounded MV-Adapter result** — G now
+  covers 98/99 planned objects after 17 missing-object completions; the
+  remaining frozen GLB is path-only and cannot be processed as a surface
+  mesh. The exploratory Wald reanalysis gives primary FG-LPIPS p = 0.101,
+  PSNR p = 0.434; the FG-SSIM signal does not survive four-metric Holm
+  correction. Small shallow W3–W5 LPIPS harms survive the registered cell
+  family. Do not state universal backbone insensitivity or confirmed
+  interaction absence.
+- Claim 9: **Bounded support** (adapter level large; schedule level
+  perceptual + seam only, n = 20).
+- Claim 10: **Replicated** (prospective, all 10 Holm tests rejected).
