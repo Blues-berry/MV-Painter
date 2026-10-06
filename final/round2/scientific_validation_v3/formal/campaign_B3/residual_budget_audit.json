@@ -1,0 +1,417 @@
+{
+  "run_dir": "final/round2/scientific_validation_v3/formal/campaign_B3",
+  "conditions": {
+    "no_adapter": {
+      "condition": "no_adapter",
+      "n_objects": 300,
+      "uncapped": false,
+      "effective_scale_source": "logged eff_scale (post-cap)",
+      "layers": {
+        "deep": {
+          "E_mean": 0.0,
+          "E_median": 0.0,
+          "E_log_mean": -Infinity,
+          "requested_scale_mean": null,
+          "effective_scale_mean": null,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 0.0,
+          "E_median": 0.0,
+          "E_log_mean": -Infinity,
+          "requested_scale_mean": null,
+          "effective_scale_mean": null,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 0.0,
+          "E_median": 0.0,
+          "E_log_mean": -Infinity,
+          "requested_scale_mean": null,
+          "effective_scale_mean": null,
+          "cap_activation_rate": 0.0
+        }
+      }
+    },
+    "native_gfl": {
+      "condition": "native_gfl",
+      "n_objects": 300,
+      "uncapped": false,
+      "effective_scale_source": "logged eff_scale (post-cap)",
+      "layers": {
+        "deep": {
+          "E_mean": 314897212.2645265,
+          "E_median": 318301946.4941355,
+          "E_log_mean": 19.564225236633416,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 1.25,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 16134499.692684453,
+          "E_median": 16360543.321555853,
+          "E_log_mean": 16.580405320466145,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 1.25,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 1342708.1287853403,
+          "E_median": 1317470.4192133932,
+          "E_log_mean": 14.101104000494757,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 0.7999999999997937,
+          "cap_activation_rate": 1.0
+        }
+      }
+    },
+    "native_gfh": {
+      "condition": "native_gfh",
+      "n_objects": 300,
+      "uncapped": false,
+      "effective_scale_source": "logged eff_scale (post-cap)",
+      "layers": {
+        "deep": {
+          "E_mean": 1258943381.0839462,
+          "E_median": 1273758680.8601236,
+          "E_log_mean": 20.95012753874283,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 2.5,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 50825048.92884022,
+          "E_median": 51595951.48041697,
+          "E_log_mean": 17.732056572513716,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 2.5,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 1356499.3706678585,
+          "E_median": 1331988.7675772663,
+          "E_log_mean": 14.111039459679995,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 0.7999999999997937,
+          "cap_activation_rate": 1.0
+        }
+      }
+    },
+    "native_gc3": {
+      "condition": "native_gc3",
+      "n_objects": 300,
+      "uncapped": false,
+      "effective_scale_source": "logged eff_scale (post-cap)",
+      "layers": {
+        "deep": {
+          "E_mean": 695631586.2061279,
+          "E_median": 702323690.6847199,
+          "E_log_mean": 20.357684952507455,
+          "requested_scale_mean": 1.65,
+          "effective_scale_mean": 1.65,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 36712329.56118926,
+          "E_median": 37245032.851923026,
+          "E_log_mean": 17.408521176886595,
+          "requested_scale_mean": 1.65,
+          "effective_scale_mean": 1.65,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 1318215.9057376753,
+          "E_median": 1295884.7290230235,
+          "E_log_mean": 14.082743425051715,
+          "requested_scale_mean": 1.65,
+          "effective_scale_mean": 0.7999999999997937,
+          "cap_activation_rate": 1.0
+        }
+      }
+    },
+    "true_global_1p25": {
+      "condition": "true_global_1p25",
+      "n_objects": 300,
+      "uncapped": true,
+      "effective_scale_source": "requested scale (cap bypassed); logged eff_scale is hypothetical",
+      "layers": {
+        "deep": {
+          "E_mean": 312365139.9953228,
+          "E_median": 315751854.6028354,
+          "E_log_mean": 19.55594533411818,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 1.25,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 15823915.180549275,
+          "E_median": 16049382.56826019,
+          "E_log_mean": 16.56049715875247,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 1.25,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 3155608.179384465,
+          "E_median": 3091546.456244438,
+          "E_log_mean": 14.955234849600565,
+          "requested_scale_mean": 1.25,
+          "effective_scale_mean": 1.25,
+          "cap_activation_rate": 0.0
+        }
+      }
+    },
+    "true_global_1p675": {
+      "condition": "true_global_1p675",
+      "n_objects": 300,
+      "uncapped": true,
+      "effective_scale_source": "requested scale (cap bypassed); logged eff_scale is hypothetical",
+      "layers": {
+        "deep": {
+          "E_mean": 558318696.3910658,
+          "E_median": 564379449.9675664,
+          "E_log_mean": 20.136588508839885,
+          "requested_scale_mean": 1.6750000000014218,
+          "effective_scale_mean": 1.6750000000014218,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 25721990.654319566,
+          "E_median": 26106379.016984627,
+          "E_log_mean": 17.047988516271374,
+          "requested_scale_mean": 1.6750000000014218,
+          "effective_scale_mean": 1.6750000000014218,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 5682667.981251608,
+          "E_median": 5571095.857926982,
+          "E_log_mean": 15.543087826316572,
+          "requested_scale_mean": 1.6750000000014218,
+          "effective_scale_mean": 1.6750000000014218,
+          "cap_activation_rate": 0.0
+        }
+      }
+    },
+    "true_global_2p50": {
+      "condition": "true_global_2p50",
+      "n_objects": 300,
+      "uncapped": true,
+      "effective_scale_source": "requested scale (cap bypassed); logged eff_scale is hypothetical",
+      "layers": {
+        "deep": {
+          "E_mean": 1238286481.0562313,
+          "E_median": 1252143881.0047388,
+          "E_log_mean": 20.93295424737994,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 2.5,
+          "cap_activation_rate": 0.0
+        },
+        "middle": {
+          "E_mean": 50211984.237557575,
+          "E_median": 50960843.01692363,
+          "E_log_mean": 17.718846527050477,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 2.5,
+          "cap_activation_rate": 0.0
+        },
+        "shallow": {
+          "E_mean": 12931655.581775773,
+          "E_median": 12657848.235213462,
+          "E_log_mean": 16.364883466268164,
+          "requested_scale_mean": 2.5,
+          "effective_scale_mean": 2.5,
+          "cap_activation_rate": 0.0
+        }
+      }
+    }
+  },
+  "paired_log_E_ratio": {
+    "no_adapter": {
+      "a": "no_adapter",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": null,
+          "ci95": null,
+          "win_rate": null,
+          "note": "no comparable objects (zero-energy condition)"
+        },
+        "middle": {
+          "mean": null,
+          "ci95": null,
+          "win_rate": null,
+          "note": "no comparable objects (zero-energy condition)"
+        },
+        "shallow": {
+          "mean": null,
+          "ci95": null,
+          "win_rate": null,
+          "note": "no comparable objects (zero-energy condition)"
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    },
+    "native_gfh": {
+      "a": "native_gfh",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": 1.3859023021094128,
+          "ci95": [
+            1.3855006606670528,
+            1.3863121993091765
+          ],
+          "win_rate": 1.0
+        },
+        "middle": {
+          "mean": 1.1516512520475723,
+          "ci95": [
+            1.148342886674916,
+            1.1550427542232065
+          ],
+          "win_rate": 1.0
+        },
+        "shallow": {
+          "mean": 0.009935459185238742,
+          "ci95": [
+            0.006880755792016692,
+            0.013004122005650294
+          ],
+          "win_rate": 0.68
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    },
+    "native_gc3": {
+      "a": "native_gc3",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": 0.7934597158740364,
+          "ci95": [
+            0.7917158248204794,
+            0.7953115855411524
+          ],
+          "win_rate": 1.0
+        },
+        "middle": {
+          "mean": 0.8281158564204475,
+          "ci95": [
+            0.8235026661198134,
+            0.8329585505550194
+          ],
+          "win_rate": 1.0
+        },
+        "shallow": {
+          "mean": -0.018360575443044518,
+          "ci95": [
+            -0.01986401518300327,
+            -0.01684783744997125
+          ],
+          "win_rate": 0.03
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    },
+    "true_global_1p25": {
+      "a": "true_global_1p25",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": -0.008279902515236741,
+          "ci95": [
+            -0.008734586384526408,
+            -0.007823266164528195
+          ],
+          "win_rate": 0.03666666666666667
+        },
+        "middle": {
+          "mean": -0.019908161713677222,
+          "ci95": [
+            -0.02045187376478072,
+            -0.01936874856250751
+          ],
+          "win_rate": 0.0
+        },
+        "shallow": {
+          "mean": 0.8541308491058092,
+          "ci95": [
+            0.8526461375189196,
+            0.8556051101464734
+          ],
+          "win_rate": 1.0
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    },
+    "true_global_1p675": {
+      "a": "true_global_1p675",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": 0.5723632722064684,
+          "ci95": [
+            0.5716960486215616,
+            0.5729949135627573
+          ],
+          "win_rate": 1.0
+        },
+        "middle": {
+          "mean": 0.46758319580522717,
+          "ci95": [
+            0.4664322482579053,
+            0.46872497520028655
+          ],
+          "win_rate": 1.0
+        },
+        "shallow": {
+          "mean": 1.4419838258218132,
+          "ci95": [
+            1.4394277531634965,
+            1.4445381922029805
+          ],
+          "win_rate": 1.0
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    },
+    "true_global_2p50": {
+      "a": "true_global_2p50",
+      "b": "native_gfl",
+      "n": 300,
+      "log_E_ratio": {
+        "deep": {
+          "mean": 1.3687290107465226,
+          "ci95": [
+            1.367779675161928,
+            1.369615818539117
+          ],
+          "win_rate": 1.0
+        },
+        "middle": {
+          "mean": 1.1384412065843263,
+          "ci95": [
+            1.1358825208841246,
+            1.1410551360487624
+          ],
+          "win_rate": 1.0
+        },
+        "shallow": {
+          "mean": 2.263779465773405,
+          "ci95": [
+            2.2607345546672653,
+            2.2667750373421036
+          ],
+          "win_rate": 1.0
+        }
+      },
+      "note": "objects with zero residual energy in either condition are excluded from ratios"
+    }
+  }
+}

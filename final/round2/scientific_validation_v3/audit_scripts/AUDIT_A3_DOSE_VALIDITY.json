@@ -1,0 +1,144 @@
+{
+  "S8_spec_recomputation": {
+    "n_probe_objects": 24,
+    "mean_M_recomputed": {
+      "deep": 65636.46877448622,
+      "middle": 14688.962248104315,
+      "shallow": 2746.084906662629
+    },
+    "mean_M_spec": {
+      "deep": 65636.46877448622,
+      "middle": 14688.962248104315,
+      "shallow": 2746.084906662629
+    },
+    "rel_diff": {
+      "deep": 0.0,
+      "middle": 0.0,
+      "shallow": 0.0
+    },
+    "C_recomputed": 82045.58596810777,
+    "C_spec": 82045.58596810777,
+    "high_values_recomputed": {
+      "deep": 2.5,
+      "middle": 6.83552636886899,
+      "shallow": 30.377293950032808
+    },
+    "high_values_spec": {
+      "deep": 2.5,
+      "middle": 6.83552636886899,
+      "shallow": 30.377293950032808
+    },
+    "window_M_max_rel_diff": 2.0673235373628553e-16,
+    "match": true
+  },
+  "S10_integrated_residual_norms": {
+    "A2:a_baseline": {
+      "deep": 317943194.7150514,
+      "middle": 16603263.926343901,
+      "shallow": 546492.7995936064
+    },
+    "A2:a_deep_W3": {
+      "deep": 582095342.4915726,
+      "middle": 16011295.047619523,
+      "shallow": 551833.3764479898
+    },
+    "A2:a_middle_W3": {
+      "deep": 317952298.0014189,
+      "middle": 35627200.68966471,
+      "shallow": 534610.1021283104
+    },
+    "A2:a_shallow_W3": {
+      "deep": 317660899.6550148,
+      "middle": 16493722.601278184,
+      "shallow": 802554.6680922839
+    },
+    "A3:a3_baseline": {
+      "deep": 317943194.7150514,
+      "middle": 16603263.926343901,
+      "shallow": 546492.7995936064
+    },
+    "A3:a3_deep_W3": {
+      "deep": 582095342.4915726,
+      "middle": 16011295.047619523,
+      "shallow": 551833.3764479898
+    },
+    "A3:a3_middle_W3": {
+      "deep": 317260812.9571463,
+      "middle": 182318544.48369727,
+      "shallow": 532259.7235764696
+    },
+    "A3:a3_shallow_W3": {
+      "deep": 312544335.2618114,
+      "middle": 17096082.67270321,
+      "shallow": 1119100816.3449035
+    }
+  },
+  "S10_ratios": {
+    "a3_middle_W3_vs_a2_middle_W3": {
+      "deep": 0.9978251924939082,
+      "middle": 5.117397408564492,
+      "shallow": 0.9956035650233996
+    },
+    "a3_shallow_W3_vs_a2_shallow_W3": {
+      "deep": 0.9838929991108124,
+      "middle": 1.036520565186318,
+      "shallow": 1394.4231599886734
+    },
+    "a3_deep_W3_vs_a2_deep_W3": {
+      "deep": 1.0,
+      "middle": 1.0,
+      "shallow": 1.0
+    },
+    "requested_scale_ratio_middle": 2.734210547547596,
+    "requested_scale_ratio_shallow": 40.503058600043744,
+    "requested_scale_ratio_deep": 1.0
+  },
+  "S10_metric_regime": {
+    "audit_defined_thresholds": {
+      "fg_psnr_collapse": 5.0,
+      "fg_color_entropy_collapse": 0.5,
+      "fg_rgb_std_collapse": 0.01
+    },
+    "conditions": {
+      "a3_deep_W3": {
+        "n": 300,
+        "fg_psnr_drop_gt3dB_rate": 0.0,
+        "color_collapse_rate": 0.0,
+        "fg_lpips_worse_gt0.10_rate": 0.0
+      },
+      "a3_middle_W3": {
+        "n": 300,
+        "fg_psnr_drop_gt3dB_rate": 0.0,
+        "color_collapse_rate": 0.0,
+        "fg_lpips_worse_gt0.10_rate": 0.0
+      },
+      "a3_shallow_W3": {
+        "n": 300,
+        "fg_psnr_drop_gt3dB_rate": 0.6533333333333333,
+        "color_collapse_rate": 0.02,
+        "fg_lpips_worse_gt0.10_rate": 0.08666666666666667
+      }
+    }
+  },
+  "S10_png_saturation": {
+    "a3_baseline": {
+      "n": 24,
+      "mean_extreme_pixel_fraction": 0.048425250583224826
+    },
+    "a3_shallow_W3": {
+      "n": 24,
+      "mean_extreme_pixel_fraction": 0.7690545894481519
+    },
+    "a3_middle_W3": {
+      "n": 24,
+      "mean_extreme_pixel_fraction": 0.05409569210476345
+    }
+  },
+  "S10_verdict": {
+    "deep": "VALID_DOSE_NORMALIZED_CONFIRMATION (scale 2.5 = native high; cap 3.0 not binding; uncapped flag immaterial)",
+    "middle": "DOSE_NORMALIZED_DIAGNOSTIC_WITH_CAVEAT (scale 2.73x native high, cap bypassed; residual dose equalized by construction)",
+    "shallow": "STRESS_TEST_ONLY",
+    "shallow_measured_E_ratio_vs_native_high": 1394.4231599886734,
+    "note": "shallow high=30.38 is 40.5x native high scale and 38x its native cap; measured integrated residual and metric-regime stats above decide the label."
+  }
+}

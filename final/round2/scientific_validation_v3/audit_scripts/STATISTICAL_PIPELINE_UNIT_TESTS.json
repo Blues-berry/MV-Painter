@@ -1,0 +1,51 @@
+{
+  "A_production_null_calibration": {
+    "reps": 40,
+    "n_obj": 120,
+    "rejections_at_0.05": 0,
+    "median_p": 0.535,
+    "pass": true,
+    "note": "Null check only; passing does not imply power (test B)."
+  },
+  "B_injected_interaction_power": {
+    "reps": 40,
+    "n_obj": 120,
+    "interaction_size": 0.6,
+    "production_method_rejects": 0,
+    "wald_cluster_robust_rejects": 40,
+    "production_zero_power_confirmed": true,
+    "wald_has_power": true,
+    "pass": true
+  },
+  "C_metric_direction_sign_reversal": {
+    "lower_better_metric": "LPIPS",
+    "treatment_minus_baseline_mean": -0.06000000000000001,
+    "negative_means_favorable": true,
+    "reversed_mean_is_opposite": true,
+    "ci_mirrors_on_reversal": true,
+    "two_sided_p_invariant": true,
+    "win_loss_rates_swap": true,
+    "pass": true,
+    "note": "Raw metric direction is caller-controlled; this checks subtraction and inference under reversal."
+  },
+  "F_wald_null_calibration": {
+    "reps": 40,
+    "rejects_at_0.05": 4,
+    "pass": true
+  },
+  "D_duplicate_object_stress": {
+    "ci_width_ratio_rows300_vs_objects150": 0.7173179172215538,
+    "expected_if_rows_treated_independent": 0.7071067811865475,
+    "hazard_present": true,
+    "pass": true,
+    "note": "hazard real but avoided in production: load_condition/read_rows dedupe by object_uid (dict last-wins); all analyses use per-object rows (300 unique uids verified by ledger audit)."
+  },
+  "E_order_invariance": {
+    "median_identical": true,
+    "ci_mc_equivalent": true,
+    "holm_key_order_invariant": true,
+    "pass": true,
+    "note": "fixed-seed positional resampling gives MC-equivalent (not bit-identical) results under input permutation; production always builds deltas in canonical sorted-object order, so order dependence is unreachable; Holm is key-order invariant."
+  },
+  "_ALL_PASS": true
+}

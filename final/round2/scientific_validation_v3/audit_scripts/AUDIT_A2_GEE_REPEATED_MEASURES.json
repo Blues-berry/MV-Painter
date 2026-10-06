@@ -1,0 +1,60 @@
+{
+  "source": "final/round2/scientific_validation_v3/formal/campaign_A2/per_object_metrics.csv",
+  "n_objects": 300,
+  "observations_per_metric": 4500,
+  "model": "Gaussian GEE; delta=cell-baseline; fixed C(layer)*C(window); object_uid clusters; exchangeable working correlation; robust sandwich covariance",
+  "results": {
+    "fg_lpips": {
+      "formula": "delta_fg_lpips ~ C(layer) * C(window)",
+      "interaction_df": 8,
+      "interaction_wald_chi2": 482.70794153841103,
+      "interaction_p": 3.6018342278454394e-99,
+      "converged": true,
+      "working_correlation": "exchangeable (robust sandwich covariance)"
+    },
+    "fg_psnr": {
+      "formula": "delta_fg_psnr ~ C(layer) * C(window)",
+      "interaction_df": 8,
+      "interaction_wald_chi2": 1886.2502545990399,
+      "interaction_p": 0.0,
+      "converged": true,
+      "working_correlation": "exchangeable (robust sandwich covariance)"
+    }
+  },
+  "cell_means_delta": {
+    "fg_lpips": {
+      "deep_W1": 0.002926683016121391,
+      "deep_W2": -0.0005917768925428394,
+      "deep_W3": -0.004126105755567548,
+      "deep_W4": -0.0035163564110795614,
+      "deep_W5": -0.002383337443073586,
+      "middle_W1": -0.0030981198946634877,
+      "middle_W2": -0.0016104883328080153,
+      "middle_W3": 0.0008445753405491569,
+      "middle_W4": -0.0019169291233022993,
+      "middle_W5": -0.006404908299446099,
+      "shallow_W1": 0.0010759113604823828,
+      "shallow_W2": 0.0019596491381526017,
+      "shallow_W3": 0.0017898090804616628,
+      "shallow_W4": 0.0011755194018284482,
+      "shallow_W5": 0.0003584878643353833
+    },
+    "fg_psnr": {
+      "deep_W1": -0.19516581197579713,
+      "deep_W2": 0.0257518192132313,
+      "deep_W3": 0.19613380034764608,
+      "deep_W4": 0.2421914130449293,
+      "deep_W5": 0.062269131342569964,
+      "middle_W1": 0.22078097860018403,
+      "middle_W2": 0.07857400079568215,
+      "middle_W3": -0.07759331365426392,
+      "middle_W4": 0.132418417930603,
+      "middle_W5": 0.5145460675160091,
+      "shallow_W1": 0.013844748338063454,
+      "shallow_W2": -0.042157027125358695,
+      "shallow_W3": -0.039604210853576696,
+      "shallow_W4": 0.006635122497876378,
+      "shallow_W5": 0.07266507546106962
+    }
+  }
+}
