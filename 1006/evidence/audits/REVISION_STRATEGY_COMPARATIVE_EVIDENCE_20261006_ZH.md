@@ -24,13 +24,19 @@
 | [Make-A-Texture, WACV 2025](https://openaccess.thecvf.com/content/WACV2025/html/Gorelik_Make-A-Texture_Fast_Shape-Aware_3D_Texture_Generation_in_3_Seconds_WACV_2025_paper.html) | 速度与输出质量并列，主张是秒级纹理生成。 | 同一 prompt 比较；每个 mesh 渲染 20 个视角，报告 FID/KID；用户通过 360° 视频做成对质量和文本对齐选择；另按 A100/H100 报告运行时间。 | 指标随主张变化：若主张省时就报端到端耗时；若主张 fidelity 就用有参照的 fidelity 终点；若主张可视质量就让参与者看到可旋转 3D 资产。不能拿一个方向的好指标代替整体赢。 |
 | [Im2SurfTex, Computer Graphics Forum 2025](https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.70191) | 一个可插入既有纹理管线的 learned backprojection 模块，以跨视角 attention 和表面位置、法线、测地距离聚合 texel 颜色。 | 在 410 个 Objaverse 测试 mesh、225 类上评估；所有对照共用 UV/表面参数化；20 个固定视角；在 Paint3D 与 MatAtlas 两种 backbone 上替换 backprojection；消融邻域大小、位置编码、测地距离、视图数。论文也承认测地项的数值收益小、预设视角有限，并报告过度平滑风险。 | 这是与目标图形学期刊最接近的证据范例：新组件被放进两个已有管线里单独替换，搭配共享数据/UV 的公平对照与组件消融。相比之下，“说明 schedule 与指标有关”本身较难承担 R2.1；本稿应突出并实测残差/cap 语义的实际技术价值，不能只靠 claim 收窄。 |
 | [UniTex, Computers & Graphics 137 (2026)](https://www.sciencedirect.com/science/article/abs/pii/S0097849326000701) | 从多视图观测恢复单 chart、可复用纹理，分别提出 color-aware cut、扩散视图补全和物理可微渲染的材质/光照分离。 | 目标 venue 的近期论文把“production-ready”与单 chart 输出、避免显著图案区域切缝、补充遮挡视图、材质/光照解耦这些明确模块相连；问题与本稿不同，因此这里只作 venue-level 叙事参照。 | 期刊适配的论点需要一个清楚的技术对象和可审计输出效用。若本稿最后只是一份 schedule leaderboard，不能假定新增几十页审计就会构成方法贡献。 |
-| [Scheduled Style Injection, CVPRW NTIRE 2026](https://openaccess.thecvf.com/content/CVPR2026W/NTIRE/papers/Kulkarni_Scheduled_Style_Injection_Expanding_the_Style-Content_Pareto_Frontier_in_Training-Free_CVPRW_2026_paper.pdf) | 训练无关的 style-content 调度；逐层/逐步改变 StyleID 参数，并试验几何 ControlNet scale 在 depth/time 两轴上的 schedule。 | 将 schedule 维度、方向、线性/非线性形状拆开评估，并报告在 SD 1.4、1.5、2.1 上的结果。它不是 T2T 论文，也不使用本稿同一 adapter residual；但与“layer × time 调度是新控制空间”的普遍性 claim 直接重叠。 | 撤回“首次提出 layer-time allocation/control space”。任务与注入路径差异可以限定本文贡献，却不会自动产生足够新颖性。必须明确写出可验证的差异，并由本稿自己的实现、剂量记录和对象/3D 端点证明其实际价值。 |
+| [Scheduled Style Injection, CVPRW NTIRE 2026](https://openaccess.thecvf.com/content/CVPR2026W/NTIRE/papers/Kulkarni_Scheduled_Style_Injection_Expanding_the_Style-Content_Pareto_Frontier_in_Training-Free_CVPRW_2026_paper.pdf) | 训练无关的 style-content 调度；逐层/逐步改变 StyleID 参数，并试验几何 ControlNet scale 在 depth/time 两轴上的 schedule。 | 除 35 个以上配置和超过 28,000 张生成图外，它分别比较 layer/time 轴、schedule 正反方向、线性与多种非线性形状、ControlNet 与 gamma 的组合，并用 ArtFID、FID、LPIPS、CFSD 四项指标测量；还在 SD 1.4/1.5/2.1 上检查排序。作者明确将其定位为既有模型上的系统经验研究，而非新架构。它不是 T2T 论文，也不使用本稿同一 adapter residual；但与“layer × time 调度是新控制空间”的普遍性 claim 直接重叠。 | 撤回“首次提出 layer-time allocation/control space”。任务与注入路径差异可以限定本文贡献，却不会自动产生足够新颖性。SSI 的控制变量和系统扫查比本稿已有证据更完整；本稿必须把独特价值落在可核验的 MVPainter residual/cap 执行语义和真实纹理输出，并由本稿证据证明，而不能只靠更多小样本显著性或改名。 |
 
 ### 从先例抽出的共同结构
 
 较强的 3D 纹理论文常沿着这条链组织正文：**具体失效模式 → 对应技术介入 → 能隔离该介入的基线/消融 → 与 claim 对齐的 2D/3D 终点 → 失败与适用边界**。涉及人类可见属性时，通常把完整对象/多视角呈现给评估者；涉及一个新模块时，消融直接去掉或替换该模块；涉及实际流程价值时，另测运行时间或产物可用性。
 
 本稿不需要复制大型 benchmark、重新训练完整纹理系统或把所有指标塞进主文。它需要把现有较小而异质的证据诚实连接起来：同一 main adapter 的比较、对象级差异、限制过的 3D 端点、已有的人评范围、以及明确的 residual/cap 实施定义。每条结论要停在它自己的 endpoint 和 cohort 上。
+
+### 对 R2.1 的直接判定
+
+SSI 不是“任务完全相同”的 baseline，因此不能据此断言本稿没有任何增量价值；但它已经覆盖了最宽的机制表述——在预训练扩散模型中沿网络层和去噪步改变注入/条件强度，并系统比较调度方向和形状。当前修订可以可靠地区分应用任务、adapter residual 路径、原生 cap 和多视角纹理终点，却还没有证明这些差异构成足够强的新方法贡献。E5 又表明预定的浅层 dose perturbation 在原生 cap 下不可行，不能把它写成已验证的 dose-aware 技术。
+
+因此，本轮可做且应做的是完成独立 Fresh C3/GFL 比较、把 SSI 与几篇 3D 纹理论文的证据逻辑写入相关工作/响应、对缺失的人评和 seam 证据如实降界，并完成干净可复核的交付包。这会加强 R1 和可审计性，但不应预测它会自动关闭 R2.1。若编辑明确要求方法贡献，唯一诚实的补救是另立一个方法问题：先在开发数据上提出可执行且 cap-feasible 的规则，再锁定、用未触碰对象做独立检验，并与固定尺度及 SSI 所代表的通用 schedule 思路区分；当前不把这一未来研究塞进本次 revision，也不以第三骨干或额外 schedule 排行替代它。
 
 ## 两条路线的评估
 

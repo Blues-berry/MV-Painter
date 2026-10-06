@@ -198,14 +198,15 @@ MV-Adapter、GLB、FAC 负结果和人工结果。每张表都有 generator、in
 
 ## E7：叙事与最终验收规则（先定主张，后组织全文）
 
-创新性另做一份逐项文献对照审计：优先检查 01549 已引用的 MVPainter、MV-Adapter、
-ControlNet/adapter scaling 与 limited-interval guidance 的论文、公开实现和附录。
-只依赖一手来源，记录各项已有的 depth/time 控制、cap 语义、剂量处理、对象失败边界
-与前瞻验证；出现重叠就明确缩小新增知识点，不能因为对照未提某点就声称首次。
-这份审计可以在 GPU 运行时完成，最终 contribution adequacy 由证据和文献一起判断。
-聚焦的一手来源审查已发现 *Scheduled Style Injection*（CVPR 2026 NTIRE）这一直接
-layer/timestep scheduling 先例；完整 related-work 对照仍未结束，本计划不宣称当前
-发现具有独占新颖性。
+同领域论文与直接先行工作对照已整理在
+`evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md`，并已加入
+E0 authority ledger。矩阵覆盖 Paint3D、MVPaint、Make-A-Texture、Im2SurfTex、UniTex
+及 *Scheduled Style Injection*，比较它们的具体技术对象、对应消融/基准、人评/3D
+端点与局限；它是代表性一手来源审查，不是 exhaustive systematic review。
+SSI（CVPRW NTIRE 2026）已经测试 StyleID 注入与几何 ControlNet 强度在 layer/time
+两轴的调度，覆盖反向与正向、线性/非线性形状、四项指标和 SD 1.4/1.5/2.1，报告
+超过 35 个配置与 28,000 张图。因此，“layer × time 是通用新控制空间”不再可主张。
+任务和 residual path 的差异可用于界定本文问题，却不能自行证明 R2.1 的贡献充分。
 
 保留候选贡献：实际 scale/cap 语义、静态深浅配置的指定干预效应、时间变化的
 额外收益与局限、对象复杂度适用边界。CAI 不作推导/预测创新；旧 C3 和新 LLH
@@ -245,7 +246,7 @@ layer/timestep scheduling 先例；完整 related-work 对照仍未结束，本�
 ## 执行状态更新 — 2026-10-06
 
 - **E0 authority bookkeeping：PASS。** `CLAIM_EVIDENCE_AUTHORITY_LEDGER.json` 收录
-  14 项主张、38 个带 SHA-256 的本地来源；每项还记录注册状态、队列选择、干预 profile、
+  14 项主张、61 个带 SHA-256 的本地来源；每项还记录注册状态、队列选择、干预 profile、
   统计单位、估计方法与 multiplicity；`validate_claim_evidence_authority_ledger.py`
   检查 source hashes、必要字段、claim/source 引用和 manuscript freeze policy，结果见
   `CLAIM_EVIDENCE_AUTHORITY_AUDIT.json`。这只关闭唯一来源与 supersession 的账本
@@ -291,3 +292,23 @@ layer/timestep scheduling 先例；完整 related-work 对照仍未结束，本�
 - **优先级保持。** Fresh C 的身份、行数、共享输入、cap、预测与 residual 完整性门禁
   通过前不解盲；E5 技术通过与浅层 cap 限制均保留。人类答卷、两项来源级授权和 R2.1
   贡献充分性仍是独立未闭合事项。01549 原稿和提交版 PDF 均保持不动。
+
+## 文献闭环与 Fresh C 执行快照 — 2026-10-06 08:20 UTC
+
+- **比较审查完成，不等于 novelty pass。** 代表论文的证据链和 SSI 直接重叠已写入
+  `REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md`；C13 已关联该报告并明确
+  R2.1 仍需作者/编辑判断。SSI 所报告的系统 schedule 对照强于本稿当前的方法证据，
+  因此不通过额外调参、显著性或更换名称来“补新颖性”。E5 显示浅层 native cap
+  使本轮 dose-matched 三组机制实验不可行；若将来必须证明独立方法贡献，应另立方法
+  问题、先做开发可行性，再在未触碰对象上注册验证，不能嵌入本轮 revision。
+- **Fresh C render 运行中。** 截至 08:20，594 个 geometry-valid 候选中有 90 个完成
+  17-view image/normal/camera 产物；meta 文件计数包含在制对象，不能作为完成数。
+  CPU worker 和 Blender 子进程按 07:32 启动时锁定的 source SHA、Blender、HDRI 和
+  512²/17-view 设置运行；reserve/cohort-freeze 代码后续修正未改变 renderer。
+  完成 594 个筛查前不取样、不推理、不看方法质量。
+- **Fresh C 的预定后续。** 完成像素级去重、coverage 与 cohort freeze 后，按已冻结
+  四条件运行 main backbone；唯一 confirmatory pair 是 GC3−GFL 的 FG-PSNR。若完整性
+  或方向不支持，按 protocol 降级/撤回相应 superiority，不转成其他条件搜索。该 2D
+  campaign 本身不闭合 R1 的 human/seam/全 PBR 质疑。
+- 文献报告、更新后的 E0 ledger 和本执行计划保留在 1006；隔离 GitHub 分支已推送
+  之前的证据快照 `6f7f609b`。本次更新待下一次明确的文本证据快照一并发布。

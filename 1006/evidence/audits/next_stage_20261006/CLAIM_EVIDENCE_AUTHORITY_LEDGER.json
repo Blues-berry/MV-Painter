@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06T08:08:21+00:00",
+  "updated_utc": "2026-10-06T08:24:21+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -26,6 +26,36 @@
       "arxiv": "https://arxiv.org/abs/2605.26538",
       "implementation": "https://github.com/ameyskulkarni/scheduled_style_injection",
       "consequence": "Direct prior art for depth/timestep scheduling of StyleID and geometric ControlNet strength; narrow novelty claims. Does not establish adequacy of the remaining domain-specific contribution."
+    },
+    {
+      "title": "Paint3D: Paint Anything 3D with Lighting-Less Texture Diffusion Models",
+      "venue": "CVPR 2024",
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zeng_Paint3D_Paint_Anything_3D_with_Lighting-Less_Texture_Diffusion_Models_CVPR_2024_paper.html",
+      "consequence": "Representative end-to-end 3D texture method; its claims are paired with dedicated UV refinement modules, benchmark comparisons, user evaluation and ablations."
+    },
+    {
+      "title": "Paint-it: Text-to-Texture Synthesis via Deep Convolutional Texture Map Optimization and Physically-Based Rendering",
+      "venue": "CVPR 2024",
+      "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Youwang_Paint-it_Text-to-Texture_Synthesis_via_Deep_Convolutional_Texture_Map_Optimization_and_Physically-Based_Rendering_CVPR_2024_paper.html",
+      "consequence": "Representative PBR texture-generation method; supports relighting/material application claims with the produced PBR maps and targeted comparisons."
+    },
+    {
+      "title": "MVPaint: Synchronized Multi-View Diffusion for Painting Anything 3D",
+      "venue": "CVPR 2025",
+      "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Cheng_MVPaint_Synchronized_Multi-View_Diffusion_for_Painting_Anything_3D_CVPR_2025_paper.html",
+      "consequence": "Representative multi-view texturing system with Objaverse/GSO benchmarks, component ablations, and human ratings of overall quality, seam visibility and consistency."
+    },
+    {
+      "title": "Im2SurfTex: Surface Texture Generation via Neural Backprojection of Multi-View Images",
+      "venue": "Computer Graphics Forum 2025",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.70191",
+      "consequence": "Venue-adjacent modular texture method; uses shared pipeline comparisons and component ablations to isolate a technical contribution."
+    },
+    {
+      "title": "UniTex: Single-chart texture reconstruction from multi-view images",
+      "venue": "Computers & Graphics 137 (2026)",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0097849326000701",
+      "consequence": "Recent target-venue example that ties production-oriented claims to explicit reconstruction modules and artifact-level outcomes."
     }
   ],
   "sources": [
@@ -344,7 +374,7 @@
     {
       "source_id": "blocker_remediation_plan",
       "path": "1006/gates/BLOCKER_REMEDIATION_PLAN_20261006.md",
-      "sha256": "546637bdbdbb55cd59cb6b51b89d0447ea5252ac665346cb96ec88e214038ef7",
+      "sha256": "c6f9f476895f87c313d3103c776ec67bc521bac052fe06b88e364c7dd7422964",
       "role": "Action map for R1/R2/reproducibility/license blockers with conditional remedies and fallbacks."
     },
     {
@@ -388,6 +418,12 @@
       "path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY.json",
       "sha256": "a23903e958d8b08310b7c6bc8c4123d22c8ba5aed4a62a452c8c750659d85a18",
       "role": "Active 17-view input-render stage identity, including start time, loaded driver hash, UID-list hash, and renderer assets."
+    },
+    {
+      "source_id": "comparable_paper_narrative_audit",
+      "path": "1006/evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md",
+      "sha256": "a429329e0f27344346a8380c5423bc5c950c460ce576efe8f844aabd1fa5b5a4",
+      "role": "Primary-source comparison of representative 3D texture generation papers and direct layer/time scheduling prior art; informs novelty boundary and claim-to-evidence narrative, not experimental outcome claims."
     }
   ],
   "claims": [
@@ -1050,11 +1086,12 @@
       ],
       "authoritative_sources": [
         "novelty_audit",
-        "paper_view_review"
+        "paper_view_review",
+        "comparable_paper_narrative_audit"
       ],
       "cohort": "Literature/prior-art claim; no experimental cohort.",
       "estimate": null,
-      "provenance_limit": "Scheduled Style Injection is a directly related CVPR 2026 NTIRE workshop proceedings paper scheduling StyleID and geometric ControlNet strength over depth and denoising time; current manuscript lacks the citation. It does not study MVPainter multi-view baked 3D texture or its cap/dose semantics.",
+      "provenance_limit": "Representative primary-source literature comparison, not an exhaustive systematic review. Scheduled Style Injection directly studies layer/timestep schedules for StyleID and geometric ControlNet conditioning; CVPR/graphics texture papers establish task-specific methods with claim-aligned comparisons, ablations, multi-view/3D endpoints and stated boundaries. These comparisons inform novelty framing but cannot decide editorial contribution sufficiency.",
       "allowed_wording": "Differentiate the study as a domain-specific empirical characterization of MVPainter geometric-adapter residual/cap semantics, object heterogeneity and interface boundaries; explicitly discuss the prior work.",
       "prohibited_wording": [
         "first layer×time control schedule",
@@ -1064,8 +1101,8 @@
       "supersedes": [
         "broad first/novel control-schedule framing"
       ],
-      "next_gate": "R2.1 remains blocking until citation comparison and a post-evidence-freeze contribution/venue judgment.",
-      "comparison": "Claimed novelty relative to direct layer/timestep scheduling prior art.",
+      "next_gate": "R2.1 remains blocking until post-evidence-freeze author/venue judgment. If the target requires a distinct method contribution, pursue it as a separately specified and prospectively validated study; do not treat Fresh C, E5, more significance, or claim narrowing as proof of novelty.",
+      "comparison": "Contribution and claim-to-evidence narrative relative to representative 3D texture papers and direct layer/timestep schedule prior art.",
       "registration_status": "Literature audit, not a registered experimental contrast; focused primary-source search only.",
       "selection_status": "No scientific object cohort.",
       "intervention_profile": "SSI schedules StyleID injection and geometric ControlNet conditioning across decoder depth and denoising time; task/path differ from MVPainter.",
