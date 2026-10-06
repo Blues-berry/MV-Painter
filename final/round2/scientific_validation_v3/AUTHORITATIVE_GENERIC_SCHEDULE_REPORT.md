@@ -26,10 +26,16 @@ endpoint-matched linear (−0.001, Holm p = 0.0016, tiny).
 Does L-TCAS still provide a meaningful advantage once generic schedules are
 tested under the SAME runner, cohort, seeds and budget accounting?
 **Partially**: LLH beats 3 of 4 temporal shapes and all their budget-matched
-variants, but a simple per-layer linear warm-up from the same endpoints is
-statistically equivalent on FG-PSNR. Combined with A3 (interaction real but
-with a collapsed matched-dose variance share — AMENDED P0-1) and B
-(decomposition), the supported structure is: (i) per-layer allocation with
-shallow protection, (ii) a monotone late-increasing temporal profile. The
-specific 3-stage LLH shape adds ~0.4 dB over a constant budget-match but
-nothing over a linear ramp.
+variants. The endpoint-matched linear warm-up was not detectably different
+from LLH on FG-PSNR under the registered difference test (`p=0.81`), but no
+equivalence margin was frozen for H4, so this is **not an equivalence result**.
+The point estimate is near zero; it remains a credible simple competitor.
+FG-LPIPS detects a small average difference versus this linear schedule
+(`−0.001`, Holm `p=0.0016`), whose practical importance was not bounded by a
+predeclared margin. Combined with A3 (interaction real but with a collapsed
+matched-dose variance share — AMENDED P0-1) and B (decomposition), the
+supported structure is: (i) per-layer allocation with shallow protection,
+(ii) a monotone late-increasing temporal profile. The specific 3-stage LLH
+shape shows an approximately 0.4 dB point-estimate advantage over the
+constant layer-mean control but not over endpoint-matched linear warm-up;
+this does not establish practical equivalence to either schedule.

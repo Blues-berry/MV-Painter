@@ -1,5 +1,11 @@
 # Human preference protocol amendment — balanced incomplete assignments
 
+**Superseded for the active study.** The later
+`HUMAN_STUDY_FINAL_PAIR_LOCK.md` replaces this three-pair design with four
+pairs, adds the endpoint-matched `gen_linear` competitor, and specifies eight
+endpoints. This file remains as the archived earlier amendment; no response
+data from its design are reused.
+
 Frozen before any human response is collected: 2026-10-05. This amendment
 extends the earlier `HUMAN_PREFERENCE_STUDY_PROTOCOL_LOCK.md` and supersedes
 only its participant workload and assignment scheme. The 24-object cohort,
@@ -14,6 +20,14 @@ family remain unchanged. No earlier preference result is reused.
 - Target 40 complete adult volunteer participants; 36 complete participants
   is the minimum target range. Report the achieved number. Exclude an
   incomplete participant as a whole.
+- Fixed stopping rule: use only the 40 pseudonymous assignment slots frozen
+  in the site package. Collection closes after every slot is either complete
+  or withdrawn; do not add replacement slots or stop based on interim
+  preferences, significance, or effect direction. The analyzed complete
+  sample will therefore be 0–40; at least 36 complete participants are
+  required for the prespecified human-evidence gate. If fewer than 36 are
+  complete when all 40 slots are resolved, report the study as below target
+  and leave that gate open.
 - Each participant completes 24 object-comparison items: 8 LLH-vs-GFL, 8
   LLH-vs-GFH, and 8 LLH-vs-GC3. Each of the 24 objects appears exactly once
   for that participant, so no object is repeated within a participant.

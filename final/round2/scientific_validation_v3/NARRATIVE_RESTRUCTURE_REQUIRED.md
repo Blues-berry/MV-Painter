@@ -1,114 +1,68 @@
-# NARRATIVE_RESTRUCTURE_REQUIRED
+# Narrative restructure decision record
 
-Status: TRIGGERED (2026-10-05). Per MASTER_PROTOCOL_LOCK.md STOP RULE: a major
-result contradicts the current manuscript narrative; the paper must NOT be
-edited until this document and the final decision report define the supported
-story. This file states what the data actually support — it is not a wording
-proposal.
+Update 2026-10-06: the stored N=20/eight-condition GLBs now have a
+sampler-conformant base-color evaluation. Its metric directions are mixed and
+do not establish a 3D winner; preserve that bounded result in the eventual
+rewrite. The detailed current readiness is in
+`FINAL_SCIENTIFIC_READINESS_20261006.md`.
 
-**AMENDED 2026-10-05 (P0-1 closure):** point 1, point 4 and the supported
-story are restated because the production interaction test had zero power
-(`PRE_ACCEPTANCE_AUDIT_20261005.md` P0-1); the authoritative interaction
-result is now the validated cluster-robust Wald test
-(`audit_scripts/AUDIT_INTERACTION_VALID_TEST.json`).
+**State: original restructure trigger reconciled, manuscript not yet edited.**
+This file records why the original TCAS narrative cannot be carried forward.
+The current detailed provisional decision is in
+`FINAL_NARRATIVE_DECISION.md`; this file does not authorize manuscript
+changes.
 
-## The contradiction
+## Current narrative
 
-The current narrative is L-TCAS: layer- AND timestep-conditioned adapter
-scaling, with 1/3 stage boundaries presented as empirically meaningful and
-the layer x timestep structure as the method's core.
+Use provisional `NARRATIVE_D`: characterize adapter scaling and residual
+allocation, with depth allocation primary and tested temporal contrasts
+secondary on the primary backbone. Do not make the full Layer × Time
+interaction load-bearing or claim that the two measured dimensions are
+statistically independent.
 
-Phase III map designs and several contrasts were frozen on FRESH_CONFIRM_300
-before its campaign outputs. The replacement Wald interaction statistic was
-chosen after the zero-power bootstrap defect was found, so that same-cohort
-interaction reanalysis is exploratory pending fresh bounded-dose confirmation.
+- A2 is a strong native-dose discovery response map. The corrected analysis
+  replaces a zero-power production bootstrap, so the same-cohort Wald result
+  is not independent confirmation.
+- A3b remains `PARTIAL`. Its bounded-dose calibration missed the ±20% target,
+  and the three layers have no common support (0/2,250 rows). It does not
+  identify a dose-independent interaction.
+- In B, LLH−LFM-EXACT is statistically detectable but inside the frozen
+  practical margins. The HLL−LLL direction is not consistent across
+  endpoints. Registered `gen_linear` is a credible primary-endpoint
+  competitor; neither C nor the post-lock B sensitivity establishes an LLH
+  FG-PSNR advantage. Do not claim a unique schedule winner or retune.
+- The practical-effect reference comes from prior three-seed development
+  data, not B; it was written after B exposure and is a retrospective scale
+  reference, not a significance or acceptance threshold.
+- MV-Adapter is bounded to 98/99 planned objects and its tested intervention
+  range. The absence of a corrected global interaction is a boundary finding.
+  Different intervention geometry means it does not isolate architecture as
+  the cause of a response-surface difference. Do not search for a positive
+  grouping or scale.
+- The 40-slot human study is pre-collection and locked at four pairs,
+  including `gen_linear`; its fixed stop and minimum 36 valid completions
+  remain unchanged.
+- The old stored CPU unseen metrics and seam outputs remain historical
+  diagnostics. The new GLB-native renderer evaluates the actual stored
+  textures for N=20; its endpoint tradeoff does not establish a unique 3D
+  winner. Four no-UV objects remain excluded, and the old run-summary gap
+  (16 records versus 20 output objects) remains disclosed. See
+  `GLB_NATIVE_EGL_RENDER_REPORT_20261006.md`.
 
-1. **[AMENDED P0-1] The layer x timestep interaction is REAL, but its
-   magnitude is dose-dependent.** Valid cluster-robust Wald test: native-dose
-   A2 map — FG-LPIPS W = 481.1 (p = 8.0e-99), interaction SS share 43.5%;
-   FG-PSNR W = 1880 (p ≈ 0), share 56.8%. Dose-normalized A3 map — still
-   significant (FG-LPIPS p = 1.1e-136, share 11.9%; FG-PSNR share 0.8%) but
-   the time-structure variance share collapses at matched dose (exact only
-   for the deep row; middle approximate; shallow stress-only). The earlier
-   "p = 0.50 / p = 1.0, NOT SUPPORTED" statements were artifacts of a
-   zero-power test and are retracted. The Wald reanalysis is not a fresh
-   confirmatory test; A3b on FRESH_CONFIRM_B is still required.
-2. **The 1/3 stage boundaries are heuristic, not empirical.** The valid A2
-   map shows a smooth positional response (deep early→late sign flip);
-   nothing special occurs at steps 16/17 or 32/33. The A3 "window-flat at
-   equal dose" reading is fully valid only for the deep row (middle
-   approximate, shallow stress-only).
-3. **A simple per-layer linear warm-up equals LLH** (FG-PSNR +0.005 dB,
-   Holm p = 0.81) under the authoritative runner. LLH does beat bump/trapezoid/
-   Gaussian shapes and all budget-matched variants — the advantage is
-   shape-dependent, not a general "L-TCAS beats schedules" law.
-4. **[AMENDED P0-1] What is supported:** layer-dependent effects on the
-   primary backbone. A3 deep is the valid local-dose row (FG-PSNR marginal
-   +0.55 dB); middle is approximate (+0.29 dB); shallow −6.07 dB is a stress-
-   regime result, not local-dose confirmation. In B3, GFL−TGU-1.25 is a cap
-   contrast (+1.60 dB), and LFM-EXACT−TGU-1.675 is a shallow-exposure contrast
-   (+2.99 dB); these have different baselines and are not additive components
-   of LLH−GFL. The same-endpoint LLH−GFL difference is +1.288 dB, of which
-   +0.435 dB is isolated by LLH−LFM-EXACT; the remaining +0.853 dB combines
-   layer doses and shallow-cap state. Do not present a cap + layer + temporal
-   causal decomposition.
-5. **The LLH advantage is boundary-limited.** It is carried by texture-poor
-   objects (+4.14 dB, 92% win in the lowest texture quartile) and REVERSES on
-   texture-rich objects (Q3/Q4 negative; |rho| up to 0.69 against GT HF
-   energy). Any deployment claim must state this boundary.
+## Decisions at the B unblind point
 
-## What the data actually support
+- No third backbone is justified by the frozen feasibility matrix.
+- Do not run FRESH_CONFIRM_C to seek a schedule winner. Reopen that decision
+  only for a new, independently justified hypothesis frozen on a new cohort.
+- The human study is the next perceptual evidence gate, after its recruitment
+  and response-return channel is arranged. Keep its pairs, assignments,
+  stimuli, exclusions, stopping rule, and analysis fixed.
+- Keep the GLB-native N=20 result separate from the invalid legacy CPU metrics
+  and seam analyzer. Limit any 3D claim to base-color evaluation on the
+  supported 20 objects; do not imply full PBR, strict 24-object coverage, or
+  human-validated material fidelity.
 
-The scientifically defensible story is:
-
-> **[AMENDED P0-1] Depth-aware adapter scaling with a monotone
-> late-increasing profile; a native-dose layer × time interaction is
-> suggested by exploratory reanalysis and awaits fresh bounded-dose
-> confirmation.**
-> Adapter residual allocation across UNet depth groups is a first-order,
-> large, reproducible effect (shallow protection is critical; deep/middle
-> scaling helps geometry metrics). A late-increasing temporal profile adds a
-> small, real benefit over a constant per-layer-mean-matched scale (+0.4 dB),
-> and a linear ramp matches LLH on FG-PSNR. The same-cohort Wald reanalysis
-> found a large native-dose variance share and a smaller A3 share (FG-PSNR
-> 56.8% -> 0.8%; FG-LPIPS 43.5% -> 11.9%); it is exploratory because the
-> replacement test followed discovery of the original test defect. A3b must
-> establish whether a bounded local-dose interaction persists on
-> FRESH_CONFIRM_B. The two-axis S=[s_l,k] remains a useful description, but
-> deployment-level necessity is unestablished. The
-> 3-stage boundaries are a design heuristic, not an empirical discovery. The texture-rich failure boundary is systematic and
-> GT-predictable.
-
-This matches the protocol's anticipated reframing: "depth-aware adapter
-scaling + temporal analysis" rather than a claim that timestep-conditioned
-structure is a discovered mechanism.
-
-## Required manuscript actions (after the decision gate)
-
-- [AMENDED P0-1] Reframe claims 2/3/4 per CLAIM_TEST_MATRIX verdicts
-  (2 partial, 3 SUPPORTED WITH QUALIFICATION - interaction real,
-  dose-dependent variance share; 4 heuristic only).
-- Replace "learned/empirical stage boundaries" wording with design-heuristic
-  wording; report the linear-ramp equivalence (H4) transparently.
-- Present A3 deep as valid local-dose evidence, middle as approximate, and
-  shallow as stress-only. Keep TRUE-GLOBAL diagnostics as separate named
-  cap/exposure contrasts; do not call them an additive decomposition.
-- State the texture-complexity failure boundary explicitly with the quartile
-  table (E), including that the average advantage reverses on texture-rich
-  objects.
-- [AMENDED P0-1] Do NOT claim novelty for the temporal structure beyond
-  "monotone late-increasing profiles suffice"; do NOT claim "no interaction"
-  either - report the interaction with its dose-dependent variance share and
-  the validated test; do NOT present the 2D matrix as a practical necessity.
-
-## Pending before the gate
-
-- [UPDATED] G (MV-Adapter): completion added 17/18 missing objects; one
-  frozen path-only GLB remains a documented loader exclusion. The completed
-  analysis is n = 98/99 planned and supports only a bounded result in the
-  frozen scale range. Primary FG-LPIPS interaction reanalysis is exploratory
-  and non-significant; no confirmatory no-interaction statement is allowed.
-- [RESOLVED] F (unified bake): claim 9 = bounded support (n = 20).
-- OPEN: V3 protocol steps 3-16
-  (FRESH_CONFIRM_B freeze, A3b, boundary test, formal visual
-  classification, CAI decision doc, human-study decision).
+The B integrity gate passed before outcome analysis, but the additional
+practical-reference, generic-extension, and narrative safeguards were
+recorded after outcomes had already been exposed. All reports must preserve
+that chronology. No manuscript file was edited in this decision pass.

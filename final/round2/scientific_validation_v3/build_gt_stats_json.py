@@ -15,6 +15,9 @@ import json
 import sys
 from pathlib import Path
 
+import numpy as np
+from PIL import Image
+
 
 def main() -> None:
     run_dir = Path(sys.argv[1])
@@ -56,14 +59,31 @@ def main() -> None:
         if n_mismatch:
             raise RuntimeError("GT columns differ across conditions — abort")
 
-    # coverage from manifest
+    # Coverage from the frozen GT-only manifest. The original cohort freeze
+    # stores per-view coverage columns; FRESH_CONFIRM_B stores its official
+    # six-view GT image list, so recompute the same alpha>0 pixel fraction.
     with manifest.open() as f:
         rdr = csv.DictReader(f)
+        fields = set(rdr.fieldnames or [])
         cov_cols = [c for c in rdr.fieldnames if c.startswith("coverage_")]
-        for r in rdr:
-            vals = [float(r[c]) for c in cov_cols if r.get(c) not in (None, "")]
-            if vals:
-                stats["coverage"][r["uid"]] = sum(vals) / len(vals)
+        if cov_cols and "uid" in fields:
+            for r in rdr:
+                vals = [float(r[c]) for c in cov_cols if r.get(c) not in (None, "")]
+                if vals:
+                    stats["coverage"][r["uid"]] = sum(vals) / len(vals)
+        elif {"source_uid", "gt_images_official_order_json"}.issubset(fields):
+            for r in rdr:
+                images = json.loads(r["gt_images_official_order_json"])
+                if len(images) != 6:
+                    raise RuntimeError(
+                        f"{r['source_uid']}: expected six frozen target GT views, found {len(images)}")
+                coverages = []
+                for image_path in images:
+                    image = np.asarray(Image.open(image_path).convert("RGBA"))
+                    coverages.append(float((image[:, :, 3] > 0).mean()))
+                stats["coverage"][r["source_uid"]] = float(np.mean(coverages))
+        else:
+            raise RuntimeError("manifest has no recognized frozen GT coverage representation")
 
     out.write_text(json.dumps(stats, indent=2) + "\n")
     print(f"wrote {out} ({len(table)} objects)")

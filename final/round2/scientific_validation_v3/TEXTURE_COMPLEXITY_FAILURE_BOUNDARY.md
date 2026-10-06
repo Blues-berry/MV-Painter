@@ -27,6 +27,18 @@ See `PROSPECTIVE_FAILURE_BOUNDARY_REPORT.md` and the corrected
 `formal/campaign_B3/spearman_texture_boundary.json`. The earlier zero-tail
 bootstrap file is preserved as `spearman_texture_boundary_legacy_unadjusted.json`.
 
+## Independent replication on FRESH_CONFIRM_B
+
+The frozen H5 comparison was repeated separately on the disjoint 150-object
+FRESH_CONFIRM_B cohort. All eight GT texture-complexity associations
+replicated in the preregistered direction after the same 10-test Holm family;
+coverage was not stable across endpoints (FG-PSNR null, FG-LPIPS significant).
+The upper-texture quartile again had little or negative mean FG-PSNR gain and
+no average FG-LPIPS advantage. Cohorts remain separate and are not pooled.
+Full results, including the B-specific GT-only statistics and quartiles, are
+in `PROSPECTIVE_FAILURE_BOUNDARY_REPORT.md` and
+`formal/campaign_FRESH_CONFIRM_B_20261005/SPEARMAN_TEXTURE_BOUNDARY_B.json`.
+
 Texture-complexity quartiles (GT Laplacian variance), (mean ΔFG-PSNR, LLH win rate):
   Q1 +4.14 dB (0.92) | Q2 +1.13 dB (0.52) | Q3 −0.09 dB (0.41) | Q4 −0.03 dB (0.45)
 

@@ -1,19 +1,21 @@
 # Human study site freeze
 
 Frozen before any participant response is collected: 2026-10-05.
-This balanced-incomplete assignment version supersedes the unlaunched 72-item-per-participant draft; no response was collected under the earlier draft.
+This four-pair assignment supersedes the unlaunched three-pair package; no response was collected under either earlier package.
 
-Protocol amendment SHA256: `f3435f5f8d0bb229457283e5ca5e5798a91f011ecab58512cf7f22e545e884b2`
-Assignment seed: `20261005`; target: 40 complete participants; 24 items per participant; 8 items per comparison.
+Final pair lock SHA256: `8aa4ebc88cccda50705709d67f1ff0070236f4d3948242071785ce29ad9fb6ce`
+Assignment seed: `20261005`; exactly 40 frozen participant slots; 24 items per participant; 6 items per comparison; minimum evidence-gate count: 36 valid complete participants.
+Pairs: LLH vs GFL, GFH, GC3, and endpoint-matched GEN_LINEAR. Each object/pair cell is assigned to ten slots.
+Fixed stop: close collection only after all 40 assigned slots are complete or withdrawn. Do not add replacement slots or stop based on significance or effect direction.
 The participant handoff archive contains only the survey page, blinded assignments, start instructions, response template, and anonymous stimulus images. It contains no method key or response-analysis code.
 
 Participant site and private-key checksums:
-- `participant_handoff.zip`: `28bf23575a601ff797887793d65f35fe6062b4d30db5f844940109f5a0167982`
-- `index.html`: `6e067e0bbc81b78b0075e600d7f8861be75359ae88ba49cafdd98c95c5a079cc`
-- `assignments_public.js`: `5f4235be2f80b5898c6f231b599be169ea18d8655a2c75bf8c8948b1d72e65e4`
-- `assignment_generator.py`: `ee087a5ffdc4df40b2448c66ee53260ab7978b62f468566fec8171f910d620c8`
-- `analyze_human_study.py`: `b604c30403deac436dfac61b6e129eb245d03fb1843b123654a0e6218a2baa90`
-- private `blinded_key.json`: `fbcd60b0c7acedde3524992ddef643d673d6704cd13587b31f583db64f8d5f00`
-- private `site_package_manifest.json`: `0c332cab5c329d3b05c437a0e45412c545ac3a67a73b3fd3d59ac214a6dd447e`
+- `participant_handoff.zip`: `cfb5c242559934b2c9a720c135d972142959435af93445444f0cfc584313e8f4`
+- `index.html`: `e7295f1ec28824866316723e313a9290808c87e71313a5bbc8a1c970a5dd2102`
+- `assignments_public.js`: `71dba2840fd722cd42e657b433d8b89d427f828012e3fd3f8695bf6c098436b0`
+- `assignment_generator.py`: `ff57f36741b5a0b4b4b7e4b3f8b3228273c0fc6dc923bfc8aec105030ce26eef`
+- `analyze_human_study.py`: `af297b03c7caa3d530ad25a5eb3ab245798b422d157d84ee6874b6114afc3c58`
+- private `blinded_key.json`: `a93456259bf38b44bdddec3bc6d4bc251b28c62800032c2860ea091045e5ca03`
+- private `site_package_manifest.json`: `b463027697914800815e8695d6a1bfab98b00274e655e69a36ef62693f32c515`
 
-`HUMAN_RESPONSES_COLLECTED=NO` at freeze. Do not edit the assignments or site after collection begins.
+`HUMAN_RESPONSES_COLLECTED=NO` at freeze. A failed comprehension check or incomplete assignment excludes the whole participant. Do not edit the assignments or site after collection begins.

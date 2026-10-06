@@ -90,7 +90,8 @@ QUALIFICATION** **[AMENDED P0-1]**
   FG-PSNR; the layer main effect dominates at equal dose"
 - Forbidden: "no interaction" / "the supported structure is purely additive"
   (false); "the interaction is a large practical scheduling lever" (bounded:
-  linear-ramp equivalence, CLAIM 7); per-window tuning claims
+  H4 did not detect an FG-PSNR difference from endpoint-matched linear warm-up;
+  no equivalence margin was registered, CLAIM 7); per-window tuning claims
 
 --------------------------------------------------------------------------------
 CLAIM 4 "1/3 stage boundaries reflect the empirical response." → **HEURISTIC ONLY**
@@ -161,13 +162,16 @@ CLAIM 7 "L-TCAS beats generic schedule families under the authoritative protocol
   (both variants)
 - Effect: LLH − generic = +0.30..+0.59 dB FG-PSNR (all Holm-rejected) EXCEPT
   endpoint-matched linear warm-up: +0.005 dB [−0.10, +0.11], Holm p = 0.81
-  (statistically equivalent); FG-LPIPS favors LLH slightly everywhere
+  (not detectably different; no equivalence margin was registered); FG-LPIPS
+  favors LLH slightly everywhere
 - Correction: Holm family C (16 tests): 15/16 rejected
-- Failure cases: the linear-ramp equivalence
+- Failure cases: no detected FG-PSNR difference from the linear ramp; formal
+  practical equivalence was not tested
 - Allowed: "LLH outperforms bump/trapezoid/Gaussian generic shapes and their
-  budget-matched variants; a per-layer linear warm-up performs on par"
-- Forbidden: "LLH universally dominates generic schedules"; hiding the linear
-  equivalence
+  budget-matched variants; H4 did not detect an FG-PSNR difference from the
+  endpoint-matched linear warm-up"
+- Forbidden: "LLH universally dominates generic schedules"; claiming
+  equivalence without a prespecified margin
 
 --------------------------------------------------------------------------------
 CLAIM 8 "The principle transfers to MV-Adapter." → **UNSUPPORTED (backbone-specific)**
@@ -200,21 +204,23 @@ CLAIM 8 "The principle transfers to MV-Adapter." → **UNSUPPORTED (backbone-spe
   "layer-aware scaling transfers" (option B) — neither is supported
 
 --------------------------------------------------------------------------------
-CLAIM 9 "The method improves practical 3D texturing." → **BOUNDED SUPPORT**
+CLAIM 9 "The method improves practical 3D texturing." → **PARTIAL; STORED N=20 GLB BASE-COLOR EVIDENCE, MIXED ENDPOINTS**
 --------------------------------------------------------------------------------
 - Experiment: F unified same-draw bake (one namespace, 11 unseen views)
 - Cohort: 20/24 pre-frozen objects (4 technical exclusions: UV-less meshes)
 - Comparator: adapter conditions vs no_adapter; LLH vs other schedules
-- Effect: adapter vs no_adapter +3.6 dB [2.2, 4.7] (large, unambiguous);
-  LLH vs GFL on unseen views +0.14 dB [−1.29, +1.65] (n.s.); FG-LPIPS favors
-  LLH (−0.024 [−0.032, −0.017]); LLH has the LOWEST UV-seam dE00 of all
-  schedules (vs GFL mean −6.90 [−8.29, −5.47], p90 −17.44 [−21.12, −13.60])
-- Correction: descriptive paired CIs (F was confirmatory only for claim scope)
+- GLB-native effect: LLH−`native_gfl` FG-PSNR −0.422 dB [−1.361, +0.652],
+  FG-LPIPS −0.01175 [−0.01988, −0.00564], and CIEDE2000 +2.563
+  [−1.007, +5.893]. Thus PSNR does not favor LLH, LPIPS favors LLH, and the
+  CIEDE2000 point estimate favors GFL. No combined or unique quality win is
+  established. Old CPU and seam values remain historical only.
+- Correction: descriptive paired object-bootstrap CIs (10,000 draws, seed
+  20261005); no multiplicity adjustment
 - Failure cases: 4 UV-less objects excluded; DISTS unavailable
-- Allowed: "the adapter materially improves 3D texturing; LLH additionally
-  yields better perceptual fidelity and UV-seam cross-view consistency on
-  unseen views (n=20)"
-- Forbidden: population-level LLH PSNR superiority on 3D metrics
+- Allowed: "stored outputs were evaluated with GLB-native base-color sampling
+  on the 20 UV-present objects; effects differ by endpoint"
+- Forbidden: unique LLH 3D superiority, seam-mechanism claims, strict N=24
+  coverage, full PBR equivalence, or human-validated material fidelity
 
 --------------------------------------------------------------------------------
 CLAIM 10 "Texture-rich objects define a systematic failure boundary." → **REPLICATED**
@@ -233,19 +239,53 @@ CLAIM 10 "Texture-rich objects define a systematic failure boundary." → **REPL
   that the average advantage applies to texture-rich content
 
 --------------------------------------------------------------------------------
-## FINAL RULING ON THE FRAMING **[AMENDED P0-1]**
+## Current rule-based ruling on the framing — 2026-10-06
 
-Keep "L-TCAS" as a name ONLY if immediately qualified; the supported story is
-"depth-aware adapter scaling with a monotone late-increasing temporal
-profile, and a real but dose-dependent layer × time interaction":
-layer allocation = first-order effect; temporal profile = small real benefit
-captured by a linear ramp; the Layer × Time interaction EXISTS (large
-variance share at native dose; collapses after dose normalization —
-authoritative Wald re-test), so "no interaction / purely additive" wording is
-FORBIDDEN, but the 2D structure is also not a large practical scheduling
-lever (linear-ramp equivalence stands); NO empirical stage boundaries
-(heuristic only); G supports only a bounded statement for its frozen
-0.75-to-1.00 range (98/99 planned objects), with broad interaction transfer
-unconfirmed; texture-rich failure boundary mandatory in any deployment
-statement. Manuscript rewriting remains gated on completion of the evidence
-closure protocol and evidence freeze (see NARRATIVE_RESTRUCTURE_REQUIRED.md).
+This report's earlier provisional choice was `NARRATIVE_B`: describe depth
+allocation and temporal placement as separately tested control dimensions.
+That recommendation is superseded by the retrospective A–D assessment in
+`NARRATIVE_SWITCH_REASSESSMENT_20261005.md`, which selects provisional
+`NARRATIVE_D` because the registered generic linear schedule has no detected
+primary-endpoint FG-PSNR difference from LLH. This is not a formal equivalence
+claim; it changes the paper framing to allocation characterization rather
+than schedule superiority. The human gate and strict N=24 3D coverage remain
+open; the stored N=20 GLB base-color renderer issue is closed.
+
+A2 is strong native-dose discovery evidence. A3b detects bounded-map
+heterogeneity but misses the dose-balance target and has no three-layer common
+support, so it does not identify a dose-independent interaction. MV-Adapter
+does not reproduce a corrected interaction in the tested range.
+
+Fresh B supports a narrow registered aggregate LLH−HLL placement contrast,
+but LLH−LFM-EXACT is inside the frozen practical margins, actual residual
+norms differ, and LLH−HLL PSNR is object-heterogeneous. The full directional
+signature fails because the post-unblinding HLL−LLL PSNR interval crosses
+zero; do not claim that early-high broadly hurts. Keep the endpoint-matched
+linear warm-up and all generic controls visible; do not claim one universal
+best schedule.
+
+The 1/3 boundaries remain heuristic. Texture-rich failures must remain in
+scope. The fixed-N human study and strict N=24 3D coverage remain open; the
+manuscript is not ready for rewrite or submission until the evidence-freeze
+gate is separately passed. See `FINAL_NARRATIVE_DECISION.md` and
+`FINAL_SCIENTIFIC_READINESS_20261006.md`.
+
+### Historical renderer-validity addendum — 2026-10-05
+
+The earlier Claim 9 effects above are preserved for provenance only and are
+not eligible as faithful exported-GLB evidence. `UV_VALIDITY_AUDIT_20261005.md`
+found that the CPU baker and unseen renderer clamp UVs while exported GLBs
+default to repeat; the CPU renderer also uses bilinear sampling without the
+exported mipmap minification filter. The seam analyzer has the same addressing
+problem and invalid integer casts for one extreme-UV object. This was the
+state before the native renderer below.
+
+### GLB-native renderer addendum — 2026-10-06
+
+`GLB_NATIVE_EGL_RENDER_REPORT_20261006.md` supersedes the prior renderer status
+for the stored N=20/8 outputs. It records 1,760 base-color renders with the
+exported sampler and hashes for all source GLBs and render files. This closes
+the renderer mismatch for the saved outputs, not the clamp-based bake
+generation process. The old seam metrics remain historical, four no-UV
+sources remain excluded, and the native endpoints do not support a unique
+LLH winner. Human-perceived material fidelity remains unmeasured.
