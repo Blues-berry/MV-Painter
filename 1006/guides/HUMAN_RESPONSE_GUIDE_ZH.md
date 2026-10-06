@@ -1,18 +1,38 @@
 # 人工评测答卷格式与接收标准
 
 状态：等待真实答卷；当前真实答卷为 0。此文件说明既定方案的执行，
-不新增题目、剔除规则、比较对象或统计方法。原锁定文件为
-`../HUMAN_STUDY_FINAL_PAIR_LOCK.md`。原匿名图片、分配文件、分析程序均未修改。
+不新增题目、剔除规则、比较对象或统计方法。权威锁定文件、参与者包和协调者文件
+仍保存在仓库根目录下的 `final/round2/scientific_validation_v3/`，并未复制进
+`1006` 候选包。以下路径均相对于仓库根目录；原匿名图片、分配文件和分析程序未修改。
+
+- 冻结方案：`final/round2/scientific_validation_v3/HUMAN_STUDY_FINAL_PAIR_LOCK.md`
+- 参与者压缩包：`final/round2/scientific_validation_v3/human_study_site/participant_handoff.zip`
+- 空 CSV 表头：`final/round2/scientific_validation_v3/human_study_site/responses_template.csv`
+- 24 行格式示例（不是数据）：
+  `final/round2/scientific_validation_v3/continuation_20261006/RESPONSE_FORMAT_ONLY_NOT_DATA.csv`
+- 40 个冻结名额：
+  `final/round2/scientific_validation_v3/human_study_site/coordinator_private/collection_slots.csv`
+
+## 发放前的两个前置检查
+
+1. 参与者包包含冻结的 `visualization_24` 图像；其中 Panel 02 与 Panel 05
+   对应的源模型授权目前未能核实（一个 API 许可字段为空，另一个源页面 404）。
+   详见 `1006/evidence/audits/ASSET_SOURCE_LICENSE_RECHECK_20261006.md`。
+   发放当前 ZIP 前先确认来源条款或取得许可；若不能确认，应先修订并重新冻结
+   刺激集与分配，不能在收集后临时删对象。
+2. 页面目前只记录 18 岁以上和自愿参与确认；本目录没有伦理审批/豁免记录。
+   招募前请核实所在机构要求并保存相应记录。不要在收集开始后私自修改页面或题目。
 
 ## 交付什么
 
-推荐使用已核验的 `../human_study_site/participant_handoff.zip`。
+推荐使用已核验的参与者压缩包
+`final/round2/scientific_validation_v3/human_study_site/participant_handoff.zip`。
 参与者使用分配给自己的匿名 ID 完成网页评测并下载 CSV。
 每人一个文件、24 行答卷；不要手工重新随机化、合并成总体投票比例，
 也不要只交“LLH 赢了多少次”的汇总表。
 
 协调者保存 40 个预先分配的名额，状态表位于
-`../human_study_site/coordinator_private/collection_slots.csv`。
+`final/round2/scientific_validation_v3/human_study_site/coordinator_private/collection_slots.csv`。
 字段为 `participant_id,assignment_slot,status,response_file`。
 初始状态为 `pending`，全部结束后改为：
 
@@ -21,14 +41,15 @@
 - `withdrawn`：退出或最终没有答卷，`response_file` 留空。
   如果有中途导出，保留在独立的私有归档中，不放入正式分析的 responses 文件夹。
 
-答卷放在 `../human_study_site/coordinator_private/responses/`。
+答卷放在 `final/round2/scientific_validation_v3/human_study_site/coordinator_private/responses/`。
 姓名、电话、邮箱、身份信息不进入答卷、论文或版本库。
 名额表、真实答卷及解盲键只交给协调者，不能打包给参与者。
 
 ## CSV 参考格式
 
-原空表头为 `../human_study_site/responses_template.csv`。
-本目录另有 `RESPONSE_FORMAT_ONLY_NOT_DATA.csv`：真实分配元数据对应的
+空表头为 `final/round2/scientific_validation_v3/human_study_site/responses_template.csv`。
+格式示例位于
+`final/round2/scientific_validation_v3/continuation_20261006/RESPONSE_FORMAT_ONLY_NOT_DATA.csv`：真实分配元数据对应的
 24 行空答卷样式，所有答案留空，仅供格式参考。它不是证据，不能进入
 responses 文件夹，也不能据此补填、代答或重构丢失的答案。
 
@@ -97,7 +118,8 @@ python final/round2/scientific_validation_v3/audit_scripts/run_closed_human_stud
 ```
 
 在项目根目录运行。不能绕过入口直接使用旧程序提前查看偏好结果。
-结果会写入 `../human_study_site/coordinator_private/results/`。
+结果会写入
+`final/round2/scientific_validation_v3/human_study_site/coordinator_private/results/`。
 保留原始答卷、排除记录、名额表与结果哈希，返回全部 8 个终点。
 
 此评测仅覆盖固定 24 对象的二维图像偏好，且来自原 300 对象集合。
