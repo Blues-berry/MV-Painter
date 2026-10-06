@@ -27,11 +27,17 @@ letter because the scientific text, asset terms, and submission metadata are
 not frozen. The candidate resolves several wording and statistical overclaims and adds a
 GLB-native unseen-view endpoint plus a retrospective C3/GFL comparison on a
 disjoint object cohort. A separate revision-era Fresh C3/GFL follow-up has
-downloaded its 600 locked screen assets; 594 pass basic geometry checks, while
-the 17-view render, decoded-pixel deduplication, and cohort freeze remain in
-progress. It has generated no method outputs. E5 is a
+downloaded its 600 locked screen assets; 594 pass basic geometry checks, and
+152/594 had completed the frozen 17-view/depth render at the recorded 09:00
+UTC checkpoint. Exact decoded-pixel deduplication, coverage checks, and cohort
+freeze remain in progress. It has generated no method outputs. E5 is a
 development-only technical diagnostic. The candidate does not establish human-perceived fidelity,
 prospective C3 confirmation, seam consistency, full-PBR quality, or
-methodological novelty accepted by the venue. The response in
+methodological novelty accepted by the venue. A fresh sparse checkout of the
+published 1006 commit passes package checksums and rebuilds the compact
+analyses, tables/figures, and LaTeX; omitted historic inference payloads leave
+full end-to-end GPU regeneration partial. The source-license recheck still
+cannot clear two panel assets (empty license metadata; unavailable endpoint).
+The response in
 `review/response_to_reviewers_draft.md` remains the earlier working draft.
 Therefore the reviewer gate is **PARTIAL**, not closed.

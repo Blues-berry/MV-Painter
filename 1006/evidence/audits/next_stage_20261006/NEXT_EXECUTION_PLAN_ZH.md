@@ -310,5 +310,47 @@ SSI（CVPRW NTIRE 2026）已经测试 StyleID 注入与几何 ControlNet 强度�
   四条件运行 main backbone；唯一 confirmatory pair 是 GC3−GFL 的 FG-PSNR。若完整性
   或方向不支持，按 protocol 降级/撤回相应 superiority，不转成其他条件搜索。该 2D
   campaign 本身不闭合 R1 的 human/seam/全 PBR 质疑。
-- 文献报告、更新后的 E0 ledger 和本执行计划保留在 1006；隔离 GitHub 分支已推送
-  之前的证据快照 `6f7f609b`。本次更新待下一次明确的文本证据快照一并发布。
+- 文献报告、更新后的 E0 ledger 和本执行计划保留在 1006；08:20 时之前的证据快照已推送，
+  当前分支随后更新到 `00c4891` 并纳入 MVPainter 比较。本节记录 08:51 后的新增验证。
+
+## 干净检出复建与当前阻塞处置 — 2026-10-06 08:51 UTC
+
+- **复建门禁有界通过。** 在公开分支提交 `00c48915877f592c725d5b13be90905eab347b0a`
+  上建立了新的稀疏检出（来自本地 Git object database；GitHub HTTP pack 下载当时
+  超时，因此不把它写成一次成功的远程 clone）。检出前 `SHA256SUMS.txt` 的 401 项
+  全部通过；strict-276 与 Fresh-B 分析、24 行归因表、图、主文和补充材料均成功重建。
+  重建 PDF 的提取文本与已发布 PDF 字节级相同，补充 PDF 文件本身相同，主文 PDF
+  仅差 3 字节；5 张重绘图在 150 dpi 栅格对比一致。记录见
+  `evidence/audits/CLEAN_CHECKOUT_REBUILD_20261006.md`。这关闭“压缩证据包能否从新检出
+  重建”的子门禁；由于旧 GPU prediction/residual/render 原始载荷未完整打包，
+  **完整历史生成复现仍 PARTIAL**，不能宣称全论文 end-to-end reproducible。
+- **E0 来源账本扩充到 62 项。** C14 已精确拆分 compact rebuild PASS 与 historic
+  generation PARTIAL；E0 validator 复跑后仍需核对哈希、引用和冻结规则。
+- **Fresh C 仍按原锁定继续。** 08:51 UTC 快照为 125/594 个有效候选完成 17-view/depth
+  产物；像素级去重、coverage 和 cohort freeze 尚未完成，method outputs 仍为零。
+  不因等待或进度改变 worker、视角数、cohort、比较条件或主终点。
+- **未闭合问题的可行动路由。** R1.5：公开缺失的历史输入/输出载荷清单；有授权且完整的
+  运行才重建，无法补齐者按 campaign 限界或撤回依赖结论。R1 fidelity/seam：等待用户
+  提供真实答卷；完成 seam 指标合成/已知跳变校验，否则继续撤回 seam claim。R2.1：
+  SSI 对照和同类论文审查已完成但只能支持收窄，不能裁决期刊贡献充分性；当前 cap
+  pilot 不支持等剂量机制试验，若该机制是必要贡献，应另立可行性设计并在未触碰 cohort
+  前注册，不能用本轮 Fresh C 替代。资产授权仍需要来源级证据；两项若无法确认，需在
+  投稿公开包中移除其图像及衍生图再重新审计。
+- **Readiness 保持 HOLD。** Fresh C、人类数据、R2.1、seam/source-level rights 和最终
+  reviewer/pagination gates 尚未全部通过。01549 在科学证据冻结前不改；本轮没有上传期刊
+  系统或把候选说成已被审稿人接受。
+
+## 来源授权复核与进度快照 — 2026-10-06 09:00 UTC
+
+- 官方 Sketchfab API 只读复核 Panel 02/05：02 返回 HTTP 200 但 `license={}`；05 返回
+  HTTP 404。响应日期和原始 body SHA-256 已存入
+  `licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json`，解释见
+  `evidence/audits/ASSET_SOURCE_LICENSE_RECHECK_20261006.md`。这没有给出使用授权，因此公开
+  分支现有图及 supplement 衍生图仍是 release blocker；下一步只能取得来源条款/许可，或移除
+  两个资产及全部衍生内容后重建、重新审计。
+- E0 authority ledger 扩至 63 个哈希来源；其中独立记录这次授权复核。09:00 UTC Fresh C
+  17-view/depth 完成数为 152/594，coverage/decoded-pixel 去重及冻结仍未完成，method outputs
+  为零。
+- 最新 verdict 仍为 **HOLD**。此复核使权利问题更明确但没有关闭；人类问卷仍等用户答卷，R2.1
+  仍是 venue/editor 判断，seam 若不能通过测量工具的已知真值测试则保留撤回，历史缺失载荷按
+  campaign 边界披露或撤回依赖结论。

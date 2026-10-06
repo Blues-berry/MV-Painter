@@ -98,6 +98,10 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
   and a page/line-mapped response candidate. Neither is an editor decision or
   proof that the unresolved novelty/fidelity concerns were accepted.
 - `gates/`: current release, reviewer-closure, and next-action decisions.
+- `evidence/audits/ASSET_SOURCE_LICENSE_RECHECK_20261006.md` and
+  `licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json`: direct source-level
+  API check for the two visual-panel assets whose redistribution terms remain
+  unresolved.
 - `evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md`:
   literature-based comparison of revision routes and a reviewer-mapped
   evidence plan. It recommends an 01549-continuity revision using 1006 as the
@@ -105,8 +109,10 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
 - `source_inventory.json` and `SHA256SUMS.txt`: package-relative provenance
   and integrity records.
 
-The final same-workspace script/build verification is recorded at
-`evidence/audits/PACKAGE_BUILD_VERIFICATION_20261006.md`.
+The initial same-workspace script/build verification is recorded at
+`evidence/audits/PACKAGE_BUILD_VERIFICATION_20261006.md`; the later published-
+commit fresh-checkout rebuild and its scope limits are recorded at
+`evidence/audits/CLEAN_CHECKOUT_REBUILD_20261006.md`.
 
 ## Rebuild and reproduce
 
@@ -133,9 +139,13 @@ latexmk -pdf -interaction=nonstopmode -halt-on-error supplementary_1006.tex
 ```
 
 These commands rebuild the included figures/tables and PDFs; they do not
-recreate omitted image-generation payloads or train/infer any model. A
-paper-wide clean-clone reconstruction of every historical result is not
-claimed complete.
+recreate omitted image-generation payloads or train/infer any model. A fresh
+checkout of published commit `00c4891` passed its 401 recorded checksums and
+reproduced the compact analysis, figures/tables, and LaTeX. The updated
+package index includes this follow-up's audit files. A paper-wide
+end-to-end reconstruction of every historical GPU result is not claimed
+complete because some prediction, residual, and render payloads are not
+included.
 
 ## Publication and release boundary
 

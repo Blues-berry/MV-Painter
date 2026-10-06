@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06T08:29:25+00:00",
+  "updated_utc": "2026-10-06T09:04:04+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -380,7 +380,7 @@
     {
       "source_id": "blocker_remediation_plan",
       "path": "1006/gates/BLOCKER_REMEDIATION_PLAN_20261006.md",
-      "sha256": "c6f9f476895f87c313d3103c776ec67bc521bac052fe06b88e364c7dd7422964",
+      "sha256": "b00443fa4a06bcf6c6e134f771542f8a9567d77eae01f7f20d6e9ae10ac4126a",
       "role": "Action map for R1/R2/reproducibility/license blockers with conditional remedies and fallbacks."
     },
     {
@@ -430,6 +430,18 @@
       "path": "1006/evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md",
       "sha256": "dc4fcf8ff23566eb41f9649391192a7ccd5bd4f3730bc5c2bfb0352256db3dd0",
       "role": "Primary-source comparison of representative 3D texture generation papers and direct layer/time scheduling prior art; informs novelty boundary and claim-to-evidence narrative, not experimental outcome claims."
+    },
+    {
+      "source_id": "clean_checkout_rebuild",
+      "path": "1006/evidence/audits/CLEAN_CHECKOUT_REBUILD_20261006.md",
+      "sha256": "c0ed10ecaf00ffcb4959cebb6272b1a0e4623f6b0dafb2d25829bd76566b25cd",
+      "role": "Fresh sparse checkout rebuild of the exact published commit; compact analysis/table/figure/LaTeX rebuild PASS, full historical GPU-output regeneration PARTIAL."
+    },
+    {
+      "source_id": "asset_source_license_recheck",
+      "path": "1006/licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json",
+      "sha256": "d4021bd1aaa42c4009f722b75baf6c889b58ed8b0c1b049c0ddfa249fadd6a32",
+      "role": "Direct official Sketchfab API recheck for two panel assets with unresolved source terms; records metadata result and does not infer permission."
     }
   ],
   "claims": [
@@ -1142,23 +1154,24 @@
         "fresh_c_downloader_code",
         "package_source_inventory_builder",
         "manuscript_preservation_recheck",
-        "fresh_c_render_stage_identity"
+        "fresh_c_render_stage_identity",
+        "clean_checkout_rebuild"
       ],
       "cohort": "Evidence generators span distinct campaigns; no claim of one shared runner across all cohorts.",
       "estimate": {
-        "paper_wide_tables_figures_rebuilt": "partial",
+        "paper_wide_tables_figures_rebuilt": "PASS for included compact analyses, tables/figures and LaTeX from a fresh sparse checkout of published commit 00c4891; full historical GPU-generation rebuild PARTIAL because some prediction/residual/render payloads are omitted.",
         "glb_lineage": "PASS for stored N=20 scope",
         "human_response_archive": "0 current responses",
-        "fresh_c_input_screen": "600/600 downloads; 594 pass initial geometry, 6 invalid; 0 byte duplicates among 1,965 historical GLBs; render/pixel/coverage screen pending."
+        "fresh_c_input_screen": "600/600 assets downloaded; 594 pass initial geometry, six invalid, and no byte duplicates among 1,965 historical GLBs. The frozen 17-view/depth, decoded-pixel, coverage and cohort-freeze screen remains in progress; no method outputs."
       },
-      "provenance_limit": "Old GFL/GC3 tensor input hashes incomplete; historical runner identities are not consistently recorded; paper-wide table/figure reconstruction and portable clean-clone pass remain incomplete; seam metric unresolved. Fresh C currently has only its input-stage audit; no frozen 276–300 object cohort or method outputs exist yet.",
+      "provenance_limit": "Old GFL/GC3 tensor input hashes are incomplete and historical runner identities are not consistently recorded. A fresh checkout reproduces included compact analyses, tables/figures and LaTeX, but omitted raw prediction/residual/render payloads prevent full historical GPU-generation reconstruction. Seam metric remains unresolved. Fresh C has no frozen 276–300 object cohort or method outputs until its screen and integrity gates pass.",
       "allowed_wording": "State exact campaign-level provenance and the current N=20 GLB lineage audit scope.",
       "prohibited_wording": [
         "fully end-to-end independently reproducible manuscript",
         "all historic arms share an identical runner and input realization"
       ],
       "supersedes": [],
-      "next_gate": "Complete 17-view/depth, coverage and decoded-pixel duplicate checks; freeze cohort/input hashes before inference, then pass full row/input/cap/output integrity and portable paper-wide reconstruction.",
+      "next_gate": "After Fresh C integrity and scientific claim freeze, disclose exact unreconstructable historical arms or supply permitted raw payloads and rebuild them; then rerun the final packaged figures/tables and response references from the frozen evidence. Keep 01549 unchanged until scientific evidence freeze.",
       "comparison": "Reconstruction and provenance across distinct evidence campaigns; not one pooled comparison.",
       "registration_status": "Campaign-specific locks and analysis records; historical arms vary in provenance completeness.",
       "selection_status": "Cohort identity and independence must be read from each source; no cohort interchangeability.",
@@ -1186,8 +1199,8 @@
     },
     {
       "gate": "paper_wide_reconstruction",
-      "status": "PARTIAL",
-      "evidence": "Full post-freeze table/figure rebuild and portable clean-clone reproduction incomplete."
+      "status": "PARTIAL_COMPACT_REBUILD_PASS",
+      "evidence": "Fresh sparse checkout of published commit 00c4891 passed all 401 package checksums and rebuilt compact analyses, tables/figures, and both LaTeX PDFs; full historical GPU-generation reconstruction remains partial because raw prediction/residual/render payloads are omitted."
     },
     {
       "gate": "scientific_evidence_freeze",
@@ -1198,6 +1211,11 @@
       "gate": "fresh_c_confirmation",
       "status": "IN_PROGRESS_ASSET_SCREEN",
       "evidence": "600/600 downloads, 594 initial GLB-geometry-valid, 0 historical byte duplicates; render/coverage/pixel check and cohort freeze pending."
+    },
+    {
+      "gate": "asset_redistribution_rights",
+      "status": "OPEN_SOURCE_TERMS_UNCONFIRMED",
+      "evidence": "At 2026-10-06 08:58 UTC, official API returned an empty license object for Panel 02 and HTTP 404 for Panel 05. Recheck payload hashes are in the asset source-license audit; neither result clears redistribution."
     }
   ],
   "manuscript_policy": {

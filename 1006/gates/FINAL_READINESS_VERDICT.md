@@ -15,15 +15,15 @@ journal submission.
 | Main and supplementary LaTeX build | PASS | Candidate PDFs compile with the supplied Elsevier/CAG source format. |
 | Fresh-B core temporal evidence | PASS WITH CHRONOLOGY LIMIT | 4,500/4,500 rows passed integrity; cohort is disjoint, but B's safeguard locks followed prior outcome exposure. The paper states this. |
 | C3/GFL held-out comparison | PARTIAL | FRESH_CONFIRM_B provides a disjoint N=150 object cohort, but the C3−GFL comparison is post hoc after unblinding. It is supplemental evidence, not a registered confirmation. |
-| Fresh C3/GFL follow-up | IN PROGRESS | All 600 frozen screen assets downloaded with zero failures; 594 pass the initial GLB geometry screen and are undergoing the locked 17-view render, pixel-deduplication, and coverage checks. No method outputs exist. It can strengthen new-object evidence but cannot restore the original preregistered status. |
+| Fresh C3/GFL follow-up | IN PROGRESS | All 600 frozen screen assets downloaded with zero failures; 594 pass the initial GLB geometry screen and are undergoing the locked 17-view render, decoded-pixel deduplication, and coverage checks. At the 09:00 UTC checkpoint, 152/594 were complete; no method outputs exist. It can strengthen new-object evidence but cannot restore the original preregistered status. |
 | Dose-normalized Layer × Window mechanism | NOT ESTABLISHED | E5 passed numerical implementation checks, but at alpha=0.005 the shallow group exceeded its native cap on 30.4% of wrapper steps. The pilot used six reused development objects and collected no quality metrics. Keep interaction claims conditional on the measured profile and cap. |
 | strict-276 C3 provenance | PARTIAL | Seven endpoints are paired and reported, including the GC3/GFH trade-off, but runner identity and complete legacy input-tensor hashes are unavailable. |
 | Human/perceptual fidelity | OPEN / CLAIM WITHDRAWN | The new human study has zero responses. The candidate makes no LLH human-preference or human-fidelity claim. This is a defensible scope limit only if the editor accepts it; no reviewer waiver is available. |
 | Three-dimensional appearance | BOUNDED | Stored GLBs were evaluated on 20 UV-supported objects and 11 unseen views, with mixed endpoints. Four no-UV objects remain excluded; no rebake, seam validation, or full PBR evaluation is established. |
 | Cross-interface generalization | BOUNDED | MV-Adapter and MVDiffusion are separately reported interface-boundary results, not matched causal architecture tests. |
 | Novelty and contribution sufficiency | BLOCKING JUDGMENT | Scheduled Style Injection is close prior work. The narrowed MVPainter-specific empirical contribution may still be judged too incremental; additional wording cannot settle that editorial question. |
-| Asset redistribution | OPEN / PUBLIC BRANCH NOT LICENSE-CLEARED | Two visual-panel licenses are supported only by the Objaverse snapshot; one record includes a personal-project-use description and another model endpoint is unavailable. The public task branch currently contains the contact sheet and compiled supplement with these derivatives. Obtain source-level terms/permission or remove and rebuild those artifacts before treating any branch/package as release-ready. |
-| Portable paper-wide rebuild | PARTIAL | The compact analyses and candidate figures/tables are reproducible from included data, but the omitted render/residual payloads prevent a clean clone from rebuilding every generation result. |
+| Asset redistribution | OPEN / PUBLIC BRANCH NOT LICENSE-CLEARED | Direct official API recheck returned an empty `license` object for Panel 02 and HTTP 404 for Panel 05. The public task branch contains contact-sheet and supplement derivatives. Obtain source-level terms/permission or remove and rebuild all affected derivatives before treating any branch/package as release-ready. See `licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json`. |
+| Portable paper-wide rebuild | PARTIAL — COMPACT CHECKOUT REBUILD PASS | A fresh sparse checkout of published commit `00c4891` passed all 401 package checksums and rebuilt the included analyses, tables/figures, and both LaTeX PDFs. Extracted PDF text matched byte-for-byte; five regenerated figures rasterized identically at 150 dpi. Omitted historic prediction/residual/render payloads still prevent end-to-end regeneration of every GPU result. |
 | Final reviewer response and submission metadata | PARTIAL | A point-by-point candidate with page/line references exists; final author review, title-page metadata, and a post-freeze pagination check remain. No editor decision is represented. |
 
 ## Why this does not pass the upload gate
@@ -58,8 +58,11 @@ as a review snapshot with an open rights gate, not as a cleared public release.
 
 `DIRECT_SYSTEM_UPLOAD=NO`
 
-No journal system action has been taken. Reopen this gate after asset terms
-are resolved, the author decides whether to collect the frozen human study
-or retain the reduced claim scope, a venue/contribution decision is made,
-and the response and package are rechecked after the scientific text is
-frozen.
+No journal system action has been taken. The next credible route is explicit:
+finish Fresh C without changing its cohort or endpoint; accept user-supplied
+human responses or retain the reduced perceptual claim scope; replace or clear
+the two rights-uncertain panel assets; and make a venue-level decision on R2.1.
+For historic outputs that cannot be reconstructed, disclose the exact campaign
+boundary and keep dependent claims out of the manuscript. Reopen this gate
+after those dispositions and the final post-freeze response and pagination
+audit.
