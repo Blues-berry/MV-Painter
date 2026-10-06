@@ -5,6 +5,15 @@ distributed. Preserve its original ZIP, questionnaire, assignment key and hashes
 Mark it superseded-for-distribution, not retrospectively cancelled data. There
 are no human responses. A new final lock is required after E6's method decision.
 
+## Current method-decision update
+
+E6 was quantitatively qualified in development but stopped at the separate
+method-difference/value gate. The active preparation branch is therefore C3
+against GFL, GFH, no-adapter and generic linear, with no C3 self-comparison.
+This is an explicit pre-response method-identity amendment; it does not yet
+freeze stimuli, input panel or assignment. Final deployment is conditional on
+Fresh C and the final paper decision, not presumed C3 superiority.
+
 ## Human package
 
 If E6 is independently supported and becomes the final method, use its frozen

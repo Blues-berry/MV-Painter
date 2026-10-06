@@ -4,13 +4,18 @@
 
 ### Approved continuation update
 
-The user chose a training-free method-development continuation. E6's original
-24-object calibration and six-object, 30-generation technical pilot are complete
-and pass their bounded execution gate. Its locked 288-generation development
-comparison is running; efficacy, novelty and independent confirmation remain
-unestablished. Fresh C's unchanged render/cohort/smoke/confirmation/integrity
-sequence has a continuation driver. Fresh D cannot begin until the candidate
-qualifies and the separate contribution review permits independent testing.
+E6 completed its calibration, technical checks and all 288 fixed development
+rows. The frozen foreground criteria qualified k=1.25; this fact remains intact.
+The subsequent qualitative difference/value gate stopped the method: full-LPIPS
+was adverse in 24/24 object-averaged comparisons, and normalization, inherited
+timing and clipping do not establish a substantial new contribution. No Fresh D
+will launch for this stopped candidate. See the post-development method review.
+Fresh C's original C3 protocol continues; its new-object evidence is pending.
+R2.1 and suitability of the empirical paper remain OPEN.
+
+**Submission package technical readiness: NOT READY. Scientific evidence
+readiness: NOT READY.** Historical PDF compilation passes do not cover a final
+scientifically frozen revision, final human/GLB evidence or reviewer response.
 
 The old LLH human package was confirmed not distributed. It is preserved but
 superseded for distribution; final-method stimuli require a new pre-response

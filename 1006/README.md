@@ -2,14 +2,15 @@
 
 Updated: 2026-10-06.
 
-Implementation update: the user approved a bounded, training-free E6 cap-aware
-residual-calibration candidate. Its 24-object calibration and 30-generation
-technical pilot are complete; the technical gate passes. The 288-generation
-development comparison is running under a pre-output lock. Quality efficacy,
-methodological novelty and independent confirmation are not established. Fresh C
-continues unchanged with a separate closure driver and a shared GPU lease.
-See `gates/IMPLEMENTATION_STAGE_20261006_ZH.md`. The candidate manuscript below
-remains a pre-freeze reference, not the approved final method narrative.
+Implementation update: E6 completed 24-object calibration, 30 technical runs
+and all 288 locked development generations. Technical execution passed and
+k=1.25 met the frozen foreground selection rule. The separate qualitative
+method-difference/development-value review **stopped this candidate**: full-LPIPS
+worsened in all 24 object-averaged comparisons and substantive novelty remains
+unestablished. No E6 Fresh D is launched or planned under this stopped candidate.
+See `evidence/audits/E6_POST_DEVELOPMENT_METHOD_REVIEW_20261006_ZH.md`.
+Fresh C continues unchanged. The paper returns to a bounded C3 empirical route,
+with R2.1 and venue fit still open. Manuscript editing stays frozen.
 
 The old LLH human package was confirmed **not distributed** and is archived for
 replacement after the final method decision. Do not distribute its ZIP. The
