@@ -354,3 +354,10 @@ SSI（CVPRW NTIRE 2026）已经测试 StyleID 注入与几何 ControlNet 强度�
 - 最新 verdict 仍为 **HOLD**。此复核使权利问题更明确但没有关闭；人类问卷仍等用户答卷，R2.1
   仍是 venue/editor 判断，seam 若不能通过测量工具的已知真值测试则保留撤回，历史缺失载荷按
   campaign 边界披露或撤回依赖结论。
+
+### Fresh C 当前执行快照 — 2026-10-06 09:06 UTC
+
+锁定的 594 个有效候选中，164 个已产生完整 17-view image/normal/camera
+render products。Depth conversion、decoded-pixel 去重、coverage 与 cohort
+freeze 仍待完成。此计数不代表可入组数量；全部门禁完成前不启动四个 method
+conditions，也不查看方法质量结果。

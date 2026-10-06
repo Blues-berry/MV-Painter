@@ -28,9 +28,9 @@ not frozen. The candidate resolves several wording and statistical overclaims an
 GLB-native unseen-view endpoint plus a retrospective C3/GFL comparison on a
 disjoint object cohort. A separate revision-era Fresh C3/GFL follow-up has
 downloaded its 600 locked screen assets; 594 pass basic geometry checks, and
-152/594 had completed the frozen 17-view/depth render at the recorded 09:00
-UTC checkpoint. Exact decoded-pixel deduplication, coverage checks, and cohort
-freeze remain in progress. It has generated no method outputs. E5 is a
+164/594 had complete 17-view image/normal/camera render products at the 09:06
+UTC checkpoint. Depth conversion, decoded-pixel deduplication, coverage checks,
+and cohort freeze remain in progress. It has generated no method outputs. E5 is a
 development-only technical diagnostic. The candidate does not establish human-perceived fidelity,
 prospective C3 confirmation, seam consistency, full-PBR quality, or
 methodological novelty accepted by the venue. A fresh sparse checkout of the
