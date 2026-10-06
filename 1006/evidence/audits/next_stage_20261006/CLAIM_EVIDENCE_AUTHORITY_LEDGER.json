@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06T08:24:21+00:00",
+  "updated_utc": "2026-10-06T08:29:25+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -56,6 +56,12 @@
       "venue": "Computers & Graphics 137 (2026)",
       "url": "https://www.sciencedirect.com/science/article/abs/pii/S0097849326000701",
       "consequence": "Recent target-venue example that ties production-oriented claims to explicit reconstruction modules and artifact-level outcomes."
+    },
+    {
+      "title": "MVPainter: Accurate and Detailed 3D Texture Generation via Multi-View Diffusion with Geometric Control",
+      "venue": "arXiv preprint, 2025",
+      "url": "https://arxiv.org/abs/2505.12635",
+      "consequence": "The underlying system defines reference alignment, geometry-texture consistency and local texture quality as separate evaluation dimensions, with RGB/PBR comparisons, ablations and human-aligned evaluation; use it to distinguish pipeline claims from the scale-schedule revision."
     }
   ],
   "sources": [
@@ -422,7 +428,7 @@
     {
       "source_id": "comparable_paper_narrative_audit",
       "path": "1006/evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md",
-      "sha256": "a429329e0f27344346a8380c5423bc5c950c460ce576efe8f844aabd1fa5b5a4",
+      "sha256": "dc4fcf8ff23566eb41f9649391192a7ccd5bd4f3730bc5c2bfb0352256db3dd0",
       "role": "Primary-source comparison of representative 3D texture generation papers and direct layer/time scheduling prior art; informs novelty boundary and claim-to-evidence narrative, not experimental outcome claims."
     }
   ],

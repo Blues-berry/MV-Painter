@@ -200,7 +200,7 @@ MV-Adapter、GLB、FAC 负结果和人工结果。每张表都有 generator、in
 
 同领域论文与直接先行工作对照已整理在
 `evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md`，并已加入
-E0 authority ledger。矩阵覆盖 Paint3D、MVPaint、Make-A-Texture、Im2SurfTex、UniTex
+E0 authority ledger。矩阵覆盖目标系统 MVPainter、Paint3D、MVPaint、Make-A-Texture、Im2SurfTex、UniTex
 及 *Scheduled Style Injection*，比较它们的具体技术对象、对应消融/基准、人评/3D
 端点与局限；它是代表性一手来源审查，不是 exhaustive systematic review。
 SSI（CVPRW NTIRE 2026）已经测试 StyleID 注入与几何 ControlNet 强度在 layer/time
