@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06T09:04:04+00:00",
+  "updated_utc": "2026-10-06T09:49:39.126211+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -410,8 +410,10 @@
     {
       "source_id": "package_source_inventory_builder",
       "path": "1006/scripts/build_source_inventory.py",
-      "sha256": "7b84eec89cd5bf844105f10c14af6140056cbe4eb3540fe99a6469ae61d96204",
-      "role": "Checksum builder excludes local-only Fresh C and E5 asset/run payloads from the public package inventory."
+      "sha256": "8bcbe509c08a66184c19eae73dc132645a8df89eee0255a2cd7c941e40827e04",
+      "role": "Checksum builder excludes local-only Fresh C and E5 asset/run payloads from the public package inventory.",
+      "previous_sha256": "7b84eec89cd5bf844105f10c14af6140056cbe4eb3540fe99a6469ae61d96204",
+      "change_reason": "Exclude E6 private raw runs and mutable operational state from public checksums; no scientific source change."
     },
     {
       "source_id": "manuscript_preservation_recheck",
@@ -442,6 +444,84 @@
       "path": "1006/licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json",
       "sha256": "d4021bd1aaa42c4009f722b75baf6c889b58ed8b0c1b049c0ddfa249fadd6a32",
       "role": "Direct official Sketchfab API recheck for two panel assets with unresolved source terms; records metadata result and does not infer permission."
+    },
+    {
+      "source_id": "e6_method_spec",
+      "path": "1006/evidence/protocols/E6_CAP_CALIBRATION_METHOD_SPEC_20261006.md",
+      "sha256": "675cc23f6600a685947c85f77fb93cbbce0f88a2482b0f8152a952aca24874f8",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_development_protocol",
+      "path": "1006/evidence/protocols/E6_CAP_CALIBRATION_DEVELOPMENT_PROTOCOL_20261006.md",
+      "sha256": "2eca3b83cbffa5b0938b3ba579a6ad26b71f25823ceed4a24e63c100c74c37ea",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_lock",
+      "path": "1006/data/e6_cap_calibration/E6_LOCK.json",
+      "sha256": "50590c8c6a6937ff66ce31f07ff5630a5ed52bd40451d6ac63371b162f1a33c9",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_reference",
+      "path": "1006/data/e6_cap_calibration/E6_REFERENCES.json",
+      "sha256": "38e5d5a9f7190ddfebc946d96e3d2735c4bb52ab2b798ddfb1c47b272797b4fa",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_reference_lock",
+      "path": "1006/data/e6_cap_calibration/E6_REFERENCE_LOCK.json",
+      "sha256": "e5eb3a809a20cd02c67873d67bcb63602b8cdd9dc31d0d777ab8ee548ca8d621",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_technical_gate",
+      "path": "1006/data/e6_cap_calibration/E6_TECHNICAL_GATE.json",
+      "sha256": "459d0fe2de16f8bae53ff718a4f017c097649cf2b92ac6da80906bf0127e9696",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_dependency_custody",
+      "path": "1006/data/e6_cap_calibration/E6_DEPENDENCY_CUSTODY.json",
+      "sha256": "f55424a0541d4df0c549333a5dcb2b5fa94b320987a3a25a1bbb10fb2f7bf848",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_technical_report",
+      "path": "1006/evidence/audits/E6_TECHNICAL_AND_CUSTODY_REPORT_20261006_ZH.md",
+      "sha256": "90b82431c2894766083a7dc57c6867161d060ff6213f76b6efc4931470970300",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "final_method_human_glb_handoff",
+      "path": "1006/evidence/protocols/FINAL_METHOD_HUMAN_GLB_HANDOFF_20261006.md",
+      "sha256": "dbdb82a617d1b95ea8fd5b3bce76af739f916f64fd955fd56f7bcf6e95a8dedf",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "synthetic_seam_numeric_gate",
+      "path": "1006/data/seam_pilot/SYNTHETIC_SEAM_GATE.json",
+      "sha256": "37aefb9f694cae715718278890c33741e69fc3a052218fb4072766dfdcdafe5e",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "e6_preservation",
+      "path": "1006/evidence/audits/E6_MANUSCRIPT_PRESERVATION_20261006.json",
+      "sha256": "a1878a172eedd51499dd662b5388c9d7f1ac328c6b4366502f2a7d98b31be2fd",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "fresh_c_closure_driver",
+      "path": "1006/scripts/continue_fresh_c_closure.py",
+      "sha256": "da390c580699bb9d409975bf5de928cd524c8b9af26347593817bb7f9184a50c",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
+    },
+    {
+      "source_id": "fresh_d_analysis",
+      "path": "1006/scripts/analyze_fresh_d.py",
+      "sha256": "1fe0ecd9a27685f4524d9de5af3a9884eb8b952c51d6db96aa6b1dc81a2a79b7",
+      "role": "User-approved continuation; scope and limits remain in its protocol/report."
     }
   ],
   "claims": [
@@ -904,7 +984,8 @@
         "visual_audit",
         "human_lock",
         "human_refresh",
-        "human_stats_guide"
+        "human_stats_guide",
+        "final_method_human_glb_handoff"
       ],
       "cohort": "Visual audit N=24; locked LLH study fixed 40 slots, at least 36 valid; response count 0.",
       "estimate": {
@@ -920,7 +1001,7 @@
         "broad faithful material reproduction"
       ],
       "supersedes": [],
-      "next_gate": "Await real response data; run the unchanged frozen analyzer once all 40 slots resolve and at least 36 are valid.",
+      "next_gate": "User confirmed old LLH package not distributed. Preserve original lock and explicitly replace stimuli after final method decision; verify rights/ethics and collect real responses under a new pre-response lock. No C3/E6 perception claim yet.",
       "comparison": "LLH vs GFL, GFH, GC3 and endpoint-matched gen_linear; two questions per pair (appearance fidelity and texture/shape naturalness).",
       "registration_status": "Four-pair protocol, assignments, exclusions, fixed stopping rule and analysis frozen before collection; B was already exposed.",
       "selection_status": "40 fixed assignment slots; stop when all complete/withdrawn; at least 36 valid completions; current response count 0.",
@@ -1105,7 +1186,8 @@
       "authoritative_sources": [
         "novelty_audit",
         "paper_view_review",
-        "comparable_paper_narrative_audit"
+        "comparable_paper_narrative_audit",
+        "e6_method_spec"
       ],
       "cohort": "Literature/prior-art claim; no experimental cohort.",
       "estimate": null,
@@ -1119,7 +1201,7 @@
       "supersedes": [
         "broad first/novel control-schedule framing"
       ],
-      "next_gate": "R2.1 remains blocking until post-evidence-freeze author/venue judgment. If the target requires a distinct method contribution, pursue it as a separately specified and prospectively validated study; do not treat Fresh C, E5, more significance, or claim narrowing as proof of novelty.",
+      "next_gate": "E6 bounded development is authorized, not novel by assertion. Review APG, beta-CFG, NAG and SSI overlap and require isolated component tests and untouched confirmation before a method claim; R2.1 remains open.",
       "comparison": "Contribution and claim-to-evidence narrative relative to representative 3D texture papers and direct layer/timestep schedule prior art.",
       "registration_status": "Literature audit, not a registered experimental contrast; focused primary-source search only.",
       "selection_status": "No scientific object cohort.",
@@ -1179,6 +1261,67 @@
       "statistical_unit": "Object within each experiment; generation seeds are nested/sensitivity factors, not extra objects.",
       "statistical_method": "Per-campaign object-level estimators and reproducibility checks; final table/figure regeneration remains pending.",
       "multiplicity": "Keep each frozen family with its campaign; do not pool or reuse uncorrected retrospective comparisons as confirmatory."
+    },
+    {
+      "claim_id": "C15",
+      "topic": "E6 cap-respecting calibration candidate",
+      "authority_status": "TECHNICAL_PASS; DEVELOPMENT_PENDING; NOVELTY_NOT_ESTABLISHED",
+      "authoritative_sources": [
+        "e6_method_spec",
+        "e6_development_protocol",
+        "e6_lock",
+        "e6_reference",
+        "e6_reference_lock",
+        "e6_technical_gate",
+        "e6_dependency_custody",
+        "e6_technical_report",
+        "e6_preservation"
+      ],
+      "reviewer_concerns": [
+        "R2.1",
+        "R2.2",
+        "R1.3"
+      ],
+      "comparison": "candidate multipliers 0.75/1/1.25 versus native C3; technical observer no-op versus baseline",
+      "registration_status": "E6 code/protocol locked before E6 outputs; extra preserved E5-helper custody check recorded after calibration",
+      "selection_status": "Original reused 24-object development cohort; six original indices for technical gate; no Fresh B/C/D tuning",
+      "intervention_profile": "Native-cap scalar calibration shared across the full object mosaic at each wrapper/step; reference-write unchanged",
+      "statistical_unit": "Development object, averaging three fixed latent seeds; technical steps are not independent efficacy samples",
+      "statistical_method": "Fixed mean-delta qualification; LPIPS then PSNR then distance-to-1 tie break; no significance-based development selection",
+      "multiplicity": "No development efficacy claim; Fresh D requires separate frozen primary/baseline/ablation Holm families",
+      "allowed_wording": "Numerical execution within native caps passed on six reused objects; efficacy and contribution adequacy remain untested.",
+      "prohibited_wording": [
+        "independently confirmed novel method",
+        "equal-dose layer-time mechanism",
+        "human-validated texture fidelity",
+        "R2.1 closed"
+      ],
+      "next_gate": "Complete exactly 288 development rows and their integrity check; stop if no joint mean gain, otherwise freeze candidate and conduct contribution-difference review before Fresh D."
+    },
+    {
+      "claim_id": "C16",
+      "topic": "Synthetic seam diagnostic pilot",
+      "authority_status": "NUMERIC_SYNTHETIC_PASS; PRODUCTION_UNVALIDATED",
+      "authoritative_sources": [
+        "synthetic_seam_numeric_gate",
+        "final_method_human_glb_handoff"
+      ],
+      "reviewer_concerns": [
+        "R1.1"
+      ],
+      "comparison": "Known continuous texture versus inserted RGB seam and additional open geometry boundaries",
+      "registration_status": "Development validation before any new GLB method comparison",
+      "selection_status": "Synthetic geometry only; no real object selection or quality output",
+      "intervention_profile": "Pair geometric chart edges and compare matched UV-boundary RGB samples; exclude open geometry edges",
+      "statistical_unit": "Deterministic synthetic validation case; no population inference",
+      "statistical_method": "Exact construction checks; no efficacy p value",
+      "multiplicity": "Not an inferential experiment",
+      "allowed_wording": "Synthetic numeric check distinguishes an inserted chart-boundary color discontinuity; real glTF integration remains pending.",
+      "prohibited_wording": [
+        "seams improved on real meshes",
+        "overall 3D fidelity established"
+      ],
+      "next_gate": "Validate actual glTF sampler, topology, UV and known-texture rendering; freeze real metric before comparative outputs or withdraw seam-improvement claim."
     }
   ],
   "open_gates": [

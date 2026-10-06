@@ -1,5 +1,15 @@
 # Next actions after the 1006 package
 
+**Supersession note:** the priorities below describe the earlier empirical-only
+route. The user has now authorized the bounded training-free E6 continuation.
+Current execution is governed by `IMPLEMENTATION_STAGE_20261006_ZH.md` and the
+E6 pre-output protocol. E6 calibration/technical checks pass; its fixed quality
+comparison runs next. Fresh D is conditional on qualification and contribution
+review. Keep Fresh C unchanged. Preserve the old, undistributed LLH study and
+freeze a final-method replacement after the method decision. The historical
+"Fresh C3 is the only new confirmatory GPU campaign" statement below applies
+to the earlier route; E6 is development, and Fresh D is not launched yet.
+
 Prioritized actions to move from a reviewable candidate to a final submission
 package:
 

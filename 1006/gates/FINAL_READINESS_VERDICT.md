@@ -2,6 +2,23 @@
 
 ## Verdict: HOLD — evidence package reviewable; not cleared for direct system upload
 
+### Approved continuation update
+
+The user chose a training-free method-development continuation. E6's original
+24-object calibration and six-object, 30-generation technical pilot are complete
+and pass their bounded execution gate. Its locked 288-generation development
+comparison is running; efficacy, novelty and independent confirmation remain
+unestablished. Fresh C's unchanged render/cohort/smoke/confirmation/integrity
+sequence has a continuation driver. Fresh D cannot begin until the candidate
+qualifies and the separate contribution review permits independent testing.
+
+The old LLH human package was confirmed not distributed. It is preserved but
+superseded for distribution; final-method stimuli require a new pre-response
+lock, cleared rights and ethics arrangements. Synthetic seam numerics pass;
+production glTF integration and actual seam effects remain unvalidated.
+The verdict stays HOLD and manuscript editing remains frozen. See
+`IMPLEMENTATION_STAGE_20261006_ZH.md` and the E6 technical/custody audit.
+
 The separate `1006` candidate is complete enough for scientific and editorial
 review and compiles to a main paper and supplement. It preserves the
 previously submitted 01549 files. This verdict does **not** authorize a claim

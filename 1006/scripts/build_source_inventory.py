@@ -20,6 +20,14 @@ EXCLUDED_RELATIVE_PREFIXES = (
     "data/fresh_c/renders/",
     "data/fresh_c/runs/",
     "data/e5_residual_dose/runs/",
+    "data/e6_cap_calibration/runs/",
+    "data/e6_cap_calibration/E6_EXECUTION_STATE.json",
+    "data/fresh_c/FRESH_C_CLOSURE_EXECUTION_STATE.json",
+    "data/fresh_d/source_cache/",
+    "data/fresh_d/assets/",
+    "data/fresh_d/renders/",
+    "data/fresh_d/runs/",
+    "human_private/",
 )
 
 
@@ -27,7 +35,7 @@ def is_excluded(relative: Path) -> bool:
     rel = relative.as_posix()
     return (
         any(part in EXCLUDED_DIRS or part.endswith(".egg-info") for part in relative.parts)
-        or relative.suffix in EXCLUDED_SUFFIXES
+        or relative.suffix in EXCLUDED_SUFFIXES | {".lock", ".tmp"}
         or any(rel.startswith(prefix) for prefix in EXCLUDED_RELATIVE_PREFIXES)
     )
 

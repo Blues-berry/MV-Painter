@@ -2,6 +2,20 @@
 
 Updated: 2026-10-06.
 
+Implementation update: the user approved a bounded, training-free E6 cap-aware
+residual-calibration candidate. Its 24-object calibration and 30-generation
+technical pilot are complete; the technical gate passes. The 288-generation
+development comparison is running under a pre-output lock. Quality efficacy,
+methodological novelty and independent confirmation are not established. Fresh C
+continues unchanged with a separate closure driver and a shared GPU lease.
+See `gates/IMPLEMENTATION_STAGE_20261006_ZH.md`. The candidate manuscript below
+remains a pre-freeze reference, not the approved final method narrative.
+
+The old LLH human package was confirmed **not distributed** and is archived for
+replacement after the final method decision. Do not distribute its ZIP. The
+current response format guide is a legacy-format reference; the final-method
+human/GLB handoff has no new stimulus lock or responses yet.
+
 This directory gathers the audit record, experiment outputs, analysis scripts,
 protocols, reviewer mapping, attribution register, and a separate revised
 manuscript candidate. The previously submitted 01549 manuscript and round-two
