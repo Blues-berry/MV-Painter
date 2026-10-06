@@ -14,7 +14,7 @@ ambiguity and does not infer an editor decision or an unprovided review.
 | R1.3 — Distinguish texture variation from fidelity | Variation proxies are described as diagnostics only. Author visual review remains descriptive; no human responses exist. LLH human-fidelity claims have been withdrawn. | **CLOSED BY CLAIM REDUCTION, conditional on editorial acceptance.** The manuscript does not infer fidelity from variation metrics. |
 | R1.4 — Paired intervals, Edge-SSIM trade-off, no equivalence from zero-crossing CI | Paired intervals are reported; strict-276 Edge-SSIM appears for both GFL and GFH contrasts; practical margins are restricted to the prespecified LLH−LFM-exact endpoints. No broad non-inferiority/equivalence claim is made. | **SUBSTANTIALLY ADDRESSED.** The historical C3 comparisons remain nominal retrospective supplements. |
 | R1.5 — FAC reproducibility | FAC is omitted from the candidate and contributes no positive or negative evidence to its claims. The response draft states that FAC would need a complete release if reinstated. | **CLOSED BY SCOPE REDUCTION, conditional on acceptance.** No FAC reproducibility claim remains. |
-| R2.1 — Novelty beyond manually selected schedules | Candidate cites Scheduled Style Injection and narrows contribution to the tested MVPainter-style residual/cap path, residual measurement, object-level heterogeneity, and bounded texture endpoints. It disclaims general scheduling novelty. | **BLOCKING EDITORIAL JUDGMENT.** Scope correction does not prove contribution sufficiency. |
+| R2.1 — Novelty beyond manually selected schedules | Candidate cites Scheduled Style Injection and narrows contribution to the tested MVPainter-style residual/cap path, residual measurement, object-level heterogeneity, and bounded texture endpoints. E5's 174-generation development pilot passed numerical realization but found shallow cap exceedance on 30.4% of steps at the smallest tested perturbation; it provides no quality or dose-independent mechanism evidence. | **BLOCKING EDITORIAL JUDGMENT.** Scope correction and technical feasibility do not prove contribution sufficiency. Keep interactions conditional on the named profile/caps; do not use E5 to imply a matched-dose mechanism. |
 | R2.2 — CAI may formalize a post-hoc schedule | CAI is not presented as an independently predictive derivation or as the source of an optimum. | **CLOSED BY CLAIM REDUCTION.** |
 | R2.3 — Cross-backbone generalization | MV-Adapter (98 evaluable objects) and MVDiffusion (75-object CPBlock interface) are reported separately; no pooled effect or architecture-causal inference. | **CLOSED BY CLAIM REDUCTION for broad transfer claims.** General transfer is not established. |
 | R3 — Favorable review | No separate actionable issue is listed in the supplied text. | **No open item recorded.** It does not waive R1/R2 concerns. |
@@ -26,7 +26,11 @@ The page/line-mapped response candidate is in
 letter because the scientific text, asset terms, and submission metadata are
 not frozen. The candidate resolves several wording and statistical overclaims and adds a
 GLB-native unseen-view endpoint plus a retrospective C3/GFL comparison on a
-disjoint object cohort. It does not establish human-perceived fidelity,
+disjoint object cohort. A separate revision-era Fresh C3/GFL follow-up has
+downloaded its 600 locked screen assets; 594 pass basic geometry checks, while
+the 17-view render, decoded-pixel deduplication, and cohort freeze remain in
+progress. It has generated no method outputs. E5 is a
+development-only technical diagnostic. The candidate does not establish human-perceived fidelity,
 prospective C3 confirmation, seam consistency, full-PBR quality, or
 methodological novelty accepted by the venue. The response in
 `review/response_to_reviewers_draft.md` remains the earlier working draft.

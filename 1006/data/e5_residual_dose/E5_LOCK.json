@@ -1,0 +1,88 @@
+{
+  "alphas": [
+    0.005,
+    0.01,
+    0.02
+  ],
+  "audit_script": "/4T/CXY/MV-Painter/1006/scripts/audit_e5_residual_dose.py",
+  "audit_script_sha256": "c4ac04e0d8c3d848214cbd0480de40c56477359a5cd6bf0420cb6429d5aa3bfa",
+  "baseline_scale": {
+    "deep": 1.25,
+    "middle": 1.25,
+    "shallow": 0.5
+  },
+  "caps": {
+    "deep": 3.0,
+    "middle": 3.5,
+    "shallow": 0.8
+  },
+  "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+  "expected_generation_count": 174,
+  "groups": [
+    "deep",
+    "middle",
+    "shallow"
+  ],
+  "launcher_script": "/4T/CXY/MV-Painter/1006/scripts/launch_e5_residual_dose.py",
+  "launcher_script_sha256": "0e2f298458d3f81fcf7fb93661768e350e68fa3264c5628b3787c59c5b29f2b7",
+  "locked_at_utc": "2026-10-06T07:04:27.351383+00:00",
+  "outcomes_blind": true,
+  "output_images_persisted": false,
+  "pilot_script": "/4T/CXY/MV-Painter/1006/scripts/run_e5_residual_dose.py",
+  "pilot_script_sha256": "8189cf411ba30a4ff03b2f9e03559a54d1170f9be28ba6f93bd959b816ad2d59",
+  "probe_object_list": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+  "probe_object_list_sha256": "187185c6e94d5cf72a647b7c150b338429cee15d82da449678896bfb181f79f6",
+  "protocol": "/4T/CXY/MV-Painter/1006/evidence/protocols/E5_RESIDUAL_DOSE_FEASIBILITY_PROTOCOL_20261006.md",
+  "protocol_sha256": "73509177a0981aef5235c9aefd0cc0948e81cb874443ee4c08e10a69b10a651c",
+  "quality_metrics_computed": false,
+  "selected_objects": [
+    {
+      "object_idx": 0,
+      "uid": "00ba0a0c-35c7-5155-af89-e92eb557296f"
+    },
+    {
+      "object_idx": 4,
+      "uid": "07725124-0843-5b38-9a50-ed936851a091"
+    },
+    {
+      "object_idx": 9,
+      "uid": "0ddac33c-56ae-572b-b6fb-4a4957928218"
+    },
+    {
+      "object_idx": 13,
+      "uid": "ed8653d0-c70c-53dc-80e6-53228d51fa1b"
+    },
+    {
+      "object_idx": 16,
+      "uid": "138ca982-5a00-5c6a-bba1-6de61e99fe88"
+    },
+    {
+      "object_idx": 21,
+      "uid": "189d5d38-42e1-5969-a0b1-3b693f124900"
+    }
+  ],
+  "selected_original_indices": [
+    0,
+    4,
+    9,
+    13,
+    16,
+    21
+  ],
+  "source_hashes": {
+    "adapter_wrapper": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+    "checkpoint": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "config": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+    "data_utils": "e078f9e2cb3d85447f036fa4c0158929fa4e5f3c7f17571ed6bf0c6f7e7f94f3",
+    "generation_logic": "5da7fff22ea73b6d9500603d0905eda9a1ac9c44406346b259f3aba368b6ca13",
+    "metric_implementation": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+    "pipeline": "d3bdbaa9de1b0daed7613da8f39074ffb4d6751a1cca9843f55df3bb0357c36c",
+    "runner": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3"
+  },
+  "steps": 50,
+  "windows": [
+    1,
+    3,
+    5
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06",
+  "updated_utc": "2026-10-06T08:08:21+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -256,6 +256,138 @@
       "path": "final/round2/scientific_validation_v3/continuation_20261006/HUMAN_RESPONSE_GUIDE_ZH.md",
       "sha256": "62674efe20d078c5bf063e542231896a6464da78636b16e3f74c30a296c44f1e",
       "role": "Frozen human-study two-way participant/object bootstrap and eight-endpoint Holm plan."
+    },
+    {
+      "source_id": "e5_protocol",
+      "path": "1006/evidence/protocols/E5_RESIDUAL_DOSE_FEASIBILITY_PROTOCOL_20261006.md",
+      "sha256": "73509177a0981aef5235c9aefd0cc0948e81cb874443ee4c08e10a69b10a651c",
+      "role": "Frozen development-only residual-dose feasibility protocol; not a quality experiment."
+    },
+    {
+      "source_id": "e5_lock",
+      "path": "1006/data/e5_residual_dose/E5_LOCK.json",
+      "sha256": "d189bcf02a3608ba410992a2502828c3b36453e4cf617f06da45a9c239a25813",
+      "role": "Pre-output E5 identity lock, cohort indices, scales, caps, scripts and source hashes."
+    },
+    {
+      "source_id": "e5_technical_gate",
+      "path": "1006/data/e5_residual_dose/E5_TECHNICAL_GATE.json",
+      "sha256": "ee28cc6154fff3ffeedb9a1def9c4a848f88a758a41704ba9e7321fd614d3129",
+      "role": "174-generation numerical implementation gate; technical feasibility only."
+    },
+    {
+      "source_id": "e5_cap_summary",
+      "path": "1006/data/e5_residual_dose/E5_CAP_CONTEXT_SUMMARY.json",
+      "sha256": "ff56ecbe819b5329b4a8ae804092c04ab0b1e2511cc47d6600ceb44ed4aa9942",
+      "role": "Descriptive cap-context analysis; shallow exceeds native cap at all tested alphas."
+    },
+    {
+      "source_id": "e5_report",
+      "path": "1006/evidence/audits/E5_RESIDUAL_DOSE_FEASIBILITY_REPORT_20261006.md",
+      "sha256": "d787240691655a736210b9c353d68393c40be944ce24ebba9f530453a2f2a93d",
+      "role": "Reviewer interpretation and scientific scope of E5."
+    },
+    {
+      "source_id": "e5_cap_analysis_code",
+      "path": "1006/scripts/summarize_e5_cap_context.py",
+      "sha256": "96d55c172812c054c40ada84a4f8db5f03af60dc2eae1d4e0d3f41395452613d",
+      "role": "Hash-indexed descriptive cap-context summarizer; did not read quality metrics."
+    },
+    {
+      "source_id": "e5_technical_audit_code",
+      "path": "1006/scripts/audit_e5_residual_dose.py",
+      "sha256": "c4ac04e0d8c3d848214cbd0480de40c56477359a5cd6bf0420cb6429d5aa3bfa",
+      "role": "Frozen technical audit implementation for E5."
+    },
+    {
+      "source_id": "fresh_c_protocol",
+      "path": "1006/evidence/protocols/FRESH_C_C3_CONFIRMATION_PROTOCOL_20261006.md",
+      "sha256": "489dde225e65c7828baa15ab5fc6bc83974fcbc8268ee1f985afeda100d3eb36",
+      "role": "Locked revision-era C3 follow-up protocol; not the original preregistration."
+    },
+    {
+      "source_id": "fresh_c_queue_lock",
+      "path": "1006/data/fresh_c/CANDIDATE_QUEUE_LOCK.json",
+      "sha256": "9a7ee93cad6ac974f6efc186254f3736989dadc759b53663d1902798c540f468",
+      "role": "Pre-output Objaverse revision, 1,000-candidate order and license/exclusion lock."
+    },
+    {
+      "source_id": "fresh_c_download_status",
+      "path": "1006/data/fresh_c/ASSET_DOWNLOAD_STATUS.json",
+      "sha256": "e08a27b77c94fa436cae109591acce15c2363b3d214b58221d1ede029ef1f9e3",
+      "role": "Corrected and provenance-documented first screen-batch download status."
+    },
+    {
+      "source_id": "fresh_c_download_manifest",
+      "path": "1006/data/fresh_c/asset_download_manifest.csv",
+      "sha256": "4f93ebc44e90b2f259739f4b44fdb3ae9a372a37c62d2ad8835d97d268500df8",
+      "role": "Per-asset rank, download status, byte count and SHA-256 for 600 candidates."
+    },
+    {
+      "source_id": "fresh_c_asset_audit",
+      "path": "1006/data/fresh_c/ASSET_IDENTITY_TECHNICAL_AUDIT.json",
+      "sha256": "63f28dae7466d1da82fc3996834bff4f9ae27f7784fd865c6c5a71b10dd06a63",
+      "role": "600-asset byte/hash and GLB geometry screen; no historical byte duplicates."
+    },
+    {
+      "source_id": "fresh_c_asset_audit_rows",
+      "path": "1006/data/fresh_c/candidate_asset_technical_audit.csv",
+      "sha256": "a6f1b43965faf8b03092988dc06dcedbe8e7bae02671a75bca26ddacf76b31d1",
+      "role": "Per-candidate Fresh C basic asset-screen rows."
+    },
+    {
+      "source_id": "fresh_c_preparation_code",
+      "path": "1006/scripts/prepare_fresh_c_pool.py",
+      "sha256": "f2cd2cab7dda8aaad6de7deda262dc033a7b27a0dc12f2d22c0b8f7e3a514502",
+      "role": "Current asset/render/depth/pixel screen and cohort-freeze implementation, including reserve and stage-specific identity rules."
+    },
+    {
+      "source_id": "blocker_remediation_plan",
+      "path": "1006/gates/BLOCKER_REMEDIATION_PLAN_20261006.md",
+      "sha256": "546637bdbdbb55cd59cb6b51b89d0447ea5252ac665346cb96ec88e214038ef7",
+      "role": "Action map for R1/R2/reproducibility/license blockers with conditional remedies and fallbacks."
+    },
+    {
+      "source_id": "fresh_c_input_screen_report",
+      "path": "1006/evidence/audits/FRESH_C_INPUT_SCREEN_20261006.md",
+      "sha256": "0d5db959b120e7bc1b37fc9eb452eecf2e3cbbc7fe6ef0777fb3768924a3b906",
+      "role": "Input-stage audit, including pre-freeze reserve-branch correction; no method outcomes."
+    },
+    {
+      "source_id": "fresh_c_cohort_status_test",
+      "path": "1006/scripts/test_fresh_c_cohort_status.py",
+      "sha256": "94ffadf4c5004892941feee0a04346a2c414fd6043a58506cb240ae2d2016d6a",
+      "role": "Boundary tests for target/minimum N and reserve exhaustion."
+    },
+    {
+      "source_id": "fresh_c_remediation_log",
+      "path": "1006/evidence/audits/FRESH_C_REMEDIATION_ACTION_LOG_20261006.md",
+      "sha256": "cf3cab425d4de72f278f9dee2b4d7e6444c6db4190272b3e4a2de78326a258fe",
+      "role": "Execution chronology with actual render-stage source identity, preflight hashes, and protocol corrections."
+    },
+    {
+      "source_id": "fresh_c_downloader_code",
+      "path": "1006/scripts/download_fresh_c_assets.py",
+      "sha256": "2d0eeb1364d1fc5455e06b0be3db93212f9365485ce087fb5456ab9e50d6cce9",
+      "role": "Pinned-revision downloader with provenance-preserving reserve-batch append and accurate status labels."
+    },
+    {
+      "source_id": "package_source_inventory_builder",
+      "path": "1006/scripts/build_source_inventory.py",
+      "sha256": "7b84eec89cd5bf844105f10c14af6140056cbe4eb3540fe99a6469ae61d96204",
+      "role": "Checksum builder excludes local-only Fresh C and E5 asset/run payloads from the public package inventory."
+    },
+    {
+      "source_id": "manuscript_preservation_recheck",
+      "path": "1006/evidence/audits/MANUSCRIPT_PRESERVATION_RECHECK_20261006.json",
+      "sha256": "de7856f2e45bb33295189406ad25b4217d0d6a030e77c978f90725a00180a17f",
+      "role": "15 submitted/round-two source files rehashed after current continuation; all match entry hashes."
+    },
+    {
+      "source_id": "fresh_c_render_stage_identity",
+      "path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY.json",
+      "sha256": "a23903e958d8b08310b7c6bc8c4123d22c8ba5aed4a62a452c8c750659d85a18",
+      "role": "Active 17-view input-render stage identity, including start time, loaded driver hash, UID-list hash, and renderer assets."
     }
   ],
   "claims": [
@@ -659,7 +791,7 @@
     {
       "claim_id": "C07",
       "topic": "Layer × Window interaction and 2D control law",
-      "authority_status": "DISCOVERY_ONLY_DOSE_LIMITED",
+      "authority_status": "DISCOVERY_ONLY_NATIVE_DOSE_CAP_CONSTRAINED",
       "reviewer_concerns": [
         "R2.1",
         "R2.3"
@@ -668,32 +800,43 @@
         "a2_interaction",
         "a3b_analysis",
         "a3b_dose",
-        "mv_adapter"
+        "mv_adapter",
+        "e5_protocol",
+        "e5_lock",
+        "e5_technical_gate",
+        "e5_cap_summary",
+        "e5_report",
+        "e5_cap_analysis_code",
+        "e5_technical_audit_code"
       ],
       "cohort": "A2/A3 historical discovery plus FRESH_CONFIRM_B A3b; MV-Adapter is a separate architecture/intervention.",
       "estimate": {
         "A2_native_dose": "Strong corrected interaction map; discovery-level.",
         "A3b_shared_three_layer_dose_support_rows": 0,
-        "A3b_total_rows": 2250
+        "A3b_total_rows": 2250,
+        "E5_technical_feasibility": "PASS: 174 generations; alpha-zero exact output identity for 6/6 development objects; 4,860/4,860 target-read steps finite and within 5% relative-dose error.",
+        "E5_cap_context": "No exceedance for deep/middle; shallow exceeds native cap 0.8 in 164/540 steps (30.4%) at alpha=0.005, 211/540 (39.1%) at 0.01, and 360/540 (66.7%) at 0.02."
       },
-      "provenance_limit": "A3b dose-adjusted test is extrapolative with zero three-layer common support; A2 and A3 are not independent replications; MV-Adapter result uses a different intervention.",
-      "allowed_wording": "A native-dose response surface was observed on the primary backbone; equal-dose/dose-independent interaction remains unidentified.",
+      "provenance_limit": "A3b dose-adjusted test is extrapolative with zero three-layer common support; A2 and A3 are not independent replications; MV-Adapter result uses a different intervention. E5 reused six development probes, tested numerical feasibility only, and found shallow cap incompatibility; it supplies no quality or equal-dose causal evidence.",
+      "allowed_wording": "A native-dose layer–window response surface was observed on the primary backbone under the named requested/effective scale and cap profile. Equal-dose and dose-independent interaction remain unidentified; the tested shallow residual perturbation is cap-incompatible.",
       "prohibited_wording": [
         "validated dose-independent Layer×Time mechanism",
+        "equal-dose causal Layer×Window effect",
         "full 2D law is necessary for deployment gains",
-        "causal architecture-dependent interaction"
+        "causal architecture-dependent interaction",
+        "E5 validates the scientific interaction mechanism"
       ],
       "supersedes": [
         "unqualified mechanism and schedule-necessity wording"
       ],
-      "next_gate": "Do not launch an interaction-scale GPU search without a newly registered question, common support and untouched cohort.",
+      "next_gate": "For this revision, retain only profile-conditional empirical response language or remove the mechanistic claim; do not retune alpha, shallow scale or grouping after E5. Any future mechanism test needs a newly registered cap-feasible intervention and an untouched cohort.",
       "comparison": "Layer×Window response across three layer groups and five 10-step windows; native-dose A2 map and bounded-dose A3b map.",
-      "registration_status": "A2 corrected Wald/GEE result is discovery reanalysis; A3b conditions are frozen, but dose target failed and adjusted interaction is not identified.",
+      "registration_status": "A2 corrected Wald/GEE result is discovery reanalysis; A3b conditions were frozen but dose target failed; E5 protocol was frozen before E5 outputs and remained development-only, with quality outcomes unmeasured.",
       "selection_status": "A2 uses FRESH_CONFIRM_300 and A3b uses disjoint FRESH_CONFIRM_B; the A2/A3 overlap is not an independent replication.",
-      "intervention_profile": "Requested/effective residual scales recorded per cell; A3b has zero three-layer shared-dose-support rows out of 2,250.",
+      "intervention_profile": "A2 uses native requested/effective profiles; A3b has zero three-layer shared-dose-support rows out of 2,250; E5 numeric additive dose is feasible but shallow exceeds native cap at every frozen alpha tested.",
       "statistical_unit": "Object cluster; repeated layer/window cells within object.",
       "statistical_method": "Cluster-robust Wald for interaction and repeated-measures GEE; A3b cell intervals from paired object bootstrap as specified in locked protocol.",
-      "multiplicity": "A3b cell tests and omnibus interaction follow frozen Holm family; dose-adjusted significance is extrapolative and cannot establish equal-dose mechanism."
+      "multiplicity": "A3b cell tests and omnibus interaction follow frozen Holm family; dose-adjusted significance is extrapolative and cannot establish equal-dose mechanism. E5 has no quality endpoint and no inferential test."
     },
     {
       "claim_id": "C08",
@@ -941,22 +1084,38 @@
       "authoritative_sources": [
         "artifact_archive_audit",
         "strict276_row_audit",
-        "glb_lineage"
+        "glb_lineage",
+        "fresh_c_protocol",
+        "fresh_c_queue_lock",
+        "fresh_c_download_status",
+        "fresh_c_download_manifest",
+        "fresh_c_asset_audit",
+        "fresh_c_asset_audit_rows",
+        "fresh_c_preparation_code",
+        "blocker_remediation_plan",
+        "fresh_c_cohort_status_test",
+        "fresh_c_remediation_log",
+        "fresh_c_input_screen_report",
+        "fresh_c_downloader_code",
+        "package_source_inventory_builder",
+        "manuscript_preservation_recheck",
+        "fresh_c_render_stage_identity"
       ],
       "cohort": "Evidence generators span distinct campaigns; no claim of one shared runner across all cohorts.",
       "estimate": {
         "paper_wide_tables_figures_rebuilt": "partial",
         "glb_lineage": "PASS for stored N=20 scope",
-        "human_response_archive": "0 current responses"
+        "human_response_archive": "0 current responses",
+        "fresh_c_input_screen": "600/600 downloads; 594 pass initial geometry, 6 invalid; 0 byte duplicates among 1,965 historical GLBs; render/pixel/coverage screen pending."
       },
-      "provenance_limit": "Old GFL/GC3 tensor input hashes incomplete; historical runner identities are not consistently recorded; paper-wide table/figure reconstruction and portable clean-clone pass remain incomplete; seam metric unresolved.",
+      "provenance_limit": "Old GFL/GC3 tensor input hashes incomplete; historical runner identities are not consistently recorded; paper-wide table/figure reconstruction and portable clean-clone pass remain incomplete; seam metric unresolved. Fresh C currently has only its input-stage audit; no frozen 276–300 object cohort or method outputs exist yet.",
       "allowed_wording": "State exact campaign-level provenance and the current N=20 GLB lineage audit scope.",
       "prohibited_wording": [
         "fully end-to-end independently reproducible manuscript",
         "all historic arms share an identical runner and input realization"
       ],
       "supersedes": [],
-      "next_gate": "After human disposition and permitted rewrite, reconstruct all tables/figures, resolve seam, and run a portable clean-clone plus final adversarial reviewer pass.",
+      "next_gate": "Complete 17-view/depth, coverage and decoded-pixel duplicate checks; freeze cohort/input hashes before inference, then pass full row/input/cap/output integrity and portable paper-wide reconstruction.",
       "comparison": "Reconstruction and provenance across distinct evidence campaigns; not one pooled comparison.",
       "registration_status": "Campaign-specific locks and analysis records; historical arms vary in provenance completeness.",
       "selection_status": "Cohort identity and independence must be read from each source; no cohort interchangeability.",
@@ -991,6 +1150,11 @@
       "gate": "scientific_evidence_freeze",
       "status": "NO",
       "evidence": "Human data and final claim disposition remain open."
+    },
+    {
+      "gate": "fresh_c_confirmation",
+      "status": "IN_PROGRESS_ASSET_SCREEN",
+      "evidence": "600/600 downloads, 594 initial GLB-geometry-valid, 0 historical byte duplicates; render/coverage/pixel check and cohort freeze pending."
     }
   ],
   "manuscript_policy": {

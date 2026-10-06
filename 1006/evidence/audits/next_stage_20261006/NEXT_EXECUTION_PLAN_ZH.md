@@ -220,7 +220,7 @@ layer/timestep scheduling 先例；完整 related-work 对照仍未结束，本�
 | E2 效应小或浅层方向不一致 | 撤回“深度配置第一阶占优”的强叙事，保留尺度语义与有限效应事实。 |
 | 人工 LLH 不胜或效果不确定 | 删除人类保真/优势主张；保留该负证据，不改 pair 或人群。 |
 | GLB 依然混合 | 维持 endpoint trade-off，撤回整体 3D 优势；不靠只选 LPIPS 解决 R1。 |
-| E5 不可行 | 结束强 interaction 识别路线；不让失败阻碍有边界实证工作的完成。 |
+| E5 数值实现通过但浅层剂量越过 native cap | 不启动当前修订的三层等剂量正式试验；将 Layer×Window 结果限于已测请求值/实际 cap profile，不作 dose-independent 机制推断。 |
 | R2 仍认为贡献不足 | 明确记录创新性/期刊适配风险；不能由 p 值、改名或降级主张伪造通过。 |
 
 科学证据冻结：所有决定保留的主张有对应证据/范围，人工已按规则完成或由用户明确
@@ -268,3 +268,26 @@ layer/timestep scheduling 先例；完整 related-work 对照仍未结束，本�
   contribution adequacy。当前没有由本次论文视角审查引出的新 GPU 生成任务。
 - **最终状态未变：** `SCIENTIFIC_EVIDENCE_FREEZE=NO`、`SUBMISSION_READY=NO`、
   `NOT READY / HOLD`。提交稿仍冻结，所有正文修改待证据冻结后执行。
+
+## 后续执行增补 — 2026-10-06 07:04 UTC
+
+- **E5 已按独立技术协议冻结并完成。** 六个既有开发对象、原对象索引与
+  `object_seed=42+index` 固定；174 次生成只存输出张量哈希，不生成或查看图像质量
+  指标。每个 wrapper 在每个去噪步会经历 reference-write 与 target-read 两次调用；
+  reference-write 原样通过，标准化扰动仅加在 target-read。runner、wrapper、reference
+  pipeline、数据/生成/指标代码、checkpoint、config、pilot、auditor 与 launcher
+  均在 `1006/data/e5_residual_dose/E5_LOCK.json` 中哈希锁定。CPU 剂量公式/FP16
+  检查与 GPU 数值门槛 PASS：alpha-zero 六对象全相等，4860 个 target-read 步骤全部有限且
+  relative-dose error≤5%。但 shallow 的 native cap=0.8 在 alpha=0.005 时已有 164/540
+  步骤（30.4%）超过等效总尺度；deep/middle 未超过。按冻结规则不调 alpha 或 grouping，
+  因而不启动三层 cap-respecting dose-match 正式实验；Layer×Window 结果仅限于原 profile/cap。
+  完整结论见 `evidence/audits/E5_RESIDUAL_DOSE_FEASIBILITY_REPORT_20261006.md`。
+- **Fresh C 输入筛查已完成第一阶段。** 600/600 资产下载成功、零下载失败；同本地
+  1,965 个历史 GLB 做字节哈希比较后无重复，600 个中 594 个几何可读、6 个无效。
+  594 已超过目标 N=300；正在做 17 视图/深度渲染、coverage 与 decoded-pixel 去重，
+  完成 cohort freeze 前不启动 Fresh C 推理。首批 downloader 是源码更新前启动的旧进程，
+  其 SHA-256 已从先前提交恢复并写入 download status；“zero failures”与旧状态文字矛盾已在
+  元数据中显式规范化，原下载 manifest 未改。详见 `FRESH_C_INPUT_SCREEN_20261006.md`。
+- **优先级保持。** Fresh C 的身份、行数、共享输入、cap、预测与 residual 完整性门禁
+  通过前不解盲；E5 技术通过与浅层 cap 限制均保留。人类答卷、两项来源级授权和 R2.1
+  贡献充分性仍是独立未闭合事项。01549 原稿和提交版 PDF 均保持不动。

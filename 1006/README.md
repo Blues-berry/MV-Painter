@@ -22,15 +22,29 @@ transfer.
 The candidate compiles, but the final readiness verdict is **HOLD**. This is
 not a claim that a reviewer or editor accepted the claim reduction. Human
 responses are still absent; the C3/GFL analysis on FRESH_CONFIRM_B is
-retrospective; the strict-276 provenance chain is incomplete; asset
-redistribution needs two source-level checks; and contribution adequacy
+retrospective; the strict-276 provenance chain is incomplete; two panel asset
+licenses still need source-level checks; and contribution adequacy
 remains a substantive venue risk after comparison with Scheduled Style
 Injection. A new, disjoint Fresh C3-versus-GFL follow-up is now in progress:
 its cohort protocol and 1,000-ID technical queue were frozen before any method
-output. The follow-up is explicitly revision-era and does not replace the
-original preregistration. See `evidence/audits/FRESH_C_REMEDIATION_ACTION_LOG_20261006.md`,
+output. All 600 screen assets downloaded without failure; 594 pass the basic
+geometry screen and are now in the frozen 17-view render/duplicate audit. No
+method outputs exist. The follow-up is explicitly revision-era and does not
+replace the original preregistration. See
+`evidence/audits/FRESH_C_INPUT_SCREEN_20261006.md`,
+`evidence/audits/FRESH_C_REMEDIATION_ACTION_LOG_20261006.md`,
 `gates/FINAL_READINESS_VERDICT.md`, and `gates/REVIEWER_CLOSURE_FINAL.md` for
-the controlling decisions and residual gates.
+the controlling decisions and residual gates; `gates/BLOCKER_REMEDIATION_PLAN_20261006.md`
+maps each open reviewer item to a feasible action and an honest fallback. A separate E5 technical pilot
+completed on six already-used development objects: its alpha-zero and numeric
+precision gates passed, but the shallow cap was exceeded in 30.4% of steps even
+at the smallest predeclared perturbation. It therefore supplies no
+cap-respecting three-group dose match and no quality or mechanism evidence;
+see `evidence/audits/E5_RESIDUAL_DOSE_FEASIBILITY_REPORT_20261006.md`.
+The GitHub task branch is public and currently contains the contact sheet and
+compiled supplement with the two license-uncertain derivatives. It is a review
+snapshot with an open rights gate, not a license-cleared release; resolve those
+assets or remove/rebuild the affected artifacts before final publication.
 
 ## Evidence authority and supersession
 

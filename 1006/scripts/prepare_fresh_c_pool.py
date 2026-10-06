@@ -32,6 +32,16 @@ VIEWS = tuple(f"{i:03d}" for i in range(17))
 CHECK_VIEWS = ("000", "012", "013", "014", "015", "016")
 
 
+def cohort_status(valid_count: int, max_screened_rank: int) -> str:
+    if valid_count < TARGET_N and max_screened_rank < 1000:
+        return "RESERVE_BLOCK_REQUIRED"
+    if valid_count < MIN_N:
+        return "BLOCKED_TECHNICAL_COHORT_BELOW_MINIMUM"
+    if valid_count < TARGET_N:
+        return "FROZEN_REDUCED_TECHNICAL_COHORT_PRECISION_TARGET_UNMET"
+    return "FROZEN_FRESH_C_300"
+
+
 def sha256_file(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -95,7 +105,14 @@ def cmd_asset_audit() -> None:
     import trimesh
 
     queue = read_queue()
+    queue_lock = json.loads((DATA / "CANDIDATE_QUEUE_LOCK.json").read_text())
+    if queue_lock["candidate_queue_sha256"] != sha256_file(DATA / "candidate_screen_queue.csv"):
+        raise RuntimeError("candidate queue differs from its pre-output lock")
+    if queue_lock["dataset_revision"] != "21e4e142159e2153706c23a3a02e55cec5591cea":
+        raise RuntimeError("candidate source revision differs from the frozen Objaverse revision")
     downloads = read_downloads()
+    if not set(downloads).issubset({row["uid"] for row in queue}):
+        raise RuntimeError("download manifest contains a UID outside the frozen candidate queue")
     screen = [r for r in queue if r["uid"] in downloads]
     old_hashes: dict[str, list[str]] = {}
     old_glbs = historical_glbs()
@@ -170,6 +187,8 @@ def cmd_asset_audit() -> None:
         "historical_byte_duplicate_candidates": sum(r["status"] == "duplicate_historical_glb_bytes" for r in new_rows),
         "candidate_byte_duplicate_groups": [v for v in hash_groups.values() if len(v) > 1],
         "glb_load_valid_count": len(valid),
+        "download_status_sha256": sha256_file(DATA / "ASSET_DOWNLOAD_STATUS.json"),
+        "preparation_script_sha256": sha256_file(Path(__file__).resolve()),
         "asset_audit_sha256": sha256_file(report_path),
         "status": "TECHNICAL_SCREEN_ONLY_NO_METHOD_OUTPUTS",
     }
@@ -208,6 +227,7 @@ def _render_one(uid: str) -> tuple[str, str]:
 
 def cmd_render() -> None:
     uids = [line.strip() for line in (DATA / "glb_load_valid_600.txt").read_text().splitlines() if line.strip()]
+    record_render_stage(uids)
     RENDERS.mkdir(parents=True, exist_ok=True)
     results: dict[str, str] = {}
     with concurrent.futures.ProcessPoolExecutor(max_workers=RENDER_WORKERS) as pool:
@@ -220,6 +240,45 @@ def cmd_render() -> None:
     path = DATA / "render_log_600.json"
     path.write_text(json.dumps(results, indent=2) + "\n")
     print(f"render log: {path} sha256={sha256_file(path)}")
+
+
+def record_render_stage(uids: list[str]) -> None:
+    """Record the exact driver identity for each initial/reserve render pass."""
+    identity_path = DATA / "FRESH_C_RENDER_STAGE_IDENTITY.json"
+    blender_info = subprocess.run([str(BLENDER), "--version"], capture_output=True,
+                                  text=True, timeout=30)
+    stage = {
+        "stage_index": 1,
+        "started_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "candidate_count": len(uids),
+        "uid_list_sha256": hashlib.sha256("\n".join(uids).encode()).hexdigest(),
+        "source_uid_list_file_sha256": sha256_file(DATA / "glb_load_valid_600.txt"),
+        "asset_audit_json_sha256": sha256_file(DATA / "ASSET_IDENTITY_TECHNICAL_AUDIT.json"),
+        "download_manifest_sha256": sha256_file(DATA / "asset_download_manifest.csv"),
+        "candidate_queue_sha256": sha256_file(DATA / "candidate_screen_queue.csv"),
+        "preparation_script_sha256": sha256_file(Path(__file__).resolve()),
+        "blender_binary_sha256": sha256_file(BLENDER),
+        "blender_script_sha256": sha256_file(BLENDER_SCRIPT),
+        "hdri_sha256": sha256_file(HDRI),
+        "blender_version_output": (blender_info.stdout or blender_info.stderr).splitlines()[:4],
+        "resolution": [512, 512], "views": 17, "renderer": "Cycles",
+    }
+    if identity_path.is_file():
+        identity = json.loads(identity_path.read_text())
+        stages = identity.setdefault("stages", [])
+        key = (stage["uid_list_sha256"], stage["preparation_script_sha256"])
+        existing = next((s for s in stages if (s["uid_list_sha256"], s["preparation_script_sha256"]) == key), None)
+        if existing:
+            return
+        stage["stage_index"] = len(stages) + 1
+        stages.append(stage)
+    else:
+        identity = {
+            "protocol": "fresh_c3_input_render_stage_v1",
+            "stages": [stage],
+            "method_outputs_exist": False,
+        }
+    identity_path.write_text(json.dumps(identity, indent=2) + "\n")
 
 
 def convert_depth_one(uid: str) -> tuple[str, str]:
@@ -300,6 +359,10 @@ def cmd_freeze() -> None:
     asset_rows = list(csv.DictReader((DATA / "candidate_asset_technical_audit.csv").open(newline="")))
     render_log = json.loads((DATA / "render_log_600.json").read_text())
     depth_log = json.loads((DATA / "depth_convert_log_600.json").read_text())
+    render_identity_path = DATA / "FRESH_C_RENDER_STAGE_IDENTITY.json"
+    if not render_identity_path.is_file():
+        raise RuntimeError("render stage identity is missing; cannot freeze cohort")
+    render_identity = json.loads(render_identity_path.read_text())
     asset_by_uid = {r["uid"]: r for r in asset_rows}
     queue_by_uid = {r["uid"]: r for r in queue}
 
@@ -366,16 +429,19 @@ def cmd_freeze() -> None:
         if row["uid"] in duplicate_uids:
             row["validity"] = "duplicate_candidate_decoded_17_view_signature"
     valid_pool = sorted(r["uid"] for r in candidate_rows if r["validity"] == "technical_valid_candidate")
-    if len(valid_pool) < MIN_N:
-        status = "BLOCKED_TECHNICAL_COHORT_BELOW_MINIMUM"
+    max_screened_rank = max((int(r["queue_rank"]) for r in asset_rows), default=0)
+    status = cohort_status(len(valid_pool), max_screened_rank)
+    if status == "RESERVE_BLOCK_REQUIRED":
+        # The locked protocol requires screening reserve blocks until N=300 or
+        # the 1,000-candidate queue is exhausted; 276–299 is not an early stop.
         selected: list[str] = []
-    elif len(valid_pool) < TARGET_N:
-        status = "FROZEN_REDUCED_TECHNICAL_COHORT_PRECISION_TARGET_UNMET"
+    elif status == "BLOCKED_TECHNICAL_COHORT_BELOW_MINIMUM":
+        selected = []
+    elif status == "FROZEN_REDUCED_TECHNICAL_COHORT_PRECISION_TARGET_UNMET":
         selected = valid_pool
     else:
         rng = np.random.default_rng(SEED)
         selected = sorted(rng.choice(valid_pool, size=TARGET_N, replace=False).tolist())
-        status = "FROZEN_FRESH_C_300"
 
     audit_csv = DATA / "candidate_technical_validity_audit.csv"
     with audit_csv.open("w", newline="") as f:
@@ -383,6 +449,26 @@ def cmd_freeze() -> None:
         writer.writeheader()
         writer.writerows(candidate_rows)
     selected_path = DATA / "fresh_c_objects.txt"
+    if status == "RESERVE_BLOCK_REQUIRED":
+        # Record the technical screen but do not create a cohort identity that
+        # could be mistaken for the final cohort before the reserve is checked.
+        selected_path.unlink(missing_ok=True)
+        summary = {
+            "status": status, "candidate_screen_n": len(candidate_rows),
+            "technical_valid_unique_n": len(valid_pool), "selected_n": 0,
+            "queue_max_rank_screened": max_screened_rank,
+            "reserve_next_rank": max_screened_rank + 1,
+            "target_count": TARGET_N, "minimum_count": MIN_N,
+            "method_outputs_exist": False,
+            "candidate_validity_counts": {},
+        }
+        for row in candidate_rows:
+            key = row["validity"]
+            summary["candidate_validity_counts"][key] = summary["candidate_validity_counts"].get(key, 0) + 1
+        (DATA / "FRESH_C_COHORT_AUDIT.json").write_text(json.dumps(summary, indent=2) + "\n")
+        print(json.dumps(summary, indent=2))
+        return
+
     selected_path.write_text("".join(uid + "\n" for uid in selected))
 
     objects = []
@@ -415,12 +501,19 @@ def cmd_freeze() -> None:
         "dataset_revision": "21e4e142159e2153706c23a3a02e55cec5591cea",
         "candidate_queue_lock_sha256": sha256_file(DATA / "CANDIDATE_QUEUE_LOCK.json"),
         "candidate_queue_sha256": sha256_file(DATA / "candidate_screen_queue.csv"),
+        "download_status_sha256": sha256_file(DATA / "ASSET_DOWNLOAD_STATUS.json"),
+        "preparation_script_sha256": sha256_file(Path(__file__).resolve()),
+        "cohort_freeze_script_sha256": sha256_file(Path(__file__).resolve()),
+        "render_stage_identity_sha256": sha256_file(render_identity_path),
+        "render_stages": render_identity["stages"],
+        "asset_audit_script_sha256": json.loads((DATA / "ASSET_IDENTITY_TECHNICAL_AUDIT.json").read_text())["preparation_script_sha256"],
         "asset_download_manifest_sha256": sha256_file(DATA / "asset_download_manifest.csv"),
         "asset_technical_audit_sha256": sha256_file(DATA / "candidate_asset_technical_audit.csv"),
         "render_log_sha256": sha256_file(DATA / "render_log_600.json"),
         "depth_log_sha256": sha256_file(DATA / "depth_convert_log_600.json"),
         "selected_uid_list_sha256": sha256_file(selected_path),
         "technical_pool_count": len(valid_pool), "selected_count": len(selected),
+        "queue_max_rank_screened": max_screened_rank,
         "target_count": TARGET_N, "minimum_count": MIN_N,
         "selection_seed": SEED,
         "selection_rule": "numpy.default_rng(20261006).choice(sorted valid pool, min(300, pool size), replace=False); if pool is 276-299 use the entire sorted pool",

@@ -18,8 +18,8 @@ EXCLUDED_RELATIVE_PREFIXES = (
     "data/fresh_c/source_cache/",
     "data/fresh_c/assets/",
     "data/fresh_c/renders/",
-    "data/fresh_c/runs/c3_confirmation/predictions/",
-    "data/fresh_c/runs/c3_confirmation/residual_logs/",
+    "data/fresh_c/runs/",
+    "data/e5_residual_dose/runs/",
 )
 
 
