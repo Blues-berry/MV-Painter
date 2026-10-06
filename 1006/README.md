@@ -52,7 +52,8 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
 ## Contents
 
 - `evidence/audits/`: cohort, statistical, renderer, interaction, narrative,
-  cross-interface, integrity, and provenance reports.
+  cross-interface, integrity, provenance, and comparative paper-revision
+  strategy reports.
 - `evidence/protocols/` and `logs/fresh_b/`: frozen analysis protocols,
   human-study rules, B locks, integrity records, and execution logs. No human
   responses are present.
@@ -74,6 +75,10 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
   and a page/line-mapped response candidate. Neither is an editor decision or
   proof that the unresolved novelty/fidelity concerns were accepted.
 - `gates/`: current release, reviewer-closure, and next-action decisions.
+- `evidence/audits/REVISION_STRATEGY_COMPARATIVE_EVIDENCE_20261006_ZH.md`:
+  literature-based comparison of revision routes and a reviewer-mapped
+  evidence plan. It recommends an 01549-continuity revision using 1006 as the
+  evidence authority; it does not change the manuscript or readiness verdict.
 - `source_inventory.json` and `SHA256SUMS.txt`: package-relative provenance
   and integrity records.
 
