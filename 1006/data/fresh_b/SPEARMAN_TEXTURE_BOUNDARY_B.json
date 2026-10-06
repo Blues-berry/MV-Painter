@@ -1,0 +1,215 @@
+{
+  "a": "layer_llh",
+  "b": "native_gfl",
+  "n": 150,
+  "tests": {
+    "fg_psnr": {
+      "metric": "fg_psnr",
+      "gt_fg_lap_var": {
+        "rho": -0.5379563536156915,
+        "ci95": [
+          -0.6446991421840672,
+          -0.40960184897104646
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "gt_fg_rgb_std": {
+        "rho": -0.2883488155028979,
+        "ci95": [
+          -0.45082528112358455,
+          -0.11414293968620308
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0018,
+        "p_bootstrap_plus_one": 0.001999800019998
+      },
+      "gt_fg_grad_mag": {
+        "rho": -0.4755215787368108,
+        "ci95": [
+          -0.5947887461664687,
+          -0.33594150851147386
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "gt_fg_hf_energy": {
+        "rho": -0.623666829636844,
+        "ci95": [
+          -0.7137565225120787,
+          -0.5128503489043721
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "coverage": {
+        "rho": -0.06777367883016709,
+        "ci95": [
+          -0.22983634828213523,
+          0.09991741855193095
+        ],
+        "bootstrap_extreme_count_p_raw": 0.4284,
+        "p_bootstrap_plus_one": 0.42855714428557146
+      }
+    },
+    "fg_lpips": {
+      "metric": "fg_lpips",
+      "gt_fg_lap_var": {
+        "rho": 0.6651940086225748,
+        "ci95": [
+          0.5558436374949741,
+          0.753284679319046
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "gt_fg_rgb_std": {
+        "rho": 0.26426952308990287,
+        "ci95": [
+          0.08742424107737716,
+          0.43824676652293626
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0044,
+        "p_bootstrap_plus_one": 0.0045995400459954
+      },
+      "gt_fg_grad_mag": {
+        "rho": 0.623261478287895,
+        "ci95": [
+          0.4991397839903766,
+          0.7260949375527466
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "gt_fg_hf_energy": {
+        "rho": 0.6466367394106105,
+        "ci95": [
+          0.5463688163918143,
+          0.7295601582292208
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0,
+        "p_bootstrap_plus_one": 0.00019998000199980003
+      },
+      "coverage": {
+        "rho": -0.20638606160272838,
+        "ci95": [
+          -0.36746282056978613,
+          -0.03892830792479494
+        ],
+        "bootstrap_extreme_count_p_raw": 0.0174,
+        "p_bootstrap_plus_one": 0.017598240175982403
+      }
+    }
+  },
+  "quartiles": {
+    "fg_psnr": {
+      "Q1": {
+        "n": 38,
+        "mean_delta": 3.645807567395662,
+        "positive_delta_rate": 0.8421052631578947,
+        "favorable_object_rate": 0.8421052631578947
+      },
+      "Q2": {
+        "n": 37,
+        "mean_delta": 1.2595035900940765,
+        "positive_delta_rate": 0.6216216216216216,
+        "favorable_object_rate": 0.6216216216216216
+      },
+      "Q3": {
+        "n": 37,
+        "mean_delta": -0.037249012573345286,
+        "positive_delta_rate": 0.40540540540540543,
+        "favorable_object_rate": 0.40540540540540543
+      },
+      "Q4": {
+        "n": 38,
+        "mean_delta": -0.7695936999822918,
+        "positive_delta_rate": 0.18421052631578946,
+        "favorable_object_rate": 0.18421052631578946
+      }
+    },
+    "fg_lpips": {
+      "Q1": {
+        "n": 38,
+        "mean_delta": -0.037678561908634084,
+        "positive_delta_rate": 0.0,
+        "favorable_object_rate": 1.0
+      },
+      "Q2": {
+        "n": 37,
+        "mean_delta": -0.01741272573535507,
+        "positive_delta_rate": 0.08108108108108109,
+        "favorable_object_rate": 0.918918918918919
+      },
+      "Q3": {
+        "n": 37,
+        "mean_delta": -0.0068750776149131155,
+        "positive_delta_rate": 0.40540540540540543,
+        "favorable_object_rate": 0.5945945945945946
+      },
+      "Q4": {
+        "n": 38,
+        "mean_delta": -8.250243569675244e-05,
+        "positive_delta_rate": 0.5526315789473685,
+        "favorable_object_rate": 0.4473684210526316
+      }
+    }
+  },
+  "holm_family": {
+    "name": "E: two metrics x five GT-only statistics",
+    "size": 10,
+    "alpha": 0.05,
+    "p_value_method": "paired object bootstrap of Spearman rho; two-sided plus-one Monte Carlo correction",
+    "tests": {
+      "fg_psnr__gt_fg_lap_var": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_rgb_std": {
+        "p_raw": 0.001999800019998,
+        "p_holm": 0.007999200079992,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_grad_mag": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__gt_fg_hf_energy": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_psnr__coverage": {
+        "p_raw": 0.42855714428557146,
+        "p_holm": 0.42855714428557146,
+        "reject_h0": false
+      },
+      "fg_lpips__gt_fg_lap_var": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_rgb_std": {
+        "p_raw": 0.0045995400459954,
+        "p_holm": 0.0137986201379862,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_grad_mag": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__gt_fg_hf_energy": {
+        "p_raw": 0.00019998000199980003,
+        "p_holm": 0.001999800019998,
+        "reject_h0": true
+      },
+      "fg_lpips__coverage": {
+        "p_raw": 0.017598240175982403,
+        "p_holm": 0.03519648035196481,
+        "reject_h0": true
+      }
+    }
+  }
+}

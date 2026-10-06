@@ -1,0 +1,1002 @@
+{
+  "schema_version": "1.0.0",
+  "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
+  "updated_utc": "2026-10-06",
+  "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
+  "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
+  "authority_rules": [
+    "按 claim 与 estimand 选唯一当前 authority；不把不同 cohort、条件身份、二维/三维端点或 backbone 的估计合并。",
+    "事前注册、未解盲、独立 cohort 且 provenance 完整的主张优先；事后读取、历史或开发数据只作 bounded supplement/discovery。",
+    "strict-276 的 GC3-GFL 是已反复查看的同 cohort 回顾性配对复评，不是新的 independent held-out confirmation；缺失输入张量哈希时不得声称 bit-identical realization。",
+    "FRESH_CONFIRM_B 的 LLH 结果只支持 LLH 对比，不替代 C3；E1/E2 是 post-B 固定 48 对象敏感性，不是新对象确认。",
+    "image-space、GLB-native base-color、human preference 和 seam evidence 独立记录，不互相替代。",
+    "MV-Adapter 与 MVDiffusion 分别陈述；conditioning interface 与 intervention geometry 不同，禁止分数池化或架构因果归因。",
+    "历史措辞不得删除而应通过 supersedes 标签保留；本账本中的 allowed_wording 才是后续改稿默认措辞。"
+  ],
+  "source_policy": {
+    "path_base": "repository root",
+    "integrity": "Each local source path is recorded with SHA-256 as observed at ledger creation.",
+    "downstream_docs": "The reviewer matrix and claim closure matrix are downstream interpretation documents and are deliberately not treated as primary data sources here."
+  },
+  "external_prior_art": [
+    {
+      "title": "Scheduled Style Injection: Expanding the Style-Content Pareto Frontier in Training-Free Diffusion-based Style Transfer",
+      "venue": "CVPR 2026 Workshops, NTIRE",
+      "url": "https://openaccess.thecvf.com/content/CVPR2026W/NTIRE/papers/Kulkarni_Scheduled_Style_Injection_Expanding_the_Style-Content_Pareto_Frontier_in_Training-Free_CVPRW_2026_paper.pdf",
+      "arxiv": "https://arxiv.org/abs/2605.26538",
+      "implementation": "https://github.com/ameyskulkarni/scheduled_style_injection",
+      "consequence": "Direct prior art for depth/timestep scheduling of StyleID and geometric ControlNet strength; narrow novelty claims. Does not establish adequacy of the remaining domain-specific contribution."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "strict276_row_audit",
+      "path": "final/round2/coordination/final_evidence_freeze_20261001/CORE7_ROW_AUDIT.json",
+      "sha256": "0454d46c98217c4dd2b2c4938d7ccde70cfbd779743701a6f6181cac0c31dd41",
+      "role": "Strict-276 row/provenance map; records incomplete input-hash coverage."
+    },
+    {
+      "source_id": "strict276_provenance",
+      "path": "final/round2/coordination/final_evidence_freeze_20261001/CORE7_FINAL_PROVENANCE_AUDIT.md",
+      "sha256": "152d3228badf13fdc572ffece0b0332381c46d5105259bf85785724d1e2d3a9f",
+      "role": "Core-7 provenance and limitations."
+    },
+    {
+      "source_id": "strict276_paired_stats",
+      "path": "final/round2/coordination/final_evidence_freeze_20261001/CORE7_FINAL_PAIRED_STATISTICS.csv",
+      "sha256": "efbd9e11c869122ef9ec676b5ccf02dd7f30d3fb7fd82632d1b0c60c86c4fd8b",
+      "role": "Independent Core-7 paired statistics; note GC3-GFL is a retrospective additional comparison."
+    },
+    {
+      "source_id": "strict276_gfl_rows",
+      "path": "final/round2/coordination/final_audit_20261001/rescued_tmp_20261001/layer_confirmation_20260930/global_fixed_low_per_object_metrics.csv",
+      "sha256": "7a8be06cd4f3ea3f102d1fcd0199404fb3e4dd7c4739a26c8e73c0abdf9f5624",
+      "role": "276 object rows for GFL."
+    },
+    {
+      "source_id": "strict276_gc3_rows",
+      "path": "final/round2/coordination/main_backbone_robustness1_20260930/r0_completion_global_c3/per_object_metrics.csv",
+      "sha256": "171e7749edcdfd3ab6fa4b6afc0f27674abdfd7e4987a998e867501e200a12f6",
+      "role": "276 object rows for GC3; manifest records runner hash d4af0c1d…."
+    },
+    {
+      "source_id": "strict276_gfh_rows",
+      "path": "final/round2/coordination/core7_same_runner_completion_20261001/formal_global_fixed_high/per_object_metrics.csv",
+      "sha256": "cc3f07b8cfa1348ae133c02b2b84dd37006e0dc4ef4f76b775a1fbf116dd029a",
+      "role": "276 object rows for GFH."
+    },
+    {
+      "source_id": "fresh_b_report",
+      "path": "final/round2/scientific_validation_v3/FRESH_B_TEMPORAL_CONFIRMATION_REPORT.md",
+      "sha256": "7149d3e9fca2b2683b71527b169098e92883c6871b3edcdfa1a2350138fa8485",
+      "role": "Registered temporal contrasts on disjoint FRESH_CONFIRM_B."
+    },
+    {
+      "source_id": "fresh_b_llh_gfl",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/paired_layer_llh_minus_native_gfl.json",
+      "sha256": "267c30cf24b9588529e83ae8f47051cb8be5f7467dc561744fec5a293a7c03f0",
+      "role": "LLH-GFL paired estimates and intervals, N=150."
+    },
+    {
+      "source_id": "fresh_b_llh_lfm",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/paired_layer_llh_minus_lfm_exact.json",
+      "sha256": "9950dbed5b4edcc5e7a7d41e4216069a6638460fda8b3f1efe39907b220f433b",
+      "role": "LLH-LFM-EXACT paired temporal contrast, N=150."
+    },
+    {
+      "source_id": "fresh_b_llh_hll",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/paired_layer_llh_minus_layer_hll.json",
+      "sha256": "c49f3a0d9ee2e22139877d682d10295a07e02e903e49f40b72a3306ed1564b93",
+      "role": "LLH-HLL registered placement contrast, N=150."
+    },
+    {
+      "source_id": "fresh_b_llh_lll",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/paired_layer_llh_minus_a3_baseline.json",
+      "sha256": "b63588c8254c66ee454734f30e6a71e2066a5ced7b42908430d6a1495ffc6b67",
+      "role": "LLH-LLL registered contrast, N=150."
+    },
+    {
+      "source_id": "fresh_b_hll_lll",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/paired_layer_hll_minus_a3_baseline_exploratory.json",
+      "sha256": "ca904c7068baac3402eccf6b599955201131f8ae959a4fc610e1786aa3fdc4a6",
+      "role": "HLL-LLL post-unblinding exploratory contrast."
+    },
+    {
+      "source_id": "e1_analysis",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/MULTISEED_ANALYSIS.json",
+      "sha256": "66adcb730d1c604738146bc34c7b1adae3b9a4f8057816e1880cbd5f12f49806",
+      "role": "E1 three-fixed-seed sensitivity on selected 48-object B subset."
+    },
+    {
+      "source_id": "e1_integrity",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/MULTISEED_INTEGRITY_GATE.json",
+      "sha256": "cd925e671eb4d47ed405fcde3e959bf9d2732324f99d119b755d044d1d715e8b",
+      "role": "E1 integrity and row provenance gate."
+    },
+    {
+      "source_id": "e2_analysis",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/STATIC_FACTORIAL_ANALYSIS.md",
+      "sha256": "bedaa1f771233c2d08accabf16a5897868dce8993d57153eaf8ccce040edf207",
+      "role": "E2 static 2x2 effects and scope."
+    },
+    {
+      "source_id": "e2_integrity",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/STATIC_FACTORIAL_INTEGRITY_GATE.json",
+      "sha256": "c0b8df3ad963ce82a737a43d36ab2e4f1b6f754659739da13642518f7e9074dd",
+      "role": "E2 locked data/design integrity gate."
+    },
+    {
+      "source_id": "a2_interaction",
+      "path": "final/round2/scientific_validation_v3/audit_scripts/AUDIT_INTERACTION_VALID_TEST.json",
+      "sha256": "4819d910659dcb464c9db7bf3320c9a216833058a056b3dc5b3b3a597cb394bf",
+      "role": "Valid cluster-robust A2 interaction reanalysis; discovery evidence."
+    },
+    {
+      "source_id": "a3b_analysis",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/A3B_BOUNDED_MAP_ANALYSIS.json",
+      "sha256": "97a9c385601ca5dc52905476364a779b8ea111b83f4a219724b006d375c0b495",
+      "role": "A3b bounded response map on FRESH_CONFIRM_B."
+    },
+    {
+      "source_id": "a3b_dose",
+      "path": "final/round2/scientific_validation_v3/A3B_DOSE_FEASIBILITY_AUDIT.md",
+      "sha256": "7859e2f7d85b014f1d63de1ba419410b9eb87f03d3c2d5fef88f0728f16bfbbc",
+      "role": "A3b dose target and zero three-layer common-support limitation."
+    },
+    {
+      "source_id": "glb_report",
+      "path": "final/round2/scientific_validation_v3/GLB_NATIVE_EGL_RENDER_REPORT_20261006.md",
+      "sha256": "3a28469e45efa89b677b8ed95d008e1707ce276d5b5c55744ff44ba67c28230c",
+      "role": "Stored N=20 GLB-native base-color metrics and limits."
+    },
+    {
+      "source_id": "glb_lineage",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/GLB_LINEAGE_AUDIT.json",
+      "sha256": "b3d93f401393933c60b787b4d10068b02fdaeceb27af958dbb5f381f98e44e9e",
+      "role": "Input/output lineage audit for the supported GLB panel."
+    },
+    {
+      "source_id": "visual_audit",
+      "path": "final/round2/scientific_validation_v3/FORMAL_VISUAL_EVIDENCE_AUDIT.md",
+      "sha256": "b3da795ea5ac888f2287b00addf73c73f43557271af3ed40cf150f37cb89c3cb",
+      "role": "Frozen 24-object visual failure classification."
+    },
+    {
+      "source_id": "human_lock",
+      "path": "final/round2/scientific_validation_v3/HUMAN_STUDY_FINAL_PAIR_LOCK.md",
+      "sha256": "8aa4ebc88cccda50705709d67f1ff0070236f4d3948242071785ce29ad9fb6ce",
+      "role": "Locked LLH human study protocol and endpoint/stop rules."
+    },
+    {
+      "source_id": "human_refresh",
+      "path": "final/round2/scientific_validation_v3/continuation_20261006/EVIDENCE_REFRESH.json",
+      "sha256": "8e86e9b5976b35a0d3f7ad425bf49f455627014e7b645f28e00298c135d74366",
+      "role": "Coordinator-only state refresh; current LLH response count is zero."
+    },
+    {
+      "source_id": "mv_adapter",
+      "path": "final/round2/scientific_validation_v3/CROSS_BACKBONE_MECHANISM_REPORT.md",
+      "sha256": "bdd3231b8398573ce308ce53a69740c78caeea2098bb61e064b09b16bf517d49",
+      "role": "MV-Adapter 98/99 bounded scale/window response result."
+    },
+    {
+      "source_id": "mvdiffusion",
+      "path": "CROSS_BACKBONE_VALIDATION_MVDIFFUSION.md",
+      "sha256": "9a3a4ea22ebd69818a481cd89bd428e52be8e76b33acc15f1751c0a2505ca818",
+      "role": "MVDiffusion 75-object interface-specific negative/mixed intervention result."
+    },
+    {
+      "source_id": "novelty_audit",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/NOVELTY_AUDIT_PRELIM_20261006.md",
+      "sha256": "bada018e1ff39725239c6695cb64e37e9fd816071e7ddf10f27cbbc172de6bb1",
+      "role": "Focused prior-art assessment; SSI comparison is not a complete systematic review."
+    },
+    {
+      "source_id": "paper_view_review",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/PAPER_VIEW_REVIEW_20261006_ZH.md",
+      "sha256": "46e659e60670fc5f73806edffc78e2f0a2501d8453091e9426ff16b5d74581ba",
+      "role": "Independent paper-view review that triggered this authority refresh."
+    },
+    {
+      "source_id": "claim_action_register",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/CLAIM_ACTION_LEDGER.csv",
+      "sha256": "fe1117c760394a6c344b167fa2a179cfab1271bf9ba1ff480dba39f190ac1c6e",
+      "role": "Operational claim/action register; does not override this authority ledger."
+    },
+    {
+      "source_id": "artifact_archive_audit",
+      "path": "final/round2/scientific_validation_v3/ARTIFACT_ARCHIVE_AUDIT.md",
+      "sha256": "4b3395b610b1b98ca19fe65e0d455bb48849d172204384580bf04be0562d7562",
+      "role": "Paper-wide rebuild and portable clean-clone limitations."
+    },
+    {
+      "source_id": "failure_boundary",
+      "path": "final/round2/scientific_validation_v3/PROSPECTIVE_FAILURE_BOUNDARY_REPORT.md",
+      "sha256": "eac64eb4cb315d45b9741d5eaacc5e9df6807dcc453df1cd75dc241351d464ac",
+      "role": "Prospective texture-complexity applicability boundary."
+    },
+    {
+      "source_id": "submitted_pdf",
+      "path": "final/submission_new_0907/Manuscript 0907.pdf",
+      "sha256": "fc9cf793e4922df2a03818e2174310c394d6ea0ab235f124e569ee173a1620da",
+      "role": "Identity anchor for the submitted 01549 manuscript; do not rewrite before freeze."
+    },
+    {
+      "source_id": "manuscript_entry_hashes",
+      "path": "final/round2/scientific_validation_v3/continuation_20261006/MANUSCRIPT_ENTRY_SHA256.json",
+      "sha256": "7375139335d27da4b5e4b8cd43d556e81fd2a17fae57b7fd446dcadacd754218",
+      "role": "Entry hashes used to preserve the submitted manuscript state."
+    },
+    {
+      "source_id": "e2_analysis_json",
+      "path": "final/round2/scientific_validation_v3/next_stage_20261006/STATIC_FACTORIAL_ANALYSIS.json",
+      "sha256": "6279f9b2eceed2a00f128c28cf66954ff3e7a8a8566f60ff55da6d6c673d7af4",
+      "role": "Machine-readable E2 estimates and exact object-bootstrap/Holm method."
+    },
+    {
+      "source_id": "fresh_b_holm_b2",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/HOLM_FAMILY_B2_FRESH_CONFIRM_B.json",
+      "sha256": "d29ccef0d8cb654791d5e960cfc67410a48ceec6d8167c422cc2b0e5e0472985",
+      "role": "Registered B2 Holm family for LLH-HLL and LLH-LLL endpoints."
+    },
+    {
+      "source_id": "fresh_b_holm_hll_lll",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/HOLM_FAMILY_HLL_LLL_EXPLORATORY.json",
+      "sha256": "bc3ea8e3ca9519bf789acc39fe34270f76eae5c48f2531f169672f051439bdc2",
+      "role": "Separate exploratory HLL-LLL Holm family."
+    },
+    {
+      "source_id": "fresh_b_holm_cap_budget",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/CAP_BUDGET_HOLM_FAMILY.json",
+      "sha256": "bf71d1d5e6309981a0e440dcf264cb3c00a8b8344ace1acc5b638ca71e1e2c53",
+      "role": "Frozen seven-contrast cap/budget Holm family."
+    },
+    {
+      "source_id": "human_stats_guide",
+      "path": "final/round2/scientific_validation_v3/continuation_20261006/HUMAN_RESPONSE_GUIDE_ZH.md",
+      "sha256": "62674efe20d078c5bf063e542231896a6464da78636b16e3f74c30a296c44f1e",
+      "role": "Frozen human-study two-way participant/object bootstrap and eight-endpoint Holm plan."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C01",
+      "topic": "C3 / historical +0.96 dB main-adapter gain",
+      "authority_status": "RETROSPECTIVE_SUPPLEMENT_ONLY",
+      "reviewer_concerns": [
+        "R1.2",
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "strict276_row_audit",
+        "strict276_provenance",
+        "strict276_paired_stats",
+        "strict276_gfl_rows",
+        "strict276_gc3_rows"
+      ],
+      "cohort": "strict-276 Core-7; N=276; previously inspected during revision; GC3-GFL was not a registered primary Core-7 contrast.",
+      "estimate": {
+        "contrast": "GC3 − GFL",
+        "endpoint": "FG-PSNR",
+        "mean_delta_db": 1.2077712731948798,
+        "ci95_nominal_object_bootstrap_db": [
+          1.11696731,
+          1.29498854
+        ],
+        "favorable_objects": 259,
+        "n": 276,
+        "multiplicity": "nominal, unadjusted interval",
+        "GC3_minus_GFH": {
+          "n": 276,
+          "nominal_unadjusted_paired_bootstrap_ci95": true,
+          "metric_deltas": {
+            "fg_psnr_db": {
+              "mean": -1.214235,
+              "ci95": [
+                -1.313952,
+                -1.114705
+              ]
+            },
+            "full_psnr_db": {
+              "mean": 0.725229,
+              "ci95": [
+                0.647134,
+                0.806467
+              ]
+            },
+            "full_ssim": {
+              "mean": 0.001229,
+              "ci95": [
+                0.00057,
+                0.001886
+              ]
+            }
+          },
+          "GFH_favored_metric_directions": "5 of 7; GC3 favors two full-image endpoints, showing a trade-off"
+        }
+      },
+      "provenance_limit": "Object mapping, checkpoint and recorded protocol align, but legacy GFL/GC3 lack a complete per-object input tensor-hash chain; available records do not certify identical runner/realization. The GFL record lacks runner SHA while GC3 records one.",
+      "allowed_wording": "If retained, call this a retrospective paired re-evaluation on the previously exposed strict-276 cohort; state the hash/registration limitation and endpoint scope. GC3-versus-GFH is a metric trade-off; in the read-only paired re-evaluation, five of seven endpoint directions favor GFH.",
+      "prohibited_wording": [
+        "new independent held-out confirmation",
+        "same runner and bit-identical realization established",
+        "replication of the submitted pooled +0.96 dB estimate",
+        "GC3 uniformly dominates fixed-high across metrics"
+      ],
+      "supersedes": [
+        "submitted pooled +0.96 dB as an independent-confirmation claim"
+      ],
+      "next_gate": "At rewrite, either remove the old pooled headline or label it historical; do not treat LLH results as C3 replication.",
+      "comparison": "GC3 − GFL on FG-PSNR and the seven Core-7 endpoints.",
+      "registration_status": "Retrospective additional pairwise analysis; GC3−GFL was not a registered primary Core-7 contrast.",
+      "selection_status": "strict-276 was repeatedly inspected during revision; not an untouched/new holdout for this comparison.",
+      "intervention_profile": {
+        "GFL": "global fixed-low requested 1.25; effective scale is min(requested, cap deep 3.0 / middle 3.5 / shallow 0.8).",
+        "GC3": "global C3 profile [1.25, 2.5, 1.25] over early/middle/late stages; same recorded cap semantics."
+      },
+      "statistical_unit": "Paired object index; N=276.",
+      "statistical_method": "Paired mean difference; 10,000 percentile object-bootstrap draws, seed 20260930; source-row reanalysis.",
+      "multiplicity": "Nominal 95% CI; no multiplicity correction for this retrospective pair."
+    },
+    {
+      "claim_id": "C02",
+      "topic": "Submitted C3 human preference result",
+      "authority_status": "HISTORICAL_SCOPE_ONLY",
+      "reviewer_concerns": [
+        "R1.1",
+        "R1.3"
+      ],
+      "authoritative_sources": [
+        "human_lock",
+        "human_refresh"
+      ],
+      "cohort": "Submitted 01549 study: 24 participants, 30 objects, s=1.25/s=2.50/C3; new LLH study is a different frozen protocol.",
+      "estimate": {
+        "historical_overall_preference_percent": 58.1,
+        "historical_texture_preference_percent": 39.4,
+        "current_llh_response_count": 0
+      },
+      "provenance_limit": "Historical preference is only for the old stimuli/comparators and cannot validate LLH, baked/unseen 3D quality, or general material fidelity.",
+      "allowed_wording": "Report the historical study only with its exact old condition, participant and object scope; keep current LLH human fidelity OPEN.",
+      "prohibited_wording": [
+        "the 01549 human result validates LLH",
+        "human-validated 3D material fidelity from the old study"
+      ],
+      "supersedes": [],
+      "next_gate": "Collect and analyze only real responses under the frozen 40-slot/36-valid protocol; no interim outcome analysis.",
+      "comparison": "Historical 3AFC comparisons among s=1.25, s=2.50 and C3; current LLH pairs are separate.",
+      "registration_status": "Submitted historical study; no current LLH outcome data.",
+      "selection_status": "Original 24-participant / 30-object study; current locked 40-slot study has zero responses.",
+      "intervention_profile": "Old stimulus set and old scale labels only; no claim about new LLH stimuli, baked GLB or unseen views.",
+      "statistical_unit": "Historical participants and objects; do not treat its responses as exchangeable with current LLH study.",
+      "statistical_method": "Only as reported in the submitted manuscript; this ledger does not reanalyse the old study.",
+      "multiplicity": "Historical paper-specific reporting only; no inferential transfer to current endpoints."
+    },
+    {
+      "claim_id": "C03",
+      "topic": "CAI derives or predicts the optimal schedule",
+      "authority_status": "DESCRIPTIVE_ONLY",
+      "reviewer_concerns": [
+        "R2.1",
+        "R2.2"
+      ],
+      "authoritative_sources": [
+        "novelty_audit",
+        "fresh_b_report"
+      ],
+      "cohort": "No prospective held-out CAI prediction cohort.",
+      "estimate": null,
+      "provenance_limit": "CAI is post hoc and does not identify a validated optimum.",
+      "allowed_wording": "CAI may remain as brief descriptive terminology if it helps explain observed profiles.",
+      "prohibited_wording": [
+        "CAI predicts or derives the optimal schedule",
+        "CAI is a validated contribution"
+      ],
+      "supersedes": [
+        "CAI as predictive/derivational contribution"
+      ],
+      "next_gate": "Remove from contribution/novelty claims during post-freeze rewrite.",
+      "comparison": "No prospective CAI-prediction comparison exists.",
+      "registration_status": "No frozen forward prediction or decision test.",
+      "selection_status": "CAI interpretation is retrospective.",
+      "intervention_profile": "No independent CAI-selected schedule; C3 and LLH remain distinct profiles.",
+      "statistical_unit": "Not applicable.",
+      "statistical_method": "Descriptive only; no predictive estimate.",
+      "multiplicity": "Not applicable."
+    },
+    {
+      "claim_id": "C04",
+      "topic": "LLH image-space improvement versus GFL",
+      "authority_status": "AUTHORITATIVE_SCOPED",
+      "reviewer_concerns": [
+        "R1.2",
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "fresh_b_report",
+        "fresh_b_llh_gfl",
+        "fresh_b_holm_cap_budget"
+      ],
+      "cohort": "FRESH_CONFIRM_B; disjoint N=150; registered pair; this is LLH, not C3.",
+      "estimate": {
+        "fg_psnr_mean_delta_db": 1.0301303088665008,
+        "fg_psnr_ci95_db": [
+          0.5695952108005683,
+          1.4961149515708285
+        ],
+        "fg_psnr_favorable_rate": 0.5133333333333333,
+        "fg_lpips_mean_delta": -0.015557127793629964,
+        "fg_lpips_ci95": [
+          -0.019143709797412155,
+          -0.011916371043771508
+        ],
+        "fg_lpips_favorable_rate": 0.74
+      },
+      "provenance_limit": "Mean effects are metric-specific and FG-PSNR favors LLH on only 51.3% of objects; no global quality or human-fidelity conclusion follows.",
+      "allowed_wording": "Report the paired mean, interval and favorable-object fraction separately by endpoint; identify the contrast as LLH−GFL on FRESH_CONFIRM_B.",
+      "prohibited_wording": [
+        "C3 replicated by LLH",
+        "overall visual or 3D superiority from image metrics alone"
+      ],
+      "supersedes": [
+        "unqualified old +0.96 dB main-adapter headline"
+      ],
+      "next_gate": "Use the frozen paired outputs; do not pool with strict-276, FRESH_CONFIRM_300 or GLB results.",
+      "comparison": "LLH − native GFL on FRESH_CONFIRM_B, FG-PSNR and FG-LPIPS.",
+      "registration_status": "Pre-analysis paired output retained in the frozen FRESH_CONFIRM_B protocol family.",
+      "selection_status": "Fresh, UID-disjoint N=150; selection frozen on technical criteria before generation outcomes.",
+      "intervention_profile": {
+        "native_gfl": "constant requested 1.25, capped to 0.80 at shallow injection.",
+        "layer_llh": "50-step low/high/late profile; deep/middle requested values 1.25/2.50 and shallow 0.50/0.75; no cap binds LLH."
+      },
+      "statistical_unit": "Paired object; N=150.",
+      "statistical_method": "10,000 paired object-bootstrap draws, seed 20261002; estimates/intervals from the frozen paired JSON.",
+      "multiplicity": "Raw paired estimate shown here; cap/budget family correction is in the linked frozen seven-contrast family. Do not infer equivalence."
+    },
+    {
+      "claim_id": "C05",
+      "topic": "Static depth/shallow scale sensitivity",
+      "authority_status": "AUTHORITATIVE_BOUNDED_SENSITIVITY",
+      "reviewer_concerns": [
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "e2_analysis",
+        "e2_integrity",
+        "e2_analysis_json"
+      ],
+      "cohort": "Post-B selected 48-object subset; 3 fixed generation seeds; not an independent object cohort.",
+      "estimate": {
+        "fg_lpips_deep_middle_effect": {
+          "mean": -0.0066555,
+          "ci95": [
+            -0.0088679,
+            -0.0045187
+          ],
+          "holm_p": 0.00029997
+        },
+        "fg_psnr_deep_middle_effect_db": {
+          "mean": 0.54377,
+          "ci95": [
+            0.32879,
+            0.76312
+          ],
+          "holm_p": 0.00029997
+        },
+        "fg_psnr_interaction_db": {
+          "mean": 0.36451,
+          "ci95": [
+            0.24315,
+            0.48639
+          ],
+          "holm_p": 0.00029997
+        },
+        "fg_lpips_interaction": {
+          "mean": -0.00014683,
+          "ci95": [
+            -0.00092292,
+            0.00062046
+          ],
+          "holm_p": 0.71943
+        }
+      },
+      "provenance_limit": "Deep and middle scales move together; fixed selected objects and three seeds; actual realized dose is not equalized.",
+      "allowed_wording": "A bounded static-factor sensitivity on the reused 48-object subset, with deep/middle coupled and profile-specific effects.",
+      "prohibited_wording": [
+        "independent deep and middle causal effects",
+        "equal-dose depth mechanism",
+        "new held-out confirmation"
+      ],
+      "supersedes": [],
+      "next_gate": "Retain conditional scope; no additional GPU scale search is justified.",
+      "comparison": "E2 static 2×2: deep/middle factor, shallow factor and their interaction.",
+      "registration_status": "Design and runner lock precede formal E2 outputs; campaign ran post-B.",
+      "selection_status": "GT-stratified fixed subset of 48 already-seen B objects; three fixed generation seeds 42/43/44.",
+      "intervention_profile": {
+        "F00": [
+          1.25,
+          1.25,
+          0.5
+        ],
+        "F01": [
+          1.25,
+          1.25,
+          0.8
+        ],
+        "F10": [
+          1.675,
+          1.675,
+          0.5
+        ],
+        "F11": [
+          1.675,
+          1.675,
+          0.8
+        ],
+        "schedule": "All scales constant for 50 steps; requested values under native caps."
+      },
+      "statistical_unit": "Object; paired factor contrasts averaged within object over the three fixed seeds first.",
+      "statistical_method": "10,000 centered object-bootstrap draws, seed 20261006; percentile object-bootstrap 95% CIs.",
+      "multiplicity": "Three factor tests per endpoint, Holm-corrected separately for FG-LPIPS and FG-PSNR; simple contrasts descriptive."
+    },
+    {
+      "claim_id": "C06",
+      "topic": "Temporal variation and placement",
+      "authority_status": "AUTHORITATIVE_SCOPED_WITH_EXPLORATORY_COMPONENT",
+      "reviewer_concerns": [
+        "R1.4",
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "fresh_b_report",
+        "fresh_b_llh_lfm",
+        "fresh_b_llh_hll",
+        "fresh_b_llh_lll",
+        "fresh_b_hll_lll",
+        "fresh_b_holm_b2",
+        "fresh_b_holm_hll_lll",
+        "fresh_b_holm_cap_budget"
+      ],
+      "cohort": "FRESH_CONFIRM_B; disjoint N=150; LLH−LFM-EXACT, LLH−HLL, LLH−LLL registered; HLL−LLL post-unblinding exploratory.",
+      "estimate": {
+        "LLH_minus_LFM_exact": {
+          "fg_psnr_db": [
+            0.325,
+            [
+              0.209,
+              0.446
+            ]
+          ],
+          "fg_lpips": [
+            -0.0046,
+            [
+              -0.00563,
+              -0.00357
+            ]
+          ],
+          "practical_margins": {
+            "fg_psnr_db": 0.5,
+            "fg_lpips": 0.01
+          }
+        },
+        "LLH_minus_HLL": {
+          "fg_psnr_db": [
+            0.687,
+            [
+              0.404,
+              0.981
+            ]
+          ],
+          "fg_lpips": [
+            -0.01098,
+            [
+              -0.01349,
+              -0.00851
+            ]
+          ],
+          "fg_psnr_favorable_rate": 0.453,
+          "fg_psnr_median_db": -0.104
+        },
+        "LLH_minus_LLL": {
+          "fg_psnr_db": [
+            0.734,
+            [
+              0.597,
+              0.875
+            ]
+          ],
+          "fg_lpips": [
+            -0.00845,
+            [
+              -0.01029,
+              -0.00659
+            ]
+          ]
+        },
+        "HLL_minus_LLL_exploratory": {
+          "fg_psnr_db": [
+            0.047,
+            [
+              -0.12,
+              0.208
+            ]
+          ],
+          "fg_lpips": [
+            0.00253,
+            [
+              0.00155,
+              0.00354
+            ]
+          ]
+        }
+      },
+      "provenance_limit": "The first contrast is statistically detectable but lies within frozen practical margins; actual residual norms differ. HLL−LLL is exploratory and the full four-direction signature fails.",
+      "allowed_wording": "Report the four requested contrasts with separate registration labels, object heterogeneity and practical margins; present time allocation as a measured secondary dimension.",
+      "prohibited_wording": [
+        "temporal variation is practically necessary",
+        "early-high universally hurts",
+        "late-high is a universal optimum",
+        "unique LLH winner",
+        "dose-independent timing mechanism"
+      ],
+      "supersedes": [
+        "FRESH_CONFIRM_300 +0.435 dB / STRONG temporal wording as final authority"
+      ],
+      "next_gate": "The B temporal comparisons are closed at their registered scope; no FRESH_CONFIRM_C schedule search.",
+      "comparison": "LLH−LFM-EXACT (temporal variation at matched per-layer means); LLH−HLL (late vs early); LLH−LLL; HLL−LLL exploratory.",
+      "registration_status": "First three are registered on FRESH_CONFIRM_B; HLL−LLL is a post-unblinding exploratory addendum.",
+      "selection_status": "Fresh UID-disjoint N=150 B cohort; contrast family frozen before generation outcome analysis.",
+      "intervention_profile": {
+        "LLH": "50 steps; late 17-step high segment; requested time means deep/middle 1.675, shallow 0.585.",
+        "LFM-EXACT": "constant 1.675/1.675/0.585 for 50 steps; cap not active.",
+        "HLL": "same high duration, early rather than late; no cap active.",
+        "LLL": "all-low trace verified against a3_baseline."
+      },
+      "statistical_unit": "Paired object; N=150.",
+      "statistical_method": "10,000 object-bootstrap draws, seed 20261002; favorable-object fractions and medians reported alongside means/CIs.",
+      "multiplicity": "LLH−HLL and LLH−LLL: four-test B2 Holm family. HLL−LLL: separate two-endpoint exploratory Holm family. LLH−LFM-EXACT: practical margins ±0.5 dB / ±0.01; actual residual norms differ."
+    },
+    {
+      "claim_id": "C07",
+      "topic": "Layer × Window interaction and 2D control law",
+      "authority_status": "DISCOVERY_ONLY_DOSE_LIMITED",
+      "reviewer_concerns": [
+        "R2.1",
+        "R2.3"
+      ],
+      "authoritative_sources": [
+        "a2_interaction",
+        "a3b_analysis",
+        "a3b_dose",
+        "mv_adapter"
+      ],
+      "cohort": "A2/A3 historical discovery plus FRESH_CONFIRM_B A3b; MV-Adapter is a separate architecture/intervention.",
+      "estimate": {
+        "A2_native_dose": "Strong corrected interaction map; discovery-level.",
+        "A3b_shared_three_layer_dose_support_rows": 0,
+        "A3b_total_rows": 2250
+      },
+      "provenance_limit": "A3b dose-adjusted test is extrapolative with zero three-layer common support; A2 and A3 are not independent replications; MV-Adapter result uses a different intervention.",
+      "allowed_wording": "A native-dose response surface was observed on the primary backbone; equal-dose/dose-independent interaction remains unidentified.",
+      "prohibited_wording": [
+        "validated dose-independent Layer×Time mechanism",
+        "full 2D law is necessary for deployment gains",
+        "causal architecture-dependent interaction"
+      ],
+      "supersedes": [
+        "unqualified mechanism and schedule-necessity wording"
+      ],
+      "next_gate": "Do not launch an interaction-scale GPU search without a newly registered question, common support and untouched cohort.",
+      "comparison": "Layer×Window response across three layer groups and five 10-step windows; native-dose A2 map and bounded-dose A3b map.",
+      "registration_status": "A2 corrected Wald/GEE result is discovery reanalysis; A3b conditions are frozen, but dose target failed and adjusted interaction is not identified.",
+      "selection_status": "A2 uses FRESH_CONFIRM_300 and A3b uses disjoint FRESH_CONFIRM_B; the A2/A3 overlap is not an independent replication.",
+      "intervention_profile": "Requested/effective residual scales recorded per cell; A3b has zero three-layer shared-dose-support rows out of 2,250.",
+      "statistical_unit": "Object cluster; repeated layer/window cells within object.",
+      "statistical_method": "Cluster-robust Wald for interaction and repeated-measures GEE; A3b cell intervals from paired object bootstrap as specified in locked protocol.",
+      "multiplicity": "A3b cell tests and omnibus interaction follow frozen Holm family; dose-adjusted significance is extrapolative and cannot establish equal-dose mechanism."
+    },
+    {
+      "claim_id": "C08",
+      "topic": "Faithful texture/material improvement",
+      "authority_status": "OPEN_HUMAN_EVIDENCE",
+      "reviewer_concerns": [
+        "R1.1",
+        "R1.3"
+      ],
+      "authoritative_sources": [
+        "visual_audit",
+        "human_lock",
+        "human_refresh",
+        "human_stats_guide"
+      ],
+      "cohort": "Visual audit N=24; locked LLH study fixed 40 slots, at least 36 valid; response count 0.",
+      "estimate": {
+        "color_or_material_mismatch_objects": 18,
+        "detail_loss_objects": 21,
+        "visual_audit_n": 24,
+        "human_responses": 0
+      },
+      "provenance_limit": "Image metrics, variation measures and the old 01549 human study do not substitute for current LLH preference; a 2D human study cannot establish seam/unseen-view or full-PBR quality.",
+      "allowed_wording": "Describe visual failure categories and separate metric variation from material fidelity; human result remains open.",
+      "prohibited_wording": [
+        "human-validated LLH fidelity",
+        "broad faithful material reproduction"
+      ],
+      "supersedes": [],
+      "next_gate": "Await real response data; run the unchanged frozen analyzer once all 40 slots resolve and at least 36 are valid.",
+      "comparison": "LLH vs GFL, GFH, GC3 and endpoint-matched gen_linear; two questions per pair (appearance fidelity and texture/shape naturalness).",
+      "registration_status": "Four-pair protocol, assignments, exclusions, fixed stopping rule and analysis frozen before collection; B was already exposed.",
+      "selection_status": "40 fixed assignment slots; stop when all complete/withdrawn; at least 36 valid completions; current response count 0.",
+      "intervention_profile": "Image pairs are 2D study stimuli; cannot measure GLB seam, unseen-view fidelity or full-PBR quality.",
+      "statistical_unit": "Participant and object jointly clustered; object preference means equally weighted.",
+      "statistical_method": "10,000 two-way participant/object bootstrap draws, seed 20261005; ties=0.5; report per-endpoint 95% CI and bootstrap test vs 0.5.",
+      "multiplicity": "Holm across eight pair×question endpoints; no preference equivalence margin; no interim analysis."
+    },
+    {
+      "claim_id": "C09",
+      "topic": "Baked 3D/unseen-view quality and seams",
+      "authority_status": "SCOPED_MIXED_ENDPOINTS_SEAM_OPEN",
+      "reviewer_concerns": [
+        "R1.1",
+        "R1.5"
+      ],
+      "authoritative_sources": [
+        "glb_report",
+        "glb_lineage"
+      ],
+      "cohort": "Stored GLB-native base-color evaluation: N=20 UV-supported objects, 8 conditions, 11 unseen render views; 4 no-UV objects excluded.",
+      "estimate": {
+        "LLH_minus_GFL": {
+          "fg_psnr_db": [
+            -0.422,
+            [
+              -1.361,
+              0.652
+            ]
+          ],
+          "fg_lpips": [
+            -0.01175,
+            [
+              -0.01988,
+              -0.00564
+            ]
+          ],
+          "ciede2000": [
+            2.563,
+            [
+              -1.007,
+              5.893
+            ]
+          ]
+        }
+      },
+      "provenance_limit": "Unlit base-color only, not full PBR; signs are mixed; old seam measurement is not reproducible; N=24 coverage is incomplete.",
+      "allowed_wording": "Give endpoint-specific N=20 stored-output results and four-object exclusion; state base-color/sampler scope.",
+      "prohibited_wording": [
+        "overall 3D winner",
+        "full-PBR fidelity",
+        "seam improvement from the invalid legacy metric",
+        "strict N=24 coverage"
+      ],
+      "supersedes": [
+        "legacy CPU renderer/seam metrics as positive evidence"
+      ],
+      "next_gate": "Resolve seam measurement validity and full artifact reconstruction; do not rebake in pursuit of a winner.",
+      "comparison": "Stored GLB-native LLH − GFL; endpoint-specific base-color rendering results.",
+      "registration_status": "Read-only renderer-conformant reevaluation of stored outputs; no new bake or method selection.",
+      "selection_status": "20 UV-supported objects from the 24-source panel; four no-UV objects excluded before bake.",
+      "intervention_profile": "Eight stored conditions, 11 unseen render views per object; embedded base-color sampler; unlit/base-color, not full PBR.",
+      "statistical_unit": "Object-paired; N=20.",
+      "statistical_method": "Object-level paired bootstrap intervals in the GLB-native analysis; report FG-PSNR, FG-LPIPS, CIEDE2000 separately.",
+      "multiplicity": "No overall composite/winner and no seam claim; intervals are endpoint-wise."
+    },
+    {
+      "claim_id": "C10",
+      "topic": "Transfer across adapter backbones",
+      "authority_status": "ARCHITECTURE_INTERFACE_BOUNDARY_ONLY",
+      "reviewer_concerns": [
+        "R2.3"
+      ],
+      "authoritative_sources": [
+        "mv_adapter",
+        "mvdiffusion"
+      ],
+      "cohort": "MV-Adapter N=98/99 planned; MVDiffusion separate N=75 holdout; distinct cohorts and intervention interfaces.",
+      "estimate": {
+        "mv_adapter": "No corrected global interaction; small shallow W3-W5 LPIPS changes survive the frozen cell-wise family.",
+        "mvdiffusion": "Layer-wise vs global intervention has mixed/negative structure-color outcomes and small texture-error improvements under CPBlock interpolation."
+      },
+      "provenance_limit": "MV-Adapter uses additive-residual scale changes; MVDiffusion uses serial CPBlock output interpolation. Cross-backbone contrast is not matched, no scores pooled, and architecture is not isolated causally.",
+      "allowed_wording": "The layer/time response does not transfer uniformly across the tested conditioning interfaces; report each backbone within its own cohort and profile.",
+      "prohibited_wording": [
+        "universal L-TCAS transfer",
+        "architecture causes the observed difference",
+        "nonsignificance proves zero interaction"
+      ],
+      "supersedes": [
+        "general cross-backbone transfer claims"
+      ],
+      "next_gate": "No third-backbone campaign under the current evidence; retain interface-specific limits.",
+      "comparison": "Within-backbone scale/time profiles: MV-Adapter 0.75 baseline vs one-window raises to 1.00; MVDiffusion global vs layer/time CPBlock-output interpolation profiles.",
+      "registration_status": "Frozen intervention families within each campaign; exploratory MV-Adapter global Wald reanalysis is labeled exploratory.",
+      "selection_status": "MV-Adapter N=98/99 planned; MVDiffusion separate N=75 holdout; cohorts are disjoint and never pooled.",
+      "intervention_profile": "MV-Adapter is an additive-residual path; MVDiffusion deployed surface is serial CPBlock replacement interpolated as (1−alpha)x+alpha*y; not the same intervention geometry.",
+      "statistical_unit": "Object paired within each backbone only.",
+      "statistical_method": "MV-Adapter cellwise paired bootstrap/Holm plus exploratory four-metric Wald; MVDiffusion 10,000 object bootstrap, seed 20260928.",
+      "multiplicity": "Correction families remain within each backbone. Cross-backbone difference is not tested."
+    },
+    {
+      "claim_id": "C11",
+      "topic": "Texture-complexity applicability boundary",
+      "authority_status": "AUTHORITATIVE_SCOPED_BOUNDARY",
+      "reviewer_concerns": [
+        "R1.3",
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "failure_boundary"
+      ],
+      "cohort": "Prospective FRESH_CONFIRM_300 association; object-level boundary analysis.",
+      "estimate": {
+        "spearman_delta_fg_psnr_vs_gt_hf_energy": -0.691,
+        "ci95": [
+          -0.745,
+          -0.626
+        ],
+        "quartile_pattern": "Q1 +4.14 dB / 92% favorable; Q3-Q4 mean direction reverses"
+      },
+      "provenance_limit": "GT-only association is not a deployment selector and does not establish causation; preserve all objects and exact metric direction.",
+      "allowed_wording": "A measured GT-texture-complexity applicability association on the named cohort.",
+      "prohibited_wording": [
+        "causal texture-complexity mechanism",
+        "validated per-object schedule selector",
+        "result-fitted outcome cutoff"
+      ],
+      "supersedes": [],
+      "next_gate": "Keep as a bounded applicability analysis; reproduce from the registered failure-boundary report.",
+      "comparison": "LLH−native GFL outcome association with GT-only texture/coverage metrics.",
+      "registration_status": "Experiment E predictors and families specified before FRESH_CONFIRM_300 outcomes; independent B replication also recorded.",
+      "selection_status": "FRESH_CONFIRM_300 N=300 technically valid objects retained; separate FRESH_CONFIRM_B N=150 replication; no outcome-based exclusions.",
+      "intervention_profile": "Same named LLH−GFL comparison in each cohort; GT predictors computed from reference inputs only.",
+      "statistical_unit": "Paired object.",
+      "statistical_method": "Spearman rho; 10,000 paired-object bootstrap draws, seed 20261002; plus-one p and Holm over 10 tests per cohort.",
+      "multiplicity": "Ten predictor×outcome tests corrected as one Holm family in each cohort; quartile pattern descriptive."
+    },
+    {
+      "claim_id": "C12",
+      "topic": "Unique or globally superior schedule",
+      "authority_status": "NOT_ESTABLISHED",
+      "reviewer_concerns": [
+        "R1.4",
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "fresh_b_report",
+        "e1_analysis"
+      ],
+      "cohort": "Fresh B registered comparisons plus post-B 48-object E1 realization sensitivity.",
+      "estimate": {
+        "gen_linear": "Credible FG-PSNR competitor; no formal equivalence margin.",
+        "e1": "LLH effects comparator- and endpoint-dependent; no advantage over GFH or gen_linear on the entire paired endpoint set."
+      },
+      "provenance_limit": "A non-significant difference without a registered equivalence margin is not equivalence; E1 uses previously seen fixed objects and three fixed seeds.",
+      "allowed_wording": "Name the tested profile and comparator-specific results; no unique winner established.",
+      "prohibited_wording": [
+        "optimal/universal LLH schedule",
+        "equivalent to gen_linear",
+        "schedule ranking generalizes to new objects"
+      ],
+      "supersedes": [
+        "unique schedule winner wording"
+      ],
+      "next_gate": "Keep generic linear in the comparison; do not run a new search on exposed objects.",
+      "comparison": "LLH versus GFL/GFH/GC3/LFM-exact/endpoint-matched gen_linear across registered B and fixed E1 seed sensitivity.",
+      "registration_status": "Registered B comparisons plus post-B E1; no equivalence margin for gen_linear and no unique-winner hypothesis registered.",
+      "selection_status": "B N=150 disjoint; E1 is a post-B stratified fixed subset of 48 B objects reused across three fixed seeds.",
+      "intervention_profile": "Fixed tested schedules only; no schedule search or post-result retuning.",
+      "statistical_unit": "Object paired; E1 averages three fixed seeds within object.",
+      "statistical_method": "B paired object bootstrap with frozen families; E1 10,000 object bootstrap on within-object three-seed means.",
+      "multiplicity": "Use only the registered family for each comparison; no formal equivalence/non-inferiority claim."
+    },
+    {
+      "claim_id": "C13",
+      "topic": "Novelty of layer/time control scheduling",
+      "authority_status": "BROAD_NOVELTY_WITHDRAWN_CONTRIBUTION_ADEQUACY_OPEN",
+      "reviewer_concerns": [
+        "R2.1"
+      ],
+      "authoritative_sources": [
+        "novelty_audit",
+        "paper_view_review"
+      ],
+      "cohort": "Literature/prior-art claim; no experimental cohort.",
+      "estimate": null,
+      "provenance_limit": "Scheduled Style Injection is a directly related CVPR 2026 NTIRE workshop proceedings paper scheduling StyleID and geometric ControlNet strength over depth and denoising time; current manuscript lacks the citation. It does not study MVPainter multi-view baked 3D texture or its cap/dose semantics.",
+      "allowed_wording": "Differentiate the study as a domain-specific empirical characterization of MVPainter geometric-adapter residual/cap semantics, object heterogeneity and interface boundaries; explicitly discuss the prior work.",
+      "prohibited_wording": [
+        "first layer×time control schedule",
+        "general layer/time control space as novel",
+        "training-free/low-cost alone establishes novelty"
+      ],
+      "supersedes": [
+        "broad first/novel control-schedule framing"
+      ],
+      "next_gate": "R2.1 remains blocking until citation comparison and a post-evidence-freeze contribution/venue judgment.",
+      "comparison": "Claimed novelty relative to direct layer/timestep scheduling prior art.",
+      "registration_status": "Literature audit, not a registered experimental contrast; focused primary-source search only.",
+      "selection_status": "No scientific object cohort.",
+      "intervention_profile": "SSI schedules StyleID injection and geometric ControlNet conditioning across decoder depth and denoising time; task/path differ from MVPainter.",
+      "statistical_unit": "Paper/method comparison.",
+      "statistical_method": "Primary-source qualitative comparison; not a systematic review or venue decision.",
+      "multiplicity": "Not applicable; do not claim exhaustive literature coverage."
+    },
+    {
+      "claim_id": "C14",
+      "topic": "Reproducibility and evidence-chain completeness",
+      "authority_status": "PARTIAL_RECONSTRUCTION_REQUIRED",
+      "reviewer_concerns": [
+        "R1.5",
+        "R3"
+      ],
+      "authoritative_sources": [
+        "artifact_archive_audit",
+        "strict276_row_audit",
+        "glb_lineage"
+      ],
+      "cohort": "Evidence generators span distinct campaigns; no claim of one shared runner across all cohorts.",
+      "estimate": {
+        "paper_wide_tables_figures_rebuilt": "partial",
+        "glb_lineage": "PASS for stored N=20 scope",
+        "human_response_archive": "0 current responses"
+      },
+      "provenance_limit": "Old GFL/GC3 tensor input hashes incomplete; historical runner identities are not consistently recorded; paper-wide table/figure reconstruction and portable clean-clone pass remain incomplete; seam metric unresolved.",
+      "allowed_wording": "State exact campaign-level provenance and the current N=20 GLB lineage audit scope.",
+      "prohibited_wording": [
+        "fully end-to-end independently reproducible manuscript",
+        "all historic arms share an identical runner and input realization"
+      ],
+      "supersedes": [],
+      "next_gate": "After human disposition and permitted rewrite, reconstruct all tables/figures, resolve seam, and run a portable clean-clone plus final adversarial reviewer pass.",
+      "comparison": "Reconstruction and provenance across distinct evidence campaigns; not one pooled comparison.",
+      "registration_status": "Campaign-specific locks and analysis records; historical arms vary in provenance completeness.",
+      "selection_status": "Cohort identity and independence must be read from each source; no cohort interchangeability.",
+      "intervention_profile": "Runner, checkpoint, inputs, sampler, cap, scale trace and bake semantics must be tracked per campaign; historic GFL/GC3 do not have a complete 276-row input hash chain.",
+      "statistical_unit": "Object within each experiment; generation seeds are nested/sensitivity factors, not extra objects.",
+      "statistical_method": "Per-campaign object-level estimators and reproducibility checks; final table/figure regeneration remains pending.",
+      "multiplicity": "Keep each frozen family with its campaign; do not pool or reuse uncorrected retrospective comparisons as confirmatory."
+    }
+  ],
+  "open_gates": [
+    {
+      "gate": "human_fidelity",
+      "status": "OPEN",
+      "evidence": "0 current LLH responses; frozen 40 slots/minimum 36 valid."
+    },
+    {
+      "gate": "novelty_contribution_adequacy_R2_1",
+      "status": "BLOCKING_REVIEW_JUDGMENT",
+      "evidence": "SSI prior art found; domain-specific contribution may remain too incremental."
+    },
+    {
+      "gate": "seam_reproducibility",
+      "status": "OPEN",
+      "evidence": "Legacy seam metric invalid/non-reproducible; no valid replacement metric yet."
+    },
+    {
+      "gate": "paper_wide_reconstruction",
+      "status": "PARTIAL",
+      "evidence": "Full post-freeze table/figure rebuild and portable clean-clone reproduction incomplete."
+    },
+    {
+      "gate": "scientific_evidence_freeze",
+      "status": "NO",
+      "evidence": "Human data and final claim disposition remain open."
+    }
+  ],
+  "manuscript_policy": {
+    "submitted_manuscript": "01549 / Manuscript 0907 identity is preserved by submitted PDF and entry hashes.",
+    "editing_state": "FROZEN_UNTIL_SCIENTIFIC_EVIDENCE_FREEZE",
+    "readiness": "NOT_READY_HOLD",
+    "submission_ready": false
+  }
+}

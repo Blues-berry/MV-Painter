@@ -1,0 +1,18 @@
+{
+  "scope": "Pre-human-data diagnostic for frozen sparse GFL design; synthetic clustered votes, not real responses. Small Monte Carlo check, not a proof of validity.",
+  "seed": 20261006,
+  "bootstrap_per_replication": 10000,
+  "n_participants": 40,
+  "n_objects": 24,
+  "model": "Bernoulli(logistic(shift + participant_effect + object_effect)); independent N(0,0.8^2) effects",
+  "null": {
+    "replications": 40,
+    "rejections_raw_0p05": 0,
+    "mean_preference_estimate": 0.4919791666666667
+  },
+  "positive": {
+    "replications": 20,
+    "rejections_raw_0p05": 20,
+    "mean_preference_estimate": 0.7806250000000001
+  }
+}

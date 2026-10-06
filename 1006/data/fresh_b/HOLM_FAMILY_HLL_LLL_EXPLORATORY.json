@@ -1,0 +1,20 @@
+{
+  "family": "USER_DIRECTED_POSTUNBLIND_HLL_LLL_EXPLORATORY",
+  "cohort": "FRESH_CONFIRM_B",
+  "family_size": 2,
+  "alpha": 0.05,
+  "holm_method": "Holm-Bonferroni across the two endpoints for the exploratory HLL-LLL contrast",
+  "p_floor_note": "Where an input p is at the 1/10,000 bootstrap reporting floor, its adjusted value is an upper bound based on that floor.",
+  "tests": {
+    "HLL-LLL_exploratory_fg_psnr": {
+      "p_raw_upper_bound": 0.5696,
+      "p_holm_upper_bound": 0.5696,
+      "reject_holm_0.05": false
+    },
+    "HLL-LLL_exploratory_fg_lpips": {
+      "p_raw_upper_bound": 0.0001,
+      "p_holm_upper_bound": 0.0002,
+      "reject_holm_0.05": true
+    }
+  }
+}

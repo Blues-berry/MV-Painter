@@ -1,0 +1,923 @@
+\documentclass[times,twocolumn,final]{elsarticle}
+
+\usepackage{cag}
+\usepackage{framed,multirow}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{lineno}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{placeins}
+\setlength{\emergencystretch}{2em}
+\setlength{\hfuzz}{2pt}
+\setcounter{totalnumber}{6}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{4}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+
+\newtheorem{remark}{Remark}
+
+\journal{Computers \& Graphics}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Layer-wise Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation}
+
+% Double-anonymized review: author names, affiliations, and acknowledgements
+% (including funding) are provided only on the separately uploaded title page.
+
+\begin{abstract}
+Multi-view diffusion pipelines for 3D asset texturing inject geometric conditions through adapter modules, and the strength of these residuals is usually a single global scale, although residuals act at different UNet depths and denoising stages. We formulate adapter scaling as a layer-by-stage residual allocation problem rather than a single global magnitude, and study L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling), a training-free inference control that assigns each UNet depth group its own stage-dependent residual scale, $\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_l(p_t)A_l(\mathbf{h}_{l,t},\mathbf{G})$, with per-group implementation caps and no change to any network weight. On a shared-input 24-object, three-seed development ablation, a complete binary enumeration of temporal patterns shows that late-stage high scale helps while early-stage high scale hurts; the development-selected allocation is then confirmed on a pre-registered 276-object strict holdout in one seeded runner (the seven-condition Core-7), where it improves the primary reference-fidelity metrics over both the unmodified pipeline and competitive fixed-scale controls, while several structural and perceptual metrics retain explicit trade-offs. Cross-backbone experiments show that layer redistribution transfers to one additional adapter architecture under a prespecified topology-derived grouping, temporal placement is architecture-dependent, and a third non-isomorphic control interface provides a negative applicability boundary. A 12-object 3D baking case study with corrected UV-seam measurement, explicit metric-dependent reversals, and negative learned-modulation results are reported rather than a universal schedule claim.
+\end{abstract}
+
+\begin{keyword}
+\KWD
+multi-view diffusion \sep 3D texturing \sep adapter scaling \sep timestep control \sep shape-texture trade-off
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}
+\label{sec:intro}
+
+Recent advances in single-image 3D generation have substantially improved the recovery of geometry, multi-view consistency, and sparse-view reconstruction \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. As geometric generation models become increasingly mature, generating high-quality textures on an existing 3D shape has become a key factor affecting the realism and usability of 3D content. For an object whose geometry has already been determined, the final visual quality depends not only on whether the shape is complete, but also on whether the texture is faithful to the reference image, aligned with the 3D surface, and rich in local details.
+
+Existing multi-view texture generation methods usually generate RGB images from multiple target views using 2D image diffusion models, and then map the generated images back to the 3D surface through projection or texture baking \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. This route benefits from the generative capability of image diffusion models, but it still faces challenges in reference appearance alignment, geometry-texture consistency, and local texture detail preservation. Geometry-controlled multi-view diffusion methods represented by MVPainter introduce geometric conditions such as normals and depth maps to improve the alignment between generated textures and the underlying 3D surface, demonstrating the importance of explicit geometric control for 3D texture generation \cite{shao2025mvpainter}.
+
+However, introducing geometric conditions is not only a question of whether a control signal should be used, but also a question of how strongly it should be applied. In adapter-augmented diffusion pipelines, geometric conditions are usually injected into the model through an adapter or control branch, and their influence is regulated by a scaling factor. In practice, this factor is often set empirically: a small scale may lead to insufficient geometric constraints, whereas a larger scale is usually expected to improve structural consistency.
+
+In multi-view texture generation, however, stronger adapter scaling is not necessarily better. Texture generation requires not only contours and structures to be consistent with geometry, but also surface color variations, material details, and high-frequency patterns to be preserved. Overly strong geometric control may force the model to follow normal, depth, or edge conditions too aggressively, thereby suppressing the intrinsic texture synthesis capability of the base diffusion model. In this case, some structural metrics may still improve, while the visual result suffers from texture flattening, reduced color variation, and detail loss.
+
+Therefore, adapter scaling in geometry-controlled multi-view diffusion deserves further analysis. Compared with prior work that mainly studies how to build texture generation pipelines, how to introduce geometric conditions, and how to improve overall generation quality, adapter strength is a fine-grained inference-time control problem. It directly affects the balance between shape consistency and texture detail, and is an easily overlooked factor in multi-view texture generation quality.
+
+This problem is related to, but not solved by, existing guidance scheduling strategies. CFG scheduling changes the extrapolation between conditional and unconditional predictions, while a geometry adapter injects residuals into intermediate representations. Generic ControlNet or adapter scale scheduling similarly treats condition strength mainly as a condition-adherence knob. In texture generation, however, the key question is not only how strongly to follow the geometry, but also where in network depth and when along the denoising trajectory geometric residuals should dominate and recede so that the base model can synthesize color, material, and high-frequency texture. Simple monotonic schedules such as linear or cosine decay do not explicitly address this non-monotonic requirement. Even the recent finding that classifier-free guidance is most useful only in a limited noise interval \cite{kynkanniemi2024limited} does not answer this question: it identifies where conditioning helps for CFG, but not which stages and depth groups of a geometry-conditioned texture pipeline require strong geometric residuals, where the late-stage risk is texture suppression rather than diversity loss.
+
+The goal of this paper is not to propose a new full texture generation system, but to analyze and improve inference-time adapter scaling within a fixed geometry-controlled multi-view diffusion pipeline.
+
+The main contributions of this paper are as follows:
+
+(1) We identify and quantify the shape--texture and reference-fidelity trade-off caused by adapter scaling in multi-view diffusion texture generation, and show why structural metrics and texture-variation metrics alone are insufficient; we keep structure, reference-fidelity, texture-variation, and 3D-output evidence dimensions explicitly separate.
+
+(2) We formulate a training-free layer $\times$ timestep adapter residual allocation control $S=[s_{l,k}]$ (L-TCAS) over UNet depth groups and denoising stages, with per-group implementation caps and no added network forward; the previously studied shared-layer stage-aware schedule TCAS (C3) is the special case with a single shared schedule across depth groups.
+
+(3) We separate layer redistribution from temporal placement with shared-input paired ablations: a complete binary enumeration of all eight temporal patterns shows robust directions (late-high helps, early-high hurts), with layer-LLH, layer-LHH, and constant layer-LLL as explicit counterexamples to any layer-LHL optimum, and we confirm the development-selected allocation on a strict 276-object holdout in one seeded runner under a pre-registered protocol (the Core-7 matrix).
+
+(4) We map the evidence boundary honestly: layer redistribution transfers to one additional adapter architecture under a prespecified topology-derived grouping while temporal placement does not consistently separate there, the negative MVDiffusion result is preserved as an interface boundary, and a 12-object GLB baking and unseen-view case study with corrected UV-seam measurement provides bounded practical evidence.
+
+\section{Related Work}
+\label{sec:related}
+
+\subsection{3D Texture Generation and Multi-view Diffusion}
+\label{subsec:3dtex}
+
+Single-image 3D generation is often decomposed into geometry generation and texture generation. In recent years, single-image-to-3D, multi-view diffusion, and sparse-view reconstruction methods have made notable progress in structural stability, shape completeness, and cross-category generalization \cite{liu2023zero1to3,shi2023zero123pp,liu2023syncdreamer,long2023wonder3d,shi2024mvdream,wang2023imagedream,xu2024instantmesh,ke2024era3d}. Nevertheless, high-quality texture generation remains a key bottleneck for the realism and usability of 3D content, as reflected by recent surveys of neural 3D mesh texturing \cite{perla2026survey}. Existing texture generation methods usually rely on 2D diffusion models to synthesize RGB images from multiple views, and then project or bake these images onto the 3D surface \cite{chen2023text2tex,richardson2023texture,poole2023dreamfusion,chen2023fantasia3d}. While this strategy inherits the strong generative capability of image diffusion models, it still suffers from reference appearance misalignment, geometry-texture inconsistency, and insufficient local texture detail. Beyond these diffusion pipelines, the graphics community continues to advance surface appearance synthesis more broadly, from exemplar-based texture synthesis \cite{guzman2026adaptive} to diffusion-based procedural material generation \cite{lv2025interpretable}.
+
+To address these issues, methods such as Paint3D, MVPaint, Hunyuan3D 2.0, and MVPainter formulate 3D texture generation as a geometry-controlled multi-view diffusion task, generating multi-view images under geometric control and baking them into UV textures \cite{zeng2024paint3d,cheng2024mvpaint,lai2025hunyuan3d,shao2025mvpainter}. MV-Adapter further shows that adapter-style multi-view control can enhance cross-view consistency without fully retraining the base model \cite{huang2024mvadapter}, and recent texturing systems strengthen consistency during texture synthesis itself, for example through synchronized multi-view diffusion \cite{liu2024synchronized} or consistent-and-seamless text-guided multi-view generation \cite{xu2026wondertex}. By injecting geometric information such as normals and depth maps into the diffusion model as conditional signals, the generated results better follow the 3D surface structure and remain consistent across views. Unlike prior methods that focus mainly on multi-view image generation or general 3D reconstruction, these works emphasize precise alignment between texture and geometry as well as local detail recovery, significantly improving 3D texture generation quality. However, they mainly answer how to introduce geometric conditions and how to construct a texture generation pipeline, while the influence of geometric control strength at inference time on shape and texture quality remains underexplored.
+
+\subsection{Adapter-augmented Diffusion Models and Geometric Control}
+\label{subsec:adapter}
+
+Adapter modules have become an important mechanism for introducing additional conditions into diffusion models. T2I-Adapter and ControlNet inject spatial conditions such as edges, depth maps, and normals into a pretrained diffusion model through lightweight parallel branches with a controllable scaling factor \cite{mou2023t2iadapter,zhang2023controlnet}. IP-Adapter introduces image prompts through decoupled attention \cite{ye2023ipadapter}. LoRA and its variants implement lightweight model adaptation through low-rank residual updates \cite{hu2022lora,liu2024dora,zhang2023adalora}. Although these methods differ in architecture, they generally include some form of scaling factor that controls the influence of the external condition or adapter residual on the base model.
+
+In practice, the adapter scale is often treated as an empirical hyperparameter. A larger scale usually improves condition adherence, for example by better following normals, depth maps, or reference images. In texture generation tasks, however, overly strong conditional constraints may weaken the base diffusion model's ability to synthesize color, material, and high-frequency details. Adapter scaling is therefore not a simple matter of increasing the strength as much as possible; it involves a balance between geometric constraints and texture fidelity. This paper focuses on exactly this inference-time control problem: given a fixed adapter structure and fixed geometric conditions, how should the adapter strength be set or scheduled to preserve both shape consistency and texture detail?
+
+\subsection{Diffusion Guidance Scheduling and Timestep Control}
+\label{subsec:guidance}
+
+The denoising process of diffusion models is highly stage-dependent. Early steps mainly determine global layout and coarse structure, middle steps refine shape and semantic structure, and late steps are more responsible for color, texture, and high-frequency details \cite{ho2020ddpm,song2021ddim}. Based on this observation, many guidance scheduling strategies have been explored in both research and practice. For example, classifier-free guidance scales may be adjusted linearly, with cosine schedules, or dynamically to mitigate oversaturation, detail loss, or reduced diversity caused by overly strong guidance \cite{ho2022cfg,castillo2023adaptive}. In addition, the development of latent diffusion, high-resolution diffusion, and Transformer-based diffusion models further shows the close relationship among generation quality, noise schedules, conditional injection, and network architecture \cite{rombach2022ldm,esser2024scaling,blackforestlabs2024flux,loshchilov2019decoupled,cherti2023reproducible,nichol2022glide,saharia2022photorealistic,peebles2023scalable}.
+
+These methods all exploit the staged nature of denoising to regulate conditional strength. Notably, Kynk\"a\"anniemi et al.\ show that classifier-free guidance is harmful at high noise levels, largely unnecessary at low noise levels, and beneficial mainly in a middle interval, motivating limited-interval guidance \cite{kynkanniemi2024limited}; mid-stage concentration of conditioning strength therefore has a close precedent in CFG scheduling. However, different control signals act through different mechanisms. CFG scheduling adjusts the weight between conditional and unconditional predictions, mainly affecting the balance among semantic control, diversity, and visual fidelity. By contrast, the scale of a geometric adapter acts directly on intermediate features or residual branches, controlling how strongly geometric conditions intervene in the generation process. Adapter-scale scheduling of the form studied here differs from limited-interval guidance in both mechanism and target: it scales adapter feature residuals rather than score extrapolation, raises selected stages or depth groups above a conservative baseline instead of switching guidance on and off, and addresses the shape--texture trade-off of geometry-conditioned texture generation, where late-stage over-control suppresses the synthesis of color and high-frequency texture. ControlNet-style scale control is closer in spirit, but it is still usually interpreted as a condition-adherence strength; directly applying a larger, smaller, or smoothly decayed control scale does not specify which denoising stage should receive strong geometric residuals for texture generation.
+
+This distinction matters because the desired schedule for geometry-controlled texture generation is not necessarily monotonic. A monotonic decay or warm-up can reduce over-control in one part of the trajectory, but it cannot simultaneously avoid unstable early residuals, strengthen the middle stage where geometry refinement is most useful, and weaken late residuals that compete with color and high-frequency texture formation. Thus, timestep-conditioned scheduling of adapter strength cannot be treated as a direct transfer of CFG scheduling or generic ControlNet scale scheduling; it requires a dedicated analysis of how geometric residual injection interacts with texture synthesis.
+
+\section{Method}
+\label{sec:method}
+
+\subsection{Task Definition and Base Pipeline}
+\label{subsec:task}
+
+This paper builds on the MVPainter-style geometry-controlled multi-view texture generation framework \cite{shao2025mvpainter} and studies how the inference-time strength of geometric condition injection affects the generated results. Figure~\ref{fig:overview} illustrates the overall pipeline: the adapter injects geometric residuals into UNet features at three depth groups, the proposed scaling assigns their strength per depth group and denoising stage, and the final multi-view outputs are projected and baked into a textured 3D mesh. Given a single reference image and the corresponding 3D geometry, the base pipeline first generates RGB texture images from six target views and then obtains a textured mesh through projection or texture baking. We do not modify the base UNet, VAE, or pretrained adapter weights. Instead, the adapter scaling factor is treated as the key inference-time control variable.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig1_layerwise_20260930.pdf}
+\caption{Method overview. The frozen multi-view diffusion UNet receives geometry-conditioned residuals from the GeoTex-Adapter at three UNet depth groups (deep, middle, shallow). L-TCAS assigns each depth group its own stage-dependent scale $s_l(p_t)$, collected in the allocation matrix $S=[s_{l,k}]$; the example shows the layer-LHL schedule and the per-group caps. Scales are assigned per denoising step; no network weight is modified. The final multi-view outputs are projected and baked into a textured 3D mesh.}
+\label{fig:overview}
+\end{figure*}
+
+During multi-view diffusion, the 3D geometry is rendered into normal maps, depth maps, and foreground masks, denoted as:
+\begin{equation}
+\mathbf{G} = \{G_\text{normal}, G_\text{depth}, G_\text{mask}\}.
+\end{equation}
+
+The geometric adapter maps these conditions to a residual correction term and injects it into the intermediate hidden states of the UNet. For the $t$-th denoising step, the adapter injection can be written as:
+\begin{equation}
+\mathbf{h}'_t = \mathbf{h}_t + s(p_t) \cdot A_\phi(\mathbf{h}_t, \mathbf{G}),
+\label{eq:injection}
+\end{equation}
+where $\mathbf{h}_t$ and $\mathbf{h}'_t$ denote the hidden states before and after injection, $p_t$ denotes the sampling progress, and $s(p_t)$ is the adapter scaling strength at the current denoising stage. This formulation highlights a key difference from CFG-style guidance: changing $s(p_t)$ does not reweight two predicted scores, but changes the magnitude of a geometry-conditioned residual added to the feature stream. A larger $s$ usually enhances geometric condition adherence. However, if strong residuals are continuously applied in the late denoising stage, they may suppress the synthesis of color, material, and high-frequency details by the base diffusion model. This paper therefore studies how to schedule $s$ during denoising to balance shape consistency and texture detail preservation.
+
+\subsection{Layer-wise Timestep-Conditioned Adapter Scaling}
+\label{subsec:tcas}
+
+The diffusion denoising process is stage-dependent: early steps mainly establish the global layout and coarse contours; middle steps refine geometric structure and cross-view alignment; late steps are more responsible for color, material, and local texture synthesis. We first introduce Timestep-Conditioned Adapter Scaling (TCAS), the shared-layer form that replaces a globally fixed adapter scale with a stage-dependent scale function; TCAS is retained as the shared-layer baseline throughout the experiments. TCAS is not intended as a generic smooth guidance schedule. Its low-high-low form encodes the adapter-specific hypothesis that geometry residuals should be strongest only after coarse structure becomes stable and before late texture synthesis dominates. To avoid ambiguity caused by different raw timestep directions in different schedulers, we use sampling progress $p$ to represent the denoising process, where $p = 0$ denotes the start from noise and $p = 1$ denotes the end of sampling close to the final image state. TCAS divides denoising into early, middle, and late stages:
+\begin{equation}
+s(p) = \begin{cases} s_e, & 0 \leq p < 1/3 \\ s_m, & 1/3 \leq p < 2/3 \\ s_l, & 2/3 \leq p \leq 1 \end{cases},
+\label{eq:tcas}
+\end{equation}
+and the previously studied shared-layer C3 configuration is $(s_e, s_m, s_l) = (1.25, 2.50, 1.25)$. This design follows the hypothesis that early correction can disturb global formation, middle correction can strengthen geometric alignment, and late correction can compete with texture synthesis.
+
+The main object of this paper is the layer-wise generalization of this control. We collect the per-group, per-stage scales into an allocation matrix
+\begin{equation}
+S=[s_{l,k}],\quad l\in\{\text{deep},\text{middle},\text{shallow}\},\ k\in\{\text{early},\text{middle},\text{late}\},
+\label{eq:allocation}
+\end{equation}
+and inject the adapter residual as
+\begin{equation}
+\mathbf{h}'_{l,t}=\mathbf{h}_{l,t}+s_{l}(p_t)\,A_l(\mathbf{h}_{l,t},\mathbf{G}),
+\label{eq:layer_tcas}
+\end{equation}
+where $A_l$ denotes the adapter correction injected at depth group $l$ and $s_l(p)$ can be fixed or stage-dependent. We call this formulation L-TCAS (Layer-wise Timestep-Conditioned Adapter Scaling). L-TCAS is a unifying framework for describing and comparing inference-time residual-allocation policies, not a learned or optimized controller: the entries of $S$ are selected from a small set of evaluated schedules, and no training or optimization is involved in constructing $S$. The formulation makes two control axes explicit: redistributing residual strength across depth groups (the row-wise structure of $S$) and placing high or low scales along denoising stages (the column-wise structure of $S$). Shared-layer TCAS and any globally fixed scale are special cases of $S$ with identical rows; the layer-LHL and layer-LLH schedules used in the experiments are two particular column assignments.
+
+\subsection{Implementation Semantics and Cost}
+\label{subsec:impl}
+
+Concretely, the adapter residuals are injected through wrapped residual blocks of the three UNet up-blocks; the injection blocks map to depth groups as
+$\mathrm{up}_0\to$ deep, $\mathrm{up}_1\to$ middle, and
+$\mathrm{up}_2\to$ shallow. The development-selected, holdout-frozen
+implementation caps are $c_l=3.0,3.5,0.8$ for deep, middle, and shallow;
+they were selected during development and frozen before strict-276 evaluation, with no cap retuning on that
+cohort. At stage $k$, the effective scale is
+$\tilde{s}_{l,k}=\min(s_{l,k},c_l)$. The representative layer-LHL configuration uses
+$(1.25,2.50,1.25)$ for deep and middle groups and $(0.50,0.75,0.50)$ for the
+shallow group; none of these values reaches a cap. All seven conditions in
+the strict-276 Core-7 use this same capped implementation. The earlier
+clean-v2 and stage-placement panels used uncapped legacy semantics and are
+retained only as within-panel diagnostics, not pooled with Core-7. The
+shared-input ablation also evaluates
+layer-fixed-low, layer-fixed-mean (the exact 17/16/17 step means of
+layer-LHL: 1.65 for deep/middle and 0.58 for shallow), and layer-LLH
+controls. These controls are essential because they distinguish the benefit
+of reducing shallow residuals from the benefit of placing a high scale in a
+particular denoising stage.
+
+The method introduces no new trainable parameters and does not modify the
+base model, VAE, or adapter weights; it only updates residual multipliers
+during inference. Because the adapter correction $A_l(\mathbf{h}_{l,t},
+\mathbf{G})$ is computed whenever geometry conditioning is active, with or
+without scaling, the overhead of layer-wise scheduling is limited to per-step
+scale assignment (at most one multiplier per wrapped residual block) and does
+not add a network forward or measurable memory cost.
+
+\subsection{Shape-Texture Diagnostic Metrics}
+\label{subsec:metrics}
+
+The influence of adapter scaling on generated results cannot be evaluated by a single structural metric. We divide evaluation metrics into three groups. The first group consists of shape and structure metrics, including FG-SSIM, Edge-SSIM, and Crop-SSIM, which measure consistency with ground-truth renderings in the foreground, edge regions, and local foreground crops based on the structural similarity index \cite{wang2004ssim}. The second group contains signal fidelity and perceptual similarity metrics, including PSNR and the learned perceptual image patch similarity (LPIPS) \cite{zhang2018lpips}, which reflect pixel-level error and differences in deep feature space. The third group consists of texture diagnostic metrics, including Laplacian variance, RGB standard deviation, and gradient magnitude, which are used to detect weakened color variation, surface smoothing, and high-frequency detail loss.
+
+Because Reviewer-facing interpretation depends on what each metric can
+support, we keep four evaluation dimensions explicitly separate throughout
+the paper: (i)\ \emph{structure} (FG-SSIM, Edge-SSIM, Crop-SSIM against
+ground-truth renderings); (ii)\ \emph{reference fidelity} (PSNR, masked
+LPIPS, CIEDE2000 where available, and GT-relative errors of the variation
+diagnostics); (iii)\ \emph{texture variation} (Laplacian variance, RGB
+standard deviation, gradient magnitude, high-frequency energy---descriptive
+only, never read as fidelity on their own); and (iv)\ \emph{actual 3D
+output quality} (baked-mesh unseen-view metrics). In particular, a higher
+gradient magnitude or high-frequency energy can equally reflect unwanted
+noise, repeated patterns, or color shifts, so variation statements are always
+paired with GT-relative errors or visual counterexamples.
+
+Taking Laplacian variance as an example, the foreground texture response is defined as:
+\begin{equation}
+M_\text{tex} = \text{Var}(\text{Lap}(I_\text{out} \odot G_\text{mask})),
+\end{equation}
+where Lap denotes the Laplacian filter, $G_\text{mask}$ denotes the foreground mask, and Var denotes spatial variance. A larger $M_\text{tex}$ usually corresponds to richer local high-frequency variation. If structural metrics improve while Laplacian variance, RGB standard deviation, or gradient magnitude decreases, the improvement may mainly come from contour smoothing or boundary convergence rather than true texture quality improvement.
+
+\subsection{Schedule Interpretation and Learned Extensions}
+\label{subsec:cai}
+
+\paragraph{How the stage schedule is selected: the CAI interpretation}
+We use Correction--Alignment--Interference (CAI) as an empirical diagnostic, not as a theorem or a guaranteed selector. The stage utility notation $U_k=Q(\text{high scale only in }k)-Q(L)$ is useful for describing the results. LLH--GFL is a combined allocation effect. Controlled contrasts show that depth redistribution and temporal placement are experimentally distinguishable control axes, but the current evidence does not identify additive causal contributions in dB. The shared-input ablation shows that layer-fixed-mean and layer-LLH can outperform layer-LHL, so CAI does not identify a unique temporal schedule. Texture diagnostics are treated as variation indicators; fidelity is assessed separately with masked perceptual and color-error metrics. In the independent MV-Adapter audit, the pre-specified CAI rule is set-valued/undefined.
+
+\begin{remark}
+The CAI interpretation is adapter-dependent. Changing the adapter, residual magnitude, layer semantics, or backbone requires re-estimating the stage utilities and repeating the paired comparison. Confidence intervals describe uncertainty in the measured utilities; they do not establish equivalence or non-inferiority. The independent-backbone experiment therefore tests whether stage-position effects are observable under another implementation, not whether C3, LHL, or layer-LHL is a universal choice.
+\end{remark}
+
+\paragraph{GeoTex-Adapter and the learned FAC extension}
+GeoTex-Adapter is the fixed geometric residual backbone of this study: it receives a 5-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), and a multi-scale geometric encoder produces a feature pyramid whose residual corrections are injected into multiple UNet resolution levels; L-TCAS acts only on the temporal and per-depth-group scale of these residuals. To examine whether stage-wise control extends to learned modulation, we also evaluate Full Adaptive Correction (FAC), which adds three lightweight modules on top of the shared-layer TCAS base: LTAG (timestep gating), GSG (spatial gating), and FSC (frequency-selective correction). FAC requires learning a small number of additional parameters, whereas the training-free allocation family is the main method of this paper; Section~\ref{subsec:facexp} reports a controlled re-examination that delimits when learned modulation can be expected to help, and the training details are in Supplementary S7.
+
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Experimental Setup}
+\label{subsec:setup}
+
+\subsubsection{Experimental protocol and comparisons}
+
+Experiments are conducted using an MVPainter-style geometry-controlled multi-view diffusion pipeline. Each object contains a single reference image and corresponding 3D geometry. During preprocessing, the 3D geometry is rendered into target-view normal maps, depth maps, foreground masks, and ground-truth RGB images. The corrected round-two protocol uses six unique target views, $(0,15,12,16,13,14)$ in the forward order (and $(14,15,0,16,12,13)$ after reversal); the legacy order with a duplicated top view is retained only as an audit condition. All comparisons with ground-truth renderings use the same views, $256\times256$ resolution, and foreground masks.
+
+Except for the FAC extension experiment, the saved clean-v2 scaling records keep the object list, fetched reference/conditioning batch, target views, PyTorch initial latent, base UNet, VAE, adapter weights, and number of denoising steps fixed within each object; only the adapter scale or schedule is changed. Those historical records predate explicit Python/NumPy dataset-side seed control, so they are not presented as exact-repeat determinism evidence. All new reruns use Python, NumPy, and PyTorch seeds fixed before dataset construction and before each object. The number of sampling steps is 50. The historical 24-object probe nominated C3 before the larger evaluation records were generated. Current baseline-family claims use the capped strict-276 Core-7; the earlier clean-v2 and stage-placement tables are legacy uncapped diagnostics and are interpretable only within their respective panels. The probe-to-holdout protocol isolates the effect of adapter scaling from changes in model architecture, training data, sampling budget, or evaluation-set tuning.
+
+Accordingly, the comparisons in this paper are comparisons among inference-time adapter scaling strategies under the same base pipeline, rather than a system-level benchmark among different texture generation architectures. Uniform adapter scales serve as the primary deployment baselines because they correspond to the most direct way of choosing a single fixed adapter strength at inference time. The probe variants further test whether the trade-off can be resolved by simple alternatives such as globally high scales, layer-wise redistribution, or moving high adapter strength to early, late, or multiple denoising stages. L-TCAS changes only how this strength is scheduled across denoising stages and depth groups.
+
+\subsubsection{Evaluation sets and metrics}
+
+The source protocol records four evaluation sets: (1) a 50-object scale-sweep set; (2) a 26-object texture-audit set; (3) a 24-object probe set for the original schedule nomination; and (4) a 300-object evaluation pool containing a 276-object held-out subset. These exploratory records are retained for provenance. The current main-adapter baseline-family authority is the capped strict-276 Core-7; the earlier clean-v2 and stage-placement panels are legacy uncapped diagnostics, while the other extension audits retain their explicitly bounded roles.
+
+Evaluation metrics are divided into three categories: shape and structure metrics (FG-SSIM, Edge-SSIM, and Crop-SSIM), signal and perceptual metrics (PSNR, masked LPIPS, and, where available, CIEDE2000), and texture-variation diagnostics (Laplacian variance, RGB standard deviation, and gradient magnitude). The three variation diagnostics are not direct measures of texture fidelity; their symmetric log-ratio errors relative to ground truth are reported separately. All image metrics are first computed over six unique target views and then averaged over views and objects. For texture-related conclusions, we report means, paired object-level bootstrap intervals, and win rates; DISTS is unavailable in the current baking environment and is not claimed.
+
+The FAC extension uses the same object list and evaluation protocol as the 300-object evaluation pool, and its lightweight modules are trained only on the 1,706-object training pool for the strong-residual adapter instance, which is disjoint from all evaluation objects. TCAS is used as the main baseline, while LTAG, LTAG+GSG, and Full FAC are evaluated as ablation variants under the same paired protocol. The base model and original adapter remain frozen, and only lightweight adaptive correction parameters are learned.
+
+\subsubsection{Implementation and dataset details}
+
+All objects are drawn from the Objaverse 3D asset collection: ground-truth multi-view images are rendered offline with Blender (Cycles engine, 17 views at $256\times256$, white background), and the corrected target-view protocol uses the six unique camera IDs $(0,15,12,16,13,14)$; the legacy duplicate-top order is retained only as an audit condition. The main adapter's training pool contains 1{,}118 rendered objects, while the separately documented strong-residual/FAC audit uses a 1{,}706-object pool from the same source. Both training pools are disjoint from the evaluation pool; we verified that each training/evaluation identifier intersection is zero. Within the 300-object evaluation pool, the 24-object probe set corresponds to the first 24 identifiers ($\mathrm{obj}_{0000}$--$\mathrm{obj}_{0023}$) and the remaining 276 identifiers ($\mathrm{obj}_{0024}$--$\mathrm{obj}_{0299}$) form a holdout that is strictly disjoint from the probe. The exploratory 50-object and 26-object records are retained as provenance; the active evidence freeze uses the strict 276-object cohort and its paired follow-up.
+
+The base pipeline is an MVPainter-style geometry-controlled multi-view diffusion model built on a joint six-view latent UNet, loaded from the local \texttt{MVPainter\_Pipeline} snapshot under \texttt{checkpoints/hf\_repo} with diffusers 0.20.0, and used frozen together with its VAE. The pipeline is reference-image-conditioned; no text prompts are used. The GeoTex-Adapter takes a five-channel geometric input (3-channel normal map, 1-channel depth map, 1-channel foreground mask), produces a multi-scale residual pyramid, and injects corrections into multiple UNet resolution levels; for the adapter studied in the main tables, the requested scale is applied multiplicatively at every injected layer. Inference uses the Euler discrete scheduler with 50 denoising steps and a fixed random seed (42) shared by all schedules within an experiment, so all variants share the same initial latents; the model generates six views per object.
+
+FG-SSIM, Edge-SSIM (edge masks derived from depth/normal discontinuities), PSNR, and LPIPS (AlexNet backbone) are computed on foreground-masked regions after background normalization; the three foreground variation diagnostics are computed on foreground pixels and are not interpreted as texture fidelity without their GT-relative errors. The main tables use GeoTex-Adapter \texttt{geotex\_refattn\_v1/geotex\_step\_0002000.pt} trained on the 1{,}118-object pool. The separate strong-residual/FAC records are labeled as an independent extension protocol and are not pooled with the clean-v2 main-adapter tables. Checkpoint and object-list hashes are recorded in the round-two evidence freeze and reproducibility package.
+
+\paragraph{Statistical reporting}
+Object-level paired comparisons report 95\% percentile bootstrap confidence intervals with 10{,}000 resamples, a fixed seed, and object win rates; the direction is reversed for lower-is-better metrics. A confidence interval crossing zero is described as no detected difference, not as evidence of equivalence or non-inferiority. Where a mean is accompanied by $\pm$, the quantity is the standard deviation across objects. The stage-placement follow-up is labeled as such and is not treated as a blind confirmation.
+
+\subsection{Visible complete-object evidence}
+\label{subsec:visual}
+
+The numerical comparisons are accompanied by complete-object panels so that
+the practical trade-off is visible rather than inferred from a single proxy
+metric. Each panel uses the same reference-conditioned object and target view
+for the ground truth, no-adapter, conservative fixed-low, aggressive
+fixed-high, and C3 outputs. The examples deliberately include a
+high-improvement case, a near tie, and a failure-boundary object; they are
+illustrative qualitative evidence, not a representative sample and not a
+substitute for the paired 276-object statistics.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth]{main_adapter_clean_v2/comparisons/obj_0066_full_object_comparison.png}
+\caption{Complete-object comparison for a high-improvement example. The same
+reference and view are shown for all conditions. The shared-layer C3 schedule reduces the
+over-control visible in fixed-high while retaining geometric alignment; the
+object was selected as a high-improvement case rather than a representative
+or median case, and the panel is qualitative evidence only.}
+\label{fig:complete0066}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}{0.49\textwidth}\centering
+\includegraphics[width=\textwidth]{main_adapter_clean_v2/comparisons/obj_0048_full_object_comparison.png}
+\end{minipage}\hfill
+\begin{minipage}{0.49\textwidth}\centering
+\includegraphics[width=\textwidth]{main_adapter_clean_v2/comparisons/obj_0078_full_object_comparison.png}
+\end{minipage}
+\caption{Failure-boundary examples from the same complete-object protocol.
+The left object is the baking/exporter boundary case and the right object has
+very low raw texture coverage. They are retained to show where the tested schedules do not
+resolve source-fusion or coverage limitations.}
+\label{fig:completefailures}
+\end{figure*}
+
+The historical local texture panels in the supplementary material are kept as
+diagnostics from their original protocol. They illustrate the motivation for
+stage-conditioned control, but are not relabeled as clean-v2 aggregate
+evidence. In particular, visual texture preservation is interpreted together
+with the fixed-low and LLH counterexamples in the current tables.
+
+\subsection{Core-7: pre-registered same-runner holdout on the strict cohort}
+\label{subsec:core7}
+\label{subsec:confirmation}
+
+Because the development probes select layer-LLH (Section~\ref{subsec:layerablation}), we evaluate the allocation on the strict 276-object holdout under a protocol written before any holdout number was observed (Supplementary S11). The Core-7 matrix runs seven conditions in one seeded runner under the same capped implementation semantics (Section~\ref{subsec:impl}): the unmodified pipeline (no adapter), the three global schedules (fixed-low, fixed-high, C3), and three layer-wise schedules (fixed-mean, the layer-LHL replica, and the development-selected layer-LLH). Four of these rows---global fixed-low, layer-fixed-mean, the layer-LHL replica, and layer-LLH---are the pre-registered confirmation candidates; the no-adapter, global fixed-high, and global C3 arms complete the baseline family under the same frozen protocol (object seeds $42+\mathrm{idx}$, latent seed 42, 50 Euler steps, unique6 views). Per-object seeds fix the reference preprocessing draw, the initial latent, and the condition-VAE path, so all comparisons below are same-runner paired. Table~\ref{tab:core7} reports the means; paired object-level 95\% bootstrap intervals (10,000 resamples) are given in the text.
+
+\begin{table}[t]
+\centering
+\caption{Strict-276 Core-7 same-runner matrix under the capped implementation (means over 276 objects). Rows GFL/LFM/LHL(replica)/LLH are the pre-registered confirmation candidates; No adapter, GFH, and GC3 complete the baseline family under the same frozen protocol. Best value per column in bold. Absolute values are not pooled with the legacy uncapped panels (Supplementary S2--S3).}
+\label{tab:core7}
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Condition & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
+\midrule
+No adapter & 10.563 & 0.7282 & 0.6260 & 8.826 & \textbf{0.4799} & 0.2059 & 0.4794 \\
+Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
+Global fixed-high & 18.242 & 0.8498 & \textbf{0.1967} & 13.153 & 0.4783 & 0.1677 & \textbf{0.5538} \\
+Global C3 & 18.968 & 0.8510 & 0.2029 & 11.939 & 0.4296 & 0.1817 & 0.5278 \\
+Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
+Layer-LHL (replica) & 19.635 & 0.8486 & 0.2278 & 12.974 & 0.4445 & 0.1719 & 0.5273 \\
+Layer-LLH & \textbf{20.828} & \textbf{0.8514} & 0.1988 & \textbf{13.975} & 0.4620 & \textbf{0.1610} & 0.5476 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The four primary reference-fidelity metrics all favor layer-LLH: FG-PSNR 13.975, FG-LPIPS 0.1610, Full-PSNR 20.828, and Full-SSIM 0.8514 are the best of the seven same-runner conditions. We do not claim dominance across all metrics: the unmodified pipeline retains the best FG-SSIM (0.4799), and global fixed-high retains the best Full-LPIPS (0.1967) and Edge-SSIM (0.5538). Layer-LLH thus provides the strongest overall reference-fidelity profile among the seven conditions while retaining explicit metric-dependent trade-offs.
+
+For the three arms that complete the baseline family, paired contrasts (layer-LLH minus the comparator; positive values favor LLH under the metric direction) are as follows. Against no adapter, FG-PSNR is $+5.149$~dB $[+4.896,+5.396]$, Full-PSNR $+10.265$~dB $[+10.106,+10.421]$, and Edge-SSIM $+0.068$, while the unmodified pipeline is better on FG-SSIM ($-0.018$), consistent with its globally smoother outputs. Against global fixed-high, FG-PSNR is $+0.822$~dB $[+0.617,+1.033]$ (148/128 wins) and Full-PSNR $+2.585$~dB $[+2.400,+2.769]$ (272/4), while global fixed-high retains better FG-SSIM ($-0.016$), Full-LPIPS ($-0.002$), and Edge-SSIM ($-0.006$); global fixed-high versus global fixed-low itself shows no detected Full-PSNR difference, so its FG-PSNR advantage is not a full-baseline improvement. Against global C3, FG-PSNR is $+2.037$~dB $[+1.807,+2.261]$ (227/49) with no detected Full-SSIM difference.
+
+The pre-registered confirmation contrasts keep their protocol-locked analysis. Layer-LLH is better than layer-fixed-mean on all seven metrics, with paired 95\% intervals excluding zero: Full-PSNR $+1.311$~dB $[+1.219,+1.400]$ (275/276 wins), FG-PSNR $+0.875$~dB $[+0.769,+0.982]$ (240/276), FG-LPIPS $-0.0089$ $[-0.0097,-0.0081]$ (258/276), Edge-SSIM $+0.0113$ $[+0.0101,+0.0125]$, Full-LPIPS $-0.0094$, Full-SSIM $+0.0011$, and FG-SSIM $+0.0070$. Layer-LLH is also better than the layer-LHL replica on all seven metrics with intervals excluding zero: Full-PSNR $+1.193$~dB $[+1.123,+1.262]$ (276/276 wins), FG-PSNR $+1.001$~dB $[+0.907,+1.097]$ (261/276), FG-LPIPS $-0.0110$ $[-0.0118,-0.0101]$ (264/276), Edge-SSIM $+0.0203$ $[+0.0187,+0.0219]$, Full-SSIM $+0.0028$, Full-LPIPS $-0.0290$, and FG-SSIM $+0.0174$. Layer-fixed-mean versus the replica is mixed---fixed-mean is better on FG-LPIPS ($+0.0021$), FG-PSNR ($+0.126$), and Edge-SSIM ($+0.0090$), while the replica is better on Full-PSNR ($+0.119$)---matching the metric-dependent development picture. The seeded layer-LHL replica is the only layer-LHL row retained for quantitative confirmation; the earlier historical record is excluded because its complete runner-time provenance cannot be reconstructed, and preprocessing-realization audits do not explain that discrepancy. Against the global fixed-low control, layer-LLH is better on all seven metrics with intervals excluding zero: FG-PSNR $+3.244$~dB $[+2.936,+3.542]$ (242/276 wins), FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$ (261/276), Full-PSNR $+2.599$~dB $[+2.353,+2.838]$ (249/276), Edge-SSIM $+0.0276$ $[+0.0242,+0.0308]$, and Full-LPIPS $-0.0119$; layer-fixed-mean is likewise better on all seven metrics (FG-PSNR $+2.369$~dB $[+2.155,+2.576]$), while the layer-LHL replica is better on six of seven and the global control retains better Full-LPIPS ($+0.0170$ in the replica-minus-global direction, $[+0.0138,+0.0206]$). These holdout results confirm the development-probe directions for the promoted candidates; they do not re-open schedule selection.
+
+Two earlier strict-276 panels---the clean-v2 four-condition table and the stage-placement follow-up with its saved-artifact Full-SSIM branch---were produced under the earlier uncapped runner semantics. They are retained as legacy within-panel diagnostics in Supplementary S2 and S3, are not pooled with the Core-7, and no current baseline-family ranking is taken from them. The follow-up retains one bounded use as a within-panel stage-placement sensitivity check and a CAI counterexample (LLH better than LHL on all six non-SSIM metrics within that panel, including the budget-matched HLL--LLH pair).
+
+\paragraph{Comparison with generic schedules.}
+The original-protocol schedule audit also includes linear warm-up and cosine
+bump controls, reported separately in Supplementary S5. Those results are
+useful as a schedule-family comparison within the strong-residual audit, but
+they do not constitute a new clean-v2 experiment and are not pooled with
+Table~\ref{tab:core7}. Thus, the evidence supports L-TCAS as a concrete
+alternative to both fixed scales and common monotone/smooth schedules under
+the tested adapter, not as a universally superior schedule family.
+
+\FloatBarrier
+\subsection{Shared-input layer-wise ablation}
+\label{subsec:layerablation}
+
+The ablation isolates three questions separately: (i)\ does redistributing
+residual strength across depth groups help at all (global vs layer-wise);
+(ii)\ does the choice of temporal pattern matter beyond each group's average
+strength (constant vs scheduled); and (iii)\ which temporal placements work
+(complete low/high pattern enumeration). We answer (i) and (ii) with a paired
+development ablation on 24 probe objects with three seeds, and (iii) with a
+complete binary factorial over all eight low/high temporal patterns under the
+same protocol. Each object was collated once per seed; all methods reused the
+same target, geometric features, initial latent, and condition-VAE seed. The
+full hash manifest and per-object rows are provided in Supplementary S9.
+Table~\ref{tab:layerablation} reports means over the 72 object-seed pairs.
+Both tables are development results on the probe set and are not relabeled as
+independent holdouts.
+
+\begin{table}[t]
+\centering
+\caption{Shared-input layer-wise ablation on 24 objects and three seeds. The
+primary metric is FG-LPIPS; lower is better.}
+\label{tab:layerablation}
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & Full-PSNR$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
+\midrule
+Fixed-low & 15.085 & 0.2922 & 8.125 & 0.3454 & 0.2195 & 0.4896 \\
+C3/LHL & 16.058 & 0.2748 & 9.556 & 0.3929 & 0.2072 & 0.5063 \\
+Layer-fixed-low & 16.861 & 0.3501 & 10.753 & 0.4249 & 0.1964 & 0.5238 \\
+Layer-fixed-mean & 16.892 & 0.2796 & 11.179 & 0.4352 & 0.1889 & 0.5287 \\
+Layer-LHL & 17.036 & 0.3143 & 11.209 & 0.4352 & 0.1928 & 0.5239 \\
+Layer-LLH & \textbf{18.165} & \textbf{0.2562} & \textbf{12.364} & \textbf{0.4467} & \textbf{0.1785} & \textbf{0.5438} \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The comparison separates layer redistribution from temporal placement.
+First, every layer-wise control improves foreground fidelity over global
+fixed-low (layer-LHL vs fixed-low: paired $+3.083$~dB FG-PSNR and $-0.0267$
+FG-LPIPS, 95\% intervals excluding zero), so the layer-wise redistribution
+itself---not only the temporal pattern---carries the gain. Second, the
+temporal placement matters but is metric-dependent: layer-fixed-mean is
+better than layer-LHL on FG-LPIPS, and layer-LLH is better than layer-LHL on
+every metric in this development comparison. We therefore treat layer-LHL as
+a representative development pattern rather than as a uniquely selected
+optimum.
+Figure~\ref{fig:layerablation} shows the complete six-view output for one
+paired object; the full per-object set and hash records are in Supplementary
+S9.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.99\textwidth]{coordination/layer_lhl_v1/layerwise_visual_success_panel.png}
+\caption{Visible layer-wise comparison for a representative development object.
+The panel restores the direct visual baseline chain requested in the previous
+revision: ground truth, global fixed-low, the shared-layer C3/LHL baseline, and
+layer-LHL. All columns use the same six target views and shared-input protocol.
+This is illustrative evidence; the paired 72-row statistics in
+Table~\ref{tab:layerablation} determine the reported comparison.}
+\label{fig:layerablation}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.99\textwidth]{coordination/layer_lhl_v1/layerwise_visual_tradeoff_panel.png}
+\caption{Visible counterexample for the temporal schedule claim. The same
+development object is shown with ground truth, layer-fixed-low,
+layer-fixed-mean, layer-LHL, and layer-LLH. Layer-LHL is therefore not
+presented as a universally preferred schedule; this panel complements the
+paired metric counterexample in Table~\ref{tab:layerablation}. The object was
+retained as a counterexample from the fixed seed-42 development render, not as
+a success-only selection.}
+\label{fig:layertradeoff}
+\end{figure*}
+
+\subsubsection{Complete binary temporal-pattern ablation}
+
+To rule out that the two schedules above were a favourable pair, we enumerate
+all eight binary temporal patterns over the same two layer-wise scale levels
+(low: deep/middle 1.25, shallow 0.50; high: deep/middle 2.50, shallow 0.75)
+on the same 24 probe objects and three seeds, with the same shared-input
+pairing (576 object--seed--pattern records; Supplementary S10). Schedule
+names read early/middle/late, e.g.\ LLH places the high level only in the
+late stage. Development-only selection uses FG-LPIPS; the holdout is never
+used to choose a pattern.
+
+\begin{table}[t]
+\centering
+\caption{Complete binary layer-wise temporal-pattern ablation on 24 probe
+objects and three seeds (development ablation; shared inputs per
+object--seed). FG-LPIPS is the selection metric; lower is better. Patterns
+with an early-high component are dominated on fidelity metrics.}
+\label{tab:factorial}
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Pattern & Full-PSNR$\uparrow$ & Full-SSIM$\uparrow$ & Full-LPIPS$\downarrow$ & FG-PSNR$\uparrow$ & FG-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & Edge-SSIM$\uparrow$ \\
+\midrule
+LLL & 20.801 & 0.8759 & 0.2200 & 16.020 & 0.6112 & 0.1124 & 0.5942 \\
+LLH & \textbf{21.856} & 0.8832 & 0.1805 & \textbf{17.466} & \textbf{0.6219} & \textbf{0.1046} & \textbf{0.6131} \\
+LHL & 20.561 & 0.8784 & 0.2008 & 15.661 & 0.6038 & 0.1193 & 0.5887 \\
+LHH & 21.413 & \textbf{0.8837} & \textbf{0.1734} & 17.171 & 0.6194 & 0.1093 & 0.6113 \\
+HLL & 18.433 & 0.8636 & 0.2246 & 14.082 & 0.5951 & 0.1295 & 0.5849 \\
+HLH & 19.321 & 0.8721 & 0.1860 & 15.382 & 0.6132 & 0.1206 & 0.6089 \\
+HHL & 18.155 & 0.8675 & 0.2092 & 13.747 & 0.5894 & 0.1355 & 0.5796 \\
+HHH & 18.828 & 0.8731 & 0.1828 & 15.063 & 0.6114 & 0.1248 & 0.6073 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Three observations follow from Table~\ref{tab:factorial}. First, late-stage
+high scale helps: every pattern ending in H beats the same prefix ending in L
+on FG-LPIPS (e.g.\ LLH 0.1046 vs LLL 0.1124; LHH 0.1093 vs LHL 0.1193). This
+is the opposite of the shared-layer case, where a late high scale was harmful,
+and it is the layer-wise counterexample to importing the C3 intuition.
+Second, an early high scale hurts: all early-low patterns beat their
+early-high counterparts. Third, the originally motivated layer-LHL is not the
+best pattern: layer-LLH (paired FG-LPIPS difference $+0.0147$, 95\% CI
+$[+0.0117,+0.0187]$), layer-LHH ($+0.0101$, $[+0.0080,+0.0123]$), and the
+constant layer-LLL ($+0.0069$, $[+0.0042,+0.0108]$) all beat it, while LHL
+beats every early-high pattern (e.g.\ $-0.0101$ vs HLL, CI
+$[-0.0129,-0.0074]$). Layer-LLH is the strongest pattern on five of the seven
+reported metrics and layer-LHH on the remaining two; layer-LHL is best on
+none.
+
+The ranking is, however, a development-probe ranking. Two independent
+shared-input probe runs of overlapping schedules show that the LLH-over-LHL
+direction is stable in both, whereas small differences among
+\{LLL, LHL, layer-fixed-mean\} change sign between probe runs
+(Supplementary S10). We therefore claim only the robust directions---late-high
+helps, early-high hurts, layer-wise beats global fixed-low---and we evaluate
+the development-selected pattern on the strict holdout
+(Section~\ref{subsec:core7}).
+
+\subsection{Texture and robustness audits}
+\label{subsec:texture}
+
+Two complementary texture audits and one realization-robustness check bound
+the texture claims; the two texture surfaces use different metric conventions
+and are never mixed or pooled.
+
+\paragraph{Part A: same-runner GT-distance probes.}
+On the strict-276 Core-7 runner, texture descriptors are evaluated as
+GT-relative distances (absolute value of the generated-minus-GT symmetric
+log-ratio). Layer-LLH is significantly closer to the GT statistics than
+global fixed-low on all four probes (e.g.\ gradient-magnitude distance
+$+0.0576$ in LLH's favor), while against layer-fixed-mean and the layer-LHL
+replica the high-frequency-energy probe reverses in their favor
+($-0.00081$ and $-0.00135$) and the RGB-standard-deviation probe shows no
+detected difference against the replica. We therefore describe the texture
+result as closest-to-GT statistics with listed exceptions, not as an
+unqualified texture improvement.
+
+\paragraph{Part B: offline CIEDE2000 audit of the stage-placement panel.}
+A separate offline audit recomputes CIEDE2000 color error on the saved
+stage-placement images (legacy uncapped panel; one out-of-distribution
+foreground excluded, $n=275$). Layer-LLH minus fixed-mean is
+$+2.791$ $[+2.553,+3.048]$ (271/275 wins) and layer-LLH minus HLL is
+$+4.993$ $[+4.577,+5.425]$ (268/275), while layer-LLH minus the panel's
+C3/LHL row is $+0.272$ $[+0.098,+0.469]$ (138/275), a small within-family
+margin. Part A and Part B differ in mask erosion, value convention, and
+cohort, so their numbers are reported side by side but never combined.
+
+\paragraph{Realization robustness.}
+The paired conclusions are stable across two frozen preprocessing
+realization sets (R0/R1): 27 of 28 audited contrasts are STABLE\_STRONG and
+one is STABLE\_DIRECTIONAL. Preprocessing-realization audits do not explain
+the earlier historical layer-LHL discrepancy described in
+Section~\ref{subsec:core7}; that record remains excluded from quantitative
+claims.
+
+\subsection{Baking and unseen-view case study}
+\label{subsec:baking}
+
+To test whether image-level differences survive into a real 3D output, we
+performed a CPU bake on the frozen, stratified 12-object Exact-GLB cohort.
+Each of the four main-adapter conditions produced a textured GLB, yielding 48
+object--condition exports and 11 unseen-camera renders per export (528
+view-level rows). The six source views were fixed and the unseen-view metrics
+were aggregated within object before any descriptive comparison.
+
+\begin{table}[t]
+\centering
+\caption{Descriptive unseen-view baking metrics for the 12-object stratified case study. These values are not a population estimate; DISTS was unavailable.}
+\label{tab:bake12}
+\small
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+Method & Masked PSNR$\uparrow$ & CIEDE2000$\downarrow$ & FG-LPIPS$\downarrow$ & Silhouette IoU \\
+\midrule
+No adapter & 11.824 & 18.200 & 0.156 & 0.99968 \\
+Fixed-low & 6.001 & 48.623 & 0.199 & 0.99968 \\
+Fixed-high & 3.891 & 60.420 & 0.216 & 0.99968 \\
+C3 (LHL) & 5.638 & 51.183 & 0.201 & 0.99968 \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+This case study does not show a C3 advantage over fixed-low or no adapter for
+unseen-view fidelity: no adapter has the best descriptive PSNR, CIEDE2000, and
+LPIPS means in this cohort. The bake audit verifies semantic mesh/polygon/UV
+preservation and embedded textures, but it is not a byte-identity guarantee;
+Blender reindexed vertices for \texttt{obj\_0048}. The zero seam values are
+reported with the audit's seam definition and denominator and are not treated
+as proof of universal seam-free output. Coverage and post-inpainting coverage
+are reported separately in the supplementary audit. The run has no generated
+12-object GT bake and no DISTS result, and visual inspection found
+cross-view/source-fusion colour inconsistency. Thus the 3D result is a
+feasibility and limitation case study, not evidence of population-level superiority of any tested schedule
+superiority. Supplementary S4 gives object-level failure boundaries:
+\texttt{obj\_0078} and \texttt{obj\_0082} have raw coverage below 0.04, while
+\texttt{obj\_0048} has 0.8441 inpainted fraction and is the exporter
+reindexing case.
+
+\paragraph{Layer-wise bake extension with same-draw controls.}
+Because absolute values are not pooled across separate runner invocations,
+the layer-wise schedules were baked on the same 12 Exact-GLB objects
+together with fresh global fixed-low and C3 controls generated by the SAME
+seeded runner (identical per-object reference draws, latents, and seeds), so
+the four conditions are directly comparable. Within this same-draw set,
+layer-LLH beats layer-LHL on masked PSNR (16.679 vs 15.005), CIEDE2000
+(14.186 vs 16.922), and FG-LPIPS (0.1215 vs 0.1420), with 12/12 paired
+object wins on all three metrics, and it also beats the same-draw global
+controls: layer-LLH vs global C3 is 16.679 vs 12.565 dB masked PSNR, 14.186
+vs 21.643 CIEDE2000, and 0.1215 vs 0.1562 FG-LPIPS (12/12 object wins on all
+three), and the global C3-vs-fixed-low ordering is preserved (12/12 wins).
+The four means are strictly ordered (fixed-low 10.763 / C3 12.565 /
+layer-LHL 15.005 / layer-LLH 16.679 dB; CIEDE2000 26.287 / 21.643 / 16.922 /
+14.186). This extension remains a
+stratified 12-object case study with the same limitations as above (no GT
+bake, no DISTS), so it is evidence about the layer-wise comparison, not a
+population-level 3D advantage claim.
+
+\paragraph{Corrected UV-seam audit.}
+A corrected seam metric with an explicit seam-pair denominator was validated
+on positive and negative controls and applied to the 96 exported GLBs of the
+bake queue in texture space. Within the same-draw generation (fresh global
+and layer-wise conditions plus the no-adapter reference), the seam
+$\Delta E_{00}$ mean-of-means ordering is layer-LLH 4.885 $<$ layer-LHL
+5.598 $<$ no adapter 6.467 $<$ global C3 7.545 $<$ global fixed-low 8.865;
+layer-LLH also has the lowest 90th-percentile seam error (14.56), while the
+tail fraction above 10 is comparable between layer-LLH (0.186) and layer-LHL
+(0.181). The earlier four-condition bake generation reports seam scalars
+under a denominator-free definition and is not pooled with these values.
+This is direct texture-space evidence within the case study; it does not
+extend to a population-level seam claim.
+
+\subsection{FAC Adaptive Correction Extension: A Controlled Re-examination}
+\label{subsec:facexp}
+
+The training-free schedules use fixed scale patterns, which have the advantages of requiring no training, being simple to implement, and introducing low computational overhead. However, its residual scaling is still uniform across spatial positions and frequency components, lacking fine-grained adaptivity. To examine whether stage-wise adapter control can be extended to learned adaptive correction, we trained the FAC extension---LTAG for timestep gating, GSG for spatial gating, and FSC for frequency-selective correction on top of the TCAS temporal schedule. The base model, VAE, and GeoTex-Adapter remain frozen; only the three lightweight controllers are trainable, adding roughly $6\times10^{3}$ parameters. The controllers are trained with the same enhanced denoising objective as the base adapter on the adapter's training pool, which is strictly disjoint from all evaluation objects; training hyperparameters and the protocol details are in Supplementary S7, and all variants are evaluated under the separately documented strong-residual, per-layer-capped audit protocol with identical objects, seeds, and evaluation code.
+
+In this controlled setting, no learned variant reached the training-free schedule. We tested seven configurations spanning joint, envelope-preserving, fidelity-weighted, and gently scheduled controllers. Their paired deficits relative to the training-free schedule range from $-1.1$ to $-2.9$~dB foreground PSNR (FG-PSNR; win rates at most 16\%). A warm-start control in which the gate is left untrained at the exact C3 envelope shows no detected difference from the fixed schedule (paired FG-PSNR $\Delta=-0.18$~dB on the 12-object control, 95\% CI $[-0.42,+0.05]$, crossing zero); this interval does not prove equivalence or validate transfer. No configuration or hyperparameter was selected on any evaluation object; the complete dose--response study is provided in the supplementary material.
+
+For transparency, we note that an initial evaluation of the FAC extension, conducted on the main adapter under our earlier protocol before the strictly paired and strictly disjoint training controls were adopted, had suggested a positive gain. That initial comparison differed in both evaluation protocol and adapter instance, and it does not meet the controls we now consider necessary for a transfer claim; under the strictly paired, strictly disjoint protocol above, no trained configuration replicates the gain. We therefore report only the controlled re-examination and treat the initial comparison as superseded.
+
+The outcome delimits the tested extension and does not identify a causal mechanism: every trained configuration degraded the measured fidelity under this protocol, while the untrained envelope control did not show a detected difference. Learning a modulation that improves upon the fixed layer-wise controls therefore requires a training signal that protects foreground fidelity; this is future work. The FAC results are reported as a negative, separate extension study, not as a claim that the fixed schedules are the only viable methods.
+
+\FloatBarrier\subsection{Transfer to other adapter interfaces}
+\label{subsec:adapterdep}
+
+We audited the allocation question on two additional interfaces: an
+MV-Adapter deployment (Exact-GLB cohort of 76 objects, 11 recorded global
+conditions) and an MVDiffusion deployment (75 objects). All cross-backbone
+comparisons are within-backbone paired contrasts; absolute scores are never
+pooled across backbones. Dynamic schedules with high scale 1.50 and 1.00 are
+kept as separate scale families; their rows are not pooled. The table below
+shows the paired global schedule comparison and the conservative controls on
+the MV-Adapter deployment.
+
+\begin{table}[t]
+\centering
+\caption{Selected within-backbone MV-Adapter means on the Exact 76-object cohort. Absolute scores are not compared with the MVPainter-style backbone.}
+\label{tab:mvadapter}
+\scriptsize
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & PSNR$\uparrow$ & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & $\Delta E_{00}\downarrow$ & GT-texture$\downarrow$ \\
+\midrule
+No geometry & 13.114 & 0.498 & 0.233 & 0.183 & 20.720 & 1.701 \\
+Fixed-low & 13.357 & 0.528 & 0.240 & 0.188 & 20.150 & 2.224 \\
+Fixed mean & 13.337 & 0.528 & 0.240 & 0.188 & 20.197 & 2.203 \\
+HLL & 13.321 & 0.527 & 0.240 & 0.188 & 20.243 & 2.232 \\
+LHL & 13.344 & 0.528 & 0.240 & 0.188 & 20.182 & 2.269 \\
+LLH & 13.353 & 0.528 & 0.240 & 0.188 & 20.157 & 2.199 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The global audit supports an observable stage-position effect within this
+backbone, but not a uniform practical gain. LHL has slightly higher FG-SSIM
+and Edge-SSIM than HLL and LLH in the paired schedule comparison, while LLH
+has the highest PSNR among those four and lower GT-relative texture error
+than LHL. LHL has no clear advantage over fixed-low or fixed mean under the
+paired confidence intervals. The frozen CAI rule is
+\texttt{undefined\_set\_valued}, and the
+official MV-Adapter pretraining UID list was unavailable, so pretraining
+disjointness is not asserted.
+
+\paragraph{Layer-wise transfer under a prespecified mapping.}
+The MV-Adapter injection points (four ordered down-block groups) were grouped
+into three contiguous depth groups by a mechanical topology-derived rule
+(shallow $=\{$p$_0\}$, middle $=\{$p$_1\}$, deep $=\{$p$_2,$p$_3\}$),
+written before the first layer-wise MV-Adapter holdout rows; profile values
+come from the frozen main-backbone layer profile with point-count
+normalization, not from MV-Adapter outcomes. Under this prespecified
+topology-derived grouping, the layer-wise effect is supported with
+metric-dependent direction: paired contrasts of the layer-wise conditions
+against their global counterparts exclude zero in favor of layer-wise
+scaling on PSNR ($+0.097$, $+0.101$, $+0.102$~dB), $\Delta E_{00}$
+($+0.344$, $+0.352$, $+0.313$), and GT-relative texture error ($+0.311$,
+$+0.286$, $+0.289$), while FG-SSIM and Edge-SSIM consistently favor the
+global conditions by a small margin ($-0.004$/$-0.001$) and FG-LPIPS is not
+separated. Temporal position is not consistently separated on this
+interface: the layer-wise LLH-versus-fixed-mean contrast and the global
+LLH-versus-LHL contrast are not separated, with only marginal single-metric
+terms in opposite directions. The mapping conclusion is bounded to the
+tested contiguous alternatives: the layer-wise advantage is robust across
+the tested contiguous mapping choices---a frozen-value reassignment of the
+deep/middle boundary leaves 16 of 18 audited contrasts stable and slightly
+strengthens the primary effects (P1 PSNR $+0.097\to+0.147$~dB,
+$\Delta E_{00}$ $+0.344\to+0.484$). Separately, a budget-neutral
+regrouping is indistinguishable from the registered mapping on all six
+metrics. We do not claim mapping-independent transfer.
+
+\paragraph{MVDiffusion: an interface-boundary experiment.}
+MVDiffusion scales a serial correspondence module, not an independent
+additive geometry residual: its CPBlock intervention interpolates the module
+output, $y'=(1-\alpha)x+\alpha\,\mathrm{CPBlock}(x)$, and the deployment
+path injects depth through latent concatenation, where scaling is not
+admissible; the literal additive branch never activates. The only adjustable
+surface is the replacement semantics of nine CPBlocks with a convex
+combination weight $\alpha$, and $\alpha\equiv 1$ reproduces the official
+path exactly (verified at tensor level, 36/36). This makes the experiment an
+interface boundary rather than a direct replication. Under this interface,
+the layer-wise result is not replicated and is preserved as found: PSNR,
+FG-/Edge-SSIM, and $\Delta E_{00}$ consistently and significantly favor the
+global conditions (e.g.\ L-LLH vs G-FL PSNR $-0.454$~dB, $\Delta E_{00}$
+$-1.373$), GT-relative texture error significantly favors the layer-wise
+conditions ($+0.082$), and FG-LPIPS is not separated. No scale, mapping, or
+schedule was re-searched to reverse this direction.
+
+In sum, layer redistribution partially transfers to MV-Adapter under a
+prespecified topology-derived grouping, with metric-dependent support;
+temporal placement is not consistently separated there. On MVDiffusion's
+non-isomorphic serial correspondence-module interface, the layer-wise result
+does not replicate, defining an architecture-dependent applicability
+boundary. Full per-contrast records, identity audits, and mapping-sensitivity
+protocols for both deployments are provided in the reproducibility package
+(Supplementary S6 and S12).
+
+\section{Limitations}
+\label{sec:limitations}
+
+The contributions and the limits of this paper are those of a training-free
+inference control studied on one adapter family. First, the layer-wise
+evidence is bounded: the shared-input development ablation and the complete
+binary factorial are 24-object probe studies, and the strict-276 evidence
+covers the Core-7 matrix---the pre-registered candidates plus the completed
+baseline arms---so the remaining temporal patterns of the factorial have no
+holdout rows. The development ranking is not a holdout ranking; small
+differences among constant-scale variants changed sign between two
+independent probe runs, so we claim only directions that held in both runs
+and on the holdout.
+
+Second, the temporal-placement comparisons are not strict
+equal-effective-budget interventions. The 50-step partition is 17/16/17 and
+the nominal scale sums, squared sums, and actual residual norms differ across
+schedules; an equal-nominal-budget global check was started but interrupted
+before completion and lacks full checkpoint provenance, so it is kept as an
+internal record and budget-matched controls remain future work.
+
+Third, the method's practical 3D validation is limited in scope. The
+original 12-object Exact-GLB bake exercises the four global conditions, and a
+same-draw extension adds the layer-wise schedules with fresh global controls;
+within that extension layer-LLH beats layer-LHL on all unseen-view metrics
+with 12/12 paired wins. The bake remains a stratified case study with no
+generated GT bake, no DISTS, and observed cross-view/source-fusion colour
+inconsistency; it must be read as an operational feasibility case study, not
+as a 3D quality advantage of any schedule.
+
+Fourth, the transfer evidence is interface-bounded. The MV-Adapter layer-wise
+validation holds under the prespecified topology-derived grouping and the
+tested contiguous alternatives, not for arbitrary partitions; the
+MVDiffusion deployment cannot scale its depth pathway at all, so its
+negative result is specific to that serial correspondence-module interface.
+Pretraining-UID disjointness for the official MV-Adapter release is unknown.
+
+Fifth, Laplacian variance, RGB standard deviation, and gradient magnitude are
+variation proxies, not fidelity measures; we report them with GT-relative
+errors, but they cannot replace human evaluation, particularly for reflective,
+transparent, or highly stylized objects. Finally, the schedules have not been
+validated across sampler families, resolutions, or reference-image quality,
+and absolute values are comparable only within a single seeded runner
+invocation; all cross-runner tables are labeled as independent protocol
+surfaces and are not pooled.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper presented L-TCAS, a training-free inference control that
+formulates adapter strength as a layer-by-stage residual allocation matrix
+$S=[s_{l,k}]$ over UNet depth groups and denoising stages, with the
+shared-layer TCAS schedule as a special case. The controlled evidence
+supports four conclusions. (1)~Moving from a global scale to depth-group
+scales improves foreground fidelity over global fixed-low under shared
+inputs (paired $+3.083$~dB FG-PSNR, $-0.0267$ FG-LPIPS on the development
+probe). (2)~Temporal placement within the layer-wise family matters, but the
+pattern is not unique: the complete binary factorial shows late-stage high
+scale helps and early-stage high scale hurts, with layer-LLH strongest on
+five of seven development metrics. (3)~On the pre-registered strict-276
+same-runner Core-7, layer-LLH has the best mean on the four primary
+reference-fidelity metrics (FG-PSNR, FG-LPIPS, Full-PSNR, Full-SSIM) among
+the seven same-runner conditions, with explicit metric-dependent reversals
+on FG-SSIM, Full-LPIPS, and Edge-SSIM; the originally motivated layer-LHL
+enters the holdout only as a seeded same-runner confirmation row rather than
+as a selection. (4)~These effects are architecture- and metric-dependent:
+layer redistribution partially transfers to MV-Adapter under a prespecified
+topology-derived grouping, temporal placement does not consistently separate
+there, and the layer-wise result does not replicate on MVDiffusion's serial
+correspondence-module interface.
+
+A geometry adapter should not be treated as having one inference-time
+strength. Its residuals can be allocated differently across network depth
+and denoising time. On the primary pipeline, layer-aware allocation
+materially improves reference fidelity under a strict same-runner holdout;
+across other interfaces, the layer and temporal components transfer
+differently. This establishes residual allocation as a useful inference
+control and also defines its architecture-dependent limits.
+
+\section*{Data availability}
+
+The evaluation scripts, per-object metric records, protocol manifests, hash
+indexes, and the comparison figures generated in this study are available
+from the corresponding author on reasonable request. The released artifact
+set comprises: the clean-v2 object-list and checkpoint-hash manifests, the
+shared-input ablation and binary-factorial raw CSV/JSON records with
+SHA-256 indexes, the strict-276 record files and paired-comparison outputs,
+the CPU bake metadata and unseen-view metric tables, and the MV-Adapter audit
+CSV/JSON files. Trained checkpoints and the Objaverse-derived renderings are
+redistributed only under the terms of their original licenses and are
+available from the corresponding author under the same conditions. No
+supplementary video is part of this revision.
+
+\section*{Declaration of competing interests}
+
+The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
+
+
+\begin{thebibliography}{43}
+\bibitem{liu2023zero1to3}
+Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{shi2023zero123pp}
+Shi R, Chen H, Zhang Z, et al. Zero123++: A single image to consistent multi-view diffusion base model. arXiv:2310.15110, 2023.
+
+\bibitem{liu2023syncdreamer}
+Liu Y, Lin C, Zeng Z, et al. SyncDreamer: Generating multiview-consistent images from a single-view image. \textit{International Conference on Learning Representations}, 2024.
+
+\bibitem{long2023wonder3d}
+Long X, Guo Y C, Lin C, et al. Wonder3D: Single image to 3D using cross-domain diffusion. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+
+\bibitem{shi2024mvdream}
+Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for 3D generation. \textit{International Conference on Learning Representations}, 2024.
+
+\bibitem{wang2023imagedream}
+Wang P, et al. ImageDream: Image-prompt multi-view diffusion for 3D generation. arXiv:2312.02201, 2023.
+
+\bibitem{xu2024instantmesh}
+Xu J, et al. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. \textit{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem{ke2024era3d}
+Li P, Liu Y, Long X, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. \textit{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem{chen2023text2tex}
+Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{richardson2023texture}
+Richardson E, Metzer G, Alaluf Y, et al. TEXTure: Text-guided texturing of 3D shapes. \textit{ACM SIGGRAPH 2023 Conference Proceedings}, 2023.
+
+\bibitem{poole2023dreamfusion}
+Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-to-3D using 2D diffusion. \textit{International Conference on Learning Representations}, 2023.
+
+\bibitem{chen2023fantasia3d}
+Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance for high-quality text-to-3D content creation. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{shao2025mvpainter}
+Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
+
+\bibitem{kynkanniemi2024limited}
+Kynk\"a\"anniemi T, Aittala M, Karras T, et al. Applying guidance in a limited interval improves sample and distribution quality in diffusion models. \textit{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem{perla2026survey}
+Perla S R K, Zhang H, Mahdavi-Amiri A. Advances in neural 3D mesh texturing: A survey. \textit{Computer Graphics Forum}, 2026, e70392.
+
+\bibitem{guzman2026adaptive}
+Guzm\'an J E, Mould D, Paquette E. Adaptive multiresolution exemplar-based texture synthesis on animated fluids. \textit{Computers \& Graphics}, 2026, 134: 104490.
+
+\bibitem{lv2025interpretable}
+Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
+
+\bibitem{zeng2024paint3d}
+Zeng X, Chen X, Qi Z, et al. Paint3D: Paint anything 3D with lighting-immersive texture generation. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+
+\bibitem{cheng2024mvpaint}
+Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for painting anything 3D. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2025.
+
+\bibitem{lai2025hunyuan3d}
+Zhao Z, Lai Z, Lin Q, et al. Hunyuan3D 2.0: Scaling diffusion models for high resolution textured 3D assets generation. arXiv:2501.12202, 2025.
+
+\bibitem{huang2024mvadapter}
+Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
+
+\bibitem{liu2024synchronized}
+Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
+
+\bibitem{xu2026wondertex}
+Xu Q, Han X G, Zhang L. WonderTex: Consistent-and-seamless texture generation with text-guided multi-view image diffusion models. \textit{IEEE Transactions on Visualization and Computer Graphics}, 2026, 32(7): 5815--5825.
+
+\bibitem{mou2023t2iadapter}
+Mou C, Wang X, Xie L, et al. T2I-Adapter: Learning adapters to dig out more controllable ability for text-to-image diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2024.
+
+\bibitem{zhang2023controlnet}
+Zhang L, Rao A, Agrawala M. Adding conditional control to text-to-image diffusion models. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{ye2023ipadapter}
+Ye H, Zhang J, Liu S, Han X, Yang W. IP-Adapter: Text compatible image prompt adapter for text-to-image diffusion models. arXiv:2308.06721, 2023.
+
+\bibitem{hu2022lora}
+Hu E J, Shen Y, Wallis P, et al. LoRA: Low-rank adaptation of large language models. \textit{International Conference on Learning Representations}, 2022.
+
+\bibitem{liu2024dora}
+Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. \textit{International Conference on Machine Learning}, 2024.
+
+\bibitem{zhang2023adalora}
+Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
+
+\bibitem{ho2020ddpm}
+Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advances in Neural Information Processing Systems}, 2020.
+
+\bibitem{song2021ddim}
+Song J, Meng C, Ermon S. Denoising diffusion implicit models. \textit{International Conference on Learning Representations}, 2021.
+
+\bibitem{ho2022cfg}
+Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop on Deep Generative Models and Downstream Applications}, 2021. arXiv:2207.12598.
+
+\bibitem{castillo2023adaptive}
+Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.
+
+\bibitem{rombach2022ldm}
+Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthesis with latent diffusion models. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2022.
+
+\bibitem{esser2024scaling}
+Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow transformers for high-resolution image synthesis. \textit{International Conference on Machine Learning}, 2024.
+
+\bibitem{blackforestlabs2024flux}
+Black Forest Labs. FLUX: Flow matching for image generation. https://github.com/black-forest-labs/flux, 2024.
+
+\bibitem{loshchilov2019decoupled}
+Loshchilov I, Hutter F. Decoupled weight decay regularization. \textit{International Conference on Learning Representations}, 2019.
+
+\bibitem{cherti2023reproducible}
+Cherti M, Beaumont R, Wightman R, et al. Reproducible scaling laws for contrastive language-image learning. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2023.
+
+\bibitem{nichol2022glide}
+Nichol A, Dhariwal P, Ramesh A, et al. GLIDE: Towards photorealistic image generation and editing with text-guided diffusion models. \textit{International Conference on Machine Learning}, 2022.
+
+\bibitem{saharia2022photorealistic}
+Saharia C, Chan W, Saxena S, et al. Photorealistic text-to-image diffusion models with deep language understanding. \textit{Advances in Neural Information Processing Systems}, 2022.
+
+\bibitem{peebles2023scalable}
+Peebles W, Xie S. Scalable diffusion models with transformers. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
+
+\bibitem{wang2004ssim}
+Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{IEEE Transactions on Image Processing}, 2004, 13(4): 600--612.
+
+\bibitem{zhang2018lpips}
+Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2018.
+
+\end{thebibliography}
+\end{document}
