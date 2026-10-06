@@ -1,0 +1,42 @@
+{
+  "status": "PASS_STATIC_INTERFACE_AUDIT_WITH_WORDING_CORRECTION",
+  "checked_utc": "2026-10-06T10:29:02.321124+00:00",
+  "mvdiffusion_source_sha256": "db1e38971346a249ac172db563e388b82ff03139e98d8d00d2a8e23fad04a7ff",
+  "mvadapter_source_sha256": "441aef4fb4cdac7227fb0befd21b2046a07a5df697f1315deb6738e868e2439b",
+  "weighted_layer_mean": 1.222,
+  "mvdiffusion_layer_alpha_ranges": [
+    {
+      "group": "deep",
+      "injection_points": 2,
+      "normalized_multiplier": 1.3502454991816693,
+      "alpha_low": 1.0126841243862519,
+      "alpha_fixed_mean": 1.125204582651391,
+      "alpha_high": 1.3502454991816693,
+      "extrapolates_above_one": true
+    },
+    {
+      "group": "middle",
+      "injection_points": 1,
+      "normalized_multiplier": 1.3502454991816693,
+      "alpha_low": 1.0126841243862519,
+      "alpha_fixed_mean": 1.125204582651391,
+      "alpha_high": 1.3502454991816693,
+      "extrapolates_above_one": true
+    },
+    {
+      "group": "shallow",
+      "injection_points": 2,
+      "normalized_multiplier": 0.4746317512274959,
+      "alpha_low": 0.35597381342062195,
+      "alpha_fixed_mean": 0.3955264593562466,
+      "alpha_high": 0.4746317512274959,
+      "extrapolates_above_one": false
+    }
+  ],
+  "mvdiffusion_interface": "affine interpolation/extrapolation of complete CPBlock output; not always convex",
+  "mvdiffusion_alpha_clamping": "none in the inspected wrapper",
+  "mvadapter_interface": "four cond_encoder output features pre-multiplied, then temporal geometry scale; lacks the current-hidden native-capped GeoTexResnetWrapper interface",
+  "candidate_direct_port": "NOT_IMPLEMENTED_OR_VALIDATED; requires a new interface-specific specification, not arbitrary cap/group substitution",
+  "architecture_causal_test": "NOT_ESTABLISHED",
+  "legacy_gpu_outputs_modified": false
+}

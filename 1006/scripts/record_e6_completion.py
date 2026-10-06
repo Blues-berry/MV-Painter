@@ -32,6 +32,8 @@ def main():
             if not args.watch:
                 raise RuntimeError("E6 still running; do not read partial quality results")
             time.sleep(10)
+        authority_lock = (PACKAGE / "data/evidence_authority_update.lock").open("w")
+        fcntl.flock(authority_lock, fcntl.LOCK_EX)
         ledger_path = PACKAGE / "evidence/audits/next_stage_20261006/CLAIM_EVIDENCE_AUTHORITY_LEDGER.json"
         ledger = json.loads(ledger_path.read_text())
         claim = next(c for c in ledger["claims"] if c["claim_id"] == "C15")
@@ -41,7 +43,7 @@ def main():
             result = json.loads(selected.read_text())
             source_id = "e6_development_selection"
             source = {"source_id": source_id, "path": str(selected.relative_to(ROOT)),
-                      "sha256": sha(selected), "role": "Complete fixed 24-object, three-seed development selection; not confirmation."}
+                      "package_path": str(selected.relative_to(ROOT)), "sha256": sha(selected), "role": "Complete fixed 24-object, three-seed development selection; not confirmation."}
             ledger["sources"] = [s for s in ledger["sources"] if s["source_id"] != source_id] + [source]
             if source_id not in claim["authoritative_sources"]:
                 claim["authoritative_sources"].append(source_id)

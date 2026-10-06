@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "ledger_id": "SCIENTIFIC_VALIDATION_V3_E0_AUTHORITY_20261006",
-  "updated_utc": "2026-10-06T10:03:26.575396+00:00",
+  "updated_utc": "2026-10-06T10:37:06.642054+00:00",
   "authority_status": "ACTIVE_LOCAL_EVIDENCE_MAP; SCIENTIFIC_EVIDENCE_FREEZE=NO",
   "purpose": "唯一的主张级证据 authority 与 supersession 账本。它锁定各主张当前可用证据、样本/队列、推断边界、允许措辞和下一 gate；它不授权改稿，也不把局部 PASS 等同于整体 readiness。",
   "authority_rules": [
@@ -596,9 +596,11 @@
     {
       "source_id": "fresh_d_analysis",
       "path": "1006/scripts/analyze_fresh_d.py",
-      "sha256": "1fe0ecd9a27685f4524d9de5af3a9884eb8b952c51d6db96aa6b1dc81a2a79b7",
+      "sha256": "b1bdbaf0fba298997afa9dbd2c923df3d3fd542f0d930bf95d56f13f7d2687ad",
       "role": "User-approved continuation; scope and limits remain in its protocol/report.",
-      "package_path": "1006/scripts/analyze_fresh_d.py"
+      "package_path": "1006/scripts/analyze_fresh_d.py",
+      "previous_sha256": "1fe0ecd9a27685f4524d9de5af3a9884eb8b952c51d6db96aa6b1dc81a2a79b7",
+      "change_reason": "Pre-output Fresh D completion: fixed-seed object aggregation, canonical input chain, Core7 descriptive reporting and planned-N guard."
     },
     {
       "source_id": "e6_clean_compact_rebuild",
@@ -606,6 +608,41 @@
       "package_path": "1006/evidence/audits/E6_CLEAN_COMPACT_REBUILD_20261006.json",
       "sha256": "86bfc3a9a195a7ebb7d6797ccd4beeefbe082e95007bd554ca6d8fce884ceb6c",
       "role": "Clean archived release: compact authority files and standalone code tests; no full GPU or scientific readiness claim."
+    },
+    {
+      "source_id": "e6_completion_recorder",
+      "path": "1006/scripts/record_e6_completion.py",
+      "package_path": "1006/scripts/record_e6_completion.py",
+      "sha256": "b12a11ebe229ea8fa6d778d6d28bd9310351d0d4017d2634727d73269181ee56",
+      "role": "Post-integrity completion record only; uses a shared authority-update lease, does not change the statistical protocol or freeze the manuscript."
+    },
+    {
+      "source_id": "fresh_c_completion_recorder",
+      "path": "1006/scripts/record_fresh_c_completion.py",
+      "package_path": "1006/scripts/record_fresh_c_completion.py",
+      "sha256": "edbdcc3af1fdd7c9115a8f7d7384323d9024f5a2b46c8ece7cc31fcc6348b71b",
+      "role": "Post-integrity completion record only; uses a shared authority-update lease, does not change the statistical protocol or freeze the manuscript."
+    },
+    {
+      "source_id": "cross_interface_static_audit",
+      "path": "1006/evidence/audits/E6_CROSS_INTERFACE_STATIC_AUDIT_20261006.json",
+      "package_path": "1006/evidence/audits/E6_CROSS_INTERFACE_STATIC_AUDIT_20261006.json",
+      "sha256": "a830be0d02d4764a25d4d29979db1bbce86f64b8ad7fe248241a0806af8ef1bc",
+      "role": "Byte-preserved interface control and static range audit; no new GPU efficacy."
+    },
+    {
+      "source_id": "mvdiffusion_original_control_code",
+      "path": "1006/evidence/authority_sources/mvdiffusion_schedule_original.py",
+      "package_path": "1006/evidence/authority_sources/mvdiffusion_schedule_original.py",
+      "sha256": "db1e38971346a249ac172db563e388b82ff03139e98d8d00d2a8e23fad04a7ff",
+      "role": "Byte-preserved interface control and static range audit; no new GPU efficacy."
+    },
+    {
+      "source_id": "mvadapter_original_control_code",
+      "path": "1006/evidence/authority_sources/mvadapter_layerwise_original.py",
+      "package_path": "1006/evidence/authority_sources/mvadapter_layerwise_original.py",
+      "sha256": "441aef4fb4cdac7227fb0befd21b2046a07a5df697f1315deb6738e868e2439b",
+      "role": "Byte-preserved interface control and static range audit; no new GPU efficacy."
     }
   ],
   "claims": [
@@ -1161,7 +1198,8 @@
       ],
       "authoritative_sources": [
         "mv_adapter",
-        "mvdiffusion"
+        "mvdiffusion",
+        "cross_interface_static_audit"
       ],
       "cohort": "MV-Adapter N=98/99 planned; MVDiffusion separate N=75 holdout; distinct cohorts and intervention interfaces.",
       "estimate": {
@@ -1173,16 +1211,17 @@
       "prohibited_wording": [
         "universal L-TCAS transfer",
         "architecture causes the observed difference",
-        "nonsignificance proves zero interaction"
+        "nonsignificance proves zero interaction",
+        "all MVDiffusion conditions are convex interpolation"
       ],
       "supersedes": [
         "general cross-backbone transfer claims"
       ],
-      "next_gate": "No third-backbone campaign under the current evidence; retain interface-specific limits.",
+      "next_gate": "Correct convex to affine interpolation/extrapolation in the post-freeze manuscript; retain original control and outputs. E6 direct port requires a separate interface specification and pre-output validation; no cap/group replacement until significant.",
       "comparison": "Within-backbone scale/time profiles: MV-Adapter 0.75 baseline vs one-window raises to 1.00; MVDiffusion global vs layer/time CPBlock-output interpolation profiles.",
       "registration_status": "Frozen intervention families within each campaign; exploratory MV-Adapter global Wald reanalysis is labeled exploratory.",
       "selection_status": "MV-Adapter N=98/99 planned; MVDiffusion separate N=75 holdout; cohorts are disjoint and never pooled.",
-      "intervention_profile": "MV-Adapter is an additive-residual path; MVDiffusion deployed surface is serial CPBlock replacement interpolated as (1−alpha)x+alpha*y; not the same intervention geometry.",
+      "intervention_profile": "Separate MV-Adapter feature scaling and MVDiffusion CPBlock affine interpolation/extrapolation, including alpha>1 on deep/middle layer conditions; not the native-capped main GeoTex residual.",
       "statistical_unit": "Object paired within each backbone only.",
       "statistical_method": "MV-Adapter cellwise paired bootstrap/Holm plus exploratory four-metric Wald; MVDiffusion 10,000 object bootstrap, seed 20260928.",
       "multiplicity": "Correction families remain within each backbone. Cross-backbone difference is not tested."
@@ -1322,7 +1361,9 @@
         "manuscript_preservation_recheck",
         "fresh_c_render_stage_identity",
         "clean_checkout_rebuild",
-        "e6_clean_compact_rebuild"
+        "e6_clean_compact_rebuild",
+        "e6_completion_recorder",
+        "fresh_c_completion_recorder"
       ],
       "cohort": "Evidence generators span distinct campaigns; no claim of one shared runner across all cohorts.",
       "estimate": {
