@@ -7,7 +7,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path("/4T/CXY/MV-Painter")
+ROOT = Path(__file__).resolve().parents[2]
 LEDGER = ROOT / "1006/evidence/audits/next_stage_20261006/CLAIM_EVIDENCE_AUTHORITY_LEDGER.json"
 AUDIT = ROOT / "1006/evidence/audits/next_stage_20261006/CLAIM_EVIDENCE_AUTHORITY_AUDIT.json"
 
@@ -29,9 +29,10 @@ def main() -> int:
         if not source_id or source_id in source_ids:
             errors.append(f"missing or duplicate source_id: {source_id!r}")
         source_ids.add(source_id)
-        path = ROOT / source.get("path", "")
+        evidence_path = source.get("package_path", source.get("path", ""))
+        path = ROOT / evidence_path
         if not path.is_file():
-            errors.append(f"source missing: {source_id} -> {source.get('path')}")
+            errors.append(f"source missing: {source_id} -> {evidence_path}")
         elif sha256(path) != source.get("sha256"):
             errors.append(f"source hash mismatch: {source_id} -> {source.get('path')}")
     claim_ids = set()
