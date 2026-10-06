@@ -71,7 +71,7 @@ def main():
             claim["authority_status"] = disposition
             claim["estimate"]["fresh_c_primary"] = primary
             claim["allowed_wording"] = wording
-            claim["next_gate"] = "Report all secondary endpoints and object heterogeneity; final narrative awaits E6/Fresh D and actual human/GLB gates. Do not transfer C3 evidence to LLH or the new module."
+            claim["next_gate"] = "Report all secondary endpoints and object heterogeneity; final narrative awaits the method-decision record and actual human/GLB gates. Do not transfer C3 evidence to LLH or the new module."
             ledger["updated_utc"] = dt.datetime.now(dt.timezone.utc).isoformat()
             ledger_path.write_text(json.dumps(ledger, ensure_ascii=False, indent=2)+"\n")
             text += [f"完整性：PASS；对象数：{result['n_objects']}。", "",

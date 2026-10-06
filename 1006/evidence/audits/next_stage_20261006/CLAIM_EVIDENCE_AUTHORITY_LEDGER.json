@@ -468,11 +468,13 @@
     {
       "source_id": "package_source_inventory_builder",
       "path": "1006/scripts/build_source_inventory.py",
-      "sha256": "8bcbe509c08a66184c19eae73dc132645a8df89eee0255a2cd7c941e40827e04",
+      "sha256": "37786aa537e4a7d832b98f47cc49fc5212da9151f3eb526a7a1a8d5e5b04311c",
       "role": "Checksum builder excludes local-only Fresh C and E5 asset/run payloads from the public package inventory.",
       "previous_sha256": "7b84eec89cd5bf844105f10c14af6140056cbe4eb3540fe99a6469ae61d96204",
       "change_reason": "Exclude E6 private raw runs and mutable operational state from public checksums; no scientific source change.",
-      "package_path": "1006/scripts/build_source_inventory.py"
+      "package_path": "1006/scripts/build_source_inventory.py",
+      "superseded_sha256": "8bcbe509c08a66184c19eae73dc132645a8df89eee0255a2cd7c941e40827e04",
+      "amendment_reason": "Infrastructure-only recovery: exclude failed raw render archive from public inventory; accept verified explicit recovery render PID without changing frozen experimental settings."
     },
     {
       "source_id": "manuscript_preservation_recheck",
@@ -485,8 +487,8 @@
       "source_id": "fresh_c_render_stage_identity",
       "path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY.json",
       "sha256": "a23903e958d8b08310b7c6bc8c4123d22c8ba5aed4a62a452c8c750659d85a18",
-      "role": "Active 17-view input-render stage identity, including start time, loaded driver hash, UID-list hash, and renderer assets.",
-      "package_path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY.json"
+      "role": "Active 17-view input-render stage identity, including start time, loaded driver hash, UID-list hash, and renderer assets. Original attempt snapshot preserved after parent-process failure; current append-only stage file has a new version.",
+      "package_path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY_ATTEMPT1.json"
     },
     {
       "source_id": "comparable_paper_narrative_audit",
@@ -591,9 +593,11 @@
     {
       "source_id": "fresh_c_closure_driver",
       "path": "1006/scripts/continue_fresh_c_closure.py",
-      "sha256": "da390c580699bb9d409975bf5de928cd524c8b9af26347593817bb7f9184a50c",
+      "sha256": "19db6b8cd59d33ee3ce5475a7cff21e643bc60a7566842555cecfa006d3ebe21",
       "role": "User-approved continuation; scope and limits remain in its protocol/report.",
-      "package_path": "1006/scripts/continue_fresh_c_closure.py"
+      "package_path": "1006/scripts/continue_fresh_c_closure.py",
+      "superseded_sha256": "da390c580699bb9d409975bf5de928cd524c8b9af26347593817bb7f9184a50c",
+      "amendment_reason": "Infrastructure-only recovery: exclude failed raw render archive from public inventory; accept verified explicit recovery render PID without changing frozen experimental settings."
     },
     {
       "source_id": "fresh_d_analysis",
@@ -622,7 +626,7 @@
       "source_id": "fresh_c_completion_recorder",
       "path": "1006/scripts/record_fresh_c_completion.py",
       "package_path": "1006/scripts/record_fresh_c_completion.py",
-      "sha256": "edbdcc3af1fdd7c9115a8f7d7384323d9024f5a2b46c8ece7cc31fcc6348b71b",
+      "sha256": "753eeabcfad944b14c4a9e68caae25bfeb72639e68682708740c240d90a53765",
       "role": "Post-integrity completion record only; uses a shared authority-update lease, does not change the statistical protocol or freeze the manuscript."
     },
     {
@@ -666,6 +670,20 @@
       "package_path": "1006/evidence/audits/E6_POST_DEVELOPMENT_METHOD_REVIEW_20261006.json",
       "sha256": "d3f38e79392b34dcf270ded6e904f6c3cef4c66fbff1de2c081fcd3ff95db111",
       "role": "Explicit qualitative stop after quantitative qualification; no confirmation or retuning."
+    },
+    {
+      "source_id": "fresh_c_render_recovery",
+      "path": "1006/evidence/audits/FRESH_C_RENDER_RECOVERY_20261006.json",
+      "package_path": "1006/evidence/audits/FRESH_C_RENDER_RECOVERY_20261006.json",
+      "sha256": "e77fb920cd9f9d5de564b7f9296fe3d95fd4a592e7cd0c7adb7dd3be46128bd8",
+      "role": "Recorded infrastructure failure and same-protocol recovery before any method output."
+    },
+    {
+      "source_id": "fresh_c_render_stage_identity_attempt2",
+      "path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY_ATTEMPT2.json",
+      "package_path": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY_ATTEMPT2.json",
+      "sha256": "bde4b47527d86413dc3d6946b05cfe6318c6cb85a3985a08914e9be9707d5aec",
+      "role": "Immutable stage-1 plus stage-2 identity snapshot; no render-setting change."
     }
   ],
   "claims": [
@@ -1386,7 +1404,9 @@
         "clean_checkout_rebuild",
         "e6_clean_compact_rebuild",
         "e6_completion_recorder",
-        "fresh_c_completion_recorder"
+        "fresh_c_completion_recorder",
+        "fresh_c_render_recovery",
+        "fresh_c_render_stage_identity_attempt2"
       ],
       "cohort": "Evidence generators span distinct campaigns; no claim of one shared runner across all cohorts.",
       "estimate": {

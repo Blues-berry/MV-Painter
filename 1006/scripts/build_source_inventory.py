@@ -19,6 +19,7 @@ EXCLUDED_RELATIVE_PREFIXES = (
     "data/fresh_c/assets/",
     "data/fresh_c/renders/",
     "data/fresh_c/runs/",
+    "data/fresh_c/failed_render_attempt1/",
     "data/e5_residual_dose/runs/",
     "data/e6_cap_calibration/runs/",
     "data/e6_cap_calibration/E6_EXECUTION_STATE.json",

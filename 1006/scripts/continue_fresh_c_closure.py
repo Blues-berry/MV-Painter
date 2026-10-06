@@ -6,6 +6,7 @@ integrity. Uses the same GPU lease as E6, so the campaigns cannot overlap.
 """
 from __future__ import annotations
 
+import argparse
 import datetime as dt
 import fcntl
 import json
@@ -29,6 +30,9 @@ def alive(pid):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--render-pid", type=int, help="Recorded same-protocol recovery process; only needed for legacy stage identities without PID")
+    args = parser.parse_args()
     with (DATA / "closure_driver.lock").open("w") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         state = {"pid": os.getpid(), "stage": "WAIT_EXISTING_RENDER",
@@ -55,7 +59,13 @@ def main():
         save()
         try:
             identity = json.loads((DATA / "FRESH_C_RENDER_STAGE_IDENTITY.json").read_text())
-            render_pid = identity["stages"][-1]["process_pid"]
+            render_pid = args.render_pid or identity["stages"][-1].get("process_pid")
+            if render_pid is None:
+                raise RuntimeError("render stage lacks PID; supply the recorded recovery --render-pid")
+            if args.render_pid:
+                command = Path(f"/proc/{render_pid}/cmdline").read_bytes().replace(b"\x00", b" ")
+                if b"prepare_fresh_c_pool.py render" not in command:
+                    raise RuntimeError("recovery PID does not identify the original render command")
             while not (DATA / "render_log_600.json").exists():
                 if not alive(render_pid):
                     raise RuntimeError("existing renderer exited before final log; preserve failed attempt")
