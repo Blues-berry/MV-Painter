@@ -14,6 +14,22 @@ INVENTORY = ROOT / "source_inventory.json"
 CHECKSUMS = ROOT / "SHA256SUMS.txt"
 EXCLUDED_SUFFIXES = {".aux", ".fdb_latexmk", ".fls", ".log", ".out", ".spl", ".pyc"}
 EXCLUDED_DIRS = {".git", "__pycache__"}
+EXCLUDED_RELATIVE_PREFIXES = (
+    "data/fresh_c/source_cache/",
+    "data/fresh_c/assets/",
+    "data/fresh_c/renders/",
+    "data/fresh_c/runs/c3_confirmation/predictions/",
+    "data/fresh_c/runs/c3_confirmation/residual_logs/",
+)
+
+
+def is_excluded(relative: Path) -> bool:
+    rel = relative.as_posix()
+    return (
+        any(part in EXCLUDED_DIRS or part.endswith(".egg-info") for part in relative.parts)
+        or relative.suffix in EXCLUDED_SUFFIXES
+        or any(rel.startswith(prefix) for prefix in EXCLUDED_RELATIVE_PREFIXES)
+    )
 
 
 def sha256(path: Path) -> str:
@@ -35,7 +51,7 @@ def main() -> None:
         if not path.is_file() or path == INVENTORY or path == CHECKSUMS:
             continue
         relative = path.relative_to(ROOT)
-        if any(part in EXCLUDED_DIRS or part.endswith(".egg-info") for part in relative.parts) or path.suffix in EXCLUDED_SUFFIXES:
+        if is_excluded(relative):
             continue
         old_entry = previous.get(relative.as_posix(), {})
         files.append(
@@ -57,7 +73,7 @@ def main() -> None:
         if not path.is_file() or path == CHECKSUMS:
             continue
         relative = path.relative_to(ROOT)
-        if any(part in EXCLUDED_DIRS or part.endswith(".egg-info") for part in relative.parts) or path.suffix in EXCLUDED_SUFFIXES:
+        if is_excluded(relative):
             continue
         checksum_lines.append(f"{sha256(path)}  {relative.as_posix()}")
     CHECKSUMS.write_text("\n".join(checksum_lines) + "\n", encoding="utf-8")

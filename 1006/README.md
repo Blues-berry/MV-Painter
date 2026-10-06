@@ -25,8 +25,12 @@ responses are still absent; the C3/GFL analysis on FRESH_CONFIRM_B is
 retrospective; the strict-276 provenance chain is incomplete; asset
 redistribution needs two source-level checks; and contribution adequacy
 remains a substantive venue risk after comparison with Scheduled Style
-Injection. See `gates/FINAL_READINESS_VERDICT.md` and
-`gates/REVIEWER_CLOSURE_FINAL.md` for the controlling decisions.
+Injection. A new, disjoint Fresh C3-versus-GFL follow-up is now in progress:
+its cohort protocol and 1,000-ID technical queue were frozen before any method
+output. The follow-up is explicitly revision-era and does not replace the
+original preregistration. See `evidence/audits/FRESH_C_REMEDIATION_ACTION_LOG_20261006.md`,
+`gates/FINAL_READINESS_VERDICT.md`, and `gates/REVIEWER_CLOSURE_FINAL.md` for
+the controlling decisions and residual gates.
 
 ## Evidence authority and supersession
 
@@ -56,12 +60,17 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
   strategy reports.
 - `evidence/protocols/` and `logs/fresh_b/`: frozen analysis protocols,
   human-study rules, B locks, integrity records, and execution logs. No human
-  responses are present.
+  responses are present. Fresh C protocol and candidate-queue locks are in
+  `evidence/protocols/` and `data/fresh_c/`.
 - `data/`: copied per-object/per-condition metrics and manifests, derived
   paired summaries, GLB-native endpoints, strict-276 row data, and interface
   evidence. Raw rendered prediction images, residual traces, source meshes,
   and some large source payloads are not redistributed; hashes and original
-  locations are identified in the archived manifests and audit reports.
+  locations are identified in the archived manifests and audit reports. Fresh
+  C source meshes, input renders, predictions, and residual logs are locally
+  staged under `data/fresh_c/` and excluded from the public commit; the frozen
+  UID, source, render, and output hash records are packaged when each gate
+  passes.
 - `scripts/`: analysis, figure, and attribution-table builders for the
   candidate package.
 - `figures/`: paper figures regenerated from packaged tables.
