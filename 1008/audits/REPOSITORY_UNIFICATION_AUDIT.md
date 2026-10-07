@@ -59,12 +59,20 @@ endorsement.
 |---|---|---|
 | `codex/scientific-validation-v3-20261002` (`5c2c8829`) | 40,198 changed paths and 76,972,976 inserted lines relative to its merge base; 438 overlapping paths produced no content conflict. Its separate worktree also has about 11 GB of uncommitted data. | The unpushed full merge eb68d6ce was preserved locally, then removed from the 1008 branch ancestry before curation. The curated public-profile overlay retains source documents, logs, JSON reports, scripts, CSVs, and 24 selected qualitative panels; it imports 17,864 files (~1.60 GiB). The v3 results remain bounded by d59 and are not promoted wholesale as paper claims. The separate 11 GB worktree remains untouched. |
 | `origin/codex/scientific-validation-v3-20261002` (`11cffe79`) | 1,419 branch-only paths; six add/add path conflicts in protocol, analysis, and manifest files. | Source comparison completed. Prefer the 2026-10-06 `5c2c8829` versions for analysis, manifest coverage, and post-campaign claim matrix. The 99→98 G denominator is documented as two technical failures (`g_0062` before generation, then `g_0098`); no replacement was found. Details are in `CONFLICT_AUTHENTICITY_DECISIONS.md`. |
-| `codex/evidence-closure-audit-20261005` (`7e659c7e`) | 14 add/add conflicts among 403 overlapping paths, including claim, visual, and analysis artifacts. | Do not merge wholesale; d59 is the later claim authority. Compare any disputed result at the artifact level first. |
-| `codex/paper-1006-20261006` and public `origin/codex/paper-1006-20261006` | The 2026-10-07 public tip has 482 files under `1006/`; two same-path files differ from d59: `FORMAL_VISUAL_EVIDENCE_REPORT.md` and `FINAL_REVIEWER_RESPONSE_SKELETON.md`. | Imported 413 eligible, non-conflicting records into a dated archive with source commit and blob hashes. Images and generated figure PDFs, candidate manuscripts, both direct conflicts, and human-study records were omitted from the public profile. No d59 path was overwritten. |
+| `codex/evidence-closure-audit-20261005` (`7e659c7e`) | 14 add/add paths among 403 overlapping paths. Thirteen blobs differ; `analyze_residual_budgets.py` is byte-identical. | Resolved artifact by artifact: retain the later `5c2c8829` versions in the 1008 evidence overlay; independently reproduce the A2/A3 Wald audit and both changed B3 JSON outputs. Keep d59 as the paper-facing claim ceiling. The decision record lists all 14 paths and their limits. |
+| `codex/paper-1006-20261006` and public `origin/codex/paper-1006-20261006` | The 2026-10-07 tip has 482 files under `1006/`; two same-path files differ from d59. The visual report has the same substantive 24-panel findings but omits d59's later human-status note. The response skeleton incorporates a later human-study export whose execution/provenance gate does not support confirmatory use. | Keep d59's visual report and response skeleton in the 1008 tree. The alternative response text is not merged during Phase A; human-study protocol, analysis, audit, and aggregate CSV records are preserved privately only. The public profile imports 413 non-conflicting records and lists all 69 omissions with reasons. Generated images/figure PDFs and the candidate manuscript remain out of the archive. |
 | `codex/human-confirmatory-analysis-20261007` / public paper-1006 tip | The “confirmatory” interpretation conflicts with execution deviations and the d59 human-data gate. The two direct audit conflicts are also present in the 1006 candidate tree. | Human-study docs, aggregate tables, and analysis scripts are preserved in a private-only historical archive; no human claim is promoted into the manuscript. Public candidate omits them. The conflicting audit variants remain held out. |
 | `origin/codex/round2-author-review-20260929` | Five add/add conflicts in evaluation/runtime scripts among 37 overlapping paths; adds a dated evidence snapshot. | Archived 79 non-image release files plus the five old runner versions under a source-pinned historical directory. Source review favors d59 for seeding, dynamic handoff conditions, and runtime diagnostics; active code was not changed. |
 | `origin/codex/adaptive-control-pilot-20260929` | Same five code conflicts in evaluation/runtime paths; adds a pilot review and residual-budget pilot script. | Archived its two unique records and five runner variants separately. Active runner remains d59; archived scripts are provenance only. |
 | Private `mvpainter/codex/round2-evidence-integrated-20261001` (`5a059b30`) | Three direct text conflicts in `final_round2.tex`, `response_letter_round2.md`, and `supplementary_round2.tex`; its manuscript narrative predates d59's authority and removes later audit records. | Do not merge the manuscript snapshot. d59's evidence and 01549's source remain the controlling inputs. |
+
+The original v3 worktree contained uncommitted Fresh B and generic-extension
+campaign records absent from its Git snapshot. The 1008 candidate now carries
+all 5,824 non-image files (596,128,347 bytes) at the source `formal/` paths;
+every one of 11,524 files in the checksum inventory was verified. The 5,700
+generated PNGs are omitted, with their hashes and sizes listed in a separate
+import manifest. The checksum inventory is retrospective, not a pre-unblind
+record.
 
 The full merge commit eb68d6ce is retained only under the local archive ref;
 it is not an ancestor of the candidate upload branches. The curated import
@@ -103,6 +111,13 @@ is rewritten.
    confirmatory paper evidence. Its historical analysis and aggregate endpoint
    tables are private-only; the public candidate contains neither these files
    nor participant-level records.
+8. FRESH_CONFIRM_B's identity cohort was frozen before B method outputs, and
+   its H5 analysis is reproducible from the archived metrics and official GT
+   views. The H5 hypothesis/family predates formal runs, but B's own
+   multiplicity/checksum inventory is retrospective after earlier outcome
+   disclosure. Report B as separate-cohort corroboration under the pre-existing
+   H5 family; do not describe the whole B campaign as prospectively locked or
+   pool it with the original 300 objects.
 
 ## Merge and release boundary
 
@@ -114,6 +129,7 @@ candidate is pushed at
 refs still contain those earlier files. Neither push rewrote an existing ref.
 Additional dated branch snapshots are recorded under
 `1008/archive/branch_snapshots/`; import manifests list source paths, blob IDs,
-sizes, and omissions. The 1006 human-study subset is private-only. The 1006
-visual-report/reviewer-skeleton conflicts and 14 evidence-closure conflicts
-remain held out pending artifact-level authenticity review.
+sizes, and omissions. The 1006 human-study subset is private-only. The
+visual-report and reviewer-skeleton choices and all 14 evidence-closure path
+decisions are recorded in `CONFLICT_AUTHENTICITY_DECISIONS.md`; no existing
+remote ref was rewritten, and no manuscript text was changed.

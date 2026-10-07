@@ -47,6 +47,15 @@ The large PSNR gain is concentrated in the lowest-texture quartile. It falls fro
 
 The same frozen H5 comparison and 10-test family were evaluated separately on the disjoint FRESH_CONFIRM_B cohort (n=150), using the already frozen `layer_llh` and `native_gfl` conditions. No object was removed by outcome. The five predictors were fixed GT-only measurements. The four GT texture statistics are exactly condition-invariant across all 30 B conditions. Coverage was recomputed from the six official target-view GT images in the frozen B manifest as the mean per-view alpha>0 pixel fraction, matching the original cohort's coverage definition; it was not taken from prediction-side `crop_area`.
 
+**Timing boundary:** H5 and its 10-test family appear in the 2026-10-02
+pre-run `PRIMARY_HYPOTHESES.md`, and the B identity cohort was frozen at
+2026-10-05 07:35 UTC before B method outputs. The B-wide multiplicity lock and
+checksum inventory were created later; `B_PREUNBLIND_MANIFEST.md` explicitly
+states that B outcomes had already been disclosed, and the lock labels itself
+retrospective. Accordingly, this is disjoint-cohort corroboration of the
+pre-existing H5 pattern, not a claim that the full B campaign was prospectively
+locked or that its other analyses are confirmatory.
+
 The paired B effect was +1.030 dB FG-PSNR [0.570, 1.496] (51.3% of objects favored LLH) and −0.01556 FG-LPIPS [−0.01914, −0.01192] (74.0% favored LLH). The modest PSNR win rate alongside a positive mean indicates a skewed distribution, so the mean gain should not be described as a typical per-object gain.
 
 | Outcome | GT predictor | Spearman rho, 95% bootstrap CI | Raw p (plus-one) | Holm p (10 tests) | Reject at .05 |

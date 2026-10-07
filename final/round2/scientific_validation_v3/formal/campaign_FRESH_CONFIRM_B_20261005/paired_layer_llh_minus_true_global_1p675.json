@@ -1,0 +1,42 @@
+{
+  "cohort": "FRESH_CONFIRM_B",
+  "n_objects": 150,
+  "contrast": "layer_llh - true_global_1p675",
+  "delta_convention": "condition A minus condition B",
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261002,
+  "tests": {
+    "fg_psnr": {
+      "n": 150,
+      "mean_delta": 3.036142718791962,
+      "median_delta": 3.099202811717987,
+      "ci95": [
+        2.158324659516414,
+        3.8934457886219023
+      ],
+      "win_rate": 0.7066666666666667,
+      "loss_rate": 0.29333333333333333,
+      "p_bootstrap": 0.0001,
+      "favorable_rate": 0.7066666666666667,
+      "ties_rate": 0.0,
+      "favorable_direction": "higher",
+      "p_method": "two-sided paired-bootstrap sign-crossing test; 10,000 draws; minimum reported p=1/10,000"
+    },
+    "fg_lpips": {
+      "n": 150,
+      "mean_delta": -0.01732041207452615,
+      "median_delta": -0.01851249486207962,
+      "ci95": [
+        -0.02300203382348021,
+        -0.011626403161014121
+      ],
+      "win_rate": 0.3466666666666667,
+      "loss_rate": 0.6533333333333333,
+      "p_bootstrap": 0.0001,
+      "favorable_rate": 0.6533333333333333,
+      "ties_rate": 0.0,
+      "favorable_direction": "lower",
+      "p_method": "two-sided paired-bootstrap sign-crossing test; 10,000 draws; minimum reported p=1/10,000"
+    }
+  }
+}

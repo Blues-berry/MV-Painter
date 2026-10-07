@@ -25,6 +25,10 @@ PAPER_1006_CONFLICTS = {
     "1006/evidence/audits/FINAL_REVIEWER_RESPONSE_SKELETON.md",
     "1006/evidence/audits/FORMAL_VISUAL_EVIDENCE_REPORT.md",
 }
+PAPER_1006_CONFLICT_REASON = (
+    "reviewed; d59 version retained in the base tree; alternative blob remains "
+    "traceable in the source commit; see CONFLICT_AUTHENTICITY_DECISIONS.md"
+)
 
 
 @dataclass(frozen=True)
@@ -113,7 +117,7 @@ def omission_reason(source: Source, path: str, variant: str) -> str | None:
         return "generated image panel/render omitted; source path and blob ID are recorded"
     if source.snapshot == "paper-1006-candidate-20261007":
         if path in PAPER_1006_CONFLICTS:
-            return "direct conflict with d59; held out pending authenticity decision"
+            return PAPER_1006_CONFLICT_REASON
         if path.startswith("1006/manuscript/"):
             return "candidate manuscript tree omitted; authenticated 01549 remains the baseline"
         if path.startswith("1006/figures/") and suffix == ".pdf":

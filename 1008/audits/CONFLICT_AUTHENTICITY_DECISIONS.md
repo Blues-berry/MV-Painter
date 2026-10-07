@@ -57,6 +57,89 @@ update. This supports treating the exclusion as a documented technical
 failure rather than outcome-based replacement. The retained v3 claim ceiling
 still governs what can be stated; no cohorts are pooled.
 
+### Evidence-closure branch: 14 overlapping paths
+
+The 2026-10-06 source (`5c2c8829a1e19b42837761160dc4c14cf8f09045`) is selected
+over the 2026-10-05 evidence-closure source (`7e659c7e`) for these paths. The
+1008 candidate contains the selected `5c2c8829` blobs for these paths. The one
+analysis script whose blobs are identical is retained without alteration; the
+other 13 paths use the later source:
+
+| Paths | Authenticity finding and disposition |
+|---|---|
+| `AUTHORITATIVE_GENERIC_SCHEDULE_REPORT.md`, `BUDGET_AND_CAP_CAUSAL_AUDIT.md`, `CLAIM_TEST_MATRIX.md`, `CROSS_BACKBONE_MECHANISM_REPORT.md`, `FORMAL_VISUAL_EVIDENCE_AUDIT.md`, `LAYER_TIME_CAUSAL_MAP_REPORT.md`, `NARRATIVE_RESTRUCTURE_REQUIRED.md`, `SCIENTIFIC_VALIDATION_DECISION_REPORT.md`, `TEXTURE_COMPLEXITY_FAILURE_BOUNDARY.md` | Keep the 5c versions. They incorporate the later execution and sensitivity audits, retract the zero-power interaction bootstrap, distinguish requested from realized dose, report the fixed visual set as descriptive, and narrow schedule and cross-backbone claims. The v3 archive remains below d59's paper-facing claim ceiling. |
+| `audit_scripts/analyze_residual_budgets.py` | The 7e and 5c blobs are byte-identical; retain either identical copy. Re-running the 5c script on the frozen B3 residual logs/manifests reproduces the selected audit values (excluding only the machine-specific run-directory field). |
+| `analyze_v3.py` | Keep 5c. It preserves row-identity fallback and cross-campaign lookup, applies plus-one bootstrap p-values and the stated Holm family, and handles LPIPS direction consistently. A2/A3's valid object-cluster Wald output was independently rerun from row shards and exactly matched `AUDIT_INTERACTION_VALID_TEST.json`. This is exploratory reanalysis, not prospective causal evidence. |
+| `build_gt_stats_json.py` | Keep 5c. It validates condition-invariant GT metrics and uses the six official target views for coverage. Rebuilding the FRESH_CONFIRM_B GT statistics from its locked manifest and reference views exactly matched the archived JSON. |
+| `formal/campaign_B3/residual_budget_audit.json` | Keep the 5c result; it reproduces from the frozen residual logs and manifests. It corrects the misleading use of requested scale as realized dose and avoids adding non-comparable cap/layer/temporal contrasts. |
+| `formal/campaign_B3/spearman_texture_boundary.json` | Keep the 5c result; rerunning the analysis on the frozen B3 rows and GT-only statistics exactly matches it. The selected result uses a finite plus-one Monte Carlo p-value, the 10-test Holm family, and the correct favorable direction for LPIPS. |
+
+Across the v3 formal tree, the 16,091 non-image/non-mesh files compared between
+5c and 7e were byte-identical except for the two derived B3 JSON files above.
+The A2/A3 Wald reanalysis and both B3 JSON outputs were reproduced from their
+recorded inputs. This establishes reproducibility for these analyses; it does
+not make every 5c narrative claim paper-authoritative.
+
+### FRESH_CONFIRM_B boundary
+
+The 150-object B identity manifest and UID list match their recorded SHA-256
+hashes and report no overlap with the earlier cohort or prior method outputs.
+The archived 4,500-row CSV has 150 objects × 30 conditions, and its four GT
+texture columns match the GT-only JSON across every condition row. All six
+official GT views exist in the source worktree; `build_gt_stats_json.py`
+reconstructed all five GT statistics, including alpha coverage, exactly.
+The paired metric CSVs and both derived B JSON files also match the source
+commit's Git blobs and the B checksum inventory. The 10 Spearman tests
+reproduce exactly: the eight texture associations retain their registered
+directions after Holm; coverage is inconsistent across endpoints.
+
+The upload-scope audit found that the preserved source worktree also held
+uncommitted per-object campaign logs that were absent from the first archive.
+All 5,824 non-image records from the 4,500-row B campaign and 1,200-row
+generic extension are now imported at their expected `formal/` paths: residual
+JSON logs, analysis JSON, CSVs, and run logs (596,128,347 bytes). Every one of
+the 11,524 source files was checked against the retrospective B checksum
+inventory; 5,700 generated PNGs were hash-checked and omitted. The source
+worktree was read only. The import manifest records SHA-256 and disposition
+for every copied file and image omission. PNG-dependent integrity checks still
+need the omitted renders; the statistical and residual-budget inputs are
+present.
+
+The retained residual-budget analyzer was then rerun on the imported B
+residual logs and `run_manifest_shard0.json`. Its 10-condition, 150-object
+summary exactly matches the archived `residual_budget_audit.json`, excluding
+only the temporary run-directory string. This confirms the effective-scale
+and cap-activation corrections from the actual per-object logs.
+
+The H5 hypothesis and 10-test family were present in the 2026-10-02
+pre-run `PRIMARY_HYPOTHESES.md`, and the B identity cohort was frozen before
+its method outputs. However, the B-wide multiplicity lock and checksum
+inventory explicitly identify themselves as retrospective after prior B
+outcome disclosure. Treat B as a separate-cohort corroboration under the
+pre-existing H5 family, not as a fully prospectively locked B campaign or as
+proof of causation. Keep B separate from the original 300-object cohort. The
+curated `PROSPECTIVE_FAILURE_BOUNDARY_REPORT.md` now states this timing
+boundary explicitly; its results and source data are unchanged.
+
+### 1006 visual report and response skeleton
+
+For `1006/evidence/audits/FORMAL_VISUAL_EVIDENCE_REPORT.md`, retain d59's
+version in the 1008 tree. The candidate version has the same substantive
+sample, rank, and visual findings; it lacks d59's later note identifying its
+human-study status paragraph as historical. The visual audit remains a
+descriptive review of 24 selected objects, not a population estimate or a
+human-preference result.
+
+For `1006/evidence/audits/FINAL_REVIEWER_RESPONSE_SKELETON.md`, keep the d59
+copy and do not merge the 1006 candidate wording in Phase A. The candidate
+version refers to the later response export; its aggregate analysis is
+preserved privately, but the audit found 0/40 assignments matching the frozen
+schedule, missing independent randomization/order/stimulus-hash records, and
+no Holm-significant endpoint among 37 valid respondents. It cannot support a
+confirmatory LLH preference claim. A response skeleton is also outside this
+phase's no-drafting scope. The conflicting source blob and its identity remain
+listed in the source manifest; no source branch was rewritten.
+
 ## Historical material preserved without adopting it
 
 - The 2026-09-29 author-review release (79 non-image files) and the five
@@ -65,10 +148,11 @@ still governs what can be stated; no cohorts are pooled.
   preserves its pilot report/script and its copies of the five runner files.
 - The 2026-10-07 1006 candidate contributes 413 non-manuscript, non-image
   records to the public-profile archive and 69 entries are omitted with
-  reasons. Its two direct path conflicts are held out. Human-study materials
-  are omitted from the public profile; the private profile preserves them
-  separately as historical audit material only. Candidate 1006 manuscripts
-  and generated figure exports are not imported.
+  reasons. The d59 versions of its two direct path conflicts remain in the
+  1008 tree after the decisions above. Human-study documents, analysis code,
+  and aggregate CSVs are preserved only in the private archive as historical
+  audit material. Candidate 1006 manuscripts and generated figure exports are
+  not imported.
 - The public and private archives retain source commits, blob IDs, sizes, and
   per-file dispositions in `IMPORT_MANIFEST.csv`. This archive is not a public
   release clearance and does not promote a 1006 claim into the paper.
@@ -85,18 +169,14 @@ human-study files are preserved only in the private archive, not the public
 candidate. Existing public-history participant-level files are not rewritten
 by this work.
 
-## Still unresolved and held out
+## Held out by scope or evidence boundary
 
-1. `FORMAL_VISUAL_EVIDENCE_REPORT.md` and
-   `FINAL_REVIEWER_RESPONSE_SKELETON.md` differ between d59 and the 1006 tip.
-   The 1006-tip blobs are listed as withheld in its import manifest. No
-   candidate version is copied over the current tree pending source-row,
-   selection, and provenance review.
-2. The 2026-10-05 evidence-closure branch has 14 overlapping claim, visual,
-   and analysis conflicts. Each needs a row/input/protocol mapping before a
-   choice can be justified.
-3. The private 2026-10-01 manuscript/response/supplement branch remains
+1. The candidate 1006 reviewer-response skeleton remains out of Phase A; its
+   evidence disposition is recorded above. The current 1008 tree retains the
+   d59 version, and manuscript/reviewer-response drafting has not started.
+2. The private 2026-10-01 manuscript/response/supplement branch remains
    excluded as a current draft. Its three versions conflict with the
    authenticated manuscript source and the later evidence gates.
 
-These unresolved branches and their existing remote refs remain intact.
+These source branches and their existing remote refs remain intact. No
+unreviewed conflict was merged into the active manuscript source.

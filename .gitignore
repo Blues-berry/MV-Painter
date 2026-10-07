@@ -63,6 +63,17 @@ final/*
 # Exception: authoritative EM upload package (submission_new_0907) must be tracked for backup
 !final/submission_new_0907
 !final/revision/response_letter_new0907.md
+# Exception: reproducibility records for the frozen Fresh B campaigns.
+# Keep non-image logs, JSON, and CSVs; generated PNGs remain excluded.
+!final/round2/
+!final/round2/scientific_validation_v3/
+!final/round2/scientific_validation_v3/formal/
+!final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/
+!final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/**
+!final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_GENERIC_EXTENSION_20261005/
+!final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_GENERIC_EXTENSION_20261005/**
+final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005/**/*.png
+final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_GENERIC_EXTENSION_20261005/**/*.png
 
 # Archive
 archive/
