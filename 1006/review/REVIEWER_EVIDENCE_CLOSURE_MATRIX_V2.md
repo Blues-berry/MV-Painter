@@ -58,7 +58,7 @@
 
 - **Exact reviewer concern:** “it is still hard to reproduce the FAC experiments. The code is encouraged to be released,”
 - **Direct evidence:** artifact-level [FAC final disposition](FAC_FINAL_DISPOSITION.md), which selects REMOVED_FROM_REVISION.
-- **Supporting evidence:** [clean-checkout reproducibility report](../evidence/audits/FINAL_CLEAN_CHECKOUT_REPRODUCIBILITY_REPORT.md), FAC config/training-pool mismatch, missing run-bound manifests, and absent training-seed provenance.
+- **Supporting evidence:** [current clean-checkout audit](CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md), the historical snapshot report (../evidence/audits/FINAL_CLEAN_CHECKOUT_REPRODUCIBILITY_REPORT.md), FAC config/training-pool mismatch, missing run-bound manifests, and absent training-seed provenance.
 - **Evidence role:** supports a concrete removal decision instead of a reproducibility or release claim.
 - **Evidence limitation:** historical artifacts exist, but the exact run cannot be reconstructed from a clean checkout; this is a provenance audit, not a recomputation of FAC results.
 - **Final response logic:** agree that the historical FAC evidence does not meet this revision’s reproducibility standard and state that it will be removed.

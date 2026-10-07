@@ -32,7 +32,7 @@
 
 ## Remaining package gate
 
-- `CLEAN_CHECKOUT_REPRODUCIBILITY = OPEN`: the compact numerical inputs support clean-checkout reaggregation, while full generation-level provenance and exact paper assembly remain separate limits. The current audit is documented in [the clean-checkout addendum](CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md). This does not justify rerunning generation or training.
+- `CLEAN_CHECKOUT_REPRODUCIBILITY = PARTIAL / OPEN`: clean checkout reproduced the bundled paired statistics and compiled both paper sources; full generation-source reconstruction remains open because run-bound manifests and prediction/render inputs are incomplete. The current audit is documented in [the clean-checkout addendum](CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md). No generation or training rerun was needed for the bounded current claims.
 - `REVIEWER_SOURCE = ROUND_IDENTITY_UNCERTAIN`: continue with the supplied set and keep the caveat out of the external reply.
 - `R2.1 = OPEN / VENUE RISK`: retain internally; do not insert this self-assessment into the reviewer-facing response.
 - Final author review and any submission action remain outstanding. No journal submission or reviewer-response upload has occurred.

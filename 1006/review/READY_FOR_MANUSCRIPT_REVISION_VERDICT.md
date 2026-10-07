@@ -30,7 +30,7 @@ The plan's controlled manuscript-status vocabulary is retained; these values do 
 - **MAIN_PAPER_VISUAL_SELECTION = PASS** — selected UIDs, reasons, metrics, rights, attribution, and hashes are frozen and used in Fig. 4.
 - **REVIEWER_EXTERNAL_DRAFT = READY** — completed-revision wording with verified page/line references; still a working draft for author review.
 - **REVIEWER_SOURCE = ROUND_IDENTITY_UNCERTAIN** — documented; work continues on the supplied R1–R3 set.
-- **CLEAN_CHECKOUT_REPRODUCIBILITY = OPEN** — the edited candidate and compiled PDFs are not in HEAD; Fresh C/Fresh B raw analysis inputs are external to the checkout. Current findings are recorded in [the candidate addendum](CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md); the older report is a historical snapshot. No generation or training rerun is needed to explain this package limit.
+- **CLEAN_CHECKOUT_REPRODUCIBILITY = PARTIAL / OPEN** — the exact candidate passed clean-checkout paired-statistic reaggregation (42 rows), the 20-panel pool hash audit, and clean compilation of the 8-page main manuscript and 4-page supplement. Full generation-source reconstruction remains open because all run-bound manifests and prediction/render inputs are not packaged. See [the candidate addendum](CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md); the older report is a historical snapshot.
 - **REVIEWER_CLOSURE = OPEN** — final package review remains; no submission or reviewer acceptance is claimed.
 
 ## Entry-condition audit
@@ -54,7 +54,7 @@ The plan's controlled manuscript-status vocabulary is retained; these values do 
 
 ## Remaining before submission
 
-1. Complete an analysis/package rebuild from a clean checkout and record any generation-reproducibility limits.
+1. Decide whether the disclosed generation-source reconstruction limit is acceptable for submission; no new generation or training run is needed for the bounded current claims.
 2. Perform final author review of the revised source, figures/attributions, supplementary material, and external response.
 3. Reconcile any final edits against the numerical authorities and recompile to refresh page/line references.
 4. Submit only after the authors choose to do so; no submission action has occurred here.
