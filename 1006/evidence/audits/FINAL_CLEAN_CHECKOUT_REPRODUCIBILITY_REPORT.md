@@ -1,6 +1,8 @@
-# Final clean-checkout reproducibility report
+# Historical clean-checkout reproducibility report — prior candidate snapshot
 
-**Current candidate status: `FAIL` for submission-grade clean-checkout reproducibility.**
+**Snapshot note:** This report describes an earlier repository state and is not the audit of the current edited reviewer-closure candidate. See [the 2026-10-07 candidate addendum](../../review/CLEAN_CHECKOUT_REPRODUCIBILITY_ADDENDUM_20261007.md) for the current branch/HEAD and package findings. Historical branch identities and file-state statements below are retained as a record of that prior audit.
+
+**Status at the time of this historical audit: `FAIL` for submission-grade clean-checkout reproducibility.**
 
 ## Repository identity and package state
 

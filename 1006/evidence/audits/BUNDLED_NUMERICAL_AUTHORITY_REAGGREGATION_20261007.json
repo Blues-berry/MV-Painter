@@ -1,0 +1,556 @@
+{
+  "analysis_output_sha256": {
+    "analysis": {
+      "1006/review/R1_4_FRESHB_C3_minus_GFH_supporting_results.json": "12f18d2b53e5d180fc2881842ead1133caa60930a630505cd193f4ae0731b89d",
+      "1006/review/R1_4_FRESHC_C3_minus_GFH_posthoc_results.json": "fcd279a4cef027bda4a3880eccc245c41e15881425febc17a403e4572686d5de",
+      "1006/review/numerical_inputs/FRESH_C_ADDENDUM_ANALYSIS.json": "8dc691c7533cf30d0368f35f1851f15b9049e8b587d5c39509583ccb2be58a8c",
+      "1006/review/numerical_inputs/fresh_c_c3_minus_gfl_analysis.json": "fd5422de055dfde6f82d65091f1cfcec26823a7757a1e09c76a4067984d5cd58"
+    },
+    "outputs": {
+      "1006/review/R1_4_FRESHB_C3_minus_GFH_supporting_results.csv": "b025a56fa1ddc2611b645db24131d9e4e64189fab04f40bae80bacbe06cbada6",
+      "1006/review/R1_4_FRESHB_C3_minus_GFH_supporting_results.json": "12f18d2b53e5d180fc2881842ead1133caa60930a630505cd193f4ae0731b89d",
+      "1006/review/R1_4_FRESHC_C3_minus_GFH_posthoc_results.csv": "aa6a11e2e502b57b28a1b091464861a4c2fc475c1e1485558d0ad78ae594259c",
+      "1006/review/R1_4_FRESHC_C3_minus_GFH_posthoc_results.json": "fcd279a4cef027bda4a3880eccc245c41e15881425febc17a403e4572686d5de"
+    }
+  },
+  "authority_csv": "1006/evidence/audits/FINAL_MANUSCRIPT_NUMERICAL_AUTHORITY.csv",
+  "checks": [
+    {
+      "claim_id": "FRESHC_C3_GFL_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_C3_GFL_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_C3_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_LLH_linear_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "FRESHC_ADD_C3_linear_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0,
+        "p_adjusted": 0.0,
+        "p_raw": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 2.220446049250313e-16,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 5.204170427930421e-18,
+        "effect": 3.469446951953614e-18,
+        "favorable_fraction": 0.0,
+        "median": 5.551115123125783e-17
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 1.1102230246251565e-16,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 6.505213034913027e-19,
+        "CI_upper": 8.673617379884035e-19,
+        "effect": 1.463672932855431e-18,
+        "favorable_fraction": 0.0,
+        "median": 1.3877787807814457e-17
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHC_C3_GFH_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 3.469446951953614e-18,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FG_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FG_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FG_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FULL_PSNR",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FULL_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_FULL_LPIPS",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "claim_id": "R1_4_FRESHB_C3_GFH_EDGE_SSIM",
+      "max_abs_difference": {
+        "CI_lower": 0.0,
+        "CI_upper": 0.0,
+        "effect": 0.0,
+        "favorable_fraction": 0.0,
+        "median": 0.0
+      },
+      "status": "PASS"
+    }
+  ],
+  "claim_count": 42,
+  "input_sha256": {
+    "1006/review/numerical_inputs/fresh_b_per_object_metrics.csv": "ce7ba03f6dcb9f1d275b389c633e23dc544404eeac4ddf090e90a11ad278e081",
+    "1006/review/numerical_inputs/fresh_c_addendum_object_deltas.csv": "965d7ef6e592ef82eb264316416a5d870b6667e0712b93c4ac937b7ccb5aff63",
+    "1006/review/numerical_inputs/fresh_c_c3_confirmation_per_object_metrics.csv": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+    "1006/review/numerical_inputs/fresh_c_c3_minus_gfl_object_deltas.csv": "33f1153632963e33a887d6b852b2d60e8be2086bb2c948ebd27029933eba1bd2"
+  },
+  "max_abs_differences": {
+    "CI_lower": 1.1102230246251565e-16,
+    "CI_upper": 5.204170427930421e-18,
+    "effect": 2.220446049250313e-16,
+    "favorable_fraction": 0.0,
+    "median": 5.551115123125783e-17,
+    "p_adjusted": 0.0,
+    "p_raw": 0.0
+  },
+  "scope": "Reaggregation of paired object-level numerical inputs; does not rebuild rendered outputs or rerun generation.",
+  "script_sha256": "c34f8e19dfaf920522f409437b0097181c0f02467e17ba40e2d4d7720d2435c9",
+  "status": "PASS",
+  "tolerance": 2e-10
+}

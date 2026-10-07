@@ -33,3 +33,12 @@ For Edge-SSIM, higher is better, so the estimate and interval favor GFH. The res
 ## Interpretation limits
 
 This is a post-hoc comparison in a separate N=150 cohort. It is not an independent preregistered test of the original Table 4 contrast, does not set a non-inferiority margin, and does not justify equivalence or a universal winner. The primary manuscript response should disclose this status and narrow the preservation claim.
+
+## Authority capture for the revision response
+
+The existing paired summary was independently recomputed from the hash-pinned source for authority capture; this did not add a cohort, condition, metric, or experiment. The recomputation matched all seven means, medians, favorable counts, and bootstrap intervals above.
+
+- Analysis script: [`audit_fresh_b_c3_minus_gfh_supporting.py`](../scripts/audit_fresh_b_c3_minus_gfh_supporting.py), SHA-256 `23dd8e2a4c0e23f4b514cda471a8483bc3be056c0860786579932cf1691a5070`.
+- Machine-readable results: [`R1_4_FRESHB_C3_minus_GFH_supporting_results.csv`](R1_4_FRESHB_C3_minus_GFH_supporting_results.csv), SHA-256 `b025a56fa1ddc2611b645db24131d9e4e64189fab04f40bae80bacbe06cbada6`; JSON SHA-256 `5eab50cb1f2f28593a22eacf38d6525191cf87871dcef47d9588fbbf2c535d12`.
+- Source SHA-256 remains `ce7ba03f6dcb9f1d275b389c633e23dc544404eeac4ddf090e90a11ad278e081`; the data file remains outside this clean evidence worktree. The computation can be repeated only when that hash-matching source is available, so clean-checkout reproducibility remains open.
+- The seven Fresh B rows are recorded in both numerical authority tables as `RETROSPECTIVE_POST_HOC_SUPPORTING_SENSITIVITY`; they are not pooled with Fresh C and do not support confirmatory, equivalence, or non-inferiority claims.

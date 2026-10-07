@@ -1,0 +1,352 @@
+{
+  "analysis_classification": "REVIEWER_REQUESTED_POST_HOC_AUDIT",
+  "checks": [
+    {
+      "check": "required_source_files",
+      "detail": {
+        "missing": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "prior_fresh_c_integrity_gate_pass",
+      "detail": "PASS",
+      "status": "PASS"
+    },
+    {
+      "check": "cohort_size",
+      "detail": 300,
+      "status": "PASS"
+    },
+    {
+      "check": "prior_gate_raw_csv_hash",
+      "detail": {
+        "gate_sha256": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+        "observed_sha256": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "prior_gate_cohort_manifest_hash",
+      "detail": {
+        "gate_sha256": "0f2c50f0bcce6678d578bd7ec4e8931e39606045b1b105ccbdae7546556a3859",
+        "observed_sha256": "0f2c50f0bcce6678d578bd7ec4e8931e39606045b1b105ccbdae7546556a3859"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "prior_gate_input_embeddings_hash",
+      "detail": {
+        "gate_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+        "observed_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "prior_gate_output_hash_manifest",
+      "detail": {
+        "gate_sha256": "03158668870dad785f439f16bb9645a1e17f66e8bd679445d2f875bced7da567",
+        "observed_sha256": "03158668870dad785f439f16bb9645a1e17f66e8bd679445d2f875bced7da567"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "original_four_conditions_present",
+      "detail": [
+        "native_gc3",
+        "native_gfh",
+        "native_gfl",
+        "no_adapter"
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "gate_c3_gfh_coverage",
+      "detail": {
+        "native_gc3": 300,
+        "native_gfh": 300,
+        "native_gfl": 300,
+        "no_adapter": 300
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "frozen_cohort_manifest_300_unique_uids",
+      "detail": {
+        "object_rows": 300,
+        "unique_uids": 300
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "combined_csv_row_count",
+      "detail": {
+        "csv_rows": 1200,
+        "expected_rows": 1200,
+        "gate_verified_rows": 1200
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "required_csv_columns",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "no_duplicate_condition_uid",
+      "detail": {
+        "duplicates": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c3_and_gfh_each_300_unique_objects",
+      "detail": {
+        "c3_rows": 300,
+        "c3_unique_uids": 300,
+        "gfh_rows": 300,
+        "gfh_unique_uids": 300
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "exact_c3_gfh_uid_set_match",
+      "detail": {
+        "c3_minus_frozen_cohort": [],
+        "c3_minus_gfh": [],
+        "frozen_cohort_minus_c3": [],
+        "gfh_minus_c3": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "uid_to_frozen_object_index_match",
+      "detail": "object_uid maps to frozen object_index for every condition row",
+      "status": "PASS"
+    },
+    {
+      "check": "generation_seed_match",
+      "detail": {
+        "effective_seed_policy": "seed_base + object_idx",
+        "paired_object_index_mismatches": 0,
+        "paired_seed_mismatches": 0,
+        "seed_base": 42
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "reference_and_input_identity_match",
+      "detail": {
+        "input_cond_sha256": 0,
+        "input_depth_sha256": 0,
+        "input_global_embeds_sha256": 0,
+        "input_init_latent_sha256": 0,
+        "input_normal_sha256": 0,
+        "input_target_sha256": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "all_required_metrics_finite",
+      "detail": {
+        "Edge-SSIM": 0,
+        "FG-LPIPS": 0,
+        "FG-PSNR": 0,
+        "FG-SSIM": 0,
+        "Full-LPIPS": 0,
+        "Full-PSNR": 0,
+        "Full-SSIM": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "same_runner",
+      "detail": [
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 0,
+          "status": "complete"
+        },
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 1,
+          "status": "complete"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "same_checkpoint",
+      "detail": [
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 0,
+          "status": "complete"
+        },
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 1,
+          "status": "complete"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "same_metric_implementation",
+      "detail": [
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 0,
+          "status": "complete"
+        },
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 1,
+          "status": "complete"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "completed_run_shards",
+      "detail": [
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 0,
+          "status": "complete"
+        },
+        {
+          "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+          "condition_list": [
+            "native_gc3",
+            "native_gfh",
+            "native_gfl",
+            "no_adapter"
+          ],
+          "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+          "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+          "metric_path": "geotex.eval_exploration.compute_metrics",
+          "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+          "shard": 1,
+          "status": "complete"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "cohort_label": "FROZEN_FRESH_C",
+  "cohort_n": 300,
+  "condition_A": "native_gc3",
+  "condition_B": "native_gfh",
+  "frozen_run_identity": {
+    "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "effective_data_roots": [
+      "/4T/CXY/MV-Painter/1006/data/fresh_c/renders"
+    ],
+    "metric_implementation_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+    "metric_path": "geotex.eval_exploration.compute_metrics",
+    "reference_seed_policy": "object_seed = 42 + object_idx for python random / numpy / torch before collate_batch; torch.manual_seed(42) before initial latent and again immediately before generation (VAE latent sample consumes torch RNG)",
+    "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3"
+  },
+  "outputs": {
+    "results_csv": "/tmp/mvpainter-cg-evidence-closure/1006/review/R1_4_FRESHC_C3_minus_GFH_posthoc_results.csv",
+    "results_csv_sha256": "aa6a11e2e502b57b28a1b091464861a4c2fc475c1e1485558d0ad78ae594259c",
+    "results_json": "/tmp/mvpainter-cg-evidence-closure/1006/review/R1_4_FRESHC_C3_minus_GFH_posthoc_results.json",
+    "results_json_sha256": "fcd279a4cef027bda4a3880eccc245c41e15881425febc17a403e4572686d5de"
+  },
+  "source_hashes": {
+    "analysis_script_sha256": "ec87a8b5b729b198a501d66a49850bac3b54bc7a090b9d33e7e50050b59a251d",
+    "cohort_manifest_sha256": "0f2c50f0bcce6678d578bd7ec4e8931e39606045b1b105ccbdae7546556a3859",
+    "input_embeddings_manifest_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+    "integrity_gate_sha256": "8365d846eb8c6fdf208ae3c416f580b69e678b67ff0311d0130e6d4e58abeeac",
+    "launch_identity_sha256": "189f549c568bd189ed00736ec9da79b3533ac9c1a737dbefd2f8b48b75451bdc",
+    "output_hash_manifest_sha256": "03158668870dad785f439f16bb9645a1e17f66e8bd679445d2f875bced7da567",
+    "raw_source_sha256": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+    "run_manifest_shard0_sha256": "9bad8246e1b29bcf2a9b68004c4f18dbdeea5049a6a693e06cb8b61f26bb3d93",
+    "run_manifest_shard1_sha256": "29b87567509dafbabbc24bbdd1d43859670aed55ddf8c695e15ec84ca890bd98"
+  },
+  "source_paths": {
+    "cohort_manifest": "/4T/CXY/MV-Painter/1006/data/fresh_c/FRESH_C_COHORT_MANIFEST.json",
+    "data_dir": "/4T/CXY/MV-Painter/1006/data/fresh_c",
+    "input_embeddings_manifest": "/4T/CXY/MV-Painter/1006/data/fresh_c/FRESH_C_INPUT_EMBEDDINGS_MANIFEST.json",
+    "integrity_gate": "/4T/CXY/MV-Painter/1006/data/fresh_c/FRESH_C_INTEGRITY_GATE.json",
+    "output_hash_manifest": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/OUTPUT_FILE_SHA256.csv",
+    "raw_csv": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/per_object_metrics.csv",
+    "run_identity": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/LAUNCH_IDENTITY.json",
+    "shard_manifests": [
+      "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/run_manifest_shard0.json",
+      "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/run_manifest_shard1.json"
+    ]
+  },
+  "status": "PASS"
+}
