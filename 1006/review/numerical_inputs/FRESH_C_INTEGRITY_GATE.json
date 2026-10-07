@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "cohort_n": 300,
+  "conditions": [
+    "native_gc3",
+    "native_gfh",
+    "native_gfl",
+    "no_adapter"
+  ],
+  "expected_rows": 1200,
+  "verified_rows": 1200,
+  "rows_by_shard": {
+    "0": 600,
+    "1": 600
+  },
+  "shared_input_objects": 300,
+  "verified_output_files": 2100,
+  "condition_coverage": {
+    "native_gc3": 300,
+    "native_gfh": 300,
+    "native_gfl": 300,
+    "no_adapter": 300
+  },
+  "cohort_manifest_sha256": "0f2c50f0bcce6678d578bd7ec4e8931e39606045b1b105ccbdae7546556a3859",
+  "input_embeddings_manifest_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+  "combined_csv_sha256": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+  "output_hash_manifest_sha256": "03158668870dad785f439f16bb9645a1e17f66e8bd679445d2f875bced7da567",
+  "status_reason": "all identity, row, shared-input, finite-metric, native-cap, prediction, and residual-log gates passed"
+}

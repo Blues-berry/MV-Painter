@@ -1,0 +1,543 @@
+{
+  "R1_4_DIRECTION_ERRORS": 0,
+  "analysis_classification": "REVIEWER_REQUESTED_POST_HOC_AUDIT",
+  "bootstrap_recomputed": {
+    "resamples": 10000,
+    "rng": "numpy.default_rng(20261002)"
+  },
+  "checks": [
+    {
+      "check": "required_inputs_present",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "raw_source_hash_matches_integrity_gate",
+      "detail": {
+        "expected": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+        "observed": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "exact_paired_uids",
+      "detail": {
+        "c3_n": 300,
+        "gfh_n": 300,
+        "same_index": true
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-PSNR:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-SSIM:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "FG-LPIPS:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-PSNR:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-SSIM:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "Full-LPIPS:finite_paired_differences",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:mean_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:median_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:ci_lower_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:ci_upper_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:favorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:unfavorable_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:tie_count_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:direction_matches_results",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:classification_is_posthoc",
+      "status": "PASS"
+    },
+    {
+      "check": "Edge-SSIM:finite_paired_differences",
+      "status": "PASS"
+    }
+  ],
+  "direction_checker_sha256": "cb9783f09faea6fcfb5fd1f6b98fa55289b5270d8c75b3eddce7b037fd7f72fa",
+  "endpoints": [
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        -0.8881206716100375,
+        -0.604950404316187
+      ],
+      "ci_crosses_zero": false,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 97,
+      "favorable_count_for_gfh": 203,
+      "favorable_fraction_for_c3": 0.3233333333333333,
+      "mean_difference": -0.7476675420999525,
+      "mean_favors": "GFH",
+      "mean_sign": "negative",
+      "median_difference": -0.8803874254226685,
+      "median_favors": "GFH",
+      "metric": "FG-PSNR",
+      "metric_direction": "higher-is-better",
+      "reviewer_wording": "For FG-PSNR (higher-is-better), C3−GFH was -0.747668 (95% paired object-bootstrap CI [-0.888121, -0.604950]); the mean direction favors GFH, the median direction favors GFH, and 97/300 objects favor C3 (32.3%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        -0.04942860404308885,
+        -0.041657433637417855
+      ],
+      "ci_crosses_zero": false,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 26,
+      "favorable_count_for_gfh": 274,
+      "favorable_fraction_for_c3": 0.08666666666666667,
+      "mean_difference": -0.04552939582616091,
+      "mean_favors": "GFH",
+      "mean_sign": "negative",
+      "median_difference": -0.04098153114318848,
+      "median_favors": "GFH",
+      "metric": "FG-SSIM",
+      "metric_direction": "higher-is-better",
+      "reviewer_wording": "For FG-SSIM (higher-is-better), C3−GFH was -0.045529 (95% paired object-bootstrap CI [-0.049429, -0.041657]); the mean direction favors GFH, the median direction favors GFH, and 26/300 objects favor C3 (8.7%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        0.008907318397114675,
+        0.012616156070182726
+      ],
+      "ci_crosses_zero": false,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 82,
+      "favorable_count_for_gfh": 218,
+      "favorable_fraction_for_c3": 0.2733333333333333,
+      "mean_difference": 0.010697014679511391,
+      "mean_favors": "GFH",
+      "mean_sign": "positive",
+      "median_difference": 0.011259898543357794,
+      "median_favors": "GFH",
+      "metric": "FG-LPIPS",
+      "metric_direction": "lower-is-better",
+      "reviewer_wording": "For FG-LPIPS (lower-is-better), C3−GFH was +0.010697 (95% paired object-bootstrap CI [+0.008907, +0.012616]); the mean direction favors GFH, the median direction favors GFH, and 82/300 objects favor C3 (27.3%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        0.5858304739991825,
+        0.7357682289679844
+      ],
+      "ci_crosses_zero": false,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 252,
+      "favorable_count_for_gfh": 48,
+      "favorable_fraction_for_c3": 0.84,
+      "mean_difference": 0.6607278863588969,
+      "mean_favors": "C3",
+      "mean_sign": "positive",
+      "median_difference": 0.7018733024597168,
+      "median_favors": "C3",
+      "metric": "Full-PSNR",
+      "metric_direction": "higher-is-better",
+      "reviewer_wording": "For Full-PSNR (higher-is-better), C3−GFH was +0.660728 (95% paired object-bootstrap CI [+0.585830, +0.735768]); the mean direction favors C3, the median direction favors C3, and 252/300 objects favor C3 (84.0%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        -0.0009475240955750147,
+        0.0013542935053507486
+      ],
+      "ci_crosses_zero": true,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 192,
+      "favorable_count_for_gfh": 108,
+      "favorable_fraction_for_c3": 0.64,
+      "mean_difference": 0.0002638534704844157,
+      "mean_favors": "C3",
+      "mean_sign": "positive",
+      "median_difference": 0.0021431148052215576,
+      "median_favors": "C3",
+      "metric": "Full-SSIM",
+      "metric_direction": "higher-is-better",
+      "reviewer_wording": "For Full-SSIM (higher-is-better), C3−GFH was +0.000264 (95% paired object-bootstrap CI [-0.000948, +0.001354]); the mean direction favors C3, the median direction favors C3, and 192/300 objects favor C3 (64.0%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        -0.0013153480384498842,
+        0.002067765604704619
+      ],
+      "ci_crosses_zero": true,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 153,
+      "favorable_count_for_gfh": 147,
+      "favorable_fraction_for_c3": 0.51,
+      "mean_difference": 0.00034457239011923327,
+      "mean_favors": "GFH",
+      "mean_sign": "positive",
+      "median_difference": -0.0005030855536460738,
+      "median_favors": "C3",
+      "metric": "Full-LPIPS",
+      "metric_direction": "lower-is-better",
+      "reviewer_wording": "For Full-LPIPS (lower-is-better), C3−GFH was +0.000345 (95% paired object-bootstrap CI [-0.001315, +0.002068]); the mean direction favors GFH, the median direction favors C3, and 153/300 objects favor C3 (51.0%).",
+      "tie_count": 0
+    },
+    {
+      "checks": {
+        "ci_lower_matches_results": true,
+        "ci_upper_matches_results": true,
+        "classification_is_posthoc": true,
+        "direction_matches_results": true,
+        "favorable_count_matches_results": true,
+        "finite_paired_differences": true,
+        "mean_matches_results": true,
+        "median_matches_results": true,
+        "tie_count_matches_results": true,
+        "unfavorable_count_matches_results": true
+      },
+      "ci95": [
+        -0.020803198799490934,
+        -0.016790090791881086
+      ],
+      "ci_crosses_zero": false,
+      "condition_A_minus_condition_B": "native_gc3 - native_gfh",
+      "favorable_count_for_c3": 47,
+      "favorable_count_for_gfh": 252,
+      "favorable_fraction_for_c3": 0.15666666666666668,
+      "mean_difference": -0.018813574314117433,
+      "mean_favors": "GFH",
+      "mean_sign": "negative",
+      "median_difference": -0.01903897523880005,
+      "median_favors": "GFH",
+      "metric": "Edge-SSIM",
+      "metric_direction": "higher-is-better",
+      "reviewer_wording": "For Edge-SSIM (higher-is-better), C3−GFH was -0.018814 (95% paired object-bootstrap CI [-0.020803, -0.016790]); the mean direction favors GFH, the median direction favors GFH, and 47/300 objects favor C3 (15.7%). This Edge-SSIM estimate favors GFH.",
+      "tie_count": 1
+    }
+  ],
+  "errors": [],
+  "results_json_sha256": "fcd279a4cef027bda4a3880eccc245c41e15881425febc17a403e4572686d5de",
+  "source_raw_sha256": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+  "status": "PASS"
+}

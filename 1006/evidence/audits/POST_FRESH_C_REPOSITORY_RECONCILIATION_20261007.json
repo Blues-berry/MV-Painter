@@ -1,0 +1,55 @@
+{
+  "public_remote_head": "f5bad8a1e6ca4265c1823eaa26b2775313de4c96",
+  "expected_public_remote_head": "f5bad8a1e6ca4265c1823eaa26b2775313de4c96",
+  "remote_head_matches_expected": true,
+  "local_head": "5c2c8829a1e19b42837761160dc4c14cf8f09045",
+  "local_branch": "codex/scientific-validation-v3-20261002",
+  "merge_base": "29b3a0a6ec00f5848f1898ffda4fb8e787f81375",
+  "local_only_commits": 0,
+  "remote_only_commits": 218,
+  "local_head_is_ancestor_of_public_remote": true,
+  "worktree_status_counts_in_scope": {
+    "A ": 7199,
+    "AM": 4,
+    " M": 3,
+    "??": 440
+  },
+  "public_comparison_counts": {
+    "LOCAL_PATH_NOT_IN_PUBLIC_REMOTE": 7556,
+    "SAME_BYTES_ALREADY_PUBLIC": 83,
+    "LOCAL_CONTENT_DIFFERS_FROM_PUBLIC": 7,
+    "PUBLIC_REMOTE_ONLY_OR_CLEAN_LOCAL_COPY": 4
+  },
+  "path_manifest_rows": 7650,
+  "path_manifest": "1006/evidence/audits/POST_FRESH_C_UNPUSHED_FILE_MANIFEST.csv",
+  "tracked_worktree_status_rows": 7206,
+  "untracked_worktree_status_rows": 440,
+  "local_formal_evidence_not_public_or_changed": 7413,
+  "same_bytes_already_public": 83,
+  "restricted_participant_paths": 4,
+  "asset_or_derivative_paths": 34,
+  "asset_rights_candidate_scope": {
+    "fresh_c_cohort_dispositions": {
+      "UNKNOWN": 9,
+      "FIGURE_ONLY": 20,
+      "METRICS_ONLY": 271
+    },
+    "cohort_api_checked_count": 180,
+    "cohort_api_status_counts": {
+      "404": 8,
+      "200": 166,
+      "401": 1,
+      "429": 5,
+      "NOT_RECHECKED": 120
+    },
+    "atlas_attribution_verified": 20,
+    "legacy_48_row_dispositions": {
+      "UNKNOWN": 5,
+      "FIGURE_ONLY": 43
+    },
+    "candidate_figure_scope": "CLOSED_WITH_EXCLUSIONS"
+  },
+  "authority_rows": 148,
+  "execution_representative_rows": 75,
+  "note": "The local HEAD is an ancestor of the public tip. The local working tree is dirty and is compared file-by-file to public remote blob contents. No push or checkout change was performed. The path manifest omits its own self-referential hash and records finalized hashes for the reconciliation JSON and Markdown."
+}
