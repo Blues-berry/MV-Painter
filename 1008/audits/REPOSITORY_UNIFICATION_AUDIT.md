@@ -58,12 +58,12 @@ endorsement.
 | Candidate | Git / content finding | Current decision |
 |---|---|---|
 | `codex/scientific-validation-v3-20261002` (`5c2c8829`) | 40,198 changed paths and 76,972,976 inserted lines relative to its merge base; 438 overlapping paths produced no content conflict. Its separate worktree also has about 11 GB of uncommitted data. | The unpushed full merge eb68d6ce was preserved locally, then removed from the 1008 branch ancestry before curation. The curated public-profile overlay retains source documents, logs, JSON reports, scripts, CSVs, and 24 selected qualitative panels; it imports 17,864 files (~1.60 GiB). The v3 results remain bounded by d59 and are not promoted wholesale as paper claims. The separate 11 GB worktree remains untouched. |
-| `origin/codex/scientific-validation-v3-20261002` (`11cffe79`) | 1,419 branch-only paths; six add/add path conflicts in protocol, analysis, and manifest files. | Keep separate pending file-level provenance reconciliation with the newer v3 and d59 records. |
+| `origin/codex/scientific-validation-v3-20261002` (`11cffe79`) | 1,419 branch-only paths; six add/add path conflicts in protocol, analysis, and manifest files. | Source comparison completed. Prefer the 2026-10-06 `5c2c8829` versions for analysis, manifest coverage, and post-campaign claim matrix. The 99→98 G denominator is documented as two technical failures (`g_0062` before generation, then `g_0098`); no replacement was found. Details are in `CONFLICT_AUTHENTICITY_DECISIONS.md`. |
 | `codex/evidence-closure-audit-20261005` (`7e659c7e`) | 14 add/add conflicts among 403 overlapping paths, including claim, visual, and analysis artifacts. | Do not merge wholesale; d59 is the later claim authority. Compare any disputed result at the artifact level first. |
-| `codex/paper-1006-20261006` and public `origin/codex/paper-1006-20261006` | The 1006 branch adds a separate candidate/evidence package; one conflicting audit file is `FORMAL_VISUAL_EVIDENCE_REPORT.md`. The public tip is newer than the local 1006 worktree. | Keep as a separate candidate archive. Do not adopt its manuscript or overwrite d59 audit decisions. |
-| `codex/human-confirmatory-analysis-20261007` / public paper-1006 tip | Conflicts in `FINAL_REVIEWER_RESPONSE_SKELETON.md` and `FORMAL_VISUAL_EVIDENCE_REPORT.md`. The “confirmatory” interpretation conflicts with execution deviations and the d59 human-data gate. | Exclude human results from 1008. No participant-level data copied. Preserve the branch for audit only. |
-| `origin/codex/round2-author-review-20260929` | Five add/add conflicts in evaluation and runtime scripts among 37 overlapping paths; adds a 118-file dated evidence snapshot. | Do not merge scripts blindly. The 2026-09-29 snapshot is historical and its manuscript/evidence claims are superseded where d59 says so. |
-| `origin/codex/adaptive-control-pilot-20260929` | Same five code conflicts in evaluation/runtime paths; three branch commits. | Keep as historical experiment branch; do not combine runner changes without source-level reconciliation. |
+| `codex/paper-1006-20261006` and public `origin/codex/paper-1006-20261006` | The 2026-10-07 public tip has 482 files under `1006/`; two same-path files differ from d59: `FORMAL_VISUAL_EVIDENCE_REPORT.md` and `FINAL_REVIEWER_RESPONSE_SKELETON.md`. | Imported 413 eligible, non-conflicting records into a dated archive with source commit and blob hashes. Images and generated figure PDFs, candidate manuscripts, both direct conflicts, and human-study records were omitted from the public profile. No d59 path was overwritten. |
+| `codex/human-confirmatory-analysis-20261007` / public paper-1006 tip | The “confirmatory” interpretation conflicts with execution deviations and the d59 human-data gate. The two direct audit conflicts are also present in the 1006 candidate tree. | Human-study docs, aggregate tables, and analysis scripts are preserved in a private-only historical archive; no human claim is promoted into the manuscript. Public candidate omits them. The conflicting audit variants remain held out. |
+| `origin/codex/round2-author-review-20260929` | Five add/add conflicts in evaluation/runtime scripts among 37 overlapping paths; adds a dated evidence snapshot. | Archived 79 non-image release files plus the five old runner versions under a source-pinned historical directory. Source review favors d59 for seeding, dynamic handoff conditions, and runtime diagnostics; active code was not changed. |
+| `origin/codex/adaptive-control-pilot-20260929` | Same five code conflicts in evaluation/runtime paths; adds a pilot review and residual-budget pilot script. | Archived its two unique records and five runner variants separately. Active runner remains d59; archived scripts are provenance only. |
 | Private `mvpainter/codex/round2-evidence-integrated-20261001` (`5a059b30`) | Three direct text conflicts in `final_round2.tex`, `response_letter_round2.md`, and `supplementary_round2.tex`; its manuscript narrative predates d59's authority and removes later audit records. | Do not merge the manuscript snapshot. d59's evidence and 01549's source remain the controlling inputs. |
 
 The full merge commit eb68d6ce is retained only under the local archive ref;
@@ -99,6 +99,10 @@ is rewritten.
 6. The public v3 history contains participant-linked response and assignment
    files. d59 records that public redistribution permission is not established.
    This audit does not copy those rows or rewrite public history.
+7. The candidate 1006 branch's human-study classification is not accepted as
+   confirmatory paper evidence. Its historical analysis and aggregate endpoint
+   tables are private-only; the public candidate contains neither these files
+   nor participant-level records.
 
 ## Merge and release boundary
 
@@ -108,5 +112,8 @@ candidate is pushed at
 `origin/codex/cg-round2-1008-public-sanitized-20261008`; its parent is
 `12da08c7`, before the four participant-level CSVs were added. Existing public
 refs still contain those earlier files. Neither push rewrote an existing ref.
-The other conflicting branches remain separate pending artifact-level
-authenticity review.
+Additional dated branch snapshots are recorded under
+`1008/archive/branch_snapshots/`; import manifests list source paths, blob IDs,
+sizes, and omissions. The 1006 human-study subset is private-only. The 1006
+visual-report/reviewer-skeleton conflicts and 14 evidence-closure conflicts
+remain held out pending artifact-level authenticity review.

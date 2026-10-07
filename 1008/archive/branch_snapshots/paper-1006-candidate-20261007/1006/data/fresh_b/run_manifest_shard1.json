@@ -1,0 +1,8149 @@
+{
+  "a3_spec": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/a3b_development_residual_only/A3B_CANDIDATE_HIGHS.json",
+  "a3_spec_sha256": "68125f9ee9645225387ef9d034f934154d6c4c461b29d7162218a224c0cc89a0",
+  "checkpoint": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "code_source_sha256": {
+    "adapter_wrapper": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/mvpainter/model_unet_geotex.py",
+      "sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0"
+    },
+    "data_utils": {
+      "path": "/4T/CXY/MV-Painter/geotex/data_utils.py",
+      "sha256": "e078f9e2cb3d85447f036fa4c0158929fa4e5f3c7f17571ed6bf0c6f7e7f94f3"
+    },
+    "generation_logic": {
+      "path": "/4T/CXY/MV-Painter/geotex/explore_contradiction.py",
+      "sha256": "5da7fff22ea73b6d9500603d0905eda9a1ac9c44406346b259f3aba368b6ca13"
+    },
+    "metric_crop_functions": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/crop_ops.py",
+      "sha256": "1ce3bb1f5dd76ce92e83e29349dbf12d24a1a845c4a861397abc72809f0309ab"
+    },
+    "metric_image_functions": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/image_metrics.py",
+      "sha256": "ff5fe347036c1a48e478855570128d62e0b4c1fbb44b7486bf93b88100ab55e3"
+    },
+    "metric_implementation": {
+      "path": "/4T/CXY/MV-Painter/geotex/eval_exploration.py",
+      "sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5"
+    },
+    "metric_mask_functions": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/mask_ops.py",
+      "sha256": "47bc0e12cff5ebb1d7fe107e24defb32e2fc98a08b269715f39bafc960d45e3d"
+    },
+    "metric_package": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/__init__.py",
+      "sha256": "2054e1016d126fc9612a3c17a30e24f3879386e2527f8e75b361f76a1c590830"
+    },
+    "metric_region_functions": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/region_metrics.py",
+      "sha256": "6f3b861d4dd1763ed4a31a3a05fed1c226df862aadb01471857eff5e36fd5b0a"
+    },
+    "runner": {
+      "path": "/4T/CXY/MV-Painter/scripts/run_validation_v3_experiment.py",
+      "sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3"
+    },
+    "train_util_dataset_factory": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/src/utils/train_util.py",
+      "sha256": "763fcacd6bb587e0f58027b871479ef071df378e96d37be0e82dddc7f4c23405"
+    }
+  },
+  "condition_specs": {
+    "a3_baseline": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "kind": "layer-fixed-low"
+      },
+      "uncapped": false
+    },
+    "a3_deep_W1": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.2625505713698246,
+        "kind": "window-intervention",
+        "layer": "deep",
+        "window": 1
+      },
+      "uncapped": false
+    },
+    "a3_deep_W2": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.2625505713698246,
+        "kind": "window-intervention",
+        "layer": "deep",
+        "window": 2
+      },
+      "uncapped": false
+    },
+    "a3_deep_W3": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.2625505713698246,
+        "kind": "window-intervention",
+        "layer": "deep",
+        "window": 3
+      },
+      "uncapped": false
+    },
+    "a3_deep_W4": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.2625505713698246,
+        "kind": "window-intervention",
+        "layer": "deep",
+        "window": 4
+      },
+      "uncapped": false
+    },
+    "a3_deep_W5": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.2625505713698246,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.2625505713698246,
+        "kind": "window-intervention",
+        "layer": "deep",
+        "window": 5
+      },
+      "uncapped": false
+    },
+    "a3_middle_W1": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.306085471746726,
+        "kind": "window-intervention",
+        "layer": "middle",
+        "window": 1
+      },
+      "uncapped": false
+    },
+    "a3_middle_W2": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.306085471746726,
+        "kind": "window-intervention",
+        "layer": "middle",
+        "window": 2
+      },
+      "uncapped": false
+    },
+    "a3_middle_W3": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.306085471746726,
+        "kind": "window-intervention",
+        "layer": "middle",
+        "window": 3
+      },
+      "uncapped": false
+    },
+    "a3_middle_W4": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.306085471746726,
+        "kind": "window-intervention",
+        "layer": "middle",
+        "window": 4
+      },
+      "uncapped": false
+    },
+    "a3_middle_W5": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.306085471746726,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 1.306085471746726,
+        "kind": "window-intervention",
+        "layer": "middle",
+        "window": 5
+      },
+      "uncapped": false
+    },
+    "a3_shallow_W1": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 0.8,
+        "kind": "window-intervention",
+        "layer": "shallow",
+        "window": 1
+      },
+      "uncapped": false
+    },
+    "a3_shallow_W2": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 0.8,
+        "kind": "window-intervention",
+        "layer": "shallow",
+        "window": 2
+      },
+      "uncapped": false
+    },
+    "a3_shallow_W3": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 0.8,
+        "kind": "window-intervention",
+        "layer": "shallow",
+        "window": 3
+      },
+      "uncapped": false
+    },
+    "a3_shallow_W4": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 0.8,
+        "kind": "window-intervention",
+        "layer": "shallow",
+        "window": 4
+      },
+      "uncapped": false
+    },
+    "a3_shallow_W5": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.8
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "dose": "a3",
+        "high": 0.8,
+        "kind": "window-intervention",
+        "layer": "shallow",
+        "window": 5
+      },
+      "uncapped": false
+    },
+    "boundary_late_onset_20_60_20": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "high": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        "high_duration_steps": 10,
+        "high_pulse_start_step": 40,
+        "kind": "fixed-width-boundary-sensitivity-pulse",
+        "partition_percent": [
+          "20",
+          "60",
+          "20"
+        ]
+      },
+      "uncapped": false
+    },
+    "boundary_late_onset_30_40_30": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "high": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        "high_duration_steps": 10,
+        "high_pulse_start_step": 35,
+        "kind": "fixed-width-boundary-sensitivity-pulse",
+        "partition_percent": [
+          "30",
+          "40",
+          "30"
+        ]
+      },
+      "uncapped": false
+    },
+    "boundary_late_onset_34_32_34": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "high": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        "high_duration_steps": 10,
+        "high_pulse_start_step": 33,
+        "kind": "fixed-width-boundary-sensitivity-pulse",
+        "partition_percent": [
+          "34",
+          "32",
+          "34"
+        ]
+      },
+      "uncapped": false
+    },
+    "boundary_late_onset_40_20_40": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "base": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "high": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        "high_duration_steps": 10,
+        "high_pulse_start_step": 30,
+        "kind": "fixed-width-boundary-sensitivity-pulse",
+        "partition_percent": [
+          "40",
+          "20",
+          "40"
+        ]
+      },
+      "uncapped": false
+    },
+    "layer_hll": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        }
+      ],
+      "spec": {
+        "kind": "three-stage",
+        "stages": {
+          "deep": [
+            2.5,
+            1.25,
+            1.25
+          ],
+          "middle": [
+            2.5,
+            1.25,
+            1.25
+          ],
+          "shallow": [
+            0.75,
+            0.5,
+            0.5
+          ]
+        }
+      },
+      "uncapped": false
+    },
+    "layer_llh": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 0.75
+        }
+      ],
+      "spec": {
+        "kind": "three-stage",
+        "stages": {
+          "deep": [
+            1.25,
+            1.25,
+            2.5
+          ],
+          "middle": [
+            1.25,
+            1.25,
+            2.5
+          ],
+          "shallow": [
+            0.5,
+            0.5,
+            0.75
+          ]
+        }
+      },
+      "uncapped": false
+    },
+    "lfm_exact": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        }
+      ],
+      "spec": {
+        "kind": "exact-mean-matched-constant",
+        "requested": {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        }
+      },
+      "uncapped": false
+    },
+    "native_gc3": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        }
+      ],
+      "spec": null,
+      "uncapped": false
+    },
+    "native_gfh": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        }
+      ],
+      "spec": {
+        "requested": 2.5
+      },
+      "uncapped": false
+    },
+    "native_gfl": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        }
+      ],
+      "spec": {
+        "requested": 1.25
+      },
+      "uncapped": false
+    },
+    "true_global_0p80": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        }
+      ],
+      "spec": {
+        "cap": "bypassed",
+        "kind": "causal-diagnostic",
+        "requested_every_group": 0.8
+      },
+      "uncapped": true
+    },
+    "true_global_1p25": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        }
+      ],
+      "spec": {
+        "cap": "bypassed",
+        "kind": "causal-diagnostic",
+        "requested_every_group": 1.25
+      },
+      "uncapped": true
+    },
+    "true_global_1p675": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        }
+      ],
+      "spec": {
+        "cap": "bypassed",
+        "kind": "causal-diagnostic",
+        "requested_every_group": 1.675
+      },
+      "uncapped": true
+    },
+    "true_global_2p50": {
+      "adapter": true,
+      "scale_trace_requested": [
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        }
+      ],
+      "spec": {
+        "cap": "bypassed",
+        "kind": "causal-diagnostic",
+        "requested_every_group": 2.5
+      },
+      "uncapped": true
+    }
+  },
+  "conditions": [
+    "a3_baseline",
+    "a3_deep_W1",
+    "a3_deep_W2",
+    "a3_deep_W3",
+    "a3_deep_W4",
+    "a3_deep_W5",
+    "a3_middle_W1",
+    "a3_middle_W2",
+    "a3_middle_W3",
+    "a3_middle_W4",
+    "a3_middle_W5",
+    "a3_shallow_W1",
+    "a3_shallow_W2",
+    "a3_shallow_W3",
+    "a3_shallow_W4",
+    "a3_shallow_W5",
+    "boundary_late_onset_20_60_20",
+    "boundary_late_onset_30_40_30",
+    "boundary_late_onset_34_32_34",
+    "boundary_late_onset_40_20_40",
+    "layer_hll",
+    "layer_llh",
+    "lfm_exact",
+    "native_gc3",
+    "native_gfh",
+    "native_gfl",
+    "true_global_0p80",
+    "true_global_1p25",
+    "true_global_1p675",
+    "true_global_2p50"
+  ],
+  "config": "/4T/tmp/mvpainter-recovery-HLzm9O/scheme_new_schedule/clean_holdout.yaml",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "data_root_override": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders",
+  "effective_data_roots": [
+    "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders"
+  ],
+  "latent_seed": 42,
+  "metric_path": "geotex.eval_exploration.compute_metrics",
+  "num_shards": 2,
+  "object_list": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/fresh_confirm_b/fresh_confirm_b.txt",
+  "object_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+  "phase": "scientific-validation-v3",
+  "protocol": "layer-confirmation-strict276-v1 (verbatim per-object code path)",
+  "realization": "realization0_namespace (object_seed = 42 + object_idx)",
+  "reference_seed_policy": "object_seed = 42 + object_idx for python random / numpy / torch before collate_batch; torch.manual_seed(42) before initial latent and again immediately before generation (VAE latent sample consumes torch RNG)",
+  "residuals_only": false,
+  "resolution": [
+    256,
+    256
+  ],
+  "row_count": 2250,
+  "runner_script_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "sampler": "EulerDiscreteScheduler",
+  "scale_semantics": "effective = min(requested, cap deep 3.0 / middle 3.5 / shallow 0.8); conditions flagged uncapped bypass the cap (causal diagnostics only)",
+  "shard": 1,
+  "stage_partition": "step/49; early<1/3, middle<2/3 => 17/16/17",
+  "status": "complete",
+  "steps": 50,
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "task": "Phase III causal evidence closure",
+  "window_partition": "W1 steps 0-9, W2 10-19, W3 20-29, W4 30-39, W5 40-49"
+}

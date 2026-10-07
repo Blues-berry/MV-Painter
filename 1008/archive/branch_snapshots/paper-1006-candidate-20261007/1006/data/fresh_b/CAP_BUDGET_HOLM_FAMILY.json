@@ -1,0 +1,88 @@
+{
+  "family": "B_CAP_BUDGET_DIAGNOSTICS",
+  "cohort": "FRESH_CONFIRM_B",
+  "family_size": 7,
+  "alpha": 0.05,
+  "holm_method": "Holm-Bonferroni applied separately to the seven cap/budget contrasts for each metric",
+  "p_floor_note": "Where an input p is at the 1/10,000 bootstrap reporting floor, its adjusted value is an upper bound based on that floor.",
+  "metrics": {
+    "fg_psnr": {
+      "tests": {
+        "LLH-GFL": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LLH-LFM-EXACT": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LLH-HLL": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "GFL-TGU-1.25": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LFM-EXACT-TGU-1.675": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "TGU-1.25-TGU-0.80": {
+          "p_raw_upper_bound": 0.8808,
+          "p_holm_upper_bound": 0.8808,
+          "reject_holm_0.05": false
+        },
+        "LLH-TGU-1.675": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        }
+      }
+    },
+    "fg_lpips": {
+      "tests": {
+        "LLH-GFL": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LLH-LFM-EXACT": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LLH-HLL": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "GFL-TGU-1.25": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LFM-EXACT-TGU-1.675": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "TGU-1.25-TGU-0.80": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        },
+        "LLH-TGU-1.675": {
+          "p_raw_upper_bound": 0.0001,
+          "p_holm_upper_bound": 0.0007,
+          "reject_holm_0.05": true
+        }
+      }
+    }
+  }
+}

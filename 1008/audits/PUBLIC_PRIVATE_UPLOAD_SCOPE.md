@@ -37,6 +37,18 @@ CSV records.
 
 ## Conflict boundary
 
-The conflicting manuscript, audit, and runner variants listed in
-`REPOSITORY_UNIFICATION_AUDIT.md` are not included. Their authenticity and
-scientific scope remain subject to file-level review.
+Historical non-conflicting documents, logs, reports, code, and CSV files from
+the 2026-09-29 and 2026-10-07 branch candidates are preserved under
+`1008/archive/branch_snapshots/`, with source commits, Git blob IDs, sizes, and
+per-file import/omission decisions. These dated snapshots are provenance, not
+active manuscript or code authority. Four generated panels from the 2026-09-29
+release and generated 1006 images/figure exports are omitted.
+
+The 1006 branch's two direct audit conflicts are held out. Its candidate
+manuscript tree and human-study materials are not in the public archive. The
+private candidate keeps the historical human-study records in a separate
+private-only archive; they are not accepted as confirmatory paper evidence.
+The old runner variants are archived in separate `source_conflicts/`
+directories, while d59 remains the active implementation source. No source
+version overwrites the active tree unless its authenticity decision is recorded
+in `CONFLICT_AUTHENTICITY_DECISIONS.md`.

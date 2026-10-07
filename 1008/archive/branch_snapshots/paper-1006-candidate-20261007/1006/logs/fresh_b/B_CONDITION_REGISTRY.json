@@ -1,0 +1,1275 @@
+{
+  "registry_version": 1,
+  "created_utc": "2026-10-05T20:11:21+00:00",
+  "status": "RETROSPECTIVE_LOCK_AFTER_PRIOR_OUTCOME_EXPOSURE",
+  "prospective_preunblind_lock_valid": false,
+  "campaign": "FRESH_CONFIRM_B_20261005",
+  "design": {
+    "conditions": 30,
+    "objects": 150,
+    "shards": 2,
+    "rows_per_shard": 2250,
+    "expected_unique_object_condition_rows": 4500
+  },
+  "protocol_sources": {
+    "primary_hypotheses_sha256": "cc171d8663910240aff03ae008ef12888d123506b0a999e1b40ddd81f766c48e",
+    "master_protocol_sha256": "cced5244b9c88beeca910987b2751bfcb27c3b067f1dfd30582c52482a7fe178",
+    "run_budget_sha256": "a961e81d8d6c51fc0696eff001ff4a654b2d08fb6a3088dda33b72a88a14884e",
+    "runner_manifest_shard0_sha256": "ae4d241ccaeda03b886dd403823b3af654bf6afda4d90a206e98fe3c732cc827",
+    "runner_manifest_shard1_sha256": "593d6dae6ddb801882f8747716cbbd10348bf586f94861e2a686dbe3e68c371a"
+  },
+  "notes": [
+    "Condition metadata and nominal budgets are read from frozen per-shard protocol manifests; no condition-level metric rows were used to construct this registry.",
+    "a3_baseline is the low-profile reference and is reused as the nominal LLL profile in B2; it is not duplicated as another condition.",
+    "The four true-global levels present in the 30-condition manifest exceed the older RUN_BUDGET table entry of three true-global controls. Preserve the executed manifest inventory (30); record this protocol-count discrepancy for provenance rather than silently recoding conditions.",
+    "The separate generic-extension campaign is post-lock and is not promoted into a confirmatory family by this registry."
+  ],
+  "conditions": [
+    {
+      "condition": "a3_baseline",
+      "hypothesis_or_role": [
+        "H1/A3 reference for 15 cells; reused as H3 LLL profile"
+      ],
+      "confirmatory_exploratory_status": "registered reference; not a distinct test cell",
+      "primary_comparison_family": [
+        "H1/A3 reference for 15 cells; reused as H3 LLL profile"
+      ],
+      "metric_family": "FG-LPIPS primary for H1; FG-PSNR/LPIPS for schedule contrasts",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "kind": "layer-fixed-low",
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_deep_W1",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.252510114273965,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.625505713698246,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.12550571369826,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.2625505713698246,
+          "kind": "window-intervention",
+          "layer": "deep",
+          "window": 1,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_deep_W2",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.252510114273965,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.625505713698246,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.12550571369826,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.2625505713698246,
+          "kind": "window-intervention",
+          "layer": "deep",
+          "window": 2,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_deep_W3",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.252510114273965,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.625505713698246,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.12550571369826,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.2625505713698246,
+          "kind": "window-intervention",
+          "layer": "deep",
+          "window": 3,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_deep_W4",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.252510114273965,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.625505713698246,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.12550571369826,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.2625505713698246,
+          "kind": "window-intervention",
+          "layer": "deep",
+          "window": 4,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_deep_W5",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.252510114273965,
+          "middle": 1.25,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.625505713698246,
+          "middle": 62.5,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.12550571369826,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.2625505713698246,
+          "kind": "window-intervention",
+          "layer": "deep",
+          "window": 5,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_middle_W1",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.2612170943493453,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 63.06085471746726,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.56085471746727,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.306085471746726,
+          "kind": "window-intervention",
+          "layer": "middle",
+          "window": 1,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_middle_W2",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.2612170943493453,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 63.06085471746726,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.56085471746727,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.306085471746726,
+          "kind": "window-intervention",
+          "layer": "middle",
+          "window": 2,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_middle_W3",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.2612170943493453,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 63.06085471746726,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.56085471746727,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.306085471746726,
+          "kind": "window-intervention",
+          "layer": "middle",
+          "window": 3,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_middle_W4",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.2612170943493453,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 63.06085471746726,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.56085471746727,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.306085471746726,
+          "kind": "window-intervention",
+          "layer": "middle",
+          "window": 4,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_middle_W5",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.2612170943493453,
+          "shallow": 0.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 63.06085471746726,
+          "shallow": 25.0
+        },
+        "requested_total_scale_step_sum": 150.56085471746727,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 1.306085471746726,
+          "kind": "window-intervention",
+          "layer": "middle",
+          "window": 5,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_shallow_W1",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.56
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 28.0
+        },
+        "requested_total_scale_step_sum": 153.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 0.8,
+          "kind": "window-intervention",
+          "layer": "shallow",
+          "window": 1,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_shallow_W2",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.56
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 28.0
+        },
+        "requested_total_scale_step_sum": 153.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 0.8,
+          "kind": "window-intervention",
+          "layer": "shallow",
+          "window": 2,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_shallow_W3",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.56
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 28.0
+        },
+        "requested_total_scale_step_sum": 153.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 0.8,
+          "kind": "window-intervention",
+          "layer": "shallow",
+          "window": 3,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_shallow_W4",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.56
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 28.0
+        },
+        "requested_total_scale_step_sum": 153.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 0.8,
+          "kind": "window-intervention",
+          "layer": "shallow",
+          "window": 4,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "a3_shallow_W5",
+      "hypothesis_or_role": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "confirmatory_exploratory_status": "registered intervention family; dose-normalized H1 interpretation not established by this bounded map",
+      "primary_comparison_family": [
+        "H1/A3 15 cell-vs-baseline tests + interaction; bounded-map sensitivity"
+      ],
+      "metric_family": "FG-LPIPS primary; other metrics secondary/descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 0.56
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 28.0
+        },
+        "requested_total_scale_step_sum": 153.0,
+        "scheduled_spec": {
+          "dose": "a3",
+          "high": 0.8,
+          "kind": "window-intervention",
+          "layer": "shallow",
+          "window": 5,
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "actual residual-dose norms are required as sensitivity covariates; no equal-dose claim; common-support analysis determines scope",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "boundary_late_onset_20_60_20",
+      "hypothesis_or_role": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "confirmatory_exploratory_status": "registered sensitivity; exploratory for claims of an optimal boundary",
+      "primary_comparison_family": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS plus residual-dose diagnostics",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.5,
+          "middle": 1.5,
+          "shallow": 0.55
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 75.0,
+          "middle": 75.0,
+          "shallow": 27.5
+        },
+        "requested_total_scale_step_sum": 177.5,
+        "scheduled_spec": {
+          "high": {
+            "deep": 2.5,
+            "middle": 2.5,
+            "shallow": 0.75
+          },
+          "high_duration_steps": 10,
+          "high_pulse_start_step": 40,
+          "kind": "fixed-width-boundary-sensitivity-pulse",
+          "partition_percent": [
+            "20",
+            "60",
+            "20"
+          ],
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "record actual residual norms and compare as a sensitivity; nominal matching does not establish realized-dose matching",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "boundary_late_onset_30_40_30",
+      "hypothesis_or_role": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "confirmatory_exploratory_status": "registered sensitivity; exploratory for claims of an optimal boundary",
+      "primary_comparison_family": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS plus residual-dose diagnostics",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.5,
+          "middle": 1.5,
+          "shallow": 0.55
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 75.0,
+          "middle": 75.0,
+          "shallow": 27.5
+        },
+        "requested_total_scale_step_sum": 177.5,
+        "scheduled_spec": {
+          "high": {
+            "deep": 2.5,
+            "middle": 2.5,
+            "shallow": 0.75
+          },
+          "high_duration_steps": 10,
+          "high_pulse_start_step": 35,
+          "kind": "fixed-width-boundary-sensitivity-pulse",
+          "partition_percent": [
+            "30",
+            "40",
+            "30"
+          ],
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "record actual residual norms and compare as a sensitivity; nominal matching does not establish realized-dose matching",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "boundary_late_onset_34_32_34",
+      "hypothesis_or_role": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "confirmatory_exploratory_status": "registered sensitivity; exploratory for claims of an optimal boundary",
+      "primary_comparison_family": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS plus residual-dose diagnostics",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.5,
+          "middle": 1.5,
+          "shallow": 0.55
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 75.0,
+          "middle": 75.0,
+          "shallow": 27.5
+        },
+        "requested_total_scale_step_sum": 177.5,
+        "scheduled_spec": {
+          "high": {
+            "deep": 2.5,
+            "middle": 2.5,
+            "shallow": 0.75
+          },
+          "high_duration_steps": 10,
+          "high_pulse_start_step": 33,
+          "kind": "fixed-width-boundary-sensitivity-pulse",
+          "partition_percent": [
+            "34",
+            "32",
+            "34"
+          ],
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "record actual residual norms and compare as a sensitivity; nominal matching does not establish realized-dose matching",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "boundary_late_onset_40_20_40",
+      "hypothesis_or_role": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "confirmatory_exploratory_status": "registered sensitivity; exploratory for claims of an optimal boundary",
+      "primary_comparison_family": [
+        "fixed boundary sensitivity family; no boundary optimization"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS plus residual-dose diagnostics",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.5,
+          "middle": 1.5,
+          "shallow": 0.55
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 75.0,
+          "middle": 75.0,
+          "shallow": 27.5
+        },
+        "requested_total_scale_step_sum": 177.5,
+        "scheduled_spec": {
+          "high": {
+            "deep": 2.5,
+            "middle": 2.5,
+            "shallow": 0.75
+          },
+          "high_duration_steps": 10,
+          "high_pulse_start_step": 30,
+          "kind": "fixed-width-boundary-sensitivity-pulse",
+          "partition_percent": [
+            "40",
+            "20",
+            "40"
+          ],
+          "base": {
+            "deep": 1.25,
+            "middle": 1.25,
+            "shallow": 0.5
+          }
+        }
+      },
+      "actual_dose_analysis_role": "record actual residual norms and compare as a sensitivity; nominal matching does not establish realized-dose matching",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "layer_hll",
+      "hypothesis_or_role": [
+        "H3/B2 LLH vs HLL"
+      ],
+      "confirmatory_exploratory_status": "confirmatory B2 comparator",
+      "primary_comparison_family": [
+        "H3/B2 LLH vs HLL"
+      ],
+      "metric_family": "FG-PSNR primary; FG-LPIPS secondary confirmation",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 83.75,
+          "middle": 83.75,
+          "shallow": 29.25
+        },
+        "requested_total_scale_step_sum": 196.75,
+        "scheduled_spec": {
+          "kind": "three-stage",
+          "stages": {
+            "deep": [
+              2.5,
+              1.25,
+              1.25
+            ],
+            "middle": [
+              2.5,
+              1.25,
+              1.25
+            ],
+            "shallow": [
+              0.75,
+              0.5,
+              0.5
+            ]
+          }
+        }
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "layer_llh",
+      "hypothesis_or_role": [
+        "H2/B1 LLH vs LFM-EXACT",
+        "H3/B2 LLH vs HLL and LLL"
+      ],
+      "confirmatory_exploratory_status": "confirmatory in the registered B1/B2 families",
+      "primary_comparison_family": [
+        "H2/B1 LLH vs LFM-EXACT",
+        "H3/B2 LLH vs HLL and LLL"
+      ],
+      "metric_family": "FG-PSNR primary; FG-LPIPS secondary confirmation",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 83.75,
+          "middle": 83.75,
+          "shallow": 29.25
+        },
+        "requested_total_scale_step_sum": 196.75,
+        "scheduled_spec": {
+          "kind": "three-stage",
+          "stages": {
+            "deep": [
+              1.25,
+              1.25,
+              2.5
+            ],
+            "middle": [
+              1.25,
+              1.25,
+              2.5
+            ],
+            "shallow": [
+              0.5,
+              0.5,
+              0.75
+            ]
+          }
+        }
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "lfm_exact",
+      "hypothesis_or_role": [
+        "H2/B1 LLH vs LFM-EXACT"
+      ],
+      "confirmatory_exploratory_status": "confirmatory B1 comparator",
+      "primary_comparison_family": [
+        "H2/B1 LLH vs LFM-EXACT"
+      ],
+      "metric_family": "FG-PSNR primary; FG-LPIPS secondary confirmation",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 0.585
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 83.75,
+          "middle": 83.75,
+          "shallow": 29.25
+        },
+        "requested_total_scale_step_sum": 196.75,
+        "scheduled_spec": {
+          "kind": "exact-mean-matched-constant",
+          "requested": {
+            "deep": 1.675,
+            "middle": 1.675,
+            "shallow": 0.585
+          }
+        }
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "native_gc3",
+      "hypothesis_or_role": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "confirmatory_exploratory_status": "registered control/benchmark; descriptive unless a separate locked contrast applies",
+      "primary_comparison_family": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "metric_family": "FG-PSNR primary comparator endpoint; FG-LPIPS secondary; other metrics descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.65,
+          "middle": 1.65,
+          "shallow": 1.65
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 82.5,
+          "middle": 82.5,
+          "shallow": 82.5
+        },
+        "requested_total_scale_step_sum": 247.5,
+        "scheduled_spec": {}
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "native_gfh",
+      "hypothesis_or_role": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "confirmatory_exploratory_status": "registered control/benchmark; descriptive unless a separate locked contrast applies",
+      "primary_comparison_family": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "metric_family": "FG-PSNR primary comparator endpoint; FG-LPIPS secondary; other metrics descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 125.0,
+          "middle": 125.0,
+          "shallow": 125.0
+        },
+        "requested_total_scale_step_sum": 375.0,
+        "scheduled_spec": {
+          "requested": 2.5
+        }
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "native_gfl",
+      "hypothesis_or_role": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "confirmatory_exploratory_status": "registered control/benchmark; descriptive unless a separate locked contrast applies",
+      "primary_comparison_family": [
+        "B3 capped native controls; generic/deployment benchmark"
+      ],
+      "metric_family": "FG-PSNR primary comparator endpoint; FG-LPIPS secondary; other metrics descriptive",
+      "cap_semantics": "normal layer caps applied: deep=3.0, middle=3.5, shallow=0.8",
+      "uncapped_flag": false,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 62.5
+        },
+        "requested_total_scale_step_sum": 187.5,
+        "scheduled_spec": {
+          "requested": 1.25
+        }
+      },
+      "actual_dose_analysis_role": "report nominal requested budget and measured residual norms separately; do not infer equal realized dose from requested scale",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "true_global_0p80",
+      "hypothesis_or_role": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "confirmatory_exploratory_status": "registered descriptive diagnostic; not a deployable schedule",
+      "primary_comparison_family": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS and actual residual dose descriptive",
+      "cap_semantics": "bypassed; true-global causal diagnostic only",
+      "uncapped_flag": true,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 0.8,
+          "middle": 0.8,
+          "shallow": 0.8
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 40.0,
+          "middle": 40.0,
+          "shallow": 40.0
+        },
+        "requested_total_scale_step_sum": 120.0,
+        "scheduled_spec": {
+          "cap": "bypassed",
+          "kind": "causal-diagnostic",
+          "requested_every_group": 0.8
+        }
+      },
+      "actual_dose_analysis_role": "cap-bypassed causal diagnostic; actual-dose decomposition only, not schedule transfer/deployment",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "true_global_1p25",
+      "hypothesis_or_role": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "confirmatory_exploratory_status": "registered descriptive diagnostic; not a deployable schedule",
+      "primary_comparison_family": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS and actual residual dose descriptive",
+      "cap_semantics": "bypassed; true-global causal diagnostic only",
+      "uncapped_flag": true,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.25,
+          "middle": 1.25,
+          "shallow": 1.25
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 62.5,
+          "middle": 62.5,
+          "shallow": 62.5
+        },
+        "requested_total_scale_step_sum": 187.5,
+        "scheduled_spec": {
+          "cap": "bypassed",
+          "kind": "causal-diagnostic",
+          "requested_every_group": 1.25
+        }
+      },
+      "actual_dose_analysis_role": "cap-bypassed causal diagnostic; actual-dose decomposition only, not schedule transfer/deployment",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "true_global_1p675",
+      "hypothesis_or_role": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "confirmatory_exploratory_status": "registered descriptive diagnostic; not a deployable schedule",
+      "primary_comparison_family": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS and actual residual dose descriptive",
+      "cap_semantics": "bypassed; true-global causal diagnostic only",
+      "uncapped_flag": true,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 1.675,
+          "middle": 1.675,
+          "shallow": 1.675
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 83.75,
+          "middle": 83.75,
+          "shallow": 83.75
+        },
+        "requested_total_scale_step_sum": 251.25,
+        "scheduled_spec": {
+          "cap": "bypassed",
+          "kind": "causal-diagnostic",
+          "requested_every_group": 1.675
+        }
+      },
+      "actual_dose_analysis_role": "cap-bypassed causal diagnostic; actual-dose decomposition only, not schedule transfer/deployment",
+      "adapter_enabled": true
+    },
+    {
+      "condition": "true_global_2p50",
+      "hypothesis_or_role": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "confirmatory_exploratory_status": "registered descriptive diagnostic; not a deployable schedule",
+      "primary_comparison_family": [
+        "B3 true-global causal-dose diagnostics"
+      ],
+      "metric_family": "FG-PSNR/FG-LPIPS and actual residual dose descriptive",
+      "cap_semantics": "bypassed; true-global causal diagnostic only",
+      "uncapped_flag": true,
+      "nominal_budget": {
+        "definition": "sum of requested layer scales across 50 steps; scalar proxy only, not realized residual norm",
+        "steps": 50,
+        "requested_mean_scale_by_layer": {
+          "deep": 2.5,
+          "middle": 2.5,
+          "shallow": 2.5
+        },
+        "requested_scale_step_sum_by_layer": {
+          "deep": 125.0,
+          "middle": 125.0,
+          "shallow": 125.0
+        },
+        "requested_total_scale_step_sum": 375.0,
+        "scheduled_spec": {
+          "cap": "bypassed",
+          "kind": "causal-diagnostic",
+          "requested_every_group": 2.5
+        }
+      },
+      "actual_dose_analysis_role": "cap-bypassed causal diagnostic; actual-dose decomposition only, not schedule transfer/deployment",
+      "adapter_enabled": true
+    }
+  ]
+}

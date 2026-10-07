@@ -1,0 +1,97 @@
+{
+  "status": "COMPLETE_DEVELOPMENT_DESCRIPTIVE_AUDIT",
+  "selection_unchanged": true,
+  "independent_confirmation": false,
+  "selected_multiplier": 1.25,
+  "group_execution": {
+    "deep": {
+      "active_read_count": 10800,
+      "saturated_read_count": 602,
+      "saturation_fraction": 0.055740740740740743,
+      "mean_applied_scale": 1.2694514635410037,
+      "mean_realized_ratio": 0.49393273997885384,
+      "mean_requested_target_ratio": 0.5003455051313872,
+      "mean_target_gap_ratio": 0.006413159446261218
+    },
+    "middle": {
+      "active_read_count": 10800,
+      "saturated_read_count": 297,
+      "saturation_fraction": 0.0275,
+      "mean_applied_scale": 1.6209867935564413,
+      "mean_realized_ratio": 0.45681108025075123,
+      "mean_requested_target_ratio": 0.4579924706649035,
+      "mean_target_gap_ratio": 0.0011823564443248955
+    },
+    "shallow": {
+      "active_read_count": 10800,
+      "saturated_read_count": 5618,
+      "saturation_fraction": 0.5201851851851852,
+      "mean_applied_scale": 0.5634256190957313,
+      "mean_realized_ratio": 0.032866196631897694,
+      "mean_requested_target_ratio": 0.050738895614982085,
+      "mean_target_gap_ratio": 0.017873179418919423
+    }
+  },
+  "observed_instrumented_generation_seconds": {
+    "calibrated_0.75": {
+      "median_seconds": 20.48643721092958,
+      "mean_seconds": 20.46648533210585
+    },
+    "calibrated_1": {
+      "median_seconds": 20.210238579427823,
+      "mean_seconds": 20.45773574296618
+    },
+    "calibrated_1.25": {
+      "median_seconds": 20.555705424048938,
+      "mean_seconds": 20.51964918894939
+    },
+    "native_gc3": {
+      "median_seconds": 19.884230850380845,
+      "mean_seconds": 20.10188059274353
+    }
+  },
+  "timing_limit": "Calibration logging and synchronous norm reads included; not an isolated production-overhead measurement. Peak GPU memory was not recorded.",
+  "core7_deltas": [
+    {
+      "means": {
+        "edge_ssim": 0.03190913009974692,
+        "fg_lpips": -0.03552367652042044,
+        "fg_psnr": 3.647377813855807,
+        "fg_ssim": 0.12579378278719056,
+        "full_lpips": 0.32468292841480834,
+        "full_psnr": -0.07661230034298365,
+        "full_ssim": -0.04943849725855721
+      },
+      "multiplier": 0.75,
+      "qualifies": true
+    },
+    {
+      "means": {
+        "edge_ssim": 0.05351613006658024,
+        "fg_lpips": -0.05482651717546914,
+        "fg_psnr": 4.502342028750314,
+        "fg_ssim": 0.15416341109408271,
+        "full_lpips": 0.2742167042775287,
+        "full_psnr": 1.7840738263395097,
+        "full_ssim": -0.018374859458870355
+      },
+      "multiplier": 1.0,
+      "qualifies": true
+    },
+    {
+      "means": {
+        "edge_ssim": 0.06905471823281711,
+        "fg_lpips": -0.06922047150631745,
+        "fg_psnr": 5.45268387430244,
+        "fg_ssim": 0.17592109822564658,
+        "full_lpips": 0.1967047339098321,
+        "full_psnr": 3.1391285359859467,
+        "full_ssim": 0.004145371417204539
+      },
+      "multiplier": 1.25,
+      "qualifies": true
+    }
+  ],
+  "material_tradeoff": "Selected candidate full_lpips delta +0.196705 is unfavorable; foreground gains do not establish whole-image quality or human fidelity.",
+  "selection_sha256": "1228390dc0cd17f9a785eda579637837ed1fc5b0127bbb0f340b97f8ea09a39d"
+}

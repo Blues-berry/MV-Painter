@@ -1,0 +1,19 @@
+{
+  "requested_model": "stabilityai/stable-diffusion-2-1-base",
+  "resolved_repository": "Manojb/stable-diffusion-2-1-base",
+  "resolved_commit": "0094d483a120f3f33dafbd187ea4aa60d10de75c",
+  "repository_status": "public re-host of the SD2.1 Base diffusers files; the requested Stability AI Hub API repository returned 404 even with valid authentication",
+  "local_path": "final/round2/mv_adapter/models/sd21_base",
+  "component_sha256": {
+    "text_encoder/model.safetensors": "681c555376658c81dc273f2d737a2aeb23ddb6d1d8e5b3a7064636d359a22668",
+    "unet/diffusion_pytorch_model.safetensors": "28ec9cf3b239c0751c201b1f6fb46b551df5862731b30a37aa1360101cb3fbab",
+    "vae/diffusion_pytorch_model.fp16.safetensors": "3e4c08995484ee61270175e9e7a072b66a6e4eeb5f0c266667fe1f45b90daf9a"
+  },
+  "source_file_metadata": {
+    "text_encoder/model.fp16.safetensors": "680821096 bytes",
+    "unet/diffusion_pytorch_model.fp16.safetensors": "1731904736 bytes",
+    "vae/diffusion_pytorch_model.fp16.safetensors": "167335342 bytes"
+  },
+  "pipeline_load_smoke_test": "passed: MVAdapterI2MVSDPipeline loaded with the local base and mvadapter_ig2mv_sd21.safetensors",
+  "official_claim_note": "The resolved repository is not owned by Stability AI; hashes identify the exact public SD2.1 Base component files used for the run."
+}

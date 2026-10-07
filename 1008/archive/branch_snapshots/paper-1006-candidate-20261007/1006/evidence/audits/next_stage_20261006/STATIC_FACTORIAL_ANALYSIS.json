@@ -1,0 +1,305 @@
+{
+  "analysis": "Post-B fixed-cohort static 2x2 sensitivity; each object first averages paired contrasts across three fixed generation seeds.",
+  "n_objects": 48,
+  "generation_seeds": [
+    42,
+    43,
+    44
+  ],
+  "seed42_reuse": {
+    "F00": "a3_baseline",
+    "F01": "native_gfl"
+  },
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261006,
+  "test": "Two-sided centered object bootstrap for the mean of object-level seed-averaged factor contrasts; percentile object bootstrap 95% CI.",
+  "metrics": {
+    "fg_lpips": {
+      "holm_family_size": 3,
+      "factor_effects": [
+        {
+          "mean": -0.006655467525383252,
+          "median": -0.005599744617938995,
+          "ci95_object_bootstrap": [
+            -0.008867914179993224,
+            -0.004518662028971852
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.1875,
+          "fraction_negative_objects": 0.8125,
+          "factor": "deep_middle",
+          "mean_delta_by_generation_seed": {
+            "42": -0.006219543982297182,
+            "43": -0.0072341841490318375,
+            "44": -0.006512674444820732
+          },
+          "favorable_object_fraction": 0.8125,
+          "p_holm_three_factors": 0.00029997000299970003
+        },
+        {
+          "mean": 0.005840830394946453,
+          "median": 0.005806077271699905,
+          "ci95_object_bootstrap": [
+            0.002506318713292583,
+            0.009266653287664262
+          ],
+          "p_centered_object_bootstrap": 0.0007999200079992001,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.6458333333333334,
+          "fraction_negative_objects": 0.3541666666666667,
+          "factor": "shallow",
+          "mean_delta_by_generation_seed": {
+            "42": 0.007040159621586402,
+            "43": 0.0031162038600693145,
+            "44": 0.007366127703183641
+          },
+          "favorable_object_fraction": 0.3541666666666667,
+          "p_holm_three_factors": 0.0015998400159984002
+        },
+        {
+          "mean": -0.00014682671624339293,
+          "median": -0.000310291846593221,
+          "ci95_object_bootstrap": [
+            -0.0009229215812714151,
+            0.0006204580409555799
+          ],
+          "p_centered_object_bootstrap": 0.7194280571942806,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.4583333333333333,
+          "fraction_negative_objects": 0.5416666666666666,
+          "factor": "interaction",
+          "mean_delta_by_generation_seed": {
+            "42": -0.00023981882259249687,
+            "43": 0.0004446652407447497,
+            "44": -0.0006453265668824315
+          },
+          "favorable_object_fraction": 0.5416666666666666,
+          "p_holm_three_factors": 0.7194280571942806
+        }
+      ],
+      "simple_contrasts_descriptive": [
+        {
+          "mean": 0.005914243753068149,
+          "median": 0.0058852533499399815,
+          "ci95_object_bootstrap": [
+            0.00239905018825084,
+            0.009471961215604096
+          ],
+          "p_centered_object_bootstrap": 0.0008999100089991,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.5833333333333334,
+          "fraction_negative_objects": 0.4166666666666667,
+          "contrast": "F01-F00 at D0",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": 0.005767417036824755,
+          "median": 0.004612766206264496,
+          "ci95_object_bootstrap": [
+            0.0024951894948672918,
+            0.009075313943645191
+          ],
+          "p_centered_object_bootstrap": 0.00039996000399960006,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.6458333333333334,
+          "fraction_negative_objects": 0.3541666666666667,
+          "contrast": "F11-F10 at D1",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": -0.006582054167261555,
+          "median": -0.00496175636847814,
+          "ci95_object_bootstrap": [
+            -0.008706286228779291,
+            -0.004542081490055556
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.14583333333333334,
+          "fraction_negative_objects": 0.8541666666666666,
+          "contrast": "F10-F00 at S0",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": -0.006728880883504947,
+          "median": -0.006252047916253408,
+          "ci95_object_bootstrap": [
+            -0.009122031906412708,
+            -0.004442327799430738
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.20833333333333334,
+          "fraction_negative_objects": 0.7916666666666666,
+          "contrast": "F11-F01 at S1",
+          "multiplicity_adjusted": false
+        }
+      ],
+      "condition_means_by_generation_seed": {
+        "42": {
+          "F00": 0.19415154059727988,
+          "F01": 0.2013116096301625,
+          "F10": 0.18805190602627894,
+          "F11": 0.19497215623656908
+        },
+        "43": {
+          "F00": 0.20580027345567942,
+          "F01": 0.20869414469537637,
+          "F10": 0.1983437566862752,
+          "F11": 0.2016822931667169
+        },
+        "44": {
+          "F00": 0.19505185273010284,
+          "F01": 0.2027406437167277,
+          "F10": 0.18886184156872332,
+          "F11": 0.19590530598846576
+        }
+      }
+    },
+    "fg_psnr": {
+      "holm_family_size": 3,
+      "factor_effects": [
+        {
+          "mean": 0.5437730563183626,
+          "median": 0.5372929573059082,
+          "ci95_object_bootstrap": [
+            0.32878999582802254,
+            0.7631218007041347
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.7291666666666666,
+          "fraction_negative_objects": 0.2708333333333333,
+          "factor": "deep_middle",
+          "mean_delta_by_generation_seed": {
+            "42": 0.47597005652884644,
+            "43": 0.8387377113103867,
+            "44": 0.31661140111585456
+          },
+          "favorable_object_fraction": 0.7291666666666666,
+          "p_holm_three_factors": 0.00029997000299970003
+        },
+        {
+          "mean": -0.11634756500522296,
+          "median": 0.14805416266123453,
+          "ci95_object_bootstrap": [
+            -0.6546699480774502,
+            0.3986097550950944
+          ],
+          "p_centered_object_bootstrap": 0.6677332266773323,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.5208333333333334,
+          "fraction_negative_objects": 0.4791666666666667,
+          "factor": "shallow",
+          "mean_delta_by_generation_seed": {
+            "42": -0.004926196609934171,
+            "43": -0.6094138200084368,
+            "44": 0.26529732160270214
+          },
+          "favorable_object_fraction": 0.5208333333333334,
+          "p_holm_three_factors": 0.6677332266773323
+        },
+        {
+          "mean": 0.36450858745310044,
+          "median": 0.36372164885203045,
+          "ci95_object_bootstrap": [
+            0.24315407841155928,
+            0.4863915854237146
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.7291666666666666,
+          "fraction_negative_objects": 0.2708333333333333,
+          "factor": "interaction",
+          "mean_delta_by_generation_seed": {
+            "42": 0.38610930865009624,
+            "43": 0.25781283775965375,
+            "44": 0.4496036159495513
+          },
+          "favorable_object_fraction": 0.7291666666666666,
+          "p_holm_three_factors": 0.00029997000299970003
+        }
+      ],
+      "simple_contrasts_descriptive": [
+        {
+          "mean": -0.2986018587317732,
+          "median": -0.11532455682754517,
+          "ci95_object_bootstrap": [
+            -0.8238676232803199,
+            0.21136164070210486
+          ],
+          "p_centered_object_bootstrap": 0.26117388261173885,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.4791666666666667,
+          "fraction_negative_objects": 0.5208333333333334,
+          "contrast": "F01-F00 at D0",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": 0.0659067287213273,
+          "median": 0.4114328821500143,
+          "ci95_object_bootstrap": [
+            -0.49471569345850075,
+            0.5986693106177781
+          ],
+          "p_centered_object_bootstrap": 0.8142185781421858,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.6041666666666666,
+          "fraction_negative_objects": 0.3958333333333333,
+          "contrast": "F11-F10 at D1",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": 0.36151876259181237,
+          "median": 0.111429492632548,
+          "ci95_object_bootstrap": [
+            0.1490928701435526,
+            0.5862047056046625
+          ],
+          "p_centered_object_bootstrap": 0.0015998400159984002,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.6041666666666666,
+          "fraction_negative_objects": 0.3958333333333333,
+          "contrast": "F10-F00 at S0",
+          "multiplicity_adjusted": false
+        },
+        {
+          "mean": 0.7260273500449128,
+          "median": 0.8461451530456543,
+          "ci95_object_bootstrap": [
+            0.4940424657737215,
+            0.9525492781152327
+          ],
+          "p_centered_object_bootstrap": 9.999000099990002e-05,
+          "object_effect_degenerate": false,
+          "fraction_positive_objects": 0.7708333333333334,
+          "fraction_negative_objects": 0.22916666666666666,
+          "contrast": "F11-F01 at S1",
+          "multiplicity_adjusted": false
+        }
+      ],
+      "condition_means_by_generation_seed": {
+        "42": {
+          "F00": 11.213812914987406,
+          "F01": 11.015832064052423,
+          "F10": 11.496728317191204,
+          "F11": 11.684856774906317
+        },
+        "43": {
+          "F00": 10.466989427804947,
+          "F01": 9.728669188916683,
+          "F10": 11.176820720235506,
+          "F11": 10.696313319106897
+        },
+        "44": {
+          "F00": 10.853560759375492,
+          "F01": 10.89405627300342,
+          "F10": 10.945370352516571,
+          "F11": 11.43546948209405
+        }
+      }
+    }
+  },
+  "interpretation_limit": "Selected 48-object post-B sensitivity, conditional on these three fixed generation seeds; not independent-object confirmation or a random-seed population interval. Deep and middle are moved together; no equal-realized-dose claim. Simple contrasts are descriptive."
+}

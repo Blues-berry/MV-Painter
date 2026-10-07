@@ -1,0 +1,212 @@
+{
+  "protocol": "clean-v2-stage-placement-followup-v1",
+  "n": 276,
+  "bootstrap": {
+    "seed": 20260928,
+    "resamples": 10000,
+    "unit": "object-level paired bootstrap",
+    "ci": 0.95
+  },
+  "comparisons": {
+    "c3_vs_fixed_low": {
+      "status": "complete",
+      "full_psnr": {
+        "n": 276,
+        "mean": -0.21184535994045978,
+        "ci95": [
+          -0.2327996069106503,
+          -0.19086609467648077
+        ],
+        "wins": 26,
+        "ties": 0,
+        "win_rate": 0.09420289855072464,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "full_ssim": {
+        "n": 276,
+        "mean": 0.004592553644940473,
+        "ci95": [
+          0.003946820527747058,
+          0.005246697468818098
+        ],
+        "wins": 229,
+        "ties": 0,
+        "win_rate": 0.8297101449275363,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "full_lpips": {
+        "n": 276,
+        "mean": 0.004052540800277738,
+        "ci95": [
+          0.0035595822883634897,
+          0.004563738330118898
+        ],
+        "wins": 235,
+        "ties": 0,
+        "win_rate": 0.8514492753623188,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_psnr": {
+        "n": 276,
+        "mean": -0.2667149329099102,
+        "ci95": [
+          -0.2903926762063866,
+          -0.24382720191193666
+        ],
+        "wins": 16,
+        "ties": 0,
+        "win_rate": 0.057971014492753624,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_ssim": {
+        "n": 276,
+        "mean": -0.00646166209185469,
+        "ci95": [
+          -0.008733504174439155,
+          -0.004169713709152479
+        ],
+        "wins": 106,
+        "ties": 0,
+        "win_rate": 0.38405797101449274,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_lpips": {
+        "n": 276,
+        "mean": 0.001111316859074261,
+        "ci95": [
+          0.0007253705331569781,
+          0.0015026415343922764
+        ],
+        "wins": 163,
+        "ties": 0,
+        "win_rate": 0.5905797101449275,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "edge_ssim": {
+        "n": 276,
+        "mean": -0.00021289656127708545,
+        "ci95": [
+          -0.0010252545250282771,
+          0.0005985455101598859
+        ],
+        "wins": 133,
+        "ties": 0,
+        "win_rate": 0.48188405797101447,
+        "seed": 20260928,
+        "resamples": 10000
+      }
+    },
+    "c3_vs_fixed_high": {
+      "status": "complete",
+      "full_psnr": {
+        "n": 276,
+        "mean": 1.5098123965056047,
+        "ci95": [
+          1.4406249010800452,
+          1.5840143828612305
+        ],
+        "wins": 274,
+        "ties": 0,
+        "win_rate": 0.9927536231884058,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "full_ssim": {
+        "n": 276,
+        "mean": 0.03152032671631246,
+        "ci95": [
+          0.02867668150127798,
+          0.03443070490291153
+        ],
+        "wins": 260,
+        "ties": 0,
+        "win_rate": 0.9420289855072463,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "full_lpips": {
+        "n": 276,
+        "mean": 0.0001592572940432507,
+        "ci95": [
+          -0.001138381090393101,
+          0.0014829827823500702
+        ],
+        "wins": 131,
+        "ties": 0,
+        "win_rate": 0.4746376811594203,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_psnr": {
+        "n": 276,
+        "mean": 1.3533054022253423,
+        "ci95": [
+          1.2596993944405213,
+          1.4423851805428662
+        ],
+        "wins": 267,
+        "ties": 0,
+        "win_rate": 0.967391304347826,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_ssim": {
+        "n": 276,
+        "mean": 0.11921204197341981,
+        "ci95": [
+          0.11084807065781206,
+          0.12751993191819908
+        ],
+        "wins": 266,
+        "ties": 0,
+        "win_rate": 0.9637681159420289,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "fg_lpips": {
+        "n": 276,
+        "mean": 0.009080801344733092,
+        "ci95": [
+          0.007724728961677655,
+          0.010455962820855928
+        ],
+        "wins": 203,
+        "ties": 0,
+        "win_rate": 0.7355072463768116,
+        "seed": 20260928,
+        "resamples": 10000
+      },
+      "edge_ssim": {
+        "n": 276,
+        "mean": 0.006285491628923278,
+        "ci95": [
+          0.003797950924954553,
+          0.008755164947090806
+        ],
+        "wins": 159,
+        "ties": 0,
+        "win_rate": 0.5760869565217391,
+        "seed": 20260928,
+        "resamples": 10000
+      }
+    },
+    "c3_vs_fixed_mean": {
+      "status": "pending_formal_cuda_inference",
+      "required_file": "/4T/CXY/MV-Painter/final/round2/stage_placement_276/per_object_fixed_mean.csv"
+    },
+    "c3_vs_hll": {
+      "status": "pending_formal_cuda_inference",
+      "required_file": "/4T/CXY/MV-Painter/final/round2/stage_placement_276/per_object_hll.csv"
+    },
+    "c3_vs_llh": {
+      "status": "pending_formal_cuda_inference",
+      "required_file": "/4T/CXY/MV-Painter/final/round2/stage_placement_276/per_object_llh.csv"
+    }
+  }
+}

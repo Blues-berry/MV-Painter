@@ -1,0 +1,38 @@
+{
+  "protocol": "fresh_c3_input_render_stage_v1",
+  "stages": [
+    {
+      "stage_index": 1,
+      "started_at_utc": "2026-10-06T07:32:25+00:00",
+      "process_pid": 3673605,
+      "candidate_count": 594,
+      "uid_list_sha256": "acf9dc7cd4974691ff772607ce38dd5c677bd8a5adfc9cde14ae2c930b6566df",
+      "source_uid_list_file_sha256": "05a4ed6a61296595608b29eb2cbce973ecea51d197edb58d272151ee72b6b97c",
+      "asset_audit_json_sha256": "63f28dae7466d1da82fc3996834bff4f9ae27f7784fd865c6c5a71b10dd06a63",
+      "download_manifest_sha256": "4f93ebc44e90b2f259739f4b44fdb3ae9a372a37c62d2ad8835d97d268500df8",
+      "candidate_queue_sha256": "1cee99e215aaeb2d9f8d6491928280e5fb0424bfef7b92cfd41014d49899c859",
+      "preparation_script_sha256": "cfd57c764209dba14c7f16c8eceb7878410d29d1b9e22d17d6beb83ed7239b74",
+      "blender_binary_sha256": "0f65c7e5fb0f87d36f97a6051d16de701f70fdc905028ed35275cf262c05efb3",
+      "blender_script_sha256": "2c3b462c90d5b512f53b9b08a718bb9608caaaa2f3d0ce1b0db20fe2b6385c73",
+      "hdri_sha256": "a64f8ec219f9bb9f988e5311ac2eb4234ee4babe9ad6d3b34740851ab74d1e4b",
+      "blender_version_output": [
+        "Blender 4.2.4 LTS",
+        "\tbuild date: 2024-11-19",
+        "\tbuild time: 00:31:24",
+        "\tbuild commit date: 2024-11-18"
+      ],
+      "resolution": [
+        512,
+        512
+      ],
+      "views": 17,
+      "renderer": "Cycles",
+      "render_workers": 10,
+      "threads_per_worker_argument": 4,
+      "status": "RUNNING_AT_IDENTITY_CAPTURE",
+      "method_outputs_exist": false,
+      "code_change_note": "This process loaded the preparation script before the later reserve/cohort-freeze guard and stage-identity helper were added. The already-running render task continues with the recorded source SHA; _render_one implementation and Blender command/settings were not changed."
+    }
+  ],
+  "method_outputs_exist": false
+}

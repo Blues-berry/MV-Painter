@@ -1,0 +1,30 @@
+{
+  "audit": "Sketchfab source-license endpoint recheck",
+  "checked_utc": "2026-10-06T08:59:41+00:00",
+  "method": "Direct read-only HTTPS requests to the official Sketchfab model API; response-body hashes retained for request identity.",
+  "records": [
+    {
+      "panel": "02",
+      "uid": "001cfadfb9204424bccc45501ce6b90e",
+      "endpoint": "https://api.sketchfab.com/v3/models/001cfadfb9204424bccc45501ce6b90e",
+      "http_status": 200,
+      "response_date": "Tue, 06 Oct 2026 08:58:49 GMT",
+      "response_sha256": "a7f5a87ed7d190f26c6250a755b3872ff34c261efe4990a0d1dc66f7dbbb27d6",
+      "name": "Cart Texture",
+      "creator": "johnguataquira",
+      "license": {},
+      "interpretation": "API response contains no license metadata; redistribution rights remain unresolved."
+    },
+    {
+      "panel": "05",
+      "uid": "00820c449b8c4c84b3ae58d3d168ca7b",
+      "endpoint": "https://api.sketchfab.com/v3/models/00820c449b8c4c84b3ae58d3d168ca7b",
+      "http_status": 404,
+      "response_date": "Tue, 06 Oct 2026 08:58:50 GMT",
+      "response_sha256": "cacf8a32e69eabea7d57711f4ccbeed4d284e1bbd0789137936d388da707b9de",
+      "response_body_prefix": "{\"detail\":\"Not found.\"}",
+      "interpretation": "Source model endpoint is unavailable; rights cannot be confirmed from this API response."
+    }
+  ],
+  "disposition": "Neither response clears redistribution. Obtain source-level authorization/terms or remove affected images and all derivatives from release packages."
+}

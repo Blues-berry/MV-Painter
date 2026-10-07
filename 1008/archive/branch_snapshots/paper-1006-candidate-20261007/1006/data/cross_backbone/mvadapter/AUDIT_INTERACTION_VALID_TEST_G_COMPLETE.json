@@ -1,0 +1,91 @@
+{
+  "n_rows": 1568,
+  "note": "production G interaction p=0.58 inherits the P0-1 zero-power test; Wald re-test below",
+  "G_fg_lpips": {
+    "n_objects": 98,
+    "W": 13.322,
+    "p": 0.10122844242281842,
+    "interaction_ss_share": 0.11215883726591874,
+    "interaction_rmse_per_cell": 6.826197247820955e-05,
+    "layer_marginal_deltas": {
+      "deep": -5.416950800133008e-05,
+      "middle": 4.456650630449986e-06,
+      "shallow": -0.00039867559625279467
+    },
+    "window_marginal_deltas": {
+      "W1": -6.321324046084552e-05,
+      "W2": -0.00028331796406364933,
+      "W3": -0.00013736274691041004,
+      "W4": -0.00012264176759691587,
+      "W5": -0.00014077837034097047
+    }
+  },
+  "G_psnr": {
+    "n_objects": 98,
+    "W": 7.995,
+    "p": 0.4339723759605464,
+    "interaction_ss_share": 0.21747358068178962,
+    "interaction_rmse_per_cell": 0.0017795390089121945,
+    "layer_marginal_deltas": {
+      "deep": 0.0006048878663479204,
+      "middle": -0.00031688749059399465,
+      "shallow": 0.0062148466994776785
+    },
+    "window_marginal_deltas": {
+      "W1": 0.000649681120367032,
+      "W2": 0.004378443716941009,
+      "W3": 0.004163041735658576,
+      "W4": 0.0013376109292372311,
+      "W5": 0.0003093009565154911
+    }
+  },
+  "G_fg_ssim": {
+    "n_objects": 98,
+    "W": 16.243,
+    "p": 0.03903141610963918,
+    "interaction_ss_share": 0.21896915460985758,
+    "interaction_rmse_per_cell": 8.575379080230048e-05,
+    "layer_marginal_deltas": {
+      "deep": -6.607219855598539e-06,
+      "middle": 9.596135695369898e-05,
+      "shallow": 9.52655842312336e-05
+    },
+    "window_marginal_deltas": {
+      "W1": 0.00029086522639744004,
+      "W2": 0.00020114110271676676,
+      "W3": -3.211020519471267e-05,
+      "W4": -5.609703370604206e-05,
+      "W5": -9.609955466456209e-05
+    }
+  },
+  "G_ciede2000": {
+    "n_objects": 98,
+    "W": 3.945,
+    "p": 0.8620093947424821,
+    "interaction_ss_share": 0.14800905797854447,
+    "interaction_rmse_per_cell": 0.004998186454352842,
+    "layer_marginal_deltas": {
+      "deep": 0.0016223781773833958,
+      "middle": -0.002342664952180809,
+      "shallow": -0.020258189950670448
+    },
+    "window_marginal_deltas": {
+      "W1": -0.0213751150907573,
+      "W2": -0.005745957768152509,
+      "W3": -0.002388354466885885,
+      "W4": -0.002740603996242173,
+      "W5": -0.0027140965537419057
+    }
+  },
+  "exploratory_metric_family_holm": {
+    "method": "Holm-Bonferroni",
+    "family_size": 4,
+    "adjusted_p": {
+      "fg_ssim": 0.15612566443855672,
+      "fg_lpips": 0.30368532726845526,
+      "psnr": 0.8679447519210928,
+      "ciede2000": 0.8679447519210928
+    },
+    "note": "Exploratory; Wald statistic selected after discovery of zero-power production bootstrap."
+  }
+}

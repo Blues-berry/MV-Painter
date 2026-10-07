@@ -1,0 +1,874 @@
+{
+  "cohort": {
+    "extreme_uv_rule": "report full supported N=20 and prespecified N=19 omission for the UID already classified as |UV|>1e6; no outcome-based exclusion",
+    "extreme_uv_sensitivity_uid": "01e3b853f0f74bd0b44d34ac5106a84f",
+    "frozen_n": 24,
+    "methods": [
+      "gt",
+      "no_adapter",
+      "native_gfl",
+      "native_gfh",
+      "native_gc3",
+      "lfm_exact",
+      "layer_lhl",
+      "layer_llh"
+    ],
+    "prebake_no_uv_exclusions": [
+      "0045e87262664927a3298f2ed0f640c1",
+      "008a72f0e6be408cbf90c81966789547",
+      "013115a5216943f5b56641864b6c28d2",
+      "021a4627aafb40e6bd2583817d1b9ff2"
+    ],
+    "raw_unseen_views": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "supported_rendered_n": 20
+  },
+  "condition_means_and_legacy_delta": {
+    "ciede2000": {
+      "gt": {
+        "legacy_cpu_mean": 6.475003259662877,
+        "native_glb_mean": 11.909106425399129,
+        "native_minus_legacy_mean": 5.434103165736252
+      },
+      "layer_lhl": {
+        "legacy_cpu_mean": 26.592690108039157,
+        "native_glb_mean": 29.53071321140636,
+        "native_minus_legacy_mean": 2.938023103367199
+      },
+      "layer_llh": {
+        "legacy_cpu_mean": 26.920309565284033,
+        "native_glb_mean": 29.904344914176242,
+        "native_minus_legacy_mean": 2.984035348892212
+      },
+      "lfm_exact": {
+        "legacy_cpu_mean": 26.6971848227761,
+        "native_glb_mean": 29.535532262108546,
+        "native_minus_legacy_mean": 2.8383474393324413
+      },
+      "native_gc3": {
+        "legacy_cpu_mean": 24.89820008711381,
+        "native_glb_mean": 27.474314243143255,
+        "native_minus_legacy_mean": 2.5761141560294405
+      },
+      "native_gfh": {
+        "legacy_cpu_mean": 25.48501707857305,
+        "native_glb_mean": 28.50116697658192,
+        "native_minus_legacy_mean": 3.0161498980088663
+      },
+      "native_gfl": {
+        "legacy_cpu_mean": 25.618078808350997,
+        "native_glb_mean": 27.341712825948537,
+        "native_minus_legacy_mean": 1.7236340175975453
+      },
+      "no_adapter": {
+        "legacy_cpu_mean": 38.84925294355913,
+        "native_glb_mean": 39.98248084675182,
+        "native_minus_legacy_mean": 1.1332279031926933
+      }
+    },
+    "fg_lpips": {
+      "gt": {
+        "legacy_cpu_mean": 0.08158594635791484,
+        "native_glb_mean": 0.08012019120188515,
+        "native_minus_legacy_mean": -0.001465755156029693
+      },
+      "layer_lhl": {
+        "legacy_cpu_mean": 0.1449104697612876,
+        "native_glb_mean": 0.13110946145924657,
+        "native_minus_legacy_mean": -0.013801008302041073
+      },
+      "layer_llh": {
+        "legacy_cpu_mean": 0.13837093103846365,
+        "native_glb_mean": 0.1272081371650777,
+        "native_minus_legacy_mean": -0.011162793873385948
+      },
+      "lfm_exact": {
+        "legacy_cpu_mean": 0.1432492979886857,
+        "native_glb_mean": 0.12961793954230166,
+        "native_minus_legacy_mean": -0.01363135844638402
+      },
+      "native_gc3": {
+        "legacy_cpu_mean": 0.15279336934062568,
+        "native_glb_mean": 0.13423720644786954,
+        "native_minus_legacy_mean": -0.018556162892756134
+      },
+      "native_gfh": {
+        "legacy_cpu_mean": 0.1402632013217292,
+        "native_glb_mean": 0.12652771052142436,
+        "native_minus_legacy_mean": -0.013735490800304843
+      },
+      "native_gfl": {
+        "legacy_cpu_mean": 0.16228376489809967,
+        "native_glb_mean": 0.138956573614004,
+        "native_minus_legacy_mean": -0.0233271912840957
+      },
+      "no_adapter": {
+        "legacy_cpu_mean": 0.15917376737872307,
+        "native_glb_mean": 0.14875645951621913,
+        "native_minus_legacy_mean": -0.010417307862503965
+      }
+    },
+    "masked_psnr": {
+      "gt": {
+        "legacy_cpu_mean": 21.59761995071473,
+        "native_glb_mean": 17.639851605642956,
+        "native_minus_legacy_mean": -3.9577683450717793
+      },
+      "layer_lhl": {
+        "legacy_cpu_mean": 11.655248936756479,
+        "native_glb_mean": 9.672922796487445,
+        "native_minus_legacy_mean": -1.9823261402690313
+      },
+      "layer_llh": {
+        "legacy_cpu_mean": 11.713347944774704,
+        "native_glb_mean": 9.720554833924016,
+        "native_minus_legacy_mean": -1.9927931108506862
+      },
+      "lfm_exact": {
+        "legacy_cpu_mean": 11.629684686369224,
+        "native_glb_mean": 9.716505596812121,
+        "native_minus_legacy_mean": -1.9131790895571021
+      },
+      "native_gc3": {
+        "legacy_cpu_mean": 11.816964635217593,
+        "native_glb_mean": 10.077173442713207,
+        "native_minus_legacy_mean": -1.7397911925043872
+      },
+      "native_gfh": {
+        "legacy_cpu_mean": 11.89357020878375,
+        "native_glb_mean": 9.992853065228406,
+        "native_minus_legacy_mean": -1.9007171435553438
+      },
+      "native_gfl": {
+        "legacy_cpu_mean": 11.569735005032936,
+        "native_glb_mean": 10.142988028743858,
+        "native_minus_legacy_mean": -1.4267469762890783
+      },
+      "no_adapter": {
+        "legacy_cpu_mean": 8.037953485029213,
+        "native_glb_mean": 6.942233607216759,
+        "native_minus_legacy_mean": -1.0957198778124555
+      }
+    },
+    "silhouette_iou": {
+      "gt": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "layer_lhl": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "layer_llh": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "lfm_exact": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "native_gc3": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "native_gfh": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "native_gfl": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      },
+      "no_adapter": {
+        "legacy_cpu_mean": 0.996874255916809,
+        "native_glb_mean": 0.9968679916965835,
+        "native_minus_legacy_mean": -6.264220225382644e-06
+      }
+    }
+  },
+  "file_integrity_and_geometry_checks": {
+    "manifest_render_count": 1760,
+    "missing_render_pairs": [],
+    "native_vs_legacy_alpha_mask": {
+      "fraction_of_mask_pixels_identical": 0.9999968442049894,
+      "interpretation": "The comparison checks scene geometry/cameras; edge rasterization can differ by a few boundary pixels.",
+      "max_pixel_xor_per_view": 6,
+      "minimum_pairwise_iou": 0.9997676687886251,
+      "missing_pairs": 0,
+      "pairs_compared": 1760,
+      "pixel_xor_total": 1456,
+      "views_with_any_edge_difference": 856
+    },
+    "render_sha256_mismatches": [],
+    "source_glb_sha256": {
+      "gt/00002bcb84af4a4781174e62619f14e2": "9108379735e1c6d527d8351af7afaaada11e441ca3acc6e320ce542028dc3cda",
+      "gt/001a6a0890844d8baa564a347548945d": "46566aea5c3403e590bf51461852d18e54bf009092e05aa55fcd7b58c79b3558",
+      "gt/001cfadfb9204424bccc45501ce6b90e": "77de919e679b33f16b6a7e7e454ffda7dca791dc79f42c627a725d738b4f8fb2",
+      "gt/001dd2c17b1443aab500f61634bc3b89": "03ddd43eee6d7b2b7a136eb910a7f8e53497a17eeed3d7f0cc4a9246d0ff9048",
+      "gt/00820c449b8c4c84b3ae58d3d168ca7b": "0ad0e973f0ffc7f8ea73a687252d268933b8dca68063b16c585ebec7f21a87ba",
+      "gt/0099ab6d44b742b0b62a40a7c70c29b1": "6ecf2d42eaa47981b8ecc38e9019a2de89c12f77cb77c9794f9d77464a767801",
+      "gt/009bc7ad5e26471198c8e5e41637fc60": "dc93644754efc47bd8773376d8b2c905df3c9c622a5b18ef4ad3051e58ac1389",
+      "gt/00b100ac52b34afaa95ed4000cd9a4bb": "29d40803f54c568ada5fbcd19c937f8b7aa0749ea7ccfde17ee76804af88c15e",
+      "gt/00b7d5e05b3b404c944cf3f7c92d15ba": "eadae8f0b1701bf1c29982058b49c4128bd60fe67271b6f925fc1a31f26d8a26",
+      "gt/00e2a79774964cb08f38c4406407300b": "8e8cdd49d269c35ff9e224de9f44ad550bc26e6cd0843c9572fd23cdff448e2e",
+      "gt/0105002382024c2a8c12ee2a9b778187": "bc9d6fba4a295774833245fc5abe7f4e6d9e29b522d5f21ca815d34900bf385e",
+      "gt/0131d08f77284aea9c62ad6de74edc0b": "7ff9a0fa588aa327a83e6c1c4db53498b81810e8d612bfb76e95328e6deff179",
+      "gt/0162260812034687a4d337161f632d09": "aef2c04129813b40cfe04dfdfe416887e122a7f79841d8c4b3b880aa5c7de36f",
+      "gt/01b110c009fd4bb3a0e25adb093c09a2": "529597bfc9073677432cf02207840165a3b508cf7c709c7a088f8a3b3223f58a",
+      "gt/01e3b853f0f74bd0b44d34ac5106a84f": "bb79ba90b78345b980fa42e116bcdb8a23f38f6db2cb52a5c49ef57275f5fc98",
+      "gt/02064882908145169ff83f39b3adddc4": "ab99a1a724a7529a733455c05c8d57ccc4348b7b11fda155d9dfe6c611fddb4b",
+      "gt/023e632efc7449338e1d5c56e220cab1": "1deb736a40c8919891717249fe1b0603ec2ce8c4fa6dd21f7ff4ff0fabbd72a8",
+      "gt/023fa16b631a461ba45d86ccbdc37e2a": "eacddcced7fd225e7568d9ad6725b420828c1ac90fbcfaf2ba1fc0688ef74d8d",
+      "gt/0253574c1a8f432797a7fcef9546ce75": "9184150106926b47b4d7b29062246312164560a01d9a41bd7dbaf4c50ad1f824",
+      "gt/028ca741606e480884f69d6df12553df": "01cd7f03289be4c7d1e2eb6a32c5456b938a6308124faf89bb444aeb606fa650",
+      "layer_lhl/00002bcb84af4a4781174e62619f14e2": "119ef6c1ca14e7f32dfa887db664eb8672e9f1078c69e599df5bc35a83c93f74",
+      "layer_lhl/001a6a0890844d8baa564a347548945d": "e078feae24d69dd646be905550560a2b41129088f00d5e317fe0ec209a4187a1",
+      "layer_lhl/001cfadfb9204424bccc45501ce6b90e": "d5903cf7e80083227c69585202c94d9389e293579891ee3280b7da64d7c6cfcf",
+      "layer_lhl/001dd2c17b1443aab500f61634bc3b89": "50583afaa52a3402d7d6803360ac265744039b3dd8b53907591ffee7c8803a8e",
+      "layer_lhl/00820c449b8c4c84b3ae58d3d168ca7b": "48e20353c11436f9c6bc3b4edd5bd98b84f443aa46ad8ec3e3f8b82dd2295eaf",
+      "layer_lhl/0099ab6d44b742b0b62a40a7c70c29b1": "7070ded1ea5e9575395163665a9a823eb4e845ad4e3c0b0c6ca6cfe5409c7ad8",
+      "layer_lhl/009bc7ad5e26471198c8e5e41637fc60": "b093cdcbe20fe643f3db026a2ce193779f5d93e2084eee3943ae222c98e02d6c",
+      "layer_lhl/00b100ac52b34afaa95ed4000cd9a4bb": "51c606f6eb18762d0f7fc375027c569404bbf050e1538b4b5e6f1c8d5eb04a8c",
+      "layer_lhl/00b7d5e05b3b404c944cf3f7c92d15ba": "fd4bbcf7a7b48d4a08265d0de3fcb699a6e424b10c912b1c05172ca364386995",
+      "layer_lhl/00e2a79774964cb08f38c4406407300b": "6b1812132a2c73eda9c0a368ca0f09411fa10110e15d8e9f2bbe65e5285193ae",
+      "layer_lhl/0105002382024c2a8c12ee2a9b778187": "6c5fe48782404b630159d4868596f32a863020a87d69b82ba96cc7be6d027131",
+      "layer_lhl/0131d08f77284aea9c62ad6de74edc0b": "8671703da2895aace21de83a41b1fd78b7df8a1c87d18fb6158620c7c37862e5",
+      "layer_lhl/0162260812034687a4d337161f632d09": "86170655c5123b5f440f48bee5fc78a27aeeee332867b0ca9ededf27a88a3484",
+      "layer_lhl/01b110c009fd4bb3a0e25adb093c09a2": "95322b81d23f5e25939b773bb0bc07585d9e6fc7a4f57091a83624363bfa795d",
+      "layer_lhl/01e3b853f0f74bd0b44d34ac5106a84f": "03d3eecf17471bbb9a127fd53ce0b23b8655b0fe6bd26b0822f5c777cef31bc4",
+      "layer_lhl/02064882908145169ff83f39b3adddc4": "cf29b86f90c2e1d1827dc08ccccba9204dd0913a0adaac127dca563cc3fd00fb",
+      "layer_lhl/023e632efc7449338e1d5c56e220cab1": "fbf5937ffed9a7ce518807c406510253f8a569cf0143e87601bb8f04807d9845",
+      "layer_lhl/023fa16b631a461ba45d86ccbdc37e2a": "dfaf49c0bdcea5c5912b229d39b139bf2a68542faadb8ca55940838364a4029d",
+      "layer_lhl/0253574c1a8f432797a7fcef9546ce75": "dbeaa34e21b5a9999e79783eef8cd7969d7c4b4d7209e5866d78fdb3dee06a20",
+      "layer_lhl/028ca741606e480884f69d6df12553df": "c0de5247f5b4d82bddae57782d783baad7791bda62d4cfe2d1670bb492b7ecb6",
+      "layer_llh/00002bcb84af4a4781174e62619f14e2": "2f22be35d9ddb06abb4ef0cd0d16e3ef673589abd44c311a3a3abbe3bab1a9af",
+      "layer_llh/001a6a0890844d8baa564a347548945d": "78ef54fc9e1b7ba1f426f37e2b1c38ecbb1ae10172ad349d5505534419cc3e0d",
+      "layer_llh/001cfadfb9204424bccc45501ce6b90e": "5dd65353050c6201fc4f0b92d614ed54010235d430d86d144c8ad9aec013646f",
+      "layer_llh/001dd2c17b1443aab500f61634bc3b89": "4e68658320a49a71296ac2d65606a3ed4ba716b472b8633ea74d86c5caf9bf4d",
+      "layer_llh/00820c449b8c4c84b3ae58d3d168ca7b": "76fcf842b465b0c6f5dbdbe5089ef5289ff733ca53eb21e70dd1bedde59a004d",
+      "layer_llh/0099ab6d44b742b0b62a40a7c70c29b1": "6cf6a5d445cfe6cc71c0a10c44529d0cc73b5b02402d907fc03ad9175d2cd93a",
+      "layer_llh/009bc7ad5e26471198c8e5e41637fc60": "7780d29387f29be838f87a198e8c9dcb85a479e01befa044afef9f2403c5b004",
+      "layer_llh/00b100ac52b34afaa95ed4000cd9a4bb": "17cbb1fea042b02057695050a9a04fc55c6be1e245f479a02a3b5176fe0d6e0d",
+      "layer_llh/00b7d5e05b3b404c944cf3f7c92d15ba": "f787c767ae7d533c8a3e8d20af2b93574175d2e437c6039370f8190570bc5a09",
+      "layer_llh/00e2a79774964cb08f38c4406407300b": "8c84738a5be12e4af38bdc7a83ffdf4fc2ad8c9dc5180210cde35ec5de324d75",
+      "layer_llh/0105002382024c2a8c12ee2a9b778187": "586476ebc5820fd589ed0a5fa5c5ed754da04f339a56d692e53bfbbb96e5cf38",
+      "layer_llh/0131d08f77284aea9c62ad6de74edc0b": "99ca84657a214c119f9966bcce503c395dcb4e986359052cb9e11e205f02ab86",
+      "layer_llh/0162260812034687a4d337161f632d09": "1f802051665bc33df95b7d290934457876beabe7cf041cbf7e40baf903e6cbc1",
+      "layer_llh/01b110c009fd4bb3a0e25adb093c09a2": "76f2cdee3323b280c8a96c6406b5f2f88daa1f2a315bc168da00e74994ba987e",
+      "layer_llh/01e3b853f0f74bd0b44d34ac5106a84f": "597c2f5a5ea21ad1e80e9a464d4a0356852647c7d2bae872c445f63944c935ae",
+      "layer_llh/02064882908145169ff83f39b3adddc4": "b8d6e8a39113dafd5ca138c45bd3cf71ae319fb36c46b2d376201468a46b0d03",
+      "layer_llh/023e632efc7449338e1d5c56e220cab1": "e9906705ae24959502a5c239d1be02850b1666439b5c6b2bce5b7f3e2b4793af",
+      "layer_llh/023fa16b631a461ba45d86ccbdc37e2a": "dacdaf986484ae69924ef934444238191db1e2ea2443f1610b180833061ecca1",
+      "layer_llh/0253574c1a8f432797a7fcef9546ce75": "0901f8af1f80e7def4c61092b5944a1b44494e9fd2ea58695a5671db7fa6d283",
+      "layer_llh/028ca741606e480884f69d6df12553df": "60c568445887c5b2b36b65f00906c585c519f77b50c1a3f9c780a2c6946457a3",
+      "lfm_exact/00002bcb84af4a4781174e62619f14e2": "6c44d3379394dbc20246a29bb85f95c64a5ab809747def50920a14e33aee4a29",
+      "lfm_exact/001a6a0890844d8baa564a347548945d": "13dc57aed1336c0b30c38c90ebe2d849eefde678402dd798d929173b224f7364",
+      "lfm_exact/001cfadfb9204424bccc45501ce6b90e": "c52bbe0dbaf691f1915411e8c7d7ff086f0ec3891fc941521eeff0dd36d23306",
+      "lfm_exact/001dd2c17b1443aab500f61634bc3b89": "20dc306a1c5f05e251ad093a344d71d783a472cd581670842a3b18b3f1e457d3",
+      "lfm_exact/00820c449b8c4c84b3ae58d3d168ca7b": "7ecfa25b3c84159d16568df207bc89f31af8d6b84db7fd8627592d23ab347e86",
+      "lfm_exact/0099ab6d44b742b0b62a40a7c70c29b1": "592873284a077ae3c78b7d093521cd0562f2a59bf9cdd33e924ca2521f29a405",
+      "lfm_exact/009bc7ad5e26471198c8e5e41637fc60": "ea37d85f899be8359f92337d6af23f0cec28f0b11ec860dce39f1397533eb059",
+      "lfm_exact/00b100ac52b34afaa95ed4000cd9a4bb": "43726b744a0c57a9ef4eeecb8101bfc7a8aed0fd434f2845a246fb3c2cb6eebe",
+      "lfm_exact/00b7d5e05b3b404c944cf3f7c92d15ba": "6417747f52d9521b2866a9315d8974eba2beb51b2b640037f39e1674d0f7d9f5",
+      "lfm_exact/00e2a79774964cb08f38c4406407300b": "f81bc73244996920ccd2e4794340c5360d9cee8ccceb153f6c807634b00cb74d",
+      "lfm_exact/0105002382024c2a8c12ee2a9b778187": "7a1acb2c324144a9603da186a0e5583342fe05ead1f1d6f67bea41f33d32f50f",
+      "lfm_exact/0131d08f77284aea9c62ad6de74edc0b": "38ae94cbc03dfda1a07d444562020f5e383315ad4d7ebe9bac59db00d81dae10",
+      "lfm_exact/0162260812034687a4d337161f632d09": "f76ba9d5cb1c991524e242ab226245ec4a6e38dfaca296a5d965e903df08487a",
+      "lfm_exact/01b110c009fd4bb3a0e25adb093c09a2": "297490596a4ab8b29ef435d70e69154db2639d82c79e92aec45629cafea2a5f4",
+      "lfm_exact/01e3b853f0f74bd0b44d34ac5106a84f": "b611f887d6ceb40a17858e8b64049ae41e48ada28128dd55ff82ebbe7875f936",
+      "lfm_exact/02064882908145169ff83f39b3adddc4": "996461b0014dac430b7dadcd45b6ad269daab26091f0caa99694479b62bb6868",
+      "lfm_exact/023e632efc7449338e1d5c56e220cab1": "d99c5a409528b02bf4173e1f4928e91f8575c65ca01bb0c3cd8d5b23415a802a",
+      "lfm_exact/023fa16b631a461ba45d86ccbdc37e2a": "8efc5a4d9d6b93ea47a07481282733650ebc7de5b16ab754758015d0f07e987c",
+      "lfm_exact/0253574c1a8f432797a7fcef9546ce75": "a38d60e4b42fdb5c2ceaeecb3f14a1adf4a0aafcc2f9ccf8600d5dffcdc1b84b",
+      "lfm_exact/028ca741606e480884f69d6df12553df": "be47a811f9d499d0ac079c10702093643eec4c0ee469a8d5f724f2d84a320832",
+      "native_gc3/00002bcb84af4a4781174e62619f14e2": "df4fd3712ee692dd5ac406bec7507dd4071fb5016e653e3d88046c04172736f4",
+      "native_gc3/001a6a0890844d8baa564a347548945d": "099cb888e2225efb8667949a1e7dcfc3ef42e918704118c7729ef78d43d95bff",
+      "native_gc3/001cfadfb9204424bccc45501ce6b90e": "7bd62a9e4cdb4bae95bd15c0fbd10d5c49cc5f02c30061f0638522bab4f54287",
+      "native_gc3/001dd2c17b1443aab500f61634bc3b89": "85832f7b3e05b72bf76dc68b829244a06d051192cb2638815ddba9cb64fbb866",
+      "native_gc3/00820c449b8c4c84b3ae58d3d168ca7b": "0758b888451204d87206adc851de5f28e93134878570237994ea2210d75009f9",
+      "native_gc3/0099ab6d44b742b0b62a40a7c70c29b1": "a0afd3f1e4afe632eddc97c6022f6127c9a303fd49c874f309b069e5224e1e1b",
+      "native_gc3/009bc7ad5e26471198c8e5e41637fc60": "ed3e25a820d9fca366e5bdf84d722d483eb2df90f045767df96974e45dcb691d",
+      "native_gc3/00b100ac52b34afaa95ed4000cd9a4bb": "a98569697665d85f0fa4b92c61d2cd34f6a1a70d0d72cfce903801bc318edeb8",
+      "native_gc3/00b7d5e05b3b404c944cf3f7c92d15ba": "2a937c7ba125e7c1409f5bb35e10161d3ecf1ebdcb1120a46e8b82db47e1812e",
+      "native_gc3/00e2a79774964cb08f38c4406407300b": "f37d324f375c6ad1bee3e82bf5e441a4773190714bac6a95afcc9fff166b4f77",
+      "native_gc3/0105002382024c2a8c12ee2a9b778187": "37f8184f51717abc2c0f283a2e66dd1cc56775bd0955434177ef8cdab12d3baf",
+      "native_gc3/0131d08f77284aea9c62ad6de74edc0b": "e4ded203e533c29b49d0b82059f382cf748e0290e6c3e7c3f6b800ca7b38f894",
+      "native_gc3/0162260812034687a4d337161f632d09": "df1b648af031e5122444809a2a041eef00fcb87b042a133a46ff739fdfe518cb",
+      "native_gc3/01b110c009fd4bb3a0e25adb093c09a2": "6ae3ae14539bb8e0ee17f1ae598488cda104de1daced458787b35a864f84f43a",
+      "native_gc3/01e3b853f0f74bd0b44d34ac5106a84f": "4fa2024e229229a784863c070c4ab46f2021a4604cc6bb477c5114f7071ebd19",
+      "native_gc3/02064882908145169ff83f39b3adddc4": "8f1ad7b28474e145a67cf6454a96e141ca6b65adb6feb012dbbe211efd05f6cc",
+      "native_gc3/023e632efc7449338e1d5c56e220cab1": "423c1f3f0dddfcfaf98ab2b8e1683e6afd8f3c933b13c78edaa8370c7f790a8f",
+      "native_gc3/023fa16b631a461ba45d86ccbdc37e2a": "92573a0f8825228a3af281d60e521c740708dead6b1f4baf43f33c6670886036",
+      "native_gc3/0253574c1a8f432797a7fcef9546ce75": "da173f12f21801c0e1ba21f7521666d7fce6a0ffa735e327b55d2f23e5076f06",
+      "native_gc3/028ca741606e480884f69d6df12553df": "f9d5f3bddf440dbb2f3667e2cc5cf58d05549c9a6c23245f5c9bfa2afab531e4",
+      "native_gfh/00002bcb84af4a4781174e62619f14e2": "d22efe4335ce4be213e560861afb66efd15a8815c96491c78258876ccd5b46cb",
+      "native_gfh/001a6a0890844d8baa564a347548945d": "61a6d732f068e59437b7b3ae04756f38e3129a8fa94e269ff468f1f0e45a66fb",
+      "native_gfh/001cfadfb9204424bccc45501ce6b90e": "0e6eb55496ffe7d07c8c0d9441e190bfd6be7d56b89a551c41f6a4ff5e8323f5",
+      "native_gfh/001dd2c17b1443aab500f61634bc3b89": "98caa642c7ed988969d939aa3b48ab946f8001a6b05e3e148ef06d02fe86f8c4",
+      "native_gfh/00820c449b8c4c84b3ae58d3d168ca7b": "86a59e5e89afef741ab74c929b084a9c9e4dd63cea2736d2d8c7b1fac46128f6",
+      "native_gfh/0099ab6d44b742b0b62a40a7c70c29b1": "e2b37cf17b420626b3ddfca6479595943c425e56af573893e4f511ef62e6bbe5",
+      "native_gfh/009bc7ad5e26471198c8e5e41637fc60": "b7f30b5adb27ac2f87e683c244b3c81bcf7659303560ab87f3ddb714c7402ca1",
+      "native_gfh/00b100ac52b34afaa95ed4000cd9a4bb": "8bfae26de2e2be1462e19e1aa3451a111ff62601c7869299882bfc5fbf8a7354",
+      "native_gfh/00b7d5e05b3b404c944cf3f7c92d15ba": "a576337e9bbcaa4197eed6d973783c905a7fcc3ccadb4eedb5e416b728b842d9",
+      "native_gfh/00e2a79774964cb08f38c4406407300b": "552d24daf68e225f347d50ba458c97221a784e465631bf0c34476227a5ec26b7",
+      "native_gfh/0105002382024c2a8c12ee2a9b778187": "2f8e27d966ff59688e147aec81d7994df0dad0e1a7b1262c3189002d06c7662d",
+      "native_gfh/0131d08f77284aea9c62ad6de74edc0b": "a7f176d75593b9848c903f0bd612fa5fa287d2eedfbf1c261404826fbecb1ffd",
+      "native_gfh/0162260812034687a4d337161f632d09": "abb7a85747d81b8042263e0b9894e7c48a7a5c75a9b8297a62313f53c80d8d03",
+      "native_gfh/01b110c009fd4bb3a0e25adb093c09a2": "512ac82e8a343d2d6f128d9dbe283442622fb62a17d931906efc48a76f6e96cc",
+      "native_gfh/01e3b853f0f74bd0b44d34ac5106a84f": "121704770e83b23011f2a8a4fae89a41be7a5f7c5fd0cc3855297da2e338404a",
+      "native_gfh/02064882908145169ff83f39b3adddc4": "148b61ed28b487ee029df88a5fcc958f5b889473b0f80aa7a9ba2a18ec47fa94",
+      "native_gfh/023e632efc7449338e1d5c56e220cab1": "b45e3545d85d3d65f92f5bfbba63472f67ad361e584ccd5009e43537f553efab",
+      "native_gfh/023fa16b631a461ba45d86ccbdc37e2a": "7a00b6574e51d4a4129d6d8328fabcd16ab0de96788cdd4bcabd0e7ebaa9a0c0",
+      "native_gfh/0253574c1a8f432797a7fcef9546ce75": "945c3ca6309adf15528d19dced407ca9b79977b652fb358ec72c6077ee7e3f11",
+      "native_gfh/028ca741606e480884f69d6df12553df": "c9c770fafb87fc81ae08e5da9d994d5a5c87da15cb9e5a48687daaa48f8f64ba",
+      "native_gfl/00002bcb84af4a4781174e62619f14e2": "d4b618f8644cc763049abe6a1cc110f23203b0517a4cd7719fd00edd17a3cf11",
+      "native_gfl/001a6a0890844d8baa564a347548945d": "9d3b35e325a9f0be67dc7ceac547e532712e44c55f3b605047b1fb26e26f08bb",
+      "native_gfl/001cfadfb9204424bccc45501ce6b90e": "481049a66c448f75f6462d5d14e8a0b22924b3e6ac22a17a65dd0e4e0461c1e8",
+      "native_gfl/001dd2c17b1443aab500f61634bc3b89": "b3ec562b264302909e31fc2980f6bbb906e95389478a2a9a4cf2b3a040f601b2",
+      "native_gfl/00820c449b8c4c84b3ae58d3d168ca7b": "2eeb240f68d398273a3080ac4d65e97d44f5259022cc8636c4355023f8e692a1",
+      "native_gfl/0099ab6d44b742b0b62a40a7c70c29b1": "4dc3f07494c0712acc1c76ba2179268bbbd61a8447dcc0a5cf4d7ed2ef32b583",
+      "native_gfl/009bc7ad5e26471198c8e5e41637fc60": "d7e5444d54815a398f0f151e9b8f399a315bc5e5c293a60c28a45f3cc259e4be",
+      "native_gfl/00b100ac52b34afaa95ed4000cd9a4bb": "ba649c615db4c64cb6670a628a175abefc40f8c867d0e61053eaaa14768fa2a4",
+      "native_gfl/00b7d5e05b3b404c944cf3f7c92d15ba": "812cfc6322840a008f9f57711ba738445d6bb31ff1e5a3f92ecd34894a8d8cec",
+      "native_gfl/00e2a79774964cb08f38c4406407300b": "fd96e4e29764249a0a8a790240fa5e5c99552e41c17949f0f7b9a231fd16496e",
+      "native_gfl/0105002382024c2a8c12ee2a9b778187": "3f1eb6c78f7c1465e6428b1cbe2cb10f819a478f5c5a322b7228a340c514319a",
+      "native_gfl/0131d08f77284aea9c62ad6de74edc0b": "ebaf4676ffc065e26ca29e771d55a175643dea39447189f51f49d7ba0809ee11",
+      "native_gfl/0162260812034687a4d337161f632d09": "97ab1dba276482c4171478e9637f6f38b15628d406ce130025be7da935c32320",
+      "native_gfl/01b110c009fd4bb3a0e25adb093c09a2": "843170fd62871b33d9d5c95f78db0b779ca31faf89bb764947e943089372d047",
+      "native_gfl/01e3b853f0f74bd0b44d34ac5106a84f": "60442bbba4a702a9341e0fcd7d564960e2c5a4fd854dd8dd29c7d15e656c2861",
+      "native_gfl/02064882908145169ff83f39b3adddc4": "1e7f622c41e4f22a47268ecd2639f880fb12d7415a5e3aea9845da699c8685f7",
+      "native_gfl/023e632efc7449338e1d5c56e220cab1": "4590e51125bc96f4b6b59aeb118ca13ce9a7381ec101a6a08860f17ee98af67a",
+      "native_gfl/023fa16b631a461ba45d86ccbdc37e2a": "503ee330da1220827a4883cff4565f84ed09f153e7e173c43437e865f56d6b21",
+      "native_gfl/0253574c1a8f432797a7fcef9546ce75": "fb5ae82910111efd8c9755e3bd58011d479241a5452e791501d4aff0ecfac681",
+      "native_gfl/028ca741606e480884f69d6df12553df": "232cd85ae60cc7d0eb213f6b426671d455273105916d9c1013daf3fb599605e9",
+      "no_adapter/00002bcb84af4a4781174e62619f14e2": "373b71e46f5cec37d573991323201b40eddbbe7b65c29c8f9899107fa1b5c46d",
+      "no_adapter/001a6a0890844d8baa564a347548945d": "34ce31caf030751c6449cc2ab6142f2bb0a44fe4c3f2ff5fcccbdf7030ef0c56",
+      "no_adapter/001cfadfb9204424bccc45501ce6b90e": "3767a30b8f79f9e517dc8727501cf577a7e2ba20ed7b519577e07942751d4813",
+      "no_adapter/001dd2c17b1443aab500f61634bc3b89": "d73df303c274a4a759351804ad5283129a3a61133d3a6a30e2a03542f5ae7fe1",
+      "no_adapter/00820c449b8c4c84b3ae58d3d168ca7b": "494e0ccccf5bb6a77fa3d5f2b061f59e03ff345d390883ee6405961d1a3b80b2",
+      "no_adapter/0099ab6d44b742b0b62a40a7c70c29b1": "6764f5590fb395d977cad305df599d5871d41e563fcc32675287f79a428832a1",
+      "no_adapter/009bc7ad5e26471198c8e5e41637fc60": "d4d6ac675e83386caa3bd4a9fc8e975540bfca80e9c1c2859ff843228f9e15fd",
+      "no_adapter/00b100ac52b34afaa95ed4000cd9a4bb": "e8d8c3704c81f9ae479327e3d59aa62b9882ecfe304e94b1a2ccf9ad9db23d93",
+      "no_adapter/00b7d5e05b3b404c944cf3f7c92d15ba": "3b2c77c5a165190735cbf2343058d0fa536222a0d8cd170d03d5037408ea496d",
+      "no_adapter/00e2a79774964cb08f38c4406407300b": "49c62f5972829dad0ca7a24562540c5da48e2efde5324b97e4b9b821e46925c7",
+      "no_adapter/0105002382024c2a8c12ee2a9b778187": "1f130a497c6962931d1764958bb19a845fda017e5347588dcdef5082237b04b3",
+      "no_adapter/0131d08f77284aea9c62ad6de74edc0b": "64599fcc72555fe5fbb65e115a8e4d94eabeb3f23d44e21c3bda6bdd49ce2e77",
+      "no_adapter/0162260812034687a4d337161f632d09": "2fe0d09199b24019795a11add0c8b122a370024bcef6d2333ae9d274de950858",
+      "no_adapter/01b110c009fd4bb3a0e25adb093c09a2": "3cd8d2befefa65f437ac4d365bbef006ecd50c1e6394c88861e994284b37dd1f",
+      "no_adapter/01e3b853f0f74bd0b44d34ac5106a84f": "b0a02ec727e12ba7fe13bca1239377f209742145cd047ea4d87bdbba743e5f7a",
+      "no_adapter/02064882908145169ff83f39b3adddc4": "897547dc1c8c4ab737d58eed92b86737171029fa24d11367eb767a0973a2074e",
+      "no_adapter/023e632efc7449338e1d5c56e220cab1": "756e64666e29170c91d26f1ccc33b34fa26e65e29cfb6a54fba67cb6b882b746",
+      "no_adapter/023fa16b631a461ba45d86ccbdc37e2a": "0ea0d250d5c6f8308326eff76456ddfeb228fb8856b1fe18dbb18bc7c8502516",
+      "no_adapter/0253574c1a8f432797a7fcef9546ce75": "ca6ad95eddd18fb310cbf3d12d35db2da462af2a95898b9eaefdd4b0b211a502",
+      "no_adapter/028ca741606e480884f69d6df12553df": "5b1447284eb10513c9d29d5714fd3ca06ec864dad7f29cee3e65ea9312d11126"
+    },
+    "source_glb_sha256_mismatches": [],
+    "unique_object_method_view_keys": 1760,
+    "unique_source_glbs_hashed": 160
+  },
+  "interpretation": "Stored exported GLBs were sampled with their embedded glTF baseColor sampler. This is an unlit base-color image comparison, not a full PBR viewer study or a re-bake.",
+  "layer_llh_minus_comparator_object_bootstrap": {
+    "ci": "percentile 95%",
+    "contrasts": {
+      "ciede2000": {
+        "layer_llh_minus_gt": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 18.924489617205122,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              13.828824650481984,
+              23.832294729662138
+            ]
+          },
+          "N20": {
+            "mean_delta": 17.995238488777115,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              12.878260963704776,
+              22.99489038201895
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_layer_lhl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.3623222369326358,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.42377876174507023,
+              1.1876958002884423
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.37363170276988633,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.37517323017120346,
+              1.149788878614253
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_lfm_exact": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.3795547120308767,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.3707167308296313,
+              1.1729689055082335
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.36881265206770514,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.33996461272239636,
+              1.1145721627365475
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gc3": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 2.6613381399492337,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              0.1637258997374177,
+              5.1074646631496385
+            ]
+          },
+          "N20": {
+            "mean_delta": 2.4300306710329935,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              0.06608371951363319,
+              4.748123632777822
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gfh": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 1.5389739953730095,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              0.1497776576776826,
+              2.939595812929875
+            ]
+          },
+          "N20": {
+            "mean_delta": 1.403177937594327,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              0.09131015994332026,
+              2.7450690301981844
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gfl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 2.9695045297796074,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.6886295942598558,
+              6.420741326957226
+            ]
+          },
+          "N20": {
+            "mean_delta": 2.5626320882277063,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -1.0067287662896245,
+              5.893162385550411
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_no_adapter": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -10.413595797342547,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -14.872503035718744,
+              -6.324788917194713
+            ]
+          },
+          "N20": {
+            "mean_delta": -10.078135932575572,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -14.385102167454633,
+              -6.071266447522424
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        }
+      },
+      "fg_lpips": {
+        "layer_llh_minus_gt": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.050017316541055214,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              0.0297602471296172,
+              0.07170367408786124
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.04708794596319256,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              0.027354415350643892,
+              0.06825583702624002
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_layer_lhl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.003885029775032586,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.006760509006687969,
+              -0.001620642039657493
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.0039013242941688406,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.006644883984911511,
+              -0.0016676279563795414
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_lfm_exact": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.0023410171805101133,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.004290267734222433,
+              -0.0007525260350778343
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.0024098023772239677,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.0042923504414714205,
+              -0.00089509653985839
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gc3": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.006680410693992269,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.012399860043702518,
+              -0.002569546194916424
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.007029069282791833,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.012513924536549237,
+              -0.0029624697883528744
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gfh": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.0011677657873436574,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.0007354299292752637,
+              0.0028608522328891265
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.0006804266436533476,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.0013528657044199381,
+              0.002515074683099309
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_native_gfl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.011286761914714102,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.019751243446129215,
+              -0.00507257675538151
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.011748436448926276,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.019882650198838253,
+              -0.005635823287831791
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        },
+        "layer_llh_minus_no_adapter": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.023166123599384386,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.037486792455592215,
+              -0.012205377254973757
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.021548322351141406,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.035278181191533795,
+              -0.010629359232261779
+            ]
+          },
+          "lower_is_better_for_llh": true,
+          "positive_delta_favors_llh": false
+        }
+      },
+      "masked_psnr": {
+        "layer_llh_minus_gt": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -8.296628063847397,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -11.18321278204148,
+              -5.756083460385541
+            ]
+          },
+          "N20": {
+            "mean_delta": -7.919296771718938,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -10.701739297416987,
+              -5.336200514808632
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_layer_lhl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.0637708279644868,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.19001709049686802,
+              0.3636093225046465
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.0476320374365693,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.19201266130807498,
+              0.3397083725005154
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_lfm_exact": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 0.015799365508238402,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.22175452661660566,
+              0.29009172884000245
+            ]
+          },
+          "N20": {
+            "mean_delta": 0.004049237111894555,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.21868586584847255,
+              0.2697450906261316
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_native_gc3": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.3799587015099246,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -1.0772709741378648,
+              0.4209715788462515
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.35661860878918955,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -1.0052247866034634,
+              0.408514185514034
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_native_gfh": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.27408939966869095,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -0.6962505557174747,
+              0.20406034048295912
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.2722982313043893,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -0.6680015845018048,
+              0.19041771609710198
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_native_gfl": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": -0.48739421177459413,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              -1.4689672299378977,
+              0.6305451381207092
+            ]
+          },
+          "N20": {
+            "mean_delta": -0.42243319481984065,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              -1.360569186861014,
+              0.6521893804439695
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        },
+        "layer_llh_minus_no_adapter": {
+          "N19_excluding_extreme_uv_uid": {
+            "mean_delta": 2.8080487571504547,
+            "n_objects": 19,
+            "object_bootstrap_ci95": [
+              1.8990451074331742,
+              3.76413136068255
+            ]
+          },
+          "N20": {
+            "mean_delta": 2.778321226707257,
+            "n_objects": 20,
+            "object_bootstrap_ci95": [
+              1.8884018039897965,
+              3.6872262446012805
+            ]
+          },
+          "lower_is_better_for_llh": false,
+          "positive_delta_favors_llh": true
+        }
+      }
+    },
+    "multiplicity_adjustment": "none; only the LLH versus native_gfl 3D comparison has prior descriptive focus; all other contrasts are exploratory",
+    "resamples": 10000,
+    "seed": 20261005,
+    "unit": "object; metric is each object's mean across 11 views"
+  },
+  "legacy_metrics_sha256": "01eef6ff1ab4083bd4dfe2971e6872ba4f8eb3ec097d46f7bb49eefde4698ff7",
+  "limitations": [
+    "Four frozen objects without UVs were excluded before the bake; this analysis does not close strict 24-object 3D coverage.",
+    "Textures were created by the original clamp-based bake and are evaluated as the exported GLBs actually store them; no repeat-aware re-bake was performed.",
+    "The renderer matches the embedded base-color addressing/filtering on the recorded NVIDIA EGL implementation; extreme 1e36-scale UV precision can vary across graphics implementations.",
+    "Base-color-only rendering omits lighting/material BRDF and does not establish human-perceived material fidelity.",
+    "The 40-slot human study remains pre-collection; no participant responses are included."
+  ],
+  "metric_availability": {
+    "dists": "unavailable: ModuleNotFoundError(\"No module named 'DISTS_pytorch'\")",
+    "lpips": "lpips_alex_cpu"
+  },
+  "native_metrics_sha256": {
+    "per_object": "b00e44f3c1f2555f5ab1de511437be6b77af694da2d0e5eb5c10fd42664c7057",
+    "per_view": "dd5273b1a4072f7893c1d13767eccd9e838dad98dfc20a03195cb1edc014ede4",
+    "summary": "0802e813ceda80f70098589c7e502d5487b539834e3ef3384fa55c855f2d9ff7"
+  },
+  "protocol": "glb-native-basecolor-metric-reconciliation-v1",
+  "renderer_manifest_sha256": "ba0f0e56efbac825c5a3d584bb3ef8a2699967b1063044287b39d2136235e550",
+  "renderer_script_sha256": "ce729d45ff0e16098ef6dd907877b782f79d9e82a35c3f807078102f4c07e33a",
+  "retrospective_practical_scale_reference": {
+    "absolute_mean_effect_over_drift": {
+      "layer_llh_minus_lfm_exact": {
+        "fg_lpips": {
+          "over_median": 0.09001876642599806,
+          "over_p95": 0.02138909490280005
+        },
+        "fg_psnr": {
+          "over_median": 0.0013087343324341405,
+          "over_p95": 0.0004240678736859201
+        }
+      },
+      "layer_llh_minus_native_gfl": {
+        "fg_lpips": {
+          "over_median": 0.43886576200695837,
+          "over_p95": 0.1042776057242824
+        },
+        "fg_psnr": {
+          "over_median": 0.13653258871814916,
+          "over_p95": 0.04424051784356579
+        }
+      }
+    },
+    "fg_lpips_drift_median": 0.02677,
+    "fg_lpips_drift_p95": 0.112665,
+    "fg_psnr_drift_median": 3.09401,
+    "fg_psnr_drift_p95": 9.548559,
+    "source": "PRACTICAL_EFFECT_REFERENCE.md, repeated-realization development probe",
+    "status": "descriptive only; not a significance test or acceptance threshold"
+  },
+  "status": "PASS_RENDER_AND_SOURCE_HASHES"
+}
