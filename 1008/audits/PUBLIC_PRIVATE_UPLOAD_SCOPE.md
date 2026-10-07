@@ -5,6 +5,9 @@ revision branch is based on d59 for the private repository candidate.
 
 ## Public candidate
 
+Pushed as a new branch:
+`origin/codex/cg-round2-1008-public-sanitized-20261008`.
+
 The public repository already contains four participant-level CSVs in
 `final/round2/scientific_validation_v3/human_study_results_20261006/`. Their
 first introduction is commit f5bad8a1e6ca4265c1823eaa26b2775313de4c96, whose
@@ -23,6 +26,9 @@ listed by path, size, Git blob ID, and reason in
 `final/round2/scientific_validation_v3/OMITTED_EXPERIMENT_ARTIFACTS.csv`.
 
 ## Private candidate
+
+Pushed as a new branch:
+`mvpainter/codex/cg-round2-1008-revision-20261008`.
 
 The private candidate is based on d59 and retains the four participant-level
 CSV files because the repository is private. It has the same curated v3

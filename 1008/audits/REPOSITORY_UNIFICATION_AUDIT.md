@@ -17,8 +17,10 @@ inherits that 7.7 GB artifact commit.
 | `mvpainter` | `Blues-berry/MVPainter` | Private working repository |
 | `upstream` | `amap-cvlab/MV-Painter` | Public upstream project |
 
-The remote refs were fetched before this audit. No remote branch was changed
-or pushed.
+The remote refs were fetched before this audit. Two new candidate branches
+have now been pushed: the complete revision branch to the private repository
+and the sanitized snapshot to the public repository. No existing remote
+branch was overwritten or history rewritten.
 
 ## Worktree preservation
 
@@ -26,7 +28,7 @@ or pushed.
 |---|---|---|
 | `/4T/CXY/MV-Painter` | `codex/scientific-validation-v3-20261002`, `5c2c8829` | Preserved untouched. It has 7,212 changed entries, including about 11 GB of staged v3 artifacts and in-flight audit edits. The full artifact checksum manifest passed 50,844/50,844 entries; this verifies file integrity against that manifest, not every scientific claim. |
 | `/4T/CXY/MV-Painter-1006-wt` | `codex/paper-1006-20261006`, `a9ac1459` | Preserved untouched; clean at inspection. |
-| `/4T/CXY/MV-Painter-1008` | `codex/cg-round2-1008-revision-20261008`, based on d59 | Isolated revision worktree. The verified 01549 source copy and Phase A records are retained. A curated v3 archive overlay is prepared below; the full unfiltered merge remains locally recoverable from the archive ref. |
+| `/4T/CXY/MV-Painter-1008` | `codex/cg-round2-1008-revision-20261008` | Isolated revision worktree. The verified 01549 source copy and Phase A records are committed with a curated v3 archive overlay. The full unfiltered merge remains locally recoverable from the archive ref. The complete branch is pushed to the private remote. |
 | `/tmp/MV-Painter-evidence-closure` | `codex/evidence-closure-audit-20261005`, `7e659c7e` | Preserved as an older evidence snapshot. |
 | `/tmp/MV-Painter-human-confirmatory-20261007` | `codex/human-confirmatory-analysis-20261007`, `86292c8b` | Preserved with its three in-flight edits; not used as paper-facing authority. |
 | `/tmp/MV-Painter-v3-publish` | `codex/scientific-validation-v3-20261006`, `12da08c7` | Preserved as a prior v3 snapshot. |
@@ -100,8 +102,11 @@ is rewritten.
 
 ## Merge and release boundary
 
-The candidate archive and source/audit package are prepared locally. No
-remote branch has been changed yet. The public candidate avoids adding the
-four participant-level CSVs and does not rewrite existing public history;
-existing public refs still contain those files. The other conflicting
-branches remain separate pending artifact-level authenticity review.
+The private candidate is pushed at
+`mvpainter/codex/cg-round2-1008-revision-20261008`. The public sanitized
+candidate is pushed at
+`origin/codex/cg-round2-1008-public-sanitized-20261008`; its parent is
+`12da08c7`, before the four participant-level CSVs were added. Existing public
+refs still contain those earlier files. Neither push rewrote an existing ref.
+The other conflicting branches remain separate pending artifact-level
+authenticity review.

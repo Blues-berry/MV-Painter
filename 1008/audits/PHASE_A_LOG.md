@@ -28,8 +28,9 @@ Base: `d59c4606ad54239bf4df4f20067bcc54989404f7`
 
 - No manuscript, supplement, or reviewer response drafting.
 - No canonical evidence files were edited.
-- No manuscript or canonical evidence edit and no remote push yet. No existing
-  public history was rewritten. The unfiltered local merge commit is
+- No manuscript or canonical evidence edit. The private revision branch and
+  sanitized public candidate were pushed as new refs; no existing public
+  history was rewritten. The unfiltered local merge commit is
   `eb68d6ce593e374ef73bf633a00339f23f33fb81`, preserved at
   refs/archive/validation-v3-unfiltered-eb68d6ce.
 
