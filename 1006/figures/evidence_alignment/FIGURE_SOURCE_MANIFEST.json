@@ -1,0 +1,155 @@
+{
+  "created_utc": "2026-10-06T13:27:15.623717+00:00",
+  "status": "HISTORICAL_ALIGNMENT_FIGURES_SOURCE_CHECKED",
+  "manuscript_edited": false,
+  "fresh_c_used": false,
+  "fresh_d_started": false,
+  "human_stimuli_selected": false,
+  "results": {
+    "fresh_b_tradeoff": {
+      "N_per_contrast": 150,
+      "contrasts": 4,
+      "points": 600
+    },
+    "historical_campaign_c": {
+      "N": 300,
+      "input_hash_matches": 300,
+      "status": "PASS_SOURCE_ROWS_RECONSTRUCTED"
+    },
+    "fresh_b_texture_heterogeneity": {
+      "N": 150,
+      "rho_fg_psnr": -0.5379563536157163,
+      "rho_fg_lpips": 0.6651940086226055
+    },
+    "mvadapter_interface_boundary": {
+      "N": 98,
+      "cells": 15,
+      "bootstrap_interaction_p": 0.6523,
+      "exploratory_wald_interaction_p": 0.10122844242281842,
+      "exploratory_wald_holm_p": 0.30368532726845526
+    },
+    "mvdiffusion_interface_boundary": {
+      "N_per_pair": 75,
+      "pairs": 5,
+      "metrics": 2
+    }
+  },
+  "figures": [
+    {
+      "path": "1006/figures/evidence_alignment/fresh_b_gt_texture_complexity_heterogeneity.pdf",
+      "bytes": 41372,
+      "sha256": "1aecd564373864fe2468a7f107c26ce1eb2affc4270538a09a17f9a68c272b44"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/fresh_b_gt_texture_complexity_heterogeneity.png",
+      "bytes": 218768,
+      "sha256": "36da8b9e681284bb531ec567340b64abaee9ec8c6315511db1d159d7e0ad475e"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/fresh_b_strategy_endpoint_tradeoffs.pdf",
+      "bytes": 49103,
+      "sha256": "0c313c1ed1d66510e9feb066130b7a7b5cf6625c39de26bb8269a200cc93523b"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/fresh_b_strategy_endpoint_tradeoffs.png",
+      "bytes": 378596,
+      "sha256": "ac591fed03a14587996387f9b4a08cd77443daea0968071bdfc45e25b236821c"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/historical_campaign_c_llh_linear_tradeoff.pdf",
+      "bytes": 36518,
+      "sha256": "20e7cc0e50c407d7ad7c20fe74573d178b9248007a62c2cf406922a7b685303b"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/historical_campaign_c_llh_linear_tradeoff.png",
+      "bytes": 183229,
+      "sha256": "f95925ba4ca952ffb6544115db7199494de179ddc928b9a6a28dc3fab48566be"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/mvadapter_fg_lpips_interface_boundary.pdf",
+      "bytes": 33812,
+      "sha256": "252511cb31c7b8d7ee676e40e1830449ea2405d2fd7a615b09e3baca4e456e39"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/mvadapter_fg_lpips_interface_boundary.png",
+      "bytes": 170721,
+      "sha256": "866fb25a5205aa44dbed468e658cd28d113ca947138e0f428e19a035eb6df3bc"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/mvdiffusion_interface_boundary.pdf",
+      "bytes": 32775,
+      "sha256": "bbbe915d3ac16a1a706b5d5a3830c4d3d52eaf7155f8541e5bffeb084a345447"
+    },
+    {
+      "path": "1006/figures/evidence_alignment/mvdiffusion_interface_boundary.png",
+      "bytes": 110477,
+      "sha256": "1b9de270b49c8ac869cbcced49df4f3a83a34af9d183cca2b69380ca0f6e7120"
+    }
+  ],
+  "derived_data": [
+    {
+      "path": "1006/data/derived/evidence_alignment/campaign_c_llh_linear_object_deltas.csv",
+      "bytes": 41273,
+      "sha256": "cc8684f41bebe0bc6ba0eb6ba6c8c82edabc7de388392ae45d33bda732e34dcb"
+    },
+    {
+      "path": "1006/data/derived/evidence_alignment/fresh_b_gt_texture_heterogeneity.csv",
+      "bytes": 20227,
+      "sha256": "0ecc5329d9194df570724fdc5aedb8eb9771a38eda340c580428d06b8d61befc"
+    },
+    {
+      "path": "1006/data/derived/evidence_alignment/fresh_b_strategy_endpoint_tradeoffs.csv",
+      "bytes": 107116,
+      "sha256": "2b5051af413e793cb4f7e39238544c663c5b2cd145cf8afe348684590c205721"
+    },
+    {
+      "path": "1006/data/derived/evidence_alignment/mvadapter_fg_lpips_cells.csv",
+      "bytes": 1845,
+      "sha256": "e0ea2293dfb540c330f61582367450909f1c27ca0d58178cee8f3f769ecfda8b"
+    },
+    {
+      "path": "1006/data/derived/evidence_alignment/mvdiffusion_interface_effects.csv",
+      "bytes": 2321,
+      "sha256": "b3ed489a12721745fa75ca6a0f69b4d53045fa1e5b7262d0961f9ed4dcb57503"
+    },
+    {
+      "path": "1006/data/derived/evidence_alignment/mvdiffusion_interface_object_deltas.csv",
+      "bytes": 122028,
+      "sha256": "77fe84e0f9d64e0ac2f1e7aa8e9bed22afef3359a528a1e9fd6035d58126063f"
+    }
+  ],
+  "sources": {
+    "1006/data/fresh_b/per_object_metrics.csv": "ce7ba03f6dcb9f1d275b389c633e23dc544404eeac4ddf090e90a11ad278e081",
+    "1006/data/fresh_b/SPEARMAN_TEXTURE_BOUNDARY_B.json": "a9c604096aecd691b164e73fa1573d414079fc33aab4f90d08ff5a947a985002",
+    "1006/data/fresh_b/paired_layer_llh_minus_lfm_exact.json": "9950dbed5b4edcc5e7a7d41e4216069a6638460fda8b3f1efe39907b220f433b",
+    "1006/data/fresh_b/paired_layer_llh_minus_layer_hll.json": "c49f3a0d9ee2e22139877d682d10295a07e02e903e49f40b72a3306ed1564b93",
+    "1006/data/fresh_b/paired_layer_llh_minus_a3_baseline.json": "b63588c8254c66ee454734f30e6a71e2066a5ced7b42908430d6a1495ffc6b67",
+    "1006/data/fresh_b/paired_layer_hll_minus_a3_baseline_exploratory.json": "ca904c7068baac3402eccf6b599955201131f8ae959a4fc610e1786aa3fdc4a6",
+    "1006/data/derived/campaign_c_llh_linear_direction_audit.json": "76f0f8c109925baba033f99f981fdc7635a28909b1b7bc4d209e7efbe74e03fa",
+    "1006/data/campaign_C_prior/pairwise_layer_llh_vs_gen_linear.json": "6330e6704506a5f411d95cb0f98148e460540380959606d89455373090f3d88d",
+    "1006/data/campaign_C_prior/HOLM_FAMILY_C.json": "10967da95eb3401c8218d79487bedebf4e206548cdf8615f1a4484b51a459ba7",
+    "1006/data/campaign_B1B2_prior/rows_shard0.json": "31423e624b28e6a527ecd044f66e6d639dc21b56983445ea687ee66e69ceef70",
+    "1006/data/campaign_B1B2_prior/rows_shard1.json": "b1dd6e6502e796e9b5649b4a827e4ca291e888259bcb15209c0541a536c0d3bd",
+    "1006/data/campaign_B1B2_prior/rows_shard2.json": "45f38952ce8a63d6ebda26331bf973242158496185cfac33b7ca61568c93b4b4",
+    "1006/data/campaign_B1B2_prior/rows_shard3.json": "c2fdce2f264e9b0f133a1bf7a6916574123da5704adaa1e55d0a9d6ee938072b",
+    "1006/data/campaign_C_prior/rows_shard0.json": "15a8011f0dfa172e00cbc7772ea2b40ab37536430be06854eee0c51b0fd0e0a6",
+    "1006/data/campaign_C_prior/rows_shard1.json": "e2be80bc9072d7b420dc35c53e77f6f3031bc879a2dc2505b73006e823f1e6c4",
+    "1006/data/cross_backbone/mvadapter/layermap_g_complete.json": "1f12fa344310efe612511d1c2dca9066a0c418e52ec9dbcba75045d674c75c68",
+    "1006/data/cross_backbone/mvadapter/AUDIT_INTERACTION_VALID_TEST_G_COMPLETE.json": "3e6d4a58f21bf9106a9696493d240210c0fa81d205a17cdc5ab66d181805df24",
+    "final/round2/mvdiffusion/results/MVDIFFUSION_PAIRED_BOOTSTRAP.json": "9a59f8424ab433c218b7892023b854d86088ae22b247196fe5483c620a2f0a5a",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_G-FL_75/per_object_metrics_ext.csv": "6a38635df741e270070cf840d499dd079746859fecaf4559d3d88ecaa6a3ae5b",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_G-LHL_75/per_object_metrics_ext.csv": "1320ca642fa670c50bf4ac404bf366244c45128cc385769603a7208c4f476a5b",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_G-LLH_75/per_object_metrics_ext.csv": "54feaba510e6cfae46f476fd594ff506d2f08b9055c3bf4d9ae580afd0970c4e",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_L-FIX_75/per_object_metrics_ext.csv": "47ba461fa144308bce3b676c7c7e47eb953274da041cfa2656103a5319dc1cf7",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_L-LHL_75/per_object_metrics_ext.csv": "999e16ac6cab47ab64351b26bde1c28097ce9b8e2560869d8ae6bda596e8d535",
+    "1006/data/cross_backbone/mvdiffusion/panels/panel_L-LLH_75/per_object_metrics_ext.csv": "5f57a4df1cd4648bd40aab2b521ded85dd562cf9c1be127f6b2cc00f866c56c2",
+    "1006/scripts/generate_evidence_alignment_figures.py": "cf16bd1e3b79619b7d1941827683b37b0454ffbee99226989080996c80b0a370"
+  },
+  "interpretation_limits": [
+    "Fresh B plots describe observed object-wise differences and do not make per-object significance claims.",
+    "Historical campaign C is retrospective across sibling campaigns; shared input hashes match, legacy config hashes are absent.",
+    "GT texture complexity is an exploratory association, not a decision threshold or causal boundary.",
+    "MV-Adapter and MVDiffusion use different interfaces and are not pooled or used for architecture-causal inference.",
+    "No comparison is declared an overall winner across metrics or cohorts."
+  ]
+}
