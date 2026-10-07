@@ -1,0 +1,24 @@
+{
+  "validation_id": "HUMAN_STUDY_AUTHORITY_GATE_20261007",
+  "classification": "CONFIRMATORY_HUMAN_PREFERENCE_ANALYSIS_WITH_DOCUMENTED_EXECUTION_DEVIATIONS",
+  "gate_status": "PASS_WITH_DOCUMENTED_EXECUTION_DEVIATIONS",
+  "checks": {
+    "source_commit_and_four_input_hashes": "PASS",
+    "frozen_protocol_hash": "PASS",
+    "960_response_row_joins_and_24_object_map": "PASS",
+    "37_valid_participants_meet_36_minimum": "PASS",
+    "eight_frozen_endpoints_and_holm_family": "PASS",
+    "aggregate_csv_matches_endpoint_provenance": "PASS",
+    "all_holm_adjusted_p_values_at_least_0_05": "PASS",
+    "classification_update_did_not_change_endpoint_estimates": "PASS",
+    "frozen_assignment_deviation_carried_from_hashed_prior_audit": "PASS",
+    "new_endpoint_analyzer_does_not_claim_private_key_access": "PASS",
+    "current_disposition_and_gates_consistent": "PASS"
+  },
+  "protocol_conformance": "DEVIATIONS_RECORDED; FULL_ADHERENCE_NOT_ESTABLISHED",
+  "separate_open_gates": [
+    "consent_ethics_documentation",
+    "participant_data_governance",
+    "continued_public_availability_review"
+  ]
+}

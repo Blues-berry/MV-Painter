@@ -3,10 +3,15 @@
   "decision_date": "2026-10-07",
   "classification": "CONFIRMATORY_HUMAN_PREFERENCE_ANALYSIS_WITH_DOCUMENTED_EXECUTION_DEVIATIONS",
   "classification_basis": "The study owner confirmed this is the confirmatory human study. Its four-comparator/two-question endpoint family and analysis were frozen before collection. This classification applies to the prespecified endpoint analysis; it does not assert full compliance with every frozen assignment or provenance requirement.",
-  "supersedes_human_classification_in": "evidence/audits/FINAL_EVIDENCE_AUTHORITY_LEDGER_20261007.json",
+  "supersedes_human_classification_records": [
+    "evidence/human_study/HUMAN_EVIDENCE_DISPOSITION_20261007_ZH.md (initial 2026-10-07 classification; current disposition is updated in that file)",
+    "evidence/human_study/HUMAN_STUDY_RECEIPT_AND_DEVIATION_SENSITIVITY_ANALYSIS_20261006_ZH.md (historical 2026-10-06 classification snapshot)"
+  ],
   "prior_classification": "COMPLETED_SENSITIVITY_ONLY_NOT_CONFIRMATORY_NOT_A_SCIENTIFIC_FREEZE_BLOCKER",
   "source_commit": "f5bad8a1e6ca4265c1823eaa26b2775313de4c96",
   "analysis_provenance": "evidence/human_study/HUMAN_STUDY_CONFIRMATORY_PROVENANCE_20261007.json",
+  "execution_deviation_audit": "evidence/human_study/HUMAN_STUDY_ANALYSIS_PROVENANCE_20261006.json",
+  "execution_deviation_audit_scope": "The frozen private-key assignment comparison (0/40 same-slot; 0/40 any frozen pattern) is carried forward from the prior audit because the key is not present in the confirmatory analysis package. The 2026-10-07 endpoint analyzer marks the private-key audit unavailable and does not independently claim this check.",
   "frozen_protocol": "evidence/protocols/HUMAN_STUDY_FINAL_PAIR_LOCK.md",
   "frozen_protocol_sha256": "8aa4ebc88cccda50705709d67f1ff0070236f4d3948242071785ce29ad9fb6ce",
   "sample": {
@@ -20,6 +25,12 @@
     "planned_endpoints": 8
   },
   "primary_result": "All eight point estimates exceed 0.5, but no endpoint survives Holm correction.",
+  "gate_verdict": {
+    "confirmatory_endpoint_analysis": "PASS",
+    "data_join_and_analysis_reproduction": "PASS",
+    "full_protocol_adherence": "NOT_ESTABLISHED; execution deviations are disclosed",
+    "interpretation": "Retain all prespecified endpoints as confirmatory results. Execution deviations bound randomization and stimulus-provenance claims but do not reclassify the observed endpoint analysis as sensitivity or exploratory evidence."
+  },
   "execution_deviations": [
     "0/40 uploaded per-slot task schedules match the frozen schedule, including matching against any frozen slot pattern.",
     "Left/right orientation is fixed within all 96 object-by-comparison cells; the aggregate orientation is balanced 12/12 per comparator across objects.",

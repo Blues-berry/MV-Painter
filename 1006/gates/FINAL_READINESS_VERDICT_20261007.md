@@ -5,6 +5,7 @@
 | Gate | Status | Meaning |
 |---|---|---|
 | Scientific evidence freeze | **YES — bounded claims only** | The four P0 evidence gates pass under the revised human-study policy. See `SCIENTIFIC_EVIDENCE_FREEZE_VERDICT_20261007.md`. |
+| Confirmatory human endpoint analysis | **PASS — documented execution deviations** | The owner-confirmed study retains its prespecified confirmatory status; 37 valid participants, all eight endpoints and the Holm family are analyzed. No endpoint supports an adjusted LLH preference advantage. Assignment/stimulus provenance limitations are disclosed and do not downgrade the analysis to sensitivity evidence. See `HUMAN_STUDY_GATE_VERDICT_20261007.md`. |
 | Manuscript rewrite | **AUTHORIZED; NOT COMPLETE** | Use a separate revision candidate. Preserve the submitted 01549 files and include the old C3 3AFC only within its original scope. |
 | Reviewer closure | **PARTIAL** | R1 claims are evidence-bounded, but the final manuscript and point-by-point response still need edits and a fresh reviewer pass. R2.1 contribution sufficiency remains an editorial risk. |
 | Scientific claim readiness | **YES, with explicit limits** | No universal winner, LLH human-preference advantage, direct reference-fidelity claim from the new export, dose-independent mechanism, seam gain, broad 3D/PBR claim, or cross-interface transfer law. |

@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Analyze the uploaded human-response export as a protocol-deviation sensitivity analysis.
+"""Historical first-pass analysis of the uploaded human-response export.
 
-This script deliberately does not modify or call the frozen coordinator analyzer.
-It reads the exact Git commit named below and applies the locked equal-object,
-two-way participant/object bootstrap estimator to the re-keyed export. The
-result is exploratory because the uploaded assignment/stimulus provenance does
-not match the frozen site package.
+The sensitivity-only classification emitted by this script on 2026-10-06 was
+superseded on 2026-10-07 after the study owner confirmed the confirmatory
+endpoint family. The row checks, numeric estimates, and execution-deviation
+audit remain archival evidence; this script's classification/status output is
+not current authority. Use ``analyze_confirmatory_human_study_20261007.py``
+and ``validate_human_study_authority.py`` for current analysis and gate status.
+
+This script deliberately does not modify or call the frozen coordinator
+analyzer. It reads the exact Git commit named below and applies the locked
+equal-object, two-way participant/object bootstrap estimator to the re-keyed
+export.
 """
 from __future__ import annotations
 

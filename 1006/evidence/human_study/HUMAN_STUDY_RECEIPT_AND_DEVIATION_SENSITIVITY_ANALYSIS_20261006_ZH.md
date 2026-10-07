@@ -2,7 +2,9 @@
 
 > **历史分类快照：** 本报告生成时将数据标为敏感性分析。2026-10-07 研究负责人确认该研究为确认性人评后，当前分类改为“预先指定端点的确认性分析，伴随已披露的执行偏离”。本报告的原始数据核验、统计结果和偏离事实保持有效；当前允许措辞见 [`HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md`](HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md)。
 
-> **治理裁决更新（2026-10-07）：** 本报告中的数据、偏离和统计结果保持不变；其“科学冻结仍为 NO / human gate OPEN”是当时的门槛快照，现已被 [`HUMAN_EVIDENCE_DISPOSITION_20261007_ZH.md`](HUMAN_EVIDENCE_DISPOSITION_20261007_ZH.md) 与 [`SCIENTIFIC_EVIDENCE_FREEZE_VERDICT_20261007.md`](../../gates/SCIENTIFIC_EVIDENCE_FREEZE_VERDICT_20261007.md) supersede。当前定位为敏感性分析且不阻塞受限主张的证据冻结。
+> **现行裁决（2026-10-07）：** 本报告是 2026-10-06 的接收、偏离和初次统计快照；其中“敏感性分析/非确认性”仅记录当时分类，已由研究负责人确认及 [`HUMAN_STUDY_CLASSIFICATION_OVERRIDE_20261007.json`](HUMAN_STUDY_CLASSIFICATION_OVERRIDE_20261007.json) 取代。当前按预先指定的八端点作确认性分析，并披露执行偏离。下方数据、映射、统计和偏离事实保留为审计材料，不据此降低当前研究分类。现行门禁见 [`HUMAN_STUDY_GATE_VERDICT_20261007.md`](../../gates/HUMAN_STUDY_GATE_VERDICT_20261007.md)。
+
+## 历史快照（2026-10-06；其分类已于 2026-10-07 supersede）
 
 日期：2026-10-06
 结论：**已收到数据；37 份答卷满足表内完整性/理解检查；仅作协议偏离后的敏感性分析，不关闭确认性 human-fidelity gate。**

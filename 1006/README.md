@@ -31,13 +31,14 @@ plot are built. Details and allowed wording are in
 Use `evidence/audits/FRESH_C_EVIDENCE_PACKET_INDEX_20261006.md` as the direct
 index to the frozen cohort, protocols, both integrity gates, analyses, 28-check
 direction audit, complete six-method object index, and final 20-group atlas.
-The current condition-level authority ledger is
-`evidence/audits/FINAL_EVIDENCE_AUTHORITY_LEDGER_20261007.json`; its integrity
-check is `evidence/audits/FINAL_EVIDENCE_AUTHORITY_LEDGER_VALIDATION_20261007.json`.
-The human-study classification in that dated ledger is superseded by the
-researcher-confirmed reclassification overlay at
-`evidence/human_study/HUMAN_STUDY_CLASSIFICATION_OVERRIDE_20261007.json`;
-all other ledger entries remain unchanged.
+The claim-level ledger at
+`evidence/audits/next_stage_20261006/CLAIM_EVIDENCE_AUTHORITY_LEDGER.json` and
+its audit are historical, pre-freeze evidence maps. Current release and freeze
+decisions are recorded in the dated gate files below. Human-study authority is
+tracked separately by `evidence/human_study/HUMAN_STUDY_CLASSIFICATION_OVERRIDE_20261007.json`,
+`gates/HUMAN_STUDY_GATE_VERDICT_20261007.md`, and the source-pinned
+reassessment; the override changes only the human classification, not the
+recorded deviations or any other evidence entry.
 The sign correction and its scope are recorded in
 `evidence/audits/DIRECTION_AND_SIGN_AUDIT_20261006.md`.
 
@@ -211,7 +212,9 @@ FRESH_CONFIRM_B C3−GFL comparison was selected after B outcome exposure.
 - `review/`: supplied reviewer comments, the original working response draft,
   and a page/line-mapped response candidate. Neither is an editor decision or
   proof that the unresolved novelty/fidelity concerns were accepted.
-- `gates/`: current release, reviewer-closure, and next-action decisions.
+- `gates/`: current release, reviewer-closure, next-action, and human-study
+  authority verdicts; the human gate's reproducible checks are recorded in
+  `evidence/human_study/HUMAN_STUDY_GATE_VALIDATION_20261007.json`.
 - `evidence/audits/ASSET_SOURCE_LICENSE_RECHECK_20261006.md` and
   `licenses/ASSET_SOURCE_LICENSE_RECHECK_20261006.json`: direct source-level
   API check for the two visual-panel assets whose redistribution terms remain
