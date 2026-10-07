@@ -1,6 +1,8 @@
 # Human preference study readiness audit — 2026-10-05
 
-**Status:** `PRECOLLECTION_PACKAGE_FROZEN`; `HUMAN_EVIDENCE_GATE=OPEN`.
+> **Historical precollection audit.** Its “no response CSV exists” status described 2026-10-05 only. The later 40-slot study is now analyzed as a prespecified confirmatory endpoint family with documented execution deviations; see `../human_study/HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md`. The original package-readiness observations below remain historical.
+
+**Historical status:** `PRECOLLECTION_PACKAGE_FROZEN`; `HUMAN_EVIDENCE_GATE=OPEN` at the time of this audit.
 The package is built and checked but has not been distributed. No response
 CSV exists and no participant has been contacted.
 

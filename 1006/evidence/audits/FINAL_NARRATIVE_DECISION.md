@@ -1,13 +1,21 @@
 # Final narrative decision under the acceptance addendum
 
+**Disposition update — 2026-10-07:** the scientific evidence freeze is now
+`YES` for bounded claims. The original 01549 3AFC is retained as complementary
+perceptual-preference evidence for C3/TCAS only. The later 40-slot LLH study is
+classified as a prespecified confirmatory endpoint analysis with documented
+execution deviations; none of its eight endpoints passes Holm correction.
+See `../human_study/HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md`.
+Final manuscript integration is recorded in the post-freeze candidate.
+
 3D update 2026-10-06: stored N=20/8 GLBs now have a sampler-conformant
 base-color evaluation. The results are mixed across FG-PSNR, FG-LPIPS, and
 CIEDE2000 and do not change the provisional narrative or establish a unique
 schedule winner. See `GLB_NATIVE_EGL_RENDER_REPORT_20261006.md`.
 
-**Current status: provisional.** The human study remains open, so this file is
-not the post-closure final narrative. The B pre-unblind inventory, practical
-reference, multiplicity lock, and narrative switch rules were recorded after
+**Current status: evidence-frozen, manuscript integration pending.** The B
+pre-unblind inventory, practical reference, multiplicity lock, and narrative
+switch rules were recorded after
 earlier B outcome exposure; they are retrospective safeguards and do not
 restore blinding.
 
@@ -53,15 +61,24 @@ non-additivity remains unresolved. **Do not claim:** a validated equal-dose
 Layer × Time mechanism, necessity of a full 2D control law, or cross-backbone
 transfer.
 
-### 2. Keep the human study as an open evidence gate
+### 2. Keep human evidence in its original scope
 
-The visual audit found color/material mismatch in 18/24 panels and fine-detail
-loss in 21/24; no stable visible schedule winner. The rebuilt offline study
-has four pairs (LLH vs GFL/GFH/GC3/registered endpoint-matched `gen_linear`),
-40 fixed slots, 24 comparisons per participant, an end-of-study
-comprehension check, and a minimum of 36 valid completions. It has no
-responses and has not been distributed. This is a high-value open evidence
-gate, not evidence already obtained.
+The pre-outcome visual audit found color/material mismatch in 18/24 panels and
+fine-detail loss in 21/24; it shows failures and no stable visible schedule
+winner. The submitted 01549 3AFC remains complementary preference evidence for
+the original C3/TCAS and two fixed-scale conditions: C3 received 58.1% of
+overall-quality votes (reported 95% participant×object bootstrap CI
+[50.1%, 65.8%]), while the baselines lead on texture naturalness and shape
+consistency, respectively. It supports a preferred balance within that study,
+not direct reference fidelity or LLH preference.
+
+The later 40-slot export is analyzed separately as protocol-deviation
+sensitivity evidence: 37 field-valid respondents, all eight point estimates
+above 0.5, and no Holm-significant endpoint. It cannot establish an LLH
+preference advantage, equivalence, non-inferiority, or reference fidelity.
+No new confirmatory human collection is required for the current bounded
+claims. Consent and participant-data handling remain separate submission
+checks.
 
 ### 3. Let B bound the timing claim
 
@@ -118,9 +135,8 @@ confirmation.
 
 Accordingly, describe measured residual and depth allocation, keep timing
 contrasts narrow and secondary, and retire any single-schedule superiority
-claim. `NARRATIVE_REEVALUATION_REQUIRED=YES` is addressed provisionally here;
-final ranking remains open until human evidence is collected or formally
-waived. The corrected N=20 base-color result is a separate bounded endpoint:
+claim. `NARRATIVE_REEVALUATION_REQUIRED=YES` is addressed for evidence scope;
+manuscript integration remains pending. The corrected N=20 base-color result is a separate bounded endpoint:
 the old CPU metrics remain historical, four no-UV assets remain excluded, and
 the new evaluation is not full PBR or human evidence.
 
@@ -152,5 +168,8 @@ justified.
 - Report MV-Adapter and MVDiffusion separately within their tested scale
   ranges and interfaces; neither broad transfer nor causal architecture-
   dependent scheduling has been established.
-- Do not equate PSNR/LPIPS changes with faithful material or texture
-  reproduction until the human gate is completed.
+- Do not equate PSNR/LPIPS or texture-variation changes with direct material
+  fidelity. Keep the old 3AFC result restricted to its original C3/TCAS
+  comparison. Report the 40-slot LLH study as a prespecified confirmatory
+  endpoint analysis with documented execution deviations; none of its eight
+  endpoints survives Holm correction.

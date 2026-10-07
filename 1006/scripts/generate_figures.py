@@ -102,7 +102,10 @@ for ax, metric, title, margin in [
     else:
         ax.axvspan(-margin, margin, color="#999999", alpha=0.10, zorder=0)
         ax.text(0, -0.62, "registered ±0.01 practical margin", ha="center", va="top", fontsize=7, color="#555555")
-    ax.set_xlabel("First condition − second condition")
+    if metric == "fg_psnr":
+        ax.set_xlabel("First − second; positive favors first (dB)")
+    else:
+        ax.set_xlabel("First − second; negative favors first (lower is better)")
 fig.suptitle("Paired object-bootstrap estimates in FRESH_CONFIRM_B (N=150)")
 fig.savefig(FIG / "b_primary_contrasts.pdf", bbox_inches="tight")
 fig.savefig(FIG / "b_primary_contrasts.png", dpi=220, bbox_inches="tight")

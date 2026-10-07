@@ -1,6 +1,15 @@
 # Adversarial evidence screen — before manuscript rewrite
 
-Update 2026-10-06: the GLB-native N=20 base-color evaluation has closed the
+Update 2026-10-07: the four P0 evidence gates are closed for bounded claims.
+The original 01549 3AFC is retained as complementary perceptual-preference
+evidence for its original C3/TCAS conditions. The uploaded 40-slot study is
+classified as a prespecified confirmatory endpoint analysis with documented
+execution deviations; no endpoint survives Holm correction. See
+`../human_study/HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md` and
+`../../gates/SCIENTIFIC_EVIDENCE_FREEZE_VERDICT_20261007.md`. This update does
+not close R2.1, finish the manuscript rewrite, or clear direct system upload.
+
+Historical update 2026-10-06: the GLB-native N=20 base-color evaluation has closed the
 stored-renderer conformance issue. Its endpoint tradeoff does not establish
 a unique 3D winner. The human study, strict N=24 scope, and final post-rewrite
 review remain open; the screen below is still preliminary.
@@ -20,10 +29,10 @@ universal timing signature, or unique schedule winner is supported.
 | Is the 2D interaction established? | A2 is a corrected native-dose discovery map. A3b misses dose balance and has 0/2,250 rows in three-layer common support. | Keep A2 as discovery and A3b as `PARTIAL`; no dose-independent interaction claim. |
 | Does B show a practically meaningful timing benefit? | LLH−LFM-EXACT is inside frozen practical margins. HLL−LLL is inconclusive on FG-PSNR and points toward LLL on FG-LPIPS. Realized residual norms differ. | Report contrast-specific effects and CIs; do not claim the full early/late signature. |
 | Is LLH the unique winning schedule? | Registered `gen_linear` is not detectably worse on primary FG-PSNR; B generic extension is same-cohort, post-lock sensitivity. | Retire the unique-winner claim. No retuning or FRESH_CONFIRM_C winner search. |
-| Do images establish texture fidelity? | Manual review found color/material mismatch in 18/24 panels and detail loss in 21/24. No human responses exist. | Keep C11 open; the locked human study includes the endpoint-matched linear competitor. |
-| Does the bake establish practical 3D quality? | Stored GLBs now have a sampler-conformant base-color evaluation for N=20; LLH endpoints are mixed, four no-UV objects remain excluded, and no human answers exist. | P1-9 is closed for the stored N=20/8 outputs. Keep the 3D claim bounded, and do not claim a unique winner, full PBR, or human fidelity. |
+| Do images establish texture fidelity? | Manual review found color/material mismatch in 18/24 panels and detail loss in 21/24. The prespecified human study yields 37 valid respondents; its eight confirmatory endpoint estimates include no Holm-supported LLH preference. The assignment schedule and stimulus hashes cannot be matched to the frozen site. | Report the planned endpoint family with execution deviations; do not claim adjusted LLH preference superiority or absolute material fidelity. |
+| Does the bake establish practical 3D quality? | Stored GLBs now have a sampler-conformant base-color evaluation for N=20; LLH endpoints are mixed, four no-UV objects remain excluded, and human judgments cover fixed 2D outputs only. | P1-9 is closed for the stored N=20/8 outputs. Keep the 3D claim bounded, and do not claim a unique winner, full PBR, or human validation of 3D quality. |
 | Does MV-Adapter prove architecture-dependent scheduling? | Its corrected global interaction is unsupported in the tested 98/99 cohort. Its intervention geometry differs from the primary backbone. | Preserve it as a bounded boundary finding, consistent with intervention-specific response surfaces; do not present it as a matched causal architecture test. |
-| Is the human stop rule vulnerable to interim stopping? | The four-pair package fixes 40 slots, requires 36 valid completions, has no replacement slots, and has no responses. | Protocol-side control is frozen. Do not collect until the recruitment/return channel is arranged; analyze only after all slots resolve. |
+| Is the human stop rule vulnerable to interim stopping? | The four-pair lock fixes 40 slots and requires 36 valid completions. The supplied export represents all 40 slots and yields 37 valid responses, but the coordinator registry remains pending and the uploaded assignments do not reproduce the locked schedule. | Report the confirmatory endpoints with execution deviations. Keep exact lock adherence and stopping-rule closeout as unverified; do not claim a fully protocol-adherent execution. |
 | Can all final paper artifacts be reproduced? | One full A2 condition and compact statistics have clean-clone evidence; paper-wide reconstruction and post-rewrite audit remain open. | Keep reproducibility partial until the complete reconstruction passes. |
 
 ## Independent technical challenge: UV and GLB rendering

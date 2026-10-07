@@ -1,5 +1,7 @@
 # Human study final pair lock — 2026-10-05
 
+> **Historical lock, retained for provenance.** The uploaded response export did not reproduce the exact locked assignment schedule. On 2026-10-07, the study owner confirmed that it is the confirmatory human study; the current classification is a confirmatory analysis of the pre-specified endpoints with documented execution deviations, not a fully protocol-adherent package reproduction. See `../human_study/HUMAN_STUDY_CONFIRMATORY_REASSESSMENT_20261007_ZH.md`. The original assignment, randomization, and stopping rules below are unchanged.
+
 **State: pre-collection lock; B had already been exposed before this file was
 written.** This is the final human-study pair and analysis specification for
 the unlaunched local package. It does not restore B blinding. After the first

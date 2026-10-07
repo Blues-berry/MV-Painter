@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "decision_date": "2026-10-07",
+  "classification": "CONFIRMATORY_HUMAN_PREFERENCE_ANALYSIS_WITH_DOCUMENTED_EXECUTION_DEVIATIONS",
+  "classification_basis": "The study owner confirmed this is the confirmatory human study. Its four-comparator/two-question endpoint family and analysis were frozen before collection. This classification applies to the prespecified endpoint analysis; it does not assert full compliance with every frozen assignment or provenance requirement.",
+  "supersedes_human_classification_in": "evidence/audits/FINAL_EVIDENCE_AUTHORITY_LEDGER_20261007.json",
+  "prior_classification": "COMPLETED_SENSITIVITY_ONLY_NOT_CONFIRMATORY_NOT_A_SCIENTIFIC_FREEZE_BLOCKER",
+  "source_commit": "f5bad8a1e6ca4265c1823eaa26b2775313de4c96",
+  "analysis_provenance": "evidence/human_study/HUMAN_STUDY_CONFIRMATORY_PROVENANCE_20261007.json",
+  "frozen_protocol": "evidence/protocols/HUMAN_STUDY_FINAL_PAIR_LOCK.md",
+  "frozen_protocol_sha256": "8aa4ebc88cccda50705709d67f1ff0070236f4d3948242071785ce29ad9fb6ce",
+  "sample": {
+    "represented_slots": 40,
+    "valid_participants": 37,
+    "excluded": {
+      "failed_comprehension_check": 2,
+      "incomplete_or_missing_choice": 1
+    },
+    "objects": 24,
+    "planned_endpoints": 8
+  },
+  "primary_result": "All eight point estimates exceed 0.5, but no endpoint survives Holm correction.",
+  "execution_deviations": [
+    "0/40 uploaded per-slot task schedules match the frozen schedule, including matching against any frozen slot pattern.",
+    "Left/right orientation is fixed within all 96 object-by-comparison cells; the aggregate orientation is balanced 12/12 per comparator across objects.",
+    "The export does not record randomization seed, question order, raw comprehension answers, or a frozen-stimulus image-hash crosswalk.",
+    "A coordinator complete/withdrawn closeout log and ethics/consent documentation were not provided in the evidence package."
+  ],
+  "allowed_claim": "Report the full pre-specified set of relative 2D human-preference endpoints as a confirmatory analysis with execution deviations; conclude that no multiplicity-adjusted LLH preference advantage was detected.",
+  "not_supported": [
+    "LLH preference superiority",
+    "equivalence or non-inferiority versus generic linear",
+    "absolute reference-material fidelity",
+    "unseen-view, baked-3D, seam, or full-PBR quality",
+    "full protocol adherence or independently verified participant-side stimulus identity"
+  ],
+  "does_not_change": [
+    "The original 01549 3AFC remains scoped to C3/TCAS and its original uniform-scale baselines.",
+    "The scientific evidence freeze remains YES only for its bounded claims.",
+    "Reviewer closure remains PARTIAL and direct system upload remains HOLD.",
+    "Public release/retention of already-uploaded participant-level rows and consent/ethics status remain separate governance questions."
+  ]
+}

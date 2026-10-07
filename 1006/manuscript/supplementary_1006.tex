@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 \usepackage[margin=2.2cm]{geometry}
-\usepackage{amsmath,amssymb,booktabs,graphicx,caption,longtable,url,hyperref}
+\usepackage{amsmath,amssymb,booktabs,graphicx,caption,longtable,url,hyperref,float}
 \hypersetup{hidelinks}
 \graphicspath{{../figures/}{figures/}}
 \setlength{\emergencystretch}{2em}
@@ -177,7 +177,33 @@ MVDiffusion is a separate 75-object result on the unchanged SD2-depth compatibil
 
 \section{S8. Human preference and scope}
 
-No participant responses were collected for the current LLH comparisons. The frozen LLH study uses 40 fixed slots, 24 paired judgments per participant, eight endpoints, and at least 36 valid completions; its current response count is zero. The prior 01549 preference study compared different scale profiles and is not transferred to LLH, GLB unseen views, or material fidelity in this revision. The manuscript therefore makes no human-preference claim for current profiles. The response template and the frozen analysis/validation rules are included under \texttt{guides/} and \texttt{evidence/protocols/}.
+The original 01549 3AFC study is retained as complementary perceptual-preference evidence for its original conditions only. It included 24 participants and 30 objects; each criterion had 720 choices. As reported in the submitted study, the uniform-scale 1.25 condition received 46.1\% of texture-naturalness choices, uniform-scale 2.50 received 46.0\% of shape-consistency choices, and C3/TCAS received 58.1\% of overall-quality choices (reported 95\% participant-by-object cluster-bootstrap CI [50.1\%, 65.8\%]). This pattern supports a preferred balance among those three conditions, not universal superiority or transfer to LLH. The raw vote-level file was unavailable for an independent reanalysis; the reported counts and interval are therefore identified as results from the submitted 01549 study.
+
+We analyzed the prespecified 40-slot human-preference study of LLH versus GFL, GFH, GC3, and generic linear. The appearance question asked which output better matched the reference object's visible appearance, including color and material; the texture question asked about texture naturalness. Forty slots were represented. We retained 37 field-valid participants (two failed the recorded comprehension check and one response was incomplete), covering 24 objects and eight comparison-by-question endpoints. For each endpoint, judgments were scored as LLH choice = 1, comparator choice = 0, tie = 0.5; object means were equally weighted, and uncertainty was estimated with a two-way participant/object cluster bootstrap (10,000 resamples, fixed seed 20261005). The eight pre-specified endpoints formed one Holm family. Pointwise 95\% intervals are shown; the number of judgments is 222 per endpoint. This is confirmatory for the planned endpoint family, with the execution deviations below reported in full.
+
+\begin{table}[H]
+\centering\scriptsize
+\caption{Prespecified confirmatory human-preference endpoints with documented execution deviations. Values above 0.5 favor LLH descriptively; no endpoint survives Holm correction.}
+\label{tab:human_confirmatory}
+\begin{tabular}{llrrr}
+\toprule
+Comparator & Question & LLH preference [95\% CI] & Raw $p$ & Holm $p$ \\
+\midrule
+GFL & Appearance match & 0.591 [0.459, 0.718] & 0.174 & 0.790 \\
+GFL & Texture naturalness & 0.647 [0.528, 0.755] & 0.012 & 0.098 \\
+GFH & Appearance match & 0.567 [0.447, 0.689] & 0.272 & 0.815 \\
+GFH & Texture naturalness & 0.603 [0.488, 0.714] & 0.074 & 0.442 \\
+GC3 & Appearance match & 0.587 [0.464, 0.709] & 0.158 & 0.790 \\
+GC3 & Texture naturalness & 0.632 [0.521, 0.741] & 0.018 & 0.128 \\
+Generic linear & Appearance match & 0.540 [0.412, 0.667] & 0.536 & 1.000 \\
+Generic linear & Texture naturalness & 0.539 [0.420, 0.653] & 0.511 & 1.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Although all eight point estimates exceed 0.5, none provides multiplicity-adjusted evidence that participants preferred LLH. In particular, the generic-linear intervals cross 0.5; absent an equivalence margin and with the intervals spanning both directions, these results do not establish equivalence or non-inferiority. The four comparisons and eight-endpoint analysis were specified before collection, so we report the endpoint analysis as confirmatory with documented execution deviations. None of the 40 uploaded task schedules matches a schedule in the frozen assignment package; left/right orientation is fixed within all 96 object-by-comparison cells across participants, although LLH is left for 12 and right for 12 objects in each comparator; and the export lacks a randomization seed, question order, raw comprehension answers, and a stimulus-alias-to-frozen-image hash crosswalk. The response export also lacks the coordinator's completed/withdrawn closeout log and ethics/consent documentation. These deviations limit verification of randomization, stimulus identity, stopping, and study governance; they do not justify discarding the prespecified endpoints or selectively retaining results. The study measures relative judgments of fixed 2D outputs and does not establish absolute reference fidelity, unseen-view quality, or 3D-bake quality.
+
+The aggregate endpoint table, forest plot, analysis provenance, source-commit record, and executable analysis script are included under \texttt{evidence/human\_study/}. The four anonymous participant-level CSVs were previously uploaded at the source branch and commit recorded in the provenance file; this package does not copy them again. Their continued public availability and the missing consent/ethics documentation remain separate data-governance items.
 
 \section{S9. Provenance and supersession}
 

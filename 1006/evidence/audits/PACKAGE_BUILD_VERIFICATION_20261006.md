@@ -61,3 +61,22 @@ The build outputs, package scripts, and generated data are enumerated in
 `source_inventory.json` and checked by `SHA256SUMS.txt`. Run
 `python 1006/scripts/build_source_inventory.py` after intentional package
 changes to refresh both records.
+
+## Confirmatory human-study revision rebuild — 2026-10-07
+
+After the human-study classification update, both manuscript sources were
+rebuilt from the current candidate with the same commands above. The main
+manuscript compiled to 8 pages (275,601 bytes); the supplement compiled to 12
+pages (27,175,980 bytes). Text extraction confirms that main Section 4.5
+reports the prespecified human endpoints with execution deviations and that
+Supplement S8 contains the complete eight-endpoint table, deviation account,
+and data-governance limitation. The forest plot was separately checked: the
+vertical 0.5 reference, pointwise intervals, and endpoint labels are visible.
+
+The confirmatory reanalysis reproduced 37 valid participants and all eight
+endpoint estimates from the public source commit; its table is numerically
+identical to the earlier sensitivity calculation. None of the eight Holm-
+adjusted tests is below 0.05. The package inventory was refreshed to 477 files
+and `SHA256SUMS.txt` was regenerated after the manuscript, analysis, and gate
+updates. LaTeX returned success; the non-fatal layout warnings from the
+template remain.
