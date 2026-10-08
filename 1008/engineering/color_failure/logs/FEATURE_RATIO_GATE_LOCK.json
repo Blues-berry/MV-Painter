@@ -1,0 +1,637 @@
+{
+  "locked_from_baseline_before_proposed_generation": true,
+  "rule": "per-depth tau = 95th percentile of GFL actual correction RMS / pre-adapter feature RMS across all frozen objects and 50 steps",
+  "target_metrics_used_for_calibration": false,
+  "tau_by_depth": {
+    "deep": 1.4753147840499878,
+    "middle": 0.988596761226654,
+    "shallow": 0.26088894158601755
+  },
+  "sample_freeze_sha256": "edeb850befaa71dafffb1ece0da3299c471ccefd3b6f42d8088900bffb5ec26c",
+  "observer_logs": [
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/c76ac44df995482185077da81939b306.json",
+      "sha256": "c5b5c6d44a29d88d8f513cb76aaf2b10260cb763f8bea33169bc8378090f175c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/c76ac44df995482185077da81939b306.json",
+      "sha256": "23ed09e426228507e9911aa3ba411955a1007936c2a9202f50b98cf5e39ed6f4"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/c76ac44df995482185077da81939b306.json",
+      "sha256": "114494bc794f58ab79bf41492da9cf971214cde9efe5a7a856d150fe52adb9d4"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/c76ac44df995482185077da81939b306.json",
+      "sha256": "6e325141bb787402392441a10ddd4f8936ab6fdcf95ad60a717c4235119fb78b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/c76ac44df995482185077da81939b306.json",
+      "sha256": "0e61c823213398e3c942845625a9644f1cc35c4bc64a2b28edc039bf57568220"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/c76ac44df995482185077da81939b306.json",
+      "sha256": "bacf2099321a2b241cc0693619e761b4d7638ccb6a32ea9c100c66efb96dba79"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "8c37985f80ada90fd8f5a93c33aeb1ef890ab022fef36a0a9cfa3a6b2eb1b0ea"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "9dc33bed890c97d418ce92bb8c8d3892b32f70b7535a8c351544821c39b8ea64"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "e515f310a4205e5e29c0db3dcff97b17df2890709ab5b6ecaa394f85798ba73b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "36ecb2ba4ae2d7dc8c3f290b39c75ab1343c036ffb51d605c43bb6d4d71b7afd"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "84f7f8b2a744c0ac8b4ea68bb68f44ce74348ad7c861cfba97c956773e9fd2f8"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/8bde8eb73dcb45c6a3880e85e7b3694b.json",
+      "sha256": "c25d2fa17cdc98198c1f8d9ccab4584dd57235c0339c3ea5843cadb387050082"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "674b14efbd95b556b9d707ec1b5f44c5baacddcf3437dfb7638b2d31e939e33d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "e9a6a4c680a0086d5182de1704b3a9f3cdbfe574c7a8f10766240d2ba3e6a7e6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "0a0a7eeed943af1062fcf805c8b0c3ad4f61a6075addc734bc9053b9144972ca"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "0c664ce13f380c7fb3003c54bc4a8fb2cb6e76282eefc5f6f1153eaa48809f90"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "cb8d0d22b1259db39b0237ddb5361e97ea8811d0236a43b9da89b23287b1a1ae"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/ca887928bb664bcba121219f0af41293.json",
+      "sha256": "91bc36633a0ae7d85bd9f6577e52ad6e7d75211f762e6346b8e801ae953e51b8"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "709fcd1dbd65c8f4f6de7d6b8efac685139733fdf6a953ee9ce7ad2f630a396c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "f29461e9584b064055216e8c7498aabb543d95f7cc38f13db46de2065e8097ae"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "74158f699b73374327485c177bca3affe8ddc87fa158defaf2e5a85b018d52b2"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "c7e1236d9ced731965d8e2928757035bea236635ebf470203cae9f88f46d78db"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "caaacd03b8996135303b91ebd7ac696274afe321808dd66bab9bc9e3faefe28f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/94168bf0403d4372ace896c9ff824f58.json",
+      "sha256": "275c2046ab67cfc5a6c3bacb3b6fcf17e96c676d2b3ea2a48f5fa006caa5d0c2"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "c46baf083eb6f308e860b839c5f592394af751c46671ab25b682d8eb0c4cde91"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "0de9c7313c5daceb865587faf0e68a859f7189733baa316f848511ee8017bcb2"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "b7595131fc0601e84239b7c741db515214d54ddb96a1fe985902ca122199c7bc"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "55704453d1c4913eeafbd66a767e85deff86f42002fb560e153ec004d9c365e7"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "29289c6af31ab48178e2a8c2e229af8934e2570c09a5f94e3539fec8d222a152"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/d0e116a62bfc4cdd9edf60671073b306.json",
+      "sha256": "8322a734a455df2c2e69cb2987769b0ff5fd589142e537367ba37172ce0ce68b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "2431e0d6d284e431e5715ccec70a6968e046b33053a3c3286cb9851638fb6e75"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "2733a911050f6d4f7face8ef38b482dc8ad8e3d86c248fd736c705fa94cecc59"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "aa24952379c8bf450c59e0465a0f3f3d52e6abc6f53c4934282f74c270aad22d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "73066ea622f3b2080405a9c3a01de5f36f0dc3ec4d251be08b35efaeca888b1b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "b5b67f2c2a587239d82800d12f5e8dff1735293c4f8776b2e6d5ca4d007e0989"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/033fc9d942504cb9b571dc088f6e68f2.json",
+      "sha256": "d6c900e4d400963ee22b894daa600a96ee128ec6b259f4f08f318492f85886b9"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "90c4cf0c4c2da8cd00791dbde663aa9e54f54b9a74bb9598ea0c46f6956e0d89"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "07e2b32ce319e795a2922244e938d63aa618a980629dae7c774cb1f0dc4717a0"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "1d9f9de695b98b3a5cc2925adf637681d2fb5d52681321be7b2e32c8dfc2957b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "cf5bd9dac69f6e1af24f831d2776112cae19a51e0bf0e63a68c36991f215bee3"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "c5e380f96f6f3a192704d4ac5884ff877f8c077b6b72cadecaa9ccf68f3f54a0"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/3c83796ca5f043f1beb8044dd2e51a0d.json",
+      "sha256": "7cd5b50d764b36014ed9910b33e823994d622e3229d3f31863a3c7d7e669cc9c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "d735a829d29681f2de430eb0a0c24d36c06f6a4b4c47b8cb57ade420a794cf33"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "a1ac3340e5632fc24b4186bc153b2da2ad1ddbc72f7aeca9282c10436cfe2f79"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "82868ebe4072223d108b548d523a1b8826cfdac5f790cdde3ef86ee4e732671a"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "eb4b84ef48cec31fdd17e0a01e6dcb2b96a1f2c35413e785ad3624ded90a3047"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "e41b64d74999ae9336c12a79489f4a5f5ee776616712df26267fa56ddf4a66ed"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/0f1a74942b204c80a657fefe10e13050.json",
+      "sha256": "e8b75152fb87aa183dcc90f640ef84db96ab05b75e792387b9fc643c63055e73"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "5d1879fac5877dee3487bce1daf160fd64e037f8c701a8db770a96b69e3d1eb4"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "400051405c2d54bfc06efd92274ab2dd5b3e94549389c609df42ce67c46aa8b6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "230bee844ef4b743ae5151bfcdc9ea634979519844e8cc83811918b76c8cfb89"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "d95657588751d27c33f92acbaeee1997a215dcadb526791a0b3810d7c657deee"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "fae7e871927cfa9b880c2ab090427efaa54cb1c543f80d397ee52fdb10140eee"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/0c8e1199b7b64ad2ac1c6ff784139dec.json",
+      "sha256": "0aeb3231e8c49a8f0db25990e9e8d2a41dabfe6ad65b83b8786ea0df0854f331"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "16cb3541ab2dc358b4c89d8e4b1c5d19cc9635ce05db42c2cf1850121aaa4e35"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "09a8d85afb9f1016a94ce1afb4c04f995cbb96da6d9232a680497eeb15a7128c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "48031635c0aba42fe5a440d0c70246a42300aa537080b076e25ef7218c13a02d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "254a708167442dc2ad073600bcee6d3742cffebeeb6933d2a5f9678bf1744b90"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "388bd36626672aba8d3c35fa79d011df432cc81ca5b9869bac75f1258b565b8d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/1d1bcb173c28475ba351eb604c7135dc.json",
+      "sha256": "ded1bd96480b39fb9ad5ee137565963e6d099b080fe01d53ef44ef4a261bb121"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "6e55c3b6f86b269420890ff9a0ad2853c5342c25a4c47c80825129f8a7e4b04f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "d7cfc4aec684be4f4f6bd88036f52b3033fbcb12546ee2a555cbe729841e7c0e"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "f5caea63df709eaaa713fcac94055a1c385b4146c9f469972abfbd7430b0048e"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "650e6b8a531ee91b110108140ff2f845e345b587f4934c4666de5b4d6589efc5"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "56105468072043f5d131756bdfe94e5c67859f1ede610354a610c95ff5e13a41"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/85a7df80b79a4ba9b8c3a175de0dbce6.json",
+      "sha256": "a9e06e29978857910faf7635520a036b0370e072d4efc110fd4e8e0423ebdd26"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "cf99a2490f323d41d65bebdc00b858d32a95c916d37703fb7081bb7b6d7439de"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "2c096a37b100dcecd447196efcef246c5db164eecf094e5472de3efc67269178"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "4873104b518cb97306c41b3a18ac8638634b5de3ba41cf3b7ea2ae696e6506c6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "b54c6e19c1e70d9d916713d8981099a26f6c7bbe99a8fa7af7224666cd325d64"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "a8f66b17a95b5a45681cd1e69e93b8738476f9f531393075751b9505ea384238"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/dd5ead807a5b4630b1feb802f7b0276c.json",
+      "sha256": "9b317babb97f2e52986d5f214156153edc988ef6820e5730f5c8c008173d4966"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "d3889223bff909d391d94c9cc0779a55306ea034ee324fc8857c13760d20ed60"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "430a6252d16628df72672800568a6118c5ffd8acc285d3903ab5643f8871c1dd"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "c8bcba5178bfd4b5a1b487f2a56d1bde7acd794d161072db40d3639138d9fef6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "6784800d1c84ec81df1cf4906c83f7cf69930407aab6dd352256240ef47f11c7"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "5bc552cbe87cd1d14138f733f3027caca4f40da9f1f09b809c16b723021833d3"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/f6979d7ff8e54c4daf00fee46f09a139.json",
+      "sha256": "b877c336bfe0134c27ae7285f86967401d98a4116ec8ed9bbec2cc9501e5acce"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "3e70d81a247b5094a3b263603f9ada97260f5ba21825205bd91d84cac846370c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "fc9a45ef3c21ab557dddfa887c798eaa5654d4e29a3688ebac77b388af0fe120"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "a2a0e068d640e07e61a1be1c4aec194383cbfeae00c14a4698b4b6b71d553ef6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "486b2f79a61ca5728893b6befb18e3eb276236beb434310cb5c650b8117f0f70"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "4a1367fed4b6b14e60fdab571c445522afc3ecfbf5ac571f35f6806140bdee6b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/b09220089d0e486bb1d11a5fd80d8fd3.json",
+      "sha256": "a2551dee82c2f804e0c6cfc58c8fbf5a6322e888b327f9a4a049cd5eeff86b89"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "b5dd87835e9c237241d807ad339f9996ed7324e0bf99243701040d503dcced4b"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "4ff1901b996b2fc2db67ee1b07850da42f7ddba0235f9f1e19f9bc69eb1e31eb"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "60e0ba0f4bc06eb7899071292ce8674c8aac9491d5e3f4a096bf48a813e7665c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "4c7337e151b9fe3ba3dc588979aa74503d33910e7fb1d0e14147c79912451cc5"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "040329d5ed82f16e6d9818288750b2aa5a4c450fea6d885e3e8c3276b36843d1"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/ebc5938fe6a04b5bbd5312fa2abb9ba5.json",
+      "sha256": "32acd67a69a93b979c2212d0cb0abf5c20dee940f570a1a6855607dd78b6c174"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "5b861ffcbed5ef8290cdb313d70930fd60e1faa8f88a0865b32c61f055bb54b6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "9bb9cd215dd451d96caa7a23955ec5fa892483d52e223bfc7b7e79f7ff25bf6e"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "3ba07ada94357471486a7f4b7ea27b1502edbecfe406d7299be3cc926f502fe3"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "82e4993223f4209ddfb71dd2e0ef60a409971af9cf7c4e1b418c07607ab2cdaf"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "59845a981dcd0cacc26395cb33725c4a28a43f6a2fa388c16cd2bdfe90705527"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/0571e6db30c84b1593bc55a8e145a430.json",
+      "sha256": "beb11f88a02d3c6473dbc4b52ad9bfd3a9f2ef250a3c430d7d2a8d680760d54c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "c867658ce4458761dfa640d6ee1828d3a1a632429ea85d99f4ba0b11d41f0d62"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "ffffe8ebce2f913d12a52b642528cc04a183f88cb2b61fc9e7c5864360f18917"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "869b7e93376761f137ba442a4c8187ccd3d653a7f49697641777798fd5c72508"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "7068914a857a4bcc6e2bdc4a13390501d3ca64d5cc9762b80b3718cd1e61d12f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "07cec2f6dc9062bf35c12c272fc80b6b578ab620217ff1fd92cec880d7ec8415"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/0e96435a23ee42f9b0e76860066c62ff.json",
+      "sha256": "56c448134201e7f672ba5126f800c7286e2e31ea9193d7ae4549b06fec6fda04"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "a2aea6d22699fd37890aaf1ab2b0a8efc4f1f84c4dcec135ff2f571b8378eb83"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "63817ead0cb38851fe1e44675c0e0cae3600e1af9801a059526764e3a93c0067"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "4e097c4c14eae70723e068f0aba549ca92c1aef89c8e168af112e1ce4fa981c7"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "cbcdee8724a38a33ba538ec47d962269d2a583d4ef64aa9cc0afc77e7738e718"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "8f057f23586636528159980954727ce34d4296c32967f2f0a868d3ad45bd3726"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/0f9579e2d298480aa26a0d9fed9307a9.json",
+      "sha256": "03de7199df0ed459b8d453925caa72ab9e3380689207e08413088cec79bddd63"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "44bff4a53d95dca5756125fe6efe6b027ab77facd4ad58f4938ad888c3d88faa"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "805be6c5be17aca75bf4ceb578af7b2eb8120eb3edfe772405a70eb94f331baa"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "749ea434bb5a0268c935aab36a1d325c4a2560675d31aceea0821af1593356ef"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "b9b72f88bb6b6adc8d838df0b02b958ca40655a9c55ee5a7b2f7444d805db5bc"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "bb29860cbe5acacbf55c869eba52d31dfcb8ae61efc0348b429c9f51cd0ab37c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/067aa0a948074dda86ad9fdad1fcef9d.json",
+      "sha256": "a199874d8ffaedba611cc92719b0b4f91f19122b250f76a563c2fff29508c876"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/no_adapter/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "da74525caa3680d8452c3e1d293383282bf234cc44c2976a00e4b2b900e8dfde"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfl/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "81670f134a718773d40b1bc7b4e34b123527698ed5c837c4e80d58b18dc38f9f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gfh/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "f291f214bf62a8ddf6a378b1908334ebcb968b93977c0a3d08e860a8b48878ce"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/native_gc3/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "bafb4db359663b5417fc70611d96d2aabf7f5c99e3f3f15da147df29e81aebf6"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/gen_linear/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "9fe31c9170d1c1444c59d9684a951b6eb57e46c3e2e91a7dd01b9ad98b11ccef"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fresh_c_observer/residual_logs/layer_llh/06fa4974f8cd4d4ea792e98fa1521457.json",
+      "sha256": "f31f5bcf5231b774c0f31b8fc57f39a1808a0ff99007f6e3466d046443abffef"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "62e283c3a98c7a1561fe231235136f1b8fccf5b8e313f76b5c04d2cc1f7368d1"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "76ff0bacea10a3be2dea87eca390b91ea2208f44d67a91c2ccc0d4f5062d47d3"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "ffea2e112ddf73a7d5541635279c58ea9586321714ac58b1a27423e05b9ea5fe"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "97aa499a8e86a2defae62f67fa2ed4e0ebffe9e5593c2639d086544de1591001"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "6983c413a11d870e386d04e1c356c3dfcb13cc18104268d74d8b881902134d57"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/eac4b392b7b448a2b6ec77e8936abe1b.json",
+      "sha256": "f3dd6fa2441afa9e26fb2aabd7bfff7ad585a06cd4d207434bc882caae8a5988"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "0bdf620c9785c4a119b17556d514f747f1f10840505b8e33bd595814e007ae18"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "5f8570951716bd4122cbdaf1cce47fd47cac89e812a585b66bf9be986ca87920"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "81400017b24cf452152bd7894c70fa3fe6722480dbd9824ce8614a4ddc0dc297"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "adf14839420b353c58f8ed78088668d13e42e26c7ccfa78b3437b363636061df"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "a0146d42bdd1db4b4764e0284168b44e4208b159066d30d3be967b5d0033c230"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/ea7601dbeb2c46188571cb86e8fdb5bf.json",
+      "sha256": "632b8d28ce4a7982a584df374be8c6528e717479af4fc2d7bf353e8b42eb6c9f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "0e5599cceba542503b05c1782930bd46cbf5171ff5a0a32bdc03e3e26cf4b336"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "a85e2e23140c03533ca4d8c3a0c4cc96320416207425c16d3bac377660cdd313"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "da79e52a7b40a07d090fafcc228698c1c3946a9645cbd1e1630da17ce553f879"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "25722ae0e972636b69fb943f589539a4b1b6b9cd68ae170b11b540368ef90469"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "85b053277f9b216cdf98c5a60f7f9fe2c9e66e53631becddd40c5bab79a01d9c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/ed600cc9d91448939edeeb3a6d858448.json",
+      "sha256": "f4a7b49ca5955cb92bd41f71252356e9a6ce2286537bf8a03d0be1d17efaf3a9"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "ee75dea992c1c4a4d0dab84934339b39b6c0e743e0eeb53446665394dec14fbe"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "60d82bbd630adc1687c611b728685dfb73c856d4d7299c221987a218fe24f07f"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "75d05a1bb44a68de7982aba61b5475614929f6b8edf20406b92383e2dd5bba8c"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "2495d50455ae1a23e3f090deb84a3c56fc7a622f7ff62cdd6dc62fe20fe54f28"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "11a5d1ecfb4a6ff62cf09c939707a05f184661c3805039ea12c429a43b274331"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/ea2fe260ba5844d8be4fe34ce48e8af6.json",
+      "sha256": "f67b9262a3851cf597a4fc20c036002d388ed92a0ef3c72baed0c966dedcc952"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "b31a0beb2316f644946ce0035f51d8492c11d8f2fef76e97cea04e75d084a6be"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "c8f9fcceb397d33c8b2504d2d5d4fa70067d027db3e2cf7d99cbff33727aaac5"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "c405d04bbba09339c84705f35e0596bbb778eca5ca2f01795b840570bbe2cf0d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "d391677971d43f78d463ac8cb1e316ec8d24c742c098394b879e625b08e00ae2"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "487f32a5ec10fb9622d814d26751ddbc814b766176eecfee316053c86af05c7e"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/eda4277e-9984-5ff7-9891-ad816c3f09fc.json",
+      "sha256": "e22ac5bfe114113ba94f075665f956149dec961282b82d365e46f1e8d26d14ff"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/no_adapter/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "dcb9a557b3639894672dd9336b5b77b1b9d9dcdcce2fab3ac6368ce704381fe1"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfl/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "670c22b87ab21da205bbafca65289474240589bf8110216eb38dfc8ba327fad0"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gfh/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "da08e62aebf552681ad1cb649327b9f7677949d0f0e39b5bc6f5e2bf1591fb0d"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/native_gc3/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "7764fb444d9347ce95a22b573284d77336baaf362fe36a9da83b402c5908a400"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/gen_linear/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "3ef73e944eddf68a174f776506be51c9a01691f9b97a5cfd1f481621c26f49de"
+    },
+    {
+      "path": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer/residual_logs/layer_llh/eb6010a0aeb04a03abd728db04a45f01.json",
+      "sha256": "9da9384f4db86f933177d12001e0a1f972fe6012256898ecd668f299f449f6ec"
+    }
+  ]
+}

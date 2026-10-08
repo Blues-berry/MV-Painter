@@ -1,0 +1,55 @@
+{
+  "purpose": "descriptive diagnostic association; selected objects and repeated methods are not independent",
+  "spearman_residual_ratio_vs_ciede2000": {
+    "rho": 0.18090374032145734,
+    "p_value_descriptive_only": 0.0394248145173503,
+    "n_object_method_rows": 130
+  },
+  "mean_by_method": {
+    "No Adapter": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.0,
+      "mean_anomaly_fraction": 0.0,
+      "mean_fg_ciede2000": 36.65824050475389,
+      "purple_flag_count": 0
+    },
+    "GFL": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.36848255166959054,
+      "mean_anomaly_fraction": 0.3056268038763958,
+      "mean_fg_ciede2000": 17.00464860445414,
+      "purple_flag_count": 0
+    },
+    "GFH": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.5985966385343375,
+      "mean_anomaly_fraction": 0.39090979347805593,
+      "mean_fg_ciede2000": 21.92042487859726,
+      "purple_flag_count": 0
+    },
+    "C3": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.44838796385858437,
+      "mean_anomaly_fraction": 0.33319946299928294,
+      "mean_fg_ciede2000": 18.78203831269191,
+      "purple_flag_count": 0
+    },
+    "Generic Linear": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.4913793096412371,
+      "mean_anomaly_fraction": 0.3617128049530311,
+      "mean_fg_ciede2000": 21.578912105315773,
+      "purple_flag_count": 0
+    },
+    "LLH": {
+      "n_objects": 26,
+      "mean_residual_rms_over_feature_rms": 0.44514606703709586,
+      "mean_anomaly_fraction": 0.33976416740631316,
+      "mean_fg_ciede2000": 20.58779923197551,
+      "purple_flag_count": 0
+    }
+  },
+  "phase_summary_csv": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/OBJECT_RESIDUAL_FEATURE_PHASE_SUMMARY.csv",
+  "aggregate_summary_csv": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/OBJECT_RESIDUAL_FEATURE_AGGREGATE.csv",
+  "gate_lock": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/FEATURE_RATIO_GATE_LOCK.json"
+}

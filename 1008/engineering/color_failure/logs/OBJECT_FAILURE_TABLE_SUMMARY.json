@@ -1,0 +1,122 @@
+{
+  "endpoint": "equal-weight mean per-view foreground CIEDE2000; each object contributes one row per method",
+  "foreground_mask": "prepared alpha mask thresholded at >0.5, matching frozen FG metric semantics",
+  "purple_flag": "object-level mean delta a* >= 5 and delta b* <= -5 and mean CIEDE2000 >= 5",
+  "visual_review": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/VISUAL_REVIEW_TAGS.json",
+  "saved_rgb_secondary_metrics": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/RGB_RELOADED_METRICS.csv",
+  "objects_are_failure_enriched_diagnostics": true,
+  "metrics_by_method": {
+    "No Adapter": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 36.65824050475389,
+      "median_object_ciede2000": 35.602705001831055,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 13
+      },
+      "mean_delta_a_star": -2.6147951511546776,
+      "mean_delta_b_star": -1.108785611911653
+    },
+    "GFL": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 17.00464860445414,
+      "median_object_ciede2000": 17.457433780034382,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 1.9461575762565748,
+      "mean_delta_b_star": 1.9484292299700123
+    },
+    "GFH": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 21.92042487859726,
+      "median_object_ciede2000": 19.413220643997192,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 1.4088130921829876,
+      "mean_delta_b_star": 1.4411974478011524
+    },
+    "C3": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 18.78203831269191,
+      "median_object_ciede2000": 18.776610612869263,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 1.7572361955729625,
+      "mean_delta_b_star": 1.6651174420369967
+    },
+    "Generic Linear": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 21.578912105315773,
+      "median_object_ciede2000": 20.68996755282084,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 0.8827071263430974,
+      "mean_delta_b_star": 1.129442891228395
+    },
+    "LLH": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 20.58779923197551,
+      "median_object_ciede2000": 20.174371163050335,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 1.0688853223139467,
+      "mean_delta_b_star": 1.6831919620147884
+    },
+    "C3 + Feature Gate": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 20.136166211886284,
+      "median_object_ciede2000": 18.957240104675293,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 1.0376147669122497,
+      "mean_delta_b_star": 1.4650172759325075
+    },
+    "Linear + Feature Gate": {
+      "n_objects": 26,
+      "mean_object_ciede2000": 20.302472926103153,
+      "median_object_ciede2000": 19.273624897003174,
+      "purple_flag_count": 0,
+      "visual_review_present_counts": {
+        "visual_purple_cast": 2,
+        "visual_repeated_texture": 0,
+        "visual_fine_detail_loss": 19,
+        "visual_structure_damage": 0
+      },
+      "mean_delta_a_star": 0.8107040190967754,
+      "mean_delta_b_star": 0.6811004333102548
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "sample_count": 26,
+  "method_count": 8,
+  "grid_layout": "3 rows x 2 columns, six RGB views of 256 x 256 each",
+  "reference_action": "reconstructed with locked validation dataset and prepare_batch; hashes checked against the frozen raw target tensor",
+  "prediction_actions": {
+    "six_historical_fig4_fig6": "current-checkpoint locked runner outputs; all 36 observer predictions byte-identical",
+    "twenty_fresh_c": "paired current observer rerun outputs; 120/120 differ from archived gallery PNGs despite identity match; archived assets unchanged",
+    "stage2_gate": "C3 and Generic Linear feature-gate predictions; paired with the locked 26-object inputs"
+  },
+  "asset_count": 234,
+  "asset_sha256_csv": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/logs/RAW_RGB_ASSET_SHA256.csv"
+}

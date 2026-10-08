@@ -1,0 +1,21 @@
+{
+  "n_metric_rows": 208,
+  "metrics_csv_sha256": "730cdc242c7691ecf2d052fd5901888cb9557e194c6fd47b13f3cf99ffbd3da3",
+  "recompute_script_sha256": "a40330688e7827396f553fbc347dff8a7b55bfdff6682acff48ae77b1d43290d",
+  "sample_freeze_json_sha256": "edeb850befaa71dafffb1ece0da3299c471ccefd3b6f42d8088900bffb5ec26c",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "runtime": {
+    "python": "3.10.20",
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0+cu128",
+    "device": "cuda:0",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.31",
+    "lpips_weights_sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0"
+  },
+  "identity_checks": {
+    "p1_prediction_reference_mask_sha256_match": true,
+    "dataset_masks_pixel_match_frozen_mask_png": true,
+    "per_row_png_paths_and_sha256": "recorded in RGB_RELOADED_METRICS.csv"
+  }
+}

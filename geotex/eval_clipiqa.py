@@ -311,7 +311,11 @@ def run_generate_and_score(args):
     # Load dataset
     from omegaconf import OmegaConf
     from src.utils.train_util import instantiate_from_config
-    dataset = instantiate_from_config(config.data.params.validation)
+    validation_config = config.data.params.validation
+    # This scorer evaluates six distinct target views. Do not inherit the
+    # dataset's legacy duplicate-top default used to reproduce old artifacts.
+    validation_config.params.target_view_mode = "unique6"
+    dataset = instantiate_from_config(validation_config)
     num_objects = min(args.num_objects, len(dataset))
     print(f"Dataset: {len(dataset)} objects, evaluating {num_objects}")
 

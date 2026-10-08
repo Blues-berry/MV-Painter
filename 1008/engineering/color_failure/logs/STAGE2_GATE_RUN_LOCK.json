@@ -1,0 +1,49 @@
+{
+  "locked_at_utc": "2026-10-08T12:07:25.042237+00:00",
+  "status": "LOCKED_BEFORE_FIRST_PROPOSED_PREDICTION",
+  "purpose": "bounded development experiment; no independent confirmation claim",
+  "run_dir": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/feature_ratio_gate",
+  "sample_freeze_sha256": "edeb850befaa71dafffb1ece0da3299c471ccefd3b6f42d8088900bffb5ec26c",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "target_view_mode": "unique6",
+  "views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "objects": 26,
+  "steps": 50,
+  "sampler": "EulerDiscreteScheduler",
+  "seed": "42 + frozen source-list index; latent seed 42",
+  "conditions": [
+    "C3 + feature-relative gate",
+    "Generic Linear + same feature-relative gate"
+  ],
+  "schedules": {
+    "C3": "low/high/low at the frozen 17/16/17 step partition",
+    "Generic Linear": "linear interpolation between the frozen low and high layer scales"
+  },
+  "intervention": "g=min(1,tau_depth/(RMS(scale-capped residual)/RMS(pre-adapter feature)+eps)); apply g to the scale-capped residual",
+  "tau_by_depth": {
+    "deep": 1.4753147840499878,
+    "middle": 0.988596761226654,
+    "shallow": 0.26088894158601755
+  },
+  "threshold_lock_sha256": "c38bd7ea75f6402199086bcc1451bf1c0341a53b322dd273b2b21b420bfcc90c",
+  "gate_config_sha256": "22e2e5450464680d02036a7574827a0222a2da5eb6b682da5210e1674a9fd209",
+  "evaluation": "CIEDE2000 primary; FG-LPIPS, FG-PSNR, Edge-SSIM secondary; visual review covers purple/pink cast, repeated texture, fine-detail loss, structure damage",
+  "decision_rule": "Continue only if paired image review and primary endpoint improve over the ungated schedule without clear regression in secondary metrics or structure. No Stage 3 without credible improvement; no novelty claim from a clip or schedule change.",
+  "source_sha256": {
+    "scripts/run_residual_gate_experiment.py": "f1f02e74e48dbea0a6b277cd16d822cdae2e17482b08035c228944e2a22983ca",
+    "geotex/residual_gate.py": "4ddc62cc4641519a53ac69d953ea1e9db1b2041939d00dbc9d085ef0ea48097a",
+    "geotex/explore_contradiction.py": "14bf84690552c973bac9304d3ba80fe184ff68232329bacfc7c1d734a96fd99b",
+    "MVPainter/mvpainter/model_unet_geotex.py": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+    "1008/engineering/color_failure/config/feature_ratio_gate.json": "22e2e5450464680d02036a7574827a0222a2da5eb6b682da5210e1674a9fd209",
+    "1008/engineering/color_failure/logs/FEATURE_RATIO_GATE_LOCK.json": "c38bd7ea75f6402199086bcc1451bf1c0341a53b322dd273b2b21b420bfcc90c",
+    "1008/engineering/color_failure/SAMPLE_FREEZE.json": "edeb850befaa71dafffb1ece0da3299c471ccefd3b6f42d8088900bffb5ec26c"
+  }
+}

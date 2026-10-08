@@ -1,0 +1,38 @@
+{
+  "locked_before_generation_utc": "2026-10-08T11:29:06Z",
+  "status": "LOCKED_BEFORE_OBSERVER_GENERATION",
+  "baseline_run_manifest": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_six_condition/run_manifest_shard0.json",
+  "baseline_predictions": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_six_condition/predictions",
+  "observer_run_dir": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_observer",
+  "observer_runner": "/4T/CXY/MV-Painter-r1color/scripts/run_color_failure_observer.py",
+  "observer_runner_sha256": "18da990439005f16730bf8890b10d2f9168ea3d07a8e50803eba93fc39bf96fd",
+  "observer_generation_logic": "/4T/CXY/MV-Painter-r1color/geotex/explore_contradiction.py",
+  "observer_generation_logic_sha256": "14bf84690552c973bac9304d3ba80fe184ff68232329bacfc7c1d734a96fd99b",
+  "baseline_runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "baseline_generation_logic_sha256": "5da7fff22ea73b6d9500603d0905eda9a1ac9c44406346b259f3aba368b6ca13",
+  "adapter_wrapper_sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "conditions": [
+    "no_adapter",
+    "native_gfl",
+    "native_gfh",
+    "native_gc3",
+    "gen_linear",
+    "layer_llh"
+  ],
+  "object_indices": [
+    4,
+    3,
+    12,
+    1,
+    15,
+    7
+  ],
+  "observer_metrics": {
+    "feature": "pre-adapter ResNet output",
+    "correction": "actual injected correction after scale/cap",
+    "relative_rms": "RMS(correction) / RMS(feature)",
+    "anomaly_fraction": "fraction of correction elements with abs(value) > 0.25 * feature RMS"
+  },
+  "acceptance_rule": "use observer logs only if each observer prediction PNG is byte-identical to its frozen baseline prediction PNG"
+}

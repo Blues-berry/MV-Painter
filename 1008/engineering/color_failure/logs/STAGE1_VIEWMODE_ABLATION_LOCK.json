@@ -1,0 +1,49 @@
+{
+  "locked_before_generation_utc": "2026-10-08T11:48:28Z",
+  "status": "LOCKED_BEFORE_LEGACY_VIEWMODE_RUN",
+  "single_intervention": "target_view_mode: unique6 -> legacy_duplicate_top",
+  "unique6_baseline_run": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_six_condition/run_manifest_shard0.json",
+  "unique6_baseline_manifest_sha256": "e04fc1ebf979d6b5782a22517626df956a1446b50bb55b589d0b2dba93cf1a20",
+  "runner": "/4T/CXY/MV-Painter-r1color/scripts/run_viewmode_ablation.py",
+  "runner_sha256": "a493da80860fd4e9089f88a227e3043cac080d2fa02ef1f6d46e8dfeb3cc70f8",
+  "unmodified_generation_logic_sha256": "5da7fff22ea73b6d9500603d0905eda9a1ac9c44406346b259f3aba368b6ca13",
+  "adapter_wrapper_sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+  "object_list_sha256": "e1bb89bb5924790ccd924be5f010b36b174e40fd221ce9cf712d768ff2f2ed84",
+  "object_indices": [
+    4,
+    3,
+    12,
+    1,
+    15,
+    7
+  ],
+  "conditions": [
+    "no_adapter",
+    "native_gfl",
+    "native_gfh",
+    "native_gc3",
+    "gen_linear",
+    "layer_llh"
+  ],
+  "unique6_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "legacy_duplicate_top_views": [
+    0,
+    15,
+    12,
+    15,
+    13,
+    14
+  ],
+  "legacy_run_dir": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/legacy_duplicate_top_six_conditions",
+  "controls": "same runner code except explicit view-mode parameter; same checkpoint, data, seed, schedule, resolution, sampler, steps, metrics"
+}

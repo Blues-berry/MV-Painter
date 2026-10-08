@@ -1,0 +1,81 @@
+{
+  "purpose": "Locate first material divergence between archived Fresh-C outputs and controlled reruns; diagnostic only.",
+  "locked_before_new_forensic_outputs": true,
+  "selection_rule": "Use gallery panel 1 (highest C3-GFL FG-PSNR), panel 3 (lowest FG-PSNR), and panel 20 (highest focal FG-LPIPS); no reselection after outputs.",
+  "objects": [
+    {
+      "sample_id": "freshc_panel_01",
+      "uid": "c76ac44df995482185077da81939b306",
+      "object_idx": 232,
+      "object_seed": 274,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "highest_focal_FG_PSNR"
+    },
+    {
+      "sample_id": "freshc_panel_03",
+      "uid": "ca887928bb664bcba121219f0af41293",
+      "object_idx": 236,
+      "object_seed": 278,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "lowest_focal_FG_PSNR"
+    },
+    {
+      "sample_id": "freshc_panel_20",
+      "uid": "06fa4974f8cd4d4ea792e98fa1521457",
+      "object_idx": 10,
+      "object_seed": 52,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "highest_focal_FG_LPIPS"
+    }
+  ],
+  "condition": "native_gfl",
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "checkpoint_path": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "config_path": "/4T/tmp/mvpainter-recovery-HLzm9O/scheme_new_schedule/clean_holdout.yaml",
+  "runner_path": "/4T/CXY/MV-Painter/scripts/run_validation_v3_experiment.py",
+  "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "protocol": "50 EulerDiscreteScheduler steps; resolution 256; seed policy from frozen runner (object seed=42+index; latent seed=42); one GPU shard.",
+  "trace_points": {
+    "unet_input_and_noise_prediction": [
+      0,
+      1,
+      10,
+      25,
+      49
+    ],
+    "scheduler_pre_post_latent": [
+      0,
+      1,
+      10,
+      25,
+      49
+    ],
+    "vae_decode_input_and_output": "every selected run",
+    "initial_latent": "every selected run",
+    "final_rgb": "every selected run"
+  },
+  "runs": [
+    "python313_trace_repeat1",
+    "python313_trace_repeat2",
+    "python310_trace"
+  ],
+  "runtime_facts_from_historical_log": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "diffusers": "0.37.0",
+    "transformers": "4.57.6",
+    "gpu": "RTX 5090 (cuda:0)",
+    "run_log": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/logs/shard0.log"
+  },
+  "comparison_policy": "Compare each new run only to the matching immutable archived PNG and its same run ledger; compare cross-environment tensors only after checking input and scheduler identities. Never combine residual logs from different run roots."
+}

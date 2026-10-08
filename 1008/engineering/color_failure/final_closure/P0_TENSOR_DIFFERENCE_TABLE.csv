@@ -1,0 +1,469 @@
+tensor,shape_a,shape_b,dtype_a,dtype_b,exact,values_equal,max_abs,rmse,relative_l2,changed_fraction,comparison,uid
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,c76ac44df995482185077da81939b306
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,0.851806640625,0.0797385697813251,0.08885673940211021,0.9601338505744934,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005854733711565294,0.0005853913917943673,0.5960286259651184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0078125,0.0012670674334458274,0.001268756208864345,0.849609375,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0390625,0.007735129592910974,0.007788836000278595,0.9714762568473816,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.2208251953125,0.019909936804849124,0.020134195569275527,0.9871826171875,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.974609375,0.37879269580056785,0.38271043171732766,0.9984944462776184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0625,0.009656830438681374,0.00038513698716131944,0.3232421875,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.09375,0.009702897400445755,0.0004364156279418615,0.3685302734375,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.234375,0.04175699410122946,0.005003575256343111,0.9659423828125,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.3828125,0.07719882344524116,0.03313257495559134,0.9937337040901184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.64208984375,0.15250789725883337,0.31614691964791597,0.9982503056526184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005854733711565294,0.0005853913917943673,0.5960286259651184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0078125,0.0012670674334458274,0.001268756208864345,0.849609375,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0390625,0.007735129592910974,0.007788836000278595,0.9714762568473816,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.2208251953125,0.019909936804849124,0.020134195569275527,0.9871826171875,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.974609375,0.37879269580056785,0.38271043171732766,0.9984944462776184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.09375,0.009702897400445755,0.0004364156279418615,0.3685302734375,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.125,0.01150862972906667,0.0005823965804609669,0.5535481572151184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.25,0.046446042964715537,0.006138393883397702,0.970947265625,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.3984375,0.07859291105740275,0.03627476485831093,0.9940592646598816,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.9599609375,0.18470857211944153,0.400269330254223,0.9983723759651184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005616239413723039,0.000563715456931309,0.4986979067325592,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.005859375,0.0004849388418055718,0.00048700661529811075,0.3264566957950592,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.029296875,0.005165633675342456,0.005211491359376796,0.9696044921875,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.154296875,0.03111715032360844,0.033200155472389185,0.9932454228401184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.62646484375,0.15105751116372054,0.3161490171942831,0.9980875849723816,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,20.0625,1.8908196385936091,0.39778555171198016,0.9969075322151184,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,1.06494140625,0.09968607464102051,0.18132029605804267,0.969900369644165,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config._class_name,,,str,str,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config._use_default_values,8,2,list,list,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.final_sigmas_type,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.sigma_max,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.sigma_min,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.timestep_type,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.use_beta_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.config.use_exponential_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,c76ac44df995482185077da81939b306
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,ca887928bb664bcba121219f0af41293
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,0.775634765625,0.10990148653561022,0.12277556748663622,0.9770380854606628,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005838415522438564,0.0005839137960620564,0.5867512822151184,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.009765625,0.0014318210250453328,0.0014340121629608947,0.8695068359375,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.037109375,0.007736887795549005,0.007792461102846335,0.9656168818473816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.076171875,0.015086769152447891,0.015255845637272062,0.9829508662223816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.5888671875,0.38987916126907196,0.40119149130300125,0.9986572265625,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0625,0.009656830438681374,0.00038513698716131944,0.3232421875,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.125,0.00987700148822061,0.0004442275248625029,0.3684488832950592,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.21875,0.04302917824952431,0.005153150952825075,0.9652913212776184,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.390625,0.08783620908296913,0.037605403900519974,0.9934489130973816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.9384765625,0.1489931339370787,0.3020916314857609,0.999267578125,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005838415522438564,0.0005839137960620564,0.5867512822151184,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.009765625,0.0014318210250453328,0.0014340121629608947,0.8695068359375,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.037109375,0.007736887795549005,0.007792461102846335,0.9656168818473816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.076171875,0.015086769152447891,0.015255845637272062,0.9829508662223816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.5888671875,0.38987916126907196,0.40119149130300125,0.9986572265625,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.125,0.00987700148822061,0.0004442275248625029,0.3684488832950592,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.125,0.011832735501540723,0.0005987520173632886,0.5647379755973816,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.234375,0.047825523030533695,0.006316536640756886,0.971923828125,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.39453125,0.08917944177435526,0.04105101705170727,0.9930419921875,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.27880859375,0.17812407601660402,0.3783757229441153,0.9991047978401184,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005616239413723039,0.000563715456931309,0.4986979067325592,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.005859375,0.0004918628742294113,0.000493938125349391,0.3267008364200592,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.02734375,0.005321718374810567,0.0053659792281337635,0.968994140625,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.158203125,0.03539311827371833,0.03766967358967235,0.992919921875,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.929443359375,0.14757855584387428,0.3020979472970071,0.9992268681526184,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,13.09375,1.8234522222454728,0.3798484340637874,0.99853515625,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,0.972412109375,0.13739792114678062,0.2547082632715197,0.9834781289100647,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config._class_name,,,str,str,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config._use_default_values,8,2,list,list,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.final_sigmas_type,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.sigma_max,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.sigma_min,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.timestep_type,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.use_beta_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.config.use_exponential_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,ca887928bb664bcba121219f0af41293
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_repeat1_vs_repeat2,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_cond_imgs,"(1, 3, 512, 512)","(1, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_global_embeds,"(1, 1, 1, 2048)","(1, 1, 1, 2048)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_real_depth_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.batch_target_imgs,"(1, 6, 3, 512, 512)","(1, 6, 3, 512, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.final_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,0.837890625,0.0929078917848041,0.11319977631443266,0.5201399326324463,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.mid,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_0,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_1,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.up_2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x1,"(1, 64, 768, 512)","(1, 64, 768, 512)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x2,"(1, 64, 384, 256)","(1, 64, 384, 256)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x3,"(1, 64, 192, 128)","(1, 64, 192, 128)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.geo_feats.x4,"(1, 64, 96, 64)","(1, 64, 96, 64)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.initial_latent,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.000587154969577469,0.0005867478733902073,0.5896403193473816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0078125,0.0012140968033887635,0.0012151036879566974,0.8534749150276184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.02734375,0.006542104482489001,0.006589512794506167,0.9710286259651184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.1962890625,0.02582379296504094,0.026257272243701252,0.9900309443473816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.noise_prediction_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.9619140625,0.5271908312782013,0.5595433181168435,0.9989013671875,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0625,0.009656830438681374,0.00038513698716131944,0.3232421875,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0625,0.009760857222491655,0.0004390507690047506,0.3646647036075592,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.203125,0.044324447480273324,0.005312515169885798,0.9653727412223816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.3203125,0.08317201902056107,0.03563356373627038,0.994140625,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.36083984375,0.23595941522885414,0.4471065640587735,0.9993489384651184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.000587154969577469,0.0005867478733902073,0.5896403193473816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0078125,0.0012140968033887635,0.0012151036879566974,0.8534749150276184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.02734375,0.006542104482489001,0.006589512794506167,0.9710286259651184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.1962890625,0.02582379296504094,0.026257272243701252,0.9900309443473816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_input_noise_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,3.9619140625,0.5271908312782013,0.5595433181168435,0.9989013671875,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.0625,0.009760857222491655,0.0004390507690047506,0.3646647036075592,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.09375,0.011803103418454699,0.0005973777419427772,0.5335286259651184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.203125,0.048280067744026725,0.00638225949288573,0.9706217646598816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.34765625,0.08499029245776328,0.039139707839145145,0.9949544072151184,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_output_latent_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.658203125,0.2813705473312967,0.5563911184123509,0.9993896484375,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.scheduler_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step00,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step01,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step10,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step25,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_text_embeds_step49,"(1, 1280)","(1, 1280)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step00,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step01,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step10,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step25,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_added_cond_kwargs_time_ids_step49,"(1, 6)","(1, 6)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step00,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step01,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step10,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step25,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_cross_attention_kwargs_cond_lat_step49,"(1, 4, 64, 64)","(1, 4, 64, 64)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step00,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step01,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step10,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step25,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_encoder_hidden_states_step49,"(1, 77, 2048)","(1, 77, 2048)",torch.float16,torch.float16,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step00,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0005616239413723039,0.000563715456931309,0.4986979067325592,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step01,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.00390625,0.0004867343193084034,0.0004888405546032786,0.323486328125,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step10,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.025390625,0.005482508388231621,0.005532530000493354,0.9698893427848816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step25,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,0.12890625,0.03353562945797228,0.035717618020283004,0.9940592646598816,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_input_step49,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,1.347900390625,0.23372696278005298,0.4471321200029953,0.9993896484375,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step00,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step01,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step10,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step25,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.unet_timestep_step49,(),(),torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.vae_decode_input,"(1, 4, 96, 64)","(1, 4, 96, 64)",torch.float16,torch.float16,False,False,16.96875,2.88041476134643,0.559359940592576,0.9989013671875,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+tensors.vae_decoded_rgb,"(1, 3, 768, 512)","(1, 3, 768, 512)",torch.float16,torch.float16,False,False,1.047119140625,0.11744526443305735,0.24240726391580164,0.9998304843902588,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config._class_name,,,str,str,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config._use_default_values,8,2,list,list,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.final_sigmas_type,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.sigma_max,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.sigma_min,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.timestep_type,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.use_beta_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.config.use_exponential_sigmas,present,missing,,,False,False,,,,,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.sigmas,"(51,)","(51,)",torch.float32,torch.float32,True,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457
+scheduler.timesteps,"(50,)","(50,)",torch.float32,torch.float64,False,True,0.0,0.0,0.0,0.0,py313_vs_py310,06fa4974f8cd4d4ea792e98fa1521457

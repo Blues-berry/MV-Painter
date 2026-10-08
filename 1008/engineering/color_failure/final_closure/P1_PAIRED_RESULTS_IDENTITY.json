@@ -1,0 +1,55 @@
+{
+  "n_objects": 26,
+  "n_condition_rows": 78,
+  "paired_conditions": [
+    "No Adapter",
+    "GFL",
+    "LLH"
+  ],
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "view_mode": "unique6",
+  "target_view_set": [
+    0,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "target_view_order": "sample-specific frozen order recorded per row; the six target IDs are unique",
+  "paired_bootstrap_seed": 61008,
+  "paired_bootstrap_resamples": 20000,
+  "metrics": "CIEDE2000/delta-a*/delta-b* recomputed from identified RGB PNGs; FG-PSNR/LPIPS/Edge-SSIM from RGB_RELOADED_METRICS.csv; texture measures recomputed from identified PNGs and frozen foreground masks",
+  "metric_sources": {
+    "ciede_and_delta_lab": "skimage.color applied to each identified PNG; six foreground views equally weighted",
+    "fg_psnr_lpips_edge_ssim": "1008/engineering/color_failure/logs/RGB_RELOADED_METRICS.csv",
+    "fg_psnr_lpips_edge_ssim_identity": "1008/engineering/color_failure/logs/RGB_RELOADED_METRICS_IDENTITY.json",
+    "texture_metrics": "geotex.metrics_extended.compute_all_extended on the identified RGB PNGs and frozen masks",
+    "visual_labels": "1008/engineering/color_failure/OBJECT_FAILURE_TABLE.csv; frozen visual review"
+  },
+  "source_sha256": {
+    "sample_freeze_json": "edeb850befaa71dafffb1ece0da3299c471ccefd3b6f42d8088900bffb5ec26c",
+    "object_failure_table": "0fb853909dd34a1f549372de7ea0e49e56bbf589e705376cb92674244d120040",
+    "rgb_reloaded_metrics": "730cdc242c7691ecf2d052fd5901888cb9557e194c6fd47b13f3cf99ffbd3da3",
+    "rgb_reloaded_metrics_identity": "fafbf0c8266d750140a1b3940588393bd2d36d3157ad80fef862ee6903ce85fc",
+    "metrics_extended_py": "ee32281fbee97e71050e8b2d74bbf6bc476efd372f6a898f1e0a3078863bb2b5",
+    "analysis_script": "ecd2726c57a39661b01d2dc8f36104c321d8588f3086b6406abcc3c595a5e566"
+  },
+  "postprocess_environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:09:02) [GCC 11.2.0]",
+    "torch": "2.7.1+cu128",
+    "numpy": "2.2.6",
+    "scikit_image": "0.26.0",
+    "pillow": "12.2.0",
+    "platform": "Linux-6.14.0-37-generic-x86_64-with-glibc2.31"
+  },
+  "reloaded_rgb_metrics_environment": {
+    "python": "3.10.20",
+    "torch": "2.7.0+cu128",
+    "torchvision": "0.22.0+cu128",
+    "device": "cuda:0",
+    "lpips_weights_sha256": "df73285e35b22355a2df87cdb6b70b343713b667eddbda73e1977e0c860835c0",
+    "recompute_script_sha256": "a40330688e7827396f553fbc347dff8a7b55bfdff6682acff48ae77b1d43290d"
+  }
+}

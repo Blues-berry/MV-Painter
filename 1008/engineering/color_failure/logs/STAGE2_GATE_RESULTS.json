@@ -1,0 +1,339 @@
+{
+  "status": "descriptive development evaluation; no independent confirmation",
+  "run_manifest": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/feature_ratio_gate/run_manifest.json",
+  "gate_enabled": true,
+  "tau_by_depth": {
+    "deep": 1.4753147840499878,
+    "middle": 0.988596761226654,
+    "shallow": 0.26088894158601755
+  },
+  "paired_comparisons": {
+    "c3_feature_gate": {
+      "all": {
+        "n_objects": 26,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 20.136166211886287,
+          "mean_baseline": 18.78203831269191,
+          "mean_paired_delta": 1.3541278991943755,
+          "objects_improved": 9,
+          "objects_worsened": 17
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.16563892593750587,
+          "mean_baseline": 0.17487229464145806,
+          "mean_paired_delta": -0.009233368703952203,
+          "objects_improved": 14,
+          "objects_worsened": 12
+        },
+        "fg_psnr": {
+          "mean_proposed": 13.684545698074194,
+          "mean_baseline": 13.820658601247347,
+          "mean_paired_delta": -0.13611290317315322,
+          "objects_improved": 7,
+          "objects_worsened": 19
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5376876168526136,
+          "mean_baseline": 0.5467486805640734,
+          "mean_paired_delta": -0.00906106371145982,
+          "objects_improved": 6,
+          "objects_worsened": 20
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "historical_six": {
+        "n_objects": 6,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 26.593588166766693,
+          "mean_baseline": 23.409699890348648,
+          "mean_paired_delta": 3.1838882764180503,
+          "objects_improved": 0,
+          "objects_worsened": 6
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.21733933500945568,
+          "mean_baseline": 0.21745695173740387,
+          "mean_paired_delta": -0.00011761672794818878,
+          "objects_improved": 2,
+          "objects_worsened": 4
+        },
+        "fg_psnr": {
+          "mean_proposed": 11.377736429373423,
+          "mean_baseline": 12.522780199845633,
+          "mean_paired_delta": -1.1450437704722087,
+          "objects_improved": 0,
+          "objects_worsened": 6
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.46758827070395154,
+          "mean_baseline": 0.47816380858421326,
+          "mean_paired_delta": -0.01057553788026174,
+          "objects_improved": 1,
+          "objects_worsened": 5
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "fresh_c_twenty": {
+        "n_objects": 20,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 18.19893962542216,
+          "mean_baseline": 17.393739839394886,
+          "mean_paired_delta": 0.8051997860272735,
+          "objects_improved": 9,
+          "objects_worsened": 11
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.15012880321592093,
+          "mean_baseline": 0.16209689751267434,
+          "mean_paired_delta": -0.011968094296753407,
+          "objects_improved": 12,
+          "objects_worsened": 8
+        },
+        "fg_psnr": {
+          "mean_proposed": 14.376588478684425,
+          "mean_baseline": 14.210022121667862,
+          "mean_paired_delta": 0.16656635701656342,
+          "objects_improved": 7,
+          "objects_worsened": 13
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5587174206972122,
+          "mean_baseline": 0.5673241421580315,
+          "mean_paired_delta": -0.008606721460819245,
+          "objects_improved": 5,
+          "objects_worsened": 15
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "vs_gfl_all": {
+        "n_objects": 26,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 20.136166211886287,
+          "mean_baseline": 17.004648604454136,
+          "mean_paired_delta": 3.131517607432146,
+          "objects_improved": 9,
+          "objects_worsened": 17
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.16563892593750587,
+          "mean_baseline": 0.1754500430363875,
+          "mean_paired_delta": -0.009811117098881649,
+          "objects_improved": 14,
+          "objects_worsened": 12
+        },
+        "fg_psnr": {
+          "mean_proposed": 13.684545698074194,
+          "mean_baseline": 14.047066638102898,
+          "mean_paired_delta": -0.3625209400287041,
+          "objects_improved": 7,
+          "objects_worsened": 19
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5376876168526136,
+          "mean_baseline": 0.5473206295416906,
+          "mean_paired_delta": -0.009633012689076938,
+          "objects_improved": 9,
+          "objects_worsened": 17
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      }
+    },
+    "linear_feature_gate": {
+      "all": {
+        "n_objects": 26,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 20.302472926103153,
+          "mean_baseline": 21.57891210531577,
+          "mean_paired_delta": -1.2764391792126186,
+          "objects_improved": 24,
+          "objects_worsened": 2
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.16014217699949557,
+          "mean_baseline": 0.16148264319277728,
+          "mean_paired_delta": -0.0013404661932816873,
+          "objects_improved": 20,
+          "objects_worsened": 6
+        },
+        "fg_psnr": {
+          "mean_proposed": 13.924869253085209,
+          "mean_baseline": 13.580209268973423,
+          "mean_paired_delta": 0.3446599841117859,
+          "objects_improved": 23,
+          "objects_worsened": 3
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5516735361172602,
+          "mean_baseline": 0.5446815685583994,
+          "mean_paired_delta": 0.006991967558860779,
+          "objects_improved": 26,
+          "objects_worsened": 0
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "historical_six": {
+        "n_objects": 6,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 27.56439692444272,
+          "mean_baseline": 29.349035011397472,
+          "mean_paired_delta": -1.784638086954752,
+          "objects_improved": 5,
+          "objects_worsened": 1
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.2191633296509584,
+          "mean_baseline": 0.2192423896243175,
+          "mean_paired_delta": -7.905997335910797e-05,
+          "objects_improved": 4,
+          "objects_worsened": 2
+        },
+        "fg_psnr": {
+          "mean_proposed": 11.096206406752268,
+          "mean_baseline": 10.739084482192993,
+          "mean_paired_delta": 0.3571219245592753,
+          "objects_improved": 5,
+          "objects_worsened": 1
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.4806968520085017,
+          "mean_baseline": 0.4752889424562454,
+          "mean_paired_delta": 0.0054079095522562666,
+          "objects_improved": 6,
+          "objects_worsened": 0
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "fresh_c_twenty": {
+        "n_objects": 20,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 18.123895726601283,
+          "mean_baseline": 19.24787523349126,
+          "mean_paired_delta": -1.1239795068899785,
+          "objects_improved": 19,
+          "objects_worsened": 1
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.14243583120405673,
+          "mean_baseline": 0.1441547192633152,
+          "mean_paired_delta": -0.001718888059258461,
+          "objects_improved": 16,
+          "objects_worsened": 4
+        },
+        "fg_psnr": {
+          "mean_proposed": 14.773468106985092,
+          "mean_baseline": 14.432546705007553,
+          "mean_paired_delta": 0.34092140197753906,
+          "objects_improved": 18,
+          "objects_worsened": 2
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5729665413498879,
+          "mean_baseline": 0.5654993563890457,
+          "mean_paired_delta": 0.007467184960842132,
+          "objects_improved": 20,
+          "objects_worsened": 0
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      },
+      "vs_gfl_all": {
+        "n_objects": 26,
+        "mean_fg_ciede2000": {
+          "mean_proposed": 20.302472926103153,
+          "mean_baseline": 17.004648604454136,
+          "mean_paired_delta": 3.297824321649014,
+          "objects_improved": 9,
+          "objects_worsened": 17
+        },
+        "fg_lpips": {
+          "mean_proposed": 0.16014217699949557,
+          "mean_baseline": 0.1754500430363875,
+          "mean_paired_delta": -0.015307866036891937,
+          "objects_improved": 13,
+          "objects_worsened": 13
+        },
+        "fg_psnr": {
+          "mean_proposed": 13.924869253085209,
+          "mean_baseline": 14.047066638102898,
+          "mean_paired_delta": -0.12219738501768845,
+          "objects_improved": 7,
+          "objects_worsened": 19
+        },
+        "edge_ssim": {
+          "mean_proposed": 0.5516735361172602,
+          "mean_baseline": 0.5473206295416906,
+          "mean_paired_delta": 0.00435290657556974,
+          "objects_improved": 13,
+          "objects_worsened": 13
+        },
+        "purple_flag_count_proposed": 0,
+        "purple_flag_count_baseline": 0
+      }
+    }
+  },
+  "gate_activation": {
+    "c3_feature_gate": {
+      "layer_step_calls": 11700,
+      "attenuated_calls": 987,
+      "attenuated_fraction": 0.08435897435897435,
+      "by_depth": {
+        "deep": {
+          "mean_gate": 0.9517009878769899,
+          "attenuated_fraction": 0.1576923076923077,
+          "mean_pre_gate_ratio": 0.8168806822712604,
+          "mean_post_gate_ratio": 0.6928244506319364,
+          "p95_post_gate_ratio": 1.4753156900405884
+        },
+        "middle": {
+          "mean_gate": 0.9779399859446746,
+          "attenuated_fraction": 0.09128205128205129,
+          "mean_pre_gate_ratio": 0.48607488511464536,
+          "mean_post_gate_ratio": 0.45515093413301005,
+          "p95_post_gate_ratio": 0.9885961413383484
+        },
+        "shallow": {
+          "mean_gate": 0.9995948252616784,
+          "attenuated_fraction": 0.0041025641025641026,
+          "mean_pre_gate_ratio": 0.06265835061066378,
+          "mean_post_gate_ratio": 0.06254099184724812,
+          "p95_post_gate_ratio": 0.2212095707654953
+        }
+      }
+    },
+    "linear_feature_gate": {
+      "layer_step_calls": 11700,
+      "attenuated_calls": 1760,
+      "attenuated_fraction": 0.15042735042735042,
+      "by_depth": {
+        "deep": {
+          "mean_gate": 0.9228436111486875,
+          "attenuated_fraction": 0.33282051282051284,
+          "mean_pre_gate_ratio": 0.8991813587072568,
+          "mean_post_gate_ratio": 0.7407271848045862,
+          "p95_post_gate_ratio": 1.4753165245056152
+        },
+        "middle": {
+          "mean_gate": 0.976777757421518,
+          "attenuated_fraction": 0.11846153846153847,
+          "mean_pre_gate_ratio": 0.5413699044745702,
+          "mean_post_gate_ratio": 0.5108314187404437,
+          "p95_post_gate_ratio": 0.9885975122451782
+        },
+        "shallow": {
+          "mean_gate": 1.0,
+          "attenuated_fraction": 0.0,
+          "mean_pre_gate_ratio": 0.06783562225307553,
+          "mean_post_gate_ratio": 0.06783559678582092,
+          "p95_post_gate_ratio": 0.20303325802087785
+        }
+      }
+    }
+  },
+  "decision_rule": "Continue only if paired image review and primary endpoint improve over the ungated schedule without clear regression in secondary metrics or structure. No Stage 3 without credible improvement; no novelty claim from a clip or schedule change."
+}

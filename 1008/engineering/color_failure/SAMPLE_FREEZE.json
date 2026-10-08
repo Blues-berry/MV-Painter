@@ -1,0 +1,2608 @@
+{
+  "title": "R1 color failure diagnostic set",
+  "frozen_at_utc": "2026-10-08T11:20:38.069898+00:00",
+  "sample_count": 26,
+  "purpose": "failure-enriched development diagnosis; not an independent confirmation cohort",
+  "selection_rule": "Use the six exact historical objects named by the original 01549 Fig. 4/6 crop scripts, plus all 20 pre-existing Fresh C formal comparison panels. The gallery objects were previously viewed and metric-ranked; they are retained as descriptive diagnostics, not treated as blinded or independent.",
+  "fixed_methods": [
+    "no_adapter",
+    "native_gfl",
+    "native_gfh",
+    "native_gc3",
+    "gen_linear",
+    "layer_llh"
+  ],
+  "endpoint_lock": {
+    "primary": "mean foreground CIEDE2000 across six target views, object is the unit; lower is better",
+    "secondary": [
+      "FG-LPIPS",
+      "FG-PSNR",
+      "Edge-SSIM"
+    ],
+    "purple_cast_flag": "object-level mean foreground delta a* >= 5 and delta b* <= -5, with mean foreground CIEDE2000 >= 5",
+    "threshold_status": "diagnostic threshold frozen before new historical-object generation; no inferential claim",
+    "visual_failures": [
+      "purple cast",
+      "repeated pattern",
+      "fine-detail destruction",
+      "structure damage"
+    ],
+    "laplacian_variance_is_not_a_fidelity_endpoint": true
+  },
+  "protocol_identity": {
+    "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+    "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+    "target_view_mode": "unique6",
+    "declared_target_views": [
+      0,
+      15,
+      12,
+      16,
+      13,
+      14
+    ],
+    "resolution": 256,
+    "steps": 50,
+    "sampler": "EulerDiscreteScheduler",
+    "latent_seed": 42,
+    "object_seed_rule": "42 + object_idx in the frozen source-list order",
+    "methods": [
+      "no_adapter",
+      "native_gfl",
+      "native_gfh",
+      "native_gc3",
+      "gen_linear",
+      "layer_llh"
+    ]
+  },
+  "source_artifacts": {
+    "gallery_manifest": {
+      "path": "/4T/CXY/MV-Painter/1006/figures/strategy_comparison_gallery/fresh_c_final/gallery_manifest.json",
+      "sha256": "7b530ec596c1fb830c1f93618bd7dde86cae0ad4feb7f426efbe300e5376d548"
+    },
+    "gallery_asset_hashes": {
+      "path": "/4T/CXY/MV-Painter/1006/figures/strategy_comparison_gallery/fresh_c_final/gallery_asset_sha256.csv",
+      "sha256": "aceb48f5fdb48c47081b0c01143edd55fce536b6c1bfd389be4b653bbd0014f8"
+    },
+    "fresh_c_object_list": {
+      "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "sha256": "d93881865b6478dd31222a51c7d3ebafe44839fd5e1b76c5eb9605d3f1fdfa58"
+    },
+    "legacy_object_list": {
+      "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "sha256": "e1bb89bb5924790ccd924be5f010b36b174e40fd221ce9cf712d768ff2f2ed84"
+    },
+    "historical_01549_sources": {
+      "fig4.pdf": {
+        "path": "/4T/CXY/MV-Painter/01549_BASELINE_BACKUP_20261008/fig4.pdf",
+        "sha256": "0e7def3143698b3ba322e13f869f810717abfc36cf0dc608a15e4820f6b44620"
+      },
+      "fig6.pdf": {
+        "path": "/4T/CXY/MV-Painter/01549_BASELINE_BACKUP_20261008/fig6.pdf",
+        "sha256": "585af2af647e9f169cb98320fb5779aaba158b3493ea054bea2ff8eef675546c"
+      },
+      "make_fig4_v3_crop.py": {
+        "path": "/4T/CXY/MV-Painter/scripts/make_fig4_v3_crop.py",
+        "sha256": "0a0bcd9acad95cd9283f8d45ffd6ffbd2c4e06252dd551a4faa574411d6ccc09"
+      },
+      "make_fig6_v2_crop.py": {
+        "path": "/4T/CXY/MV-Painter/scripts/make_fig6_v2_crop.py",
+        "sha256": "23d53886a06b6b7fda5b77e18e4aeda6d6661f5dc1f2edce55ad68ce0e16f78e"
+      }
+    },
+    "fresh_c_primary_launch": {
+      "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/LAUNCH_IDENTITY.json",
+      "sha256": "189f549c568bd189ed00736ec9da79b3533ac9c1a737dbefd2f8b48b75451bdc"
+    },
+    "fresh_c_addendum_launch": {
+      "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/LAUNCH_IDENTITY.json",
+      "sha256": "38d79cf466d58c955622d57529043e511d7ba28e2879aea63a7bdcbb76eb1e63"
+    }
+  },
+  "samples": [
+    {
+      "sample_id": "freshc_panel_01",
+      "uid": "c76ac44df995482185077da81939b306",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 232,
+      "object_seed": 274,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "eb55fad084311e78f6129510a788c6a0c9eea49a9dc49c7333423acc5ccb3e22",
+        "input_depth_sha256": "bc8e91766c16d7c3285fa94fc60eea7b94277dd86710454bc2da40d1fe5f3224",
+        "input_global_embeds_sha256": "fef6af575c0ad58890a37181977a197f50e3976659b1e284a66e046bf6a9e20c",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "7dc446cee3febd4225d83a2549e2e6bc89830e95cb54c310051bafe9b08bdc48",
+        "input_target_sha256": "c2c6a565fb7f6f03fbab7adaf06fafb24c99459f05c10bf4127d3a96d5667a0d"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/000.png",
+          "sha256": "111d732a38b2d9023696f66e40f58019f85f861be9c571aab35b3edf31e51ad5"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/015.png",
+          "sha256": "5cde59de3165b8eace7d7138f3b9bb568f2e96d93dc288568cb3041fcc6984c4"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/012.png",
+          "sha256": "aa96ff23b49eb8eab21591eae96a91e1dac60c48a701fa2e677aa48f97cce164"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/016.png",
+          "sha256": "0d5308e9ff5a861e3a3efb6eaf43da9e9188c152067e4187826ddc21cf794d66"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/013.png",
+          "sha256": "fcb0f6f2a847c2d7fdf282863acd471c171db240720d233e1ee75d17d0ffb31f"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/014.png",
+          "sha256": "f232823e22058179b9b72e48b62d165108fb2ceb3454064f62a054b54756bfa7"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/c76ac44df995482185077da81939b306.png",
+          "sha256": "cb0081df423ed7173593130e0515e01a5a2f584bdc2d15c71f9fe54c7e772437"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/c76ac44df995482185077da81939b306.png",
+          "sha256": "8a7d5c30df97abd0bb4caf25f245252527549b90b41851a184111f526150d198"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/c76ac44df995482185077da81939b306.png",
+          "sha256": "d5745ed55b8cdea3c7342a1432ed620857a1aba839365a3b9b85ad16b315f975"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/c76ac44df995482185077da81939b306.png",
+          "sha256": "fd8cd204cf5b7b2ac2c7756ca56a2b8007c20fd81f2837b04b1b7936e1b4aa96"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/c76ac44df995482185077da81939b306.png",
+          "sha256": "7edb73fe0ff3583acf439c72272e6c2fc2c2db3d82275b770c9da67b97f9dc45"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/c76ac44df995482185077da81939b306.png",
+          "sha256": "eaaa86d9b4edb94a6e6dbdf2ae0787519f01db52f382cf93dc8fa0911aedc8af"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_02",
+      "uid": "8bde8eb73dcb45c6a3880e85e7b3694b",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 157,
+      "object_seed": 199,
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "a87285159909ab30c30be332b937a07a69674ae0653f9a8c891e3aca68e3dfc7",
+        "input_depth_sha256": "0ba8de9c24f6e3bbcb276c2921be077c4add07a4382a0811ae6e53741e2bb61d",
+        "input_global_embeds_sha256": "888ad3dccc2a8e574efa5a4d795e5c1496bec02ad0e1981b7f8e6914b12e397e",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "15cc4ef6239ab6b41a6aa66e16d6ae07220616ffdb9e68a3ee6aa61b9be02dce",
+        "input_target_sha256": "1e42e223e3e16313798daf7bc7014644d174d99b40b622238cad3fd6f11aa1b2"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/000.png",
+          "sha256": "e232e39aba389195f960e03da2e7ed9446f198322a49e7578332305bd11aaf3a"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/015.png",
+          "sha256": "e65473488dad3830bb0c0eb8669f85896ef519681fadc78fa044cf23da7a27eb"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/012.png",
+          "sha256": "599ac6664c8c4ed2f8e15d8b96d63ed6b58d84de57a98e8dea81e52fc764eb93"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/016.png",
+          "sha256": "af5b96598e215ab63942bddf61baffd36fe30b57db7850e9014602c3847fc480"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/013.png",
+          "sha256": "5f7cecc26aeb7b3db06eceaa4d1875bf463a878261b1b2f5935242a1d4907243"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/8bde8eb73dcb45c6a3880e85e7b3694b/image/014.png",
+          "sha256": "1495991ae1abb14c5afa4955b0e0abfdf51d9960af4a91afae0e57d15c0965b4"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "e1fd0b6587b224abd9f2063b6191def0782c2dfd0f104f514a800a005bba4306"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "341f46509ba541c175aedfe07a34cb214eaf42fee52e41c6ffc1a5e20d8733a9"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "f8ffcd606e1ea4ae47cafc2418ac05edabec76e919f672fb3fc240001af0d034"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "aa73491611642317f3800021b08b847dfa92e7574e7df4661b80d7087ce108e0"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "e74791f20db7c09c9899190bc5e2ad17ebde85e0c61f4195f5a5bc8f5310792f"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/8bde8eb73dcb45c6a3880e85e7b3694b.png",
+          "sha256": "92955eecc45c6092a0af8bcd418dce7f5895307056288a14c5d84ccf299eaefd"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_03",
+      "uid": "ca887928bb664bcba121219f0af41293",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 236,
+      "object_seed": 278,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "a69edea3e8c555584266f3cff43c815614d8964c03970020f247fa05f29da462",
+        "input_depth_sha256": "af7c423636c67ac4e7d847751eeb8e63b7eaecb66cb382786ce375e8afcb7572",
+        "input_global_embeds_sha256": "0008f8e91768073ab6a69ab267173688b5f9d3dc8c5a97801ce4f7cd2ae4df97",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "7774e5b12124d9c639f756616cc4e1749d3c090cb4bb3f5760c6790b108362c0",
+        "input_target_sha256": "129217b33970a3d7a89ecdde38821caf6a050b59e10d3b46ec1fb1d16a4b2119"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/000.png",
+          "sha256": "375e896895759dff874d962fc8ced3f13c27f078515eeed48e3a97b69225ec38"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/015.png",
+          "sha256": "7b1398f2634cd875b21103f9f66541840333e400f1072698ec5b4a9269e9a842"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/012.png",
+          "sha256": "19b488a6544efb4a6a0775d27457fd816604e075ac599c925a6d43fa2fa85be9"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/016.png",
+          "sha256": "3737bf002a7c84966daf8001118828cd527268aa1b833f514ca0aa52737516f6"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/013.png",
+          "sha256": "e346e93ef347b0211e73d441c50d10d3d3ed9a6745a1e3012255617cc83e53e7"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ca887928bb664bcba121219f0af41293/image/014.png",
+          "sha256": "5a6749d29a5256e66a172ce19900d962f7e663bb9e326de1af83628a98d93bed"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "36eaf4c37fb9c5e138aa34c7949ed65c5db1f6d4a429ef4397bfe0756315da61"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "b73bab6acd628d11ff01e03b851b5f6254da58fcebb4aaa0a0182d104c85dd9b"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "775b008b8cc157a45e63180967616068d6eb32d67860f92743317548d74e63b1"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "02870459e6a86469025425d20438bc6ae69d08490a8c7c865b1c2861dac9de3e"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "19d0c6e79aec4a4cc48a07a0cba665032284a980b7c01e351c307be43596b657"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/ca887928bb664bcba121219f0af41293.png",
+          "sha256": "8125bd819a443f8286eaec4f8771ca00f6e59a088b8bb7d84b5e36717503fbe2"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_04",
+      "uid": "94168bf0403d4372ace896c9ff824f58",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 166,
+      "object_seed": 208,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "f4a0f7b5b2f56eb7496543c94412beb513b048a2889b205c8796f50034e3ab3c",
+        "input_depth_sha256": "4ac7976a0b34b306a20463b1e0345b65eeca776cfdfbccb70e2d28b321bed1d2",
+        "input_global_embeds_sha256": "2f767af09c4c47f73eec2cc2bedcb46c878d92045dd9b6ba7b9fd7e4bba52c25",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "8b5be0e1162d3bb301333bfe64d1cee932a1dd2eda4b6c9027848daebb1cc164",
+        "input_target_sha256": "55d9e39cf52eb957fa0fbd1d4da5d4558a82e6b883ae834da91f23b555262b73"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/000.png",
+          "sha256": "f82a40585488ba6f086aa8fef63a637e9054e00e74b252b9d6ed48fcddf5da7c"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/015.png",
+          "sha256": "288b45c03fa55374aaf88ab712544a15fd5565e947e1d61b8f098dc748388d9b"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/012.png",
+          "sha256": "4783999e7766cdcb29cbc2394454f66206568458523d0261e9570561ab42fae3"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/016.png",
+          "sha256": "86e3b012379f1550a515f2da43716e2ecbc73e8f5a6a8ff73b8422a0366e5d00"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/013.png",
+          "sha256": "466a29c971afa06d984d6e93b84a8222dcbebdf994f8f25aefe67799efd789a1"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/94168bf0403d4372ace896c9ff824f58/image/014.png",
+          "sha256": "8e4db7a38f238fd53a3101a5e5ad015849aef84ee921e72bddf2c2ca3685b674"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "582a65def298e8b7f0e49d012f1bb4114fd88dd92f91d217bfd2d1a4a05a752e"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "0ffd3ac8ceff5143cb3e6ba27dafca25533c00cccced10abc24410c7e807885e"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "4e5f1d91a6b709a1998cb40b6fea78f2915e94a61a7ba5597b30d12ad4c63046"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "97777c3adca8443512166a709d9609a94ffc2837ce501827f4b6d473e168105c"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "7829e47c47d30cb4343e66352652b1d99a2966370ce41cdbf07dcc8f3700f5e7"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/94168bf0403d4372ace896c9ff824f58.png",
+          "sha256": "4b4a08acae69fea65e142019a681c465ddd673db8606430c182d6809207a6c5a"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_05",
+      "uid": "d0e116a62bfc4cdd9edf60671073b306",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 243,
+      "object_seed": 285,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "0678091897ae62232e44b37c4ae1ca29c5a97af4ee817cbe3855f27ad2a646bb",
+        "input_depth_sha256": "ee312f123441e2a1a296aacf12e660bae2ee8bc2720c0d097a56211017ee890c",
+        "input_global_embeds_sha256": "947033de9cfe4fdc464b29ffd2b4614a3de0998ae4e7de7b3286a674652f39ab",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "ab6153801240741d7c5b6876ab1c48d422a11aa1a0c189594ec40b2c538daa18",
+        "input_target_sha256": "9f1881274a16faef0156e0fa5523b4ec2edb073a0c37da3f5ea39c4190eede7f"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/000.png",
+          "sha256": "60754f818a68195c85315a13a0708e01e3ce8ea31d43abf0df22da73ca4773ad"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/015.png",
+          "sha256": "9138d5d48464260ccd7634f7c96a1226783c596541f0ac9aad1f0075258d2f68"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/012.png",
+          "sha256": "60d7647ee14dfd969f0791721a8b5561a0c4684de34d46f2454b4d9fdc35220a"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/016.png",
+          "sha256": "1b1d8f881f5764569388e6bd23776de9ea099c0840257adbe5ae9d297fd2f5c3"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/013.png",
+          "sha256": "bea5a4f8b3aeb76713f51930d2efd5d1236317349f0c2389446244bb34f596f6"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/d0e116a62bfc4cdd9edf60671073b306/image/014.png",
+          "sha256": "999f58a4102a5f9bf7355bcf657727456b81ce779b8f72df80cfd0bbd739b84c"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "0dced7a1d2d750b40f01b79d4c997ef189c572eb30f5537606cdd7468569e482"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "f3659d1c41f1f2d5845d75f0c7b947558cd338afe6cd87d50f6824feb0d5c00e"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "00745c93d17f86f41c3846b34ef20e352461139db805d40c9d7220e15a7e8f8c"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "c061cbe69b121057cb01134f8327b756c573ecb448c4978ec563cf66a48fece4"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "eafb9329a03796a822f1e793d886767a4061601109716f5bb014c311b1e6c303"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/d0e116a62bfc4cdd9edf60671073b306.png",
+          "sha256": "21cf72ded2cbbe418478a8c1bf5c0d09a0ebb0ce1f5b9585c2c77a694e094bde"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_06",
+      "uid": "033fc9d942504cb9b571dc088f6e68f2",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 1,
+      "object_seed": 43,
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "550ddd8acdc730f8b0afb63776ccf44adf5561452c64617a0a3d6bac31fca687",
+        "input_depth_sha256": "b71989446b98ee55ad4a958ed7b6de8e40cd591b3c0c9bfe10ee9ef2cc23feb8",
+        "input_global_embeds_sha256": "9d0acec74aa09b83e303eb12e97a4b94d2fe69397a4355627aad4fb8affc7e53",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "b147853e0bcfbdbc1612415c54273e6c4dee291ef7c3bf73d42b4bd1244fb9c5",
+        "input_target_sha256": "0295e53f51aa2be26d7f10ba8604fb4e62d21a7f781cc7c03fb7e8ab66532a0f"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/000.png",
+          "sha256": "c40cb2586a13f40e27b0942237590bde00eac3bb0b677096824b8ded0b668d40"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/015.png",
+          "sha256": "89391be3f4109cce426377540594c7768a4e9b2cd440e7413e641d3dd90aa0a6"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/012.png",
+          "sha256": "cfbdfd856711fa71ccaf40dc91d2550b9f803893f889113b1e466c7d0c691620"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/016.png",
+          "sha256": "f2aa7e3d6e2859f14e3f8c3c0ce21f93f17c2fc331c2932393ab400dd29318f8"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/013.png",
+          "sha256": "79d78a778c85d9aa6b91fc3f7ad4fa71c8955b18c514f9432e681afcabad1759"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/033fc9d942504cb9b571dc088f6e68f2/image/014.png",
+          "sha256": "bca6db0f266f5b82c4e686b504a991c7ee0285737bc78829fb1ec246544955fd"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "468c23d68b2fca764e37eac0567534f5b7efebda9114117a1c2964b6a052c886"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "46814afb86d2113ccdaaa673b069ea75b85a412a8f57f4dcdfd8968fbbd78b07"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "c6b08f720d1a7b394de2cfeaa4ac277b092480bfdc7a550cec39b1fbcd32a79e"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "e776d8f5ec16432093723918a8d8c557601a6dac7d32993de38338114a2a05b3"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "719c9447bb7985f16bb8620ca74f80a55c4e753d9977959810b9ab8d416b5df1"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/033fc9d942504cb9b571dc088f6e68f2.png",
+          "sha256": "f716ee0a44b95c3b4c8cf33d95fd4ac452484ae56b1ba54b954ccd5b651c94be"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_07",
+      "uid": "3c83796ca5f043f1beb8044dd2e51a0d",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 70,
+      "object_seed": 112,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "8a7986aa80066027d7c451c2e7582ea767dd271367b0e77aefb0cd8b68689205",
+        "input_depth_sha256": "c55210721b0c06837c205c6ea321a49a7899283d64e94f49b99547bfbdec81b9",
+        "input_global_embeds_sha256": "aefc1d72d2b88adb2c6b8e2e2b761cbc82e841ae244b943964708fc981ae9ae4",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "a1a1894cbf85f37185975645107d857690fe991fa4eae162ba67c4d22ad47455",
+        "input_target_sha256": "0de6efdd28b97b2bcc0c1f92352eb91b851aa45df3042cf76d16dc96738b90ba"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/000.png",
+          "sha256": "511f3b41207b2339c85f92116d250c922786da8fee47f73f27ca1df776160231"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/015.png",
+          "sha256": "2ca32d73dde2628ebf129eedb250a3505e064188efc40d6beb37f51963caff04"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/012.png",
+          "sha256": "ae4a817654d824a6939ce1452fbca6e92d1a55449bc8a8afbc16e3bd65ca362b"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/016.png",
+          "sha256": "a2015ad7306e7c05b2ba80f5023677a422e88f0a005949680a0f3af7eaf7d162"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/013.png",
+          "sha256": "8c0512d3698aa2059a8adefc1b1ed6186fda5a0c4a51a412cf51809ea6c3b477"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/3c83796ca5f043f1beb8044dd2e51a0d/image/014.png",
+          "sha256": "5887ec191417a1a8c1e5b325310b771d6e5fffaf39af0285fea8ed886c176689"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "335e5bbca88beeaa04fc23859fa46bcca1242fef7b22eb8e6db0e45bff4d287a"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "a5202a55205339012cfc6b815a5529d848530cc92fdeedde8baa4431c3c33b09"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "1655fc30e65bba8fa8d495deeca1ac2226c206fc4b256c09efee1a571c67e494"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "5f904e3e31debde8077b3a5556d1728f88987be9896dfa12aa0e9af40c879d19"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "84fc201371184da9743eaec3ee6ee5e5a4441c5165bf93eebdb48770c7600884"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/3c83796ca5f043f1beb8044dd2e51a0d.png",
+          "sha256": "efd378d311572d50417ccedef6c764cbf83bcedb30efaf91a90a8937ac4488e7"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_08",
+      "uid": "0f1a74942b204c80a657fefe10e13050",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 17,
+      "object_seed": 59,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "25555591f3f04eb49d602ebaa8076a3a48a0542aca110c835b8c41a5c793aa2a",
+        "input_depth_sha256": "e119d5bd21006fe403634f29beb650fd33cfecb371ab9ca77e6be1e1ac61af11",
+        "input_global_embeds_sha256": "9c924739e82a79a4a17fe83ca644381dd0462c8f8043aba101ecb252e4f53128",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "80cf07ee064b92b682ebe6ee88765a439a0d0e89e986a42c5b38acc0a84d556b",
+        "input_target_sha256": "041ede3789946371088e3ac8cdcdd5a07f27bb400ce8d5cb1c27bda2481c2df1"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/000.png",
+          "sha256": "1e5bccc192d6c6dc0c34aebb0dc3a17770ecaf4c2278f678100009d589825ccd"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/015.png",
+          "sha256": "02b528bddb9f0119a7f81f081e1078adda0dac1740b2191d31728f5450750e5b"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/012.png",
+          "sha256": "f694a8e6dd52f55956648b4bf9022f58ee756412f8dcd124f49653fa7349b7ad"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/016.png",
+          "sha256": "5c9e25c183bad542f7ff04252148e7b24277a0e2f60c2caa1baac3006cbccd40"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/013.png",
+          "sha256": "a4dc9ecfba6564d7ede6afc1b69966bca9789203a213d6d5abce36756c0b17d2"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f1a74942b204c80a657fefe10e13050/image/014.png",
+          "sha256": "e1127acc6d161e4aa913dc0b46486b0ed66aa6ecb54a7e2796bc41f746a83f77"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "ad6afc1928b34fbedeb937429e9b5b0828faa997b7d933da51e94fe0f74c4ac0"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "55a68fa3a8b32a6c5854975ecf4f02db90184c3cfaad3f89bbec6a62abc0a277"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "306c3fb834abccc7e857351f71116c05e5029af640f2416a8c116f3a8e083749"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "83bcf4bb767ab0f321bb12b44919563f0e03478cf858f36b63a44df61d99fe49"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "31e7cfe277e12411e2c52605008765cc67a1e3d2e1ddd07044b86102b7110a0a"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/0f1a74942b204c80a657fefe10e13050.png",
+          "sha256": "ebb8b785289600eca5d3c1d905488f4f58d256c269cd0802a65f0f5830b32703"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_09",
+      "uid": "0c8e1199b7b64ad2ac1c6ff784139dec",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 14,
+      "object_seed": 56,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "6851cfc06f06ee6fc50ece535376a9ed808676f6a56f045b9cdd0429ca4d4c30",
+        "input_depth_sha256": "d34a985ecaf4c199be64447e7c47e9169d3224b34fd7d25ad17791727a414893",
+        "input_global_embeds_sha256": "6203c46c5b0ba782a83264b9477a5187dc4fc8c7ee2cac0ac814552ce9498d20",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "caebc9e073939e96129985e0b649789371fff681f40151752d19240bd308df4a",
+        "input_target_sha256": "7828a5d864957a37b697b31f47eba6e00924b27096211a17eb1fde44b1a1cf42"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/000.png",
+          "sha256": "37f04d714b5cfd939a9502badf28fd099a3819e953be48959445a2ea9102a49c"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/015.png",
+          "sha256": "78d281ea8c61b15158130361c6e392ee8c6a3bd3bee27ac727c51cdb197df8b6"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/012.png",
+          "sha256": "5f829323efc44198475205a550015bd9f0835accb9080f5d4bf6aa968475f79a"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/016.png",
+          "sha256": "570fa456cfe8add2f5e52c04cd907823919faa8eefa88d8088b6ea095894cbdf"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/013.png",
+          "sha256": "4b36146e2bb9923db729f4e871a22c89714fe43147a1c03bd74d2bc102d6975a"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0c8e1199b7b64ad2ac1c6ff784139dec/image/014.png",
+          "sha256": "3112ada61f6dd498c0cd766d873f5d748a1b5b860777cd809177c59f01cef32b"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "32b4b9b1566570c639b91891c0aafe2bce693c02c8240142a954c5a76ecb0ffb"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "07f8e92e382722d40cf8eee86b38bcf9af4ebb14fc170fa5c34a29a94f14ba46"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "f6bf48c81aa79bd218f90c567281fb0a0afff1f8ed567ea8c167f964e3c99947"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "d5e1a7c335d83dc2e97097be06ef6379c67f5a421521719632ece13790ef4126"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "a90478493c1eea15c05294e635876fdf2d860ac4e29a4f506e7af5a5cc6680a1"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/0c8e1199b7b64ad2ac1c6ff784139dec.png",
+          "sha256": "8d5e0dbb857e7bd7c91b1c65cff7bb2dfd9b16780bec62240bbe940e8eb4bda3"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_10",
+      "uid": "1d1bcb173c28475ba351eb604c7135dc",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 33,
+      "object_seed": 75,
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "977b4a6df067b969b80acb17bad37e79f85da99cb3d2a8cf11c038cdadee89a5",
+        "input_depth_sha256": "78a3f7738f02df4ee1d29315df93c14eab2fb06c92ea9f17c09209522f14aac1",
+        "input_global_embeds_sha256": "5363bc42b92e41148a9d1711e1675574fe6fabeee829fc5e156140d856ea6338",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "92b3e4ba1a354d2f49d7361418689aa190ed5905234b4b8150df09c0f03fcf89",
+        "input_target_sha256": "a28288329fb41d36df6de5995c9dd5d7735e580a39b8c9d62203715fa4a5b6a5"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/000.png",
+          "sha256": "0dd52599c0c63c9202b6b7132ce12f96c4ac38e07f4b3f0e4f97d180dff1b7d8"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/015.png",
+          "sha256": "6975ce103a48ec64a4a9edc1929e3a7f5aa0181a011ac7ea2b5cc0a5b5319058"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/012.png",
+          "sha256": "5202159d90b0feae1073981366f2a388156e073107cbaf5103997c5006cd9e53"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/016.png",
+          "sha256": "6186001b14d2268a677b82baddc934c7b5b1bf9abf0079464d5f6459fbb3208a"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/013.png",
+          "sha256": "590dc88685b380f3d602ff703932e756c22f6dff66357111b6ade55bd012d93c"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/1d1bcb173c28475ba351eb604c7135dc/image/014.png",
+          "sha256": "7e68f9898247a8784db40d803e7d021f8d64a83632b5ba8e83062abae5af4505"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "3d4185c0878aba835f4a36122fb95df7d703691825db5dde965e9a31770dd34c"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "1ca406f7f455952c53849f9d6379d703babde978854f15df24f2b854de8c80f5"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "3b5041a9a3103d97a2766b886e6ea836ae76731620a07956faf53dc84f5bfcd6"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "1c3218ab1921ad3812cbac8426bfacf445847d5f1a264cf36a06aa572b9ff766"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "741e2942e08c2ef21bd9b62427e058fa9f3a05f41823752747289a97a115d8aa"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/1d1bcb173c28475ba351eb604c7135dc.png",
+          "sha256": "ce64625283a9f9e1ec60117c56dff3e710151bef7c0edc3a12382fb0fdf72c25"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_11",
+      "uid": "85a7df80b79a4ba9b8c3a175de0dbce6",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 146,
+      "object_seed": 188,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "743e5d1b70966e776dc4c98b5375149948f0bf0486b293040c4fd9498795e526",
+        "input_depth_sha256": "a8d1f859ff9e5f935af5fc6ecd7c44d06be1686b92e88ce9b7decf8190d11dc9",
+        "input_global_embeds_sha256": "4892cf109004fa2162d19c2afcae40615c5789b75c289ada0e1239f9ac785cc7",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "9413a24bae43bb76e6e6e22db979b31631475d0a7f2077eb57241007b02e132a",
+        "input_target_sha256": "b22d4dc78c421634b2fc1b22815e4acce4337b1980eb1fe55907f814af9aa877"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/000.png",
+          "sha256": "43e61f827314ff6048e56c1e8d8b4d738333f6c7ebfc809f4564374fbf27fc25"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/015.png",
+          "sha256": "19328137aaec5173732c125906ff9500fce30c9210dcd738cd28f25c42cfaa94"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/012.png",
+          "sha256": "48375911b32af89def9e8493a9650460a5cfa0f7b4787acd5ba55b84d33248eb"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/016.png",
+          "sha256": "193130829cd1f9a7e28a3c39fa92051901682803b7589103f57eed43ae57378c"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/013.png",
+          "sha256": "2cabb5a2a34fb95af6d610e9aa719efd3e7d6f9bdc65fcc8e868d3f89ff524bd"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/85a7df80b79a4ba9b8c3a175de0dbce6/image/014.png",
+          "sha256": "b8a7d3928cdf813d44deb4a2019c1c997f7104fc79da344f531c7daccf73e73b"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "9ad7e01ed387785b2913a0f7d1563fe829681e94169f10f2521157afe5fa25bf"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "d4d7327998f7f58261eff32184574ce73c535c1ae212d46f1f52319d05025074"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "5ab75aa961b968650608f45be25ad86a3653bad2f01a9687063b834889a6efeb"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "9caca6e51a35aa4be3c4a7cd1cd1363fc1e06ce6e72aa6bed1085f12d5ebf5f9"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "aece449465337d6b0ee82d44ecac8f7e95da2e7cdc6504606e95c89586f91521"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/85a7df80b79a4ba9b8c3a175de0dbce6.png",
+          "sha256": "778e7915f2c56a101dcd2dc4d996d339256add29fa08d3cd9cd0b5a3d56ff4cc"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_12",
+      "uid": "dd5ead807a5b4630b1feb802f7b0276c",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 252,
+      "object_seed": 294,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "6a8830dc539cd32cbb3f5391accb7d46738575b52ebf3a6a2f137de73260a244",
+        "input_depth_sha256": "874dd9dac485dbb1edfb917df6f4b2f72cfdd219f3c4f8f1953dbc59ffe53612",
+        "input_global_embeds_sha256": "7df2550e3495908f174d53cd9c430cb933c6af5dcaec73f500fc98b4e7588037",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "5a50df810e41e67dbd9f6e3aa18be45eea3d994ee89b3672034d7cf918774165",
+        "input_target_sha256": "a5de0df661c7e12b960c1655951b80f570f2374112cb438ce7a9e5f4522d4efc"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/000.png",
+          "sha256": "958fbcb9da5fadb7d95f194b89736a49c89448b0ba053ab3e5d3c563cfbde071"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/015.png",
+          "sha256": "b62107abc9fc3326d8169ade5c9a8c63fe278363b47e00d3130f5fa35f2708cb"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/012.png",
+          "sha256": "49d23790e2e39ed6275b3d90697a40553e01f22fdfaa190fb375491dd1bdd633"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/016.png",
+          "sha256": "affe129978c6f2d864998f352f01ae1f2b241c77c8b2e753f3edfc3937faa53b"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/013.png",
+          "sha256": "db8147a8b182a4ff74807da6b7dec7139c7f253633b433f9179a729dbb3a5152"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/dd5ead807a5b4630b1feb802f7b0276c/image/014.png",
+          "sha256": "b55b439eafe203893fb01fac6cf610e281e74c60cd50c213217d1f8159a41c67"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "93825ab424508ee30339a432a7cdd1a4d8c41bdf20632b0d22940db6b7310625"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "c61eef18d7c887f614b48d9ee3e431b820c3d41f5020720fdae8520979bf98d3"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "d4f6eb897934a2bcdc57afd4084ce04b2b5f7171657da097fff89894f5e83b3e"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "a42e3f2208d7f90c14b1695b755f0be37888584886037cfd529ac660b9eea5d8"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "f8c275272c72235f15c890e6d7f1d158ce699c1f5ace2b5e2c9193ab82931569"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/dd5ead807a5b4630b1feb802f7b0276c.png",
+          "sha256": "9261c549e6bf3ee0e7618ab87618708c54b66d27214ba65e7aa921eb934cd0b8"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_13",
+      "uid": "f6979d7ff8e54c4daf00fee46f09a139",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 292,
+      "object_seed": 334,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "ba9a820283dbcd4c7006343e5f48d81df29046989b3a6a6d3976babd97e0bb5f",
+        "input_depth_sha256": "255c22ac17340f42a2b1e95b6fdbda2b3bbcac4f4f5c69f9c243eaff0a720a4d",
+        "input_global_embeds_sha256": "c4493c5d85f4a573efc44c57a54a0e3d5f4f2ef708e4965df0536740361232ee",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "205dc89edb75629a2b3004195d58bd6901195429176eb31ed5a1854cfc01c062",
+        "input_target_sha256": "fee808caee44a78c9cb1e4fa12155f4785e8336a64dc7830c43fafffc9494f47"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/000.png",
+          "sha256": "084e465f4fd14cb7535786c1bd010fbccfd52bc0de455f6e40da8aef014fd425"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/015.png",
+          "sha256": "6ddbc2bfcd00f6dae9bf62f1f3c440226d3d5a529748bc53acf5080a34e56062"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/012.png",
+          "sha256": "98d3ec6679b68c687a9cff90e945438a7bedcd94b0ddef8727c6e27c9be24da3"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/016.png",
+          "sha256": "06e706a863eede471151eaa770614bf99091878af316075326e140a739ecf5b9"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/013.png",
+          "sha256": "7f293ba4490003c81b77780227134681a33c6a382cef2557533dfce33cc45899"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/014.png",
+          "sha256": "b1156d8ac9f6be89f5a1399eb2b788acd93f68d728d2bd8f65c2a46edb54ad7e"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "5eb629428c1506b12ae998021679247289a0ea3f07b41e2a935862208211b91f"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "47c0a8996eb5f9658ec996f37b7c1ea236146e1ba1d9122c1867912d7d503f49"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "425c9b00d9c65aa0442e530b22b3b06310c7005438ae16bd85737a2aa93dbc42"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "60fa50a194ba4fb9439c3a9866e649f3b4ec597e4f8c96dc6411fd88df0e6f96"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "a6f1130db3984ce1355ed7aef41ca7e0f806232f85f00d7ac1cd6dc1d585632c"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/f6979d7ff8e54c4daf00fee46f09a139.png",
+          "sha256": "62288dfee520f2f47c56885ec29f8cbad7ceca21e390154b3e39bb3e12ca9cae"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_14",
+      "uid": "b09220089d0e486bb1d11a5fd80d8fd3",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 200,
+      "object_seed": 242,
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "1aef6c67a65b9eb800addd54b4a87cf44119aa0f8ed2087dcdc5569a0971171c",
+        "input_depth_sha256": "e6258282fb7b70a4fa60c275ba75df285b7a5a8f36a5ab59ed1b93356d88a6a4",
+        "input_global_embeds_sha256": "77b3a442e45e40ee0028e0bc944bee7ed7c94204b477e69497e4ba827b32d845",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "e3e7868b3c3b9e505d2becc1c6cda6e0649dd81ca8deec6c3c43792d42fe1e04",
+        "input_target_sha256": "8afe2037f5e819490a3339ed8936aca77a2f03002304b087b725b4926f4c90a2"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/000.png",
+          "sha256": "635352164bc0fdc34cd5903ca0971f5217f1b69204c0787fe2f124718e151d12"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/015.png",
+          "sha256": "9086ed66c55f1b1d4f480c415c8ebe919dd6c4b97429dcb17df62893b479f08e"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/012.png",
+          "sha256": "0f986ce0c5ec89480130bb5d9e6ee7cba7c08fde47e1347b2cb4233fa0c226ca"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/016.png",
+          "sha256": "eb6e6529e883febc55194429d75268d7325ffddb3ea0a7e58e711b94e32dd4bd"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/013.png",
+          "sha256": "7810c19bf17dce3c7d05c989cc48b4b690a73c1a869a6c4b3e790f82337de909"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/b09220089d0e486bb1d11a5fd80d8fd3/image/014.png",
+          "sha256": "f1faaa201fa9663972fe105e7d0aa3d28799672c9fc1ecd32c2411bbe491fa95"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "481947b62e1180fb174b09ba90b415fbc0eb690119428a936f27095b52fbf66e"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "d14265af917d9c9bbc634c2342d20ccfc03edc9dc91162bdae15707fc6779759"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "e32b5a9474977d95b5143f34002c0419f384a1e770378eb2d5cb3d804043819f"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "acce7facd0f84bd387b7bd71b1c4a9f94bb5c1a3be59f1f87b6ddadb38e27bf8"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "28bf6e6cf59a545714a60bd9c6f06c29db8f55cbb3690c240f4ed0bc94044805"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/b09220089d0e486bb1d11a5fd80d8fd3.png",
+          "sha256": "f9827fdc985833059466367e9fc5a177806201c4ac91c7519aa3d379ac4ceb61"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_15",
+      "uid": "ebc5938fe6a04b5bbd5312fa2abb9ba5",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 272,
+      "object_seed": 314,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "eeecaa0550fd4968104bf0de33dc552c86199d7627622d6d7e67c0b2f1d232a4",
+        "input_depth_sha256": "65b20f44731a3996247bd957748e2414aafa72728145603fc462e209d0917327",
+        "input_global_embeds_sha256": "96da6080ffeac9f84198407f706d8258aad746a44770393340a5ea4cc51dbb11",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "cf625d81c73883f98a4712a5830d9d5df341d568e6f0b13b0c6e5158540485e1",
+        "input_target_sha256": "7193ac29ceedb1528c71d77a801fcca671486783f90d7df824ab92a603449c36"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/000.png",
+          "sha256": "737492bcd98bd87ea368a46af86e956ff354cca1cd24a3a63202e167c6d248fb"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/015.png",
+          "sha256": "259db653dc73e4f0e5b32846bf461684457e159e042a77398e329cefeb5ce4cd"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/012.png",
+          "sha256": "af4cc7df3ec1ade7497b01186f4176e16e08c7f386b6a2f52331836313667e7e"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/016.png",
+          "sha256": "345d8714709c46b079e19a96c1a9f18ecfa3fcddb878754eebde58d611c8b5d3"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/013.png",
+          "sha256": "12702c19ed2916f7ceaf077052196418cc060e0d6e96490c450e5b31ddc90a8e"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/ebc5938fe6a04b5bbd5312fa2abb9ba5/image/014.png",
+          "sha256": "f12e886152ae7a9f579b0b4b088ac1488a847405f58756cd2d0570778d76de78"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "3861433188ca14932a4f343dfe5ea5d9cd4994210c9f04f4b57aa91842fa1a52"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "c94351535f1f0b90fa0695a726397315102c8f141719def64786eac55f2853be"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "c897ada5724ab14332b071596b993b1f274cf2959b37abba8bcd3f1a65e1f3c4"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "70ce7b1cb87d1db19ad6dde1cb0327d35abf10e876f32ca1d739c3d8ed5a7513"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "1d4c23397443afaa409f3260e7816b7c6849ff4f67f30f9e6676a1f51c422420"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+          "sha256": "3cfb38a6a2a457eb3015451b1bc488225effec29cab3ab1cfe2d404dc0f66a4b"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_16",
+      "uid": "0571e6db30c84b1593bc55a8e145a430",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 5,
+      "object_seed": 47,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "80addf3ee18004fe0d9dfba9b113b1c080f05c4c68802af96b4f10a00dc07ea7",
+        "input_depth_sha256": "6516c02c40e213efdc3facf3c9c058adfab4766f381c748ba08efab3333a94b1",
+        "input_global_embeds_sha256": "18f1fb3369d3afeaed4e931b081c853dbf1dbad3442650bd741a5780b2d89330",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "78e7fa78b8808abfe503c2ba7a53c84578154c8e94075d16ea048c644c5fa46d",
+        "input_target_sha256": "dba3f204907ce9fbbde1f0b1e3f45a8a13fb4f45b6115ee91d50246d9cc8cd3f"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/000.png",
+          "sha256": "ac263a0251847f6a15beedda815c3b0c06e2d4f4afd52f048ac1c5eff03c1c3d"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/015.png",
+          "sha256": "d8cc4538163dc3ba1f6d9131f3809e9c97b30ced640420bf036493344da08486"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/012.png",
+          "sha256": "b2ec041896fd07461564450d667cc776f3343870a89c0fa561f5129b9acb7456"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/016.png",
+          "sha256": "f536369531ebc06af74ad0e863feb54a04f3e9d270e64a317abc2653362d53e1"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/013.png",
+          "sha256": "e102b8d253165b02f2a04ffd26668b6676b877100a277cc9147b9628030f32f3"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0571e6db30c84b1593bc55a8e145a430/image/014.png",
+          "sha256": "5765884bb1d50ae9dfb52ef7f1e3278911c4981307be879adf9879ea28e36220"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "ab180c723fc7c0466310744f532f11881da1c367e10788e8b0cc5f629910d958"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "77e5c4e613aaaefcc121a6a1772a4565b676609ffd346db0d888559604a1ae56"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "62e8a933a0c864fecf177fb0b45762cf1a66ff91ea5a5d2d946b226a432932d7"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "decc57913c11ac698ab66717a9aadbfb582391e915536caa4a48458c45d2430d"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "626b3f7c23402f162411d54f6cf959421871e9d67a91fcff947f64a3ebbd4136"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/0571e6db30c84b1593bc55a8e145a430.png",
+          "sha256": "5a3046726a4a7efd32d47c67b6a7331c7beabdf8b2c948e2da87ed88ddd6356d"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_17",
+      "uid": "0e96435a23ee42f9b0e76860066c62ff",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 16,
+      "object_seed": 58,
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "02bbcb6ef019946277705daa53e9c4abb79595b85dd5c200cbbaf64814f54653",
+        "input_depth_sha256": "2e9a9e448259cba89b9be0a3b6e6e31260b28342a99c62fef6a1ee904a3abf2b",
+        "input_global_embeds_sha256": "d931ee1764aef645227156d917480dcd29b4d4c1faaa3c0b37adfaddb97e1cba",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "01d60b29d2270e125a80e8cc3f372a5fbcc86a1c7dbdd183a7b95e81053018f6",
+        "input_target_sha256": "c76ecbb19db90804cbb9263058110ba0b6d75d520c4e756a3389593dbfe351f5"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/000.png",
+          "sha256": "f4ed7ea5c10a3615170eee627bc7b9846cad2441d4b6b82cf8c6e4ecabe89126"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/015.png",
+          "sha256": "7a4a4bf622530c30b4f3f2c07292be1ca7831a0e7d5b0f2e99bd417cbb048fa0"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/012.png",
+          "sha256": "6f4200e631b4adc63afc06103fa94f33853b42d11e21814203f9865c4ac64816"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/016.png",
+          "sha256": "5ff71d23488dc3628f84c07496055cb839f5fc24eebf89559e0b1c7ece192c17"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/013.png",
+          "sha256": "ed81531bb7f23a800491b02de4ac72ffe90e33f7f523101754fbe882dc99a8b0"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0e96435a23ee42f9b0e76860066c62ff/image/014.png",
+          "sha256": "e57f52085b09c8bc6c72f6c73537ad556c52359a579fb39df606aa5d99704042"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "2ceba1abeaf92fa1190f2d3d953b7c9f86d407285e7a0f9f36a7a89a9cb6840f"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "9cef8e60683d022fd8230767b948acd82aacb169af1aba9facebec45bd731b2b"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "cc04ab5ea855a4ef362fce1663c3dd6c5c429f98096a4df1f577718c61f0814a"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "575e9f76cd4746b3425314cbb2828512aa0aef643b9e53473aafd0359a27965e"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "9f3f5b8cdfa7d4d65345ce34fab1318b7072915df65a5b7215238ae8d641630c"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/0e96435a23ee42f9b0e76860066c62ff.png",
+          "sha256": "1c4e56e4b05c5b839c1fb54256f5901e63bd7772f0b7ef6ac2216e06c635c3cb"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_18",
+      "uid": "0f9579e2d298480aa26a0d9fed9307a9",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 19,
+      "object_seed": 61,
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "remaining_by_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "1c554479d2d2d01671ba3cf6ecf4ba40f54d85779a3cc6bcb743b04e2ca0b89a",
+        "input_depth_sha256": "8782b01b7a26e7c6b243c0bc7759c521a3230663c789053a555631a6ac214e21",
+        "input_global_embeds_sha256": "2e03fb6bdc68a10fd618b6867c6badc91ebb098dd04efba5611bffffae89db86",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "a1b6b6415148f1033fd634ea30223c80222e41ba3e4ae48b525e02b7f0dabf26",
+        "input_target_sha256": "a78ec9604a1eecc7c82faaa8a0c15f0a65e99d683a063fc831f1cfcba1158fc0"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/000.png",
+          "sha256": "a5fd3736539e85794ef4402b80753644382ee0741663d0bbe5151ed76953aff6"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/015.png",
+          "sha256": "f6a2c0d386a057973c665051c56bd7abe7e90187382a792d1ca37bdaaa2b84c7"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/012.png",
+          "sha256": "f9306f9f9de902fb29b2a726d71895c622880ae671fd6bd07a7cde268b08f699"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/016.png",
+          "sha256": "6090d8150e25045e7f61b57ea867bd95d7a5b662aa93ebabab78f328b7209fba"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/013.png",
+          "sha256": "bdf90dbbe3c457f5746f53beec0e209c48d84bc518170fbf89c6cb1c188e519a"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/0f9579e2d298480aa26a0d9fed9307a9/image/014.png",
+          "sha256": "9eba3a6b6c6e33ddd0be218cb7a12bbdf58d389fd158e2fdfbd1ae2ef153edff"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "4f22db81e318a44944bcb47a32096ba6300245f689c34eec04aaec1f17294d6d"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "c8e085f362a43ad22f2175f7d86179150c7ef28cee0d8e2421118a01f816ed53"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "cb5acd643df4e7ffc5a9a42a5b76e069bed8eef77005402d294e50f8c4497095"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "102d6b4b6db3e7be33332b9d46267002f7942f04261acb3da7cad05202bbfe82"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "4ef9d35451fb2b2a68451382c032a067e6b8ca2417ae871ee5066ecd704d468e"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/0f9579e2d298480aa26a0d9fed9307a9.png",
+          "sha256": "458d2fc3fe32ca3d864a68c40fd1d670028289913ff2262e340d070507214e3d"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_19",
+      "uid": "067aa0a948074dda86ad9fdad1fcef9d",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 8,
+      "object_seed": 50,
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "remaining_by_focal_FG_PSNR",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "input_hashes": {
+        "input_cond_sha256": "a58fd9b254b5401dc5869e32ffedd60361980b4acc9bbe943c0b127365d7a69e",
+        "input_depth_sha256": "ba190e1291120bdef1e4e713409d40494eb774e49898ea6beada8d378bc05cb6",
+        "input_global_embeds_sha256": "b90205d0e6cce1217ad9f9d96972c41b979c8b114e966e3648c65a7e6a44db6e",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "296e099c39010f4be6f44dd2a7b64fde03f578f0ea5f5ff62244253ec1d77741",
+        "input_target_sha256": "71c605826323eea44eba283bbfdfbec560bc7ed275c1d323c7fef0b3d74d15b9"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/000.png",
+          "sha256": "fb76e4f362b9dd893cbd6934fc42136ebc07e6d3246d2f8faf65e3af00a54513"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/015.png",
+          "sha256": "b956a887c09eb00659f596374d42e086baf7a2adfc30778a9f8b5a5de31d9f24"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/012.png",
+          "sha256": "10c4b8d907ae5dddd0f2d379723ecb8235b977d24a8b9dfe147c3673db095509"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/016.png",
+          "sha256": "c5772bf2340ed85cca8f5c4a9d4bd39b330ba46900f3a3b207fc8f728a79d28b"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/013.png",
+          "sha256": "0d16be73f923176c44e4065300cd4496cc05d13d3339c71d17d1704a045d64dd"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/067aa0a948074dda86ad9fdad1fcef9d/image/014.png",
+          "sha256": "06ccf686db5ea8359dff13f9b074fc280a65326562f6389c9b540aa247d0b702"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "f125e44860824da08db797835edf11c2bb8c44f1a68805a733bd884197cb43cc"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "1711b361aefe4fd7e0ea5c29534b67b52cc8e1fd59edc226b739fc83f2da6c46"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "126fefa933cf9c92d910213fe607ff819ba26a9e807049b059c36add263a5f0f"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "e1b69d41cb15b98259f4cd709e14afc7b60eea517747bfcd6866dadecc1c8a72"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "3022effd8da0c25e55d31ee9234452ef592b125a13a26f6ea09fc4a48da53484"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/067aa0a948074dda86ad9fdad1fcef9d.png",
+          "sha256": "3dec4852a7181290081bf07dc2c11070c7dc7407f100e6cd22f62f0b19871de1"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "freshc_panel_20",
+      "uid": "06fa4974f8cd4d4ea792e98fa1521457",
+      "source": "existing_formal_fresh_c_gallery",
+      "object_idx": 10,
+      "object_seed": 52,
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "input_hashes": {
+        "input_cond_sha256": "3cea3d925dc3c7e23dfff35517548b92197bcc7f2ca9ba968d4540d67af5badd",
+        "input_depth_sha256": "0838dfea79035d46d01470f30409beea5cad8396069f6c48d6202985c4881760",
+        "input_global_embeds_sha256": "f3e26e36bf47f95cfae294c990c61c2e829aeebdc1eb5829c0650a450d200a80",
+        "input_init_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+        "input_normal_sha256": "610a9168702d9a6d9d80bfcc04bea3bffb505a288c52bb2305b7e5a4eaae6723",
+        "input_target_sha256": "bd7514ee5eea1e79e683187c62e7a348df9f283e5f2d3e062308ff872ca3e712"
+      },
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/000.png",
+          "sha256": "57abc97392cf2a3080f06ba7319cf77588b6ca64a39596ce60fbdbb644eb2680"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/015.png",
+          "sha256": "502053fa4f8c54ba0c79cffa8d6b4db521ad5500036efc074cc91a14d5e42e49"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/012.png",
+          "sha256": "eede5b4667800f0540eeffae77cfec61d44b1d6733d0f5f739861bbf4a14c7a0"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/016.png",
+          "sha256": "a265e99af6b8771cde9b7560bc4d946ab23e0048974d2e14380132032f026ce5"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/013.png",
+          "sha256": "f6a36129a57c6ff85879b18f9a22d1d7e9716864ca963a5a1ade54757733361e"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/014.png",
+          "sha256": "e14659406a66bfce4736e24f403b62b6edd18b88e9c881ef4e2f2aa4bb737d71"
+        }
+      ],
+      "method_grids": {
+        "no_adapter": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/no_adapter/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "7a84b9d42f53f1d2b26696395facf143faa417436e1ad446b48d68ace71f64b6"
+        },
+        "native_gfl": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "a123c75f7feaadcd941bb4cd1c2b227fd6cad9201aeb53e9cf8cee2508cba2e9"
+        },
+        "native_gfh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfh/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "9bf0de63c51b80373f1029b1b9cade1d5f9803f22f5f44a513f6f9e132605278"
+        },
+        "native_gc3": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "2c88b85daee4c10111dec0ce03a6bb039f09c27da3e50f534e0b72b7c9052c4c"
+        },
+        "gen_linear": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/gen_linear/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "3be6c5adf844b0b2d78a11645e5ffb66894a15d665a244089306660e6a70cf64"
+        },
+        "layer_llh": {
+          "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum/predictions/layer_llh/06fa4974f8cd4d4ea792e98fa1521457.png",
+          "sha256": "acb7c7dbcf6ae4586263f83437361d5a2dee0aa566ccb11434199efffe5ea00f"
+        }
+      },
+      "output_action": "reuse_existing_identity_verified_rgb"
+    },
+    {
+      "sample_id": "fig4_row1",
+      "uid": "eac4b392b7b448a2b6ec77e8936abe1b",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 4,
+      "object_idx": 4,
+      "object_seed": 46,
+      "description": "antique potion chest",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/000.png",
+          "sha256": "a3dee1628d00ee7f40fbdbb7cde10a2f7376288ba63f91afe50d8d84eee2910e"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/015.png",
+          "sha256": "628510705fba988b3a59d52a18fce424562f45aa943ffda6fbdd462c985fb275"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/012.png",
+          "sha256": "b8e3c834c9ac5f2638206c57eb98ba9e2051b6f84e25e756885f5beeaa2f3ba3"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/016.png",
+          "sha256": "49a611b1148f600bda81c999c1640e7ff7b500cc84e75176ef4745fd3d4a4b1c"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/013.png",
+          "sha256": "7e63d52716e25c43f594caaf2b1b2c103b344b2f01cdf38e65a43912140ed818"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eac4b392b7b448a2b6ec77e8936abe1b/image/014.png",
+          "sha256": "1ac53d34aec0659dd5c416f33b97c8b911ed02267916e04e3a048e71a64a761d"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0004.png",
+          "sha256": "63176a1311a4b79199620faff71954d0beace0d74940fafe5c97433cbc70847a"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0004.png",
+          "sha256": "002f07390929eac46896fb9165bc9f1c58af14835bcb2ebb0157f19afa98ee99"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0004.png",
+          "sha256": "d33b827a0b3298f9d4fd22a9548b0ec167f884d045d4baef636be73a44655dc5"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0004.png",
+          "sha256": "e55c50c15fb00dae00a19cd9c94c1c93b45abc1bef7e401ec258f0b665d1a0aa"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    },
+    {
+      "sample_id": "fig4_row2",
+      "uid": "ea7601dbeb2c46188571cb86e8fdb5bf",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 3,
+      "object_idx": 3,
+      "object_seed": 45,
+      "description": "classical stone bust",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/000.png",
+          "sha256": "d61b795255406912f5e4d3e7db441ee1d8dcbdb7cd7a908ac38f84b8493b2ad3"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/015.png",
+          "sha256": "e7517abe593ef8f92dc41bdd24c511bfa175da18a3f49060dee06aa495df5fec"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/012.png",
+          "sha256": "4804effbe1f047d58fbf64a24d980519ca9edd5c3c73238cf97e621dd6bb5dd3"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/016.png",
+          "sha256": "fed41590f8b54321c4debdff108c08897eae271e69dc2034a89d3e64970dd25a"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/013.png",
+          "sha256": "2e3a6014e89a2c107acbca217049dfb5b5f7f4ba2fcfd023a4f17de80da6b1ea"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea7601dbeb2c46188571cb86e8fdb5bf/image/014.png",
+          "sha256": "4dc5935e3f1e1008abd9670a99346e2ec83a30b978bfcfab2641bae42f7ad865"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0003.png",
+          "sha256": "3a34d3e8a9cc3a582e926f22b407ffb1b3e82abb4788132b56dda0e30c0bd303"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0003.png",
+          "sha256": "0773e4206c14af8cf6faaf8e2efb322831d56d274f83e6537b08f3c9da0dd14b"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0003.png",
+          "sha256": "c3dae1e7e16dd75eab6c178e279ffa29bee4e18db0d7db7d049b7f495e8e8347"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0003.png",
+          "sha256": "007b3d5962dc86210f7f4b1900fe6cfb6040eb54d3573d01c5b6210dc2100f40"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    },
+    {
+      "sample_id": "fig4_row3",
+      "uid": "ed600cc9d91448939edeeb3a6d858448",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 12,
+      "object_idx": 12,
+      "object_seed": 54,
+      "description": "colored chest",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        14,
+        15,
+        0,
+        16,
+        12,
+        13
+      ],
+      "reverse_orientation": true,
+      "rotate_output_slots_90deg": [
+        1,
+        3
+      ],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/000.png",
+          "sha256": "6e8fd31dacaeaf7efae640d4dd2bee6ebf843535eebcd22a9e516dda1bf9a27c"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/015.png",
+          "sha256": "fde68266b32d98e1611d5cd2d2ef4cd91177bea181f319e58c4d143e4162290c"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/012.png",
+          "sha256": "971639522e31615abc563118f7b399e3061ecf02ac4969e8c7631d7aef20c2f0"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/016.png",
+          "sha256": "ccb3561a5bcb146430ba0541cae5ae10fa120aa33255bfe1b599e13f90cac314"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/013.png",
+          "sha256": "4d2cb72612f2129cc1b3076d84a92cf3bdd27232346e61aee91be350599bcbe5"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ed600cc9d91448939edeeb3a6d858448/image/014.png",
+          "sha256": "aa4cd25081b45f66b8060b2771ebb4d6e9a847ae6535c7eac7666fd48a6637f2"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0012.png",
+          "sha256": "8d9b75478d40ecda2624323ceeffb56b84d43790e4b6dff4295633551c4438b1"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0012.png",
+          "sha256": "f35bf005af2f00425f299a0397309708e6b13dd173b4e845f64f715cff1099ab"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0012.png",
+          "sha256": "13582de568c83ecf38757028896dba1b37b50362f848e8bdc9ecd5bc7bf9a1ac"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0012.png",
+          "sha256": "3cefcb88e751d7c8ccb9cdba07eec01be88ffd270d17e94380ec2dda811f5126"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    },
+    {
+      "sample_id": "fig6_row1",
+      "uid": "ea2fe260ba5844d8be4fe34ce48e8af6",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 1,
+      "object_idx": 1,
+      "object_seed": 43,
+      "description": "blue-roof object",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/000.png",
+          "sha256": "b8991c08190d6ce14ba4131a50b7e506cb2c0b5e86f6ebf62bffad708650c048"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/015.png",
+          "sha256": "49b43d994f40c47a0aaa1643064ff3c3a23415e62d596b616e8ba08359ecb5d5"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/012.png",
+          "sha256": "bccc6f2dfb16f71f9a4c4850c9ffffa1fa5c5cf5c68dae48840c9bb0055139f0"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/016.png",
+          "sha256": "1762b0b77c337dff022e0fe9ea1c168d69e09dffc3e700db0b8996c132107a25"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/013.png",
+          "sha256": "39337814c8ae786713f4221a8f6feacc4aa2154577bf82c3a1e2a68eb402e99f"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/ea2fe260ba5844d8be4fe34ce48e8af6/image/014.png",
+          "sha256": "90674766f4174d7be7a32c4b6a3d7d5f4d118e6121ada077e2167d5d59846cd9"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0001.png",
+          "sha256": "3e6c48b5cc44961b8a91376459c40d65c106862aba7aba0533200ac9e5415263"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0001.png",
+          "sha256": "aa68e205098f1e5faf9a71c05194fd198fa2691ee9d920b84165d50603687b41"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0001.png",
+          "sha256": "8a36559bdfc6ad379553e62296691b214f3603308ffc3ba0740678b20691ebe1"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0001.png",
+          "sha256": "e17072bac6649939c8a5e7d331859644d77c2159fc0110628ca68f23d1c6ea01"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    },
+    {
+      "sample_id": "fig6_row2",
+      "uid": "eda4277e-9984-5ff7-9891-ad816c3f09fc",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 15,
+      "object_idx": 15,
+      "object_seed": 57,
+      "description": "white object",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/000.png",
+          "sha256": "8e5b8e25190523259484803a17b7600d381310fac4f4a999026371398e5a9592"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/015.png",
+          "sha256": "bba16fa8a94e2bdb75663dd713f66bb68064a1c70f47d0a531b5eb80192e291e"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/012.png",
+          "sha256": "44c8a043edbf30c635b586f23c7fd4f001a1de990beaa0e9ae57e931b4aba68b"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/016.png",
+          "sha256": "7428591b072147f963af21f894afe8e123ac0fafd2666cb5221753e7c8b9a8c3"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/013.png",
+          "sha256": "5137ba3bbbfd24cf4a28ddf05b8abd62e72ebdfe239126c20ace70a9db02a2ed"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eda4277e-9984-5ff7-9891-ad816c3f09fc/image/014.png",
+          "sha256": "4dfb1f098b82c9556494646e9c02da273ae2d1054caf5ffeb66710a6a5a8f600"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0015.png",
+          "sha256": "be6d8889429b85259d6420caee43de950179fdf3b563a3b35d404f46e3c90519"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0015.png",
+          "sha256": "fa93da44d7ee2143ba469cce40c55e974968d98241bb242d0a4d686124eba828"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0015.png",
+          "sha256": "e64538da422eeb3562d2bccca1babb15524e7d81ad977763461db75e2801508f"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0015.png",
+          "sha256": "1ee881cf6b3d1dba06eff5550aefe813d4d715ba57980cd52a3d87267e42101e"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    },
+    {
+      "sample_id": "fig6_row3",
+      "uid": "eb6010a0aeb04a03abd728db04a45f01",
+      "source": "01549_fig4_fig6_original_object",
+      "figure_object_index": 7,
+      "object_idx": 7,
+      "object_seed": 49,
+      "description": "red-accented backpack",
+      "selected_by": "frozen original Fig. 4/6 crop scripts",
+      "previously_viewed": true,
+      "independent_confirmation": false,
+      "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+      "declared_view_ids": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "effective_view_order": [
+        0,
+        15,
+        12,
+        16,
+        13,
+        14
+      ],
+      "reverse_orientation": false,
+      "rotate_output_slots_90deg": [],
+      "reference_views": [
+        {
+          "view": 0,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/000.png",
+          "sha256": "8f02aca235764e0756eb0d1d9a96a8ce94cf28411e9ce9b7fdd46639dc52207f"
+        },
+        {
+          "view": 15,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/015.png",
+          "sha256": "c19eab7585c50f8be7a72458c4110219ecb31f22d5623fd5d7df783ea0a231a2"
+        },
+        {
+          "view": 12,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/012.png",
+          "sha256": "ac6e46850f9fc9b498db34ad181bbbf74593a14ea13d2cd8065f6fb0a2d04320"
+        },
+        {
+          "view": 16,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/016.png",
+          "sha256": "b378d86cea386dac4341c77455147d327b8fb58e53f9dea8dc5820a419db5627"
+        },
+        {
+          "view": 13,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/013.png",
+          "sha256": "6d60762ad5780fa28549f97149bc6a3f8acd42a1eb918abd1adfba36767f4044"
+        },
+        {
+          "view": 14,
+          "path": "/4T/CXY/MV-Painter/data/train_data/rendered_full/eb6010a0aeb04a03abd728db04a45f01/image/014.png",
+          "sha256": "f42bdefa1d27027bccb9c30bf1b66cba13ff75d4953558db39a6d383aff77e36"
+        }
+      ],
+      "historical_pre_revision_images": {
+        "GT": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/GT/obj_0007.png",
+          "sha256": "c4ae687e9b96da6779685a3a4f19b749f7adb47089b0019a5b7cdb8dde3efa1e"
+        },
+        "s_1.25": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_1.25/obj_0007.png",
+          "sha256": "2c16e357ea5c971678535adf4e1ced8c87235c400958e4d702a525c7d3c294f8"
+        },
+        "s_2.50": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/s_2.50/obj_0007.png",
+          "sha256": "5f464ef87029d032b3ac91a87658b9be6d9ad9bc745b494d2e1682d1a9275555"
+        },
+        "C3_TCAS": {
+          "path": "/4T/CXY/MV-Painter/mvpoutput/revision_clipiqa/images/C3_TCAS/obj_0007.png",
+          "sha256": "85045ef444124502c68a8a7dda6b3aa132fc3afa912a83aa387929d38a45bb70"
+        }
+      },
+      "output_action": "run_six_conditions_with_frozen_validation_v3_identity"
+    }
+  ]
+}

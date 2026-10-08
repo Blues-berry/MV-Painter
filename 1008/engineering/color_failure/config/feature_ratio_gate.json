@@ -1,0 +1,19 @@
+{
+  "name": "feature-relative residual envelope prototype",
+  "enabled_by_default": true,
+  "tau_by_depth": {
+    "deep": 1.4753147840499878,
+    "middle": 0.988596761226654,
+    "shallow": 0.26088894158601755
+  },
+  "threshold_source": "../logs/FEATURE_RATIO_GATE_LOCK.json",
+  "threshold_rule": "per-depth 95th percentile of actual GFL correction RMS divided by pre-adapter feature RMS over the frozen 26-object set and 50 denoising steps",
+  "formula": "r_scaled = min(requested_scale, layer_cap) * r; q = RMS(r_scaled) / (RMS(h) + eps); g = min(1, tau_depth / (q + eps)); h_out = h + g * r_scaled",
+  "methods": {
+    "c3_feature_gate": "C3 low/high/low schedule with the frozen feature-relative gate",
+    "linear_feature_gate": "endpoint-matched generic linear schedule with the same frozen gate"
+  },
+  "inference_cost": "One residual RMS, one feature RMS, scalar gate calculation, and elementwise multiplication per adapter call; no model, training, VAE, or extra feature-network pass.",
+  "ablation": "Set MVP_GATE_ENABLED=0 to run the same schedules without attenuation.",
+  "selection_policy": "No color metric, visual judgment, or outcome from the proposed runs is used to tune tau."
+}

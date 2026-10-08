@@ -1,0 +1,67 @@
+{
+  "locked_at_utc": "2026-10-08T11:20:52.551854+00:00",
+  "status": "LOCKED_BEFORE_GENERATION",
+  "runner": "/4T/CXY/MV-Painter/scripts/run_validation_v3_experiment.py",
+  "runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "checkpoint": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config": "/4T/tmp/mvpainter-recovery-HLzm9O/scheme_new_schedule/clean_holdout.yaml",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "object_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+  "object_list_sha256": "e1bb89bb5924790ccd924be5f010b36b174e40fd221ce9cf712d768ff2f2ed84",
+  "object_indices": [
+    4,
+    3,
+    12,
+    1,
+    15,
+    7
+  ],
+  "uids": [
+    "eac4b392b7b448a2b6ec77e8936abe1b",
+    "ea7601dbeb2c46188571cb86e8fdb5bf",
+    "ed600cc9d91448939edeeb3a6d858448",
+    "ea2fe260ba5844d8be4fe34ce48e8af6",
+    "eda4277e-9984-5ff7-9891-ad816c3f09fc",
+    "eb6010a0aeb04a03abd728db04a45f01"
+  ],
+  "conditions": [
+    "no_adapter",
+    "native_gfl",
+    "native_gfh",
+    "native_gc3",
+    "gen_linear",
+    "layer_llh"
+  ],
+  "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+  "run_dir": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_six_condition",
+  "environment": {
+    "MVP_RUN_DIR": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/fig4_fig6_six_condition",
+    "MVP_OBJECT_LIST": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+    "MVP_DATA_ROOT": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+    "MVP_OBJECT_INDICES": "4,3,12,1,15,7",
+    "MVP_NUM_SHARDS": "1",
+    "MVP_SHARD": "0",
+    "MVP_DEVICE": "cuda:0",
+    "MVP_NUM_THREADS": "6",
+    "MVP_CONDITIONS": "no_adapter,native_gfl,native_gfh,native_gc3,gen_linear,layer_llh",
+    "MVP_SAVE_PREDICTED": "1",
+    "MVP_SAVE_RESIDUAL": "1"
+  },
+  "protocol": {
+    "view_mode": "unique6",
+    "declared_views": [
+      0,
+      15,
+      12,
+      16,
+      13,
+      14
+    ],
+    "resolution": 256,
+    "steps": 50,
+    "sampler": "EulerDiscreteScheduler",
+    "latent_seed": 42,
+    "object_seed_rule": "42 + index in the full original test_objects_300.txt list"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "controlled_intervention": "target_view_mode unique6 -> legacy_duplicate_top",
+  "checkpoint": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "historical_objects": [
+    "fig4_row1",
+    "fig4_row2",
+    "fig4_row3",
+    "fig6_row1",
+    "fig6_row2",
+    "fig6_row3"
+  ],
+  "legacy_reference_fourth_tile_equals_second_tile_all_six": true,
+  "metrics": {
+    "No Adapter": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 46.65960560904609,
+      "mean_ciede_legacy_duplicate_top": 47.03888270590041,
+      "mean_ciede_legacy_minus_unique": 0.37927709685431665,
+      "legacy_lower_ciede_objects": 3,
+      "legacy_higher_ciede_objects": 3,
+      "mean_fg_psnr_legacy_minus_unique": 0.11277976135412852,
+      "mean_fg_lpips_legacy_minus_unique": 0.0011235239605108898,
+      "mean_edge_ssim_legacy_minus_unique": -0.013817787170410156,
+      "mean_prediction_rgb_mae_in_changed_view": 0.0,
+      "mean_prediction_rgb_mae_in_other_five_views": 0.0
+    },
+    "GFL": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 19.644044472111595,
+      "mean_ciede_legacy_duplicate_top": 19.799600031640797,
+      "mean_ciede_legacy_minus_unique": 0.155555559529199,
+      "legacy_lower_ciede_objects": 3,
+      "legacy_higher_ciede_objects": 3,
+      "mean_fg_psnr_legacy_minus_unique": -0.26237040758132935,
+      "mean_fg_lpips_legacy_minus_unique": 0.00292142853140831,
+      "mean_edge_ssim_legacy_minus_unique": -0.009729420145352682,
+      "mean_prediction_rgb_mae_in_changed_view": 8.808282713095346,
+      "mean_prediction_rgb_mae_in_other_five_views": 1.2706061432758966
+    },
+    "GFH": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 28.41736916700999,
+      "mean_ciede_legacy_duplicate_top": 28.595085872544185,
+      "mean_ciede_legacy_minus_unique": 0.17771670553419394,
+      "legacy_lower_ciede_objects": 3,
+      "legacy_higher_ciede_objects": 3,
+      "mean_fg_psnr_legacy_minus_unique": -0.3008541464805603,
+      "mean_fg_lpips_legacy_minus_unique": 0.004122347881396611,
+      "mean_edge_ssim_legacy_minus_unique": -0.014188682039578756,
+      "mean_prediction_rgb_mae_in_changed_view": 5.503756274779637,
+      "mean_prediction_rgb_mae_in_other_five_views": 0.521136641005675
+    },
+    "C3": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 23.409699890348648,
+      "mean_ciede_legacy_duplicate_top": 23.53204106622272,
+      "mean_ciede_legacy_minus_unique": 0.1223411758740743,
+      "legacy_lower_ciede_objects": 3,
+      "legacy_higher_ciede_objects": 3,
+      "mean_fg_psnr_legacy_minus_unique": -0.23558944463729858,
+      "mean_fg_lpips_legacy_minus_unique": 0.003991470982631047,
+      "mean_edge_ssim_legacy_minus_unique": -0.009298111001650492,
+      "mean_prediction_rgb_mae_in_changed_view": 7.3939540684223175,
+      "mean_prediction_rgb_mae_in_other_five_views": 1.0921276574333507
+    },
+    "Generic Linear": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 29.349035011397472,
+      "mean_ciede_legacy_duplicate_top": 29.206425395276813,
+      "mean_ciede_legacy_minus_unique": -0.14260961612065595,
+      "legacy_lower_ciede_objects": 4,
+      "legacy_higher_ciede_objects": 2,
+      "mean_fg_psnr_legacy_minus_unique": 0.2873880664507548,
+      "mean_fg_lpips_legacy_minus_unique": 0.0031056751807530722,
+      "mean_edge_ssim_legacy_minus_unique": -0.013588269551595053,
+      "mean_prediction_rgb_mae_in_changed_view": 5.432489226261775,
+      "mean_prediction_rgb_mae_in_other_five_views": 0.601231392721335
+    },
+    "LLH": {
+      "n_historical_objects": 6,
+      "mean_ciede_unique6": 27.671717547708088,
+      "mean_ciede_legacy_duplicate_top": 27.411901116371155,
+      "mean_ciede_legacy_minus_unique": -0.25981643133693216,
+      "legacy_lower_ciede_objects": 4,
+      "legacy_higher_ciede_objects": 2,
+      "mean_fg_psnr_legacy_minus_unique": 0.3147303064664205,
+      "mean_fg_lpips_legacy_minus_unique": 0.0018162702520688374,
+      "mean_edge_ssim_legacy_minus_unique": -0.013745427131652832,
+      "mean_prediction_rgb_mae_in_changed_view": 6.083286613225937,
+      "mean_prediction_rgb_mae_in_other_five_views": 0.6679565479358036
+    }
+  },
+  "interpretation_limit": "six previously viewed, failure-enriched historical objects; descriptive only"
+}

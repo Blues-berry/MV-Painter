@@ -1,0 +1,30 @@
+{
+  "finding": "All 120 current Fresh-C observer PNGs differ byte-for-byte from the pre-existing gallery PNGs, although the frozen declared identities match. The cause remains unresolved.",
+  "scope": {
+    "objects": 20,
+    "conditions": 6,
+    "pngs_compared": 120,
+    "byte_identical_count": 0,
+    "mismatch_count": 120
+  },
+  "controlled_probe": {
+    "uid": "c76ac44df995482185077da81939b306",
+    "condition": "native_gfl",
+    "runner": "scripts/run_viewmode_ablation.py",
+    "runner_sha256": "a493da80860fd4e9089f88a227e3043cac080d2fa02ef1f6d46e8dfeb3cc70f8",
+    "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "target_view_mode": "unique6",
+    "frozen_declared_input_hashes_match": true,
+    "observer_png_sha256": "773b21bd82e52236d570a0f56ac3516fc30746ce49d9eefb3911a7b25125be52",
+    "uninstrumented_probe_png_sha256": "773b21bd82e52236d570a0f56ac3516fc30746ce49d9eefb3911a7b25125be52",
+    "probe_equals_observer_png": true
+  },
+  "interpretation": "The spot probe shows the observer hook does not explain the PNG discrepancy for this object and condition. The discrepancy is not attributed to any specific library, backend, hardware, or hidden state.",
+  "analysis_policy": "Use the current paired rerun PNGs together with their observer logs for the frozen Fresh-C diagnostic comparison. Preserve original gallery assets unchanged and exclude their old metrics from this table.",
+  "evidence": {
+    "identity_comparison_csv": "1008/engineering/color_failure/logs/FRESHC_OBSERVER_OUTPUT_IDENTITY.csv",
+    "probe_lock_json": "1008/engineering/color_failure/logs/FRESHC_REPRO_PROBE_LOCK.json",
+    "probe_run_manifest": "1008/engineering/color_failure/runs/freshc_repro_probe/run_manifest_shard0.json",
+    "probe_rows_sha256": "bfb27c24d3ebbe430fa42e199484a78ecf51329fb3b8dde10b28ea3cc9a425c8"
+  }
+}

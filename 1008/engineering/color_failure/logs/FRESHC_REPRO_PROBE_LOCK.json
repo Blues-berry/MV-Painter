@@ -1,0 +1,18 @@
+{
+  "locked_before_generation_utc": "2026-10-08T11:55:42Z",
+  "purpose": "determine whether Fresh-C PNG discrepancy comes from the observer hook or is present under the uninstrumented runner",
+  "condition": "native_gfl",
+  "object_list": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+  "object_list_sha256": "d93881865b6478dd31222a51c7d3ebafe44839fd5e1b76c5eb9605d3f1fdfa58",
+  "object_index": 232,
+  "uid": "c76ac44df995482185077da81939b306",
+  "target_view_mode": "unique6",
+  "runner": "/4T/CXY/MV-Painter-r1color/scripts/run_viewmode_ablation.py",
+  "runner_sha256": "a493da80860fd4e9089f88a227e3043cac080d2fa02ef1f6d46e8dfeb3cc70f8",
+  "baseline_runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "run_dir": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/runs/freshc_repro_probe",
+  "seed_rule": "42 + object_idx; latent seed 42",
+  "protocol": "same data, checkpoint, method scale, view mode and generation semantics as baseline; no feature observer hooks"
+}

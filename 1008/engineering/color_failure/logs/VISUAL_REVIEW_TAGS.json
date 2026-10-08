@@ -1,0 +1,329 @@
+{
+  "review_protocol": {
+    "comparison": "Unmodified full 512x768 six-view PNGs against their matching reference grid, at the overview scale used in the comparison PDFs.",
+    "decision_unit": "A label is present only when the failure is visibly apparent in at least two of six views; not_observed means no clear instance at this review scale, not proof of absence.",
+    "purple_cast": "Visible pink, magenta, or lavender hue shift relative to the matching foreground reference; kept separate from the frozen Lab threshold.",
+    "repeated_texture": "An unintended repeated material mark or texture within/between distinct object views; repeated reference tiles do not count.",
+    "fine_detail_loss": "Reference surface detail or material variation is visibly smoothed away in at least two predicted views.",
+    "structure_damage": "Visible object form, topology, or identity mismatch in at least two views.",
+    "limitations": "Single-reviewer descriptive labels on a failure-enriched development set; no blinded rating or independent confirmation."
+  },
+  "sample_tags": {
+    "freshc_panel_01": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_02": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_03": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_04": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_05": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_06": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_07": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_08": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_09": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_10": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_11": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_12": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_13": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_14": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_15": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_16": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_17": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "not_observed",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "No clear fine-detail loss was assigned at the overview scale. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_18": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_19": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "freshc_panel_20": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig4_row1": {
+      "tags": {
+        "visual_purple_cast": "present",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Visible pink/lavender hue shift in multiple foreground views; the frozen strict Lab flag remains false. Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig4_row2": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig4_row3": {
+      "tags": {
+        "visual_purple_cast": "present",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Visible pink/lavender hue shift in multiple foreground views; the frozen strict Lab flag remains false. Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig6_row1": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig6_row2": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    },
+    "fig6_row3": {
+      "tags": {
+        "visual_purple_cast": "not_observed",
+        "visual_repeated_texture": "not_observed",
+        "visual_fine_detail_loss": "present",
+        "visual_structure_damage": "not_observed"
+      },
+      "note": "Reference surface detail is visibly smoother or missing in multiple predicted views. No unambiguous unintended repeated material pattern was seen in the six unique target views."
+    }
+  },
+  "method_overrides": {
+    "No Adapter": {
+      "fig4_row1": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_03": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "fig6_row3": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "fig6_row2": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_12": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "fig4_row2": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_19": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_14": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "fig6_row1": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_09": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "fig4_row3": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_07": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      },
+      "freshc_panel_18": {
+        "tags": {
+          "visual_structure_damage": "present"
+        },
+        "note": "The No Adapter panel shows visible object-form or identity mismatch in the paired overview."
+      }
+    }
+  }
+}

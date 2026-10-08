@@ -128,6 +128,8 @@ def load_model(config_path, checkpoint_path, device):
 def generate_with_schedule(model, batch, device, weight_dtype, geo_feats,
                            schedule_fn, num_steps, init_latents, residual_log):
     """Generate multi-view images; residual_log[step_idx] gets per-wrapper stats."""
+    from mvpainter.model_unet_geotex import GeoTexResnetWrapper
+    observer_handles = []
     cond_imgs = batch['cond_imgs'].to(device)
     cond_imgs = v2.functional.resize(cond_imgs, model.img_size, interpolation=3, antialias=True).clamp(0, 1)
     B = cond_imgs.shape[0]
@@ -153,6 +155,19 @@ def generate_with_schedule(model, batch, device, weight_dtype, geo_feats,
     log_snr_max = -2.0 * math.log10(max(float(sigmas[-2]) if len(sigmas) > 1 else 0.05, 1e-6))
     log_snr_span = max(log_snr_max - log_snr_min, 1e-6)
 
+    # Retain the pre-adapter ResNet activations long enough to summarize them
+    # beside the correction after each UNet call. This observer leaves outputs
+    # and model parameters untouched.
+    for wrapper in model.unet.modules():
+        if isinstance(wrapper, GeoTexResnetWrapper):
+            wrapper._diagnostic_feature = None
+
+            def capture_feature(_module, _inputs, output, target=wrapper):
+                if torch.is_tensor(output):
+                    target._diagnostic_feature = output.detach()
+
+            observer_handles.append(wrapper.resnet.register_forward_hook(capture_feature))
+
     try:
         for step_idx, t in enumerate(scheduler.timesteps):
             progress = step_idx / max(num_steps - 1, 1)
@@ -176,26 +191,43 @@ def generate_with_schedule(model, batch, device, weight_dtype, geo_feats,
             )[0]
             latents = scheduler.step(noise_pred, t, latents, return_dict=False)[0]
 
-            # Log per-wrapper scaled residual norms for this step
+            # Log per-wrapper scaled residual and pre-adapter feature statistics.
             entry = {}
             for module in model.unet.modules():
                 if isinstance(module, GeoTexResnetWrapper):
                     c = module._last_correction
-                    if c is not None:
-                        cf = c.detach().float()
-                        entry[module.adapter_idx] = {
-                            'depth': module.depth_group,
-                            'l2': float(cf.norm()),
-                            'mean_abs': float(cf.abs().mean()),
-                            'max_abs': float(cf.abs().max()),
-                            'h': cf.shape[2],
-                            'w': cf.shape[3],
-                            'scale': float(getattr(module, '_adapter_scale', 0.0)),
-                            'eff_scale': float(min(getattr(module, '_adapter_scale', 0.0),
-                                                   module._max_scale)),
-                        }
+                    h = module._diagnostic_feature
+                    if h is None:
+                        continue
+                    hf = h.detach().float()
+                    feature_rms = hf.square().mean().sqrt()
+                    cf = torch.zeros_like(hf) if c is None else c.detach().float()
+                    correction_rms = cf.square().mean().sqrt()
+                    entry[module.adapter_idx] = {
+                        'depth': module.depth_group,
+                        'correction_applied': c is not None,
+                        'feature_l2': float(hf.norm()),
+                        'feature_rms': float(feature_rms),
+                        'l2': float(cf.norm()),
+                        'mean_abs': float(cf.abs().mean()),
+                        'max_abs': float(cf.abs().max()),
+                        'correction_to_feature_rms': float(correction_rms / (feature_rms + 1e-8)),
+                        'anomaly_fraction_gt_0p25_feature_rms': float(
+                            (cf.abs() > (0.25 * feature_rms)).float().mean()
+                        ),
+                        'h': hf.shape[2],
+                        'w': hf.shape[3],
+                        'scale': float(getattr(module, '_adapter_scale', 0.0)),
+                        'eff_scale': float(min(getattr(module, '_adapter_scale', 0.0),
+                                               module._max_scale)),
+                    }
             residual_log[step_idx] = entry
     finally:
+        for handle in observer_handles:
+            handle.remove()
+        for module in model.unet.modules():
+            if isinstance(module, GeoTexResnetWrapper):
+                module._diagnostic_feature = None
         model._clear_geo_feats_on_wrappers()
         for module in model.unet.modules():
             if isinstance(module, GeoTexResnetWrapper):
