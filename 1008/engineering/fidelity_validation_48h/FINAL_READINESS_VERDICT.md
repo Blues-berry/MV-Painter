@@ -11,7 +11,7 @@
 | `COLOR_FIX_VALIDATED` | **NO** | The causal gate found no justified candidate; Phase D was skipped. No repair or recoloring is claimed. |
 | `R1_FIDELITY_RESPONSE_READY` | **YES** | Response draft, numeric authority map, image candidates/captions, negative findings, and limitations are prepared for the color/detail portion of R1. |
 | `MANUSCRIPT_EVIDENCE_INTEGRATION_READY` | **PARTIAL** | Color/detail claim edits and figures are specified, but this packet does not supply the reviewer-requested baked unseen-view/seam evidence and must not be represented as closing those issues. |
-| `GITHUB_DELIVERY_COMPLETE` | **PENDING FINAL PUSH AUDIT** | The package is prepared on the independent branch. Update this field after commit/push and remote SHA verification. |
+| `GITHUB_DELIVERY_COMPLETE` | **YES** | The 64-file evidence package was pushed to the authorized independent branch and the remote ref matched the committed SHA. The closure verdict and refreshed checksum manifest are being committed as a final metadata update. |
 
 ## Fresh C reproducibility adjudication
 
@@ -29,5 +29,6 @@
 
 - Remote: `origin` (`https://github.com/Blues-berry/MV-Painter.git`)
 - Branch: `codex/r1-fidelity-validation-48h-20261008`
-- Commit SHA: fill after final push audit in the completion message.
+- Evidence package commit SHA: `8f6de4b959fb1b34151df4d02a0c8d577010fea1` (verified against `origin` before this final verdict/checksum update).
+- Final metadata commit SHA: report the verified remote HEAD in the completion message.
 - Unuploaded large source files: raw cohort RGB/run trees and the 2 GB-class tensor trace remain in their original worktrees; summary tables, manifests, row-wise SHA identities, and selected images are delivered.
