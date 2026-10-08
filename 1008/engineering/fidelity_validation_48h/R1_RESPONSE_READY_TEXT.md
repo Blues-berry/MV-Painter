@@ -1,0 +1,21 @@
+# R1 response draft — visual and color fidelity
+
+**Use after the corresponding manuscript edits are applied.** This draft is limited to the color/detail evidence in this package; the response to unseen baked views and seams must cite the separate bake/render evidence, if available.
+
+> We thank the reviewer for pointing out that the color shifts and repeated patterns visible in the original Figures 4 and 6 require a clearer distinction between texture variation and texture fidelity. We agree that larger gradients, Laplacian responses, or local color variation do not by themselves establish faithful reconstruction. We have therefore narrowed the qualitative claims: Figures 4 and 6 illustrate local behavior under the shown controls and do not establish absolute color accuracy or uniform object-level fidelity.
+>
+> We re-evaluated saved RGB predictions under object-paired protocols. For the 300-object Fresh C cohort, LLH minus GFL changed foreground CIEDE2000 by −2.232 (95% object-bootstrap CI [−3.137, −1.338]), FG-PSNR by +1.143 dB ([+0.814, +1.480]), and FG-LPIPS by −0.01748 ([−0.02003, −0.01496]). The disjoint 150-object Fresh B holdout showed corresponding changes of −1.905 CIEDE2000 ([−3.262, −0.529]), +1.030 dB FG-PSNR ([+0.577, +1.493]), and −0.01556 FG-LPIPS ([−0.01920, −0.01192]). These are cohort-average reconstruction comparisons, not a guarantee of color fidelity for every object.
+>
+> The texture-rich boundary is material to that interpretation. In Fresh B's pre-defined highest-texture quartile (Q4, 38 objects), LLH minus GFL was +3.624 CIEDE2000 ([+1.907, +5.303]) and −0.770 dB FG-PSNR ([−1.165, −0.315]); only 10/38 objects had lower CIEDE2000 under LLH. Thus the average benefit does not extend uniformly to texture-rich objects. We now describe the texture measures as diagnostics of deviation from the rendered target rather than as proof that increased high-frequency response is faithful detail.
+>
+> A same-input Fresh C comparison also shows that the color mismatch cannot be attributed to the adapter alone: adding GFL reduced mean CIEDE2000 relative to No Adapter by 11.228 ([−12.929, −9.540]) over 300 objects, while the original Fig. 4 diagnostic examples still show a visible pink/purple shift in both the unmodified and adapter outputs. The condition audit found no object, embedding, or preprocessing identity mismatch. The generator receives one selected appearance view and an object-level embedding while producing six target views, so view-specific color conditioning is limited; this is a plausible capability boundary, not a proven unique cause. An ordinary GT VAE encode–decode round trip produced CIEDE2000 about 4.09 versus 22.03 for the paired GFL example, which is insufficient to identify the VAE as the cause.
+>
+> We did not identify a causally supported color correction and therefore do not claim that color artifacts have been repaired. The displayed color metrics measure discrepancy from rendered GT views, not calibrated physical color. The revised discussion distinguishes (i) a repeat-reference-view issue that has been corrected in the evaluation protocol, (ii) visible RGB color shifts that occur before texture baking, (iii) the still-unresolved complete generation mechanism, and (iv) the negative result of the residual-gating prototype. All paired cohorts, image identities, and analysis sources are reported separately so that forensic examples are not pooled with confirmation results.
+
+## Evidence anchors for this draft
+
+- Fresh C/B estimates and fixed-quartile boundary: `B_PAIRED_STATISTICS.md`, `PAIRED_BOOTSTRAP_STATISTICS.csv`, `A_QUARTILE_EFFECTS.csv`.
+- Same-input No Adapter/GFL and LLH evidence: `C_COLOR_FAILURE_MECHANISM.md`, `C_CAUSAL_PROBE_STATISTICS.csv`, `ALL_COHORT_INPUT_PAIR_AUDIT.csv`.
+- Condition limits, stage trace, VAE isolation, and unresolved mechanism: `C_APPEARANCE_CONDITION_AUDIT.md`, `../color_failure/final_closure/COLOR_CAUSAL_DIAGNOSIS.md`, `../color_failure/final_closure/REPRODUCIBILITY_ROOT_CAUSE.md`.
+- Original reviewer request and manuscript locations: `MANUSCRIPT_CHANGE_RECOMMENDATIONS.md`.
+- Image candidates with SHA-256: `FIGURE_SELECTION_AND_CAPTIONS.md` and `CASE_IMAGES/FIG4_ROW1/`.
