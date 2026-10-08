@@ -1,6 +1,6 @@
 # 48-hour R1 color-fidelity validation — final report
 
-**Window:** started 2026-10-08 13:58 UTC (21:58 Beijing); completed early on 2026-10-08. The task deadline was 2026-10-10 13:30 UTC. This report closes the authorized experiment without waiting out the full window.
+**Elapsed time:** approximately **55 minutes** end to end. The auditable start marker is `INITIAL_STATE.json` at 2026-10-08 13:59:57 UTC; the final verdict/checksum push and remote-ref audit completed at approximately 14:55 UTC on 2026-10-08. The task deadline was 2026-10-10 13:30 UTC, so the evidence work closed well before the 48-hour limit.
 
 **Workspace / branch:** `/4T/CXY/MV-Painter-r1color`, `codex/r1-fidelity-validation-48h-20261008`, based on frozen start commit `7311b9446733637e0f0a8e85211cd7fc02c67810`.
 

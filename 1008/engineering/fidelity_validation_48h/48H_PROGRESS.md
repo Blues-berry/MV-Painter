@@ -10,7 +10,7 @@
 - Phase B：完成。只复用冻结 Fresh C/B PNG，没有新推理或 GPU 使用。对象级 CIEDE2000、PSNR、LPIPS、GT-relative Laplacian error、复杂度分层、配对统计和 GT-only Fresh B 图库已生成。
 - Phase C：完成。Fresh C 的条件张量、embedding 文件/张量和编码器资产 300/300 通过哈希核对；No Adapter/GFL 完整输入哈希 300/300 一致。现有证据未发现条件身份、输入归一化或 embedding 缓存错配；单张外观条件是可能的信息限制，完整颜色根因仍未确定。
 - Phase D：按门禁跳过并裁决 NO-GO。没有找到可独立操纵并被证据支持的颜色实现错误；未开展新的 Gate/scale/step 搜索。未验证颜色修复。
-- Phase E：完成。回复信候选、论文改稿定位、图像/caption/哈希映射、最终裁决和质量审计均已生成。64 个文件的证据提交已推送到独立分支，远端 ref 与提交 SHA 一致；正在提交最终 verdict/checksum 刷新。
+- Phase E：完成。回复信候选、论文改稿定位、图像/caption/哈希映射、最终裁决和质量审计均已生成。64 个文件的证据提交与最终 verdict/checksum 更新均已推送并核对远端 SHA；本报告记录总耗时约 55 分钟。
 
 ## 初始资源与状态
 
@@ -25,4 +25,4 @@ GPU、运行环境、磁盘、运行任务和完整 Git 状态快照见 `INITIAL
 - 最终裁决：`PROTOCOL_COMPARABILITY=PARTIAL`；`LLH_GFL_CONTRADICTION_EXPLAINED=PARTIAL`；`COLOR_CONDITION_CAUSE_IDENTIFIED=PARTIAL`；`INDEPENDENT_VALIDATION_COMPLETE=YES`；`COLOR_FIX_VALIDATED=NO`；`R1_FIDELITY_RESPONSE_READY=YES`；`MANUSCRIPT_EVIDENCE_INTEGRATION_READY=PARTIAL`。
 - 新增论文交付：`R1_RESPONSE_READY_TEXT.md`、`MANUSCRIPT_CHANGE_RECOMMENDATIONS.md`、`FIGURE_SELECTION_AND_CAPTIONS.md`、`EVIDENCE_AUTHORITY_MAP.csv`、`FINAL_48H_REPORT.md`、`FINAL_READINESS_VERDICT.md`。
 - 六张新拷贝的病例图 `CASE_IMAGES/FIG4_ROW1/` 均与冻结来源 SHA-256 完全一致。
-- 证据包已推送；远端证据提交 `8f6de4b959fb1b34151df4d02a0c8d577010fea1`。最终元数据提交的 SHA 由交付回复报告。
+- 证据包提交 `8f6de4b959fb1b34151df4d02a0c8d577010fea1` 与 verdict/checksum 提交 `3425b2b5159e5b19790c80425c8e0fea96b4cb47` 均已推送。最终 elapsed-time closeout SHA 由交付回复报告。
