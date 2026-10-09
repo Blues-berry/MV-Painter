@@ -1,5 +1,5 @@
 import numpy as np
-from skimage.color import lab2rgb
+from skimage.color import lab2rgb, rgb2lab
 
 from color_repair import (
     apply_chroma_anchor_to_views,
@@ -37,6 +37,22 @@ def test_repair_respects_masks_and_preserves_background_bytes():
     repaired = apply_chroma_anchor_to_views(views, [mask] * 6, (4.0, 3.0))
     assert all(np.array_equal(img[mask == 0], target[mask == 0]) for img in repaired)
     assert np.any(repaired[0][mask == 1].astype(int) != target[mask == 1].astype(int))
+
+
+def test_antialiased_mask_boundary_applies_fractional_chroma_without_bleed():
+    target = _solid_rgb((58, -22, -18))
+    mask = np.zeros((32, 32), dtype=np.float32)
+    mask[6:26, 6:26] = 1.0
+    mask[5, 8:24] = 0.5
+    repaired = apply_chroma_anchor_to_views([target] * 6, [mask] * 6, (4.0, 3.0))[0]
+    assert np.array_equal(repaired[mask == 0], target[mask == 0])
+
+    original_lab = rgb2lab(target.astype(np.float32) / 255.0)
+    repaired_lab = rgb2lab(repaired.astype(np.float32) / 255.0)
+    observed_delta = repaired_lab - original_lab
+    core_delta = np.median(observed_delta[mask == 1.0], axis=0)
+    edge_delta = np.median(observed_delta[mask == 0.5], axis=0)
+    assert np.allclose(edge_delta[1:3], core_delta[1:3] * 0.5, atol=0.8)
 
 
 def test_anchor_caps_each_chroma_component():

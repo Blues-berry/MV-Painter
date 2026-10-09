@@ -1,7 +1,18 @@
 __pycache__/
 *.pyc
 /runs/phase_b/predictions/
+/runs/phase_b2_raw_source_embedding_attempt_*/
+/runs/phase_b2_raw_source_embedding_attempt_*.md
+/runs/phase_b2_raw_source_embedding_console.log
+
+# B2 generated measurements, image galleries, and post-run audit artifacts stay local.
+/B2_RAW_SOURCE_EMBEDDING_*.csv
+/B2_RAW_SOURCE_EMBEDDING_*.pdf
+/B2_RAW_SOURCE_EMBEDDING_VERDICT.md
+/B2_BASELINE_REPRODUCIBILITY.csv
+/B2_METRIC_INPUT_RECONSTRUCTION.json
 /runs/phase_c/dev/predictions/
 /runs/phase_c/dev/case_images/
+/runs/phase_c/test_color_repair_pytest.log
 /runs/phase_d/freshb/predictions/
 /runs/phase_d/freshb/case_images/

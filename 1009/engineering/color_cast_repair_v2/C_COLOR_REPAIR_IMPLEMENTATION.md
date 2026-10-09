@@ -18,4 +18,4 @@ Visual review found no clear improvement on Fig. 4 row 1 (unseen mean ΔCIEDE200
 
 `C_REPAIR_METHOD_LOCK.json` records `development_gate_pass=false`, `validation_authorized=false`, and a closed Fresh B holdout guard. No independent Fresh B output or repair metric was opened, and no Fresh B candidate was run. The result is an unvalidated development-only numeric color shift, not a validated repair. No C2 generation-time constraint was attempted because the C1 visual gate failed.
 
-The focused module tests completed earlier in this campaign: 7 passed. No claim of generalization or product integration is supported by four development objects.
+The focused module tests cover byte-exact identity/no-op behavior, zero-alpha preservation, fractional mask-boundary weighting without color bleed, bounded offsets, foreground-only Lab perturbation, and embedding-refresh identity/corruption handling. Final result: 8 passed under Python 3.13.5; `runs/phase_c/test_color_repair_pytest.log` records the run and the corrected assertion from the initial test attempt. No claim of generalization or product integration is supported by four development objects.

@@ -1,6 +1,6 @@
 {
   "campaign": "MV-Painter R1 Color Cast Repair Campaign V2",
-  "updated_utc": "2026-10-09T05:52:53Z",
+  "updated_utc": "2026-10-09T06:12:00Z",
   "active_phase": "delivery",
   "items": [
     {
@@ -41,11 +41,12 @@
     {
       "id": "D",
       "status": "sealed_not_run_after_c1_gate_failure",
-      "scope": "Fresh B 150 objects; method lock records validation_authorized=false"
+      "scope": "Fresh B 150 objects; method lock records validation_authorized=false",
+      "status_detail": "Not run: C1 visual gate and B2 raw-source cache intervention gate failed; Fresh B repair outcomes remain sealed."
     },
     {
       "id": "delivery",
-      "status": "complete",
+      "status": "in_progress",
       "outputs": [
         "FINAL_ROOT_CAUSE_REPORT.md",
         "COLOR_INTERVENTION_RESULTS.csv",
@@ -54,9 +55,37 @@
         "SOURCE_VIEW_VS_UNSEEN_VIEW_ANALYSIS.md",
         "FAILURE_CASES.md",
         "FINAL_COLOR_FIX_VERDICT.md",
-        "SHA256SUMS.txt"
+        "SHA256SUMS.txt",
+        "B2_RAW_SOURCE_EMBEDDING_VERDICT.md",
+        "B2_RAW_SOURCE_EMBEDDING_PAIRED_RESULTS.csv",
+        "B2_RAW_SOURCE_EMBEDDING_OBJECT_RESULTS.csv",
+        "B2_RAW_SOURCE_EMBEDDING_SUMMARY.csv",
+        "B2_RAW_SOURCE_EMBEDDING_CASEBOOK.pdf",
+        "B2_METRIC_INPUT_RECONSTRUCTION.json",
+        "B2_BASELINE_REPRODUCIBILITY.csv"
       ],
-      "status_detail": "Reports, casebooks, and SHA manifests verified; scoped commit 98d22d18c4a1f85b7894c387544e0a13b73d823d pushed to origin/codex/r1-color-cast-repair-v2-20261009."
+      "status_detail": "B2 reports, casebook, source identities and local-only image inventory are complete. Final scoped checksum audit, commit and push verification remain."
+    },
+    {
+      "id": "B2",
+      "status": "development_gate_failed",
+      "scope": "Replace cached global embedding with official selected raw source-view embedding; four locked Phase B development objects; eight paired generation calls.",
+      "protocol": "protocol/B2_RAW_SOURCE_EMBEDDING_LOCK.json",
+      "amendments": [
+        "protocol/B2_PROTOCOL_AMENDMENT_01.json",
+        "protocol/B2_PROTOCOL_AMENDMENT_02.json"
+      ],
+      "runner": "run_raw_source_embedding_intervention.py",
+      "outputs": [
+        "B2_RAW_SOURCE_EMBEDDING_VERDICT.md",
+        "B2_RAW_SOURCE_EMBEDDING_PAIRED_RESULTS.csv",
+        "B2_RAW_SOURCE_EMBEDDING_OBJECT_RESULTS.csv",
+        "B2_RAW_SOURCE_EMBEDDING_SUMMARY.csv",
+        "B2_RAW_SOURCE_EMBEDDING_CASEBOOK.pdf",
+        "B2_METRIC_INPUT_RECONSTRUCTION.json",
+        "B2_BASELINE_REPRODUCIBILITY.csv"
+      ],
+      "status_detail": "8/8 calls completed in 77.326 s. Unseen mean ΔFG-CIEDE2000 +0.1729 (95% object-bootstrap CI [−0.2044,+0.6810]), 1/4 wins; both locked CIEDE gates and the Fig. 4 visual correction gate fail. No Fresh B outcome opened."
     }
   ]
 }

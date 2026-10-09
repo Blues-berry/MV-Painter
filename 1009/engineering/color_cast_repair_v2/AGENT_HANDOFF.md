@@ -22,3 +22,20 @@
 - Fresh B remains unopened for repair; no validation amendment exists; D is intentionally not run. Do not reopen the holdout or change the failed candidate's thresholds.
 - Final interpretation: global embedding is a causal color-control channel; cache mismatch is a possible object-dependent contributor, with opposite response directions on the two failures. The full root cause remains unresolved, and no validated fix is supported.
 - Deliverables are under this directory. `SHA256SUMS.txt` and `LOCAL_ONLY_SHA256SUMS.txt` were verified; campaign commit `98d22d18c4a1f85b7894c387544e0a13b73d823d` was pushed to `origin/codex/r1-color-cast-repair-v2-20261009`. All pre-existing untracked `1008/**` and `geotex/tests/test_residual_gate.py` remain outside the campaign commit. Paper worktree and raw 1008 material remain untouched.
+
+## B2 latest handoff (2026-10-09)
+
+This section supersedes the earlier statement that B2 sampling had not started and the cache follow-up was still pending.
+
+- B2 attempts 01–03 remain preserved with zero diffusion calls; attempt 04 completed 8/8 on idle physical GPU 1 in 77.326 s.
+- The locked treatment replaced only `global_embeds` with the official raw selected-source embedding. Paired condition, geometry, latent and VAE-posterior/RNG identity checks passed; all output PNG hashes were verified.
+- B2 unseen-view ΔFG-CIEDE2000 was +0.1729 mean (95% object-bootstrap CI [−0.2044, +0.6810], 1/4 wins); the locked improvement gate failed. The two Fig. 4 panels show no clear visible correction. Fresh B remains sealed; do not run validation or parameter search for this treatment.
+- B2 reports, tables and casebook are in the package root under `B2_RAW_SOURCE_EMBEDDING_*`; exact GT source identities and same-code CUDA metric-input reconstruction are in `B2_METRIC_INPUT_RECONSTRUCTION.json`. The original generation missed an in-process target-grid/mask-grid hash; the reconstruction is disclosed as supplemental, not presented as a captured run hash.
+- Read-only historical Fresh C cache-builder audit is complete (zero GPU calls, no cache writes). The builder and frozen inference runner both seed Python/NumPy/Torch with `42 + ordered_object_index`; both use the same dataset item path, and the builder embeds transformed `cond_imgs`, not raw selected RGB. No code-level seed-policy discrepancy was found. This does not isolate a runtime-library cause for the separate Fresh C output mismatch or change B2's negative verdict.
+- Visual review was unblinded and development-only. No independent validation result or successful repair claim is supported. Overall root cause remains partial; color fix is not validated; the prior Fresh C reproducibility mismatch remains unresolved.
+
+## Local-only experiment outputs
+
+- Generated B2 PNGs, run tables, casebook, runtime state and temporary reconstruction files are excluded by `.gitignore`; runner code and frozen protocol locks remain trackable.
+- Generated 1008 raw RGB, masks, run traces and reproducibility scratch directories are also ignored. Historical files already tracked before this ignore update were left in their existing state.
+- Before any commit, stage only source, protocol and documentation files; verify no generated images, metrics, PDFs, logs or runtime files are staged.

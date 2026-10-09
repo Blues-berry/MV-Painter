@@ -1,0 +1,90 @@
+{
+  "protocol": "r1-global-cache-selected-raw-source-intervention-v1",
+  "locked_at_utc": "2026-10-09T05:58:28Z",
+  "purpose": "Test whether replacing the stored global embedding with the embedding recomputed from the dataset's actual selected raw source view changes the two failure outputs consistently and without quality regression.",
+  "prior_evidence_basis": {
+    "freshb_embedding_audit_lock": "protocol/FRESHB_INPUT_ONLY_AUDIT_LOCK.json",
+    "phase_b_development_protocol_sha256": "7da96dd49ff48517c9c09424aa6a3028e5618d43d5ba545585ffcf05c4a88da7",
+    "freshb_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+    "all_150_cached_vs_transformed_condition_exact_within_0p03": 0,
+    "all_150_cached_vs_raw_selected_source_exact_within_0p03": 0,
+    "source_014_cache_closer_to_raw_view_000_max_abs": "84/98",
+    "source_014_cache_higher_cosine_to_raw_view_000": "94/98",
+    "b1_current_transformed_condition_refresh_on_two_failures": "opposite GT-relative directions; it does not test replacement with the raw selected source embedding"
+  },
+  "scope": "Four predeclared Phase B development objects only; no Fresh B predictions, GT quality outcomes, or repair outcomes are read.",
+  "candidate_intervention": {
+    "name": "Selected raw source-view global embedding replacement",
+    "baseline": "Stored item global_embeds.npy feature",
+    "treatment": "Replace the stored feature with the concatenated frozen vision-encoder output computed from the official selected raw source image (view 014 for reverse objects, view 000 otherwise), using the logged vision_processor unchanged.",
+    "factors_changed": ["global appearance embedding only"],
+    "factors_held_fixed": [
+      "checkpoint and config",
+      "condition tensor and source alpha mask",
+      "geometry/depth/normal tensors and GeoTex feature tensors",
+      "target view order and six silhouette masks",
+      "initial latent",
+      "VAE posterior sampling RNG and posterior inputs",
+      "adapter schedule and sampler",
+      "runtime and physical GPU"
+    ],
+    "generation_calls": 8,
+    "per_object_conditions": ["cached_baseline", "selected_raw_source_embedding"],
+    "source_embedding_estimation_inputs": ["official selected raw source RGB only"],
+    "forbidden_inputs": ["GT RGB for embedding construction", "other five target RGBs", "Fresh B prediction outputs", "Fresh B repair metrics", "per-object tuning"]
+  },
+  "model": {
+    "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+    "phase_b_runner_sha256": "a4ed336f1ae72fc8ee52cbe4a738a117bdd5ac40120f17356b74dceb1765fd78",
+    "new_runner_sha256": "4670356642eab1153ef2245933b1a6cb7c8eba6ebe2e36480cae272c1620a58c",
+    "target_view_mode": "unique6",
+    "adapter_scale": 1.25,
+    "scheduler": "EulerDiscreteScheduler",
+    "steps": 50,
+    "precision": "UNet/VAE float16; encoder and GeoTex dtypes recorded at runtime",
+    "object_seed_rule": "frozen B_PROTOCOL_LOCK object_seed",
+    "initial_latent_seed": 42,
+    "posterior_rng_rule": "reset the same torch/CUDA seed before each paired generation"
+  },
+  "development_objects": [
+    "eac4b392b7b448a2b6ec77e8936abe1b",
+    "ea7601dbeb2c46188571cb86e8fdb5bf",
+    "c76ac44df995482185077da81939b306",
+    "8bd93fcae54940bd903a94a9094da4ee"
+  ],
+  "gpu": {
+    "physical_gpu_index": 1,
+    "cuda_visible_devices": "1",
+    "device": "RTX 5090",
+    "launch_condition": "Launch only after a fresh resource check confirms this device is free; use idle-class I/O and low CPU priority. If it is occupied, wait without switching devices."
+  },
+  "metrics": {
+    "unit": "object; average the five non-source views equally",
+    "per_view": [
+      "FG-CIEDE2000 to GT",
+      "FG-PSNR",
+      "FG-LPIPS AlexNet",
+      "foreground L* SSIM to GT",
+      "GT-relative Laplacian error",
+      "L* SSIM versus paired cached baseline",
+      "background-changed fraction"
+    ],
+    "aggregation": "Report source view separately, five unseen views per object, then paired object-level means and bootstrap uncertainty; never pool pixels across objects."
+  },
+  "advance_gate": {
+    "numeric": [
+      "at least 3/4 objects have lower unseen-view mean FG-CIEDE2000",
+      "mean unseen-view FG-CIEDE2000 delta <= -1.0",
+      "mean unseen-view FG-PSNR delta > -0.50 dB",
+      "mean unseen-view FG-LPIPS delta < +0.010",
+      "mean foreground L* SSIM-to-GT delta > -0.010"
+    ],
+    "visual": [
+      "both Fig. 4 failure cases visibly improve without a new cast or edge artifact",
+      "normal and high-texture objects show no obvious detail or structure damage"
+    ],
+    "holdout": "Even if this gate passes, Fresh B remains sealed until a separate candidate lock and validation amendment are created before any holdout output or metric is opened."
+  },
+  "stop_rule": "No threshold, scale, or per-object search. If any numeric or visual gate fails, retain the negative result and do not access Fresh B outcomes."
+}
