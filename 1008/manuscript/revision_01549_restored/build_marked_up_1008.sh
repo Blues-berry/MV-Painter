@@ -34,4 +34,5 @@ if source.count(marker) != 1:
 path.write_text(source.replace(marker, float_marking + marker, 1), encoding="utf-8")
 PY
 python3 "${SCRIPT_DIR}/strip_latexdiff_deletions.py" Marked-up_Manuscript_1008.tex Marked-up_Manuscript_1008.tex
-latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir="${OUT_DIR}" Marked-up_Manuscript_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${OUT_DIR}" Marked-up_Manuscript_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${OUT_DIR}" Marked-up_Manuscript_1008.tex

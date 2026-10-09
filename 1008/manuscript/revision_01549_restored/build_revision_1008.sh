@@ -11,4 +11,5 @@ cp "${SOURCE_DIR}/cag.sty" "${SOURCE_DIR}/elsarticle.cls" "${SOURCE_DIR}/cag-log
 cp "${SCRIPT_DIR}/fig2.pdf" "${SCRIPT_DIR}/fig3.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/"* "${STAGE_DIR}/figures/"
 cd "${STAGE_DIR}"
-latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir="${BUILD_DIR}" manuscript_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" manuscript_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" manuscript_1008.tex

@@ -4,6 +4,8 @@ Package root contains two sibling directories: revision_01549_restored/ and sour
 
 Build requirements: bash, Python 3, latexmk, pdfTeX/TeX Live, latexdiff (for the marked-up comparison), and Pandoc + XeLaTeX (for the reviewer-response PDF).
 
+The current-manuscript, Supplement, and marked-up build scripts run pdfLaTeX twice so the clean build resolves citations and cross-references in the same staging directory. latexmk remains listed because the optional authenticated-baseline build uses it.
+
 From revision_01549_restored/ run:
   bash build_revision_1008.sh
   bash build_supplement_1008.sh

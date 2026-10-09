@@ -10,4 +10,5 @@ cp "${SCRIPT_DIR}/Supplementary_1008.tex" "${STAGE_DIR}/Supplementary_1008.tex"
 cp "${SOURCE_DIR}/cag.sty" "${SOURCE_DIR}/elsarticle.cls" "${SOURCE_DIR}/cag-logo.pdf" "${SOURCE_DIR}/elsevier-logo.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/figS1_adverse_c3_gfl.png" "${SCRIPT_DIR}/figures/figS1_color_detail_failure.png" "${STAGE_DIR}/figures/"
 cd "${STAGE_DIR}"
-latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir="${BUILD_DIR}" Supplementary_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" Supplementary_1008.tex
+pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" Supplementary_1008.tex

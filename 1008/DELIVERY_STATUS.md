@@ -1,59 +1,32 @@
-# 1008 delivery status
+# 1008 final delivery status
 
-**Status:** `AUTHOR_REVIEW_READY`  
+**Status:** `AUTHOR_REVIEW_READY / DRAFT`  
+**Submission approval:** `NO`; no journal upload occurred.  
 **Repository:** private `Blues-berry/MVPainter`  
-**Branch:** `main`  
-**Local worktree:** `/4T/MV-Painter-main`  
-**Content commit pushed and verified:** `14ff9472df0281267c966b29210d63297ccfcfd7`  
-**Handover commits pushed:** `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`  
-**V3 reproducibility snapshot commit pushed:** `2fc3e7f1c338338dfd2d63e4f6977bac77976979`  
-**Latest verified private-main handover commit:** `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9`  
-**Remote verification time:** 2026-10-09T04:44:33Z UTC
+**Branch/worktree:** `main`, `/4T/MV-Painter-main`  
+**Authorized push target:** `mvpainter/main` only  
+**Captured:** `2026-10-09T07:17:13Z` UTC  
+**Main SHA at final package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`  
+**Private main sync:** final normal push and remote verification are part of this closeout; the completed full SHA is in the delivery handoff.
 
-## Full 1008 local submission folder
+## Submission folder
 
-The separate [`1008/submission_1008/`](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008) draft folder was assembled at `2026-10-09T04:58:26Z` UTC. It contains 47 files totaling 63,611,208 bytes, including the current manuscript TeX/PDF, marked-up manuscript, Supplement TeX/PDF, reviewer response in Markdown/DOCX/PDF, source ZIP, upload-ready figure files, an updated draft cover letter/highlights/graphical abstract, and clearly separated 0907 administrative carry-overs. Its active TeX copy is byte-identical to `1008/manuscript/revision_01549_restored/manuscript_1008.tex` (SHA-256 `6767189865c00b6cb90867c4428ff921a2d2c2fa6eb03fc9fc705604ef1e2525`). The package status is `DRAFT`; author metadata, declarations, editor requirements, and optional historical attachments still require confirmation. No journal submission was made.
+The complete author-review package is [`1008/submission_1008/`](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008). It contains the current manuscript and Supplement sources/PDFs, marked-up manuscript, reviewer response in Markdown/DOCX/PDF, combined convenience PDF, 44-member source ZIP, current figures, author-review evidence, clearly separated 0907 carry-overs, package manifest, and SHA-256 list. The package is `DRAFT`; cover letter, highlights, graphical abstract, title page, author metadata, and administrative carry-overs still require author verification.
 
-- [Open Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.tex)
-- [Open Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.pdf)
-- [Package status and author checks](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/SUBMISSION_PACKAGE_STATUS.md)
-- [Timestamped package file hashes](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/SHA256SUMS.txt)
-
-The private remote advertised the same `main` tip as local at the time of the latest check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. The later commits add handover documentation and the frozen V3 reproducibility snapshot; none alter manuscript bytes. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
-
-## Direct GitHub files
-
-- [Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.tex)
+- [Final submission readiness](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/FINAL_CG_SUBMISSION_READINESS.md)
 - [Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.pdf)
-- [Marked-up manuscript](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Marked-up_Manuscript_1008.pdf)
-- [Supplement TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Supplementary_1008.tex) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Supplementary_1008.pdf)
-- [Reviewer response](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Response_to_Reviewers_1008.md) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Response_to_Reviewers_1008.pdf)
-- [01549 to 1008 change log](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Author_Review/01549_TO_1008_CHANGELOG.md)
-- [Reviewer reassessment](https://github.com/Blues-berry/MVPainter/blob/main/1008/audits/01549_REVIEWER_REASSESSMENT.csv)
-- [Branch/file correspondence](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/MERGED_BRANCH_FILE_CORRESPONDENCE.csv)
-- [Local staged-file disposition](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/STAGED_7230_FILES_DISPOSITION.csv)
+- [Supplement PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Supplementary_1008.pdf)
+- [Reviewer response PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Response_to_Reviewers_1008.pdf)
+- [Package hashes](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/SHA256SUMS.txt)
 
-## Integrity
+## Integrity and remaining author checks
 
-- Manuscript SHA-256: `6767189865c00b6cb90867c4428ff921a2d2c2fa6eb03fc9fc705604ef1e2525`
-- Manuscript PDF SHA-256: `65e950d0457199d1bac0c88f4b455f61f70a38f12159fbdad9f5bb5941ccdc6e`
-- Marked-up PDF SHA-256: `9efec4f36001d485719edc57369fc8a280e74b1f030fae1618c65cc061808a0b`
-- Supplement TeX SHA-256: `2a92459d9a43e6d4222a5f41d0809670c6822feec9db325e99478f086a69549f`
-- Response SHA-256: `5c6aeead0be2a4c20eedb19fdd3b996a78e71d3d53a7bf423ae01ed56acfc9aa`
-- LaTeX source ZIP SHA-256: `d6cae77abcba75fa9b3617e953784ee813dbbf2160a7fd5f0c1f86a04c470401`
-- Timestamped local author-package backup: `/4T/MV-Painter-main-consolidation-20261009/author_review_backup_20261009T042335Z/` (checksum verified).
+- Active manuscript TeX SHA-256: `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`.
+- Active Supplement TeX SHA-256: `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`.
+- Source ZIP SHA-256: `fcfecf9787b087296bd922301f59953d445795815ba4b7253aee9e4bff74c37c`.
+- The source ZIP clean-extract builds passed for manuscript, Supplement, and marked-up manuscript at 13/11/13 pages. Response is 5 pages; the combined PDF is 18 pages. Package manifest and checksums were regenerated and verified.
+- Open Folder `/4T/MV-Painter-main` in the editor and confirm Source Control shows `main`; until confirmed `MAIN_SINGLE_EDITING_AUTHORITY=PARTIAL`.
+- Verify author/contact metadata, title page, funding/acknowledgements, interests statement, current editor instructions, and whether the 0907 conference attachment, graphical abstract, or demo media is required.
+- Review the still-open R1.1 color/3D-fidelity, R2.1 novelty, R2.3 cross-backbone, and second-round review-source provenance limits. See `FINAL_CG_SUBMISSION_READINESS.md`.
 
-
-## Consolidated V3 reproduction assets
-
-- [Curated release README](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/README.md)
-- [Frozen runner provenance](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/protocol/RUNNER_PROVENANCE.md)
-- [Per-file SHA-256 inventory](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/ASSET_HASHES.csv)
-
-The separately scoped V3 package contains 78 files totaling 3,972,857 bytes, including 20 per-object metric CSVs totaling 3,465,132 bytes. It contains no JSON, generated image archive, weights, or cache. The core evidence table rebuilt byte-identically, and the frozen B paired comparison returned 150 matched objects. The V3 snapshot is pushed to private `main`. The editor root switch remains unverified, and retained dirty worktrees still require separate review.
-
-## Open review boundaries
-
-Fresh C supports a matched image-space comparison, not baked texture/seam/PBR quality or human preference. The N=20 unseen-view result remains small and mixed; cross-backbone results are interface probes. CAI optimality is withdrawn, and TCAS is not claimed to be universal or dose-independent. See the reviewer response and evidence matrix for the remaining scope limits.
-
-The package is ready for author review. This is not `SUBMISSION_APPROVED`, and no journal submission was made.
+No submission was made. `SUBMISSION_APPROVED=NO`.

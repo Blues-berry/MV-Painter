@@ -2,7 +2,7 @@
 
 **Status:** `DRAFT`
 
-**Captured:** `2026-10-09T06:26:47Z` UTC
+**Captured:** `2026-10-09T07:16:43Z` UTC
 
 **Journal submission:** not made
 
@@ -13,8 +13,8 @@ This is the full local 1008 package layout for author review. It contains the cu
 ## Authoritative paper files
 
 - Active source: `1008/manuscript/revision_01549_restored/manuscript_1008.tex`
-- Package TeX SHA-256: `7286a2652a983a8099c5e038ee56aaf719e6c977944a528fc6b9a858f118a8b2`
-- Package PDF SHA-256: `37096ad1893f9b557a18bc7e1a95a8aa8ca9fdfed43a4c3fc4d0f8cc01f8caf8`
+- Package TeX SHA-256: `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`
+- Package PDF SHA-256: `29e48af0348377bd45f887a3be662937c83857a58aee67af70c12727c22df6d5`
 - Package TeX is byte-identical to the active source. This packaging step did not edit the paper source.
 
 ## Before any journal upload

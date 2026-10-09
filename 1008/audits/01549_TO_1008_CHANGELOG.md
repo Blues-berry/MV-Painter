@@ -4,7 +4,7 @@
 
 `CAG-S-26-01549` is the revised manuscript submitted on 2026-09-07 after first-round revisions. The current R1/R2/R3 packet is the second-round review; 1008 is the response to that round. The working manuscript was restored from the authenticated `final/submission_new_0907/latex.zip` member `final_0903.tex` (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). The previous candidate in `revision_1008/` remains untouched.
 
-The delivered main manuscript is 13 pages; the Supplement is 11 pages; the marked-up comparison against 01549 is 19 pages. The two full-width Fresh C context-plus-ROI figures each use a full page so the texture detail remains legible at normal reading size.
+The delivered main manuscript is 13 pages; the Supplement is 11 pages; the marked-up comparison against 01549 is 13 pages. The two full-width Fresh C context-plus-ROI figures each use a full page so the texture detail remains legible at normal reading size.
 
 ## Section-level changes
 
@@ -48,3 +48,7 @@ The clean-v2 Core-7 condition means and selected paired contrasts are now shown 
 - **R3:** positive assessment acknowledged; no new technical change or experiment is attributed to this reviewer.
 
 The manuscript and response use the official 0907 submission package as the first-round history. They do not describe 01549 as an initial submission or conflate first- and second-round requirements.
+
+## Final R1.1 evidence alignment — 2026-10-09
+
+After reviewing the r1color handoff, the Limitations paragraph and R1.1 response now distinguish (i) a global-appearance embedding that controls chroma in four selected development cases, (ii) a Fresh B input-only cache/source discrepancy that remains a plausible contributor rather than a proven cause, and (iii) two repair candidates that did not establish a validated correction. C1 passed its four-object numeric gate but failed the locked visual gate, including a faint cyan/blue rim in one case. B2 completed eight generations but failed its frozen numeric correction gate and showed no clear visual change. No independent Fresh B repair validation was run. No method or default inference code changed; no new experiment was started.
