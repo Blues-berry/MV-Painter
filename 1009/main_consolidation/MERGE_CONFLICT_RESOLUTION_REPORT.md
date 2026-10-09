@@ -189,3 +189,12 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - 完整历史因 156 个独有提交、3.47 GB 未压缩 blob、36 个 ≥5 MiB blob 和 35,016 路径树差异在预检阶段拒绝；没有执行 Git merge/cherry-pick。
 - 代码冲突：NO_CONFLICT；无运行时代码变更被选入。论文冲突：NO_CONFLICT；Fig. 1 候选及论文审计文档差异是在合并前审查并依据当前认证图件/正文证据作出裁决，不是 Git 冲突。
 - 实际冲突文件：0。来源工作树生成 PDF 改动与 ignored 文件均留在原处。
+
+
+## codex/cg-round2-1008-public-sanitized-20261008
+
+- 来源 HEAD `1f2448358537e2b038980496c10a6bb3de532b0f`；完整历史有 131 个来源独有提交、2,873,713,814 字节未压缩 blob 内容和 27,606 路径树差异。来源 `.gitignore` 会重新放行旧 `final/round2` 完整 Fresh B campaign 与历史归档，来源树还删除 1,151 个当前 main 路径；在预合并门禁拒绝整支 merge，未运行 merge/cherry-pick。
+- `NO_CONFLICT`：未执行 Git merge 或 cherry-pick，实际冲突文件 0。旧论文/回复候选、历史包、全量 campaign 与宽泛 `.gitignore` 差异在预合并审查中排除；这不是冲突解决记录。
+- 文档版本差异不是 Git 冲突：来源 10-07 d59 claim ceiling 早于当前作者确认版本；来源还删除 10-08 已取代旧手术计划的提示，以及 10-09 human aggregate 审计更新。保留 main 的较新记录，避免旧说明重新成为当前操作指引。
+- 来源 boundary texture CSV 的 `logerr_*` 原始列与其配对分析器定义不一致：分析器从现有长表按 symmetric absolute log ratio 重算，来源扩展表的 1,800 个 logerr 单元不匹配。只整合被分析器实际读取且 4/4 profile 均值复现的 CIEDE2000 列。该数据定义差异已写入选择性包 README，不修改来源文件。
+- 选择性提交 `045b4427b9d8bdab4577a4193d4c07b4d32b7a20` 保留了核验后的证据子集，并只为 CRLF 导入清单增加精确 `whitespace=cr-at-eol` 属性；其余 `.gitignore`、代码、论文和生成物规则保留 main 版本。没有论文 Git 冲突或代码冲突被制造或解决。

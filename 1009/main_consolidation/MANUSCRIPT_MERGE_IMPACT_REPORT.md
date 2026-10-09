@@ -184,3 +184,10 @@ The compact CSV and provenance note are in `1009/evidence/branch_audits/cg_closu
 PAPER_IMPACT=DIRECT：归档内容含 01549/1008 正文、图和审稿解释候选，需逐项核验，但没有内容被应用到 active main。来源审稿意见称 Fresh C 未做 probe-disjoint main-adapter evaluation；当前 Response 与 Supplement 记录 Fresh C 的 300 个 UID 与原 24-object development probe、原 300-object evaluation 分离。它仍清楚区分 Fresh C checkpoint 与不可重建的旧 01549 数值来源，没有把 +0.522352 dB 说成复现旧 +0.96 dB。来源对 SSI 先例、手动选择 C3、缺少公开复现包以及缺少有效新 bake/PBR 证据的担忧，已在当前审稿风险文件与 1008 文本中披露。
 
 来源还建议从 Fig. 1 移除 FAC。当前 01549_FIGURE_PRESERVATION_REVIEW.md 依据认证投稿图和历史负向 FAC 复查，保留原 Fig. 1 并限缩图注；来源重画候选未替换它。活动主文、Supplement、Response 未改，SHA-256 仍为 Phase A 三值；canonical submission package 48/48 校验通过。无活动 TeX 改动，无需 LaTeX 编译或投稿包刷新。来源 worktree 的两份修改 PDF 和 17 个 ignored 路径均留在原处。SUBMISSION_APPROVED=NO。
+
+
+## codex/cg-round2-1008-public-sanitized-20261008
+
+`PAPER_IMPACT=DIRECT`. The source tree includes historical 1008 manuscript/response candidates and Fresh B campaign material. Its 2026-10-07 d59 claim-ceiling file predates the current author-confirmed round mapping and scoped 01549 wording; its recommendation to remove FAC from the revision was not adopted. The current authenticated 1008 text and evidence reports already contain the bounded Fresh B schedule and dose conclusions; no candidate paper text or figure was adopted. A unique 150-object boundary CIEDE input was retained after its four paired means reproduced the saved analysis JSON within `7e-16`. The source campaign inventory is retrospective after outcome disclosure, so it adds provenance, not prospective-lock evidence.
+
+The active manuscript, Supplement, and Response remain at their Phase A SHA-256 values `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`, `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`, and `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`; the canonical 1008 submission package verifies 48/48. No active paper, figure, bibliography, or response file changed, so no LaTeX compile or package rebuild was needed. `SUBMISSION_APPROVED=NO`; no remote branch was pushed or rewritten.
