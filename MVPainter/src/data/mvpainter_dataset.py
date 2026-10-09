@@ -73,7 +73,8 @@ class MVPainterData(Dataset):
                  meta_fname='valid',
                  valid_path = None,
                  clean_list = None,
-                 object_list_file = None
+                 object_list_file = None,
+                 target_view_mode = 'legacy_duplicate_top'
                  ):
         self.root_dir_list = root_dir_list
         all_paths = []
@@ -122,7 +123,14 @@ class MVPainterData(Dataset):
         if not hasattr(self, 'paths'):
             self.paths = all_paths
 
-        self.target_order = [0,15,12,7,13,14]
+        self.target_view_mode = target_view_mode
+        self.target_order = [0, 15, 12, 16, 13, 14]
+
+        if self.target_view_mode not in {'legacy_duplicate_top', 'unique6'}:
+            raise ValueError(
+                "target_view_mode must be 'legacy_duplicate_top' or 'unique6', "
+                f'got {self.target_view_mode!r}'
+            )
 
         total_objects = len(self.paths)
         self.random_ratio_range=0.8
@@ -465,11 +473,19 @@ class MVPainterData(Dataset):
                 
                 if reverse:
                     cond_img_name = '014.png'
-                    current_target_order = [14,15,0,15,12,13]
+                    current_target_order = (
+                        [14,15,0,16,12,13]
+                        if self.target_view_mode == 'unique6'
+                        else [14,15,0,15,12,13]
+                    )
 
                 else:
                     cond_img_name = '000.png'
-                    current_target_order = [0,15,12,15,13,14]
+                    current_target_order = (
+                        [0,15,12,16,13,14]
+                        if self.target_view_mode == 'unique6'
+                        else [0,15,12,15,13,14]
+                    )
 
     
  

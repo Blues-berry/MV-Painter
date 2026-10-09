@@ -61,5 +61,26 @@ events.out.tfevents*
 # Paper (keep locally in final/, do not upload to GitHub)
 final/
 
+# Reproducible paper sources and review PDFs live under 1008/.
+# Keep generated TeX intermediates out of Git without ignoring source PDFs or figures.
+**/build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.spl
+*.synctex.gz
+
+# Local experiment outputs: retain protocols, source code, small summary tables,
+# and explicitly selected paper figures; do not track regenerable per-object assets.
+**/residual_logs/
+**/predictions/
+**/visualizations/
+**/tensorboard/
+**/embeddings_cache/
+**/bake_outputs/
+1008/engineering/color_failure/final_closure/repro/
+1008/engineering/color_failure/final_closure/repro_*/
+1008/engineering/color_failure/final_closure/traces/
+
 # Archive
 archive/

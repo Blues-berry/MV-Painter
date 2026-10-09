@@ -127,6 +127,12 @@ In this project we use parts of the implementations of the following works:
 
 We thank these work's contributors for open sourcing their research and exploration.
 
+## Current C&G revision workspace
+
+The active second-round manuscript is based on the authenticated 2026-09-07 01549 submission. Its immutable source is `1008/manuscript/source_01549/final_0903.tex` (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). The current manuscript, Supplement, reviewer response, source package, PDFs, figure provenance, and revision integrity log are under `1008/`.
+
+Build the manuscript and Supplement from `1008/manuscript/revision_01549_restored/` with `build_revision_1008.sh` and `build_supplement_1008.sh`. Build the addition-marked comparison with `build_marked_up_1008.sh`. The author-review copies are in `1008/submission_1008_author_review/` and are regenerated from those active sources. Raw experiment outputs and identity-linked participant data remain outside the tracked paper package; small reports and summary evidence are indexed under `1009/`.
+
 <!-- ## Star History
 
 [![Star History](https://api.star-history.com/svg?repos=amap-cvlab/MV-Painter&type=Date)](https://www.star-history.com/#amap-cvlab/MV-Painter&Date) -->

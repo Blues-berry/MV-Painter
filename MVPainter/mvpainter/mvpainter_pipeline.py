@@ -1,5 +1,4 @@
 import inspect
-from typing import Any, Dict, Optional
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 import os
@@ -10,7 +9,6 @@ from collections import OrderedDict
 
 import diffusers
 from diffusers.image_processor import VaeImageProcessor
-from diffusers.utils.import_utils import is_xformers_available
 from diffusers.schedulers import KarrasDiffusionSchedulers
 from diffusers.utils.torch_utils import randn_tensor
 from diffusers.utils.import_utils import is_xformers_available
@@ -42,7 +40,6 @@ from torchvision.transforms import v2
 from torchvision import transforms
 from huggingface_hub import hf_hub_download
 
-from PIL import Image
 def to_rgb_image(maybe_rgba: Image.Image):
     '''
         convert a PIL.Image to rgb mode with white background
@@ -188,17 +185,32 @@ class RefOnlyNoisedUNet(torch.nn.Module):
             noisy_cond_lat = self.val_sched.scale_model_input(noisy_cond_lat, timestep.reshape(-1))
 
         ref_dict = {}
-        
-        _ = self.unet(
-            noisy_cond_lat, 
-            timestep, 
-            encoder_hidden_states = encoder_hidden_states, 
-            class_labels = class_labels,
-            cross_attention_kwargs = dict(mode="w", ref_dict=ref_dict),
-            added_cond_kwargs = added_cond_kwargs,
-            return_dict = return_dict,
-            **kwargs
-        )
+
+        # Disable GeoTex adapter during reference-write pass:
+        # The write pass encodes condition image into ref_dict for reference attention.
+        # Adapter corrections should only apply during the target-read pass.
+        from .model_unet_geotex import GeoTexResnetWrapper
+        wrappers = [
+            module for module in self.unet.modules()
+            if isinstance(module, GeoTexResnetWrapper)
+        ]
+        previous_skip_states = [module._skip_correction for module in wrappers]
+        try:
+            for module in wrappers:
+                module._skip_correction = True
+            _ = self.unet(
+                noisy_cond_lat,
+                timestep,
+                encoder_hidden_states=encoder_hidden_states,
+                class_labels=class_labels,
+                cross_attention_kwargs=dict(mode="w", ref_dict=ref_dict),
+                added_cond_kwargs=added_cond_kwargs,
+                return_dict=return_dict,
+                **kwargs
+            )
+        finally:
+            for module, previous_state in zip(wrappers, previous_skip_states):
+                module._skip_correction = previous_state
 
         res = self.unet(
             sample, 

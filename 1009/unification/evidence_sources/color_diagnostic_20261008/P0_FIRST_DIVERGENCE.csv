@@ -1,0 +1,7 @@
+comparison,sample_id,uid,all_batch_inputs_exact,geo_encoder_features_exact,initial_latent_exact,condition_vae_latent_exact,prompt_embedding_exact,first_value_divergence,first_divergence_max_abs,first_divergence_rmse,first_divergence_changed_fraction,interpretation
+py313_repeat1_vs_repeat2,freshc_panel_01,c76ac44df995482185077da81939b306,True,True,True,True,True,none,,,,all traced values are exact
+py313_repeat1_vs_repeat2,freshc_panel_03,ca887928bb664bcba121219f0af41293,True,True,True,True,True,none,,,,all traced values are exact
+py313_repeat1_vs_repeat2,freshc_panel_20,06fa4974f8cd4d4ea792e98fa1521457,True,True,True,True,True,none,,,,all traced values are exact
+py313_vs_py310,freshc_panel_01,c76ac44df995482185077da81939b306,True,True,True,True,True,tensors.scheduler_input_latent_step00,0.0625,0.009656830438681374,0.3232421875,first numerical change after multiplying the shared initial FP16 latent by scheduler init_noise_sigma
+py313_vs_py310,freshc_panel_03,ca887928bb664bcba121219f0af41293,True,True,True,True,True,tensors.scheduler_input_latent_step00,0.0625,0.009656830438681374,0.3232421875,first numerical change after multiplying the shared initial FP16 latent by scheduler init_noise_sigma
+py313_vs_py310,freshc_panel_20,06fa4974f8cd4d4ea792e98fa1521457,True,True,True,True,True,tensors.scheduler_input_latent_step00,0.0625,0.009656830438681374,0.3232421875,first numerical change after multiplying the shared initial FP16 latent by scheduler init_noise_sigma

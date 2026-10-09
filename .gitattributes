@@ -1,0 +1,12 @@
+# Treat exported paper and image/archive assets as binary in diffs.
+*.pdf binary
+*.png binary
+*.zip binary
+*.mp4 binary
+
+# Markdown uses two trailing spaces as intentional hard line breaks.
+*.md whitespace=-blank-at-eol
+
+# Preserve whitespace in the authenticated publisher template assets.
+1008/manuscript/source_01549/*.cls whitespace=-blank-at-eol
+1008/manuscript/source_01549/*.sty whitespace=-blank-at-eol
