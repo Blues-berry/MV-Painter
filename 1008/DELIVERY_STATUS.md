@@ -10,16 +10,25 @@
 **Latest verified private-main handover commit:** `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9`  
 **Remote verification time:** 2026-10-09T04:44:33Z UTC
 
+## Full 1008 local submission folder
+
+The separate [`1008/submission_1008/`](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008) draft folder was assembled at `2026-10-09T04:58:26Z` UTC. It contains 47 files totaling 63,611,208 bytes, including the current manuscript TeX/PDF, marked-up manuscript, Supplement TeX/PDF, reviewer response in Markdown/DOCX/PDF, source ZIP, upload-ready figure files, an updated draft cover letter/highlights/graphical abstract, and clearly separated 0907 administrative carry-overs. Its active TeX copy is byte-identical to `1008/manuscript/revision_01549_restored/manuscript_1008.tex` (SHA-256 `6767189865c00b6cb90867c4428ff921a2d2c2fa6eb03fc9fc705604ef1e2525`). The package status is `DRAFT`; author metadata, declarations, editor requirements, and optional historical attachments still require confirmation. No journal submission was made.
+
+- [Open Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.tex)
+- [Open Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.pdf)
+- [Package status and author checks](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/SUBMISSION_PACKAGE_STATUS.md)
+- [Timestamped package file hashes](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/SHA256SUMS.txt)
+
 The private remote advertised the same `main` tip as local at the time of the latest check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. The later commits add handover documentation and the frozen V3 reproducibility snapshot; none alter manuscript bytes. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
 
 ## Direct GitHub files
 
-- [Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Manuscript_1008.tex)
-- [Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Manuscript_1008.pdf)
-- [Marked-up manuscript](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Marked-up_Manuscript_1008.pdf)
-- [Supplement TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Supplementary_1008.tex) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Supplementary_1008.pdf)
-- [Reviewer response](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Response_to_Reviewers_1008.md) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Response_to_Reviewers_1008.pdf)
-- [01549 to 1008 change log](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/01549_TO_1008_CHANGELOG.md)
+- [Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.tex)
+- [Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Manuscript_1008.pdf)
+- [Marked-up manuscript](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Marked-up_Manuscript_1008.pdf)
+- [Supplement TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Supplementary_1008.tex) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Supplementary_1008.pdf)
+- [Reviewer response](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Response_to_Reviewers_1008.md) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Response_to_Reviewers_1008.pdf)
+- [01549 to 1008 change log](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008/Author_Review/01549_TO_1008_CHANGELOG.md)
 - [Reviewer reassessment](https://github.com/Blues-berry/MVPainter/blob/main/1008/audits/01549_REVIEWER_REASSESSMENT.csv)
 - [Branch/file correspondence](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/MERGED_BRANCH_FILE_CORRESPONDENCE.csv)
 - [Local staged-file disposition](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/STAGED_7230_FILES_DISPOSITION.csv)
