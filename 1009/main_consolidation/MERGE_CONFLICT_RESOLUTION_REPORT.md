@@ -36,6 +36,14 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Actual Git conflicts resolved: 0.
 
 
+## codex/human-confirmatory-analysis-20261007
+
+- Pre-merge outcome: `FULL_MERGE_REJECTED` before running a merge. The 3,646-path source tree deletes 253 current 1008 paths and 334 current 1009 paths, and adds 1,854 legacy `final/` plus 482 old `1006/` paths; 145 source-unique commits include 904,462,082 uncompressed blob bytes. No merge trial or cherry-pick was run.
+- Actual Git conflict files: `NO_CONFLICT` (0). No claim is made that merge conflicts were resolved.
+- Reviewed code differences, excluded before merge: source `GeoTexResnetWrapper._skip_correction` is class-level rather than per instance; its pipeline sets and clears the shared state without `try/finally`. Main's per-instance isolation and exception restoration remain. Source `.gitignore` drops precise current evidence/generated-output rules and reopens old `final/` content. These are unsafe source differences, not Git conflicts.
+- No manuscript or response conflict was created: legacy `final/` candidates and the source tree's active 1008 deletions were not merged. The human endpoint results were selected as a separate aggregate-only evidence package; original response, assignment, object-map, pair-map, and private-key files were excluded. Source paths and file-level disposition are recorded in the sequential report and human-audit README.
+
+
 ## codex/round2-final-forensic-audit-20261001
 
 - Source HEAD: `450389fb8232c0f03db0b79f21bdc998043a99e0`; archive ref: `refs/archive/codex/main-unification-20261009/local/heads/codex/round2-final-forensic-audit-20261001`; merge-base: `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`.
