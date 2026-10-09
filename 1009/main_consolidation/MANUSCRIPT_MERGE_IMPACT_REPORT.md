@@ -154,3 +154,10 @@ The active manuscript, Supplement, Response, figures, and canonical submission p
 `PAPER_IMPACT=DIRECT`: the selected A3b per-object rows and post-lock Fresh B Generic sensitivity rows provide direct source-level support for values already presented in the active Supplement. Reaggregation preserved the existing bounded-map and post-lock sensitivity interpretations; it did not establish equal-dose causality or independent confirmation. The source's older manuscript and response candidates were reviewed and left out.
 
 The activity manuscript, Supplement, response and canonical 1008 submission directory are unchanged. Main, Supplement, and response hashes still equal the Phase A values; the submission package verifies 48/48. Since no active TeX/figure changed, no LaTeX rebuild was required. `SUBMISSION_APPROVED=NO`; no push or journal submission occurred.
+
+
+## codex/r1-fidelity-validation-48h-20261008
+
+`PAPER_IMPACT=DIRECT`. The source contains saved-RGB CIEDE/texture reanalysis for the separate `LLH` versus `native_gfl` schedule and a GT-defined Fresh B high-texture boundary. The 150-object mean favors LLH on several endpoints, while its Q4 (`n=38`) has worse CIEDE2000 and FG-PSNR. This result concerns LLH, not the current C3 claim, and the source does not validate a color repair. It can inform a narrow response/limitation only as retrospective sensitivity evidence: the claimed protocol-lock time occurs after the source commit that first contains the protocol and outputs, and the bootstrap-seed description does not match the script/output sequence.
+
+The current 1008 Response already says no color repair passed, but it does not report this separate Fresh B Q4 reanalysis. No claim was extended because the analysis chronology is unresolved and no C3 comparison is present. The active manuscript, Supplement, Response, figures, and canonical submission files remain unchanged at their Phase A hashes; package verification remains 48/48. No LaTeX compilation was triggered. Any later decision to cite this result should label it post hoc and preserve Fresh B/LLH scope.

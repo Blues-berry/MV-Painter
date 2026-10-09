@@ -142,3 +142,12 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Code source difference: the archived GeoTex candidate uses class-shared `_skip_correction` and removes per-instance state restoration in `finally`. Main's instance-local, exception-safe implementation was retained. This is a pre-merge code review decision, not a resolved merge conflict.
 - Paper source difference: historical manuscript/response candidates were inspected but not applied. The selected A3b and post-lock Generic rows validate results already in the current Supplement; no TeX or figure conflict was created.
 - Actual Git conflicts: `NO_CONFLICT`; 0 files created, resolved, or left unresolved. Fresh B evidence was added as a selective content commit, not through a synthetic merge.
+
+
+## codex/r1-fidelity-validation-48h-20261008
+
+- Full-history merge/cherry-pick attempted: no. The 146-commit source has about 1.03 GB of unique blob contents, restores a large obsolete `final/` tree, weakens current ignore/attribute rules, and deletes the authenticated active 1008 package.
+- Code source differences: the old GeoTex snapshot changes `_skip_correction` to class-shared state and removes instance-local `finally` restoration. Main's safer implementation and exact generated-artifact rules were retained. These are pre-merge review exclusions, not merge conflicts.
+- Manuscript source differences: stale `final_0903` text, figures, PDFs, and response drafts were not applied. The compact saved-RGB analysis was retained for audit only.
+- Statistical/provenance caveat (not a file conflict): the protocol's claimed 22:20Z lock is later than the first Git record of the protocol/results at 14:52Z and the reported 14:55Z closeout; the cohort analysis is therefore treated as retrospective. The protocol's single-seed statement also differs from the script/output's per-statistic incremented seeds; intervals reproduce using the saved seeds.
+- Actual Git conflicts: `NO_CONFLICT`; no merge/cherry-pick was run and 0 conflict files were created or resolved.
