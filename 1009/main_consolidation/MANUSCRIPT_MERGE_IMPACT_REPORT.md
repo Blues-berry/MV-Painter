@@ -43,3 +43,16 @@ PAPER_IMPACT=DIRECT for review: the branch and its dirty historical worktree con
 - The candidate PDFs are outputs for alternate manuscript bytes and do not match the canonical package; they were not imported. Since no main manuscript, figure, table, bibliography, or package file changed, no new editor compile or package rebuild was needed. Phase A source hashes and 48/48 package checksums remain valid.
 
 `SUBMISSION_APPROVED=NO`. No submission was made.
+
+
+## codex/cg-round2-1008-revision-20261008
+
+`PAPER_IMPACT=DIRECT`. The archived branch contains obsolete paper/package state and an internal candidate figure; none of that content was overlaid on main. A separate reviewer-requested C3−GFH audit was re-run against the original Fresh C data at `/4T/CXY/MV-Painter/1006/data/fresh_c` without changing that source. The raw CSV hash was `6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6`; all 23 pairing/source checks passed for 300 objects and 1,200 condition rows. The selective audit bundle at `1008/audits/source_evidence/r2/c3_gfh_posthoc_20261007/` records the script, integrity checks, and seven endpoint summaries; it does not include source images, embeddings, checkpoints, cache, or per-object raw CSV.
+
+### Result and paper reconciliation
+
+The audit is explicitly post-hoc and reports no p-values. Its C3−GFH point estimates and endpoint directions agree with the active paper. Its Edge-SSIM interval under the recorded 10,000-resample `numpy.default_rng(20261002)` is `[-0.020803,-0.016790]`; current active manuscript/response text uses `[-0.02084,-0.01683]`. Both support the same negative Edge-SSIM difference. The alternate resampling output is retained as an audit artifact and was not substituted into the current paper. Before future paper edits, verify the active table's exact bootstrap output/provenance.
+
+No main-text, Supplement, response, figure, bibliography, or submission-package file changed. The active TeX hashes remain the Phase A values, and the 48-file package checksum check passes. No LaTeX rebuild was needed.
+
+`SUBMISSION_APPROVED=NO`. No journal submission was made.

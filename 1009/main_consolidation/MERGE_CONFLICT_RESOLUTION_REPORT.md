@@ -23,3 +23,14 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Candidate TeX/response changes were reviewed. Current main already discloses that Fresh C's controlled-retraining checkpoint is not established as the historical 01549 main-table artifact, and preserves the bounded C3 result and counter-results. No candidate text was adopted.
 - Thirteen of the 25 `1009/unification/` files are byte-identical at the same path in main; one additional frozen analysis script is byte-identical at its current main path. The other eleven files describe superseded repository/worktree/ref state and were excluded from current authority.
 - Actual conflicts resolved: 0.
+
+
+## codex/cg-round2-1008-revision-20261008
+
+- Merge strategy decision: full-history merge rejected (142 unique commits, 23,767 unique blobs, 2,889,656,077 uncompressed blob bytes; 16 blobs >= 5 MiB; 27,178-path delta includes extensive outputs and deletes current main's active 1008 files).
+- Git merge/cherry-pick attempted: no. The C3−GFH source audit was selectively added at a new path in commit `dc6f43ae522e230f368232b9dfba393daf724c43`.
+- Code conflict: `NO_CONFLICT` (no source-code merge was attempted).
+- Paper conflict: `NO_CONFLICT` (no manuscript merge was attempted; the active manuscript was not changed).
+- Scientific-output discrepancy: the independently rerun 10,000-resample seed-20261002 audit gives Edge-SSIM CI `[-0.020803,-0.016790]`; the active manuscript uses `[-0.02084,-0.01683]`. The paired source, point estimate, and direction match; both intervals are wholly negative. This is recorded as a resampling-output provenance difference, not resolved by substituting one set of values. The active table's exact bootstrap output should be verified before later prose changes.
+- The existing paper-branch candidate removes current-main 1008 source/package paths in its WIP tree; those deletions were not applied. Its untracked internal N20 candidate image was left in its original worktree.
+- Actual Git conflicts resolved: 0.

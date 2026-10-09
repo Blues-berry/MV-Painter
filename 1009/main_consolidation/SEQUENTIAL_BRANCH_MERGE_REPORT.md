@@ -65,4 +65,17 @@
 - 冲突：`NO_CONFLICT`（没有执行 Git merge/cherry-pick，因此没有产生或解决冲突）。测试：无应用代码改变；候选 tracked diff 的空白检查通过，当前论文与投稿包哈希复核通过。
 - main 内容 SHA：`45964bb822a246787daeaeb0be66283117683dee`；本节审计记录的提交会单独推进 main。
 
+
+### 3. codex/cg-round2-1008-revision-20261008
+
+- 原 HEAD/WIP：`5e3e88e95c81e28200704988e4aaa7ef88239b1b`（既有保护提交，保留）；WIP 前 HEAD：`3e592037d5fdf1c01a5052780e6203ed3d373846`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/cg-round2-1008-revision-20261008`。merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。
+- 相对处理前 main `e06104a0e6095d1dfffec3e00402dee77b3d8230`，有 142 个分支独有提交、1,279 棵树、23,767 个 blob，未压缩 blob 共 2,889,656,077 bytes；16 个独有 blob 不小于 5 MiB。树差异为 27,178 项（A=26,338、M=13、D=684、R100=143），约 24,927 个 JSON 路径变化。大对象包括 76,043,516-byte 旧投稿 ZIP、21,429,443-byte pilot JSON、旧投稿 PDF 和 8.9 MB 检查点。该分支 WIP 树删除当前 main 中的活动 1008 主文/投稿包等文件；完整历史不安全，未执行整支 merge。
+- 原工作树 `/4T/CXY/MV-Painter-1008` 保持 detached HEAD；tracked 状态干净，只有 `1008/audits/figure_candidates/R1_3_N20_UNLIT_BASECOLOR_INTERNAL.png` 未跟踪。该内部候选图片未加入 Git。原始 Fresh C 数据仍位于 `/4T/CXY/MV-Painter/1006/data/fresh_c`，SHA-256 与审计中的 raw CSV hash `6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6` 相符；没有复制、移动或删除原始数据。
+- 内容判定：主文与投稿包候选属于旧树/WIP 删除状态，不得覆盖当前认证稿。分支中的数值结论（C3 与 GFL/GFH/Generic Linear 的方向、N=300 配对、C3 定义、CAI/FAC/strict-276 限定）均已体现在当前主文、回复信、`1008/authority/CLAIM_LEDGER.csv` 和当前审计。旧视觉候选池含大量生成 panel，不取代 main 已选图及其来源/授权清单。全量历史拒绝。
+- 选择性整合的唯一有效子集是 Fresh C C3−GFH 审计代码与机器结果，提交 `dc6f43ae522e230f368232b9dfba393daf724c43`：分析脚本、source-integrity JSON、7 行结果 CSV/JSON 和审计说明，合计约 43 KB。审计从原位置只读重算，23/23 source/pairing checks PASS（300 个 UID、1,200 行、配对条件输入/seed 相符，runner/checkpoint/metric 一致）；不含原始 per-object CSV、图像、embedding、模型或缓存。此项为 `SELECTIVE_CONTENT_MERGE`。
+- 科学结果状态：该 reviewer-requested 比较是 post-hoc、非确认性，无 p 值。重新运行结果与当前论文 C3−GFH 点估计/方向一致；使用 seed 20261002 的 Edge-SSIM 95% CI 为 `[-0.020803,-0.016790]`，活动主文/回复信为 `[-0.02084,-0.01683]`。两者都完全小于零，定性结论相同；将这点记录为 bootstrap 区间来源/重采样差异，不把另一组区间替换进稿件。后续改文前需核对活动稿表格的确切 bootstrap 输出来源。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED`；`SOURCE_READY`（原有 WIP 快照保留；有效审计子集已选择性提交）。main 内容 SHA：`dc6f43ae522e230f368232b9dfba393daf724c43`。
+- `PAPER_IMPACT=DIRECT`：候选直接涉及主文统计与图表；本次仅增加支撑审计文件，没有改变活动主文、Supplement、回复信、图表或投稿包。活动 TeX/回复 SHA 与 Phase A 相同，投稿包 SHA256SUMS 48/48 通过；未重编译、未更新投稿包。`SUBMISSION_APPROVED=NO`。
+- 冲突：Git `NO_CONFLICT`（没有 merge/cherry-pick，未产生 Git 冲突）；统计区间差异已单独记录，不视为冲突文件。验证：审计重跑 23/23 PASS；投稿包 48/48 PASS；没有 GPU 或应用代码行为变化。
+
 后续论文分支、科学/证据分支、早期实现分支和两个保留实验分支尚未审计。后续分支必须按同一流程逐个追加矩阵和影响记录；在完成对应分支审查前，不依据旧清理结论删除或恢复任何普通分支引用。
