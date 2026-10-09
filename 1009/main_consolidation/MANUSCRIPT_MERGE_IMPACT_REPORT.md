@@ -215,3 +215,8 @@ The active manuscript, Supplement, and Response remain at their Phase A SHA-256 
 `PAPER_IMPACT=DIRECT` for historical 01549 submission provenance. The source tip’s clean `final_0903.tex` is byte-identical to the clean source already in main (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). Its final 0907 marked-up PDF is also byte-identical to the authenticated PDF already preserved in main (SHA-256 `191d7f379102408852fef5a506f02a3137f32c09781c2489f63650ef243d7aa3`). The archived transformer exactly reconstructs the add-only marked TeX after removing 94 deletion groups. That compact source/provenance set was retained; the duplicate PDF and full-diff/generated artifacts were not.
 
 This is historical 01549 source material, not a candidate replacement for the active 1008 paper. No current 1008 text, figures, tables, response, or submission artifact changed. Its active manuscript/Supplement/Response hashes remain the Phase A values; the canonical submission package verifies 48/48. Because the active LaTeX files were not edited, no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`.
+
+
+## codex/round2-evidence-integrated-20261001 — local ancestor snapshot
+
+`PAPER_IMPACT=DIRECT`. This local archive is an ancestor of the already-audited private-source snapshot. That descendant review covered the same evidence history and its later edits to three historical `final/round2/` paper files; those candidate manuscript, Supplement, and response versions were not applied. B′/M3's verified evidence subset is already in main. No current 1008 manuscript, Supplement, Response, figure, or submission file changed, and no additional scientific claim requires revision.

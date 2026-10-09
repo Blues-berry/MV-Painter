@@ -226,3 +226,10 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - Selective historical-source import: commit `c46bdac3e5988a9f0103a135a0aba26c3a602833` adds the 0907 full-diff TeX input, verified add-only TeX output, its transformer, and provenance/checksum notes under `1008/manuscript/source_01549/`. The existing official marked-up PDF was hash-identical, so it was not copied.
 - The transformer was run only in a temporary directory: it removed 94 deletion groups, produced balanced braces, and recreated the archived add-only TeX byte-for-byte. Three inherited trailing-whitespace lines remain unchanged to preserve source identity.
 - Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge/cherry-pick was attempted; zero actual conflict files were created or resolved. Current 1008 manuscript, Supplement, Response, figures, and submission files were untouched.
+
+
+## codex/round2-evidence-integrated-20261001 — local ancestor snapshot
+
+- Source HEAD `ce4831f40c723631e395f86268dca13afe9d07e9` is an ancestor of the already-audited archived HEAD `5a059b30eba959e69a2f36f484f06807e5c2c152`. The five descendant commits only revise three legacy `final/round2/` manuscript/response files; those historical candidates were reviewed and excluded in the descendant audit.
+- The B′/M3 source subset was already selectively integrated by `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7`; no additional content is selected from this local alias.
+- Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No new merge or cherry-pick was run; zero actual conflict files were created or resolved.

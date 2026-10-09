@@ -322,3 +322,12 @@
 - 从归档对象隔离提取并运行 `strip_difdel.py`：删除组数为 94，正文花括号平衡为 0，输出与来源 `final_0903_marked_addonly.tex` 逐字节一致，SHA-256 `bf6855bc2115564793c979a7c0cd65fb2a7b4994d867f1f37a051a4795616c28`。选择性内容提交 `c46bdac3e5988a9f0103a135a0aba26c3a602833` 在 `1008/manuscript/source_01549/` 保存 full-diff 输入 TeX、add-only 输出 TeX、转换脚本及 SHA/来源说明，合计三项源码 225,986 bytes；没有改 clean 原文、当前 1008 稿件或投稿 PDF。
 - 排除 79 个提交的其余历史树和 584.8 MB blob 历史，包括 76,043,516-byte 旧 zip、9 个训练 checkpoint、旧论文 PDF、全量删除标记 PDF及旧生成输出；所有源对象仍可经本地 archive ref 恢复。
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。没有执行 merge/cherry-pick，因此实际代码/论文冲突均为 `NO_CONFLICT`，冲突文件数 0。新存的 historical source 只服务于已认证的 0907 标记稿；不把它覆盖到 1008。新 add-only TeX 保留源字节，Git whitespace 检查标出其中 3 行原有尾随空格，未为保持 hash 而做格式改写；其余提交文件通过检查。投稿目录 SHA256SUMS 48/48，活动三份源文件哈希不变；不需重编译、无 GPU、无投稿。`SUBMISSION_APPROVED=NO`。
+
+
+### 24. codex/round2-evidence-integrated-20261001 — local ancestor snapshot
+
+- 本地归档来源 HEAD：`ce4831f40c723631e395f86268dca13afe9d07e9`；父提交 `2618d15099092312922d87420fad4bf545c71d73`；引用 `refs/archive/codex/main-unification-20261009/local/heads/codex/round2-evidence-integrated-20261001`。该归档 tip 无注册工作树或 WIP。其 merge-base 为 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`，有 118 个来源独有提交、711 棵树、1,693 个 blob、674,959,480 bytes 未压缩 blob；14 个 blob ≥5 MiB，最大 76,043,516 bytes。与当前 main 的树差异为 2,787 项（A=1,581、M=7、D=1,199）。
+- 该 HEAD 是已审的私有远端同名归档 HEAD `5a059b30eba959e69a2f36f484f06807e5c2c152` 的直接祖先；后者只比本地 tip 多 5 个提交，且这 5 个提交只修改旧 `final/round2/` 的主文、Supplement 和回复信候选。后者的全量来源及这些旧论文版本已在第 13 项逐项审阅；独有审计文件在后继提交中未改。
+- B′ 与 M3 的有效协议、结果、reproducer 和校验包已由后继来源选择性提交 `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7` 纳入当前 main；其回顾性协议锁边界和 M3 预算变化限制仍适用。该本地祖先引用无额外内容需要再次导入；旧论文/回复树和生成结果沿用后继来源处置，不整支合并。
+- 决定：`ALREADY_AUDITED_AS_ANCESTOR`；不重复 merge/cherry-pick、不造空提交。处理前后 main 内容 SHA 均为 `384e3f66c3cfaca6a9073481b63618093117c12a`。实际代码/论文冲突均为 `NO_CONFLICT`，0 个文件；当前 1008 文本和投稿包未改。
+- `PAPER_IMPACT=DIRECT`：来源树中有历史论文候选，已由其后继归档审查并排除；当前 1008 主文、Supplement、Response 和 canonical submission 保持不变，投稿包 48/48。无新的数值/代码证据需改变结论；不需重编译。
