@@ -83,7 +83,7 @@ ax.text(6.97, 2.76,
         color=INK, fontsize=10.3, va="center", linespacing=1.25)
 
 ax.text(0.66, 1.42,
-        "Interpretation: matched rendered-image evidence for the tested pipeline; no claim of a universal schedule.",
+        "C3–GFL changes applied deep/middle scale sums; its estimate is not timing-only.",
         color=NAVY, fontsize=12.2, weight="bold")
 ax.plot([0.64, 12.55], [1.12, 1.12], color="#d6dfe5", lw=1)
 ax.text(0.66, 0.70,
