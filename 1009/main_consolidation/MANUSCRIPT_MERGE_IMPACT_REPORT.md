@@ -170,3 +170,10 @@ The current 1008 Response already says no color repair passed, but it does not r
 The branch's 42-row numerical authority, reaggregation JSON and Fresh B C3−GFH supporting CSV match the already retained `cg-ltcas-narrative-convergence` package byte-for-byte; the authenticated 01549 TeX baseline matches the current source SHA. No unique valid result required a new content commit. The old `1008` manuscript candidates and generated/compiled author-review package were not overlaid.
 
 The active manuscript, Supplement and Response hashes remain `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`, `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`, and `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`. Canonical `1008/submission_1008/SHA256SUMS.txt` passes 48/48. No active TeX, figure, response or package file changed, so no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`; no submission was made.
+
+
+## detached/cg-closure-clean-audit
+
+`PAPER_IMPACT=DIRECT`. The archived branch adds an R1.3 sentence-level audit of the authenticated 01549 wording and includes older 1006 manuscript/response candidates. The 149-row audit classifies variation metrics and illustrative panels as insufficient to establish fidelity; its core limitation is already stated in the active 1008 text. The audit's 122 main-TeX references match the authenticated `final_0903.tex`; 7 Supplement references were not independently verified, and 20 auxiliary-PDF references use a hash different from the official submitted PDF. The CSV is retained only as a historical wording crosswalk, with those limits documented.
+
+The compact CSV and provenance note are in `1009/evidence/branch_audits/cg_closure_clean_audit_20261007/fidelity_language/`. Old 1006 manuscript/response drafts and unselected visual candidates were not adopted. Current manuscript, Supplement, and Response hashes are unchanged; the canonical package SHA check remains 48/48. No active paper file changed, so no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`.

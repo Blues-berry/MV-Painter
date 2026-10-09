@@ -236,3 +236,15 @@
 - 决定：`ALREADY_IN_MAIN; FULL_MERGE_REJECTED; SOURCE_READY_FOR_ARCHIVED_CONTENT`。未 cherry-pick、未执行新的 merge；无新合并冲突。已有来源合并提交 `f8ff09d2` 本身的 11 个历史文件冲突另见冲突报告，不能记作本轮新解决的冲突。未提交源工作树、移动或复制任何原始数据。
 - `PAPER_IMPACT=DIRECT`：旧 1008 候选与当前认证版本存在正文/限定/回复差异，但活动主文、Supplement、Response 均未改，SHA-256 仍为 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、`59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、`1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`。当前 `1008/submission_1008/SHA256SUMS.txt` 的 48 项全部通过。未改 TeX、图表或投稿包，因此无需编译/重建；`SUBMISSION_APPROVED=NO`。
 - 分支决策后的内容 SHA 仍为 `8f7e82b126f7bec8a511394baa220566c8fce4fb`；本次审计报告提交另行记录。
+
+
+### 17. detached/cg-closure-clean-audit (`cg-closure-clean-audit`)
+
+- 来源 HEAD：`e267b2d59bbb722827ca5ad72f7ca4475b13c8f1`；归档引用 `refs/archive/codex/main-unification-20261009/detached/cg-closure-clean-audit`。原工作树 `/tmp/cg-closure-clean-audit` 仍 detached 在此 HEAD，tracked/untracked 状态干净，`git diff --check` 通过；没有 WIP 变更，目录未切换或清理。
+- 相对分支前 main `1a2b752bce95802aa3c7eab4f6dcdce99e19d708`，merge-base 为 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。来源有 130 个独有提交、966 棵树、2,379 个 blob，未压缩 blob 合计 765,543,177 bytes；14 个 blob ≥5 MiB，最大 76,043,516 bytes。关闭 rename detection 后树差异为 3,425 路径（A=2,245、M=8、D=1,172）：新增 1,858 个旧 `final/` 文件和 116 个 `1006/` 文件，同时删除活动 1008 的 253 项与 main `1009/` 的 476 项。完整历史不适合 merge，未启动 merge 试验。
+- 来源 `.gitattributes` 只留 `*.csv` 行尾规则；`.gitignore` 删除当前精选 V3 输入例外及实验生成物精确排除规则，并会恢复旧 `final/` 树。旧 `MVPainter` 还把 `_skip_correction` 改为类级共享变量，并删除实例级状态保存与 `try/finally` 恢复；main 保留隔离的实例标志和异常恢复。这些是预合并代码/规则差异，不是 Git 冲突，均未应用。
+- 1006 树中 117 个文件与 main 有 1 个同路径同 blob、另有 31 个 blob 在 main 的其他路径精确存在；包括数值权威、Fresh B/C3−GFH 输出、视觉报告与已选图件。唯一有价值且尚未在 main 保存的记录是 149 条 R1.3 逐句保真措辞审计。已将原 CSV、README 与 SHA 清单选择性纳入 `1009/evidence/branch_audits/cg_closure_clean_audit_20261007/fidelity_language/`，提交 `a92a0bf228181ff4c7ed9c093f4edf24d610ca9c`。149 条分为 132 `REWRITE`、9 `KEEP`、8 `REMOVE`；这是人工证据分类，不是新增实验结果。没有复制源 PDF、候选图像池、最终论文/回复草稿或训练/渲染产物。
+- 该逐句审计的 122 条 `final_0903.tex` 引用 SHA 与当前认证 TeX 相同；7 条 Supplement TeX 引用未独立核验。其 20 条辅助 PDF 引用哈希 `5de31993…` 与 main 认证投稿 PDF `fc9cf793…` 不同，因此该 CSV 只作为历史文字审计线索，不作为 PDF 身份或正文权威。当前 1008 已明确变化代理不代表纹理保真；未依据该表改写论文。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。新包 SHA 为 `c8a95e79917e46b365aef6a212c39a054f5fcc08ae61bae837cdaa821b11363f`，149 行和 disposition 计数通过，包内 SHA 清单通过；main 中匹配的权威数值文件逐 blob 核对。没有执行 merge/cherry-pick，因此实际冲突 `NO_CONFLICT`，0 个新冲突；没有运行 GPU 或应用模型代码。
+- `PAPER_IMPACT=DIRECT`：旧 1006 主文/回复候选与审计表涉及 R1.3 解释，但都未覆盖认证的 1008。活动主文、Supplement、Response SHA 仍为 Phase A 三值，canonical submission 校验 48/48；没有 TeX/图表/投稿包修改，不需重编译。`SUBMISSION_APPROVED=NO`。
+- 内容提交后 main 为 `a92a0bf228181ff4c7ed9c093f4edf24d610ca9c`；分支审计报告提交会另行推进 main。

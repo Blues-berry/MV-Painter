@@ -174,3 +174,10 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 | `1008/submission_1008_author_review/Marked-up_Manuscript_1008.pdf` | Parent 2 (`cea31d85`; added on both sides) | Current main has a later, distinct artifact (`001cf6c8` Git blob); the old conflict side was not substituted. |
 
 No claim is made that the present audit resolved the historical conflicts. The choices are reconstructed from the recorded commit tree and verified blob identities. Active 1008 SHA values and all 48 canonical submission checks remain unchanged.
+
+
+## detached/cg-closure-clean-audit
+
+- Source HEAD `e267b2d59bbb722827ca5ad72f7ca4475b13c8f1` is a single-parent commit, not a historical merge. Its registered detached source worktree is clean. Full-history merge was rejected before execution; no Git merge or cherry-pick was run.
+- Actual Git conflicts: `NO_CONFLICT` (0). The class-level `_skip_correction`, removed `try/finally` restoration, and weakened ignore/attribute rules are source differences caught in pre-merge review, not conflicts.
+- The only selected content is the 149-row R1.3 sentence-level audit at `1009/evidence/branch_audits/cg_closure_clean_audit_20261007/fidelity_language/`. Its 122 main-text source references match authenticated `final_0903.tex`; its auxiliary PDF identity differs from the official submitted PDF, so the bundle is explicitly a historical wording crosswalk. No active TeX conflict was created or resolved.
