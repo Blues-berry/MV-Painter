@@ -29,3 +29,18 @@
 ## Remaining local roots and completion boundary
 
 The editor UI handoff is still pending: open `/4T/MV-Painter-main` with Open Folder, then verify Source Control shows `main`. Existing roots with dirty files or ignored artifacts remain registered and preserved; the worktree ledger records their state. This consolidation does not claim that all historical local branches are the sole active branch, or that all uncommitted files in retained worktrees have been migrated. `SUBMISSION_APPROVED=NO`.
+
+## Current follow-up snapshot — 2026-10-09
+
+The follow-up used `/4T/MV-Painter-main` on `main`, initially at `8cf02b797c5d467db764d05ea4940937c207fe96`, equal to `mvpainter/main`. No other Codex agent, Git write operation, or GPU experiment was active; both RTX 5090 devices were idle. The r1color source remained at `32bb9106fa0ea6199e6a16f9279343c0b21581a6`.
+
+All five temporary reference worktrees under `/tmp` have ignored local files (2, 10, 38, 4, and 6 paths respectively). They were not unregistered because ordinary removal could discard those files. No worktree, branch ref, or stash was removed in this follow-up. The full current status counts are in `WORKTREE_DISPOSITION.csv`.
+
+The editor file-open request for the main manuscript was queued, but this does not switch the editor's repository root. The UI still needs a manual **Open Folder** to `/4T/MV-Painter-main` and a Source Control check for `main`.
+
+
+## Final consolidation follow-up — 2026-10-09T07:12Z
+
+The pinned r1color source remains at `32bb9106fa0ea6199e6a16f9279343c0b21581a6`; the current main checkout began this follow-up at `8cf02b797c5d467db764d05ea4940937c207fe96`, equal to the private remote. The 192 newly surfaced ignored r1color entries were separately SHA-256 captured and retained as `POST_SNAPSHOT`. No source data were removed.
+
+The follow-up reviewed and copied only the 58 selected small evidence/protocol files; build/response and consolidation changes are confined to the designated main worktree. At the snapshot, 14 worktrees remained registered, two stash entries and 28 local branch refs remained, and no GPU or Git write process was running. The five `/tmp` reference worktrees still contain ignored files. The editor file-open request does not switch roots: `MAIN_SINGLE_EDITING_AUTHORITY=PARTIAL` until the author opens `/4T/MV-Painter-main` and confirms Source Control shows `main`.

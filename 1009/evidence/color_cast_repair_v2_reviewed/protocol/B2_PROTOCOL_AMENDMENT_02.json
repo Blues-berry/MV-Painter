@@ -1,0 +1,25 @@
+{
+  "protocol": "r1-global-cache-selected-raw-source-intervention-amendment-02",
+  "locked_at_utc": "2026-10-09T06:04:00Z",
+  "base_lock_path": "protocol/B2_RAW_SOURCE_EMBEDDING_LOCK.json",
+  "base_lock_sha256": "3fdfe82d3f5d082752aca950055dabd4a24426ca4652fb8baa8180e54e307a6c",
+  "prior_amendment_path": "protocol/B2_PROTOCOL_AMENDMENT_01.json",
+  "prior_amendment_sha256": "4fcf3cccac33744e68b995cf36d64f0a8e91b731add75ffe35011f0eccb25eeb",
+  "runner_sha256": "676612448998670096d52f2a42e3363be01d580764406657faadcbb9d6e16df7",
+  "superseded_runner_sha256": "2585258b4006caeff6447a66e104dfb832a14db5c9be174bd165c6116f9af447",
+  "reason": "Attempt 03 loaded the model but stopped before generation because cache storage and encoder outputs used different singleton-axis layouts.",
+  "evidence": "runs/phase_b2_raw_source_embedding_attempt_03/run_state.json records failed status and generation_count=0.",
+  "changes": [
+    "Require equal feature element count, then reshape cache and treatment to the pipeline's [1,1,D] injection layout.",
+    "Record original cache storage shape and raw-encoder output shape per view.",
+    "Pin this amendment's runner SHA in the runner before any sampling."
+  ],
+  "unchanged": [
+    "selected raw source-view embedding replacement treatment",
+    "four locked development objects and eight generation calls",
+    "same-noise/shared-factor protocol",
+    "metrics and numeric/visual advancement criteria",
+    "Fresh B outcome seal"
+  ],
+  "authorized_output_dir": "runs/phase_b2_raw_source_embedding_attempt_04"
+}

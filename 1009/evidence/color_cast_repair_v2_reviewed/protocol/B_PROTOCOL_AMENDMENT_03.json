@@ -1,0 +1,39 @@
+{
+  "amendment": "phase-b-geometry-feature-hash-contract-v1",
+  "amended_at_utc": "2026-10-09T05:27:22.090151+00:00",
+  "parent_protocol": "protocol/B_PROTOCOL_LOCK.json",
+  "parent_protocol_sha256": "7da96dd49ff48517c9c09424aa6a3028e5618d43d5ba545585ffcf05c4a88da7",
+  "prior_amendments": {
+    "embedding_control_sha256": "f2d4fc072a74742a1e02874cf547580dfe74e7cb7530dc948643980c02dbabbd",
+    "gpu_binding_sha256": "8d76e0ecb2b083100a0387450bc3b3a48cd980eb1b8f71e0eadc328c892f517c"
+  },
+  "timing": "After a zero-generation pre-run failure and before any Phase B diffusion generation.",
+  "trigger_evidence": {
+    "attempt": "runs/phase_b/attempt_02_geometry_hash_type_error/",
+    "failure": "AttributeError: 'dict' object has no attribute 'detach' at geometry feature hashing.",
+    "completed_diffusion_calls": 0,
+    "prediction_pngs_created": 0,
+    "verified_contract": "GeoTexEncoder.forward returns a mapping of named tensor features (x1-x4 plus UNet aliases)."
+  },
+  "code_change": {
+    "runner": "run_color_intervention.py",
+    "old_sha256": "2a0f3f0158520d15b2fbb3bbddd6895a0b51440e10f830306d8965bfcd784817",
+    "new_sha256": "a4ed336f1ae72fc8ee52cbe4a738a117bdd5ac40120f17356b74dceb1765fd78",
+    "description": "Hash mapping values individually in sorted key order and serialize key-to-hash identities; preserve existing tuple/list and single-tensor handling."
+  },
+  "validation": {
+    "python_compile": "passed",
+    "cpu_geo_encoder_hash_smoke": "passed; 8 keyed tensors hashed and JSON serialized",
+    "generation_semantics_changed": false
+  },
+  "unchanged": [
+    "checkpoint and config",
+    "model weights",
+    "condition tensors and embedding arms",
+    "objects and target view order",
+    "scheduler and sampler",
+    "seeds and posterior RNG resets",
+    "precision and inference backend",
+    "generation call count and endpoints"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "protocol": "r1-global-cache-selected-raw-source-intervention-amendment-01",
+  "locked_at_utc": "2026-10-09T06:02:00Z",
+  "base_lock_path": "protocol/B2_RAW_SOURCE_EMBEDDING_LOCK.json",
+  "base_lock_sha256": "3fdfe82d3f5d082752aca950055dabd4a24426ca4652fb8baa8180e54e307a6c",
+  "runner_sha256": "2585258b4006caeff6447a66e104dfb832a14db5c9be174bd165c6116f9af447",
+  "superseding_runner_sha256": "2585258b4006caeff6447a66e104dfb832a14db5c9be174bd165c6116f9af447",
+  "superseded_runner_sha256": "4670356642eab1153ef2245933b1a6cb7c8eba6ebe2e36480cae272c1620a58c",
+  "reason": [
+    "Attempt 01 exposed a mismatch between nested protocol fields and runner lookup; zero model loads and zero generations.",
+    "Attempt 02 exposed a CUDA UUID JSON serialization error before model loading; zero model loads and zero generations."
+  ],
+  "changes": [
+    "Read checkpoint/config and initial latent seed from the nested frozen protocol schema.",
+    "Stringify CUDA UUID and use a JSON fallback encoder for runtime metadata.",
+    "Add a per-run output-dir argument so failed output/state is preserved and not overwritten.",
+    "Require this amendment to pin both the base lock and actual runner SHA before sampling."
+  ],
+  "unchanged": [
+    "treatment: selected raw source-view embedding replaces cached global embedding",
+    "four development objects",
+    "eight generation calls",
+    "same condition, geometry, initial latent, posterior RNG, scheduler, steps, and adapter scale",
+    "metrics, visual gate, stop rule, and Fresh B seal"
+  ],
+  "authorized_output_dir": "runs/phase_b2_raw_source_embedding_attempt_03"
+}

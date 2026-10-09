@@ -1,0 +1,20 @@
+{
+  "amendment": "freshb-cache-origin-input-only-v1",
+  "amended_at_utc": "2026-10-09T01:53:49Z",
+  "parent_protocol": "protocol/FRESHB_INPUT_ONLY_AUDIT_LOCK.json",
+  "timing": "Before any Phase B diffusion generation and before reading Fresh B prediction PNGs or quality metrics.",
+  "reason": "The first input-only audit showed that 150/150 cached embeddings differ from the exact current transformed cond_imgs. Establish whether each cache instead matches the unaugmented selected source RGB, to distinguish preprocessing correspondence from a stale or otherwise unexplained cache.",
+  "added_comparison": {
+    "source": "The same selected 000/014 RGBA file, loaded with the dataset's deterministic load_im path, white-composited without random condition stretch/compress or random resize.",
+    "features": "The same frozen vision_processor and both frozen vision encoders; same checkpoint/runtime as the current-condition recomputation.",
+    "outputs": [
+      "runs/phase_a/FRESHB_INPUT_EMBEDDING_PROVENANCE.csv",
+      "runs/phase_a/FRESHB_INPUT_EMBEDDING_PROVENANCE.json"
+    ]
+  },
+  "scope_constraints": [
+    "Input assets and global_embeds.npy only",
+    "No prediction PNGs, GT color metrics, repair outputs, or outcome-informed object selection",
+    "No embedding cache is modified"
+  ]
+}

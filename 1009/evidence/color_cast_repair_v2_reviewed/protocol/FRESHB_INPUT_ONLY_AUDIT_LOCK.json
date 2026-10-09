@@ -1,0 +1,15 @@
+{
+  "protocol": "freshb-source-embedding-consistency-audit-v1",
+  "locked_at_utc": "2026-10-09T01:46:00Z",
+  "purpose": "Audit only selected source-view preprocessing and global embedding cache consistency on the sealed Fresh B cohort. Do not load or inspect generated prediction PNGs, GT color metrics, or repair outputs.",
+  "cohort_list": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/fresh_confirm_b/fresh_confirm_b.txt",
+  "cohort_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+  "expected_n": 150,
+  "data_root": "/4T/CXY/MV-Painter/data/fresh_confirm_v3_renders",
+  "object_seed_rule": "42 + zero-based line index from the frozen Fresh B list",
+  "source_view_selection": "Reproduce the dataset's alpha-zero-count comparison between views 000 and 014. Only the selected source RGB is encoded; no other target RGB is read.",
+  "embedding_comparison": "Recompute both frozen vision encoders from the exact seeded cond_imgs produced by load_im_cond, then compare against embeddings/global_embeds.npy after casting to the cache dtype.",
+  "forbidden_during_audit": ["Fresh B prediction PNGs", "Fresh B before/after quality metrics", "using audit results to change repair parameters"],
+  "outputs": ["runs/phase_a/FRESHB_INPUT_EMBEDDING_AUDIT.csv", "runs/phase_a/FRESHB_INPUT_EMBEDDING_AUDIT.json"]
+}
+

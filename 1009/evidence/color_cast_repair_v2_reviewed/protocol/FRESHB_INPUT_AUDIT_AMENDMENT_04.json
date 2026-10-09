@@ -1,0 +1,27 @@
+{
+  "amendment": "freshb-full-selected014-cache-origin-test-v1",
+  "amended_at_utc": "2026-10-09T02:09:36Z",
+  "parent_protocol": "protocol/FRESHB_INPUT_ONLY_AUDIT_LOCK.json",
+  "related_amendments": [
+    "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_01.json",
+    "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_02.json",
+    "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_03.json"
+  ],
+  "timing": "Before any Phase B diffusion generation and before reading Fresh B prediction PNGs or quality metrics.",
+  "trigger": "In all four preselected alternate-view sentinels whose official source is 014, the cached embedding is closer to the raw 000 embedding than to the raw 014 embedding; none exactly matches within 0.03.",
+  "question": "Across all Fresh B objects whose selected source is 014, is the cached embedding systematically closer to the unaugmented view 000 encoding than to the current selected source encoding?",
+  "cohort_rule": "Include every UID in the frozen 150-object list whose source_view_id is 014 in FRESHB_INPUT_EMBEDDING_PROVENANCE.csv; no object sampling or outcome selection.",
+  "expected_n": 98,
+  "allowed_inputs": "Load only raw image/000.png and global_embeds.npy for each locked UID. Compare the view-000 recomputation with the already recorded selected-view raw embedding distance.",
+  "execution_device": "CPU; zero GPU generations",
+  "outputs": [
+    "runs/phase_a/FRESHB_VIEW0_CACHE_ORIGIN_AUDIT.csv",
+    "runs/phase_a/FRESHB_VIEW0_CACHE_ORIGIN_AUDIT.json"
+  ],
+  "forbidden": [
+    "prediction PNGs",
+    "GT quality metrics",
+    "repair outputs",
+    "cache mutation"
+  ]
+}

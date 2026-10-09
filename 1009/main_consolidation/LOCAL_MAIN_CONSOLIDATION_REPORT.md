@@ -1,5 +1,7 @@
 # Local-to-private-main consolidation report
 
+> **Historical snapshot.** This report records the earlier 2026-10-09 06:30 inventory. Its 117 pending rows, unread r1color handoffs, and previous ignored-path totals were superseded by `FINAL_BRANCH_CONSOLIDATION_REPORT.md` after the 2026-10-09 06:52 content audit. Use the final report for current dispositions and worktree status.
+
 **Captured:** 2026-10-09T04:46:15Z UTC  
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  

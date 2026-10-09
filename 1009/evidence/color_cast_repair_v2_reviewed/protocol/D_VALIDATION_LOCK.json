@@ -1,0 +1,47 @@
+{
+  "protocol": "color-cast-v2-independent-freshb-validation-v1",
+  "locked_at_utc": "2026-10-09T01:50:00Z",
+  "cohort": "Frozen Fresh B 150 from fresh_confirm_b.txt; UID-disjoint from Fresh C and the R1 diagnostic set.",
+  "cohort_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+  "candidate_rule": "Choose one candidate from Phase A/B and the development objects only. Freeze its code SHA, parameters, masks, and outputs before opening any Fresh B prediction or quality metric. Run each Fresh B UID once under baseline and candidate in a paired same-noise control. Do not tune after unblinding.",
+  "generation": {
+    "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+    "target_view_mode": "unique6",
+    "steps": 50,
+    "scheduler": "EulerDiscreteScheduler from frozen pipeline config",
+    "gfl": "constant requested scale 1.25 with existing caps",
+    "latent_seed": 42,
+    "object_seed": "42 + frozen Fresh B list index",
+    "precision": "UNet/VAE float16; adapter and geometry encoder float32",
+    "gpu": "one RTX 5090 (CUDA_VISIBLE_DEVICES=0)"
+  },
+  "primary_analysis_unit": "object; average the five non-reference views equally within each object, then paired object-level analysis",
+  "primary_endpoints": ["FG-CIEDE2000", "FG-PSNR", "FG-LPIPS"],
+  "secondary_endpoints": ["source-view color error", "per-view CIEDE2000", "six-view mean", "foreground L* SSIM", "edge similarity", "GT-relative high-frequency error"],
+  "texture_strata": {
+    "source": "Fresh B GT-only Laplacian-variance quartile cutpoints frozen in 1008/engineering/fidelity_validation_48h/A_QUARTILE_CUTPOINTS.json",
+    "cutpoints": [0.006856393883936107, 0.017710071057081223, 0.03139245230704546],
+    "q4": "gt_fg_lap_var >= 0.03139245230704546"
+  },
+  "statistics": {
+    "paired_bootstrap_draws": 10000,
+    "seed": 20261009,
+    "report": ["mean delta", "median delta", "two-sided 95% percentile CI", "paired effect size", "wins/losses", "object-level rows", "all failures"]
+  },
+  "success_thresholds": {
+    "unseen_view_color_improved": "five-view mean ΔCIEDE2000 <= -1.0; paired 95% CI upper < 0; >50% of objects improve",
+    "high_texture_q4_no_major_regression": "Q4 mean ΔCIEDE2000 <= +1.0 and CI upper < +2.0; Q4 FG-PSNR CI lower > -0.75 dB; Q4 FG-LPIPS CI upper < +0.015",
+    "structure_and_detail_preserved": "overall FG-PSNR CI lower > -0.50 dB; overall FG-LPIPS CI upper < +0.010; foreground L* SSIM CI lower > -0.010",
+    "source_view_not_traded_away": "source-view mean ΔCIEDE2000 <= +0.5 and no visible new cast in blinded sample",
+    "not_extreme_sample_driven": "median five-view ΔCIEDE2000 < 0 and at least 50% object-level wins"
+  },
+  "visual_review": {
+    "selection": "one object nearest the GT Laplacian-variance median in each frozen Fresh B quartile; tie-break by UID lexicographic order",
+    "method_blinding": "randomize A/B labels per object with a fixed key stored separately; record preference before decoding the key",
+    "questions": ["visible pink/purple reduced?", "source material color closer?", "fine details retained?", "new unseen-view color error?"],
+    "reviewer_limit": "single Codex reviewer; blind labels at the image-review step, not an independent human panel"
+  },
+  "failure_policy": "If any required endpoint fails its threshold or visual review shows a quality tradeoff, stop. Do not adjust the candidate on Fresh B or relabel the cohort as unseen after tuning."
+}
+
