@@ -37,4 +37,4 @@ The final manuscript/package commit changed only the 1008 prose, author-review m
 
 ## Report closeout note
 
-This file records the exact main-ref comparison at the package-refresh checkpoint above. It is followed by a documentation-only commit containing the refreshed final verification records; that closeout is pushed as another normal fast-forward. The completion handoff reports the resulting post-report local and remote `main` SHA.
+This file records the exact main-ref comparison at the package-refresh checkpoint above. The verification closeout and regenerated package metadata were subsequently committed and pushed as a normal fast-forward. The completion handoff reports the final post-report local and remote `main` SHA.
