@@ -1,0 +1,104 @@
+{
+  "protocol_id": "r1_fidelity_saved_rgb_paired_audit_v1",
+  "locked_at_utc": "2026-10-08T22:20:00Z",
+  "status": "LOCKED_BEFORE_NEW_RGB_METRIC_RECOMPUTATION",
+  "scope": "Reanalysis of already generated, immutable RGB predictions; no new inference and no GPU use.",
+  "primary_contrast": "layer_llh - native_gfl",
+  "conditions": {
+    "GFL": "native_gfl",
+    "LLH": "layer_llh"
+  },
+  "cohorts": [
+    {
+      "name": "Fresh C frozen full cohort",
+      "n_expected": 300,
+      "role": "Cohort heterogeneity analysis; includes 20 UIDs appearing in the earlier 26-object diagnostic cohort and is not labeled wholly independent.",
+      "manifest": "/4T/CXY/MV-Painter-1008/1008/audits/source_evidence/r2/fresh_c/FRESH_C_COHORT_MANIFEST.json",
+      "gfl_run": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation",
+      "llh_run": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/revision_era_addendum"
+    },
+    {
+      "name": "Fresh C diagnostic-UID-excluded subset",
+      "n_expected": 280,
+      "role": "UID-disjoint reanalysis after excluding every Fresh C UID found in the 26-object diagnostic set; this exclusion is based only on the already frozen UID lists.",
+      "exclusion_source": "/4T/CXY/MV-Painter-r1color/1008/engineering/color_failure/final_closure/COLOR_FIDELITY_PAIRED_RESULTS.csv"
+    },
+    {
+      "name": "Fresh B frozen holdout",
+      "n_expected": 150,
+      "role": "Independent confirmation cohort; frozen UID list is disjoint from the 26-object diagnostic set and the Fresh C cohort.",
+      "uid_list": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/fresh_confirm_b/fresh_confirm_B_150.txt",
+      "run": "/4T/CXY/MV-Painter/final/round2/scientific_validation_v3/formal/campaign_FRESH_CONFIRM_B_20261005"
+    }
+  ],
+  "identity_requirements": [
+    "Match UID, object index, seed policy, six target-view IDs/order, checkpoint SHA-256, runner SHA-256, config SHA-256, and input tensor hashes.",
+    "Verify each selected prediction PNG against its run output SHA-256 manifest before metric computation.",
+    "Keep Fresh C primary and addendum files separated by condition and provenance; never combine their residual logs or row tables without UID and input-hash joins.",
+    "Fresh B and Fresh C remain separate cohorts; report no pooled effect across cohorts."
+  ],
+  "metrics": {
+    "primary": [
+      {
+        "name": "fg_ciede2000_rgb",
+        "direction": "lower_is_better",
+        "definition": "For each of six views, compute mean CIEDE2000 over the GT foreground mask (uint8 mask > 127), then average the six view means equally, matching the frozen R1 diagnostic metric implementation. Use saved 8-bit prediction RGB and a reconstructed target panel serialized with torchvision save_image round-to-nearest after the frozen loader's white-background composite, bicubic antialiased resize to 256, unique6 ordering, and reverse-view rotations of target slots 1 and 3 where required."
+      },
+      {
+        "name": "fg_psnr_recorded",
+        "direction": "higher_is_better",
+        "definition": "Frozen per-object metric from the campaign CSV produced from the float prediction before 8-bit PNG serialization."
+      },
+      {
+        "name": "fg_lpips_recorded",
+        "direction": "lower_is_better",
+        "definition": "Frozen per-object AlexNet LPIPS from the campaign CSV, same cohort and UID-matched condition rows."
+      },
+      {
+        "name": "gt_relative_laplacian_error_rgb",
+        "direction": "lower_is_better",
+        "definition": "Mean absolute difference between 3x3 cross-Laplacian responses of prediction and GT RGB channels in [0,1], computed view-wise with reflect padding and restricted to the 1-pixel-eroded resized GT alpha mask. This is a GT-relative high-frequency error, not raw high-frequency energy."
+      }
+    ],
+    "secondary": [
+      "fg_ssim_recorded",
+      "edge_ssim_recorded",
+      "signed_mean_delta_a_star",
+      "signed_mean_delta_b_star",
+      "gt_texture_complexity_fields"
+    ]
+  },
+  "statistics": {
+    "inferential_unit": "object UID; one paired difference per object",
+    "bootstrap": "10,000 object-level paired percentile bootstrap resamples; fixed seed 20261008; two-sided 95% interval",
+    "report": [
+      "mean and median paired difference",
+      "95% paired bootstrap CI",
+      "standardized paired effect (Cohen dz where SD is nonzero)",
+      "wins, losses, ties and favorable-object fraction",
+      "all object-level deltas and failed cases"
+    ],
+    "heterogeneity": "Use frozen GT-only texture fields and previously defined Fresh B quartile assignment/cut points where the manifest provides them; additionally report continuous Spearman associations. Do not derive groups from generated outputs or tune thresholds after viewing deltas."
+  },
+  "schedule_and_cap_audit": {
+    "GFL_requested": "deep/middle/shallow = 1.25 for all 50 steps",
+    "GFL_effective": "deep=1.25, middle=1.25, shallow=min(1.25, 0.8)=0.8 for all 50 steps",
+    "LLH_requested": "stage partition over step/49: steps 0-16 deep/middle=1.25, shallow=0.5; steps 17-32 same; steps 33-49 deep/middle=2.5, shallow=0.75",
+    "LLH_effective": "same as requested for all layers under caps deep=3.0, middle=3.5, shallow=0.8",
+    "interpretation": "LLH and GFL are not equal-dose controls. Residual logs will be summarized descriptively by layer and step; these summaries will not be used as causal evidence by themselves."
+  },
+  "reproducibility_runtime_for_reanalysis": {
+    "python": "3.13.5",
+    "torch": "2.7.1+cu128",
+    "torchvision": "0.22.1+cu128",
+    "scikit_image": "0.26.0",
+    "numpy": "2.2.6",
+    "execution_device": "CPU"
+  },
+  "prohibitions": [
+    "No result-driven object selection or subgroup threshold changes.",
+    "No RGB recoloring, GT-based postprocessing, or target-view GT conditioning.",
+    "No scale/gate/schedule search.",
+    "No cross-cohort pooled estimate and no Python 3.10/3.13 metric mixing."
+  ]
+}

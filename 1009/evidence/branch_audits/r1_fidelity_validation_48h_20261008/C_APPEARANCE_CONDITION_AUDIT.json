@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "n": 300,
+  "condition_view_counts": {
+    "000": 127,
+    "014": 173
+  },
+  "condition_tensor_rebuilt_matches_manifest": 300,
+  "global_embedding_asset_hashes_pass": 300,
+  "runner_input_hashes_match_manifest": 300,
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "embedding_manifest_path": "/4T/CXY/MV-Painter-1008/1008/audits/source_evidence/r2/fresh_c/FRESH_C_INPUT_EMBEDDINGS_MANIFEST.json",
+  "embedding_manifest_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+  "dataset_and_builder_source_checks": {
+    "dataset": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/src/data/mvpainter_dataset.py",
+      "expected_sha256": "b4220fe8e73e2193709bd09d682623ccace44a780d82afecf417edea49aa3d8a",
+      "actual_sha256": "b4220fe8e73e2193709bd09d682623ccace44a780d82afecf417edea49aa3d8a",
+      "pass": true
+    },
+    "pipeline": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/mvpainter/mvpainter_pipeline.py",
+      "expected_sha256": "d3bdbaa9de1b0daed7613da8f39074ffb4d6751a1cca9843f55df3bb0357c36c",
+      "actual_sha256": "d3bdbaa9de1b0daed7613da8f39074ffb4d6751a1cca9843f55df3bb0357c36c",
+      "pass": true
+    },
+    "model": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/mvpainter/model_unet_geotex.py",
+      "expected_sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+      "actual_sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+      "pass": true
+    },
+    "model_loader": {
+      "path": "/4T/CXY/MV-Painter/geotex/eval_exploration.py",
+      "expected_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+      "actual_sha256": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+      "pass": true
+    },
+    "config_factory": {
+      "path": "/4T/CXY/MV-Painter/MVPainter/src/utils/train_util.py",
+      "expected_sha256": "763fcacd6bb587e0f58027b871479ef071df378e96d37be0e82dddc7f4c23405",
+      "actual_sha256": "763fcacd6bb587e0f58027b871479ef071df378e96d37be0e82dddc7f4c23405",
+      "pass": true
+    },
+    "embedding_builder": {
+      "path": "/4T/CXY/MV-Painter/1006/scripts/precompute_fresh_c_global_embeds.py",
+      "expected_sha256": "6bc2d0cef02cff8c853e64a3bc24bd247040ea4b53424c423f62bffe2b10f7ee",
+      "actual_sha256": "6bc2d0cef02cff8c853e64a3bc24bd247040ea4b53424c423f62bffe2b10f7ee",
+      "pass": true
+    }
+  },
+  "vision_pipeline_asset_checks_count": 5,
+  "vision_pipeline_asset_checks_all_pass": true,
+  "run_code_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "run_config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "condition_processing": "Dataset selects 000/014 by frozen alpha-zero rule, white-composites RGBA, applies deterministic dataset transforms under seed 42+index, then the runner resizes to model.img_size=256 with bicubic antialiasing before the VAE feature extractor. Global embedding is from the same condition tensor via the two frozen vision encoders and vision processor.",
+  "output_csv": "/4T/CXY/MV-Painter-r1color/1008/engineering/fidelity_validation_48h/C_APPEARANCE_CONDITION_OBJECT_AUDIT.csv",
+  "vision_pipeline_asset_checks": [
+    {
+      "component": "vision_encoder",
+      "path": "/4T/CXY/MV-Painter/checkpoints/hf_repo/vision_encoder/config.json",
+      "expected_sha256": "850a9e01079c17772f4680e9748cfe5863723b488fedcfa30f0f2798cc41f910",
+      "actual_sha256": "850a9e01079c17772f4680e9748cfe5863723b488fedcfa30f0f2798cc41f910",
+      "pass": true
+    },
+    {
+      "component": "vision_encoder",
+      "path": "/4T/CXY/MV-Painter/checkpoints/hf_repo/vision_encoder/model.safetensors",
+      "expected_sha256": "0839dc3a0f2899f9b85df8cd64b8acd1a3303a95f73a895aced7c31aee7d80cf",
+      "actual_sha256": "0839dc3a0f2899f9b85df8cd64b8acd1a3303a95f73a895aced7c31aee7d80cf",
+      "pass": true
+    },
+    {
+      "component": "vision_encoder_2",
+      "path": "/4T/CXY/MV-Painter/checkpoints/hf_repo/vision_encoder_2/config.json",
+      "expected_sha256": "ac17a0028ed23edefdb5b0eb0749dc3ced32d646a3ccf736ed323b69d546d44c",
+      "actual_sha256": "ac17a0028ed23edefdb5b0eb0749dc3ced32d646a3ccf736ed323b69d546d44c",
+      "pass": true
+    },
+    {
+      "component": "vision_encoder_2",
+      "path": "/4T/CXY/MV-Painter/checkpoints/hf_repo/vision_encoder_2/model.safetensors",
+      "expected_sha256": "657723e09f46a7c3957df651601029f66b1748afb12b419816330f16ed45d64d",
+      "actual_sha256": "657723e09f46a7c3957df651601029f66b1748afb12b419816330f16ed45d64d",
+      "pass": true
+    },
+    {
+      "component": "vision_processor",
+      "path": "/4T/CXY/MV-Painter/checkpoints/hf_repo/vision_processor/preprocessor_config.json",
+      "expected_sha256": "205d45875859846dc1ca211b9a19f5db72f47e953b396954ee34d48d8e95c3c6",
+      "actual_sha256": "205d45875859846dc1ca211b9a19f5db72f47e953b396954ee34d48d8e95c3c6",
+      "pass": true
+    }
+  ]
+}

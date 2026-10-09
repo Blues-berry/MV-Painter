@@ -1,0 +1,31 @@
+{
+  "n": 150,
+  "fields": {
+    "gt_fg_rgb_std": {
+      "max_abs_diff": 2.9802322387695312e-08,
+      "mean_abs_diff": 1.9604340195655823e-09,
+      "n_with_abs_diff_le_1e-6": 150,
+      "n_with_abs_diff_le_1e-4": 150
+    },
+    "gt_fg_grad_mag": {
+      "max_abs_diff": 2.384185791015625e-07,
+      "mean_abs_diff": 2.2202730178833008e-08,
+      "n_with_abs_diff_le_1e-6": 150,
+      "n_with_abs_diff_le_1e-4": 150
+    },
+    "gt_fg_lap_var": {
+      "max_abs_diff": 7.450580596923828e-09,
+      "mean_abs_diff": 1.1583324521780013e-09,
+      "n_with_abs_diff_le_1e-6": 150,
+      "n_with_abs_diff_le_1e-4": 150
+    },
+    "gt_fg_hf_energy": {
+      "max_abs_diff": 2.980232238769531e-07,
+      "mean_abs_diff": 8.841355641682943e-08,
+      "n_with_abs_diff_le_1e-6": 150,
+      "n_with_abs_diff_le_1e-4": 150
+    }
+  },
+  "interpretation": "CPU float32 reconstruction; comparison is against the frozen Fresh B official GT-only columns.",
+  "output": "/4T/CXY/MV-Painter-r1color/1008/engineering/fidelity_validation_48h/GT_COMPLEXITY_RECONSTRUCTION_AUDIT_FRESHB.csv"
+}
