@@ -191,3 +191,10 @@ PAPER_IMPACT=DIRECT：归档内容含 01549/1008 正文、图和审稿解释候�
 `PAPER_IMPACT=DIRECT`. The source tree includes historical 1008 manuscript/response candidates and Fresh B campaign material. Its 2026-10-07 d59 claim-ceiling file predates the current author-confirmed round mapping and scoped 01549 wording; its recommendation to remove FAC from the revision was not adopted. The current authenticated 1008 text and evidence reports already contain the bounded Fresh B schedule and dose conclusions; no candidate paper text or figure was adopted. A unique 150-object boundary CIEDE input was retained after its four paired means reproduced the saved analysis JSON within `7e-16`. The source campaign inventory is retrospective after outcome disclosure, so it adds provenance, not prospective-lock evidence.
 
 The active manuscript, Supplement, and Response remain at their Phase A SHA-256 values `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`, `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`, and `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`; the canonical 1008 submission package verifies 48/48. No active paper, figure, bibliography, or response file changed, so no LaTeX compile or package rebuild was needed. `SUBMISSION_APPROVED=NO`; no remote branch was pushed or rewritten.
+
+
+## codex/public-round2-evidence
+
+`PAPER_IMPACT=INDIRECT`：选入 main 的 276 对象阶段位置结果直接支持现有主文摘要/正文和 Supplementary Table S7；其逐对象表之前未随此来源保存到 main。来源接受状态、1,104 行数据、逐对象生成记录、paired bootstrap、S7 的 12 个均值/区间和独立 PNG 回读 Full-SSIM 均已交叉核验。LPIPS 的差值方向已按表格注释复核。当前文本对其使用 post-inspection、同队列非独立、非剂量匹配/非最优性限定；没有新的反例要求改写这些边界。
+
+活动主文、Supplement 和 Response SHA-256 仍为 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、`59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、`1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`。Canonical submission package SHA-256 清单 48/48 通过。没有修改 TeX、图、Response 或投稿包，因此不需重编译；编辑器中的 1008 文档保持原样。`SUBMISSION_APPROVED=NO`。

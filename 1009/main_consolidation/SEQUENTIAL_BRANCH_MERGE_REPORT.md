@@ -281,3 +281,18 @@
 - 选择性证据和逐路径导入清单已提交：`045b4427b9d8bdab4577a4193d4c07b4d32b7a20`，路径为 `1009/evidence/branch_audits/cg_round2_1008_public_sanitized_20261008/`。包含 150 对象的 baseline/四 profile CIEDE 值、边界统计 JSON 和 11,524 行来源导入清单（5,824 copied、5,700 omitted）。清单本身约 3.92 MB；未导入 596 MB campaign、5,700 张图、残差日志、检查点或旧论文/投稿快照。该来源清单明确为 outcome disclosure 后的回顾性完整性记录，不是预先锁定证明。
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。实际 Git merge/cherry-pick 均未执行；`NO_CONFLICT`，0 个实际冲突文件。`.gitattributes` 只新增该 CRLF 清单的精确行尾识别规则。选择性提交后 main 内容 SHA：`045b4427b9d8bdab4577a4193d4c07b4d32b7a20`。
 - `PAPER_IMPACT=DIRECT`：分支含旧 1008 正文/回复候选和 Fresh B 结果，但当前 C&G 主文、Supplement、Response、图表和投稿包均未更改；现有 boundary report 已包含这些经核验的统计结论。活动三份文本 SHA 仍为 Phase A 值，canonical 1008 投稿包 48/48 校验通过；未改 TeX，无需编译或重建投稿包。数据清单内部计数/路径/哈希格式通过，CIEDE 4/4 profile 均值核验通过，main 现有指标和 Generic 行复用核验通过；无 GPU、无投稿。`SUBMISSION_APPROVED=NO`。
+
+
+### 20. codex/public-round2-evidence
+
+- 归档来源 HEAD：`78c871ffb4a9906b86b3a0c801d8286607799e3d`；父提交 `d9379fe93e51a5dbf28cc1bfce9bd72b80bdbc48`；归档引用 `refs/archive/codex/main-unification-20261009/local/heads/codex/public-round2-evidence`；merge-base `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。这是旧 public 仓库曾用的 `origin/main`，没有对应来源工作树；未恢复或改写 public/private 远端引用。`SOURCE_READY` 仅针对归档 HEAD，无新 WIP 或未提交状态。
+- 相对本分支前 main `63abee2e9bfb9f0b6076e01240e0e65ecb94db42`，来源有 80 个独有提交、548 棵树、1,282 个 blob、650,449,134 字节未压缩 blob；14 个独有 blob ≥5 MiB，最大 76,043,516 字节。树差异 2,395 项（A=1,194、M=7、D=1,194）；来源新增 945 个旧 `final/` 路径，并删除 253 个活动 `1008/` 和 484 个 `1009/` 路径。来源 `.gitignore` 移除了 main 的精确生成物/证据规则，`.gitattributes` 整份删除。完整历史不适合 merge，预合并阶段拒绝整支 merge。
+- 旧 GeoTex 实现将 `_skip_correction` 改成类级共享状态，pipeline 不使用 `try/finally`，也不恢复先前状态；异常或并发调用可能泄漏状态。main 的实例级、异常安全实现保留。`MVPainter/src/data/mvpainter_dataset.py` 与 main 等价；未导入运行时代码。
+- 该分支有一套当前 1008 稿件直接使用的 MAIN-STAGE-276 阶段位置结果。对来源记录和 1,104 行统一 CSV 检查后，逐对象值与四份拆分 CSV 及 276 个 JSON 记录完全一致；55,200 个实际残差步骤有限。固定 seed `20260928` 的 10,000 次 paired bootstrap 可从逐对象行精确复现。当前 Supplement S7 的 12 个正式均值/区间均逐项匹配；单独的 PNG 回读 Full-SSIM 汇总也精确复现。来源 acceptance 对 LPIPS 使用有利方向符号，而 Supplement 报告原始 C3−比较组差值；已从逐对象行按 Supplement 方向复核。
+- 选择性证据已提交为 `d51834ee65f601d6045dfff3254c0750c666c16b`，位于 `1009/evidence/branch_audits/public_round2_evidence_20260929/`。保存了 276×4 正式逐对象指标、协议/完成/接受记录、PNG 回读 Full-SSIM 数据及统计、来源基线审计，以及覆盖来源阶段目录全部 294 项和来源审计报告共 295 条的逐路径处置清单。省略 8 份精确可还原的 per-schedule 分表、276 份生成 runner JSON 和 3 份短期状态标记；这些来源对象仍可由本地归档引用恢复，没有复制图片、预测、checkpoint 或工作树。
+- 当前主文和 Supplement 已将此结果限定为 post-inspection 的同队列辅助分析：C3−temporal L–L–H FG-PSNR 为 `−0.177084 dB`（95% CI `[−0.230539, −0.130784]`），六项正式 endpoint 均有利于 L–L–H；C3−fixed-mean 为 `+0.502875 dB`。未发现需要改写的数值；Core-7 其他记录属于不同收集过程，不与这份 276 运行混合，也不替换 Table S7。此结果不证明等残差剂量因果效应或最优 schedule。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。未运行 Git merge/cherry-pick，因此实际冲突 `NO_CONFLICT`，0 个冲突文件。`.gitattributes` 仅增加新证据目录 CSV 的精确 `whitespace=cr-at-eol` 规则；包内 10 项 SHA-256 全通过。活动主文/Supplement/Response SHA-256 仍为 `dd7cb925…73ff4`、`59f0809…2e7ed`、`1fadfc57…974cdb`；canonical 投稿包 48/48。未改 TeX 或投稿文件，不需编译/重建；`SUBMISSION_APPROVED=NO`。
+
+#### 本次状态刷新
+
+处理前 main 为 `63abee2e9bfb9f0b6076e01240e0e65ecb94db42`，证据内容提交后为 `d51834ee65f601d6045dfff3254c0750c666c16b`。读取 `mvpainter/main` 并执行只读远端查询得到的实际私有远端 main 均为 `52a1816e79da82ea0c341416cd3a9bfd4695e7ac`；补充任务记载的 `93e079ac201d049d9bf36950c7f130ad369008ab` 存在于本地历史且是当前本地 main 的祖先，但当前远端引用没有指向它。远端 `52a1816e` 是 `93e079ac` 的祖先，也是本地 main 的祖先；当前 main 可正常快进远端，但本轮尚未推送。后续按分组收束要求再同步。未删除旧 `gc.log`、未运行 prune/GC；Git 自动维护提示未导致后台 GC 进程。

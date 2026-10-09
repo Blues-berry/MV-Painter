@@ -198,3 +198,10 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - 文档版本差异不是 Git 冲突：来源 10-07 d59 claim ceiling 早于当前作者确认版本；来源还删除 10-08 已取代旧手术计划的提示，以及 10-09 human aggregate 审计更新。保留 main 的较新记录，避免旧说明重新成为当前操作指引。
 - 来源 boundary texture CSV 的 `logerr_*` 原始列与其配对分析器定义不一致：分析器从现有长表按 symmetric absolute log ratio 重算，来源扩展表的 1,800 个 logerr 单元不匹配。只整合被分析器实际读取且 4/4 profile 均值复现的 CIEDE2000 列。该数据定义差异已写入选择性包 README，不修改来源文件。
 - 选择性提交 `045b4427b9d8bdab4577a4193d4c07b4d32b7a20` 保留了核验后的证据子集，并只为 CRLF 导入清单增加精确 `whitespace=cr-at-eol` 属性；其余 `.gitignore`、代码、论文和生成物规则保留 main 版本。没有论文 Git 冲突或代码冲突被制造或解决。
+
+
+## codex/public-round2-evidence
+
+- 完整历史在预合并门禁被拒绝；没有运行 merge 或 cherry-pick。来源删改当前 `.gitignore`/`.gitattributes` 并删除 1008/1009 活动树。实际 Git 冲突为 `NO_CONFLICT`，0 个文件；没有声称“冲突已解决”。
+- 代码差异是在预审中裁决：来源的类级 `_skip_correction` 与无 `finally` 清理被排除，main 的实例级恢复保留。这不是合并冲突。
+- 旧候选正文、Supplement、回复和投稿树未合入；选择性新增的严格 276 证据直接支持现有 Supplement S7。没有论文 Git 冲突，也没有修改活动 TeX。
