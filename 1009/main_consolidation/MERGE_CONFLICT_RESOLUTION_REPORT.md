@@ -233,3 +233,9 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - Source HEAD `ce4831f40c723631e395f86268dca13afe9d07e9` is an ancestor of the already-audited archived HEAD `5a059b30eba959e69a2f36f484f06807e5c2c152`. The five descendant commits only revise three legacy `final/round2/` manuscript/response files; those historical candidates were reviewed and excluded in the descendant audit.
 - The B′/M3 source subset was already selectively integrated by `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7`; no additional content is selected from this local alias.
 - Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No new merge or cherry-pick was run; zero actual conflict files were created or resolved.
+
+
+## codex/cg-01549-surgical-upload-20261008 — identical archived HEAD
+
+- This local archive ref points to the exact HEAD already audited as `codex/cg-01549-surgical-revision-20261008@private-remote-head` (`dad08320625431acf439ed5bfb86c6a9252353a4`). The selected evidence commit `107e1aa8f89d048df11393085da2b8cc8b7e2b37` is already in main.
+- No additional merge or content selection was made. Code conflict and paper conflict are both `NO_CONFLICT`; zero actual conflict files were created or resolved. The detached source worktree and its 38 previously recorded ignored entries were left in place.

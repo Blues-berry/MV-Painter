@@ -220,3 +220,8 @@ This is historical 01549 source material, not a candidate replacement for the ac
 ## codex/round2-evidence-integrated-20261001 — local ancestor snapshot
 
 `PAPER_IMPACT=DIRECT`. This local archive is an ancestor of the already-audited private-source snapshot. That descendant review covered the same evidence history and its later edits to three historical `final/round2/` paper files; those candidate manuscript, Supplement, and response versions were not applied. B′/M3's verified evidence subset is already in main. No current 1008 manuscript, Supplement, Response, figure, or submission file changed, and no additional scientific claim requires revision.
+
+
+## codex/cg-01549-surgical-upload-20261008 — identical archived HEAD
+
+`PAPER_IMPACT=DIRECT`, with no impact beyond the exact surgical-revision source already reviewed. The archive HEAD, selected evidence, historical paper candidates, and their disposition are byte-for-byte the same source already covered in that audit. No second paper/evidence import was made; active 1008 source and submission hashes remain unchanged.

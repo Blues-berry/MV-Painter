@@ -331,3 +331,11 @@
 - B′ 与 M3 的有效协议、结果、reproducer 和校验包已由后继来源选择性提交 `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7` 纳入当前 main；其回顾性协议锁边界和 M3 预算变化限制仍适用。该本地祖先引用无额外内容需要再次导入；旧论文/回复树和生成结果沿用后继来源处置，不整支合并。
 - 决定：`ALREADY_AUDITED_AS_ANCESTOR`；不重复 merge/cherry-pick、不造空提交。处理前后 main 内容 SHA 均为 `384e3f66c3cfaca6a9073481b63618093117c12a`。实际代码/论文冲突均为 `NO_CONFLICT`，0 个文件；当前 1008 文本和投稿包未改。
 - `PAPER_IMPACT=DIRECT`：来源树中有历史论文候选，已由其后继归档审查并排除；当前 1008 主文、Supplement、Response 和 canonical submission 保持不变，投稿包 48/48。无新的数值/代码证据需改变结论；不需重编译。
+
+
+### 25. codex/cg-01549-surgical-upload-20261008 — identical archived HEAD
+
+- 本地归档引用 `refs/archive/codex/main-unification-20261009/local/heads/codex/cg-01549-surgical-upload-20261008` 指向 `dad08320625431acf439ed5bfb86c6a9252353a4`，与第 1 项已审 private-remote surgical-revision 来源 HEAD 完全相同。对应 detached 工作树 `/tmp/MVPainter-cg01549-private-upload` 的 tracked/untracked 状态干净；既有处置记录中的 38 个 ignored 项仍在原位，本轮未改动。
+- 因为是完全相同的提交对象，其 155 个独有提交、1,329 棵树、23,853 个 blob、2,993,693,628 bytes 和 22 个 ≥5 MiB blob，均已包含在第 1 项审计范围内。针对 A3b/dose 与 Generic extension 选择的内容提交 `107e1aa8f89d048df11393085da2b8cc8b7e2b37` 已在 main；历史论文候选、生成产物与类级共享状态实现沿用该项的排除裁决。
+- 决定：`ALIAS_OF_AUDITED_SOURCE`；无新增选择、无重复合并。处理前后 main 内容 SHA 均为 `89acc6de9552d378eebd9e5f88e7a440662565f3`。无新的代码或论文冲突，记为 `NO_CONFLICT`；当前 1008 论文和投稿包不变。
+- `PAPER_IMPACT=DIRECT`，但完全继承已审 surgical-revision 来源的论文裁决；没有独立论文改动需要应用。
