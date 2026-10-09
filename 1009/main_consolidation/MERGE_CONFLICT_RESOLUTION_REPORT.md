@@ -212,3 +212,9 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - Merge decision: `ALREADY_IN_MAIN`. Source HEAD `61f628bb6a137abab3856a7232cd953770755870` is an ancestor of current main, with zero source-only commits; no merge or cherry-pick was run.
 - Code comparison: this exact source snapshot has no reference-write skip-state control. Current main descendants use per-wrapper state and restore it in `finally`. The source HEAD does not contain the class-level shared flag found in a separate V3 reproduction snapshot.
 - Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge was attempted, so zero actual conflict files were created or resolved. No source or paper content was selected.
+
+
+## new0528
+
+- Merge decision: `ALREADY_IN_MAIN`. Source HEAD `3f5202cf5ab0846c48dd51e733ee2ae8aa88d359` is an ancestor of main; the source-only commit count is zero. Its tip commit changes only the README Star History display comment. No merge or cherry-pick was run.
+- Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge attempt occurred and no actual conflict files were created or resolved.

@@ -305,3 +305,11 @@
 - 代码核对：来源快照的 `model_unet_geotex.py` / `mvpainter_pipeline.py` 尚无 reference-write 阶段的 skip 状态控制。main 后续版本改为每个 wrapper 独立保存状态，并在 `finally` 中恢复；这一后续实现已经在当前 main，故没有代码补丁需要选择性导入。该具体来源 HEAD 本身没有类级共享 `_skip_correction` 状态；勿与 V3 复现包中另存的旧代码快照混为一谈。
 - 决定：`ALREADY_IN_MAIN`；不执行 merge/cherry-pick，不生成空提交。报告前后 main 内容 SHA 均为 `f959905a90019def362a2a097a75828050d13f0f`。实际 Git 冲突数为 0，记为 `NO_CONFLICT`；没有声称冲突已解决。
 - `PAPER_IMPACT=INDIRECT`：来源是 GeoTex 实现历史，但不含当前 1008 论文特有的代码或证据改动。当前稿件已把 Fresh C 限定为其冻结 runner/checkpoint 下的受控重训，并明确不把它说成对历史 01549 Table 4 的精确复现；现有 runner/身份审计也将原实现等价性列为部分或未验证。主文、Supplement、Response、图表和投稿包均未改；源文件 SHA 仍为 Phase A 值，投稿包 48/48。无 TeX 变化，不需重编译；未运行模型/GPU。
+
+
+### 22. new0528
+
+- 归档来源 HEAD：`3f5202cf5ab0846c48dd51e733ee2ae8aa88d359`；父提交 `67c9186cf3a8c9bb8629643b0c622246724e216e`；归档引用 `refs/archive/codex/main-unification-20261009/local/heads/new0528`。该 HEAD 是处理前 main `a91aa45bf8889ee3cbe30ec4db2b16653a5598fd` 的祖先，merge-base 等于来源 HEAD；main 比来源多 91 个提交，来源独有提交为 0。没有对应注册工作树或未提交/WIP 状态。
+- 来源 tip 的提交只改了根目录 README：将 Star History 展示段落改为 HTML 注释（2 行增、2 行删）。当前 main 已包含该提交及其后续历史；不需重复补丁。旧快照与当前 main 的 1,264 路径差异（A=21、M=37、D=1,206）属于后续历史演进，不是分叉独有内容；来源独有 Git 对象为 0。
+- 决定：`ALREADY_IN_MAIN`；不运行 merge/cherry-pick，不生成空提交。处理前后 main 内容 SHA 均为 `a91aa45bf8889ee3cbe30ec4db2b16653a5598fd`。无代码或论文冲突，均记为 `NO_CONFLICT`；实际冲突文件数 0。
+- `PAPER_IMPACT=NONE`：该 tip 只改 README 展示注释，不触及实现、数据、论文、图表或结果生成脚本。活动 TeX/Response 与投稿包未改；无需重编译。

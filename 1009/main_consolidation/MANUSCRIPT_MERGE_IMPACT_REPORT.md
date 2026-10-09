@@ -203,3 +203,8 @@ The active manuscript, Supplement, and Response remain at their Phase A SHA-256 
 ## backup/geotex-before-cleanup
 
 `PAPER_IMPACT=INDIRECT`. The archived source is an early GeoTex implementation ancestor, not a divergent feature branch: its HEAD is already in main history and contributes no branch-only commits or evidence. Its snapshot predates the reference-write skip behavior; current main uses per-wrapper state with exception-safe restoration. The active 1008 text describes TCAS as a control on the existing GeoTex residual and separately limits Fresh C to its frozen controlled-retraining runner; the existing identity audit does not claim exact equivalence to the historical 01549 runtime. No new result or code was selected, so no manuscript, figure, Supplement, Response, or submission change was warranted. Active source hashes remain at the Phase A values and the canonical package remains 48/48; no LaTeX rebuild was needed.
+
+
+## new0528
+
+`PAPER_IMPACT=NONE`. The branch tip is an ancestor of current main. Its only tip change comments out the README Star History display; it does not touch implementation, evidence, manuscript, figures, tables, or result-generation code. No content was selected and no paper/package rebuild was needed.
