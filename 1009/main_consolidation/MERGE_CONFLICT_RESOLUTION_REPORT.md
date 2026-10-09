@@ -69,6 +69,13 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Historical Round-2 main text, Supplement, and response candidates were not imported. No Git merge conflict existed or was resolved: `NO_CONFLICT`, actual conflict files = 0.
 - Only the compact B′ and M3 MV-Adapter mapping evidence package was selectively committed as `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7`; its distinction and chronology caveats are recorded in the sequential audit. No active TeX, figure, response, bibliography, or submission file was merged.
 
+
+## codex/scientific-validation-v3-20261006
+
+- Pre-merge decision: `FULL_MERGE_REJECTED`; 126 source-unique commits, 2,252 blobs / 714,531,802 uncompressed bytes, and a 3,222-path tree delta. The old source tree deletes 253 active `1008/` and 392 `1009/` paths while adding 1,854 old `final/` paths. No merge or cherry-pick was attempted.
+- The source retains a class-level shared `_skip_correction` flag and removes main's instance-scoped `finally` restoration; its ignore/attribute rules also differ. Main code and rules were retained. These are source differences, not merge conflicts.
+- `NO_CONFLICT`: no Git conflict files existed or were resolved. A3 data was selectively added as `11d39e228ed971ed47493f6c77d43bb391035961`; no active TeX/figure/response/package file was merged or changed.
+
 ## codex/cg-ltcas-narrative-convergence-20261007
 
 - Merge strategy decision: full-history merge rejected (142 unique commits, 2,429 unique blobs, 776,750,834 uncompressed bytes; 15 blobs >= 5 MiB; 3,160-path delta; WIP tree deletes current 1008/1009 content).

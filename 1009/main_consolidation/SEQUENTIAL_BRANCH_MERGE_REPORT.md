@@ -190,3 +190,15 @@
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。内容提交 `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7` 含 40 个文件（含针对该包 CRLF CSV 的精确 `.gitattributes` 规则）；没有 cherry-pick 或 merge。B′ bootstrap JSON、M3 bootstrap JSON 与 36 行比较 CSV 均与保留的来源输出逐字节一致；3 对象预检中 C 等于 M1，D 与 C 等值。包内 hash 校验、JSON/脚本解析、`git diff --cached --check` 均通过；canonical 1008 submission package 为 48/48。
 - `PAPER_IMPACT=DIRECT`：完整历史的远端增量带有旧 Round-2 主文、Supplement 和回复候选，均逐项审阅但没有导入或覆盖当前 1008。新增映射证据不支持普适接口结论，活动稿也没有映射不变性主张。活动主文、Supplement、Response SHA 仍为 Phase A 值 `dd7cb925…73ff4`、`59f0809b…e7ed`、`1fadfc57…974cdb`；活动 LaTeX 与投稿包未改变，因此未重新编译或重建投稿包。`SUBMISSION_APPROVED=NO`，未推送、未投稿。
 - Git 冲突：`NO_CONFLICT`，未执行 merge/cherry-pick，实际冲突文件为 0。内容提交后 main 为 `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7`；报告更新将另行提交。
+
+
+### 14. codex/scientific-validation-v3-20261006
+
+- 来源 HEAD：`12da08c7056f5f0c36677668d640477bfb249454`；archive ref：`refs/archive/codex/main-unification-20261009/local/heads/codex/scientific-validation-v3-20261006`；父提交为已审计的 `codex/final-evidence-freeze-20261001` HEAD `29b3a0a6ec00f5848f1898ffda4fb8e787f81375`。没有注册工作树或可检查的未提交/WIP 状态；`SOURCE_READY` 仅针对归档 HEAD。
+- 相对分支前 main `d4277da2dc039c2c3477ca595a8c091df6d4bb1e`，merge-base 是 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`；来源有 126 个独有提交、935 棵树、2,252 个 blob、714,531,802 字节未压缩 blob 内容；14 个 blob ≥5 MiB（最大 76,043,516 字节）。树差异 3,222 项（A=2,125、M=7、D=1,090），删除活动 `1008/` 的 253 项、`1009/` 的 392 项，新增 1,854 项旧 `final/` 内容。完整历史不适合 merge，未运行合并试验。
+- 来源最新提交在 `final/round2/scientific_validation_v3/` 下新增 525 个文件、38,943,044 字节；整个发布快照没有被复制。独有且直接支持当前 Supplement A3 交互统计的 4,800 行源指标此前不在 main，因此将其中最小可重现包选择性保存到 `1009/evidence/branch_audits/scientific_validation_v3_20261006/a3_interaction/`。包含 16 个条件 CSV（每项 N=300）、4 个脱敏运行 manifest、归一化规格、校正后 Wald 输出、适配 CSV 输入的 CPU 复现脚本和来源/包内 SHA-256 清单；未复制重复合并总表、图像、GLB、残差日志、模型检查点或其余 503 项快照文件。
+- 复核通过：16×300 的对象/条件键完整且无非有限值；条件拆分文件可还原来源 4,800 行 ledger；A3 baseline 与 main 已有 A2 baseline 的 300 个对象非运行时间指标逐项相同，最大差为 0。复算的 cluster-robust Wald 与来源输出所有字段匹配：FG-LPIPS `W=657.237, p=1.1444555792962468e-136`；FG-PSNR `W=1389.118, p=1.2756891492864911e-294`。本包 23 项来源映射和 26 文件 SHA 清单通过。旧 `layermap_dosenorm*.json` 的 zero-power bootstrap 未采用；继续保留 main 已有深层确认、中层近似诊断、浅层 stress-only 的边界。
+- 来源代码差异：完整旧树仍将 `_skip_correction` 改为类级共享状态，并移除 pipeline 的实例状态保存与 `finally` 恢复；`.gitignore`/`.gitattributes` 也弱化 main 的精确规则。保留 main 代码/规则；这些是来源审查发现，不是 Git 冲突。实际 Git merge/cherry-pick 均未执行：`NO_CONFLICT`，0 个冲突文件。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。内容提交 `11d39e228ed971ed47493f6c77d43bb391035961` 含 28 个文件（含 A3 数据包与 CRLF 识别规则）。
+- `PAPER_IMPACT=DIRECT`：这批原始指标直接复核当前 1008 Supplement 已列的 A3 交互统计；没有发现需要改写结果或限定的差异。活动主文、Supplement、Response、图表与投稿目录均未修改；SHA 仍为 Phase A 三值，canonical 1008 package 48/48。没有 TeX 改动，因此未触发重编译/投稿包重建；`SUBMISSION_APPROVED=NO`，没有 GPU、推送或期刊投稿。
+- 报告提交稍后单独生成；内容提交后 main 为 `11d39e228ed971ed47493f6c77d43bb391035961`。
