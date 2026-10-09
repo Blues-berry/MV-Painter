@@ -91,4 +91,14 @@
 - `PAPER_IMPACT=DIRECT`：审阅了分支中的整套候选论文、回复、数值权威与图件；只增加历史数值复核和数据公开边界说明，没有改动活动 1008 主文、Supplement、回复、图或投稿包。活动 TeX/回复 SHA 与 Phase A 相同，48/48 投稿包校验通过；不需重编译或更新投稿包。`SUBMISSION_APPROVED=NO`。
 - 冲突：`NO_CONFLICT`（未执行 Git merge/cherry-pick，因此没有产生或解决 Git 冲突）。验证：42 项重聚合 PASS 且 JSON 字节级匹配；公开处置文件 SHA 与当前 claim ledger 相符；活动主文、Supplement、Response SHA 未变；投稿包 48/48 PASS；`git diff --check` 通过。无模型推理、GPU 或期刊投稿。
 
-第一组论文分支现已逐项审计。下一组为科学审计与证据分支；后续仍逐个处理，保留 WIP/归档引用及旧数据原件，不因归集报告清理原工作树。
+### 6. codex/scientific-validation-v3-20261002
+
+- 原 HEAD：`5c2c8829a1e19b42837761160dc4c14cf8f09045`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/scientific-validation-v3-20261002`；merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。
+- 相对当时 main `e571bca0d5693450de5dd7d22280b73e407b0e79` 有 163 个来源独有提交、1,798 棵树、36,865 个 blob，未压缩 7,776,031,685 bytes；15 个独有 blob 不小于 5 MiB，最大 76,043,516 bytes。树差异 42,729 项（A=41,798、M=7、D=924）。旧树含约 40,196 项 V3 生成/实验输出，并删除当前 1008 文件及 116 项紧凑 V3 发布证据；不适合整支合并，未执行完整 merge。
+- 旧工作树 `/4T/CXY/MV-Painter` 的 30 项已跟踪改动（26 项暂存删除、4 项文档修改）通过临时索引形成 WIP `23ba46e35ec9465d737b1d2e61116b9904bb9d4c`，保存在本地归档引用 `refs/archive/codex/main-unification-20261009/local/wip/codex/scientific-validation-v3-20261002`。原 HEAD、真实暂存区和工作树均未移动或清理。另有 581 个非忽略未跟踪路径，涵盖 1006 候选/证据、01549 备份与审稿文件；全部留在原目录。未枚举或哈希其中 ignored 大型数据。
+- `1008` 中 Fresh C N=300 主结果和 1009 的 MV-Adapter 报告已在 main。选择性保留新增的 E1/E2 48-object 固定子集审计材料，以及 MVDiffusion 75-object 七条件逐对象指标、配置、分析和限定报告，合计约 0.83 MB，路径为 `1009/evidence/branch_audits/scientific_validation_v3_20261002/`。没有复制预测图片、残差轨迹、GLB、权重、检查点、缓存或参与者级答卷。选择性提交 `73e5b91c`；同时只为该目录的 CSV 增加 CRLF 行尾识别规则。
+- E1 仅为既有 48-object cohort 上三固定 seed 的 realization sensitivity；E2 是静态尺度因子分析，不检验时间效应或等 realized dose。50 项 E1/E2 摘要、JSON 与逐对象均值核对通过。MVDiffusion 分析脚本从 7 组各 75 行指标表重算，panel CSV、paired-bootstrap JSON、Markdown 汇总 3/3 与原输出字节一致。无 GPU 或模型运行。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED`；`SOURCE_READY`（原 worktree 保留）。旧树中三个未提交科学总结涉及后续人类研究裁决；仅把其 WIP 保存在本地归档，待人类研究分支单独核查。当前 1008 主文、Supplement、回复信、图和投稿包未改，Phase A 三个活动文本 SHA 不变，投稿目录 48/48 校验通过。
+- `PAPER_IMPACT=DIRECT`：MVDiffusion 指标补齐了当前主文已有的边界性结果支撑；E1/E2 为后续修订提供限界信息。更新的 V3 readiness 摘要另称 37 份有效人类答卷、8 个终点均未通过 Holm；该人类结果尚待专门来源审计，不据此改写当前论文。冲突：`NO_CONFLICT`（未执行 merge 或 cherry-pick，没有产生 Git 冲突）。验证：47 项包内 SHA256 校验通过、MVDiffusion 3/3 byte-exact、E1/E2 50 assertions、`git diff --check` 通过；主文/Supplement/回复信未变，因此本分支未触发 LaTeX 重编译。`SUBMISSION_APPROVED=NO`。
+
+第一组论文分支及第一项科学证据分支已逐项审计。后续继续逐分支处理科学审计、证据闭合、稳健性、人类研究及保留实验分支；旧数据原件留在原工作树。

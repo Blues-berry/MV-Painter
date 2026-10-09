@@ -54,3 +54,11 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Paper conflict: `NO_CONFLICT` (10/07 candidate removes FAC, while active 1008 keeps only its bounded historical disposition; candidate final_0903 manuscript and PDFs were not merged).
 - Scientific-output note: the 42-row verifier passed on exact hash-pinned inputs. Its output is a historical authority reaggregation and does not replace active 1008 values; the previously recorded C3−GFH bootstrap-interval provenance difference remains explicit.
 - Actual Git conflicts resolved: 0.
+
+## codex/scientific-validation-v3-20261002
+
+- Full-history merge was rejected before execution: 163 source-unique commits, 36,865 blobs, 7,776,031,685 uncompressed bytes, and a 42,729-path tree delta; its tree deletes the active 1008 files and compact V3 release.
+- No Git merge or cherry-pick was attempted. The bounded E1/E2 and MVDiffusion evidence selection was committed at `73e5b91c`; the old 0907 deletions and readiness-note edits were captured separately in local WIP ref `23ba46e35ec9465d737b1d2e61116b9904bb9d4c`.
+- Code conflict: `NO_CONFLICT`. No application code behavior was changed; included analysis scripts remain report-scoped.
+- Paper conflict: `NO_CONFLICT`. The active 1008 text and package were not overlaid. The later human-study summary remains pending its dedicated branch audit.
+- Actual Git conflicts resolved: 0.

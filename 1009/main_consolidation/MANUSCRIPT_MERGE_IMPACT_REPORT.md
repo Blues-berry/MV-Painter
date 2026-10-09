@@ -72,3 +72,11 @@ No manuscript, Supplement, response, figure, table, bibliography, PDF, or canoni
 A 42-row, 10/07 numerical reaggregation and its four compact metric inputs were preserved under `1009/evidence/branch_audits/cg_ltc_as_narrative_20261007/`; the script reran all 42 rows and reproduced its stored output byte-for-byte. This is historical cross-validation, not a new independent experiment and not a change to current 1008 claims. The exact sanitized public-human-data disposition cited by the current claim ledger is present at its original path; it contains no participant responses and retains `PUBLIC_RAW_HUMAN_DATA=NO`.
 
 No main text, Supplement, response, figure, table, bibliography, or canonical package file changed. Active manuscript/Supplement/response hashes remain Phase A values; all 48 package checksums pass. No LaTeX rebuild was required. `SUBMISSION_APPROVED=NO`; no submission was made.
+
+## codex/scientific-validation-v3-20261002
+
+`PAPER_IMPACT=DIRECT`: the branch includes scientific narrative/readiness edits and MVDiffusion evidence cited by the current 1008 paper. Current 1008 already contains the Fresh C N=300 result and bounded cross-backbone wording. The selected 75-object MVDiffusion metrics support that interface-specific description; E1/E2 are fixed-subset sensitivity results and do not establish a temporal or dose-independent schedule effect. The candidate manuscript and Supplement were not imported.
+
+The updated readiness note summarizes a 37-valid-response human analysis with no Holm-adjusted endpoint. Its source, execution deviations, and data-governance limits remain for the separate human-study branch audit before any text change. The selected evidence package contains no participant-level rows.
+
+The active manuscript, Supplement, and response SHA-256 remain at their Phase A values; all 48 canonical package checksums pass. No manuscript, figure, table, reference, or submission package file changed, so no editor compile or package rebuild was triggered. `SUBMISSION_APPROVED=NO`; no journal submission was made.
