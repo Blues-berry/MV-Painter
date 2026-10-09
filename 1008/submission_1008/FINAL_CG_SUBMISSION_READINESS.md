@@ -1,11 +1,11 @@
 # C&G 1008 Final Submission Readiness
 
-**Captured:** `2026-10-09T07:21:54Z` UTC  
+**Captured:** `2026-10-09T08:11:26Z` UTC  
 **Package state:** `AUTHOR_REVIEW_READY / DRAFT`  
 **Journal submission:** not made  
 **Author submission approval:** `NO`  
-**Main base at final-package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`  
-**Verified package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; local and `mvpainter/main` matched at 2026-10-09T07:20:48Z UTC. The final readiness/package-metadata closeout commit SHA is supplied in the completion handoff.
+**Git main baseline before final wording/package refresh:** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`.  
+**Earlier package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; the final wording/package refresh is recorded in the latest main-verification report.
 
 ## Scientific narrative
 
@@ -31,15 +31,15 @@ The second-round response and paper are internally consistent, and page location
 
 ## Delivered sources and build verification
 
-- Active manuscript: [`1008/manuscript/revision_01549_restored/manuscript_1008.tex`](../manuscript/revision_01549_restored/manuscript_1008.tex), SHA-256 `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`.
+- Active manuscript: [`1008/manuscript/revision_01549_restored/manuscript_1008.tex`](../manuscript/revision_01549_restored/manuscript_1008.tex), SHA-256 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`.
 - Active Supplement: [`1008/manuscript/revision_01549_restored/Supplementary_1008.tex`](../manuscript/revision_01549_restored/Supplementary_1008.tex), SHA-256 `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`.
 - Response source: [`1008/review/Response_to_Reviewers_1008.md`](../review/Response_to_Reviewers_1008.md), synchronized with the author-review copy; response PDF is five pages.
 - Package directory: [`1008/submission_1008/`](./); private GitHub [main package folder](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008).
-- Main PDF: 13 pages, SHA-256 `29e48af0348377bd45f887a3be662937c83857a58aee67af70c12727c22df6d5`.
-- Marked-up manuscript: 13 pages, SHA-256 `3c78161c31d68163007ea8f337c06b8259ad90fb96d39a789958974ff23447d5`.
-- Supplement PDF: 11 pages, SHA-256 `8bc53b24ef4b43a420d40356e8f91daca5137852c6aab7cbda418932f8c5b898`.
+- Main PDF: 13 pages, SHA-256 `8e231a2941a165de4c5c68b33ef087cc7f53a6550ad5e878eee742a575a08935`.
+- Marked-up manuscript: 13 pages, SHA-256 `143ecff586aa057e3e81c95cff09f749459b476ae23387890cfbbb5ac392c0b7`.
+- Supplement PDF: 11 pages, SHA-256 `79bd2cf57de7e94f62b82c1d7edefe03675427949578ad44fc8ab8b5470156db`.
 - Response PDF: 5 pages, SHA-256 `c9cebb9dc8198ec9077d36f3dcf1dad084a9b064793bce9678303228a28d96a0`; author-review DOCX SHA-256 `0cbd727f360bd8df865738ccdbd14aab6fdd18ec6706a78c8c431a65465bfe96`. The assembled package DOCX is generated from the same Markdown and is covered by the package manifest/checksum.
-- LaTeX source ZIP: 44 entries, 32,009,054 bytes, CRC `OK`, SHA-256 `fcfecf9787b087296bd922301f59953d445795815ba4b7253aee9e4bff74c37c`. It excludes raw/generated data and contains the active manuscript and Supplement byte-for-byte.
+- LaTeX source ZIP: 44 entries, 32,009,077 bytes, CRC `OK`, SHA-256 `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd`. It excludes raw/generated data and contains the active manuscript and Supplement byte-for-byte.
 - Clean extraction builds of manuscript/Supplement/marked-up output passed at 13/11/13 pages. Each included script runs pdfLaTeX twice; unresolved references from pass one are resolved in pass two, and extracted text matches delivered PDFs. Build detail: [`SOURCE_PACKAGE_BUILD_CHECK.md`](Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md).
 - Main manuscript pages: Tables 3–4 p. 7; stage analysis p. 8; R1.1 limitations pp. 8–9; Figures 4–5 pp. 11–12. Supplementary Figure S1 p. 9. Traceability is in `Author_Review/REVIEWER_TO_MANUSCRIPT_TRACEABILITY.csv`.
 
@@ -47,7 +47,7 @@ The Codex built-in LaTeX compiler could not locate platform standard directories
 
 ## Final gates
 
-`MAIN_SINGLE_EDITING_AUTHORITY = PARTIAL`  
+`MAIN_SINGLE_EDITING_AUTHORITY = YES`  
 `ALL_RELEVANT_BRANCH_CONTENT_REVIEWED = YES`  
 `UNIQUE_VALUABLE_SOURCES_ACCOUNTED_FOR = YES`  
 `PENDING_117_DISPOSITIONS_RESOLVED_OR_EXPLICITLY_BLOCKED = YES`  
@@ -59,7 +59,7 @@ The Codex built-in LaTeX compiler could not locate platform standard directories
 `PRIVATE_MAIN_SYNCED = YES`  
 `SUBMISSION_APPROVED = NO`
 
-`MAIN_SINGLE_EDITING_AUTHORITY` remains `PARTIAL` until the author opens `/4T/MV-Painter-main` in the editor and verifies the `main` branch. The delivery commit SHA is given in the completion handoff because a report cannot contain the Git SHA of the commit that contains its own final contents.
+`MAIN_SINGLE_EDITING_AUTHORITY = YES` because the active manuscript is open at `/4T/MV-Painter-main/1008/manuscript/revision_01549_restored/manuscript_1008.tex`, and that worktree is on `main`. The exact final package-update and remote-verification commits are recorded in the final Git verification and completion handoff.
 
 ## Author checks before any upload
 

@@ -5,9 +5,9 @@
 **Repository:** private `Blues-berry/MVPainter`  
 **Branch/worktree:** `main`, `/4T/MV-Painter-main`  
 **Authorized push target:** `mvpainter/main` only  
-**Captured:** `2026-10-09T07:17:13Z` UTC  
-**Main SHA at final package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`  
-**Verified package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; local and remote `mvpainter/main` matched at `2026-10-09T07:20:48Z`. A readiness/package-metadata closeout commit follows; its final full SHA is in the completion handoff.
+**Captured:** `2026-10-09T08:11:26Z` UTC  
+**Git main baseline before final wording/package refresh:** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`  
+**Earlier package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; this manuscript/package refresh is recorded in `1009/main_consolidation/FINAL_MAIN_VERIFICATION.md`.
 
 ## Submission folder
 
@@ -21,11 +21,11 @@ The complete author-review package is [`1008/submission_1008/`](https://github.c
 
 ## Integrity and remaining author checks
 
-- Active manuscript TeX SHA-256: `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`.
+- Active manuscript TeX SHA-256: `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`.
 - Active Supplement TeX SHA-256: `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`.
-- Source ZIP SHA-256: `fcfecf9787b087296bd922301f59953d445795815ba4b7253aee9e4bff74c37c`.
+- Source ZIP SHA-256: `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd`.
 - The source ZIP clean-extract builds passed for manuscript, Supplement, and marked-up manuscript at 13/11/13 pages. Response is 5 pages; the combined PDF is 18 pages. Package manifest and checksums were regenerated and verified.
-- Open Folder `/4T/MV-Painter-main` in the editor and confirm Source Control shows `main`; until confirmed `MAIN_SINGLE_EDITING_AUTHORITY=PARTIAL`.
+- The active document is open from `/4T/MV-Painter-main`, on branch `main`; `MAIN_SINGLE_EDITING_AUTHORITY=YES`.
 - Verify author/contact metadata, title page, funding/acknowledgements, interests statement, current editor instructions, and whether the 0907 conference attachment, graphical abstract, or demo media is required.
 - Review the still-open R1.1 color/3D-fidelity, R2.1 novelty, R2.3 cross-backbone, and second-round review-source provenance limits. See `FINAL_CG_SUBMISSION_READINESS.md`.
 

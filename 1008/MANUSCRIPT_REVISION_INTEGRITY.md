@@ -2,7 +2,23 @@
 
 Status: `AUTHOR_REVIEW_READY`. This record does not approve journal submission.
 
-## Current verified revision — Core-7 alignment
+## Latest verified revision — final wording and package refresh
+
+At **2026-10-09T08:11:51Z**, the in-place manuscript wording revision and refreshed author-review package were fingerprinted on `main`, based on `ed7471ee57351d7c8d4600d43d2c63bd44d01725`. The pre-edit SHA-256 was `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`; the active, author-review, package, and source-ZIP TeX copies now match at `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`. The prose-only edits refine the abstract, third contribution, and conclusion; data, results, Supplement source, and reviewer-response source did not change.
+
+| File | SHA-256 |
+|---|---|
+| Active manuscript and synchronized package TeX | `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4` |
+| Active Supplement TeX | `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed` |
+| Main PDF (13 pages) | `8e231a2941a165de4c5c68b33ef087cc7f53a6550ad5e878eee742a575a08935` |
+| Marked-up PDF (13 pages) | `143ecff586aa057e3e81c95cff09f749459b476ae23387890cfbbb5ac392c0b7` |
+| Supplement PDF (11 pages) | `79bd2cf57de7e94f62b82c1d7edefe03675427949578ad44fc8ab8b5470156db` |
+| Reviewer response PDF (5 pages; source unchanged) | `c9cebb9dc8198ec9077d36f3dcf1dad084a9b064793bce9678303228a28d96a0` |
+| Clean LaTeX source ZIP (44 entries) | `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd` |
+
+The source-ZIP manuscript, marked-up manuscript, and Supplement each rebuilt from a clean extraction to 13/13/11 pages; normalized extracted text matches the delivered PDFs. Package manifest and SHA256SUMS checks passed. The built-in editor compiler returned `Unable to find standard directories for platform`; the repository's pdfLaTeX scripts succeeded in the working tree and clean extraction. Pre-edit and post-build source hashes are also recorded in `MANUSCRIPT_REVISION_INTEGRITY.csv`. Journal submission was not made; `SUBMISSION_APPROVED=NO`.
+
+## Previous verified revision — Core-7 alignment
 
 At **2026-10-09T03:33:24Z**, the active manuscript, Supplement, generated PDFs, response, and author-review package were fingerprinted on authority branch `codex/cg-01549-unified-20261009`, base commit `b327b4875b23ce4f365bb880e4f6faa9b0b0ad10`. This is the pre-commit base for the current package update. The same timestamp and SHA-256 rows were appended to `MANUSCRIPT_REVISION_INTEGRITY.csv` for 52 paper/package files; the recorder excludes JSON. This final capture followed CSV line-ending normalization; content hashes are unchanged from the 03:32:34Z capture.
 

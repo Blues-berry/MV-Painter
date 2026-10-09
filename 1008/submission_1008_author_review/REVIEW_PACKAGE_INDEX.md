@@ -1,7 +1,7 @@
 # 1008 author-review package index
 
 **Status:** `AUTHOR_REVIEW_READY`  
-**Captured:** 2026-10-09T07:12:46Z UTC  
+**Captured:** 2026-10-09T08:07:11Z UTC  
 **Historical base:** authenticated 01549 submitted 2026-09-07; 1008 addresses the subsequent R1/R2/R3 review.  
 **Submission approval:** not granted.
 
@@ -19,15 +19,15 @@
 
 ## Integrity anchors
 
-- Active manuscript SHA-256: `9ffa845eff67d22ec75fbf1c135967fa1d8057bc7c4b13ad44b7c8c1a9ea55bb`.
+- Active manuscript SHA-256: `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`.
 - Supplement SHA-256: `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`.
-- Main PDF SHA-256: `29e48af0348377bd45f887a3be662937c83857a58aee67af70c12727c22df6d5`.
-- Marked-up PDF SHA-256: `3c78161c31d68163007ea8f337c06b8259ad90fb96d39a789958974ff23447d5`.
-- Supplement PDF SHA-256: `8bc53b24ef4b43a420d40356e8f91daca5137852c6aab7cbda418932f8c5b898`.
+- Main PDF SHA-256: `8e231a2941a165de4c5c68b33ef087cc7f53a6550ad5e878eee742a575a08935`.
+- Marked-up PDF SHA-256: `143ecff586aa057e3e81c95cff09f749459b476ae23387890cfbbb5ac392c0b7`.
+- Supplement PDF SHA-256: `79bd2cf57de7e94f62b82c1d7edefe03675427949578ad44fc8ab8b5470156db`.
 - Reviewer-response Markdown SHA-256: `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`.
 - Reviewer-response DOCX SHA-256: `0cbd727f360bd8df865738ccdbd14aab6fdd18ec6706a78c8c431a65465bfe96`.
 - Reviewer-response PDF SHA-256: `c9cebb9dc8198ec9077d36f3dcf1dad084a9b064793bce9678303228a28d96a0`.
-- Source ZIP SHA-256: `fcfecf9787b087296bd922301f59953d445795815ba4b7253aee9e4bff74c37c`.
+- Source ZIP SHA-256: `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd`.
 
 ## Scientific boundaries still open
 

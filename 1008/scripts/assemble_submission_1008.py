@@ -202,7 +202,7 @@ No journal submission was made. `SUBMISSION_APPROVED=NO`.
     payload = [p for p in OUT.rglob("*") if p.is_file()
                and p.name not in {manifest.name, "SHA256SUMS.txt"}]
     with manifest.open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.writer(stream)
+        writer = csv.writer(stream, lineterminator="\n")
         writer.writerow(["path", "bytes", "sha256", "status", "notes"])
         for path in sorted(payload):
             rel = path.relative_to(OUT).as_posix()
