@@ -18,12 +18,16 @@ Usage:
         --timestep_schedule '{"early": 2.5, "mid": 1.25, "late": 1.25}' --num_objects 24
 """
 import os, sys, json, csv, argparse, signal, gc, hashlib
+from pathlib import Path
 import torch, torch.nn.functional as F, numpy as np
 
 signal.signal(signal.SIGTERM, signal.SIG_IGN)
 os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'MVPainter'))
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT / 'geotex'))
+sys.path.insert(0, str(PROJECT_ROOT / 'MVPainter'))
 from omegaconf import OmegaConf
 from src.utils.train_util import instantiate_from_config
 from torchvision.transforms import v2
@@ -31,6 +35,7 @@ from torchvision.utils import save_image
 from diffusers import EulerDiscreteScheduler
 from metrics import compute_psnr, compute_ssim, compute_edge_mask, unscale_latents, unscale_image
 from metrics_extended import compute_all_extended
+from geotex.runtime import require_cuda
 
 
 # Block name -> depth group mapping
@@ -281,7 +286,7 @@ def main():
                         help='Name for this variant (e.g. B1, C3)')
     args = parser.parse_args()
 
-    device = torch.device(args.device)
+    device = require_cuda(args.device, 'GeoTex exploratory evaluation')
     wdt = torch.float16
     os.makedirs(args.output_dir, exist_ok=True)
     vis_dir = os.path.join(args.output_dir, 'visualizations')
@@ -336,7 +341,7 @@ def main():
         object_indices = list(range(num))
         print(f"Using first {num} objects")
 
-    from eval import collate_batch, prepare_batch
+    from data_utils import collate_batch, prepare_batch
 
     # Save config snapshot
     config_snapshot = {
