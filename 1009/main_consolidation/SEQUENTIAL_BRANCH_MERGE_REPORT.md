@@ -313,3 +313,12 @@
 - 来源 tip 的提交只改了根目录 README：将 Star History 展示段落改为 HTML 注释（2 行增、2 行删）。当前 main 已包含该提交及其后续历史；不需重复补丁。旧快照与当前 main 的 1,264 路径差异（A=21、M=37、D=1,206）属于后续历史演进，不是分叉独有内容；来源独有 Git 对象为 0。
 - 决定：`ALREADY_IN_MAIN`；不运行 merge/cherry-pick，不生成空提交。处理前后 main 内容 SHA 均为 `a91aa45bf8889ee3cbe30ec4db2b16653a5598fd`。无代码或论文冲突，均记为 `NO_CONFLICT`；实际冲突文件数 0。
 - `PAPER_IMPACT=NONE`：该 tip 只改 README 展示注释，不触及实现、数据、论文、图表或结果生成脚本。活动 TeX/Response 与投稿包未改；无需重编译。
+
+
+### 23. new0529
+
+- 归档来源 HEAD：`d9379fe93e51a5dbf28cc1bfce9bd72b80bdbc48`；父提交 `50e3248a400eabc6db2bbcf214630c19afadea6a`；归档引用 `refs/archive/codex/main-unification-20261009/local/heads/new0529`。来源没有对应注册工作树或未提交/WIP 状态。相对处理前 main `361c69a5...`，来源有 79 个独有提交、294 棵树、559 个 blob，blob 未压缩合计 584,814,707 bytes；12 个独有 blob ≥5 MiB，最大 76,043,516 bytes。树差异为 1,491 项（A=261、M=7、D=1,223），完整历史不适合 merge。
+- 来源最终提交修订了 0907 标记稿：把全量 latexdiff 删除标记转换为 add-only，并替换投稿包中的标记稿 PDF。逐字节核对发现，来源 clean `final_0903.tex` 与 main 已存的 `1008/manuscript/source_01549/final_0903.tex` 同 SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`；来源最终 0907 标记稿 PDF 与 main 已保存的官方 PDF 同 SHA-256 `191d7f379102408852fef5a506f02a3137f32c09781c2489f63650ef243d7aa3`。PDF 未重复复制。
+- 从归档对象隔离提取并运行 `strip_difdel.py`：删除组数为 94，正文花括号平衡为 0，输出与来源 `final_0903_marked_addonly.tex` 逐字节一致，SHA-256 `bf6855bc2115564793c979a7c0cd65fb2a7b4994d867f1f37a051a4795616c28`。选择性内容提交 `c46bdac3e5988a9f0103a135a0aba26c3a602833` 在 `1008/manuscript/source_01549/` 保存 full-diff 输入 TeX、add-only 输出 TeX、转换脚本及 SHA/来源说明，合计三项源码 225,986 bytes；没有改 clean 原文、当前 1008 稿件或投稿 PDF。
+- 排除 79 个提交的其余历史树和 584.8 MB blob 历史，包括 76,043,516-byte 旧 zip、9 个训练 checkpoint、旧论文 PDF、全量删除标记 PDF及旧生成输出；所有源对象仍可经本地 archive ref 恢复。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。没有执行 merge/cherry-pick，因此实际代码/论文冲突均为 `NO_CONFLICT`，冲突文件数 0。新存的 historical source 只服务于已认证的 0907 标记稿；不把它覆盖到 1008。新 add-only TeX 保留源字节，Git whitespace 检查标出其中 3 行原有尾随空格，未为保持 hash 而做格式改写；其余提交文件通过检查。投稿目录 SHA256SUMS 48/48，活动三份源文件哈希不变；不需重编译、无 GPU、无投稿。`SUBMISSION_APPROVED=NO`。

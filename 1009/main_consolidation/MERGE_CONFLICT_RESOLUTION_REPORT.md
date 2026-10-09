@@ -218,3 +218,11 @@ No claim is made that the present audit resolved the historical conflicts. The c
 
 - Merge decision: `ALREADY_IN_MAIN`. Source HEAD `3f5202cf5ab0846c48dd51e733ee2ae8aa88d359` is an ancestor of main; the source-only commit count is zero. Its tip commit changes only the README Star History display comment. No merge or cherry-pick was run.
 - Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge attempt occurred and no actual conflict files were created or resolved.
+
+
+## new0529
+
+- Full-history merge rejected before any merge attempt: 79 source-only commits, 584,814,707 uncompressed blob bytes, 12 blobs at least 5 MiB, and a 1,491-path tree delta with legacy manuscript/submission and generated outputs.
+- Selective historical-source import: commit `c46bdac3e5988a9f0103a135a0aba26c3a602833` adds the 0907 full-diff TeX input, verified add-only TeX output, its transformer, and provenance/checksum notes under `1008/manuscript/source_01549/`. The existing official marked-up PDF was hash-identical, so it was not copied.
+- The transformer was run only in a temporary directory: it removed 94 deletion groups, produced balanced braces, and recreated the archived add-only TeX byte-for-byte. Three inherited trailing-whitespace lines remain unchanged to preserve source identity.
+- Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge/cherry-pick was attempted; zero actual conflict files were created or resolved. Current 1008 manuscript, Supplement, Response, figures, and submission files were untouched.

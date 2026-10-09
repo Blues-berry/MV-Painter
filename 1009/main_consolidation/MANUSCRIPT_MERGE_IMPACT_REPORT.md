@@ -208,3 +208,10 @@ The active manuscript, Supplement, and Response remain at their Phase A SHA-256 
 ## new0528
 
 `PAPER_IMPACT=NONE`. The branch tip is an ancestor of current main. Its only tip change comments out the README Star History display; it does not touch implementation, evidence, manuscript, figures, tables, or result-generation code. No content was selected and no paper/package rebuild was needed.
+
+
+## new0529
+
+`PAPER_IMPACT=DIRECT` for historical 01549 submission provenance. The source tip’s clean `final_0903.tex` is byte-identical to the clean source already in main (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). Its final 0907 marked-up PDF is also byte-identical to the authenticated PDF already preserved in main (SHA-256 `191d7f379102408852fef5a506f02a3137f32c09781c2489f63650ef243d7aa3`). The archived transformer exactly reconstructs the add-only marked TeX after removing 94 deletion groups. That compact source/provenance set was retained; the duplicate PDF and full-diff/generated artifacts were not.
+
+This is historical 01549 source material, not a candidate replacement for the active 1008 paper. No current 1008 text, figures, tables, response, or submission artifact changed. Its active manuscript/Supplement/Response hashes remain the Phase A values; the canonical submission package verifies 48/48. Because the active LaTeX files were not edited, no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`.
