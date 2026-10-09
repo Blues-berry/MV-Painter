@@ -29,3 +29,17 @@ PAPER_IMPACT=DIRECT for review: the branch and its dirty historical worktree con
 - SHA256SUMS.txt contains 48 rows and all checks pass.
 - Current canonical PDF hashes are recorded in the sequential report. Since no TeX, figure, table or package file was changed by this branch decision, no active-editor compile or package rebuild was triggered.
 - SUBMISSION_APPROVED=NO. No journal submission was made.
+
+
+## codex/cg-01549-unified-20261009
+
+`PAPER_IMPACT=DIRECT` for review: the archived branch and its preserved detached worktree contain direct main-text and response-letter candidates plus compiled PDFs. The nine tracked dirty paths were inspected; the worktree remains unchanged. Its dirty candidate hashes were manuscript `28c2cb0d4107ef592bd3891ab7265078b97dcba5ca19a9da84cf50448799a8e1`, Supplement `2a92459d9a43e6d4222a5f41d0809670c6822feec9db325e99478f086a69549f`, and response `911019dd0eab8877f386992e348519b88479e0520458ae5b1e9cee039eb5b281`. At the archived commit the main-text SHA is `6767189865c00b6cb90867c4428ff921a2d2c2fa6eb03fc9fc705604ef1e2525`, Supplement SHA is `2a92459d9a43e6d4222a5f41d0809670c6822feec9db325e99478f086a69549f`, and response SHA is `47d74ac5ed14b9c3b45d41e064c1da36219d49b7e872e7e4ba6bf340e2a243d5`.
+
+### Content adjudication
+
+- The candidate explicitly disclaims identity between Fresh C's controlled-retraining checkpoint and the unbound historical 01549 main-table artifact. Current main already states the controlled-retraining provenance and does not claim historical identity or numerical reproduction of +0.96 dB.
+- Current main retains the N=300 matched study, the registered C3−GFL FG-PSNR difference of +0.522352 dB, GFH and Generic Linear counter-results, requested/applied/residual distinctions, and image-space-only scope.
+- Current main retains C3=(1.25,2.50,1.25), the Fresh C shallow native cap, strict-276 as a separate supporting analysis, and the Core-7 retrospective limitations. No valid result or corrected claim unique to this candidate was identified.
+- The candidate PDFs are outputs for alternate manuscript bytes and do not match the canonical package; they were not imported. Since no main manuscript, figure, table, bibliography, or package file changed, no new editor compile or package rebuild was needed. Phase A source hashes and 48/48 package checksums remain valid.
+
+`SUBMISSION_APPROVED=NO`. No submission was made.
