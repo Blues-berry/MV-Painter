@@ -32,7 +32,7 @@
 
 1. Phase B and the C1 development-only trial are complete.
 2. C1's numeric criteria passed, but its pre-registered visual failure-case gate failed. The final method lock closes the Fresh B holdout; do not open or run Fresh B repair outcomes.
-3. Delivery artifacts, scoped commit, checksum inventory, and branch push are in progress.
+3. Reports, casebooks, and checksum inventories are complete; the scoped experiment commit is pushed to the new campaign branch.
 
 
 ## 2026-10-09 — Phase B runner fix before first generation
@@ -57,4 +57,5 @@
 - `C_REPAIR_METHOD_LOCK.json` records `development_gate_pass=false`, `validation_authorized=false`, no Fresh B outcomes opened, and a closed holdout guard. No validation amendment, Fresh B repair run, or C2 generation-time constraint was created.
 - Final root-cause analysis is partial: global embeddings causally control chroma, while cached/current embedding mismatch affects the two failure cases in opposite directions. The complete generation cause remains unresolved; C1 is not a validated fix.
 - Added per-view and per-object source/unseen color readouts, root-level copies of the Phase B intervention and C1 development result tables, the development before/after casebook, failure analysis, verdict, and SHA-256 inventory. Phase B used 64 GPU diffusion calls in 485.1 s; C1 used zero GPU calls.
-- Next: final JSON/hash and Git scope audit, commit only `1009/engineering/color_cast_repair_v2/`, then push `codex/r1-color-cast-repair-v2-20261009` without touching any other branch.
+- The campaign package commit `98d22d18c4a1f85b7894c387544e0a13b73d823d` was pushed to `origin/codex/r1-color-cast-repair-v2-20261009` as a new branch. The branch has no changes from the paper Agent's worktree; pre-existing untracked 1008 files remain untouched.
+- The main SHA manifest covers the committed package. A separate local-only SHA manifest covers 76 retained image intermediates (64 Phase B outputs, four C1 candidate grids, and eight C1 source/GT case images).

@@ -1,6 +1,6 @@
 {
   "campaign": "MV-Painter R1 Color Cast Repair Campaign V2",
-  "updated_utc": "2026-10-09T06:00:00Z",
+  "updated_utc": "2026-10-09T05:52:53Z",
   "active_phase": "delivery",
   "items": [
     {
@@ -45,7 +45,7 @@
     },
     {
       "id": "delivery",
-      "status": "in_progress",
+      "status": "complete",
       "outputs": [
         "FINAL_ROOT_CAUSE_REPORT.md",
         "COLOR_INTERVENTION_RESULTS.csv",
@@ -56,7 +56,7 @@
         "FINAL_COLOR_FIX_VERDICT.md",
         "SHA256SUMS.txt"
       ],
-      "status_detail": "Reports and casebook created; final integrity and scoped Git delivery remain."
+      "status_detail": "Reports, casebooks, and SHA manifests verified; scoped commit 98d22d18c4a1f85b7894c387544e0a13b73d823d pushed to origin/codex/r1-color-cast-repair-v2-20261009."
     }
   ]
 }
