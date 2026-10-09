@@ -64,3 +64,11 @@ No main-text, Supplement, response, figure, bibliography, or submission-package 
 The selected E6 bundle records a stopped development candidate with unfavorable whole-image LPIPS on all 24 development objects and no independent confirmation; it is explicitly excluded from active-paper results. The only code addition is a startup/path guard for `geotex/eval_exploration.py`; it does not alter model or metric calculations. The older class-level `_skip_correction` implementation was rejected in favor of main's instance-level, `finally`-restored behavior.
 
 No manuscript, Supplement, response, figure, table, bibliography, PDF, or canonical package file changed. Active manuscript, Supplement, and response SHA-256 remain the Phase A values; all 48 canonical package checksums pass. No TeX rebuild, response update, or package rebuild was required. `SUBMISSION_APPROVED=NO`; no submission was made.
+
+## codex/cg-ltcas-narrative-convergence-20261007
+
+`PAPER_IMPACT=DIRECT`: the source branch contains a complete 10/07 candidate manuscript, Supplement, reviewer response, generated figures, and numerical authority. Current 1008 already contains the later bounded Fresh C and Generic Linear results, endpoint-specific Fresh B/strict-276/cross-backbone limits, no CAI optimality claim, and no human/material-fidelity superiority claim. The candidate's removal of FAC differs from current 1008's limited historical treatment; that candidate wording was not used to replace the active text. No old PDF or alternate package was copied.
+
+A 42-row, 10/07 numerical reaggregation and its four compact metric inputs were preserved under `1009/evidence/branch_audits/cg_ltc_as_narrative_20261007/`; the script reran all 42 rows and reproduced its stored output byte-for-byte. This is historical cross-validation, not a new independent experiment and not a change to current 1008 claims. The exact sanitized public-human-data disposition cited by the current claim ledger is present at its original path; it contains no participant responses and retains `PUBLIC_RAW_HUMAN_DATA=NO`.
+
+No main text, Supplement, response, figure, table, bibliography, or canonical package file changed. Active manuscript/Supplement/response hashes remain Phase A values; all 48 package checksums pass. No LaTeX rebuild was required. `SUBMISSION_APPROVED=NO`; no submission was made.

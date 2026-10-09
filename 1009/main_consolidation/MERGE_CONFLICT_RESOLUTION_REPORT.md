@@ -44,3 +44,13 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Paper conflict: `NO_CONFLICT` (old manuscript/supplement candidates were not applied; active 1008 sources remain unchanged).
 - Scientific difference: 1006's 10/06 readiness and narrative documents are earlier snapshots. Its bounded schedule, dose, CAI, strict-276, N=20 GLB, and open human-fidelity conclusions agree with the later 1008 source/claim ledger; its “Fresh C not yet confirmed” status predates the completed 300-object run. E6 was a stopped development candidate, not independent confirmation; only its explicit diagnostic and stop review were selected.
 - Actual Git conflicts resolved: 0.
+
+## codex/cg-ltcas-narrative-convergence-20261007
+
+- Merge strategy decision: full-history merge rejected (142 unique commits, 2,429 unique blobs, 776,750,834 uncompressed bytes; 15 blobs >= 5 MiB; 3,160-path delta; WIP tree deletes current 1008/1009 content).
+- Git merge or cherry-pick attempted: no. A compact 42-row numerical authority reaggregation and the sanitized human-data publication disposition were selectively added in commit `174431225cc5247170c35fec25bd39ef6649fc2e`; no candidate manuscript/package was overlaid.
+- Code difference reviewed: old class-level `_skip_correction` and no-`finally` restoration were rejected; current main's instance-level state restoration remains. The branch's `.gitignore`/`.gitattributes` changes would remove current artifact/binary-diff controls and were rejected.
+- Code conflict: `NO_CONFLICT` (no Git merge was attempted; source differences were audited, not mechanically resolved).
+- Paper conflict: `NO_CONFLICT` (10/07 candidate removes FAC, while active 1008 keeps only its bounded historical disposition; candidate final_0903 manuscript and PDFs were not merged).
+- Scientific-output note: the 42-row verifier passed on exact hash-pinned inputs. Its output is a historical authority reaggregation and does not replace active 1008 values; the previously recorded C3−GFH bootstrap-interval provenance difference remains explicit.
+- Actual Git conflicts resolved: 0.
