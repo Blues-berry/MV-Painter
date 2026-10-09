@@ -1,10 +1,11 @@
 # C&G 1008 Final Submission Readiness
 
-**Captured:** `2026-10-09T07:15:50Z` UTC  
+**Captured:** `2026-10-09T07:21:54Z` UTC  
 **Package state:** `AUTHOR_REVIEW_READY / DRAFT`  
 **Journal submission:** not made  
 **Author submission approval:** `NO`  
-**Main base at final-package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`; the final full delivery commit is reported in the handoff after normal push verification.
+**Main base at final-package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`  
+**Verified package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; local and `mvpainter/main` matched at 2026-10-09T07:20:48Z UTC. The final readiness/package-metadata closeout commit SHA is supplied in the completion handoff.
 
 ## Scientific narrative
 

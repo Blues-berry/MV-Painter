@@ -7,7 +7,7 @@
 **Authorized push target:** `mvpainter/main` only  
 **Captured:** `2026-10-09T07:17:13Z` UTC  
 **Main SHA at final package preparation:** `8cf02b797c5d467db764d05ea4940937c207fe96`  
-**Private main sync:** final normal push and remote verification are part of this closeout; the completed full SHA is in the delivery handoff.
+**Verified package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; local and remote `mvpainter/main` matched at `2026-10-09T07:20:48Z`. A readiness/package-metadata closeout commit follows; its final full SHA is in the completion handoff.
 
 ## Submission folder
 

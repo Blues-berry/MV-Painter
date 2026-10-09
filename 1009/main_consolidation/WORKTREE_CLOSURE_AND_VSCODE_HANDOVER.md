@@ -44,3 +44,8 @@ The editor file-open request for the main manuscript was queued, but this does n
 The pinned r1color source remains at `32bb9106fa0ea6199e6a16f9279343c0b21581a6`; the current main checkout began this follow-up at `8cf02b797c5d467db764d05ea4940937c207fe96`, equal to the private remote. The 192 newly surfaced ignored r1color entries were separately SHA-256 captured and retained as `POST_SNAPSHOT`. No source data were removed.
 
 The follow-up reviewed and copied only the 58 selected small evidence/protocol files; build/response and consolidation changes are confined to the designated main worktree. At the snapshot, 14 worktrees remained registered, two stash entries and 28 local branch refs remained, and no GPU or Git write process was running. The five `/tmp` reference worktrees still contain ignored files. The editor file-open request does not switch roots: `MAIN_SINGLE_EDITING_AUTHORITY=PARTIAL` until the author opens `/4T/MV-Painter-main` and confirms Source Control shows `main`.
+
+
+## Private-main sync confirmation — 2026-10-09T07:20:48Z
+
+The evidence/consolidation and 1008 package commits were normally pushed to `mvpainter/main`; local `main` and the live remote matched at `4035771fb6459dc6c3aa51897ef77ea43d66b426`. No public `origin`/`upstream` was pushed. Final readiness, manifest, and closeout metadata follow as a separate commit; manuscript sources and experiment data do not change.

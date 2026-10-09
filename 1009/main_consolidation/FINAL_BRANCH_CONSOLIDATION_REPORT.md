@@ -1,11 +1,14 @@
 # 最终分支归集报告 — MV-Painter / Computers & Graphics 1009
 
-**捕获时间：** `2026-10-09T07:15:50Z` UTC  
+**捕获时间：** `2026-10-09T07:21:54Z` UTC  
 **目标仓库：** 私有 `Blues-berry/MVPainter`  
 **唯一授权推送目标：** `mvpainter/main`  
 **活动工作树：** `/4T/MV-Painter-main`  
 **本轮开始时 main 与远端完整 SHA：** `8cf02b797c5d467db764d05ea4940937c207fe96`  
+**携带归集和投稿包的已推送 SHA：** `4035771fb6459dc6c3aa51897ef77ea43d66b426` (`mvpainter/main` 于 2026-10-09T07:20:48Z 核对一致)  
 **投稿批准：** `NO`；未向期刊提交。
+
+最终同步/验收元数据随后作为单独 closeout 提交推送，不改论文源或实验数据；最终完整 HEAD SHA 由本次完成回执给出。
 
 ## 收束结果
 
