@@ -5,9 +5,10 @@
 **Branch:** `main`  
 **Local worktree:** `/4T/MV-Painter-main`  
 **Content commit pushed and verified:** `14ff9472df0281267c966b29210d63297ccfcfd7`  
-**Remote verification time:** 2026-10-09T04:26:29Z UTC
+**Handover commits pushed:** `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`  
+**Remote verification time:** 2026-10-09T04:31:16Z UTC
 
-The private remote advertised the same commit as local `main`. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. This status document is being added in a subsequent documentation-only commit; its own final branch SHA is reported in the handover message.
+The private remote advertised the same `main` tip as local at the time of this check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. Subsequent commits are handover-documentation only and do not alter manuscript content. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
 
 ## Direct GitHub files
 
