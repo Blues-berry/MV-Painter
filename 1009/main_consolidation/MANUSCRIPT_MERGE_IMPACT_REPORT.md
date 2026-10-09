@@ -225,3 +225,13 @@ This is historical 01549 source material, not a candidate replacement for the ac
 ## codex/cg-01549-surgical-upload-20261008 — identical archived HEAD
 
 `PAPER_IMPACT=DIRECT`, with no impact beyond the exact surgical-revision source already reviewed. The archive HEAD, selected evidence, historical paper candidates, and their disposition are byte-for-byte the same source already covered in that audit. No second paper/evidence import was made; active 1008 source and submission hashes remain unchanged.
+
+## codex/next-review-response-20260930
+
+PAPER_IMPACT=DIRECT。分支的 76-object MV-Adapter layer-wise 面板属于论文跨骨干范围的直接证据：在同一 Exact holdout 的预注册 M1 配置下，layer-wise 相对 global 在 PSNR、dE00、GT-relative texture 上方向一致且区间分离；FG-SSIM/Edge-SSIM 略偏向 global，LPIPS 未分离；冻结尺度内的时间位置效应没有得到支持。结果支持有边界的、指标依赖的 MV-Adapter 响应，不支持普遍收益或唯一 schedule。
+
+三份 M1 逐对象 CSV 已以完全相同 SHA 保存在 main 的 mapping-sensitivity 包中，B′/M3 报告也覆盖同一组输入上的替代映射。来源分支的原始 M1 预注册方案、完整 paired bootstrap 和完整总结报告仍只在该活动分支；当前 1008 正文引用另一个 98/99-object MV-Adapter probe 和 MVDiffusion 75-object probe，没有具体叙述这组 layer-wise 76-object 结果。现有“没有建立一般跨骨干改进”的结论与此证据一致；如后续稿件讨论 layer-wise 跨骨干证据，应审阅并解释其指标分歧及 temporal-position 阴性结果。分支仍独立活动，本轮未改写当前论文。
+
+MVDiffusion 的核心 75-object audit、panel、paired bootstrap 和逐对象结果已在 main 逐文件匹配；它报告 layer-wise 的结构/颜色指标偏向 global、GT-texture 偏向 layer-wise，仍是混合结果。两套模型的条件接口和队列不同，不得合并绝对分数或写成统一复现。
+
+活动主文/Supplement/Response SHA-256 仍为 Phase A 的 dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4、59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed、1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb；投稿目录 48/48 校验通过。未更改 TeX、Supplement、Response、图表或投稿包，因此不重编译；编辑器中的活动文档保持原样。SUBMISSION_APPROVED=NO。

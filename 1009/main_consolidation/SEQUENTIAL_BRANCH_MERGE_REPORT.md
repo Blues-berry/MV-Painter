@@ -339,3 +339,14 @@
 - 因为是完全相同的提交对象，其 155 个独有提交、1,329 棵树、23,853 个 blob、2,993,693,628 bytes 和 22 个 ≥5 MiB blob，均已包含在第 1 项审计范围内。针对 A3b/dose 与 Generic extension 选择的内容提交 `107e1aa8f89d048df11393085da2b8cc8b7e2b37` 已在 main；历史论文候选、生成产物与类级共享状态实现沿用该项的排除裁决。
 - 决定：`ALIAS_OF_AUDITED_SOURCE`；无新增选择、无重复合并。处理前后 main 内容 SHA 均为 `89acc6de9552d378eebd9e5f88e7a440662565f3`。无新的代码或论文冲突，记为 `NO_CONFLICT`；当前 1008 论文和投稿包不变。
 - `PAPER_IMPACT=DIRECT`，但完全继承已审 surgical-revision 来源的论文裁决；没有独立论文改动需要应用。
+
+### 27. codex/next-review-response-20260930（活动跨骨干实验分支，只读）
+
+- 来源 HEAD：4f312566ed42a7b56fae9f11d91d4591d71fd1f2；本地活动分支和私有远端分支当前均指向该 SHA。归档引用包括 local 与 mvpainter 两个别名。该来源没有登记的工作树，也没有可由该 ref 恢复的 WIP；SOURCE_READY 仅指归档 HEAD，活动分支按第四组继续保留，不退出或改写。
+- 相对 merge-base 34c77a4417eb3e037756ad483c70ef9e3f0c2bdb，来源有 102 个独有提交；独有对象为 590 棵树、1,440 个 blob、656,629,803 bytes，14 个 blob ≥5 MiB，最大 76,043,516 bytes。关闭 rename detection 的树差异为 2,535 项（A=1,322、M=7、D=1,206）。有较大的历史模型/生成资产，因此不执行整支 merge；更直接的原因是它仍是需要独立使用的活动实验分支。
+- MV-Adapter 的预注册 layer-wise 76-object 试验新增 228 条 L-FIX/L-LHL/L-LLH 记录。三份逐对象 CSV 与 main 已保存的 M1 输入逐字节相同：L-FIX SHA-256 99e7ff4f639b75fe618be839cd329e03f11081ae8c0f0c4eb368d841d0aeff6e，L-LHL 1846eb6578d442b145894d123bc13d125608119443ab774b50776a57c7e16e87，L-LLH 0e4f80e478e344fe5d27af894f2867a66f91bf96de593d551a9feab27d52d14a。main 的 M1/B′/M3 审计包已保留这些 M1 原始行及不同映射的后续敏感性；该来源原始预注册方案、layer profile、完整 P1–P5 bootstrap 和 76-object 结果报告仍作为活动来源保留，不重复导入。
+- MVDiffusion 75-object panel 的审计、结果 CSV、paired bootstrap、报告及六个条件逐对象 CSV 已在 main 有逐字节相同版本。来源独有的 SD2-depth mirror 下载/来源记录不改变 75-object 面板数值；不复制大型模型资产或输出。
+- 决定：KEEP_ACTIVE_READ_ONLY；不执行 merge/cherry-pick，不更改当前分支及私有远端引用。没有清理、移动或复制任何工作树或科研数据。该分支的 layer-wise 结果报告为指标依赖的组间差异（PSNR、dE00、GT-texture 支持 layer-wise，FG/Edge-SSIM 略支持 global，LPIPS 未分离）；冻结尺度下 temporal-position effect 未获支持。MVDiffusion 的 layer-wise 结果为混合/负向，且不进行跨骨干绝对分数合并。
+- 冲突：代码和论文均为 NO_CONFLICT；因为本分支按要求只读，未执行 merge/cherry-pick，因此实际 Git 冲突为 0，没有冲突被“解决”。
+- PAPER_IMPACT=DIRECT：该 76-object MV-Adapter layer-wise 分析对跨骨干范围有直接参考价值；当前 1008 正文写有原 98/99-object MV-Adapter probe 和 MVDiffusion 75-object probe，但没有报告这组 76-object layer-wise 面板。它支持指标依赖的 MV-Adapter 内部响应，不支持普遍增益或唯一时间位置。当前稿“未建立一般跨骨干改进”的边界仍成立，但若后续论文纳入跨骨干层级调制结果，应对这组结果作针对性审阅；活动实验分支未收束前不改稿。
+- 验证：main 中三份 M1 原始 CSV 的 SHA-256 与分支完全相同；MVDiffusion 核心面板文件逐字节一致。活动主文 SHA-256 为 dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4；Supplement/Response 与 Phase A 值一致；投稿包 SHA256SUMS 48/48 通过。未改 TeX、图表或投稿包，不需重编译；未运行 GPU 实验。SUBMISSION_APPROVED=NO。

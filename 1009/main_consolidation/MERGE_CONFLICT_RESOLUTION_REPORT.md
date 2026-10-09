@@ -239,3 +239,9 @@ No claim is made that the present audit resolved the historical conflicts. The c
 
 - This local archive ref points to the exact HEAD already audited as `codex/cg-01549-surgical-revision-20261008@private-remote-head` (`dad08320625431acf439ed5bfb86c6a9252353a4`). The selected evidence commit `107e1aa8f89d048df11393085da2b8cc8b7e2b37` is already in main.
 - No additional merge or content selection was made. Code conflict and paper conflict are both `NO_CONFLICT`; zero actual conflict files were created or resolved. The detached source worktree and its 38 previously recorded ignored entries were left in place.
+
+## codex/next-review-response-20260930（活动分支只读审计）
+
+- 本分支按第四组规则保留为独立活动实验分支；未尝试 merge 或 cherry-pick。因此代码冲突和论文冲突均记为 NO_CONFLICT，实际冲突文件为 0；这里不把“未发生冲突”表述成“冲突已解决”。
+- main 中 M1、B′、M3 是同一 MV-Adapter holdout 上不同预先定义映射/敏感性版本；分支 M1 的三份逐对象 CSV 与 main 的 M1 输入完全相同，B′/M3 的映射不同不构成文件或结果冲突。MVDiffusion 核心结果文件也已在 main 精确存在。
+- 分支的原始 layer-wise 预注册、P1–P5 bootstrap 和结果解释尚未另行导入；这是保留活动分支的范围决定，不是冲突裁决。没有发生任何代码、统计或论文文件的合并解决操作。
