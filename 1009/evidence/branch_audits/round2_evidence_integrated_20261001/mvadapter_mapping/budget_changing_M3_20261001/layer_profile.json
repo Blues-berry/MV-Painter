@@ -1,0 +1,64 @@
+{
+ "source": "frozen MVPainter layer-wise profile (MAPPING-SENSITIVITY variant M3)",
+ "frozen_before_mv_adapter_results": true,
+ "normalization": "weighted_mean_1",
+ "normalization_detail": {
+  "source_profile_name": "layer_fixed_mean",
+  "source_values": {
+   "deep": 1.65,
+   "middle": 1.65,
+   "shallow": 0.58
+  },
+  "source_injection_point_counts": {
+   "deep": 2,
+   "middle": 1,
+   "shallow": 1
+  },
+  "weighted_mean_before": 1.3824999999999998,
+  "weights_rationale": "Weights are the source per-group residual injection-point counts (geotex/tcas_schedule.py BLOCK_DEPTH_MAP: mid->deep, up_0->deep, up_1->middle, up_2->shallow). The target has the same 4-point count, so point-count weights transfer 1:1 and the normalized weighted mean over the 4 target injection points is exactly 1.0.",
+  "formula": "normalized(group) = source(group) / weighted_mean(source, weights)"
+ },
+ "target_mapping": {
+  "rule": "MAPPING-SENSITIVITY M3: contiguous monotone 4->3 partition alternative to the frozen M1. The three contiguous partitions of 4 ordered points into 3 non-empty groups are: M1={0}|{1}|{2,3} (frozen), M2={0}|{1,2}|{3}, M3={0,1}|{2}|{3}. Under the frozen normalized profile middle==deep==1.193490054249548, so M1 and M2 yield the IDENTICAL per-point vector; M3 is the only distinct alternative. M3: shallow={point0,point1}, middle={point2}, deep={point3}.",
+  "mapping_name": "M3_shallow01_middle2_deep3",
+  "group_by_point": [
+   "shallow",
+   "shallow",
+   "middle",
+   "deep"
+  ],
+  "per_point_multipliers": {
+   "shallow": 0.4195298372513563,
+   "middle": 1.193490054249548,
+   "deep": 1.193490054249548
+  },
+  "per_point_multiplier_list_by_adapter_state_index": [
+   0.4195298372513563,
+   0.4195298372513563,
+   1.193490054249548,
+   1.193490054249548
+  ]
+ },
+ "semantics": "effective_scale(injection_point, t) = layer_multiplier(point) * temporal_scale(t); temporal_scale(t) comes from the already-frozen MV-Adapter global schedules (low=0.75, high=1.00, fixed_mean=5/6). Model weights stay frozen; scaling is inference-only.",
+ "absolute_scale_freeze": {
+  "low": 0.75,
+  "high": 1.0,
+  "fixed_mean": 0.8333333333333334,
+  "recalibration": "forbidden"
+ },
+ "provenance_sha256": {
+  "geotex/layer_lhl_ablation_shared.py": "8dac433e2f94779a960585dbb8b266055e60447a38c1295632fdddafcb7560dc",
+  "geotex/tcas_schedule.py": "dcd1bc3d2df2c888e106a9f20b1c6384cc656d7c9c178a09c75d85c5d5170e44",
+  "scripts/run_layer_confirmation_276_20260930.py": "273c2f75b0124d1844fa9dc168a7a27a89ea6a349f8ade0d7f03076b3cfe3914",
+  "final/round2/mv_adapter/run_experiment.py": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+  "final/round2/mv_adapter/upstream/mvadapter/pipelines/pipeline_mvadapter_i2mv_sd.py": "8814354aacf317d45411cb72a8daa5a4e08b47546cb1271d967e74f7c5977c9c",
+  "final/round2/mv_adapter/upstream/mvadapter/geometry_scale.py": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4",
+  "final/round2/mv_adapter/data_manifest.json": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5"
+ },
+ "source_provenance_notes": [
+  "geotex/layer_lhl_ablation_shared.py L61-63: layer_fixed_mean = {deep: 1.65, middle: 1.65, shallow: 0.58} ('Exact means under the 17/16/17 partition used by the runner').",
+  "geotex/tcas_schedule.py BLOCK_DEPTH_MAP: mid->deep, up_0->deep, up_1->middle, up_2->shallow.",
+  "scripts/run_layer_confirmation_276_20260930.py L76 uses the identical layer_fixed_mean values in the strict-276 confirmation.",
+  "No MV-Adapter metric influenced any value in this file; the file was written before any layer-wise MV-Adapter inference."
+ ]
+}
