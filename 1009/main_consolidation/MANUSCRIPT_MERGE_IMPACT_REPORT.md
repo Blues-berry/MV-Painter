@@ -243,3 +243,20 @@ PAPER_IMPACT=DIRECT。当前 Response to Reviewers 已明确写出 C1 通过数�
 来源还有未纳入 main 的较早 26-object color-failure 诊断和 3-object 跨软件栈追踪。它们可说明出现颜色差异的阶段及运行栈边界，但不能将三例追踪的局部复现解释成 120-object 问题已全部解决。较新的 10/09 handoff 与 main 的最终颜色裁决仍将完整根因列为部分、跨栈 120-object 差异列为未解决。当前 1008 的“无已验证修复”边界准确；如以后把更多诊断写入回复，应保留开发集、筛选集和局部复现范围，不把它们写成独立确认结果。
 
 main 中没有来源独有的 geotex/residual_gate.py。该试验性功能没有验证成修复，未改默认实现。未编辑当前论文；活动主文、Supplement 和 Response SHA-256 仍为 Phase A 值，canonical submission package 48/48 校验通过。没有 LaTeX 编译或投稿。SUBMISSION_APPROVED=NO。
+
+
+## codex/r1-color-root-cause-20261008 and local-history alias
+
+`PAPER_IMPACT=DIRECT`, because the 26-object color-failure diagnosis and three-object runtime trace are response-relevant. The active main already contains the curated diagnosis, response mapping, paired summary, P0 first-divergence table and a per-object reanalysis. All 78 condition rows match the main reanalysis on prediction/reference/mask SHA, CIEDE2000, FG-PSNR, FG-LPIPS, Edge-SSIM, Δa* and Δb* exactly. No additional paper statement is supported: the 26-object set is a selected failure diagnostic, and the trace is limited to three objects. The three-object trace cannot close the separate 120-object mismatch; main correctly retains `REPRODUCIBILITY_CLOSED=NO` for the broader issue. No TeX, figure, table, Response, or submission file changed; hashes remain at Phase A, package checksums 48/48.
+
+The second HEAD has the identical 57-file final-closure tree but 7.84 GB of distinct historical object reachability. Its unique usable color summary adds nothing beyond the first HEAD and the separately audited V3 source. No duplicate evidence was imported.
+
+## scientific-validation-v3 WIP snapshots
+
+`PAPER_IMPACT=DIRECT` for old readiness and narrative records, but the two WIP commits have the same parent and exact same tree. Their deletions concern deprecated 0907 material; their document edits do not change the active certified 1008 manuscript. Both WIP commits remain reachable from local archive refs. The separately selected V3 evidence is represented in main by `73e5b91c…`; the WIP cleanup and candidate text were not applied. Main TeX/Supplement/Response and the 48-file submission package remain unchanged.
+
+## gh-pages, archived main baseline, and unfiltered V3 composite
+
+`gh-pages` is a separate public static project page retained at the same local/origin/upstream SHA. It has no code-main ancestor and no role in the active 1008 package. The 02ab94ad main snapshot is an ancestor of current main. The `eb68d6ce` composite ref joins already audited source histories and has an 8.60 GB tree dominated by generated PNG/JSON/NPZ/GLB artifacts; no additional compact scientific source was identified. None of these records requires active paper changes.
+
+The active manuscript and submission directory remain untouched; `SUBMISSION_APPROVED=NO`.

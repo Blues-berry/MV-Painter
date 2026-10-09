@@ -3,7 +3,7 @@
 日期：2026-10-09  
 仓库：Blues-berry/MVPainter  
 活动工作树：/4T/MV-Painter-main  
-处理方式：按分支逐项核查；历史数据工作树保持原位；本报告不代表所有分支已审核完成。
+处理方式：按分支逐项核查；历史数据工作树保持原位。冻结的 41 个归档引用及本轮新增的 WIP/source-ready 引用均已映射到矩阵；报告分别记录选择性整合、已在 main、保留活动用途或仅归档的裁决。
 
 ## Phase A：冻结基线
 
@@ -114,7 +114,7 @@
 
 - 原 HEAD：`5c2c8829a1e19b42837761160dc4c14cf8f09045`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/scientific-validation-v3-20261002`；merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。
 - 相对当时 main `e571bca0d5693450de5dd7d22280b73e407b0e79` 有 163 个来源独有提交、1,798 棵树、36,865 个 blob，未压缩 7,776,031,685 bytes；15 个独有 blob 不小于 5 MiB，最大 76,043,516 bytes。树差异 42,729 项（A=41,798、M=7、D=924）。旧树含约 40,196 项 V3 生成/实验输出，并删除当前 1008 文件及 116 项紧凑 V3 发布证据；不适合整支合并，未执行完整 merge。
-- 旧工作树 `/4T/CXY/MV-Painter` 的 30 项已跟踪改动（26 项暂存删除、4 项文档修改）通过临时索引形成 WIP `23ba46e35ec9465d737b1d2e61116b9904bb9d4c`，保存在本地归档引用 `refs/archive/codex/main-unification-20261009/local/wip/codex/scientific-validation-v3-20261002`。原 HEAD、真实暂存区和工作树均未移动或清理。另有 581 个非忽略未跟踪路径，涵盖 1006 候选/证据、01549 备份与审稿文件；全部留在原目录。未枚举或哈希其中 ignored 大型数据。
+- 旧工作树的 30 项已跟踪改动（26 项删除、4 项文档修改）有两个 WIP 提交快照：`23ba46e35ec9465d737b1d2e61116b9904bb9d4c` 与 `24d666dde0f0b73f261cf3dbbd45f57744f35534`。两者父提交均为原 HEAD `5c2c8829a1e19b42837761160dc4c14cf8f09045`，tree 均为 `f213e318cecc12939a690202ebd0fd24f4ee4539`，提交间没有文件差异。既有 `local/wip/...` 引用指向 24d；另建本地归档引用 `refs/archive/codex/main-unification-20261009/local/wip-snapshots/scientific-validation-v3-20261002-094414` 指向 23ba，保留两条不同提交对象。原 HEAD、真实暂存区和工作树均未移动或清理。另有 581 个非忽略未跟踪路径，涵盖 1006 候选/证据、01549 备份与审稿文件；全部留在原目录。未枚举或哈希其中 ignored 大型数据。
 - `1008` 中 Fresh C N=300 主结果和 1009 的 MV-Adapter 报告已在 main。选择性保留新增的 E1/E2 48-object 固定子集审计材料，以及 MVDiffusion 75-object 七条件逐对象指标、配置、分析和限定报告，合计约 0.83 MB，路径为 `1009/evidence/branch_audits/scientific_validation_v3_20261002/`。没有复制预测图片、残差轨迹、GLB、权重、检查点、缓存或参与者级答卷。选择性提交 `73e5b91c`；同时只为该目录的 CSV 增加 CRLF 行尾识别规则。
 - E1 仅为既有 48-object cohort 上三固定 seed 的 realization sensitivity；E2 是静态尺度因子分析，不检验时间效应或等 realized dose。50 项 E1/E2 摘要、JSON 与逐对象均值核对通过。MVDiffusion 分析脚本从 7 组各 75 行指标表重算，panel CSV、paired-bootstrap JSON、Markdown 汇总 3/3 与原输出字节一致。无 GPU 或模型运行。
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED`；`SOURCE_READY`（原 worktree 保留）。旧树中三个未提交科学总结涉及后续人类研究裁决；仅把其 WIP 保存在本地归档，待人类研究分支单独核查。当前 1008 主文、Supplement、回复信、图和投稿包未改，Phase A 三个活动文本 SHA 不变，投稿目录 48/48 校验通过。
@@ -340,6 +340,19 @@
 - 决定：`ALIAS_OF_AUDITED_SOURCE`；无新增选择、无重复合并。处理前后 main 内容 SHA 均为 `89acc6de9552d378eebd9e5f88e7a440662565f3`。无新的代码或论文冲突，记为 `NO_CONFLICT`；当前 1008 论文和投稿包不变。
 - `PAPER_IMPACT=DIRECT`，但完全继承已审 surgical-revision 来源的论文裁决；没有独立论文改动需要应用。
 
+### 26. codex/r1-color-root-cause-20261008
+
+- 来源 HEAD：`7311b9446733637e0f0a8e85211cd7fc02c67810`；归档引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/r1-color-root-cause-20261008`；来源跟踪引用 `refs/remotes/origin/codex/r1-color-root-cause-20261008` 指向同一 SHA。merge-base 为 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`，来源有 142 个独有提交、977 棵树、3,240 个 blob，未压缩 blob 共 1,002,772,124 bytes；18 个 blob ≥5 MiB，最大 76,043,516 bytes。来源差异约 3,734 路径，历史中有 5,112,096 行增加、954,055 行删除。`1008/engineering/color_failure/final_closure/` 的 57 文件、20,011,339 bytes 包含图像/PDF和紧凑诊断表；完整历史不适合整支 merge，没有运行整支 merge 试验。
+- 本地 main 已保存相同证据的审阅版：`FINAL_VERDICT.md`、`P1_PAIRED_SUMMARY.csv`、`P0_FIRST_DIVERGENCE.csv`、`R1_FIDELITY_RESPONSE_EVIDENCE.md` 四个 Git blob 与来源逐一相同；根因诊断说明在 main 中是经编辑的简版。进一步把来源 78 行（26 对象 × 3 条件）与 main 的 `DIAGNOSTIC26_REANALYSIS.csv` 按 UID/条件比较，预测、参考、mask 的 78 组三类 SHA 全部相同；CIEDE2000、FG-PSNR、FG-LPIPS、Edge-SSIM、Δa*、Δb* 六类逐行数值最大差均为 0。故该分支的有效 26-object 诊断没有遗漏，也没有理由重复导入。
+- 三对象跨软件栈追踪的 P0 首差异表和限定摘要已经在 main。其结论只覆盖预先锁定的三对象：P3.13 与历史 archive 身份相符、P3.10 与 observer 身份相符，首个记录到的变化在 scheduler sigma 乘以 FP16 初始 latent；不能推及 120 个对象全部解决。其余逐张量表、运行环境细表、VAE 逐视角 JSON、图像和 casebook仍可由两条本地 root-cause 历史引用恢复；未把原始图像或约 10 MB casebook重复放入 main。当前 B2/最终裁决仍将全队列 Fresh C 复现问题保留为未关闭、且没有已验证颜色修复。
+- 决定：`ALREADY_IN_MAIN; FULL_MERGE_REJECTED`。有效摘要和 26 对象逐项结果已核对；没有选择性重复提交。`PAPER_IMPACT=DIRECT`：这组回顾性失败诊断与偏色回复相关，但不改变当前稿件的主张或限制。活动 1008 TeX 未改，SHA 仍为 Phase A 值；投稿包 48/48。冲突：`NO_CONFLICT`（未运行 merge/cherry-pick，未制造冲突）；无代码或 GPU 测试，`SUBMISSION_APPROVED=NO`。
+
+#### 26A. codex/r1-color-root-cause-20261008-local-history（重复证据树、独立历史）
+
+- 来源 HEAD：`5fb32c1676a603fcf6f1bafc50ab2c3ae9a5fdc5`；引用 `refs/archive/codex/main-unification-20261009/local/heads/codex/r1-color-root-cause-20261008-local-history`；父提交为 `/4T/CXY/MV-Painter` 的科学验证 HEAD `5c2c8829a1e19b42837761160dc4c14cf8f09045`。它与 7311 的共同祖先为 `11cffe795673f62ac1921fb9f0221fbdc88130ae`，两者互非祖先。来源有 164 个独有提交、1,849 棵树、37,076 个 blob，未压缩 blob 共 7,843,431,418 bytes；19 个 blob ≥5 MiB，最大 76,043,516 bytes。树差异 42,513 路径，约 79,001,101 行增加、954,055 行删除。
+- 两个 root-cause HEAD 的 `final_closure` tree SHA 都是 `5e39c5b2b6b1def85edce391e284fa758c7728f7`，57 个文件内容完全一致；额外历史主要是已单独审阅的 V3/旧生成树。没有从该头再次导入诊断文件，也不合并 7.84 GB 历史。
+- 决定：`ALREADY_IN_MAIN; SAME_FINAL_CLOSURE_AS_7311; FULL_HISTORY_REJECTED`。直接论文影响同第 26 项；当前 TeX/投稿包不变。没有 merge/cherry-pick，`NO_CONFLICT`，不把未执行的合并写为冲突解决。
+
 ### 27. codex/next-review-response-20260930（活动跨骨干实验分支，只读）
 
 - 来源 HEAD：4f312566ed42a7b56fae9f11d91d4591d71fd1f2；本地活动分支和私有远端分支当前均指向该 SHA。归档引用包括 local 与 mvpainter 两个别名。该来源没有登记的工作树，也没有可由该 ref 恢复的 WIP；SOURCE_READY 仅指归档 HEAD，活动分支按第四组继续保留，不退出或改写。
@@ -361,3 +374,35 @@
 - 决定：KEEP_ACTIVE_READ_ONLY；C1/B2 已审阅证据沿用 main 的 84 项档案；FULL_MERGE_REJECTED。分支 HEAD 和 origin 引用保持不变；未推送分支，也未操作活动工作树。代码和论文均为 NO_CONFLICT；未执行 merge/cherry-pick，实际冲突为 0。
 - PAPER_IMPACT=DIRECT：当前 1008 回复信已按 C1 视觉门失败、B2 数值门失败、Fresh B 未验证、没有 validated color fix 的口径陈述；main 的审阅档案支持这些表述。旧 26-object 根因诊断及三例追踪是额外的诊断性证据，不是新确认实验；其小样本范围和后续 120-object 未闭合状态需一起保留。没有改活动主文、Supplement、Response、图表或投稿包。
 - 验证：分支状态显示无 tracked 改动，单个未跟踪测试和 1,048 个 ignored 项仍在原位；关键 C1 文件身份匹配 main 的逐文件归档记录；最新 B2 verdict 与 1008 Response/Readiness 的失败边界一致。活动主文/Supplement/Response SHA-256 保持 Phase A 值；投稿包 48/48 校验通过。没有运行测试或 GPU 实验，也不需重编译。SUBMISSION_APPROVED=NO。
+
+
+## 阶段补充：剩余归档引用对账
+
+### 29. gh-pages（独立静态项目站）
+
+- 来源 HEAD `5f203f83e818ec9ae0b38f9b6c109b96866d6c7f`；本地 `gh-pages`、`origin/gh-pages`、`upstream/gh-pages` 和本地归档引用均指向同一 SHA。该历史 6 个提交、19 棵树、271 个 blob，blob 未压缩 95,439,315 bytes；最新 tree 有 261 个文件、82,776,468 bytes，含独立网站 HTML/CSS 和展示图像。它与代码 main 没有共同祖先，也没有注册工作树。
+- 网站用于展示既有 MVPainter 项目；它没有参与当前 1008 主文的实验、图表生成或实现。按独立用途保留在 `gh-pages`，不并入 main，不删除或改写网站。
+- 决定：`KEEP_INDEPENDENT_PURPOSE`；`PAPER_IMPACT=INDIRECT`（历史公开项目页，不触及活动 1008 文稿）。没有 merge/cherry-pick，`NO_CONFLICT`，无文件改动。
+
+### 30. `main` 的归档基线引用
+
+- `refs/archive/.../local/heads/main` 和 `refs/archive/.../mvpainter/heads/main` 都指向 `02ab94ad5e6539bf010a001994d57ff3231f7b4c`。该 71 提交、1,015 文件的旧 main 快照是当前 main `f767502f16b969dc06f0cbf27aa9244dd9034636` 的祖先；无来源独有提交或文件内容需导入。
+- 决定：`ALREADY_IN_MAIN`；不制造空提交。`PAPER_IMPACT=NONE`，无 merge/cherry-pick，`NO_CONFLICT`。
+
+### 31. scientific-validation-v3 的 WIP 快照
+
+- 提交 `23ba46e35ec9465d737b1d2e61116b9904bb9d4c` 和 `24d666dde0f0b73f261cf3dbbd45f57744f35534` 具有相同父提交 `5c2c8829a1e19b42837761160dc4c14cf8f09045` 和相同 tree SHA `f213e318cecc12939a690202ebd0fd24f4ee4539`。两个提交对象均保留：现有 `refs/archive/.../local/wip/codex/scientific-validation-v3-20261002` 指向 24d；新增 `refs/archive/.../local/wip-snapshots/scientific-validation-v3-20261002-094414` 指向 23ba。
+- WIP tree 相对父提交涉及 30 个已跟踪路径（26 个旧 0907/候选归档删除，4 个 handoff/readiness/narrative 文档修改）。这些删除只存在于快照，不执行文件删除；工作树及未跟踪、ignored 数据保持原位。WIP 没有新的当前论文结论值得单独回写，选定的 V3 证据仍由第 6 项记录的选择性提交 `73e5b91c78b23949bf60dec3b1e2e7ff0004a36d` 表示。
+- 决定：`KEEP_WIP_ARCHIVES; NO_CONTENT_MERGE`。`PAPER_IMPACT=DIRECT`（含历史稿件及证据状态文档），但活动 1008 未改；无 merge/cherry-pick，`NO_CONFLICT`。
+
+### 32. refs/archive/validation-v3-unfiltered-eb68d6ce
+
+- HEAD `eb68d6ce593e374ef73bf633a00339f23f33fb81` 是已有两父提交，父提交分别为第 8 项 `d59c4606ad54239bf4df4f20067bcc54989404f7` 和第 6 项 `5c2c8829a1e19b42837761160dc4c14cf8f09045`。该引用不是当前 main 祖先。其合成 tree 有 42,130 个文件、8,599,745,754 bytes，其中 21,634 个 PNG、18,933 个 JSON、300 个 NPZ 和 160 个 GLB；大多数是已归档生成输出。
+- 父来源中的有效证据已分别逐分支审核；此合成快照没有额外必要的 compact evidence。整树会带入大量图像/JSON/GLB和历史稿件，故不合并、不复制，并保留本地 archive ref。
+- 决定：`ARCHIVED_COMPOSITE; FULL_MERGE_REJECTED`。`PAPER_IMPACT=DIRECT`（证据父来源已审阅，未发现需改写当前论文的新增主张）。本轮未创建 merge，冲突数为 0；此引用指向的旧合并提交不计作本轮新 merge。
+
+## 引用清单最终对账
+
+- 原始冻结清单 `BASELINE_ARCHIVED_HEADS_20261009.csv` 仍为 41 条，内容未改；其 41 条引用现全部映射到矩阵审核行。另保留既有 source-ready 引用 `deac8925`、两条 scientific-validation WIP 引用；当前 `refs/archive/` 共 44 条，均已映射到矩阵。
+- 没有普通本地分支或远端分支在本次补审中被删除，没有向历史实验分支推送；`gh-pages` 与两个活动实验分支保持原 HEAD。旧科研工作树和原始数据均未移动、清理或复制。
+- 此次补审仅更新审核报告并增加一个本地 WIP 归档引用；活动代码、TeX、图表和投稿包没有变化。`SUBMISSION_APPROVED=NO`。

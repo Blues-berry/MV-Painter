@@ -252,3 +252,13 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - main 的经审核 color-cast evidence archive 与来源 84 个文件逐项记录身份；AGENT_HANDOFF、C1_DEV_GATE_VERDICT、C_REPAIR_METHOD_LOCK 为精确字节匹配。来源另外有旧 1008/engineering/color_failure 诊断快照和 26-object/三对象复现记录，未覆盖 main 当前的 10/09 最新 B2 裁决。
 - 来源中的 geotex/residual_gate.py 是独有实验代码，主分支没有对应模块；其负结果不构成有效修复。工作树的未跟踪 test_residual_gate.py 与 1,048 个 ignored 项均保留原位，未纳入主分支。
 - C1 的门控差异（数值通过、视觉失败）及 B2 的负结果是科研结论，不是冲突。早期三例复现追踪的局部闭合不取代最新报告对 120-object 跨栈差异仍未解决的边界。
+
+
+## 补审归档引用的冲突状态
+
+- `codex/r1-color-root-cause-20261008` 与 `...-local-history`：没有执行完整 merge 或 cherry-pick；内容重合和等价结果核对后采用 `ALREADY_IN_MAIN`。`NO_CONFLICT` 表示本轮没有产生冲突，不能写成“冲突已解决”。
+- `gh-pages` 是无共同祖先的独立网站，按独立用途保留；未启动 merge，因此无冲突文件。
+- scientific-validation 两个 WIP 提交是同 parent、同 tree 的快照；只保留提交引用，没有把 WIP 的旧文件删除应用到 main。
+- `eb68d6ce` 是已有两父历史归档提交。本轮没有执行新的 merge，不把它计入本轮 merge 数或冲突数。父来源已分别审核；其生成物没有复制。
+
+上述补审产生 0 个新的 Git 冲突文件、0 个新的论文冲突文件；没有把未执行的 merge 描述为冲突解决，也没有修改或重置原工作树。
