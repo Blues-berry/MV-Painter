@@ -225,3 +225,14 @@
 - 证据等级限制：`B_VALIDATION_PROTOCOL.json` 写 `locked_at_utc=2026-10-08T22:20:00Z`，但 Git 首次在同一提交 `8f6de4b9…` 中记录协议和全部分析结果的时间是 14:52:59Z，来源称约 14:55Z 已完成。时间记录相互矛盾，Git 不能证明分析锁先于结果检查。因此 Fresh C/B 新 RGB 指标及 Fresh B Q4 结果按回顾性敏感性重分析保存，不视作预注册确认。协议称 bootstrap 固定 seed `20261008`，而脚本/输出按统计项递增种子（Fresh B 总体指标为 `20261028`、`29`、`30`、`33`；Q4 的三项为 `20261250`–`52`）；按保存种子复算区间一致。campaign manifest 也未记录推理包版本。首轮 pixel-pooled 输出明确 superseded，不采用。
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY_FOR_ARCHIVED_CONTENT`。没有执行 Git merge/cherry-pick；实际冲突为 `NO_CONFLICT`（0 个文件）。`PAPER_IMPACT=DIRECT`：这批 LLH 与 native-GFL 的 RGB 分析可供 R1 色彩/细节限制讨论，但不是 C3–GFL 结果，也不能证明等剂量效应、普适 schedule winner、物理颜色准确或颜色修复成功。现行 1008 主文、Supplement、Response、图和投稿包未改；源哈希仍等于 Phase A，投稿包为 48/48。没有 TeX 变化，不需重编译。`SUBMISSION_APPROVED=NO`；没有 GPU、历史分支推送或期刊投稿。
 - 选择性内容提交后 main 为 `b2c4761afd832cb6f56f2f6826b877ed2b790a30`；本分支审计行将由独立报告提交记录。
+
+
+### 16. codex/cg-01549-unified-audit-f8ff09d2-20261009
+
+- 来源 HEAD：`f8ff09d26f8214a2eace50e3b568d91a6292576f`，归档引用 `refs/archive/codex/main-unification-20261009/local/heads/codex/cg-01549-unified-audit-f8ff09d2-20261009`。没有注册工作树位于该 HEAD，也没有可恢复的未提交/WIP 状态；`SOURCE_READY` 仅针对归档 Git 树。
+- 相对本分支前 main `8f7e82b126f7bec8a511394baa220566c8fce4fb`，merge-base 为 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。来源有 179 个独有提交、24,901 个独有 blob、3,695,897,857 bytes 未压缩对象内容；49 个 blob ≥5 MiB，最大 178,306,395 bytes。关闭 rename detection 后的树差异为 35,050 个路径（A=33,980、M=45、D=1,025），包括 25,548 个旧 `final/` 文件、147 个 `mvpoutput/`、271 个 `archive/` 文件，以及 8,045 项 `1008/` 增加；来源还会删除 main 中 476 项 `1009/` 证据。完整历史不适合 merge，未对当前 main 执行 merge 试验。
+- 可复用科研内容已逐项核对：来源的 `FINAL_MANUSCRIPT_NUMERICAL_AUTHORITY.csv`、数值权威重聚合 JSON 和 Fresh B C3−GFH supporting CSV，与 main 中 `cg-ltcas-narrative-convergence` 审计包对应文件 SHA-256 均相同；认证的 01549 `final_0903.tex` 也与 main 的来源文件一致（官方源 SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`）。没有需要再次复制或另建选择性提交的有效唯一结果。
+- 来源包含另一版 1008 主文、Supplement、回复信和 author-review PDFs。其 claim matrix 把 Core-7 标成 `CONFIRMATORY / CORE7-SAME-RUNNER`，而现行 main 根据逐条件 runner/input 身份记录将其定为 `RETROSPECTIVE_DIAGNOSTIC`，并明确 runner 与 input-tensor 来源不完整。来源回复信还复述生产 additive-residual bootstrap 的 `p=0.6523`，没有保留该零假设无效、不得用于交互推断的裁决。当前证据矩阵、回复信和受限解释优先；旧候选正文/PDF不导入。`1008` 也含经审阅的旧图件和权利记录，但不替代当前已锁定包。
+- 决定：`ALREADY_IN_MAIN; FULL_MERGE_REJECTED; SOURCE_READY_FOR_ARCHIVED_CONTENT`。未 cherry-pick、未执行新的 merge；无新合并冲突。已有来源合并提交 `f8ff09d2` 本身的 11 个历史文件冲突另见冲突报告，不能记作本轮新解决的冲突。未提交源工作树、移动或复制任何原始数据。
+- `PAPER_IMPACT=DIRECT`：旧 1008 候选与当前认证版本存在正文/限定/回复差异，但活动主文、Supplement、Response 均未改，SHA-256 仍为 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、`59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、`1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`。当前 `1008/submission_1008/SHA256SUMS.txt` 的 48 项全部通过。未改 TeX、图表或投稿包，因此无需编译/重建；`SUBMISSION_APPROVED=NO`。
+- 分支决策后的内容 SHA 仍为 `8f7e82b126f7bec8a511394baa220566c8fce4fb`；本次审计报告提交另行记录。

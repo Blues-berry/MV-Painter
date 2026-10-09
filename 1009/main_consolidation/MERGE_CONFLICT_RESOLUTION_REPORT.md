@@ -151,3 +151,26 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Manuscript source differences: stale `final_0903` text, figures, PDFs, and response drafts were not applied. The compact saved-RGB analysis was retained for audit only.
 - Statistical/provenance caveat (not a file conflict): the protocol's claimed 22:20Z lock is later than the first Git record of the protocol/results at 14:52Z and the reported 14:55Z closeout; the cohort analysis is therefore treated as retrospective. The protocol's single-seed statement also differs from the script/output's per-statistic incremented seeds; intervals reproduce using the saved seeds.
 - Actual Git conflicts: `NO_CONFLICT`; no merge/cherry-pick was run and 0 conflict files were created or resolved.
+
+
+## codex/cg-01549-unified-audit-f8ff09d2-20261009 — conflicts in the archived historical merge
+
+- Source merge commit: `f8ff09d26f8214a2eace50e3b568d91a6292576f`; parents: local candidate `5de0711bf4f81cc8c6c7dacab366f8cfb9156e07` and author-review package `3781571330c6c86fa0876ed1ef69a9789e17bfd4`; their actual merge base is `3e592037d5fdf1c01a5052780e6203ed3d373846`.
+- Replaying that historical parent merge against its actual base identifies **11 real conflicted paths**. The recorded tree resolves two from parent 1 and nine from parent 2. All 11 are paper review/source/build/compiled-package files; there were 0 implementation-code conflicts. `.gitattributes` is not among the 11: a prior read-only probe used the current main's merge base rather than the historical parents' base and falsely surfaced it; the corrected replay excludes it.
+- This audit did not run a new merge against current main. The full source history was rejected before merge because of its 3.70 GB unique blob content, 49 large blobs, 35,050-path tree delta, large legacy `final/` and `mvpoutput/` additions, and deletion of 476 current `1009/` evidence paths. Thus no new conflict was created or resolved here.
+
+| Historical conflicted path | f8ff recorded resolution | Current main disposition and evidence |
+|---|---|---|
+| `1008/audits/01549_FIRST_SURGICAL_REVIEW_20261008.md` | Parent 1 (`53699e99`; base `3b821e62`) | Current main is the same parent-1 blob; retained. |
+| `1008/audits/01549_ORIGINAL_CURRENT_STRUCTURE_DIFF.md` | Parent 2 (`c0294811`; added on both sides) | Current main is the same parent-2 blob; retained. |
+| `1008/audits/01549_REVIEWER_REANALYSIS_20261008.md` | Parent 1 (`f01c3063`; added on both sides) | Current main is the same parent-1 blob; retained. |
+| `1008/audits/01549_TO_1008_PRESERVATION_AND_SURGERY_PLAN.md` | Parent 2 (`e3d66c03`; base `6a76e406`) | Current main keeps its parent-1 superseded-audit header (`4226e63a`); both label the plan historical, and the current author-confirmed mapping/evidence matrix govern. |
+| `1008/audits/R1_R2_TARGETED_REVISION_DECISION.md` | Parent 2 (`28718587`; base `0ba9f988`) | Current main retains parent 1 (`7d50bb87`); compared final gate values are identical, with only Markdown spacing differences. |
+| `1008/authority/REVIEWER_CLAIM_EVIDENCE_MATRIX.csv` | Parent 2 (`a0666a93`; added on both sides) | Current main has later evidence authority (`d6a28edc`): Core-7 is retrospective with incomplete runner/input identity, not confirmatory/same-runner. This is the substantive scientific resolution. |
+| `1008/manuscript/revision_01549_restored/.gitignore` | Parent 2 (`567609b1`; added on both sides) | Current main is the same scoped `build/` rule; root precise generated-output/evidence rules remain authoritative. |
+| `1008/manuscript/revision_01549_restored/BASELINE_BUILD_REPORT.md` | Parent 2 (`0cc1c72c`; added on both sides) | Current main is the same report, with the authenticated 01549 source identity recorded. |
+| `1008/manuscript/revision_01549_restored/final_0903.tex` | Parent 2 (`71b02718`; added on both sides) | Current main is byte-identical and matches the official 01549 baseline SHA-256. |
+| `1008/submission_1008_author_review/Manuscript_1008.pdf` | Parent 2 (`13f7d83b`; added on both sides) | Current main's author-review PDF is a later, distinct artifact (`88297f2c` Git blob); the old conflict side was not substituted. |
+| `1008/submission_1008_author_review/Marked-up_Manuscript_1008.pdf` | Parent 2 (`cea31d85`; added on both sides) | Current main has a later, distinct artifact (`001cf6c8` Git blob); the old conflict side was not substituted. |
+
+No claim is made that the present audit resolved the historical conflicts. The choices are reconstructed from the recorded commit tree and verified blob identities. Active 1008 SHA values and all 48 canonical submission checks remain unchanged.
