@@ -1,0 +1,50 @@
+{
+  "status": "LOCKED_BEFORE_FORMAL_E2_GENERATION",
+  "design_sha256": "1abe76502b60ca0e1c99356d5c4b110c1118bd52b50bc014da3e60a1f51688e5",
+  "runner_sha256": "5522b2c67ed90bb7d5bf60d0388d671ac4d65ec1a53bb0a6c6905decacb35dd4",
+  "analysis_sha256": "fe7c769a5b57f46c295424f31708fc72be7e0eb1688079c592ec0ec1e988fdac",
+  "integrity_audit_sha256": "8887cfbde72ff832198ec797bbd8822c31cfb12cbb378a2e4291603568488d29",
+  "unit_test_gate_sha256": "2d6b141235932369270abd56e66f35e097dd4fc4fe9f0ef30c013fc6d20fe3cf",
+  "dependency_gates": {
+    "multiseed_integrity": {
+      "path": "MULTISEED_INTEGRITY_GATE.json",
+      "sha256": "cd925e671eb4d47ed405fcde3e959bf9d2732324f99d119b755d044d1d715e8b",
+      "status": "PASS"
+    },
+    "static_pilot": {
+      "path": "STATIC_PILOT_GATE.json",
+      "sha256": "2fa95cc6147f0440fcb606607f8c1e7e1074feb38f815f5fc92a31e949f34f53",
+      "status": "PASS"
+    },
+    "seed42_aliases": {
+      "path": "STATIC_SEED42_REUSE_GATE.json",
+      "sha256": "febeda9c112c9071b5a97f0192c47a5f412dcdf9b31f9476817b3c121ae58294",
+      "status": "PASS"
+    }
+  },
+  "frozen_profiles": {
+    "F00": {
+      "deep": 1.25,
+      "middle": 1.25,
+      "shallow": 0.5
+    },
+    "F01": {
+      "deep": 1.25,
+      "middle": 1.25,
+      "shallow": 0.8
+    },
+    "F10": {
+      "deep": 1.675,
+      "middle": 1.675,
+      "shallow": 0.5
+    },
+    "F11": {
+      "deep": 1.675,
+      "middle": 1.675,
+      "shallow": 0.8
+    }
+  },
+  "no_factorial_effects_analyzed_before_lock": true,
+  "launch_orchestrator_sha256": "717c8348821fb7c8b6e2a7d3ec7499b3816fdb4aafbb5a8d1c0a59e84d94df04",
+  "lock_script_sha256": "3f131aaa3a88b141dba9b33fcf6e52e416be22f15c4dc53852026ab23722d4e2"
+}
