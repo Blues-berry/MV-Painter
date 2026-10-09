@@ -88,6 +88,15 @@
 - `PAPER_IMPACT=DIRECT`：候选直接涉及主文统计与图表；本次仅增加支撑审计文件，没有改变活动主文、Supplement、回复信、图表或投稿包。活动 TeX/回复 SHA 与 Phase A 相同，投稿包 SHA256SUMS 48/48 通过；未重编译、未更新投稿包。`SUBMISSION_APPROVED=NO`。
 - 冲突：Git `NO_CONFLICT`（没有 merge/cherry-pick，未产生 Git 冲突）；统计区间差异已单独记录，不视为冲突文件。验证：审计重跑 23/23 PASS；投稿包 48/48 PASS；没有 GPU 或应用代码行为变化。
 
+### 4. codex/paper-1006-20261006
+
+- 原 WIP HEAD：34d15cab5f2d4312d75e6921efb60eaad62c53c2；WIP 前 HEAD：a9ac1459b3d6d4312dab8dbd17534403133fb922；归档引用：refs/archive/codex/main-unification-20261009/local/heads/codex/paper-1006-20261006；merge-base：34c77a4417eb3e037756ad483c70ef9e3f0c2bdb。既有 WIP commit 保留。
+- 相对处理前 main f8525f060172905260e65b62cfe1e3acf3f98bd1，分支有 144 个独有提交、1,102 棵树、2,667 个 blob、875,932,057 字节未压缩 blob；22 个 blob ≥5 MiB。树差异 3,328 项（A=2,415、M=7、D=760、R100=146），含 1,340 个 JSON 路径和旧投稿包/图件/生成结果；完整历史不适合合并，未运行整支 merge。
+- 经审查选择性提交 E6 停止记录和 geotex/eval_exploration.py 的启动路径/CUDA 防护，提交 57f316719a5c56c61d0e0fa4fc1e4c7173a94c43 与 b1ac2f7d353b4362a040037257a51b9bedf40ed8。旧主文、Supplement、回复、PDF、原始数据和模型结果没有导入。旧版类级共享 _skip_correction 与缺少 finally 恢复逻辑被排除；main 的实例级隔离与异常恢复保持。
+- PAPER_IMPACT=DIRECT：1006 是过时论文/证据快照；其“Fresh C 尚未完成”状态被后来 N=300 结果取代。E6 是停止的开发候选，不作为论文结果。活动论文源文件未改，投稿包 48/48 校验通过；必要的 CPU 路径与防护检查通过，无 GPU/模型运行。
+- 决定：SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY。没有执行 Git merge/cherry-pick，因此代码和论文均为 NO_CONFLICT，实际冲突数为 0。WIP commit 保留；SUBMISSION_APPROVED=NO。
+
+
 ### 5. codex/cg-ltcas-narrative-convergence-20261007
 
 - 原 HEAD/WIP：`ecbb246b76cccf148dfbbdfa85515b53590aa584`（既有 WIP commit 保留）；WIP 前 HEAD：`bf1dc3d41edd597421c067a972c82abfb4b8fdf7`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/cg-ltcas-narrative-convergence-20261007`。merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。
@@ -248,3 +257,14 @@
 - 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。新包 SHA 为 `c8a95e79917e46b365aef6a212c39a054f5fcc08ae61bae837cdaa821b11363f`，149 行和 disposition 计数通过，包内 SHA 清单通过；main 中匹配的权威数值文件逐 blob 核对。没有执行 merge/cherry-pick，因此实际冲突 `NO_CONFLICT`，0 个新冲突；没有运行 GPU 或应用模型代码。
 - `PAPER_IMPACT=DIRECT`：旧 1006 主文/回复候选与审计表涉及 R1.3 解释，但都未覆盖认证的 1008。活动主文、Supplement、Response SHA 仍为 Phase A 三值，canonical submission 校验 48/48；没有 TeX/图表/投稿包修改，不需重编译。`SUBMISSION_APPROVED=NO`。
 - 内容提交后 main 为 `a92a0bf228181ff4c7ed9c093f4edf24d610ca9c`；分支审计报告提交会另行推进 main。
+
+
+### 18. detached/01549-clean-checkout-20261008
+
+- 原 HEAD：fb0b24cba203549c28e6287996ad76f4dff61a79；归档引用：refs/archive/codex/main-unification-20261009/detached/01549-clean-checkout-20261008；merge-base：34c77a4417eb3e037756ad483c70ef9e3f0c2bdb。登记工作树 /4T/tmp/01549-clean-checkout-20261008 仍 detached 于该 HEAD；仅有两份被修改的编译 PDF，另有 17 个 ignored 路径（约 20.9 MB）。原件和修改均保留，未清理、移动或复制。没有尚未提交的有效源码；SOURCE_READY 仅针对归档 HEAD。
+- 来源历史有 156 个独有提交、1,608 棵树、24,765 个 blob，未压缩 blob 共 3,467,579,504 bytes；36 个 blob ≥5 MiB，最大 178,306,395 bytes。相对处理前 main 6569295e43d1d423299ceb1d9fda22b030206007，树差异为 35,016 项（A=33,912、M=32、D=1,072），包含旧 final/、生成输出及删除当前 1008/1009 路径。完整历史合并被拒绝，未运行 merge 试验。
+- 最新来源提交新增 9 项：四份旧恢复审计/计划文档、内容处置表、一个旧 Fig. 1 候选 PDF/PNG 和生成脚本。没有新增有效实验结果或运行时模型修复。旧审稿意见的大部分有效限制已由 main 的 Reviewer 2 对抗审查、01549 reviewer reanalysis、回复信和投稿包覆盖。
+- 科学核对纠正了一处来源审稿意见：它称 Fresh C 未与历史 24-object development probe 隔离；当前 Response 与 Supplement 均明确 Fresh C 的 300 个 UID 与原 24-object probe 及原 300-object evaluation 不重叠。当前稿也没有声称 Fresh C 复现旧 checkpoint 的 +0.96 dB 结果。来源关于 SSI 新颖性风险、人工选择 C3、缺少外部复现包及 3D/PBR 证据边界的其余警示，与 main 一致。
+- 来源图审阅提出移除 FAC 支路并重画 Fig. 1；当前认证审阅选择保留 SHA 认证的原 Fig. 1 和 FAC 辅助扩展，并通过图注限定 Fresh C 不验证烘焙网格。来源候选图及旧编译 PDF 均未覆盖当前图或投稿包。
+- 决定：ALREADY_IN_MAIN; FULL_MERGE_REJECTED; SOURCE_READY_FOR_ARCHIVED_CONTENT。未执行 merge/cherry-pick；代码和论文均为 NO_CONFLICT，实际冲突数 0。无新增内容提交，main 内容仍为 6569295e43d1d423299ceb1d9fda22b030206007。
+- PAPER_IMPACT=DIRECT（候选审计与图件被直接审阅，但没有采用或改动活动论文）。主文、Supplement、Response SHA-256 分别为 dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4、59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed、1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb；投稿目录 48/48 校验通过。无 TeX 改动，不需重编译；SUBMISSION_APPROVED=NO。

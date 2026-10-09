@@ -181,3 +181,11 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - Source HEAD `e267b2d59bbb722827ca5ad72f7ca4475b13c8f1` is a single-parent commit, not a historical merge. Its registered detached source worktree is clean. Full-history merge was rejected before execution; no Git merge or cherry-pick was run.
 - Actual Git conflicts: `NO_CONFLICT` (0). The class-level `_skip_correction`, removed `try/finally` restoration, and weakened ignore/attribute rules are source differences caught in pre-merge review, not conflicts.
 - The only selected content is the 149-row R1.3 sentence-level audit at `1009/evidence/branch_audits/cg_closure_clean_audit_20261007/fidelity_language/`. Its 122 main-text source references match authenticated `final_0903.tex`; its auxiliary PDF identity differs from the official submitted PDF, so the bundle is explicitly a historical wording crosswalk. No active TeX conflict was created or resolved.
+
+
+## detached/01549-clean-checkout-20261008
+
+- 来源 HEAD：fb0b24cba203549c28e6287996ad76f4dff61a79；单父提交；来源 worktree 仍保留两份本地修改的生成 PDF。
+- 完整历史因 156 个独有提交、3.47 GB 未压缩 blob、36 个 ≥5 MiB blob 和 35,016 路径树差异在预检阶段拒绝；没有执行 Git merge/cherry-pick。
+- 代码冲突：NO_CONFLICT；无运行时代码变更被选入。论文冲突：NO_CONFLICT；Fig. 1 候选及论文审计文档差异是在合并前审查并依据当前认证图件/正文证据作出裁决，不是 Git 冲突。
+- 实际冲突文件：0。来源工作树生成 PDF 改动与 ignored 文件均留在原处。

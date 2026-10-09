@@ -177,3 +177,10 @@ The active manuscript, Supplement and Response hashes remain `dd7cb925ea098f31a1
 `PAPER_IMPACT=DIRECT`. The archived branch adds an R1.3 sentence-level audit of the authenticated 01549 wording and includes older 1006 manuscript/response candidates. The 149-row audit classifies variation metrics and illustrative panels as insufficient to establish fidelity; its core limitation is already stated in the active 1008 text. The audit's 122 main-TeX references match the authenticated `final_0903.tex`; 7 Supplement references were not independently verified, and 20 auxiliary-PDF references use a hash different from the official submitted PDF. The CSV is retained only as a historical wording crosswalk, with those limits documented.
 
 The compact CSV and provenance note are in `1009/evidence/branch_audits/cg_closure_clean_audit_20261007/fidelity_language/`. Old 1006 manuscript/response drafts and unselected visual candidates were not adopted. Current manuscript, Supplement, and Response hashes are unchanged; the canonical package SHA check remains 48/48. No active paper file changed, so no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`.
+
+
+## detached/01549-clean-checkout-20261008
+
+PAPER_IMPACT=DIRECT：归档内容含 01549/1008 正文、图和审稿解释候选，需逐项核验，但没有内容被应用到 active main。来源审稿意见称 Fresh C 未做 probe-disjoint main-adapter evaluation；当前 Response 与 Supplement 记录 Fresh C 的 300 个 UID 与原 24-object development probe、原 300-object evaluation 分离。它仍清楚区分 Fresh C checkpoint 与不可重建的旧 01549 数值来源，没有把 +0.522352 dB 说成复现旧 +0.96 dB。来源对 SSI 先例、手动选择 C3、缺少公开复现包以及缺少有效新 bake/PBR 证据的担忧，已在当前审稿风险文件与 1008 文本中披露。
+
+来源还建议从 Fig. 1 移除 FAC。当前 01549_FIGURE_PRESERVATION_REVIEW.md 依据认证投稿图和历史负向 FAC 复查，保留原 Fig. 1 并限缩图注；来源重画候选未替换它。活动主文、Supplement、Response 未改，SHA-256 仍为 Phase A 三值；canonical submission package 48/48 校验通过。无活动 TeX 改动，无需 LaTeX 编译或投稿包刷新。来源 worktree 的两份修改 PDF 和 17 个 ignored 路径均留在原处。SUBMISSION_APPROVED=NO。
