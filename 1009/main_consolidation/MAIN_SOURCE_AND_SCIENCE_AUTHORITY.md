@@ -1,6 +1,6 @@
 # Main source and scientific authority
 
-**Captured:** 2026-10-09T04:16:30Z UTC  
+**Captured:** 2026-10-09T04:29:56Z UTC  
 **State:** `AUTHOR_REVIEW_READY`; not submission-approved.
 
 ## Version authority
@@ -29,3 +29,7 @@
 ## Implementation authority
 
 The curated main source uses per-wrapper state for the reference-only correction bypass. The former class-level toggle was replaced with an instance flag restored in `finally`, avoiding cross-instance leakage if reference evaluation raises. Core scripts, selected evidence tooling, and tests are enumerated in the integration manifest. No GPU experiment was run during this consolidation.
+
+## Repository handover state
+
+Private `mvpainter/main` is verified at `b02a64102a40c83370902486d47b1ffad217a49e`. The active daily working tree is `/4T/MV-Painter-main`. The editor UI folder switch has not been verified, so this remains an operational handoff item. Nonessential JSON and ignored research outputs remain local; no paper content changed in this status update.

@@ -1,6 +1,6 @@
 # Local data retention manifest
 
-**Captured:** 2026-10-09T04:16:30Z UTC
+**Captured:** 2026-10-09T04:29:56Z UTC
 
 ## Byte-preserved staged snapshot
 
@@ -36,4 +36,4 @@ A separate local backup was created before commit/upload at `/4T/MV-Painter-main
 - `/4T/CXY/MV-Painter-1008`: 1 untracked internal image file, 776,861 bytes; preserved.
 - Other worktrees with staged historical deletions were not reset or cleaned. See `WORKTREE_DISPOSITION.csv`.
 
-The previously cited 283 GB archive and 390 GB ignored-data estimates were not independently inventoried in this pass. No such archives or bulk ignored data were copied, deleted, or uploaded.
+The previously cited 283 GB archive and 390 GB ignored-data estimates were not independently inventoried in this pass. No such archives or bulk ignored data were copied, deleted, or uploaded. The worktree ledger now includes ignored-status entries. Three worktrees that had zero tracked, untracked, and ignored entries were safely unregistered; all other roots with local or ignored data were retained.

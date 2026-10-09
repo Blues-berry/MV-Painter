@@ -1,10 +1,10 @@
 # Local-to-private-main consolidation report
 
-**Captured:** 2026-10-09T04:16:30Z UTC  
+**Captured:** 2026-10-09T04:29:56Z UTC  
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  
 **Private main baseline:** `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`  
-**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; remote SHA-256-matched on 2026-10-09T04:26:29Z UTC.
+**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; handover/status commit: `b02a64102a40c83370902486d47b1ffad217a49e`. Current local and remote `main` both resolve to `b02a64102a40c83370902486d47b1ffad217a49e`.
 
 ## Result
 
@@ -30,9 +30,13 @@ The official 01549 source remains immutable at `1008/manuscript/source_01549/fin
 - No participant-level identity keys, 283 GB estimated archive, 390 GB estimated ignored collections, checkpoints, cache, or bulk raw renders were copied to the main integration. Large-size estimates were not independently remeasured.
 - `origin` and `upstream` remain read-only; only private `mvpainter` is authorized for a normal push. No force-push, reset, merge, public upload, or source-baseline modification was performed.
 
+## Worktree and editor handover
+
+The audited inventory contained 17 worktrees. Three clean worktrees were unregistered after full status checks, leaving 14 registered worktrees including `/4T/MV-Painter-main`. The status ledger includes ignored-artifact counts; those roots were retained. The seven-thousand-plus staged index in `/4T/CXY/MV-Painter` is resolved, while residual files in that data worktree remain untouched. Only the selected daily worktree is `main`; multiple historical or data branches remain locally checked out. VS Code/Trae still requires the manual Open Folder switch, so the single-visible-repository gate is not yet verified.
+
 ## Delivery status
 
-The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The delivery-status document records the author-review links and content commit; the current final branch SHA is reported after the status-only update is pushed.
+The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The current final branch SHA is `b02a64102a40c83370902486d47b1ffad217a49e`. Three worktrees with no tracked, untracked, or ignored files were then unregistered with ordinary (non-force) removal; their branch refs remain. Other dirty or ignored-data worktrees remain registered and preserved. The editor could not be switched through the available CLI, so `EDITOR_ROOT_SWITCH_VERIFIED=NO`; the author must open `/4T/MV-Painter-main` in the editor to complete the UI handoff.
 
 
 `AUTHOR_REVIEW_READY`. This is not `SUBMISSION_APPROVED`; author sign-off is still required before journal submission.
