@@ -34,3 +34,13 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Scientific-output discrepancy: the independently rerun 10,000-resample seed-20261002 audit gives Edge-SSIM CI `[-0.020803,-0.016790]`; the active manuscript uses `[-0.02084,-0.01683]`. The paired source, point estimate, and direction match; both intervals are wholly negative. This is recorded as a resampling-output provenance difference, not resolved by substituting one set of values. The active table's exact bootstrap output should be verified before later prose changes.
 - The existing paper-branch candidate removes current-main 1008 source/package paths in its WIP tree; those deletions were not applied. Its untracked internal N20 candidate image was left in its original worktree.
 - Actual Git conflicts resolved: 0.
+
+## codex/paper-1006-20261006
+
+- Merge strategy decision: full-history merge rejected (144 unique commits, 2,667 unique blobs, 875,932,057 uncompressed bytes; 22 blobs >= 5 MiB; 3,328-path delta includes old submission outputs and generated material).
+- Git merge or cherry-pick attempted: no. E6 audit files were added at a new path in main commit `57f316719a5c56c61d0e0fa4fc1e4c7173a94c43`; a reviewed startup-only script fix was committed as `b1ac2f7d353b4362a040037257a51b9bedf40ed8`.
+- Code difference reviewed: archived `model_unet_geotex.py` uses a class-level `_skip_correction`; the paired pipeline does not restore prior state in `finally`. Current main uses per-instance values and exception-safe restoration. The old behavior was excluded due to cross-wrapper state sharing and exception-leak risk. The separate `geotex/eval_exploration.py` path/CUDA/import changes were selectively integrated and smoke-checked.
+- Code conflict: `NO_CONFLICT` (no Git merge was attempted; the source difference above was audited, not mechanically conflict-resolved).
+- Paper conflict: `NO_CONFLICT` (old manuscript/supplement candidates were not applied; active 1008 sources remain unchanged).
+- Scientific difference: 1006's 10/06 readiness and narrative documents are earlier snapshots. Its bounded schedule, dose, CAI, strict-276, N=20 GLB, and open human-fidelity conclusions agree with the later 1008 source/claim ledger; its “Fresh C not yet confirmed” status predates the completed 300-object run. E6 was a stopped development candidate, not independent confirmation; only its explicit diagnostic and stop review were selected.
+- Actual Git conflicts resolved: 0.

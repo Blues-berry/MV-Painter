@@ -56,3 +56,11 @@ The audit is explicitly post-hoc and reports no p-values. Its C3−GFH point est
 No main-text, Supplement, response, figure, bibliography, or submission-package file changed. The active TeX hashes remain the Phase A values, and the 48-file package checksum check passes. No LaTeX rebuild was needed.
 
 `SUBMISSION_APPROVED=NO`. No journal submission was made.
+
+## codex/paper-1006-20261006
+
+`PAPER_IMPACT=DIRECT`: the archived source contains a 1006 manuscript, supplement, figures, alternate submission outputs, and older claim/readiness snapshots. Those paper candidates were reviewed but not overlaid. Current 1008 retains the bounded schedule/no-winner interpretation, the absence of dose-independent support, withdrawn CAI optimality, separate strict-276 provenance, bounded N=20 GLB endpoints, and no human-preference/fidelity claim. The 1006 Fresh C “not yet confirmed” note is a stale 10/06 status; the later 300-object Fresh C run and addendum are the active evidence. No supported current claim was found to need replacement.
+
+The selected E6 bundle records a stopped development candidate with unfavorable whole-image LPIPS on all 24 development objects and no independent confirmation; it is explicitly excluded from active-paper results. The only code addition is a startup/path guard for `geotex/eval_exploration.py`; it does not alter model or metric calculations. The older class-level `_skip_correction` implementation was rejected in favor of main's instance-level, `finally`-restored behavior.
+
+No manuscript, Supplement, response, figure, table, bibliography, PDF, or canonical package file changed. Active manuscript, Supplement, and response SHA-256 remain the Phase A values; all 48 canonical package checksums pass. No TeX rebuild, response update, or package rebuild was required. `SUBMISSION_APPROVED=NO`; no submission was made.

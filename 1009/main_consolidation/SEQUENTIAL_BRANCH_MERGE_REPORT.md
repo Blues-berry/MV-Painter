@@ -78,4 +78,18 @@
 - `PAPER_IMPACT=DIRECT`：候选直接涉及主文统计与图表；本次仅增加支撑审计文件，没有改变活动主文、Supplement、回复信、图表或投稿包。活动 TeX/回复 SHA 与 Phase A 相同，投稿包 SHA256SUMS 48/48 通过；未重编译、未更新投稿包。`SUBMISSION_APPROVED=NO`。
 - 冲突：Git `NO_CONFLICT`（没有 merge/cherry-pick，未产生 Git 冲突）；统计区间差异已单独记录，不视为冲突文件。验证：审计重跑 23/23 PASS；投稿包 48/48 PASS；没有 GPU 或应用代码行为变化。
 
-后续论文分支、科学/证据分支、早期实现分支和两个保留实验分支尚未审计。后续分支必须按同一流程逐个追加矩阵和影响记录；在完成对应分支审查前，不依据旧清理结论删除或恢复任何普通分支引用。
+第一组最后一个论文分支 `codex/cg-ltcas-narrative-convergence-20261007` 尚未审计。随后继续科学/证据分支、早期实现分支和两个保留实验分支；每个分支仍按同一流程逐个追加记录，不根据旧清理结论删除或恢复普通分支引用。
+
+### 4. codex/paper-1006-20261006
+
+- 原 HEAD/WIP：`34d15cab5f2d4312d75e6921efb60eaad62c53c2`（既有 WIP 快照保留）；WIP 前 HEAD：`a9ac1459b3d6d4312dab8dbd17534403133fb922`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/paper-1006-20261006`。merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。
+- 相对处理前 main `f8525f060172905260e65b62cfe1e3acf3f98bd1`，有 144 个独有提交、1,102 棵树、2,667 个 blob，未压缩 blob 共 875,932,057 bytes；22 个独有 blob 不小于 5 MiB。树差异 3,328 项（A=2,415、M=7、D=760、R100=146），约 1,340 个 JSON 路径。独有历史含约 76 MB 旧投稿 ZIP、27.2 MB Supplement PDF、21.4 MB pilot JSON、旧 PDF/联系表和其他候选生成结果。整支历史不安全，未启动 merge 试验。
+- 原工作树 `/4T/CXY/MV-Painter-1006-wt` 仍 detached 于 WIP 前 HEAD；跟踪文件干净，既有 ignored 数据留在原位置。未切换、覆盖、复制或删除该工作树及数据。原分支 WIP 提交中的旧投稿包删除仍只属于该历史快照，未应用到 main。
+- 科学/论文核对：对照了 1006 的终稿叙事、科学准备度、Fresh C/B、Generic Linear、A3b、CAI、strict-276、N=20 GLB、人类评价门禁等决策记录与当前 1008 主文、Supplement、Response 和 `1008/authority/CLAIM_LEDGER.csv`。当前版本已保留相同边界：没有普适 schedule winner 或等价性主张，A3b 无三层剂量共同支持，CAI 的选择器/最优性已撤回，strict-276 与 Fresh C 分开标注，GLB 只作有界端点结果，未声称人类偏好或材料保真。1006 的 Fresh C “尚无确认结果”是 10 月 6 日时点状态，已由后续冻结的 300-object Fresh C 主实验及同队列 addendum 取代；1008 的 1,200/1,200 与 600/600 行门禁和结果来源已记录。没有发现仍缺于当前稿的有效科学结论；未把过时状态报告覆盖到 main。
+- 代码差异核对：历史主干推理候选把 `_skip_correction` 改成类级共享变量，并在参考写入后直接设回 `False`，没有 `try/finally`；异常时状态可能泄漏，多个 wrapper 之间也会共享。当前 main 的实例级状态逐个保存并在 `finally` 恢复，故旧版 `MVPainter/mvpainter/model_unet_geotex.py` 与 `mvpainter_pipeline.py` 未采用。`geotex/round2_stats.py` 只有尾部空行差异，不采用。保留了 `geotex/eval_exploration.py` 的窄幅启动修复：基于脚本位置加入绝对项目路径，复用 main 已有的 `require_cuda`，并直接从 `data_utils` 导入批处理函数；提交 `b1ac2f7d353b4362a040037257a51b9bedf40ed8`。该改动不改变模型或指标计算。
+- 选择性保留 E6 停止证据：`1009/evidence/candidate_methods/e6_cap_calibration_20261006/`，包括原始机器诊断 JSON、原始开发后方法审查文档及来源/范围 README，提交 `57f316719a5c56c61d0e0fa4fc1e4c7173a94c43`。两份源文 SHA-256 已逐字节核对。E6 保留原开发选择 1.25；前景均值改善但整图 LPIPS 均值 +0.196705 且 24/24 对象方向不利，浅层饱和 5,618/10,800。材料明确是开发描述性停止审查，不是独立确认或论文结果。没有导入原始数据、逐对象表、图片、checkpoint、embedding、cache、PDF 或生成图。
+- 裁决：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED`；`SOURCE_READY`（已审阅来源；E6 停止证据和一项启动修复选择性纳入）。内容提交依次为 `57f316719a5c56c61d0e0fa4fc1e4c7173a94c43` 与 `b1ac2f7d353b4362a040037257a51b9bedf40ed8`；报告提交另行推进 main。
+- `PAPER_IMPACT=DIRECT`（另有不改变指标计算的评估脚本启动修复）：旧论文/投稿候选已核对但未覆盖当前 1008 稿。活动主文、Supplement、回复 SHA 与 Phase A 一致，48/48 投稿包校验通过。未改活动论文源文件，不需重编译或重建投稿包。`SUBMISSION_APPROVED=NO`。
+- 冲突：`NO_CONFLICT`（未执行 Git merge/cherry-pick，因此没有产生或解决 Git 冲突）。验证：所选 JSON 可解析且关键状态/权衡字段通过断言；两个源文 SHA 匹配；脚本从 `/tmp` 调用 `--help` 成功；`--device cpu` 在数据加载/输出目录创建前由 CUDA guard 按预期拒绝；`git diff --check` 通过；活动 TeX SHA 不变；投稿包 48/48 通过。未启动模型推理或 GPU 作业。
+
+第一组最后一个论文分支 `codex/cg-ltcas-narrative-convergence-20261007` 尚未审计。随后继续科学/证据分支、早期实现分支和两个保留实验分支；每个分支仍按同一流程逐个追加记录，不根据旧清理结论删除或恢复普通分支引用。
