@@ -116,3 +116,16 @@
 - PRIMARY_HYPOTHESES.md contains H5 in commit c1fb1b75814c91dc063aeab55007bbd66601fd3f (2026-10-02), before the archived result-bundle commit 7e3a8d4b (2026-10-04). Current main’s B_MULTIPLICITY_FAMILY_LOCK.md nevertheless classifies the family lock as retrospective after prior outcome exposure. Preserve this timing/status discrepancy; do not import the source report’s unrestricted confirmatory wording.
 - Decision: SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY. PAPER_IMPACT=DIRECT: the active 1008 manuscript does not state this specific Fresh Confirm 300 boundary, so the result is a candidate for the later applicability/limitations revision. No paper files were changed in this branch audit.
 - Git conflicts: NO_CONFLICT (no merge or cherry-pick was attempted). Validation: 300/300 cohort IDs and pairing checks pass; the pairwise values and quartile effects reproduce; the ten-test reaggregation yields 9 Holm rejections; git diff --check passes; the submission package remains 48/48; active TeX and response hashes are unchanged. No GPU or model inference.
+
+
+### 8. codex/cg-revision-evidence-closure-20261007
+
+- 原 HEAD：`d59c4606ad54239bf4df4f20067bcc54989404f7`；来源引用：`refs/archive/codex/main-unification-20261009/local/heads/codex/cg-revision-evidence-closure-20261007`；merge-base：`34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`。隔离 detached 工作树位于 `/tmp/mvpainter-cg-evidence-closure`，在该 HEAD 干净；无需整理提交，`SOURCE_READY`。原工作树、原始数据和归档引用均未移动或删除。
+- 对当前 main `c1c087b2e7388fa171e185d5207f2fb336742704`，来源独有历史为 131 commits、971 trees、2,385 blobs、765,582,985 未压缩 blob bytes；14 个独有 blob 不小于 5 MiB，最大 76,043,516 bytes。树差异 3,231 项（A=2,245、M=8、D=978），包含对活动 1008 路径的删除以及过时的 `final/final_0903.tex` 候选。来源还跟踪了 `HUMAN_STUDY_RAW_RESPONSES.csv`；该参与者级文件未打开、未读取、未复制、未哈希，留待专门 human-study 分支审计。完整历史不适合 merge，未启动 merge 试验。
+- 已核查代码差异：来源将 `_skip_correction` 改为类级共享状态，pipeline 也以共享标志切换且缺少 `try/finally` 恢复；这会破坏 main 的实例隔离，并在异常或并发时泄漏状态。来源还放宽二进制/源文件属性及精确生成物忽略规则。保留 main 版本；候选旧 README/CLAUDE 与 `final/` 稿件未导入。
+- 有效的 Fresh C C3−GFH CSV 与 main 1008 审计 CSV 字节完全一致。对应结果 JSON 的统计内容相同；差异仅为 `source_integrity_path` 的临时绝对路径。来源完整性 JSON 的两个输出路径也是临时目录，且结果 JSON 哈希随该路径变化；不构成新统计证据。Fresh C 执行语义、GLB sampler、seam disposition、数值权威 CSV、图像 cohort 权利与 attribution 文件均已在 main 的审计路径逐字节存在。候选 20-panel 池、广泛 API 授权清单和旧论文/回复草稿不替代当前已选图及认证稿。
+- 裁决：`ALREADY_IN_MAIN; FULL_MERGE_REJECTED; SOURCE_READY`。无选择性内容提交，因为没有发现需要新增的独有有效内容；没有空提交。
+- `PAPER_IMPACT=DIRECT`：来源含旧候选主文、回复和投稿证据闭合材料，但均针对旧 `final/` 候选。未覆盖当前 1008 主文、Supplement、Response、图表、参考文献或投稿包。Phase A 活动 TeX/回复 SHA 保持不变；48/48 投稿包校验通过；未触发 LaTeX 重编译，也未投稿（`SUBMISSION_APPROVED=NO`）。
+- 冲突：`NO_CONFLICT`。没有执行完整 merge 或 cherry-pick，因此没有实际 Git 冲突文件，也没有冲突解决提交。上述代码和候选论文差异是在预合并审查中排除，不标记为已解决的 merge conflict。
+- 验证：来源工作树干净；对照确认 C3−GFH CSV 字节一致、结果 JSON 统计 payload 一致、相关来源报告在 main 已有等价版本；活动论文哈希未变；投稿包 48/48 PASS。没有代码进入 main，因此未运行运行时测试；未运行 GPU 或模型推理。
+- 决策时 main 内容 SHA：`c1c087b2e7388fa171e185d5207f2fb336742704`；本条仅更新审计报告，后续报告提交会推进 main。

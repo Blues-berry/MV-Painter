@@ -89,3 +89,12 @@ PAPER_IMPACT=DIRECT. The archived branch contains a Fresh Confirm 300 LLH−GFL 
 The result was selectively added as an auditable 300-row table and CPU analysis bundle. It supports a scoped applicability limitation. Do not import the source report’s “all ten Holm tests rejected” statement: corrected reaggregation gives 9/10 and an adjusted p=0.050795 for FG-LPIPS versus coverage. The protocol timing also remains qualified by the current main retrospective family-lock status.
 
 No main text, Supplement, response letter, figure, reference, or submission package file changed. Active SHA-256 values remain manuscript dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4, Supplement 59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed, and response 1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb; the submission directory verifies 48/48. No LaTeX rebuild was triggered because no TeX changed. SUBMISSION_APPROVED=NO.
+
+
+## codex/cg-revision-evidence-closure-20261007
+
+`PAPER_IMPACT=DIRECT`：来源包含旧 `final/` 候选论文、回复草稿及复现/证据闭合报告。它们不对应当前认证的 1008 投稿包，且其完整树会删除活动 1008 内容；因此没有将候选文本、旧图池或包文件导入 main。
+
+与本轮科学主张有关的 C3−GFH 结果 CSV 与当前 1008 审计 CSV 字节一致；JSON 差异限于临时工作目录路径及相应来源哈希，统计 payload 相同。Fresh C 执行语义、sampler、seam、资产权利和数值权威材料已存在于 main。未发现需更新当前论文的独有结果。参与者级响应 CSV 未打开或读取，不能据该分支改变 human-study 表述。
+
+活动主文 SHA-256 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、Supplement `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、Response `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb` 均未改变；投稿目录 48/48 校验通过。无 TeX 变化，不需重新编译；`SUBMISSION_APPROVED=NO`，未投稿。

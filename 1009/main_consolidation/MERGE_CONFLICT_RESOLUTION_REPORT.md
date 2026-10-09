@@ -74,3 +74,12 @@ Conflict totals below count only conflicts created by an actual Git merge or che
   - The texture-boundary measurements were independently reaggregated and selectively retained. Source decision report’s “10/10 Holm rejected” is corrected to 9/10; the FG-LPIPS/coverage test has adjusted p=0.050795.
 - The H5 protocol file predates the archived result-bundle commit, while current main’s multiplicity-lock record labels the family lock retrospective after prior exposure. This is an evidence-status discrepancy, not a merge conflict; the conservative main status remains in force pending reconciliation.
 - No active manuscript or response file conflict was created or resolved. The selected bundle records direct paper relevance without editing TeX.
+
+
+## codex/cg-revision-evidence-closure-20261007
+
+- 预合并审查决定 `FULL_MERGE_REJECTED`；未运行 Git merge 或 cherry-pick，因此 `NO_CONFLICT`，实际 Git 冲突文件数为 0。来源树会删除当前 1008 路径，并包含旧 `final/final_0903.tex` 候选及参与者级响应 CSV。
+- 代码差异（不是 Git 冲突）：main 使用实例级 `_skip_correction` 状态并在 `finally` 中恢复；来源改为类级共享标志，pipeline 没有异常安全的 `finally` 恢复。依据是 main 的并发/异常隔离语义更强，来源旧逻辑可能跨实例泄漏状态；故来源版本未合入。来源对 `.gitattributes`、`.gitignore` 的放宽也被排除，以保留精确二进制处理和生成物规则。
+- 论文差异（不是 Git 冲突）：来源候选属于旧 `final/` 修订，当前活动 1008 保持原样。已发现的 Fresh C C3−GFH CSV 和相关审计/来源材料在 main 已有等价内容，因此没有选择性补丁。
+- 人类研究隐私：来源树内的 `HUMAN_STUDY_RAW_RESPONSES.csv` 未被打开或读取，不纳入本分支内容包；其原件按原地保留原则留在来源位置，后续仅由专门的人类研究来源审计决定是否需要聚合证据。
+- 冲突影响论文：没有 merge conflict；候选文本未导入，活动主文、Supplement、回复及投稿文件均未改变。
