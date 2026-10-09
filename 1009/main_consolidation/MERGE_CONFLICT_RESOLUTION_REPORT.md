@@ -93,3 +93,13 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Paper conflict: NO_CONFLICT. Old final/final_0903.tex, its Supplement/response, PDFs, and source package were not applied to the active 1008 package. Current TeX hashes were unchanged.
 - Selective evidence: the compact Core-7 metrics/protocol/paired-statistics package was independently rerun and matched the source's aggregate, 49-row pair table, and row audit byte-for-byte. The C3−GFL Supplement row was separately reaggregated because it is absent from the source's saved 49- and 56-row pair tables. Current Core-7 retrospective limits were retained.
 - Compiler note: built-in compile attempts were not successful because the standalone main source lacked project cag.sty and the standalone Supplement lacked its referenced figure asset; neither source file was modified.
+
+
+## codex/main-backbone-robustness1-20260930
+
+- Full-history merge was rejected before execution: 102 source-unique commits, 1,429 unique blobs / 665,718,360 uncompressed bytes, 14 blobs at least 5 MiB, and a 2,332-path direct tree delta. The old tree deletes 253 active `1008/` and 307 `1009/` paths while adding 1,052 old `final/` paths.
+- Git merge or cherry-pick attempted: no. The compact R1 metrics, protocol/input audits, source scripts, and CPU reproducer were selectively added at `74b117fe05d834fb95b14ba136f15066d584f4f6`.
+- Code conflict: `NO_CONFLICT`; no Git conflict was created. During pre-merge review, the source's class-level `_skip_correction` state and missing `finally` restoration were excluded in favor of main's per-instance, exception-safe behavior. This is a reviewed source difference, not a resolved merge conflict.
+- Paper conflict: `NO_CONFLICT`; no TeX, figure, response, bibliography, or submission file was merged. The new result is recorded as indirect paper impact and remains outside active 1008 claims.
+- Provenance caveat: source report claims the protocol lock predates R1 metrics, but Git first records both files in the same commit; the timing cannot be independently established from history. Accordingly, the result remains retrospective, not confirmed preregistered evidence.
+- Actual Git conflicts resolved: 0.
