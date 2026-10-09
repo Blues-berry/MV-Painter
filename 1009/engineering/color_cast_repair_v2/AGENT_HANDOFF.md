@@ -38,4 +38,4 @@ This section supersedes the earlier statement that B2 sampling had not started a
 
 - Generated B2 PNGs, run tables, casebook, runtime state and temporary reconstruction files are excluded by `.gitignore`; runner code and frozen protocol locks remain trackable.
 - Generated 1008 raw RGB, masks, run traces and reproducibility scratch directories are also ignored. Historical files already tracked before this ignore update were left in their existing state.
-- Before any commit, stage only source, protocol and documentation files; verify no generated images, metrics, PDFs, logs or runtime files are staged.
+- Follow-up commit `b1dd8b82743fa967eb4e96adbc4dd4976ab4d615` was pushed to `origin/codex/r1-color-cast-repair-v2-20261009`. Its scope is source, protocol, documentation and ignore rules; no generated images, metric tables, PDFs, logs or runtime files were staged.
