@@ -1,22 +1,38 @@
 # 1008 delivery status
 
 **Status:** `AUTHOR_REVIEW_READY`  
-**Repository:** `Blues-berry/MVPainter` (private)  
-**Target branch:** `main`  
+**Repository:** private `Blues-berry/MVPainter`  
+**Branch:** `main`  
 **Local worktree:** `/4T/MV-Painter-main`  
-**Recorded:** 2026-10-09T04:16:30Z UTC
+**Content commit pushed and verified:** `14ff9472df0281267c966b29210d63297ccfcfd7`  
+**Remote verification time:** 2026-10-09T04:26:29Z UTC
 
-The author-review package is complete and source-verified. Push/remote SHA will be recorded after normal fast-forward upload. `SUBMISSION_APPROVED` is not asserted.
+The private remote advertised the same commit as local `main`. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. This status document is being added in a subsequent documentation-only commit; its own final branch SHA is reported in the handover message.
 
-## Current author-review files
+## Direct GitHub files
 
 - [Manuscript TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Manuscript_1008.tex)
 - [Manuscript PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Manuscript_1008.pdf)
 - [Marked-up manuscript](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Marked-up_Manuscript_1008.pdf)
-- [Supplement TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Supplementary_1008.tex) and PDF
-- [Reviewer response](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Response_to_Reviewers_1008.md)
-- [Change log](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/01549_TO_1008_CHANGELOG.md)
-- [Review package index](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/REVIEW_PACKAGE_INDEX.md)
+- [Supplement TeX](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Supplementary_1008.tex) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Supplementary_1008.pdf)
+- [Reviewer response](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Response_to_Reviewers_1008.md) and [PDF](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/Response_to_Reviewers_1008.pdf)
+- [01549 to 1008 change log](https://github.com/Blues-berry/MVPainter/blob/main/1008/submission_1008_author_review/01549_TO_1008_CHANGELOG.md)
 - [Reviewer reassessment](https://github.com/Blues-berry/MVPainter/blob/main/1008/audits/01549_REVIEWER_REASSESSMENT.csv)
+- [Branch/file correspondence](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/MERGED_BRANCH_FILE_CORRESPONDENCE.csv)
+- [Local staged-file disposition](https://github.com/Blues-berry/MVPainter/blob/main/1009/main_consolidation/STAGED_7230_FILES_DISPOSITION.csv)
 
-Links become available after the normal push of this reviewed main candidate.
+## Integrity
+
+- Manuscript SHA-256: `6767189865c00b6cb90867c4428ff921a2d2c2fa6eb03fc9fc705604ef1e2525`
+- Manuscript PDF SHA-256: `65e950d0457199d1bac0c88f4b455f61f70a38f12159fbdad9f5bb5941ccdc6e`
+- Marked-up PDF SHA-256: `9efec4f36001d485719edc57369fc8a280e74b1f030fae1618c65cc061808a0b`
+- Supplement TeX SHA-256: `2a92459d9a43e6d4222a5f41d0809670c6822feec9db325e99478f086a69549f`
+- Response SHA-256: `5c6aeead0be2a4c20eedb19fdd3b996a78e71d3d53a7bf423ae01ed56acfc9aa`
+- LaTeX source ZIP SHA-256: `d6cae77abcba75fa9b3617e953784ee813dbbf2160a7fd5f0c1f86a04c470401`
+- Timestamped local author-package backup: `/4T/MV-Painter-main-consolidation-20261009/author_review_backup_20261009T042335Z/` (checksum verified).
+
+## Open review boundaries
+
+Fresh C supports a matched image-space comparison, not baked texture/seam/PBR quality or human preference. The N=20 unseen-view result remains small and mixed; cross-backbone results are interface probes. CAI optimality is withdrawn, and TCAS is not claimed to be universal or dose-independent. See the reviewer response and evidence matrix for the remaining scope limits.
+
+The package is ready for author review. This is not `SUBMISSION_APPROVED`, and no journal submission was made.

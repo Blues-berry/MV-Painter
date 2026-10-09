@@ -19,7 +19,7 @@
 
 - The shell has no `code`/`code-insiders` executable, and this app exposes no tool that switches the external Trae/VS Code folder. Therefore `EDITOR_ROOT_SWITCH_VERIFIED=NO`.
 - To make `/4T/MV-Painter-main` the open editor folder, use the editor's **Open Folder** action and select that exact path. Keep the current old window open until the new root is visible and on branch `main`; then use only the new root for future edits.
-- The source files and PDFs in the main worktree are ready. Future paper edits must append UTC timestamp and SHA-256 rows to `1008/MANUSCRIPT_REVISION_INTEGRITY.csv`; update the build and delivery reports in the same commit.
+- The first content commit `14ff9472df0281267c966b29210d63297ccfcfd7` has been pushed to private main and the author-package file hashes were verified against remote. Future paper edits must append UTC timestamp and SHA-256 rows to `1008/MANUSCRIPT_REVISION_INTEGRITY.csv`; update the build and delivery reports in the same commit.
 
 ## Remote handover
 

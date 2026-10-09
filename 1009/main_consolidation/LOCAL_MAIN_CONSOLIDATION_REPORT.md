@@ -4,7 +4,7 @@
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  
 **Private main baseline:** `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`  
-**Publication state:** candidate prepared; normal push and remote verification are the final delivery gate.
+**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; remote SHA-256-matched on 2026-10-09T04:26:29Z UTC.
 
 ## Result
 
@@ -31,5 +31,8 @@ The official 01549 source remains immutable at `1008/manuscript/source_01549/fin
 - `origin` and `upstream` remain read-only; only private `mvpainter` is authorized for a normal push. No force-push, reset, merge, public upload, or source-baseline modification was performed.
 
 ## Delivery status
+
+The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The delivery-status document records the author-review links and content commit; the current final branch SHA is reported after the status-only update is pushed.
+
 
 `AUTHOR_REVIEW_READY`. This is not `SUBMISSION_APPROVED`; author sign-off is still required before journal submission.
