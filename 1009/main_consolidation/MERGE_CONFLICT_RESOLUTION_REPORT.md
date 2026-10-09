@@ -62,3 +62,15 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Code conflict: `NO_CONFLICT`. No application code behavior was changed; included analysis scripts remain report-scoped.
 - Paper conflict: `NO_CONFLICT`. The active 1008 text and package were not overlaid. The later human-study summary remains pending its dedicated branch audit.
 - Actual Git conflicts resolved: 0.
+
+
+## codex/evidence-closure-audit-20261005
+
+- Git conflict status: NO_CONFLICT. No complete merge or cherry-pick was executed, so there were no Git conflict files.
+- Scientific-claim reconciliation:
+  - Source report’s endpoint-matched-linear equivalence claim was excluded; active 1008 says no equivalence margin was established.
+  - Source report’s additive true-global mechanism wording was excluded; current dose/cap evidence does not isolate an additive causal decomposition.
+  - Source unified-bake seam claim was excluded; main retires the historical seam measure and does not claim a seam improvement.
+  - The texture-boundary measurements were independently reaggregated and selectively retained. Source decision report’s “10/10 Holm rejected” is corrected to 9/10; the FG-LPIPS/coverage test has adjusted p=0.050795.
+- The H5 protocol file predates the archived result-bundle commit, while current main’s multiplicity-lock record labels the family lock retrospective after prior exposure. This is an evidence-status discrepancy, not a merge conflict; the conservative main status remains in force pending reconciliation.
+- No active manuscript or response file conflict was created or resolved. The selected bundle records direct paper relevance without editing TeX.

@@ -80,3 +80,12 @@ No main text, Supplement, response, figure, table, bibliography, or canonical pa
 The updated readiness note summarizes a 37-valid-response human analysis with no Holm-adjusted endpoint. Its source, execution deviations, and data-governance limits remain for the separate human-study branch audit before any text change. The selected evidence package contains no participant-level rows.
 
 The active manuscript, Supplement, and response SHA-256 remain at their Phase A values; all 48 canonical package checksums pass. No manuscript, figure, table, reference, or submission package file changed, so no editor compile or package rebuild was triggered. `SUBMISSION_APPROVED=NO`; no journal submission was made.
+
+
+## codex/evidence-closure-audit-20261005
+
+PAPER_IMPACT=DIRECT. The archived branch contains a Fresh Confirm 300 LLH−GFL failure/applicability analysis. The active manuscript search found no matching report of the specific GT-HF-energy association or Q1-to-Q3/Q4 reversal; the reviewer evidence matrix’s Fresh Confirm B descriptor entry is a separate N=150 cohort and is not a substitute. The current main C13 evidence matrix already summarizes the Fresh Confirm 300 boundary, but the archived paired data and protocol inputs were absent from the compact release.
+
+The result was selectively added as an auditable 300-row table and CPU analysis bundle. It supports a scoped applicability limitation. Do not import the source report’s “all ten Holm tests rejected” statement: corrected reaggregation gives 9/10 and an adjusted p=0.050795 for FG-LPIPS versus coverage. The protocol timing also remains qualified by the current main retrospective family-lock status.
+
+No main text, Supplement, response letter, figure, reference, or submission package file changed. Active SHA-256 values remain manuscript dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4, Supplement 59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed, and response 1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb; the submission directory verifies 48/48. No LaTeX rebuild was triggered because no TeX changed. SUBMISSION_APPROVED=NO.
