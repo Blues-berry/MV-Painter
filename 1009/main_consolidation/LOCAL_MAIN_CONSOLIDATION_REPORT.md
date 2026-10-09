@@ -104,7 +104,7 @@ The 13 non-main trees contain 1,452 untracked status files totaling 430,603,823 
 
 At this pre-commit capture, `/4T/MV-Painter-main` had 0 staged paths, 42 tracked worktree changes, and 9 untracked files awaiting the three authorized commits. Before those commits, local main and live `mvpainter/main` were both `7397fca31998901ca6048375f0e96ffb4a42e5e7`. The editor's open folder remains unverifiable; `/4T/MV-Painter-main` is still the only designated daily editing directory.
 
-The separate B2 raw-source embedding proposal has three launch attempts from a concurrent workflow. All stopped before diffusion generation: cumulative generation calls 0, prediction PNGs 0. Attempt 03 loaded the model and LPIPS evaluator before failing the first object's embedding-shape check. No Fresh B predictions or metrics were read; the proposal remains unvalidated and did not change the paper. The separate r1color campaign branch was pushed to its `origin` remote by that concurrent workflow; this task did not initiate or alter that push, and its files remain outside `mvpainter/main` pending author review.
+The separate B2 raw-source embedding proposal had three earlier launch attempts logged as stopping before diffusion generation. After that snapshot, a concurrent workflow added an `attempt_04` status directory and files named for B2 evidence, reconstruction, and results. This audit checked only paths, Git status, and hashes; it did not open the contents, images, metrics, or verdict, so the current call count and outcome remain unverified. These new files remain outside `mvpainter/main`. The separate r1color campaign branch was pushed to its `origin` remote by that concurrent workflow; this task did not initiate or alter that push, and its files remain pending author review.
 
 
 ### Final authorized main and 1008 delivery
@@ -118,3 +118,13 @@ The three requested content commits were published normally and in order to the 
 After the package push, local `main` and live `mvpainter/main` both resolved to `b50b9cca3f7332d18c36159e274538f4de88ab94`; the worktree was clean. No other remote was updated by this task. The package contains 47 files, its 46 manifest payload entries and 47 SHA-256 records passed verification, and the 44-member LaTeX source ZIP passed CRC. PDF page counts are 13 (manuscript), 11 (Supplement), 5 (response), 13 (marked-up manuscript), and 18 (combined convenience PDF). The administrative attachments remain `DRAFT`; no journal upload occurred and `SUBMISSION_APPROVED=NO`.
 
 This entry records the verified package-delivery SHA immediately before a documentation-only update to this report. The exact current SHA containing this report update is stated in the task completion record.
+
+
+### 2026-10-09 post-delivery B2 inventory follow-up (06:14:21 UTC)
+
+After the verified package push, a concurrent workflow added more status paths in the retained r1color worktree, including an `attempt_04` directory and B2 evidence/reconstruction/result-named files. The count is now 1,652 hashed non-main status paths across 14 registered worktrees and 28 local branch refs; 1,462 are untracked, totaling 433,092,188 bytes. All current non-main paths and hashes are in `LOCAL_CHANGE_SOURCE_MANIFEST.csv`; dispositions and per-worktree staged/unstaged/untracked counts are in `FINAL_LOCAL_CHANGE_DISPOSITION.csv` and `WORKTREE_DISPOSITION.csv`. No result content, metrics, images, or verdict from these new B2 files was opened. The current B2 call count and outcome remain unverified, so none is used in the manuscript or acceptance claims. This note supersedes the prior three-attempt-only status for the later r1color activity.
+
+At this snapshot the active main worktree was at commit `a813ffee5f2a4a354e28e831dbd1f0066c35ad8c`, and live `mvpainter/main` matched it before the current report/package refresh. `/4T/MV-Painter-main` remains the designated daily editing directory; historical and experimental worktrees and both stashes remain preserved. The author-review package remains `DRAFT`; no journal upload occurred and `SUBMISSION_APPROVED=NO`.
+
+
+At the 06:15:26 UTC hash refresh, two existing tracked r1color status files had changed after the 06:14:21 inventory. Their current sizes and SHA-256 values were refreshed in the manifests; their contents were not opened. No non-main status paths were added or removed in that refresh. The B2 result remains unreviewed.

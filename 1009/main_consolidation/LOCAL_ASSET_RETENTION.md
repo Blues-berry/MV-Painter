@@ -1,30 +1,30 @@
 # Local asset retention and worktree protection
 
-**Captured:** `2026-10-09T06:06:08Z` UTC
+**Captured:** `2026-10-09T06:15:26Z` UTC
 **Active worktree:** `/4T/MV-Painter-main`
 **Registered worktrees:** 14
 **Local branch refs:** 28
-**Hashed non-main status paths:** 1,636
+**Hashed non-main status paths:** 1,652
 **Comparison base:** intake main `7397fca31998901ca6048375f0e96ffb4a42e5e7`.
 
 ## Untracked source assets retained in place
 
 | Source worktree | Files | Bytes | Retention note |
 |---|---:|---:|---|
-| `/4T/CXY/MV-Painter` | 581 | 236,808,554 | V3 experiment history and source materials remain in place; the curated frozen snapshot is already in main. |
-| `/4T/CXY/MV-Painter-01549-surgical-20261008` | 18 | 28,868,139 | Surgical manuscript drafts and local evidence remain preserved for historical review. |
+| `/4T/CXY/MV-Painter` | 581 | 236,808,554 | V3 experiment history remains local; curated frozen snapshot is in main. |
+| `/4T/CXY/MV-Painter-01549-surgical-20261008` | 18 | 28,868,139 | Surgical manuscript drafts and local evidence remain preserved. |
 | `/4T/CXY/MV-Painter-1008` | 1 | 776,861 | Historical figure/material remains preserved in its source tree. |
-| `/4T/CXY/MV-Painter-r1color` | 852 | 164,150,269 | Color-cast diagnostics and B2 attempt records remain local; no generated prediction PNGs were produced by B2. |
-| **Total** | **1,452** | **430,603,823** | Current non-main untracked status files only. |
+| `/4T/CXY/MV-Painter-r1color` | 862 | 166,638,634 | Color-cast diagnostics and new B2 attempt/evidence files remain local; contents were not evaluated. |
+| **Total** | **1,462** | **433,092,188** | Current non-main untracked status files only. |
 
-## Verified ignored campaign outputs
+## Previously verified ignored campaign outputs
 
-- The r1color campaign retains 76 local-only image/intermediate files (19,944,261 bytes), each verified against `1009/engineering/color_cast_repair_v2/LOCAL_ONLY_SHA256SUMS.txt`. They remain on disk under the branch-local ignore policy. Other ignored data trees were not re-enumerated.
-- The campaign’s 108 source/protocol/result files are committed on r1color and mirrored on its `origin` branch by a concurrent workflow. This task did not initiate that push or merge those files into `mvpainter/main`; their remote placement is flagged for author review.
+- The 76 previously inventoried r1color image/intermediate files (19,944,261 bytes) remain on disk and matched their recorded hashes at the prior check. Newly appeared B2 paths were not inspected for ignored outputs or visual quality.
+- The 108 source/protocol/result files are committed on r1color and mirrored to its `origin` branch by a concurrent workflow. This task did not initiate that push or merge those files into `mvpainter/main`; remote placement remains for author review.
 
 ## Protection decisions
 
-- No local source tree, ignored prediction image, stash, or branch was removed/reset by this consolidation. No forced worktree operation or destructive Git maintenance was run.
-- Current dirty/untracked paths are SHA-256 inventoried; the 108 branch-committed files and 76 ignored local images have separate dispositions.
-- The C1 candidate failed its locked visual repair gate. Three B2 attempts stopped before diffusion generation (0 calls, 0 prediction PNGs); the third loaded the model before a shape guard failed. No Fresh B predictions or metrics were read.
-- Both stashes remain untouched. The D19 note references an unavailable result directory; its numbers were not promoted.
+- No local source tree, ignored prediction image, stash, or branch was removed/reset. No destructive Git maintenance was run.
+- All current non-main status paths are SHA-256 inventoried; the 108 branch-committed files and previously verified ignored images have separate dispositions.
+- New attempt_04/B2 evidence paths remain unreviewed and local; no scientific result or repair claim was inferred from their presence.
+- Both stashes remain untouched; the D19 follow-up directory was unavailable at its stash base.
