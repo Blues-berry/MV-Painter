@@ -32,6 +32,15 @@ The private remote advertised the same `main` tip as local at the time of this c
 - LaTeX source ZIP SHA-256: `d6cae77abcba75fa9b3617e953784ee813dbbf2160a7fd5f0c1f86a04c470401`
 - Timestamped local author-package backup: `/4T/MV-Painter-main-consolidation-20261009/author_review_backup_20261009T042335Z/` (checksum verified).
 
+
+## Consolidated V3 reproduction assets
+
+- [Curated release README](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/README.md)
+- [Frozen runner provenance](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/protocol/RUNNER_PROVENANCE.md)
+- [Per-file SHA-256 inventory](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/ASSET_HASHES.csv)
+
+The separately scoped V3 package contains 78 files totaling 3,972,857 bytes, including 20 per-object metric CSVs totaling 3,465,132 bytes. It contains no JSON, generated image archive, weights, or cache. The core evidence table rebuilt byte-identically, and the frozen B paired comparison returned 150 matched objects. The last verified private main tip before this package update was `bbd66249360d1613c22c6d5f86605e2a8caa6041`; the subsequent update is limited to this research snapshot and its integrity/branch ledgers.
+
 ## Open review boundaries
 
 Fresh C supports a matched image-space comparison, not baked texture/seam/PBR quality or human preference. The N=20 unseen-view result remains small and mixed; cross-backbone results are interface probes. CAI optimality is withdrawn, and TCAS is not claimed to be universal or dose-independent. See the reviewer response and evidence matrix for the remaining scope limits.

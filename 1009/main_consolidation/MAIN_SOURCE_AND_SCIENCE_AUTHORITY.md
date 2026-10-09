@@ -1,6 +1,6 @@
 # Main source and scientific authority
 
-**Captured:** 2026-10-09T04:29:56Z UTC  
+**Captured:** 2026-10-09T04:37:09Z UTC  
 **State:** `AUTHOR_REVIEW_READY`; not submission-approved.
 
 ## Version authority
@@ -33,3 +33,7 @@ The curated main source uses per-wrapper state for the reference-only correction
 ## Repository handover state
 
 Private `mvpainter/main` is verified at `b02a64102a40c83370902486d47b1ffad217a49e`. The active daily working tree is `/4T/MV-Painter-main`. The editor UI folder switch has not been verified, so this remains an operational handoff item. Nonessential JSON and ignored research outputs remain local; no paper content changed in this status update.
+
+## V3 frozen reproducibility snapshot
+
+`1009/evidence/scientific_validation_v3/reproducibility_release/` now contains the exact frozen V3 code/data subset separately from active `MVPainter/` code. The runner and source files are SHA-verified against the original text provenance; 20 A2/B condition CSVs and the ordered object lists are included. A clean-copy analysis rebuild reproduced `outputs/core_evidence_table.md` byte for byte and the paired LLH−LFM-EXACT analysis used 150 matched objects. The snapshot is limited to the A2 map and selected B contrasts, not the full B campaign. No new GPU generation was run.

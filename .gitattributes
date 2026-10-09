@@ -10,3 +10,9 @@
 # Preserve whitespace in the authenticated publisher template assets.
 1008/manuscript/source_01549/*.cls whitespace=-blank-at-eol
 1008/manuscript/source_01549/*.sty whitespace=-blank-at-eol
+
+# Preserve byte-exact whitespace in the frozen V3 source snapshot.
+1009/evidence/scientific_validation_v3/reproducibility_release/MVPainter/** whitespace=-trailing-space,-blank-at-eof
+1009/evidence/scientific_validation_v3/reproducibility_release/geotex/** whitespace=-trailing-space,-blank-at-eof
+1009/evidence/scientific_validation_v3/reproducibility_release/scripts/* whitespace=-trailing-space,-blank-at-eof
+1009/evidence/scientific_validation_v3/reproducibility_release/LICENSE whitespace=-trailing-space,-blank-at-eof

@@ -1,6 +1,6 @@
 # Local data retention manifest
 
-**Captured:** 2026-10-09T04:29:56Z UTC
+**Captured:** 2026-10-09T04:37:09Z UTC
 
 ## Byte-preserved staged snapshot
 
@@ -21,7 +21,7 @@
 | Historical/deprecated archives | 26 | Retained in branch history/byte backup.
 | Other reviewed reports/protocol/code | 158 | Selected items copied only when present in the curated manifest.
 
-The exact local-only split is in the CSV, not inferred from file extensions. One redundant `BASELINE_SOURCE_LOCK.json` remains in the worktree and is explicitly excluded; a text SHA-256 lock is used in the source package.
+The exact local-only split is in the CSV, not inferred from file extensions. The V3 release source and selected metrics have exact path/hash entries; runner/runtime JSON and generated JSON outputs remain local, with only relevant provenance summarized in Markdown. One redundant `BASELINE_SOURCE_LOCK.json` remains in the worktree and is explicitly excluded.
 
 
 ## Timestamped author-package backup

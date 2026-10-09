@@ -1,6 +1,6 @@
 # Local-to-private-main consolidation report
 
-**Captured:** 2026-10-09T04:29:56Z UTC  
+**Captured:** 2026-10-09T04:37:09Z UTC  
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  
 **Private main baseline:** `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`  
@@ -16,7 +16,11 @@
 
 ## Branch/file correspondence
 
-See `MERGED_BRANCH_FILE_CORRESPONDENCE.csv` and `MAIN_INTEGRATION_COPY_MANIFEST.csv`. Their source/destination paths, source and destination SHA-256, branch tip, disposition, and reasons are recorded. Totals: 40 source paths copied from staged V3, 7046 kept local, 80 historical-only, and 64 not selected.
+See `MERGED_BRANCH_FILE_CORRESPONDENCE.csv` and `MAIN_INTEGRATION_COPY_MANIFEST.csv`. Their source/destination paths, source and destination SHA-256, branch tip, disposition, and reasons are recorded. Final 7,230-row disposition after the curated V3 release was added: 105 merged to main, 7026 kept local, 77 historical-only, and 22 rejected with reason.
+
+## V3 reproducibility snapshot
+
+The previous V3 release README referred to per-object data and source files that were absent from the curated main tree. The gap is now closed in `1009/evidence/scientific_validation_v3/reproducibility_release/`: a frozen source snapshot, runner, analysis scripts, tested requirements/configuration, ordered UID lists, 20 per-object metric CSVs (3,465,132 bytes), protocol/provenance text, license, and SHA-256 inventory. Total package payload is under 4 MB; no JSON, generated RGB/GLB, checkpoint, cache, participant record, or residual dump was added. The source snapshot remains separate from the current active implementation. Hash checks passed for all 41 source manifest entries; the A2 evidence table rebuilt byte-identically and the B paired analysis returned N=150 with no unmatched objects. No GPU generation was run. A narrow `.gitignore` exception explicitly admits only these frozen V3 CSV/UID inputs and the runner’s dataset loader; other data directories and JSON remain ignored/local.
 
 ## Paper chain and build
 
@@ -36,7 +40,7 @@ The audited inventory contained 17 worktrees. Three clean worktrees were unregis
 
 ## Delivery status
 
-The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The current final branch SHA is `b02a64102a40c83370902486d47b1ffad217a49e`. Three worktrees with no tracked, untracked, or ignored files were then unregistered with ordinary (non-force) removal; their branch refs remain. Other dirty or ignored-data worktrees remain registered and preserved. The editor could not be switched through the available CLI, so `EDITOR_ROOT_SWITCH_VERIFIED=NO`; the author must open `/4T/MV-Painter-main` in the editor to complete the UI handoff.
+The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The current final branch SHA is `b02a64102a40c83370902486d47b1ffad217a49e`. Three worktrees with no tracked, untracked, or ignored files were then unregistered with ordinary (non-force) removal; their branch refs remain. Other dirty or ignored-data worktrees remain registered and preserved. The editor could not be switched through the available CLI, so `EDITOR_ROOT_SWITCH_VERIFIED=NO`; the author must open `/4T/MV-Painter-main` in the editor to complete the UI handoff. The separate R1 color-cast intervention queue remains incomplete in its local worktree; only the already-frozen diagnostic evidence is authoritative in main.
 
 
 `AUTHOR_REVIEW_READY`. This is not `SUBMISSION_APPROVED`; author sign-off is still required before journal submission.

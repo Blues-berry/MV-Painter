@@ -16,6 +16,17 @@ checkpoints/
 # Training data
 data/
 
+# Frozen V3 reproduction inputs only (compact metrics and the model's dataset loader).
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/campaign_A2/
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/campaign_A2/a_*_per_object_metrics.csv
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/campaign_B/
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/campaign_B/*_per_object_metrics.csv
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/FRESH_CONFIRM_300.txt
+!1009/evidence/scientific_validation_v3/reproducibility_release/data/FRESH_CONFIRM_B_150.txt
+!1009/evidence/scientific_validation_v3/reproducibility_release/MVPainter/src/data/
+!1009/evidence/scientific_validation_v3/reproducibility_release/MVPainter/src/data/mvpainter_dataset.py
+
 # Logs and outputs
 logs/
 MVPainter/logs
