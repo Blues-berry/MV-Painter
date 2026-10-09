@@ -296,3 +296,12 @@
 #### 本次状态刷新
 
 处理前 main 为 `63abee2e9bfb9f0b6076e01240e0e65ecb94db42`，证据内容提交后为 `d51834ee65f601d6045dfff3254c0750c666c16b`。读取 `mvpainter/main` 并执行只读远端查询得到的实际私有远端 main 均为 `52a1816e79da82ea0c341416cd3a9bfd4695e7ac`；补充任务记载的 `93e079ac201d049d9bf36950c7f130ad369008ab` 存在于本地历史且是当前本地 main 的祖先，但当前远端引用没有指向它。远端 `52a1816e` 是 `93e079ac` 的祖先，也是本地 main 的祖先；当前 main 可正常快进远端，但本轮尚未推送。后续按分组收束要求再同步。未删除旧 `gc.log`、未运行 prune/GC；Git 自动维护提示未导致后台 GC 进程。
+
+
+### 21. backup/geotex-before-cleanup
+
+- 归档来源 HEAD：`61f628bb6a137abab3856a7232cd953770755870`；父提交 `0f892f385c9c5b773e6de341cfc55881f4561816`；归档引用 `refs/archive/codex/main-unification-20261009/local/heads/backup/geotex-before-cleanup`。HEAD 是处理前 main `f959905a90019def362a2a097a75828050d13f0f` 的祖先；merge-base 等于来源 HEAD，main 比来源多 73 个提交，来源独有提交为 0。没有该 HEAD 的注册工作树，因此没有可恢复的未提交/WIP 状态；归档引用和原始数据位置均保留。
+- 来源旧树与当前 main 有 1,310 个路径差异（禁用 rename 检测：A=156、M=5、D=1,149），但这是祖先快照与后续 main 树的时间差，不是来源分叉改动。来源独有 Git 对象为 0；没有额外历史 blob 需要导入。旧 GeoTex/PBR 论文与图件、旧训练/评测脚本和配置以及过时源码没有从旧快照重新覆盖当前树。
+- 代码核对：来源快照的 `model_unet_geotex.py` / `mvpainter_pipeline.py` 尚无 reference-write 阶段的 skip 状态控制。main 后续版本改为每个 wrapper 独立保存状态，并在 `finally` 中恢复；这一后续实现已经在当前 main，故没有代码补丁需要选择性导入。该具体来源 HEAD 本身没有类级共享 `_skip_correction` 状态；勿与 V3 复现包中另存的旧代码快照混为一谈。
+- 决定：`ALREADY_IN_MAIN`；不执行 merge/cherry-pick，不生成空提交。报告前后 main 内容 SHA 均为 `f959905a90019def362a2a097a75828050d13f0f`。实际 Git 冲突数为 0，记为 `NO_CONFLICT`；没有声称冲突已解决。
+- `PAPER_IMPACT=INDIRECT`：来源是 GeoTex 实现历史，但不含当前 1008 论文特有的代码或证据改动。当前稿件已把 Fresh C 限定为其冻结 runner/checkpoint 下的受控重训，并明确不把它说成对历史 01549 Table 4 的精确复现；现有 runner/身份审计也将原实现等价性列为部分或未验证。主文、Supplement、Response、图表和投稿包均未改；源文件 SHA 仍为 Phase A 值，投稿包 48/48。无 TeX 变化，不需重编译；未运行模型/GPU。

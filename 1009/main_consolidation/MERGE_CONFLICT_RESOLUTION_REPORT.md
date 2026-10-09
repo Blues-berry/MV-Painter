@@ -205,3 +205,10 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - 完整历史在预合并门禁被拒绝；没有运行 merge 或 cherry-pick。来源删改当前 `.gitignore`/`.gitattributes` 并删除 1008/1009 活动树。实际 Git 冲突为 `NO_CONFLICT`，0 个文件；没有声称“冲突已解决”。
 - 代码差异是在预审中裁决：来源的类级 `_skip_correction` 与无 `finally` 清理被排除，main 的实例级恢复保留。这不是合并冲突。
 - 旧候选正文、Supplement、回复和投稿树未合入；选择性新增的严格 276 证据直接支持现有 Supplement S7。没有论文 Git 冲突，也没有修改活动 TeX。
+
+
+## backup/geotex-before-cleanup
+
+- Merge decision: `ALREADY_IN_MAIN`. Source HEAD `61f628bb6a137abab3856a7232cd953770755870` is an ancestor of current main, with zero source-only commits; no merge or cherry-pick was run.
+- Code comparison: this exact source snapshot has no reference-write skip-state control. Current main descendants use per-wrapper state and restore it in `finally`. The source HEAD does not contain the class-level shared flag found in a separate V3 reproduction snapshot.
+- Code conflict: `NO_CONFLICT`; paper conflict: `NO_CONFLICT`. No merge was attempted, so zero actual conflict files were created or resolved. No source or paper content was selected.
