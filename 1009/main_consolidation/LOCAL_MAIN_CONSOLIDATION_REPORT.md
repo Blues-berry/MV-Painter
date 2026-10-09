@@ -128,3 +128,27 @@ At this snapshot the active main worktree was at commit `a813ffee5f2a4a354e28e83
 
 
 At the 06:15:26 UTC hash refresh, two existing tracked r1color status files had changed after the 06:14:21 inventory. Their current sizes and SHA-256 values were refreshed in the manifests; their contents were not opened. No non-main status paths were added or removed in that refresh. The B2 result remains unreviewed.
+
+### r1color ignore-state change observed after the final delivery
+
+A later read-only check found that r1color advanced from `bd9d436c2f13c00de36a64cb42e807da558ef5c4` to `32bb9106fa0ea6199e6a16f9279343c0b21581a6` in two commits by a concurrent workflow; its `origin` ref now matches the new HEAD. Eighteen paths changed, including six paths new to the committed-file ledger. I did not initiate the push or inspect the commit contents. A `.gitignore` change caused 856 previously untracked files (166,583,423 bytes) to test as ignored. Every path still exists and matches its previous SHA-256. They are recorded as ignored local assets, not deleted or merged. The current call count and outcome of the B2 attempt/evidence files remain unreviewed.
+
+At the 06:20:44 UTC inventory, 797 current non-main Git status paths and 856 newly ignored, hash-preserved paths are recorded (1,657 manifest entries total). In the r1color worktree itself, 13 tracked paths remain modified and 6 paths remain untracked; the 856 ignored files are listed separately. The main consolidation report, package acceptance note, and manifests now reflect this state. Local `main` and `mvpainter/main` were both at `c910ded7aa80a6e601e1d5035f77e0b9218c7c06` before this follow-up update.
+
+
+### 2026-10-09 final concurrent-worktree snapshot (06:26:00 UTC)
+
+This inventory supersedes the earlier r1color status entries above. It records 779 current non-main Git status paths plus 856 paths that are now ignored but remain present and SHA-256 matched to the prior inventory, for 1,635 source-manifest entries. The 14 worktree status table and 28-ref branch table are refreshed. Current non-main untracked status totals are 601 files (266,455,082 bytes). The full local-change disposition has 1,831 rows: 117 `NEEDS_AUTHOR_DECISION`, 1,611 `ARCHIVED_LOCAL`, 76 `SUPERSEDED`, 26 `ALREADY_PRESENT`, and one `MERGED_MAIN`.
+
+The r1color branch moved from `bd9d436c2f13c00de36a64cb42e807da558ef5c4` to `32bb9106fa0ea6199e6a16f9279343c0b21581a6` in two concurrent commits and its `origin` ref matches that head. Eighteen paths changed; six are new to the branch-commit ledger. The content was not reviewed and remains `NEEDS_AUTHOR_DECISION`; this task did not push to that remote. Its committed ignore rules hide 856 prior files (166,583,423 bytes), all still present and hash-matched. The r1color worktree currently has one untracked path. B2 contents, metrics, images, and verdict remain unread, so the current call count and scientific outcome are not assessed.
+
+At this capture local main and live `mvpainter/main` were both `c910ded7aa80a6e601e1d5035f77e0b9218c7c06`, before this report/package follow-up. No experiment data was removed or uploaded. `SUBMISSION_APPROVED=NO`.
+
+
+### Final integrity audit (2026-10-09T06:30Z)
+
+The source inventory has 1,635 rows: all 1,537 present files match their recorded sizes and SHA-256 values, and the 98 tracked deletions remain absent as recorded. The 779 active non-main status paths match the live Git status and recorded worktree heads; all 856 ignored paths remain present and hash-matched. The source rows also match their counterparts in `FINAL_LOCAL_CHANGE_DISPOSITION.csv`.
+
+The 1008 package audit passed: all 46 manifest entries and 47 SHA-256 records verify, and the 44-member LaTeX source ZIP passes CRC. PDF page counts are manuscript 13, Supplement 11, response 5, marked-up manuscript 13, and combined convenience PDF 18. The paper source did not change after the recorded clean build. Package state remains `DRAFT`; no journal upload occurred and `SUBMISSION_APPROVED=NO`.
+
+This audit was performed while local `main` and live `mvpainter/main` were both at `c910ded7aa80a6e601e1d5035f77e0b9218c7c06`, immediately before committing and normally pushing this final report/package refresh. No source worktree or retained local asset was deleted.
