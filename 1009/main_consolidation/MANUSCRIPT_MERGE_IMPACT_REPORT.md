@@ -147,3 +147,10 @@ No active manuscript, Supplement, response, figure, bibliography, or canonical s
 `PAPER_IMPACT=DIRECT`: the archived V3 snapshot adds the A3 condition-level rows that were missing from main's evidence tree but are needed to reproduce the interaction statistics already reported in the active 1008 Supplement. The retained CSVs validate the existing FG-LPIPS and FG-PSNR Wald values exactly to reported precision. They do not support a dose-independent interaction claim: current A3 classification limits remain deep confirmation, middle approximate diagnostic, and shallow stress-only.
 
 The active manuscript, Supplement, Response, figures, and canonical submission package did not change. Their SHA-256 values remain `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`, `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`, and `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb`; package checks remain 48/48. No TeX changed, so no LaTeX rebuild was needed. `SUBMISSION_APPROVED=NO`; no submission was made.
+
+
+## codex/cg-01549-surgical-revision-20261008 (private remote archive HEAD `dad08320625431acf439ed5bfb86c6a9252353a4`)
+
+`PAPER_IMPACT=DIRECT`: the selected A3b per-object rows and post-lock Fresh B Generic sensitivity rows provide direct source-level support for values already presented in the active Supplement. Reaggregation preserved the existing bounded-map and post-lock sensitivity interpretations; it did not establish equal-dose causality or independent confirmation. The source's older manuscript and response candidates were reviewed and left out.
+
+The activity manuscript, Supplement, response and canonical 1008 submission directory are unchanged. Main, Supplement, and response hashes still equal the Phase A values; the submission package verifies 48/48. Since no active TeX/figure changed, no LaTeX rebuild was required. `SUBMISSION_APPROVED=NO`; no push or journal submission occurred.

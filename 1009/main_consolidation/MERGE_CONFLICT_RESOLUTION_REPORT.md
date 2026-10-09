@@ -134,3 +134,11 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Paper conflict: `NO_CONFLICT`; no TeX, figure, response, bibliography, or submission file was merged. The new result is recorded as indirect paper impact and remains outside active 1008 claims.
 - Provenance caveat: source report claims the protocol lock predates R1 metrics, but Git first records both files in the same commit; the timing cannot be independently established from history. Accordingly, the result remains retrospective, not confirmed preregistered evidence.
 - Actual Git conflicts resolved: 0.
+
+
+## codex/cg-01549-surgical-revision-20261008 (private remote archive HEAD `dad08320625431acf439ed5bfb86c6a9252353a4`)
+
+- Full-history merge/cherry-pick attempted: no; it was rejected before execution due to the large legacy/generated tree and unsafe historical pipeline/ignore-rule changes.
+- Code source difference: the archived GeoTex candidate uses class-shared `_skip_correction` and removes per-instance state restoration in `finally`. Main's instance-local, exception-safe implementation was retained. This is a pre-merge code review decision, not a resolved merge conflict.
+- Paper source difference: historical manuscript/response candidates were inspected but not applied. The selected A3b and post-lock Generic rows validate results already in the current Supplement; no TeX or figure conflict was created.
+- Actual Git conflicts: `NO_CONFLICT`; 0 files created, resolved, or left unresolved. Fresh B evidence was added as a selective content commit, not through a synthetic merge.

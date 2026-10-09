@@ -52,6 +52,16 @@
 - 验证：source-ready 文档 git diff --check 通过；活动 TeX 与投稿包源文件 SHA 匹配；48/48 投稿包 SHA 校验通过。由于没有主文或补充材料进入 main，本分支不触发重编译。没有应用代码改动，无运行时测试。
 - 合并结果主内容 SHA：93e079ac201d049d9bf36950c7f130ad369008ab（报告提交会单独推进 main）。
 
+### 1A. codex/cg-01549-surgical-revision-20261008（私有远端归档 HEAD）
+
+- 来源 HEAD：`dad08320625431acf439ed5bfb86c6a9252353a4`；来源归档引用：`refs/archive/codex/main-unification-20261009/mvpainter/heads/codex/cg-01549-surgical-revision-20261008`。同名本地历史分支 HEAD 为 `06cac81de23988aba94b5d7bfeaca93f6785f370`，不是同一条历史，已在上一节单独审核。
+- `/tmp/MVPainter-cg01549-private-upload` 是干净的 detached worktree，停在该远端归档 HEAD；没有未提交的 tracked/untracked 改动。来源提交标题为 `docs(cg): record Fresh C figure revision delivery`。相对分支前 main `8f2282c12ec8a40af635d19f40eed92e45f520b4`，merge-base 为 `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`；来源有 155 个独有提交、1,329 棵树、23,853 个 blob，未压缩 blob 合计 2,993,693,628 bytes；22 个独有 blob ≥5 MiB，最大 76,043,516 bytes。树差异约 27,231 项（A=26,220、M=46、D=676、R=289）。
+- 整段历史不适合直接 merge：包含 25,376 项旧 `final/round2` 内容、旧投稿/论文候选、生成资产与归档快照。来源 `.gitignore` 会恢复大块旧 `final/` 树并削弱当前精确生成物规则，`.gitattributes` 也移除当前 PDF/PNG/ZIP 与冻结证据的精确规则。来源 GeoTex 候选把 `_skip_correction` 改为类级共享状态，并移除 pipeline 的实例逐项保存和 `try/finally` 恢复；异常或跨实例调用可泄漏状态。上述均在预合并检查中排除，不是实际 merge 冲突；没有启动整支 merge 试验。
+- 该来源含旧论文/回复候选，本轮不以候选覆写当前 1008。独有且有用的内容是 Fresh B A3b 每对象指标、对应 dose 行、Generic 扩展每对象指标、保存的分析 JSON 与协议/完整性门记录。已将 13 文件、约 3.41 MB 的紧凑包选择性纳入 `1009/evidence/branch_audits/cg_01549_surgical_remote_20261008/fresh_b/`，提交 `107e1aa8f89d048df11393085da2b8cc8b7e2b37`。主表基线及 `layer_llh` comparator 复用 main 已有的逐对象记录；已存在的 A3b texture-extension CSV 未重复复制。预测图、GLB、checkpoint、cache、residual render log、历史 PDF 和完整 archive 均未导入。
+- 复核结论保持边界：A3b 冻结的 residual-only calibration 未达到 ±20% 平衡目标，因此只是 bounded intervention map，不是 equal-dose/dose-normalized 结果；Generic 扩展复用已开放的 Fresh B cohort，属于 post-lock sensitivity，不是独立确认。抽取后 15 个 A3b 条件和 8 个 Generic 条件各覆盖相同的 150 个 UID，FG-PSNR/FG-LPIPS 均有限；main 的 baseline/comparator 行与来源 ledger 逐字段相同。重聚合 30 个主要均值对比与保存 JSON 的最大绝对差为 `2.61e-16`；A3b 的 FG-LPIPS `W=225.015, Holm p=5.37e-43`，FG-PSNR `W=525.700, Holm p=3.43e-107`，与当前 Supplement 一致。协议先于数据的顺序有 Git 记录支持，但 Git 不能证明仓库外的实际事件时间；早期 row exposure 和停止的重复启动保留为局限。
+- 决定：`SELECTIVE_CONTENT_MERGE; FULL_MERGE_REJECTED; SOURCE_READY`。没有执行 Git merge/cherry-pick，实际冲突为 `NO_CONFLICT`，0 个文件。`PAPER_IMPACT=DIRECT`：新增 per-object 证据直接支持当前 Supplement 已有 A3b 与 post-lock Generic 结果，但没有更改活动论文、图表、回复信或投稿目录；活动主文、Supplement、Response SHA 仍等于 Phase A 值，投稿包 SHA256SUMS 为 48/48。没有 TeX 修改，所以没有触发 LaTeX 重编译或投稿包重建。`SUBMISSION_APPROVED=NO`，没有推送。
+- 选择性内容提交后 main 为 `107e1aa8f89d048df11393085da2b8cc8b7e2b37`；审计记录提交会另行推进 main。
+
 
 ### 2. codex/cg-01549-unified-20261009
 
