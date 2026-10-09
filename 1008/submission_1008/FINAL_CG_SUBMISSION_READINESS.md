@@ -4,7 +4,8 @@
 **Package state:** `AUTHOR_REVIEW_READY / DRAFT`  
 **Journal submission:** not made  
 **Submission approval:** `NO`  
-**Starting main baseline:** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`; final package commit and private-remote parity will be recorded in the completion handoff.
+**Starting main baseline:** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`.  
+**Package-content delivery commit:** `41ba80ff18e2953e1e2e06e35e500a47f0dc80a7`, pushed by normal fast-forward and verified equal to `mvpainter/main` at `2026-10-09T15:17:51Z`. This readiness snapshot is followed by a package/status refresh commit; its resulting `main` tip is reported in the completion handoff.
 
 ## Final scientific narrative
 
@@ -39,7 +40,7 @@ Exact verbatim authentication of the second-round review source remains incomple
 
 ## Git and branch handling
 
-The task began on `main` at `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`, equal to the configured private remote at initial inspection. The final evidence/package commit will be pushed normally to `mvpainter/main` and verified against `git ls-remote`; its resulting SHA is recorded in the completion handoff. No force-push, history rewrite, raw-data copy, or journal upload is part of this delivery.
+The task began at the stated baseline. Package content commit `41ba80ff18e2953e1e2e06e35e500a47f0dc80a7` was pushed normally to `mvpainter/main`; local and remote SHAs matched at the recorded verification time. A package/status refresh follows in `main`, updating this readiness file, package manifest, and checksums; its exact final tip is reported in the completion handoff. No force-push, history rewrite, raw-data copy, or journal upload is part of this delivery.
 
 The existing cross-backbone branch is `codex/next-review-response-20260930`. The color audit branch is `codex/r1-color-cast-repair-v2-20261009` in its existing separate worktree/origin history; no new color-repair experiment was started or pushed. `gh-pages` retains its publishing purpose. No branches or data-bearing worktrees were deleted in this paper handoff.
 

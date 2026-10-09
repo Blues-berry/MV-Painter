@@ -4,7 +4,8 @@
 **状态：** `AUTHOR_REVIEW_READY / DRAFT`  
 **已向期刊提交：** 否  
 **投稿批准：** `SUBMISSION_APPROVED=NO`  
-**main 起始基线：** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`（收尾提交与 mvpainter/main 同步情况将在完成交付后核对并报告）
+**main 起始基线：** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`  
+**投稿包内容提交：** `41ba80ff18e2953e1e2e06e35e500a47f0dc80a7`，已正常快进推送；15:17:51 UTC 本地与 `mvpainter/main` SHA 一致。随后又重建本地投稿包并刷新 readiness、manifest 与 checksums；最终 main SHA 见交付回报。
 
 ## 本轮完成
 
