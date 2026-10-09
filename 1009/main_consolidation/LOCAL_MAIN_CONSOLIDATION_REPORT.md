@@ -61,3 +61,47 @@ The exact author-package files and disposition report were fetched from private 
 | `SUBMISSION_APPROVED` | NO | Author approval remains required. |
 
 `AUTHOR_REVIEW_READY`. This is not `SUBMISSION_APPROVED`; author sign-off is still required before journal submission.
+
+
+## 2026-10-09 final local-change and 1008 package closeout
+
+- Intake main and mvpainter/main were both `7397fca31998901ca6048375f0e96ffb4a42e5e7` before this task’s edits; the private remote is `mvpainter` only.
+- Current registry snapshot: 14 worktrees and 28 local branch refs. The active main worktree was clean at intake; it now contains only the planned 1008 revision/package and closeout reports before the three commits.
+- The intake snapshot contained 1,671 non-main status entries. The source manifest was refreshed after an externally launched r1color Phase B run completed; it now contains 1,762 hashed non-main status paths, compared against intake main, including the added local run outputs. Ignored files are not included.
+- 1,584 untracked files (452,803,353 bytes) across source trees remain in place. Detailed per-tree worktree counts and staged/unstaged/untracked status are refreshed in `WORKTREE_DISPOSITION.csv`; dispositions are in `FINAL_LOCAL_CHANGE_DISPOSITION.csv`.
+- Two stashes were inspected per path and remain intact. 6 stashed file changes have patch/content hashes. The D19 note references follow-up output not present under its named path at the stash base; that result was not treated as evidence.
+- Current paper/source/package outputs and the reviewer response have been rebuilt and checked; no experiment or bulk asset was uploaded. See `1008/submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md`, `1009/main_consolidation/COLOR_REPAIR_CAMPAIGN_REVIEW.md`, and `1008/submission_1008/CAG_SUBMISSION_FINAL_ACCEPTANCE.md`.
+- The final pushed main SHA is reported at task completion; this snapshot is anchored to the pre-task intake main recorded above.
+
+
+### Refreshed source status at 2026-10-09T05:38:30Z
+
+- 1,762 current non-main status paths are hashed and individually disposed; 1,584 are untracked (452,803,353 bytes). The new Phase B run outputs are local-only.
+- The external Phase B process completed 64 generation calls on four prelocked development cases. It met the `a*` embedding-only directional threshold, but not `b*`; VAE-only did not pass. Two failure-enriched cases failed cache/recompute identity. A C1 candidate subsequently passed numeric means but failed the locked visual failure-case gate; Fresh B was not run, so the manuscript claim ceiling is unchanged.
+
+
+### Refreshed local inventory at 2026-10-09T05:45:56Z
+
+- Rechecked all 14 registered worktrees and 28 local branch refs against the retained intake-main baseline `7397fca31998901ca6048375f0e96ffb4a42e5e7`. The 13 non-main worktrees expose 1,769 current dirty/untracked status paths; all are individually SHA-256 inventoried and disposed. Four new r1color paths were added to the ledger and one source-view audit hash/size was refreshed.
+- Current retained untracked status files total 1,591 files (455,129,145 bytes) across source worktrees. The updated per-tree status counts, bytes, and dispositions are in `WORKTREE_DISPOSITION.csv`; ignored files remain on disk and outside this status-path total.
+- The additional Phase B comparison documents a cache-refresh effect in opposite directions on two failure examples, not a stable repair. The Phase C C1 visual gate remains failed; no Fresh B repair run or manuscript claim was added.
+- All 14 worktrees and 28 branch refs are retained in this snapshot. The only designated daily editing directory remains `/4T/MV-Painter-main`; editor-folder selection cannot be inspected.
+
+
+### Final pre-commit inventory at 2026-10-09T05:49:16Z
+
+- Rechecked all 14 registered worktrees and 28 local branch refs against intake main `7397fca31998901ca6048375f0e96ffb4a42e5e7`. The 13 non-main worktrees expose 1,780 current dirty/untracked status paths; each is SHA-256 inventoried and individually disposed. No prior status path disappeared; new local diagnostics and their final hashes are included.
+- Current untracked status files total 1,602 files (455,485,326 bytes) across source worktrees. The per-tree status, bytes and disposition table is `WORKTREE_DISPOSITION.csv`; ignored files remain in place and outside this status-path count.
+- The new CPU-only input/cache and per-view color readouts remain local. C1 failed its frozen visual gate; no Fresh B repair or new manuscript claim was added.
+- The only designated daily editing directory is `/4T/MV-Painter-main`. Dirty historical worktrees, ignored assets, branch refs and both stashes remain preserved; editor-folder selection cannot be inspected.
+
+
+### 2026-10-09 final pre-commit inventory correction (06:06:08 UTC)
+
+This snapshot supersedes the earlier 05:49 and 06:02 status totals. The registry contains 14 worktrees and 28 local branch refs. `LOCAL_CHANGE_SOURCE_MANIFEST.csv` now has 1,636 non-main dirty/untracked paths with worktree, HEAD, index, main-counterpart hashes, source branch, and status; `FINAL_LOCAL_CHANGE_DISPOSITION.csv` records those paths plus the separately retained branch-commit, ignored-output, and stash records. The 14-tree staged/unstaged/untracked counts are in `WORKTREE_DISPOSITION.csv`.
+
+The 13 non-main trees contain 1,452 untracked status files totaling 430,603,823 bytes. Those files and ignored data remain in their original trees. The 76 ignored r1color image/intermediate outputs (19,944,261 bytes) still match their local SHA-256 inventory. Two stashes remain untouched; the D19 note references a result directory that is absent at its stash base, so its numbers were not promoted. No old worktree, branch, stash, source asset, or experiment data was deleted in this closeout.
+
+At this pre-commit capture, `/4T/MV-Painter-main` had 0 staged paths, 42 tracked worktree changes, and 9 untracked files awaiting the three authorized commits. Before those commits, local main and live `mvpainter/main` were both `7397fca31998901ca6048375f0e96ffb4a42e5e7`. The editor's open folder remains unverifiable; `/4T/MV-Painter-main` is still the only designated daily editing directory.
+
+The separate B2 raw-source embedding proposal has three launch attempts from a concurrent workflow. All stopped before diffusion generation: cumulative generation calls 0, prediction PNGs 0. Attempt 03 loaded the model and LPIPS evaluator before failing the first object's embedding-shape check. No Fresh B predictions or metrics were read; the proposal remains unvalidated and did not change the paper. The separate r1color campaign branch was pushed to its `origin` remote by that concurrent workflow; this task did not initiate or alter that push, and its files remain outside `mvpainter/main` pending author review.
