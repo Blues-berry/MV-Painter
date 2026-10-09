@@ -61,6 +61,14 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - Scientific difference: 1006's 10/06 readiness and narrative documents are earlier snapshots. Its bounded schedule, dose, CAI, strict-276, N=20 GLB, and open human-fidelity conclusions agree with the later 1008 source/claim ledger; its “Fresh C not yet confirmed” status predates the completed 300-object run. E6 was a stopped development candidate, not independent confirmation; only its explicit diagnostic and stop review were selected.
 - Actual Git conflicts resolved: 0.
 
+
+## codex/round2-evidence-integrated-20261001
+
+- Pre-merge decision: `FULL_MERGE_REJECTED`; source archive HEAD `5a059b30eba959e69a2f36f484f06807e5c2c152` has 123 unique commits and a 2,640-path tree delta, deletes 253 active `1008/` and 353 active `1009/` paths, and contains 1,698 unique blobs / 675,119,677 uncompressed blob bytes. No merge or cherry-pick was run.
+- Code differences were assessed before any merge: the archived source makes `_skip_correction` class-level shared state and removes main's `finally` restoration, and its `.gitignore` weakens precise evidence/generated-output rules. Main's instance-level exception-safe implementation and current ignore rules were retained. These are reviewed source differences, not merge conflicts.
+- Historical Round-2 main text, Supplement, and response candidates were not imported. No Git merge conflict existed or was resolved: `NO_CONFLICT`, actual conflict files = 0.
+- Only the compact B′ and M3 MV-Adapter mapping evidence package was selectively committed as `4b76ebc65387b3cbdc526b0ff8aff7ef01273be7`; its distinction and chronology caveats are recorded in the sequential audit. No active TeX, figure, response, bibliography, or submission file was merged.
+
 ## codex/cg-ltcas-narrative-convergence-20261007
 
 - Merge strategy decision: full-history merge rejected (142 unique commits, 2,429 unique blobs, 776,750,834 uncompressed bytes; 15 blobs >= 5 MiB; 3,160-path delta; WIP tree deletes current 1008/1009 content).
