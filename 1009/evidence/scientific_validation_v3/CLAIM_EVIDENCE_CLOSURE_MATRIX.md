@@ -950,3 +950,7 @@ No active 1008 TeX, figure, response, or submission-package file changed in
 this audit. The current paper-source hashes and 48/48 package verification
 are recorded in `1009/main_consolidation/SEQUENTIAL_BRANCH_MERGE_REPORT.md`
 under branch 11. `SUBMISSION_APPROVED=NO`; no submission was made.
+
+## Dated supersession — C11 human-preference evidence (2026-10-09)
+
+The C11 table row above records the pre-collection state and is preserved as a historical snapshot. The archived 2026-10-07 analysis now represents 40 slots and 37 valid participants across the frozen eight-endpoint family. Its confirmatory endpoint classification includes documented execution deviations; none of the eight endpoints survives Holm correction. Therefore C11 remains open for human-fidelity claims: the result establishes no LLH preference advantage and does not establish equivalence, non-inferiority, absolute material fidelity, or 3D quality. Consent/ethics, coordinator closeout, and participant-data governance remain unresolved. The sanitized aggregate package is at `1009/evidence/branch_audits/human_confirmatory_analysis_20261007/`; the active paper remains unchanged.

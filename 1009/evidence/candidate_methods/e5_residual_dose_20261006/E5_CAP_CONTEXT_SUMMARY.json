@@ -1,0 +1,95 @@
+{
+  "status": "DESCRIPTIVE_CAP_CONTEXT_ONLY",
+  "e5_lock_sha256": "d189bcf02a3608ba410992a2502828c3b36453e4cf617f06da45a9c239a25813",
+  "technical_gate_sha256": "ee28cc6154fff3ffeedb9a1def9c4a848f88a758a41704ba9e7321fd614d3129",
+  "raw_ledger_sha256": {
+    "rows_shard0.json": "55eb0e9c123d101bb0e79e9c73b8e43e8605fb8822bd26db1b68449350e954fc",
+    "rows_shard1.json": "b5ee4b698f6bf4574f3ea14f7d19c026af63aeedf41b6882641d5aa68e053dbf"
+  },
+  "summary_script_sha256": "96d55c172812c054c40ada84a4f8db5f03af60dc2eae1d4e0d3f41395452613d",
+  "quality_metrics_read": false,
+  "strata": {
+    "deep/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.2656077625893456,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.2849212217585604,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.2859649840730063,
+      "native_cap": 3.0
+    },
+    "deep/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.2813457000714465,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.3198926383127858,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.3219999772084272,
+      "native_cap": 3.0
+    },
+    "deep/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.3133418293413985,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.3902122188160806,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.3943706882382443,
+      "native_cap": 3.0
+    },
+    "middle/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.267641431602983,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.2903873707851952,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.3001338083184293,
+      "native_cap": 3.5
+    },
+    "middle/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.2853273612926717,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.3307635110455946,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.3501780071363187,
+      "native_cap": 3.5
+    },
+    "middle/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 0,
+      "cap_exceed_fraction": 0.0,
+      "median_baseline_plus_delta_equivalent_scale_l2": 1.3207163819003531,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.411924214667421,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.4501024024627642,
+      "native_cap": 3.5
+    },
+    "shallow/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 164,
+      "cap_exceed_fraction": 0.3037037037037037,
+      "median_baseline_plus_delta_equivalent_scale_l2": 0.5922507534294286,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.10564882027598,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.2244860057050437,
+      "native_cap": 0.8
+    },
+    "shallow/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 211,
+      "cap_exceed_fraction": 0.3907407407407407,
+      "median_baseline_plus_delta_equivalent_scale_l2": 0.6853503700516725,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 1.71098696214834,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 1.9485187916129338,
+      "native_cap": 0.8
+    },
+    "shallow/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "cap_exceed_steps": 360,
+      "cap_exceed_fraction": 0.6666666666666666,
+      "median_baseline_plus_delta_equivalent_scale_l2": 0.8735978715667351,
+      "p95_baseline_plus_delta_equivalent_scale_l2": 2.9244847811756562,
+      "maximum_baseline_plus_delta_equivalent_scale_l2": 3.401033091260838,
+      "native_cap": 0.8
+    }
+  },
+  "interpretation": "The equivalent scale is an L2 norm ratio after dtype rounding, not an exact scalar multiplier; this diagnostic may exceed the native cap and is not a deployed schedule result."
+}

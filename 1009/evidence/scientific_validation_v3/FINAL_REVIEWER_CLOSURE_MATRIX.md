@@ -64,3 +64,7 @@ comparison, not an independent confirmation. Accordingly, this matrix is
 pre-rewrite and does not pass the final reviewer gate. See
 `FINAL_SCIENTIFIC_READINESS_20261006.md`,
 `next_stage_20261006/NARRATIVE_DECISION_MAP.md`, and `FINAL_ADVERSARIAL_REVIEW.md`.
+
+## Dated supersession — human-study status (2026-10-09)
+
+The preceding “pre-collection” status records the state before the response export and is superseded by the 2026-10-07 endpoint analysis. The source represents 40 slots and 37 valid participants; the pre-specified eight-endpoint family has no Holm-significant LLH preference advantage. The classification is confirmatory for those endpoints with documented execution deviations, not a claim of full protocol adherence. No active manuscript or response text was updated. Consent/ethics, coordinator closeout, and participant-data governance remain open, so the result does not close the human-fidelity concern or authorize a positive human-preference claim. See `1009/evidence/branch_audits/human_confirmatory_analysis_20261007/` for the sanitized aggregate evidence and audit.

@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "development_only": true,
+  "quality_metrics_computed": false,
+  "generations": 174,
+  "expected_generations": 174,
+  "selected_objects": [
+    {
+      "object_idx": 0,
+      "uid": "00ba0a0c-35c7-5155-af89-e92eb557296f"
+    },
+    {
+      "object_idx": 4,
+      "uid": "07725124-0843-5b38-9a50-ed936851a091"
+    },
+    {
+      "object_idx": 9,
+      "uid": "0ddac33c-56ae-572b-b6fb-4a4957928218"
+    },
+    {
+      "object_idx": 13,
+      "uid": "ed8653d0-c70c-53dc-80e6-53228d51fa1b"
+    },
+    {
+      "object_idx": 16,
+      "uid": "138ca982-5a00-5c6a-bba1-6de61e99fe88"
+    },
+    {
+      "object_idx": 21,
+      "uid": "189d5d38-42e1-5969-a0b1-3b693f124900"
+    }
+  ],
+  "alpha0_exact_output_equal": {
+    "0": true,
+    "4": true,
+    "9": true,
+    "13": true,
+    "16": true,
+    "21": true
+  },
+  "active_wrapper_step_traces": 4860,
+  "status_counts": {
+    "finite": 4860
+  },
+  "zero_or_infeasible_or_nonfinite_steps": 0,
+  "reference_pass_skips": 4860,
+  "reference_write_unchanged": true,
+  "strata": {
+    "deep/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.0012761163829036297,
+      "max_relative_error": 0.0033689374488714285
+    },
+    "deep/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.0003362331868450065,
+      "max_relative_error": 0.001089587515308403
+    },
+    "deep/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 7.416191567261726e-05,
+      "max_relative_error": 0.00036645653195450933
+    },
+    "middle/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.0011046144103694054,
+      "max_relative_error": 0.00469511873989123
+    },
+    "middle/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.00028401466009341306,
+      "max_relative_error": 0.001697651963881129
+    },
+    "middle/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.00010778007513241247,
+      "max_relative_error": 0.0011879257188722805
+    },
+    "shallow/alpha=0.005": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.0007128616907532345,
+      "max_relative_error": 0.003294138957601715
+    },
+    "shallow/alpha=0.01": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 0.00025915557048386204,
+      "max_relative_error": 0.0010516601127065137
+    },
+    "shallow/alpha=0.02": {
+      "active_wrapper_steps": 540,
+      "finite_steps": 540,
+      "within_5_percent": 540,
+      "pass_fraction": 1.0,
+      "median_relative_error": 7.137675627592877e-05,
+      "max_relative_error": 0.0005475281850452277
+    }
+  },
+  "interpretation": "technical feasibility only; does not identify a quality effect or validate a dose-independent mechanism"
+}

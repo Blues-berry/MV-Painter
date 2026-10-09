@@ -180,3 +180,9 @@ by this work.
 
 These source branches and their existing remote refs remain intact. No
 unreviewed conflict was merged into the active manuscript source.
+
+## Dated supplement — human-study evidence boundary (2026-10-09)
+
+The study owner classified the response set on 2026-10-07 as `CONFIRMATORY_HUMAN_PREFERENCE_ANALYSIS_WITH_DOCUMENTED_EXECUTION_DEVIATIONS`. This supersedes the earlier sentence that rejected the label itself; it does not establish full protocol adherence or make the result a current 1008 paper claim. The eight pre-specified relative 2D endpoints reproduce for 37 valid participants, and none survives Holm correction. The prior schedule audit records 0/40 matches; seed, question-order, raw comprehension-answer, and frozen-stimulus hash-crosswalk records are absent; consent/ethics and coordinator closeout remain open.
+
+The sanitized aggregate audit bundle is now retained at `1009/evidence/branch_audits/human_confirmatory_analysis_20261007/`. The earlier “private archive only” statement is superseded only for this aggregate-only bundle: participant-level response, assignment, object-map, and pair-map files remain excluded, and `PUBLIC_RAW_HUMAN_DATA=NO`. The active 1008 manuscript, Supplement, Response, figures, and submission package remain unchanged; no positive human-preference claim is authorized by these results.

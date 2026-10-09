@@ -25,3 +25,7 @@ The B narrative safeguards are retrospective. No FRESH_CONFIRM_C schedule
 search or third-backbone run is indicated by these results. The human site is
 ready for the locked study; participant recruitment and the CSV return route
 remain to be arranged. The manuscript has not been edited.
+
+## Dated supersession — human preference outcomes (2026-10-09)
+
+The pre-collection statements above are historical and are superseded for status reporting by the 2026-10-07 confirmatory endpoint analysis. The response export represents 40 slots, of which 37 are valid; eight relative 2D preference endpoints were analyzed under the pre-specified family, and none survives Holm correction. This does not establish preference superiority, equivalence, non-inferiority, absolute fidelity, or 3D/PBR quality. Execution deviations and open consent/ethics, coordinator-closeout, and participant-data governance questions remain. No active 1008 paper or response claim has been changed; do not promote these outcomes until those gates are resolved. Details and aggregate-only provenance are in `1009/evidence/branch_audits/human_confirmatory_analysis_20261007/`.
