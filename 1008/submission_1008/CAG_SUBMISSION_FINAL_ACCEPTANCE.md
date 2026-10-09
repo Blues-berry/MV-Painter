@@ -1,10 +1,10 @@
 # Computers & Graphics 1008 二轮投稿最终验收
 
 **状态：** `AUTHOR_REVIEW_READY / DRAFT`  
-**捕获时间：** `2026-10-09T08:11:26Z` UTC  
+**捕获时间：** `2026-10-09T08:13:59Z` UTC  
 **投稿批准：** `SUBMISSION_APPROVED=NO`  
 **投稿状态：** 未向期刊上传  
-**论文/投稿包刷新前已归集的 main 基线：** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`。本轮最终论文/包更新及远端核对记录见 `FINAL_MAIN_VERIFICATION.md`。
+**论文/投稿包刷新 commit：** `9c3e6bdcc4115cf3ac4b153c6e879439a5ca9a1f`，已正常快进推送；`2026-10-09T08:13:59Z` 本地 `main` 与私有 `mvpainter/main` SHA 一致。Git 归集基线为 `ed7471ee57351d7c8d4600d43d2c63bd44d01725`。
 
 本稿以 2026-09-07 已完成第一轮修订的正式稿 01549 为基线。01549 原始 TeX 未改动。
 

@@ -18,6 +18,10 @@ At **2026-10-09T08:11:51Z**, the in-place manuscript wording revision and refres
 
 The source-ZIP manuscript, marked-up manuscript, and Supplement each rebuilt from a clean extraction to 13/13/11 pages; normalized extracted text matches the delivered PDFs. Package manifest and SHA256SUMS checks passed. The built-in editor compiler returned `Unable to find standard directories for platform`; the repository's pdfLaTeX scripts succeeded in the working tree and clean extraction. Pre-edit and post-build source hashes are also recorded in `MANUSCRIPT_REVISION_INTEGRITY.csv`. Journal submission was not made; `SUBMISSION_APPROVED=NO`.
 
+## Private-main synchronization — 2026-10-09T08:13:59Z
+
+The paper/package refresh commit `9c3e6bdcc4115cf3ac4b153c6e879439a5ca9a1f` was pushed as a normal fast-forward to private `mvpainter/main`; `git rev-parse HEAD` and `git ls-remote mvpainter refs/heads/main` matched at that checkpoint. The final verification report records the branch/worktree disposition. A follow-up documentation and package-metadata closeout commit is pushed separately as a normal fast-forward; the completion handoff gives the post-closeout `main` SHA.
+
 ## Previous verified revision — Core-7 alignment
 
 At **2026-10-09T03:33:24Z**, the active manuscript, Supplement, generated PDFs, response, and author-review package were fingerprinted on authority branch `codex/cg-01549-unified-20261009`, base commit `b327b4875b23ce4f365bb880e4f6faa9b0b0ad10`. This is the pre-commit base for the current package update. The same timestamp and SHA-256 rows were appended to `MANUSCRIPT_REVISION_INTEGRITY.csv` for 52 paper/package files; the recorder excludes JSON. This final capture followed CSV line-ending normalization; content hashes are unchanged from the 03:32:34Z capture.

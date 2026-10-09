@@ -5,9 +5,9 @@
 **Repository:** private `Blues-berry/MVPainter`  
 **Branch/worktree:** `main`, `/4T/MV-Painter-main`  
 **Authorized push target:** `mvpainter/main` only  
-**Captured:** `2026-10-09T08:11:26Z` UTC  
-**Git main baseline before final wording/package refresh:** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`  
-**Earlier package-delivery commit:** `4035771fb6459dc6c3aa51897ef77ea43d66b426`; this manuscript/package refresh is recorded in `1009/main_consolidation/FINAL_MAIN_VERIFICATION.md`.
+**Captured:** `2026-10-09T08:13:59Z` UTC  
+**Paper/package refresh commit:** `9c3e6bdcc4115cf3ac4b153c6e879439a5ca9a1f`; local `main` and private `mvpainter/main` matched at `2026-10-09T08:13:59Z` UTC.  
+**Git consolidation commit:** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`.
 
 ## Submission folder
 
