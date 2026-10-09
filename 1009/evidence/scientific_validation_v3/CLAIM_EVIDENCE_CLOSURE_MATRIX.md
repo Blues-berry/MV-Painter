@@ -916,3 +916,37 @@ conjunction is not confirmatory.
 - Clean-clone statistic reruns, the full artifact archive, and one complete
   300-object A2 condition reproduction pass. Paper-wide output regeneration
   after narrative rewrite remains open.
+
+
+## Historical scope and current-manuscript supersession — 2026-10-09
+
+This matrix's declared inputs identify `final_round2.tex`,
+`supplementary_round2.tex`, and `response_letter_round2.md`. The cross-cutting
+legacy items above are therefore an audit of that historical candidate and
+its evidence state; they are not, by themselves, open blockers against the
+currently active 1008 files at
+`1008/manuscript/revision_01549_restored/`.
+
+In particular, the old `tab:strict276`/`tab:stage276` replacement warning, the
+quoted LHL value 14.776, the `obj_0066`/`obj_0048`/`obj_0078` caption audit,
+and the “LLH closest to GT gradient energy” erratum refer to the old
+`final_round2.tex` candidate. Do not carry their old line numbers, captions,
+or `BLOCKED` status forward as current 1008 findings. The active 1008
+manuscript instead reports a separately identified post-inspection strict-276
+profile-placement follow-up with explicit cohort, near-matched applied-scale,
+and realized-dose limits. Its Supplement separately labels the Core-7 summary
+retrospective and records its common-runner/input-hash limitations and the
+historical 01549 Table 9 scope. The active wording does not claim equal-dose
+causality, a universal schedule winner, or an optimal schedule.
+
+The round-2 forensic-audit branch's 276-object LLH/GFL delta table was
+compared cell by cell with the R0 source tables already retained in main:
+all object IDs and 2,760 numeric cells matched exactly. This branch adds no
+new result to the current evidence base. This scope note preserves the old
+matrix entries as historical audit records; it does not rewrite their
+findings or independently certify any additional claim.
+
+No active 1008 TeX, figure, response, or submission-package file changed in
+this audit. The current paper-source hashes and 48/48 package verification
+are recorded in `1009/main_consolidation/SEQUENTIAL_BRANCH_MERGE_REPORT.md`
+under branch 11. `SUBMISSION_APPROVED=NO`; no submission was made.

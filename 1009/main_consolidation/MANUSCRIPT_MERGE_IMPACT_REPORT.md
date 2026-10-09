@@ -100,6 +100,15 @@ No main text, Supplement, response letter, figure, reference, or submission pack
 活动主文 SHA-256 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、Supplement `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、Response `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb` 均未改变；投稿目录 48/48 校验通过。无 TeX 变化，不需重新编译；`SUBMISSION_APPROVED=NO`，未投稿。
 
 
+## codex/round2-final-forensic-audit-20261001
+
+`PAPER_IMPACT=DIRECT`: the archived branch contains an old `final_round2.tex`, Supplement, response, figures, and numerical interpretations. Its old strict-276 table warnings, LHL value, object-caption audit, and gradient wording concern that historical candidate; they are not active 1008 content. The current manuscript has a separately bounded post-inspection strict-276 follow-up, and the Supplement labels Core-7 as retrospective with incomplete common-runner/input identity. Neither makes an equal-realized-dose causal or optimal-schedule claim.
+
+The branch's 276-row LLH-versus-GFL delta source was independently compared with main's retained R0 per-object tables: all 276 object IDs and 2,760 numeric cells matched exactly. Its R0/R1 result is already covered by branch 10. The approximate additive budget/placement decomposition was not adopted because its contrasts mix endpoints and do not identify a pure allocation effect. No unique valid result was missing from main.
+
+The active manuscript `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`, Supplement `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`, and response `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb` are unchanged; the canonical submission package passes 48/48 checks. No active TeX changed, so there was no rebuild. `SUBMISSION_APPROVED=NO`.
+
+
 
 ## codex/final-evidence-freeze-20261001
 

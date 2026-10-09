@@ -35,6 +35,14 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - The existing paper-branch candidate removes current-main 1008 source/package paths in its WIP tree; those deletions were not applied. Its untracked internal N20 candidate image was left in its original worktree.
 - Actual Git conflicts resolved: 0.
 
+
+## codex/round2-final-forensic-audit-20261001
+
+- Source HEAD: `450389fb8232c0f03db0b79f21bdc998043a99e0`; archive ref: `refs/archive/codex/main-unification-20261009/local/heads/codex/round2-final-forensic-audit-20261001`; merge-base: `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`.
+- `NO_CONFLICT`: no full merge, cherry-pick, or paper-file merge was attempted. The source tree's old `final_round2.tex` and related manuscript artifacts were reviewed against active 1008 but not applied. Differences in old statistics and wording were adjudicated as historical scope and evidence questions, not Git conflicts.
+- No code or paper conflict was created or resolved. The archived R0 per-object delta CSV matches existing main inputs for 276 objects and 2,760 numeric cells exactly; the source's approximate budget decomposition was excluded because its contrasts do not isolate a pure allocation effect. Active manuscript and submission hashes remain unchanged; 48/48 package checks pass.
+- Actual Git conflicts resolved for this branch: 0.
+
 ## codex/paper-1006-20261006
 
 - Merge strategy decision: full-history merge rejected (144 unique commits, 2,667 unique blobs, 875,932,057 uncompressed bytes; 22 blobs >= 5 MiB; 3,328-path delta includes old submission outputs and generated material).
