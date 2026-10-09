@@ -98,3 +98,13 @@ No main text, Supplement, response letter, figure, reference, or submission pack
 与本轮科学主张有关的 C3−GFH 结果 CSV 与当前 1008 审计 CSV 字节一致；JSON 差异限于临时工作目录路径及相应来源哈希，统计 payload 相同。Fresh C 执行语义、sampler、seam、资产权利和数值权威材料已存在于 main。未发现需更新当前论文的独有结果。参与者级响应 CSV 未打开或读取，不能据该分支改变 human-study 表述。
 
 活动主文 SHA-256 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`、Supplement `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`、Response `1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb` 均未改变；投稿目录 48/48 校验通过。无 TeX 变化，不需重新编译；`SUBMISSION_APPROVED=NO`，未投稿。
+
+
+
+## codex/final-evidence-freeze-20261001
+
+PAPER_IMPACT=DIRECT: this archived branch supplied a unique paired-statistics file and condition-level source rows used by the current Supplement's retrospective Core-7 table. The compact row/protocol bundle and exact paired result were added under the Core-7 audit paths; no candidate manuscript or package was imported.
+
+The 7×276 CPU reaggregation reproduced the stored aggregate, paired statistics, and row audit byte-for-byte and reconciled 42/56 earlier pair/metric rows. The displayed seven means, LLH−GFH and LLH−C3 contrasts match. C3−GFL FG-PSNR was independently recomputed from the indexed C3/GFL rows (+1.207771 dB, 95% CI [1.116967, 1.294989], 259/276). Keep Core-7 explicitly retrospective: conditions do not establish common runner or complete tensor-input identity and are not independent of Fresh C's cohort/checkpoint lineage.
+
+No active manuscript, Supplement, figure, Response, or submission file changed. Main and Supplement source hashes remain Phase A values; the 1008 package passes 48/48 SHA checks. Built-in main compilation timed out after failing to locate the project cag.sty; built-in Supplement compilation failed at its relative figure path because standalone project assets are unavailable. There was no TeX repair attempt and no alternate PDF output. SUBMISSION_APPROVED=NO; no journal submission was made.

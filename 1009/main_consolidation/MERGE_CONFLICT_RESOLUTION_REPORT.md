@@ -83,3 +83,13 @@ Conflict totals below count only conflicts created by an actual Git merge or che
 - 论文差异（不是 Git 冲突）：来源候选属于旧 `final/` 修订，当前活动 1008 保持原样。已发现的 Fresh C C3−GFH CSV 和相关审计/来源材料在 main 已有等价内容，因此没有选择性补丁。
 - 人类研究隐私：来源树内的 `HUMAN_STUDY_RAW_RESPONSES.csv` 未被打开或读取，不纳入本分支内容包；其原件按原地保留原则留在来源位置，后续仅由专门的人类研究来源审计决定是否需要聚合证据。
 - 冲突影响论文：没有 merge conflict；候选文本未导入，活动主文、Supplement、回复及投稿文件均未改变。
+
+
+
+## codex/final-evidence-freeze-20261001
+
+- Pre-merge outcome: FULL_MERGE_REJECTED; the source deletes 247 active 1008 paths and 288 current 1009 paths while adding a 1,329-path historical final/ tree, generated assets, and stale paper candidates. No Git merge or cherry-pick was run: NO_CONFLICT, actual conflict files = 0.
+- Code behavior reviewed and excluded (not a Git conflict): main keeps _skip_correction on each wrapper instance and restores previous state in finally; source uses a class-level shared flag and resets it only after the reference-write call. The source version can leak state after exceptions and across instances. Main's .gitattributes/.gitignore precision was also retained; source removes binary rules and exact generated-output ignores.
+- Paper conflict: NO_CONFLICT. Old final/final_0903.tex, its Supplement/response, PDFs, and source package were not applied to the active 1008 package. Current TeX hashes were unchanged.
+- Selective evidence: the compact Core-7 metrics/protocol/paired-statistics package was independently rerun and matched the source's aggregate, 49-row pair table, and row audit byte-for-byte. The C3−GFL Supplement row was separately reaggregated because it is absent from the source's saved 49- and 56-row pair tables. Current Core-7 retrospective limits were retained.
+- Compiler note: built-in compile attempts were not successful because the standalone main source lacked project cag.sty and the standalone Supplement lacked its referenced figure asset; neither source file was modified.
