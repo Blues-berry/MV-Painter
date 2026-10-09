@@ -1,10 +1,10 @@
 # Local-to-private-main consolidation report
 
-**Captured:** 2026-10-09T04:37:09Z UTC  
+**Captured:** 2026-10-09T04:42:50Z UTC  
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  
 **Private main baseline:** `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`  
-**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; handover/status commit: `b02a64102a40c83370902486d47b1ffad217a49e`. Current local and remote `main` both resolve to `b02a64102a40c83370902486d47b1ffad217a49e`.
+**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; handover commits: `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`; frozen V3 snapshot commit: `2fc3e7f1c338338dfd2d63e4f6977bac77976979`. Local and remote `main` matched at `2fc3e7f1c338338dfd2d63e4f6977bac77976979` at the recorded verification time.
 
 ## Result
 
@@ -42,5 +42,22 @@ The audited inventory contained 17 worktrees. Three clean worktrees were unregis
 
 The exact author-package files and disposition report were fetched from private `mvpainter/main` and matched local SHA-256. The current final branch SHA is `b02a64102a40c83370902486d47b1ffad217a49e`. Three worktrees with no tracked, untracked, or ignored files were then unregistered with ordinary (non-force) removal; their branch refs remain. Other dirty or ignored-data worktrees remain registered and preserved. The editor could not be switched through the available CLI, so `EDITOR_ROOT_SWITCH_VERIFIED=NO`; the author must open `/4T/MV-Painter-main` in the editor to complete the UI handoff. The separate R1 color-cast intervention queue remains incomplete in its local worktree; only the already-frozen diagnostic evidence is authoritative in main.
 
+
+## Final gates
+
+| Gate | State | Evidence/limit |
+|---|---|---|
+| `MAIN_IS_ONLY_ACTIVE_BRANCH` | NO | Main is the selected daily worktree, but 13 historical/data worktrees remain registered and the editor UI root switch is unverified. |
+| `LOCAL_7230_STAGED_CHANGES_DISPOSED` | YES | Index cleared only after a byte backup and 7,230-row classification; local contents remain preserved. |
+| `ALL_UNIQUE_SOURCE_CHANGES_INTEGRATED` | NO | Selected source/evidence paths are mapped and the frozen V3 release is now included. Dirty surgical, color-repair, and data worktrees still contain unique uncommitted work retained for review, not wholesale-integrated. |
+| `NONESSENTIAL_JSON_EXCLUDED` | YES | No JSON is in the curated V3 snapshot or this commit; original JSON stays local. |
+| `IMPORTANT_LOCAL_DATA_PRESERVED` | YES | Backups, checksums, and local worktree inventories verified; no ignored-data worktree was removed. |
+| `VSCODE_SINGLE_ACTIVE_REPOSITORY` | NO | No editor switch API or working IPC connection was available; manual Open Folder remains. |
+| `OFFICIAL_01549_BASELINE_PRESERVED` | YES | Authenticated source hash remains unchanged. |
+| `ACTIVE_MANUSCRIPT_COMPILES` | YES | Previously verified 13-page build and clean-source-package build passed; this snapshot did not alter the manuscript. |
+| `PRIVATE_MAIN_PUSHED` | YES | Normal push to private `mvpainter/main`; public remotes untouched. |
+| `LOCAL_REMOTE_MAIN_MATCH` | YES | Local `HEAD`, fetched tracking branch, and live `ls-remote` matched at the recorded check. |
+| `UNRESOLVED_FILE_CONFLICTS` | 0 | No unmerged index entries; preserved dirty worktrees are review items, not Git merge conflicts. |
+| `SUBMISSION_APPROVED` | NO | Author approval remains required. |
 
 `AUTHOR_REVIEW_READY`. This is not `SUBMISSION_APPROVED`; author sign-off is still required before journal submission.

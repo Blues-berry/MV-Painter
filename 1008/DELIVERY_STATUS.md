@@ -5,10 +5,11 @@
 **Branch:** `main`  
 **Local worktree:** `/4T/MV-Painter-main`  
 **Content commit pushed and verified:** `14ff9472df0281267c966b29210d63297ccfcfd7`  
-**Handover commits pushed:** `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`  
-**Remote verification time:** 2026-10-09T04:31:16Z UTC
+**Handover commits pushed:** `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`  
+**V3 reproducibility snapshot commit pushed:** `2fc3e7f1c338338dfd2d63e4f6977bac77976979`  
+**Remote verification time:** 2026-10-09T04:42:50Z UTC
 
-The private remote advertised the same `main` tip as local at the time of this check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. Subsequent commits are handover-documentation only and do not alter manuscript content. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
+The private remote advertised the same `main` tip as local at the time of this check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. The later commits add handover documentation and the frozen V3 reproducibility snapshot; none alter manuscript bytes. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
 
 ## Direct GitHub files
 
@@ -39,7 +40,7 @@ The private remote advertised the same `main` tip as local at the time of this c
 - [Frozen runner provenance](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/protocol/RUNNER_PROVENANCE.md)
 - [Per-file SHA-256 inventory](https://github.com/Blues-berry/MVPainter/blob/main/1009/evidence/scientific_validation_v3/reproducibility_release/ASSET_HASHES.csv)
 
-The separately scoped V3 package contains 78 files totaling 3,972,857 bytes, including 20 per-object metric CSVs totaling 3,465,132 bytes. It contains no JSON, generated image archive, weights, or cache. The core evidence table rebuilt byte-identically, and the frozen B paired comparison returned 150 matched objects. The last verified private main tip before this package update was `bbd66249360d1613c22c6d5f86605e2a8caa6041`; the subsequent update is limited to this research snapshot and its integrity/branch ledgers.
+The separately scoped V3 package contains 78 files totaling 3,972,857 bytes, including 20 per-object metric CSVs totaling 3,465,132 bytes. It contains no JSON, generated image archive, weights, or cache. The core evidence table rebuilt byte-identically, and the frozen B paired comparison returned 150 matched objects. The V3 snapshot is pushed to private `main`. The editor root switch remains unverified, and retained dirty worktrees still require separate review.
 
 ## Open review boundaries
 

@@ -1,6 +1,6 @@
 # Main source and scientific authority
 
-**Captured:** 2026-10-09T04:37:09Z UTC  
+**Captured:** 2026-10-09T04:42:50Z UTC  
 **State:** `AUTHOR_REVIEW_READY`; not submission-approved.
 
 ## Version authority
