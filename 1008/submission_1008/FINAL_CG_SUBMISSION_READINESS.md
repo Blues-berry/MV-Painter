@@ -1,70 +1,61 @@
 # C&G 1008 Final Submission Readiness
 
-**Captured:** `2026-10-09T08:13:59Z` UTC  
+**Captured:** `2026-10-09T15:12:24Z` UTC  
 **Package state:** `AUTHOR_REVIEW_READY / DRAFT`  
 **Journal submission:** not made  
-**Author submission approval:** `NO`  
-**Paper/package refresh commit:** `9c3e6bdcc4115cf3ac4b153c6e879439a5ca9a1f`; it was pushed as a normal fast-forward, and local `main` equaled `mvpainter/main` at `2026-10-09T08:13:59Z` UTC.  
-**Earlier Git-consolidation commit:** `ed7471ee57351d7c8d4600d43d2c63bd44d01725`.
+**Submission approval:** `NO`  
+**Starting main baseline:** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`; final package commit and private-remote parity will be recorded in the completion handoff.
 
-## Scientific narrative
+## Final scientific narrative
 
-The manuscript retains Timestep-Conditioned Adapter Scaling (TCAS) as a task-specific, training-free inference intervention on the existing GeoTex-Adapter residual. C3 `(1.25, 2.50, 1.25)` is not presented as a universally optimal or dose-matched schedule. In Fresh C's matched 300-object image-space comparison, C3 minus GFL FG-PSNR is `+0.522352 dB` (object-bootstrap 95% CI `[+0.404160, +0.640669]`). GFH and Generic Linear have more favorable cohort means than C3 on all four displayed endpoints. C3/GFL deep and middle cumulative applied scales differ (`82.5` vs `62.5`), so the contrast does not isolate timing alone.
+The revised paper presents Timestep-Conditioned Adapter Scaling (TCAS) as a task-specific, training-free intervention on the existing GeoTex-Adapter residual path. C3 `(1.25, 2.50, 1.25)` is one evaluated profile, not a universal optimum. In the matched 300-object Fresh C cohort, C3−GFL FG-PSNR is `+0.522352 dB` (95% object-bootstrap CI `[+0.404160,+0.640669]`). GFH and Generic Linear have more favorable cohort means than C3 on all four displayed endpoints. Applied deep/middle scale sums differ (`82.5` versus `62.5`), so the contrast is not timing-only. The separate post-inspection strict-276 placement study favors L–L–H across six formal endpoints but does not match residual doses or provide an independent replication.
 
-The separate stage-placement follow-up favors temporal L–L–H over C3 on all six formal endpoints. C3 minus Fixed FG-PSNR is `+0.502875 dB`; C3 minus temporal L–L–H is `−0.177084 dB`. This supports limited time-position sensitivity, not a schedule optimum. Texture-variation metrics are not described as texture fidelity. Fresh C is 2D image-space evidence and does not establish material, seam, PBR, or 3D texture quality.
+Texture-complexity associations are retrospective sensitivity evidence (9/10 plus-one-corrected Holm rejections; FG-LPIPS versus coverage adjusted `p=0.0508`) and are not causal, fidelity, or selector evidence. Fresh B/A3b and M3 remain retrospective where protocol availability is not authenticated. C1 failed the locked visual gate; B2 failed its numeric gate; the 26-object color diagnosis validates no repair. No valid Fresh C bake, seam, PBR, native-default adapter comparison, or new human-preference result is claimed. The recent participant study remains internal-only because consent/ethics and stimulus-identity records are absent.
 
 ## Second-round reviewer status
 
-| Point | Status | Paper/response treatment and remaining boundary |
+| Point | Status | Boundary |
 |---|---|---|
-| R1.1 — visual artifacts and 3D texture fidelity | `PARTIAL` | Figures 4–5 show full-object context plus shared ROIs and adverse examples. The appearance embedding controls chroma in four selected development objects; Fresh B cache/source alignment is a plausible, unproven contributor. C1 passed numeric but failed the locked visual gate, including a faint cyan/blue rim. B2 completed 8 generations (4 objects × 6 views), reproduced baseline 4/4, but failed the numeric repair gate (mean `+0.172906`, 95% CI `[−0.204353,+0.681015]`, one of four improved) and showed no clear visual correction. No independent Fresh B repair validation, valid Fresh C bake, seam, PBR, or native-default adapter result exists. No validated color repair is claimed. |
-| R1.2 — matched held-out evaluation | `ADDRESSED WITH LIMITS` | Fresh C N=300 is internally matched and disjoint from development/evaluation cohorts; strong GFH and Generic Linear counter-results are reported. It does not numerically reproduce historical `+0.96 dB`; Core-7 stays retrospective Supplement evidence with runner/input identity caveats. |
-| R1.3 — texture metrics | `ADDRESSED WITH LIMITS` | Variation proxies are not fidelity measures; historical 3AFC remains subjective preference only. |
-| R1.4 — paired uncertainty | `PARTIAL` | Object-bootstrap intervals and C3–GFH Edge-SSIM trade-off are reported. There is no prespecified non-inferiority margin, so no equivalence/non-inferiority claim is made. |
-| R1.5 — FAC reproducibility/code | `PARTIAL; FIRST-ROUND RESULT RETAINED` | Historical negative result is retained with the 1,200 vs 1,706 configuration-list gap and missing run-bound seed/output manifest. No new run or public-release claim. |
-| R2.1 — methodological contribution | `PARTIAL; EDITORIAL NOVELTY RISK` | TCAS is compared with SSI, but scheduling is not claimed as a general new algorithm. Journal-level sufficiency of task-specific novelty remains for the editor. |
-| R2.2 — CAI selection argument | `ADDRESSED BY WITHDRAWING CAI CLAIM` | CAI selector/proposition/proof/optimality claim removed. TCAS, C3 definition, and historical development record remain. |
-| R2.3 — cross-backbone inference | `NOT FULLY ANSWERED` | The invalid production additive-bootstrap `p=0.6523` inference is withdrawn. Exploratory object-cluster robust Wald results do not survive four-metric Holm correction; they do not prove absence of interaction. MV-Adapter and MVDiffusion probes use different interfaces/runners; matched cross-backbone generalization remains unestablished. |
-| R3 | `ACKNOWLEDGED` | Positive assessment thanked; no technical request or experiment invented. |
+| R1.1 color, artifacts, 3D fidelity | `PARTIAL` | Failure-enriched color diagnosis; no validated repair, native-default result, bake, seam, or PBR evidence. |
+| R1.2 matched evaluation | `ADDRESSED WITH LIMITS` | Fresh C supports the named paired image-space contrast; does not reproduce historical `+0.96 dB`. |
+| R1.3 texture metrics | `ADDRESSED WITH LIMITS` | Variation is not fidelity; retrospective S12 is not a causal or selector result. |
+| R1.4 paired uncertainty | `PARTIAL` | Paired intervals shown; no prespecified equivalence/non-inferiority margin. |
+| R1.5 FAC reproducibility | `PARTIAL; FIRST-ROUND RESULT RETAINED` | Configuration-list and run-manifest gaps disclosed. |
+| R2.1 methodological contribution | `PARTIAL; EDITORIAL NOVELTY RISK` | Positive task-specific empirical contribution; no general scheduling novelty or optimality claim. |
+| R2.2 CAI | `ADDRESSED BY WITHDRAWING CAI CLAIM` | Selector/proof/optimality claim removed. |
+| R2.3 cross-backbone | `NOT FULLY ANSWERED` | Existing probes are interface-specific; matched transfer is not established. |
+| R3 | `ACKNOWLEDGED` | Positive assessment; no technical request invented. |
 
-The second-round response and paper are internally consistent, and page locations below were checked against the final PDFs. Exact verbatim authentication of the second-round reviewer export remains incomplete: the retained review PDF is labeled as initial-submission comments. The response follows the recorded second-round requirements matrix; the provenance limit remains explicit.
+Exact verbatim authentication of the second-round review source remains incomplete: the retained PDF is labeled “initial-submission reviews.” The response follows the recorded second-round issue/evidence matrix and remains subject to author comparison with the editor's original comments.
 
-## Delivered sources and build verification
+## Delivered files and validation
 
-- Active manuscript: [`1008/manuscript/revision_01549_restored/manuscript_1008.tex`](../manuscript/revision_01549_restored/manuscript_1008.tex), SHA-256 `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`.
-- Active Supplement: [`1008/manuscript/revision_01549_restored/Supplementary_1008.tex`](../manuscript/revision_01549_restored/Supplementary_1008.tex), SHA-256 `59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed`.
-- Response source: [`1008/review/Response_to_Reviewers_1008.md`](../review/Response_to_Reviewers_1008.md), synchronized with the author-review copy; response PDF is five pages.
-- Package directory: [`1008/submission_1008/`](./); private GitHub [main package folder](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008).
-- Main PDF: 13 pages, SHA-256 `8e231a2941a165de4c5c68b33ef087cc7f53a6550ad5e878eee742a575a08935`.
-- Marked-up manuscript: 13 pages, SHA-256 `143ecff586aa057e3e81c95cff09f749459b476ae23387890cfbbb5ac392c0b7`.
-- Supplement PDF: 11 pages, SHA-256 `79bd2cf57de7e94f62b82c1d7edefe03675427949578ad44fc8ab8b5470156db`.
-- Response PDF: 5 pages, SHA-256 `c9cebb9dc8198ec9077d36f3dcf1dad084a9b064793bce9678303228a28d96a0`; author-review DOCX SHA-256 `0cbd727f360bd8df865738ccdbd14aab6fdd18ec6706a78c8c431a65465bfe96`. The assembled package DOCX is generated from the same Markdown and is covered by the package manifest/checksum.
-- LaTeX source ZIP: 44 entries, 32,009,077 bytes, CRC `OK`, SHA-256 `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd`. It excludes raw/generated data and contains the active manuscript and Supplement byte-for-byte.
-- Clean extraction builds of manuscript/Supplement/marked-up output passed at 13/11/13 pages. Each included script runs pdfLaTeX twice; unresolved references from pass one are resolved in pass two, and extracted text matches delivered PDFs. Build detail: [`SOURCE_PACKAGE_BUILD_CHECK.md`](Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md).
-- Main manuscript pages: Tables 3–4 p. 7; stage analysis p. 8; R1.1 limitations pp. 8–9; Figures 4–5 pp. 11–12. Supplementary Figure S1 p. 9. Traceability is in `Author_Review/REVIEWER_TO_MANUSCRIPT_TRACEABILITY.csv`.
+- Active manuscript: [`1008/manuscript/revision_01549_restored/manuscript_1008.tex`](../manuscript/revision_01549_restored/manuscript_1008.tex), SHA-256 `1a6e7e5365634445ad73e02c146fd1c62b28c5372cfede028ca85028dbdb8409`.
+- Active Supplement: [`1008/manuscript/revision_01549_restored/Supplementary_1008.tex`](../manuscript/revision_01549_restored/Supplementary_1008.tex), SHA-256 `eb524d957fb2be30ea2ef5615ba1a031f104a5d5cc002f0df54ead4d5ac7d2c1`.
+- Main, marked-up, and Supplement PDFs are each 13 pages. Response PDF is 6 pages.
+- Clean source archive: 44 entries, CRC verified, generated/checkpoint/GLB extensions excluded. Fresh extraction rebuilt all three LaTeX outputs; normalized extracted PDF text matches delivered PDFs.
+- The built-in Codex compiler was invoked on the saved active TeX but did not return diagnostics after repeated waits. This is not counted as an editor-native compilation pass. Repository build scripts succeeded from the working tree and clean ZIP extraction.
+- Updated response locations are checked against the final 13-page Supplement and 13-page main PDF. Main figure pages 11–12; S12 p. 12–13; S13 p. 13.
 
-The Codex built-in LaTeX compiler could not locate platform standard directories. The included project scripts and clean extracted source builds succeeded; editor-native compilation is not certified.
+## Git and branch handling
 
-## Final gates
+The task began on `main` at `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`, equal to the configured private remote at initial inspection. The final evidence/package commit will be pushed normally to `mvpainter/main` and verified against `git ls-remote`; its resulting SHA is recorded in the completion handoff. No force-push, history rewrite, raw-data copy, or journal upload is part of this delivery.
 
-`MAIN_SINGLE_EDITING_AUTHORITY = YES`  
-`ALL_RELEVANT_BRANCH_CONTENT_REVIEWED = YES`  
-`UNIQUE_VALUABLE_SOURCES_ACCOUNTED_FOR = YES`  
-`PENDING_117_DISPOSITIONS_RESOLVED_OR_EXPLICITLY_BLOCKED = YES`  
-`BULK_EXPERIMENT_DATA_PRESERVED = YES`  
-`UNSAFE_MERGES_AVOIDED = YES`  
-`SCIENTIFIC_CLAIMS_CONSISTENT = YES`  
-`REVIEW_RESPONSE_MATCHES_PAPER = YES`  
-`LATEX_BUILD_PASSED = YES`  
-`PRIVATE_MAIN_SYNCED = YES`  
-`SUBMISSION_APPROVED = NO`
-
-`MAIN_SINGLE_EDITING_AUTHORITY = YES` because the active manuscript is open at `/4T/MV-Painter-main/1008/manuscript/revision_01549_restored/manuscript_1008.tex`, and that worktree is on `main`. The exact final package-update and remote-verification commits are recorded in the final Git verification and completion handoff.
+The existing cross-backbone branch is `codex/next-review-response-20260930`. The color audit branch is `codex/r1-color-cast-repair-v2-20261009` in its existing separate worktree/origin history; no new color-repair experiment was started or pushed. `gh-pages` retains its publishing purpose. No branches or data-bearing worktrees were deleted in this paper handoff.
 
 ## Author checks before any upload
 
-1. Verify author names/contact information, title page, acknowledgements/funding, and declaration of interests carried from 0907.
-2. Approve the cover letter, highlights, graphical abstract, and title page, all still `DRAFT`.
-3. Confirm current manuscript ID/editor instructions and whether the 0907 conference attachment, graphical abstract, or demo media is required.
-4. Review R1.1 open 3D/color-fidelity risk, R2.1 novelty risk, R2.3 cross-backbone gap, and second-round review-source provenance.
-5. No journal submission has been made. `SUBMISSION_APPROVED=NO`.
+1. Verify author names/contact information, title page, acknowledgements/funding, and declaration of interests carried forward from 0907.
+2. Approve the cover letter, highlights, graphical abstract, and title page; they remain `DRAFT`.
+3. Confirm the current manuscript ID/editor instructions and whether the 0907 conference attachment or demo media is required.
+4. Review the unresolved R1.1, R2.1, and R2.3 risks and authenticate the second-round comments.
+
+## Final gates
+
+`SCIENTIFIC_EVIDENCE_FREEZE = YES`  
+`REVIEWER_RESPONSE_READY = PARTIAL`  
+`MANUSCRIPT_BUILD_PASSED = YES`  
+`SUBMISSION_PACKAGE_COMPLETE = YES`  
+`SUBMISSION_APPROVED = NO`
+
+`MANUSCRIPT_BUILD_PASSED=YES` refers to the repository's two-pass project scripts and clean-archive builds. The editor-native compiler request remained unresolved and is not represented as a pass. `SUBMISSION_PACKAGE_COMPLETE=YES` means the requested local draft files and checksums are assembled for author review; it does not mean author approval or journal submission.

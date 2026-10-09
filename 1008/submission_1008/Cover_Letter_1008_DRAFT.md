@@ -10,6 +10,8 @@ The 01549 manuscript submitted on 7 September 2026 was the post-first-round vers
 
 The new Fresh C evidence is a matched image-space comparison on 300 objects using one frozen checkpoint, shared runner, seed policy, inputs, views, and evaluation protocol. On the registered primary endpoint, C3 exceeds GFL by 0.522352 dB in mean FG-PSNR (95% object-bootstrap CI [0.404160, 0.640669]). The manuscript also reports the counter-results: GFH and Generic Linear have more favorable cohort means than C3 on all four displayed endpoints. C3 and GFL also differ in their applied deep/middle scale sums, so the primary contrast does not isolate timing alone. In a separate post-inspection stage-placement follow-up, temporal L–L–H is favored over C3 on all six formal endpoints. These results do not establish baked-texture quality, human preference, or a universal schedule.
 
+We also report separate retrospective boundaries rather than treating them as new confirmation: a texture-complexity analysis with 9/10 corrected associations, and a failure-enriched 26-object color diagnosis in which reference-relative color error improves for GFL over No Adapter while visible hue shifts remain in two cases. Neither analysis establishes a causal selector or a validated color repair. The response and Supplement distinguish these cohorts and evidence levels from Fresh C.
+
 The attached response addresses each current reviewer comment and identifies the corresponding changes. A copy of the 7 September 2026 conference submission is included in a separate folder as an editorial-history attachment; please confirm whether it is still requested for this round.
 
 Thank you for your consideration.

@@ -1,54 +1,32 @@
-# Computers & Graphics 1008 二轮投稿最终验收
+# Computers & Graphics 1008 二轮修订交付状态
 
+**捕获时间：** `2026-10-09T15:12:24Z` UTC  
 **状态：** `AUTHOR_REVIEW_READY / DRAFT`  
-**捕获时间：** `2026-10-09T08:13:59Z` UTC  
+**已向期刊提交：** 否  
 **投稿批准：** `SUBMISSION_APPROVED=NO`  
-**投稿状态：** 未向期刊上传  
-**论文/投稿包刷新 commit：** `9c3e6bdcc4115cf3ac4b153c6e879439a5ca9a1f`，已正常快进推送；`2026-10-09T08:13:59Z` 本地 `main` 与私有 `mvpainter/main` SHA 一致。Git 归集基线为 `ed7471ee57351d7c8d4600d43d2c63bd44d01725`。
+**main 起始基线：** `7e07a2811385fe411ce45d8a45fe1fdb0a2a98db`（收尾提交与 mvpainter/main 同步情况将在完成交付后核对并报告）
 
-本稿以 2026-09-07 已完成第一轮修订的正式稿 01549 为基线。01549 原始 TeX 未改动。
+## 本轮完成
 
-## 科学主张
+- 实质更新活动主文、Supplement、Reviewer Response、证据矩阵、页码追踪及变更记录。
+- 复核 R1.1 的 26 对象颜色诊断：偏色在烘焙前已出现，但没有验证成功的修复，也没有证明完整根因。
+- 将 FRESH_CONFIRM_300 复杂度分析限定为回顾性敏感性结果：9/10 检验通过校正，FG-LPIPS/coverage 为唯一未拒绝项。
+- Fresh B/A3b、M3、跨骨干及人工评估均按真实来源边界收窄；不以人工结果填补缺口。
+- 更新投稿草稿包和来源 ZIP。主文、Supplement、标注稿各 13 页；回复信 6 页。干净解压重建通过，PDF 提取文本与交付文件一致。
 
-论文保留 TCAS，将其描述为 GeoTex-Adapter 残差路径上的任务特定免训练推理干预。Fresh C 的 C3−GFL FG-PSNR 为 `+0.522352 dB`（对象级 bootstrap 95% CI `[+0.404160,+0.640669]`）。GFH 与 Generic Linear 在四个展示端点的队列均值均优于 C3；C3 与 GFL 的 deep/middle 累积应用尺度是 82.5 与 62.5，比较不能单独解释为时间调度效应。独立 stage-placement follow-up 中 Temporal L–L–H 在六个正式端点都优于 C3；不声称 C3 普遍最优。纹理变化指标不称为纹理保真，不声称 3D bake、seam、PBR 或原生默认 Adapter 已通过验证。
+## 未解决事项
 
-颜色审计只支持“全局 appearance embedding 可控制所选样例的 chroma”，不支持完整根因或有效修复。Fresh B 缓存/来源不一致是合理但未证实的贡献因素。C1 通过数值门但未通过锁定视觉门；B2 八次生成后未通过预设数值门，未显示明确视觉修正。没有独立 Fresh B 修复验证。
+- 二轮审稿 PDF 原文未能认证；留存版本标注为 initial-submission reviews。
+- R1.1 真实 3D/原生默认/烘焙质量仍未解决；R2.1 创新充分性仍属编辑判断；R2.3 没有匹配的第二骨干验证。
+- 编辑器内置 LaTeX 工具调用未返回诊断；仓库构建脚本与 ZIP 干净构建均通过，未把工具等待记作成功编译。
+- 题名页、作者/资金/利益声明以及 cover letter、highlights、graphical abstract 均待作者确认。
 
-## 第二轮状态
+所有结论和验证细节见 [`FINAL_CG_SUBMISSION_READINESS.md`](FINAL_CG_SUBMISSION_READINESS.md) 与 `Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md`。
 
-R1.1 `PARTIAL`; R1.2 `ADDRESSED WITH LIMITS`; R1.3 `ADDRESSED WITH LIMITS`; R1.4 `PARTIAL`; R1.5 `PARTIAL, first-round result retained`; R2.1 `PARTIAL, editorial novelty risk`; R2.2 `ADDRESSED by withdrawing CAI claim`; R2.3 `NOT FULLY ANSWERED`; R3 `ACKNOWLEDGED`. 生产 additive-bootstrap 的 `p=0.6523` 交互推断已撤回。解释和剩余限制见 [FINAL_CG_SUBMISSION_READINESS.md](FINAL_CG_SUBMISSION_READINESS.md)。
-
-第二轮审稿原文逐字认证仍未完成：保存的 PDF 标注为 initial-submission reviews。回复信按二轮要求矩阵和证据撰写；这个来源限制已披露，未被说成已认证。
-
-## 编译和文件验收
-
-- 主文 13 页，SHA-256 `8e231a2941a165de4c5c68b33ef087cc7f53a6550ad5e878eee742a575a08935`。
-- 标注稿 13 页，SHA-256 `143ecff586aa057e3e81c95cff09f749459b476ae23387890cfbbb5ac392c0b7`。
-- Supplement 11 页，SHA-256 `79bd2cf57de7e94f62b82c1d7edefe03675427949578ad44fc8ab8b5470156db`。
-- Response 5 页，SHA-256 `c9cebb9dc8198ec9077d36f3dcf1dad084a9b064793bce9678303228a28d96a0`；作者审阅目录 DOCX SHA-256 `0cbd727f360bd8df865738ccdbd14aab6fdd18ec6706a78c8c431a65465bfe96`。投稿包 DOCX 由同一 Markdown 生成，按包内 manifest/checksum 校验。
-- 源 ZIP 44 entries，32,009,077 bytes，CRC 通过，SHA-256 `348e42dc5663d4761ce0088e5e9af44b01af93b59a3e5cd1b031bd52d72115bd`；主文和 Supplement TeX 在 ZIP 中与活动源逐字节相同。ZIP 不含 JSON、NPZ、checkpoint、GLB 或生成图像数据。
-- 空目录解压重建主文、Supplement、标注稿分别 13、11、13 页。三份脚本各执行两遍 pdfLaTeX；第二遍无未解析引用，提取文本与交付 PDF 相符。
-- 内置编辑器 LaTeX 编译器报告平台 standard directories 不可用；已用项目脚本和干净源包完成构建验证。
-- `SUBMISSION_FILE_MANIFEST.csv` 与 `SHA256SUMS.txt` 在 assembler 刷新后校验。详见 `Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md`。
-
-## 状态门
-
-`MAIN_SINGLE_EDITING_AUTHORITY = YES`  
-`ALL_RELEVANT_BRANCH_CONTENT_REVIEWED = YES`  
-`UNIQUE_VALUABLE_SOURCES_ACCOUNTED_FOR = YES`  
-`PENDING_117_DISPOSITIONS_RESOLVED_OR_EXPLICITLY_BLOCKED = YES`  
-`BULK_EXPERIMENT_DATA_PRESERVED = YES`  
-`UNSAFE_MERGES_AVOIDED = YES`  
-`SCIENTIFIC_CLAIMS_CONSISTENT = YES`  
-`REVIEW_RESPONSE_MATCHES_PAPER = YES`  
-`LATEX_BUILD_PASSED = YES`  
-`PRIVATE_MAIN_SYNCED = YES`  
+`SCIENTIFIC_EVIDENCE_FREEZE = YES`  
+`REVIEWER_RESPONSE_READY = PARTIAL`  
+`MANUSCRIPT_BUILD_PASSED = YES`（仓库脚本及干净 ZIP 构建）  
+`SUBMISSION_PACKAGE_COMPLETE = YES`（本地作者审阅草稿包）  
 `SUBMISSION_APPROVED = NO`
 
-`MAIN_SINGLE_EDITING_AUTHORITY=YES`：当前打开的论文源位于 `/4T/MV-Painter-main`，该工作树检出 `main`，并作为唯一日常开发目录。
-
-## 作者上传前核验
-
-核实作者/通讯信息、题名页、基金致谢和利益声明；审阅仍标为 `DRAFT` 的 cover letter、research highlights、graphical abstract、title page；确认当前 manuscript ID、编辑部说明、0907 会议稿附件、图形摘要或演示媒体是否需要。未得到作者确认前不投稿。
-
-私有投稿目录：[Blues-berry/MVPainter — `1008/submission_1008`](https://github.com/Blues-berry/MVPainter/tree/main/1008/submission_1008)。
+本轮没有复制大型实验数据，没有改写 Git 历史，也没有向期刊投稿。

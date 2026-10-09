@@ -2,9 +2,9 @@
 
 ## Version basis
 
-`CAG-S-26-01549` is the revised manuscript submitted on 2026-09-07 after first-round revisions. The current R1/R2/R3 packet is the second-round review; 1008 is the response to that round. The working manuscript was restored from the authenticated `final/submission_new_0907/latex.zip` member `final_0903.tex` (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). The previous candidate in `revision_1008/` remains untouched.
+`CAG-S-26-01549` is the revised manuscript submitted on 2026-09-07 after first-round revisions. This 1008 candidate is prepared against the second-round requirements supplied for this task and the retained response matrix. The locally retained review PDF is labeled as initial-submission comments and does not authenticate the exact second-round wording. The working manuscript was restored from the authenticated `final/submission_new_0907/latex.zip` member `final_0903.tex` (SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`). The previous candidate in `revision_1008/` remains untouched.
 
-The delivered main manuscript is 13 pages; the Supplement is 11 pages; the marked-up comparison against 01549 is 13 pages. The two full-width Fresh C context-plus-ROI figures each use a full page so the texture detail remains legible at normal reading size.
+The delivered main manuscript is 13 pages; the Supplement is 13 pages; the marked-up comparison against 01549 is 13 pages; the reviewer response is 6 pages. The two full-width Fresh C context-plus-ROI figures each use a full page so the texture detail remains legible at normal reading size.
 
 ## Section-level changes
 
@@ -37,22 +37,26 @@ The clean-v2 Core-7 condition means and selected paired contrasts are now shown 
 
 ## Round-specific response map
 
-- **R1.1:** matched full-object 2D comparisons added; bake/seam/PBR and portal-video limits are explicit.
-- **R1.2:** answered with author-specified paired Fresh C protocol; C3−GFL FG-PSNR is +0.522352 dB (95% CI [+0.404160,+0.640669]); historical Table 4 checkpoint identity is not an added gate.
-- **R1.3:** texture variation is separated from fidelity; the earlier 3AFC result remains subjective preference only.
+- **R1.1:** matched full-object 2D comparisons and the failure-enriched 26-object color diagnosis are described without a repair claim; Supplement S13 gives paired results. Bake/seam/PBR, native-default, and portal-video limits remain explicit.
+- **R1.2:** answered with the matched Fresh C comparison; C3−GFL FG-PSNR is +0.522352 dB (95% CI [+0.404160,+0.640669]); historical Table 4 checkpoint identity is not an added gate. Fresh B/A3b timing is downgraded because pre-run lock availability is not authenticated.
+- **R1.3:** texture variation is separated from fidelity; Supplement S12 reports the retrospective 9/10 texture-complexity family, and S13 distinguishes color difference from texture-detail suppression. The earlier 3AFC result remains scoped to its original conditions.
 - **R1.4:** paired intervals and the Edge-SSIM trade-off are reported; no equivalence/non-inferiority claim is made.
 - **R1.5:** first-round FAC negative results remain, with the archival reproducibility gap disclosed; no code-release claim is made.
-- **R2.1:** TCAS is retained and compared with SSI; novelty sufficiency remains an editorial judgment.
+- **R2.1:** TCAS is framed positively as a task-specific, operationally measured empirical control study and compared with SSI; no general scheduler or optimum claim is made. Novelty sufficiency remains an editorial judgment.
 - **R2.2:** CAI's invalid derivation/optimality claims are removed without removing TCAS or C3.
-- **R2.3:** actual interface probes and their limits are reported; cross-backbone generalization remains unestablished.
+- **R2.3:** MV-Adapter B′ and M3 mapping sensitivities are kept distinct, alongside the 98-object MV-Adapter and 75-object MVDiffusion probes; cross-backbone generalization remains unestablished.
 - **R3:** positive assessment acknowledged; no new technical change or experiment is attributed to this reviewer.
 
-The manuscript and response use the official 0907 submission package as the first-round history. They do not describe 01549 as an initial submission or conflate first- and second-round requirements.
+The manuscript and response use the official 0907 submission package as the first-round history. They do not describe 01549 as an initial submission or conflate first- and second-round requirements. Exact second-round source wording remains unauthenticated in the retained local review file.
 
 ## Final R1.1 evidence alignment — 2026-10-09
 
 After reviewing the r1color handoff, the Limitations paragraph and R1.1 response now distinguish (i) a global-appearance embedding that controls chroma in four selected development cases, (ii) a Fresh B input-only cache/source discrepancy that remains a plausible contributor rather than a proven cause, and (iii) two repair candidates that did not establish a validated correction. C1 passed its four-object numeric gate but failed the locked visual gate, including a faint cyan/blue rim in one case. B2 completed eight generations but failed its frozen numeric correction gate and showed no clear visual change. No independent Fresh B repair validation was run. No method or default inference code changed; no new experiment was started.
 
-## Final wording precision pass after Git consolidation — 2026-10-09
+## Scientific evidence closure and substantive revision — 2026-10-09
 
-The active manuscript received a bounded prose-only pass in the abstract, third contribution, and conclusion. It now names the requested-scale profile, wrapper-applied scale under native caps, and residual magnitude as separate quantities; describes the temporal-placement, layer-window, and cross-interface studies as response differences under tested settings; and states that the evidence does not establish texture fidelity, baking, seams, PBR, matched cross-backbone transfer, or a universally preferred schedule. No results, reviewer requirements, or evidence values changed. The response Markdown and Supplement source remain unchanged. The authoritative TeX SHA-256 is `dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4`.
+The active manuscript, Supplement, response and reviewer evidence matrix were substantively updated together. The Introduction and contributions now state the positive task-specific value of the observable geometry-residual control and its paired empirical comparison, while retaining GFH/Generic Linear counter-results and the applied-scale confound. The Fresh B/A3b family is retrospective because the preserved lock timeline cannot authenticate pre-run availability. The separate FRESH_CONFIRM_300 texture-complexity audit is reported as retrospective, 9/10 after the plus-one-corrected Holm family, with quartile heterogeneity and no causal-selector claim. The failure-enriched 26-object color diagnostic is reported with its reference-relative paired estimates, persistent hue shifts and pre-bake boundary; it validates no repair. Supplement S12 and S13 hold those two evidence summaries. MV-Adapter B′ and M3 are described separately; M3 changes both grouping and total nominal budget and is retrospective.
+
+The compact CPU reaggregation reproduced the source result (N=300; 9/10; sole non-rejection FG-LPIPS/coverage, adjusted p=0.0507949). No GPU inference ran in this turn because both GPUs were highly utilized and had roughly 25 GB of 32.6 GB memory in use with no visible compute-process owner. The pre-existing 40-slot human study remains internal only: its authority file records a confirmatory classification with execution deviations, no Holm-supported LLH advantage, and missing consent/ethics and stimulus-identity records. No participant-level data, private key or identity was copied to the manuscript, response or submission package.
+
+The source evidence, full Reviewer 1/2 response alignment and remaining boundaries are detailed in `1008/audits/FINAL_SCIENTIFIC_CLAIM_RECONCILIATION.md`, `R1_R2_HIGH_RISK_CLOSURE_REPORT.md`, and `TARGETED_EXPERIMENT_DECISION_REPORT.md`. The editor-facing PDF available locally is labeled as initial-submission reviews; no authenticated second-round export or editor-system connector/credentials were available. The current response is therefore ready only for author review pending exact comment-source verification and remaining scientific/editorial judgments.
