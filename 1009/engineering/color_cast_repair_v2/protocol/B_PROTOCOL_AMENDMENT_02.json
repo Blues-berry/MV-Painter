@@ -1,0 +1,27 @@
+{
+  "amendment": "color-cast-v2-b-gpu-binding-v1",
+  "amended_at_utc": "2026-10-09T01:51:42Z",
+  "parent_protocol": "protocol/B_PROTOCOL_LOCK.json",
+  "parent_protocol_sha256": "7da96dd49ff48517c9c09424aa6a3028e5618d43d5ba545585ffcf05c4a88da7",
+  "embedding_control_amendment": "protocol/B_PROTOCOL_AMENDMENT_01.json",
+  "embedding_control_amendment_sha256": "f2d4fc072a74742a1e02874cf547580dfe74e7cb7530dc948643980c02dbabbd",
+  "timing": "Before any Phase B diffusion generation.",
+  "trigger": {
+    "observation": "The device selected by the original lock (physical GPU 0) is now at 99% utilization with 5867 MiB allocated; physical GPU 1 is at 0% utilization with 15 MiB allocated.",
+    "action": "Bind this campaign to the idle physical GPU 1; do not interrupt or compete with the active GPU 0 workload.",
+    "evidence": "nvidia-smi --query-gpu=index,name,memory.used,memory.total,utilization.gpu --format=csv,noheader captured immediately before this amendment."
+  },
+  "cuda_visible_devices": "1",
+  "physical_gpu_index": 1,
+  "logical_device_inside_process": "cuda:0",
+  "device_class": "NVIDIA GeForce RTX 5090",
+  "unchanged": [
+    "checkpoint and model weights",
+    "config and scheduler",
+    "single-GPU execution",
+    "precision and backend settings",
+    "all objects, conditions, seeds, and analysis endpoints"
+  ],
+  "expected_total_generation_calls": 64,
+  "reason": "GPU selection changes only to respect current shared-device occupancy; the model and per-call numerical settings remain locked."
+}

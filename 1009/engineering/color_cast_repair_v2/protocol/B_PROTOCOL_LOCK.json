@@ -1,0 +1,96 @@
+{
+  "protocol": "color-cast-v2-intervention-lock-20261009-v1",
+  "locked_at_utc": "2026-10-09T01:35:00Z",
+  "development_only": true,
+  "independent_validation": "Fresh B n=150 remains sealed for repair tuning; no Fresh B repair metrics or images will be used to choose the method.",
+  "checkpoint": {
+    "path": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+    "sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0"
+  },
+  "config": {
+    "path": "/4T/tmp/mvpainter-recovery-HLzm9O/scheme_new_schedule/clean_holdout.yaml",
+    "sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b"
+  },
+  "prior_campaign_runner_sha256": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3",
+  "current_frozen_worktree_runner_sha256": "4ee5fdb84ad729663d65494c1fa9f97bdc692b8801c4b8bff9afedbdb7b68ec6",
+  "generation_helper_sha256": "14bf84690552c973bac9304d3ba80fe184ff68232329bacfc7c1d734a96fd99b",
+  "runner_identity_note": "The prior Fresh C/B manifests declare e5c28... for scripts/run_validation_v3_experiment.py. That same file hash is present in the read-only /4T/CXY/MV-Painter worktree; the frozen r1color copy is 4ee5... because of later manifest/queue changes. Generation helper, eval_exploration, dataset, model wrapper and pipeline hashes match across worktrees. The new probe wrapper will be separately hashed in its run manifest.",
+  "generation": {
+    "target_view_mode": "unique6",
+    "target_views_by_reverse": {
+      "false": [0, 15, 12, 16, 13, 14],
+      "true": [14, 15, 0, 16, 12, 13]
+    },
+    "source_view_tile_index": 0,
+    "resolution": 256,
+    "scheduler": "EulerDiscreteScheduler from checkpoint pipeline config",
+    "steps": 50,
+    "adapter_schedule": "GFL constant requested scale 1.25 (existing per-wrapper caps retained)",
+    "object_seed_policy": "42 + frozen source object index",
+    "initial_latent_seed": 42,
+    "precision": "UNet/VAE float16; adapter and geometry encoder float32",
+    "condition_vae_posterior": "reset identical torch RNG seed 42 before every condition; log pre/post RNG state and posterior latent identity",
+    "gpu": "CUDA_VISIBLE_DEVICES=0; one RTX 5090"
+  },
+  "objects": [
+    {
+      "uid": "eac4b392b7b448a2b6ec77e8936abe1b",
+      "cohort": "original Fig. 4 row 1, failure-enriched development object",
+      "root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_idx": 4,
+      "object_seed": 46,
+      "reverse": true,
+      "source_view": 14,
+      "target_order": [14, 15, 0, 16, 12, 13]
+    },
+    {
+      "uid": "ea7601dbeb2c46188571cb86e8fdb5bf",
+      "cohort": "original Fig. 4 row 2, failure-enriched development object",
+      "root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+      "object_idx": 3,
+      "object_seed": 45,
+      "reverse": true,
+      "source_view": 14,
+      "target_order": [14, 15, 0, 16, 12, 13]
+    },
+    {
+      "uid": "c76ac44df995482185077da81939b306",
+      "cohort": "previous Fresh C normal-color case; development only",
+      "root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_idx": 232,
+      "object_seed": 274,
+      "reverse": false,
+      "source_view": 0,
+      "target_order": [0, 15, 12, 16, 13, 14]
+    },
+    {
+      "uid": "8bd93fcae54940bd903a94a9094da4ee",
+      "cohort": "Fresh C GT-only high-texture stratum median above frozen Fresh B cutpoint 0.0313924523; development only",
+      "root": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders",
+      "object_idx": 156,
+      "object_seed": 198,
+      "reverse": false,
+      "source_view": 0,
+      "target_order": [0, 15, 12, 16, 13, 14]
+    }
+  ],
+  "intervention_matrix": {
+    "rgb_perturbation": "foreground-only CIE Lab shift; preserve L*; requested change exactly +/-6 Lab units on one axis at a time; alpha-weighted at boundaries; background unchanged",
+    "directions": [[6, 0], [-6, 0], [0, 6], [0, -6]],
+    "arms_per_direction": ["VAE condition and global embedding jointly recomputed from the perturbed source", "VAE condition only (cached baseline global embedding held fixed)", "global embedding only (baseline VAE condition held fixed)"] ,
+    "baseline": "unperturbed source condition and its cached global embedding",
+    "total_conditions_per_object": 13,
+    "embedding_recompute": "Use the frozen vision_processor, vision_encoder and vision_encoder_2 to encode original and perturbed source tensors. The global-only/joint arm is cached_baseline + (encode(perturbed) - encode(original)); this keeps the exact cached baseline while applying only the color perturbation's encoder delta. Log cache-versus-recomputed identity and the delta. This prevents any stale-cache offset from entering the causal contrast.",
+    "fixed_factors": ["RGB source object", "geometry/depth/normal", "target view order", "GFL schedule", "initial latent", "VAE posterior RNG", "scheduler", "checkpoint", "runtime", "all non-appearance tensors"]
+  },
+  "primary_readouts": [
+    "per-view signed output delta a*/b* relative to paired baseline; source view and five unseen views separately",
+    "per-view output response projected onto the intervention direction",
+    "per-view foreground CIEDE2000 against GT as an evaluation-only secondary",
+    "grayscale/ L* edge similarity and output-to-output structure change",
+    "source/target mask coverage and condition tensor, embedding, init latent, posterior-noise, prediction SHA-256 identities"
+  ],
+  "channel_control_rule": "A channel has a repeatable directional response when its channel-only arm moves source-view mean a*/b* in the requested direction for both signs on at least 3/4 objects, and moves the mean of at least 4/5 unseen views in that direction on at least 3/4 objects; mean magnitude must exceed 1 Lab unit per 6-unit input step. Joint-arm results are a consistency check. Otherwise report control as not identified.",
+  "stop_rule": "No threshold or scale search. If both channel-only arms fail the locked response rule, do not present an evidence-based repair; run the bounded C1 candidate only as a prespecified falsification check and do not proceed to a positive claim."
+}
+

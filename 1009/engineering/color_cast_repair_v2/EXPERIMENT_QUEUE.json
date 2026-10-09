@@ -1,0 +1,62 @@
+{
+  "campaign": "MV-Painter R1 Color Cast Repair Campaign V2",
+  "updated_utc": "2026-10-09T06:00:00Z",
+  "active_phase": "delivery",
+  "items": [
+    {
+      "id": "A1-A3",
+      "status": "complete",
+      "scope": "Source-view identity, real condition path, dev failures/normal/high-texture objects",
+      "status_detail": "Source identity and condition path verified; per-view, source-statistics, and per-object color readouts are complete for the four-object development cohort.",
+      "outputs": [
+        "A_SOURCE_VIEW_COLOR_AUDIT.md",
+        "A_CONDITION_ENCODING_TRACE.csv",
+        "A_COLOR_PATHWAY_GALLERY.pdf"
+      ]
+    },
+    {
+      "id": "B",
+      "status": "complete",
+      "scope": "Four objects; baseline plus bidirectional Lab a*/b* changes in joint, VAE-only, and global-embedding-only arms",
+      "protocol": "protocol/B_PROTOCOL_LOCK.json",
+      "outputs": [
+        "B_COLOR_RESPONSE_INTERVENTION.md",
+        "B_CHANNEL_ABLATION_RESULTS.csv",
+        "B_COLOR_RESPONSE_CURVES.pdf",
+        "B_CAUSAL_VERDICT.md"
+      ],
+      "protocol_amendment": "protocol/B_PROTOCOL_AMENDMENT_03.json",
+      "status_detail": "64/64 locked calls complete; shared-factor identity passed; B stop rule permits the frozen C1 development trial."
+    },
+    {
+      "id": "C",
+      "status": "development_gate_failed",
+      "scope": "One frozen bounded source-conditioned chroma calibration candidate plus CPU paired evaluator",
+      "protocol": "protocol/C1_DEV_METHOD_LOCK.json",
+      "implementation": "color_repair.py",
+      "development_runner": "run_chroma_anchor_evaluation.py",
+      "final_lock": "C_REPAIR_METHOD_LOCK.json",
+      "status_detail": "Numeric criteria passed, but the pre-registered visual gate failed; no Fresh B outcomes opened and no independent validation authorized."
+    },
+    {
+      "id": "D",
+      "status": "sealed_not_run_after_c1_gate_failure",
+      "scope": "Fresh B 150 objects; method lock records validation_authorized=false"
+    },
+    {
+      "id": "delivery",
+      "status": "in_progress",
+      "outputs": [
+        "FINAL_ROOT_CAUSE_REPORT.md",
+        "COLOR_INTERVENTION_RESULTS.csv",
+        "COLOR_REPAIR_VALIDATION.csv",
+        "BEFORE_AFTER_COLOR_CASEBOOK.pdf",
+        "SOURCE_VIEW_VS_UNSEEN_VIEW_ANALYSIS.md",
+        "FAILURE_CASES.md",
+        "FINAL_COLOR_FIX_VERDICT.md",
+        "SHA256SUMS.txt"
+      ],
+      "status_detail": "Reports and casebook created; final integrity and scoped Git delivery remain."
+    }
+  ]
+}

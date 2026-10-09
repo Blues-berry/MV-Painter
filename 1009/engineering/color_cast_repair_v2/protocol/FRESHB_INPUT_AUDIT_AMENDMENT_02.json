@@ -1,0 +1,17 @@
+{
+  "amendment": "freshb-embedding-provenance-cpu-execution-v1",
+  "amended_at_utc": "2026-10-09T01:55:53Z",
+  "parent_protocol": "protocol/FRESHB_INPUT_ONLY_AUDIT_LOCK.json",
+  "provenance_comparison_amendment": "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_01.json",
+  "timing": "Before the additional raw-source embedding comparison is run and before any Phase B diffusion generation.",
+  "trigger": "Both RTX 5090 devices show substantial memory allocation and intermittent high utilization without attributable process listings. Avoid competing with concurrent work.",
+  "execution_change": "Run this input-only encoder audit with model device=CPU. The frozen vision encoders and processors used for both embedding recomputations are already placed on CPU by the locked model loader and encode helper.",
+  "unchanged": [
+    "checkpoint and processor assets",
+    "selected source view and condition preprocessing",
+    "both embedding comparisons and thresholds",
+    "no prediction/GT/repair outcomes read",
+    "no cache modification"
+  ],
+  "expected_gpu_generation_calls": 0
+}

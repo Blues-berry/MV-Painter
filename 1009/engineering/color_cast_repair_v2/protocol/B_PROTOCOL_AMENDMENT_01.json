@@ -1,0 +1,31 @@
+{
+  "amendment": "color-cast-v2-b-cached-embedding-control-v1.1",
+  "amended_at_utc": "2026-10-09T01:51:00Z",
+  "parent_protocol": "protocol/B_PROTOCOL_LOCK.json",
+  "parent_protocol_sha256": "7da96dd49ff48517c9c09424aa6a3028e5618d43d5ba545585ffcf05c4a88da7",
+  "timing": "Before any Phase B diffusion generation and before reading any Fresh B prediction PNG or repair-quality metric.",
+  "trigger_evidence": {
+    "scope": "input-only audit; no generated image or quality outcome read",
+    "freshb_n": 150,
+    "cache_recomputed_max_abs_delta_within_0p03": "0/150",
+    "median_max_abs_delta": 3.3991549015045166,
+    "p95_max_abs_delta": 5.109248900413512,
+    "max_abs_delta": 6.874626159667969,
+    "audit_csv_sha256": "1af2b71a9e144fca78a37f5a777af645fab83f3720a5608160e78e6d3f30882a",
+    "dev_fig4_cache_vs_current_cond_max_abs_delta": {
+      "eac4b392b7b448a2b6ec77e8936abe1b": 2.847482681274414,
+      "ea7601dbeb2c46188571cb86e8fdb5bf": 4.047441482543945
+    }
+  },
+  "reason": "Add a direct causal test of the discovered condition-to-embedding cache mismatch before selecting the repair. A color-only embedding perturbation around a non-matching cache could otherwise conflate color response with stale feature content.",
+  "added_arm": {
+    "name": "global_embedding_recomputed",
+    "change": "Replace the cached global embedding with the frozen two-encoder output computed from the exact current cond_imgs tensor.",
+    "held_fixed": ["VAE condition tensor", "geometry/depth/normal", "GFL schedule", "initial latent", "VAE posterior RNG", "checkpoint", "scheduler", "runtime"],
+    "interpretation": "causal cache-consistency control; not itself a validated color fix",
+    "run_order": "Immediately after the cached GFL baseline and before color perturbation arms"
+  },
+  "unchanged": "All four +/-6 Lab directions, joint/VAE-only/embedding-only arms, object selection, main endpoints, response rule, and stop rule from B_PROTOCOL_LOCK.json remain unchanged.",
+  "revised_generation_count": "14 conditions per object including cached baseline and the new recomputed-embedding control; plus No Adapter and LLH references = 16 calls/object, 64 calls total."
+}
+

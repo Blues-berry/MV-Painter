@@ -1,0 +1,35 @@
+{
+  "amendment": "freshb-cache-alternate-reference-view-input-only-v1",
+  "amended_at_utc": "2026-10-09T02:05:27Z",
+  "parent_protocol": "protocol/FRESHB_INPUT_ONLY_AUDIT_LOCK.json",
+  "related_amendments": [
+    "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_01.json",
+    "protocol/FRESHB_INPUT_AUDIT_AMENDMENT_02.json"
+  ],
+  "timing": "Before any Phase B diffusion generation and before reading Fresh B prediction PNGs or quality metrics.",
+  "trigger": "Across the full input-only cohort, caches match neither the exact current cond_imgs nor the unaugmented selected view within 0.03 maximum absolute embedding difference.",
+  "question": "Does the cache instead match the other available reference candidate (000 or 014), under raw or dataset-transformed preprocessing?",
+  "selection_rule": "Take the first four frozen-list UIDs with selected source view 000 and the first four with selected source view 014, as determined by the already completed source-selection audit. No outcome data are used.",
+  "uids": [
+    "000c895f9ef6491894ac588634f3d2b5",
+    "00133744383047b888486d10548eb32d",
+    "0013d88f17a245b0bff5ebe713bd72ab",
+    "0015eb3cf53b4339b2d0532cf912ab26",
+    "00001ec0d78549e1b8c2083a06105c29",
+    "0005d5eb0eb847648bf2e76f6931ed48",
+    "0005df571e71437991594d0affec9c2b",
+    "000d1c5d169f4fda93a32f2eaeac80d8"
+  ],
+  "allowed_inputs": "For these eight objects only, encode both 000.png and 014.png as candidate source images. Compare cached vectors with unaugmented and exactly seeded dataset-transformed versions using the locked frozen encoders.",
+  "outputs": [
+    "runs/phase_a/FRESHB_CACHE_ALTERNATE_VIEW_AUDIT.csv",
+    "runs/phase_a/FRESHB_CACHE_ALTERNATE_VIEW_AUDIT.json"
+  ],
+  "forbidden": [
+    "generated Fresh B predictions",
+    "GT color or quality metrics",
+    "changing embeddings or source files",
+    "using output-quality outcomes to choose the eight objects"
+  ],
+  "execution_device": "CPU; zero GPU generations"
+}

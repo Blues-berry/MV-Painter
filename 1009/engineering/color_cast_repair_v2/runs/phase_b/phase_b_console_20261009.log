@@ -1,0 +1,33 @@
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.36it/s]Loading pipeline components...:  57%|█████▋    | 4/7 [00:10<00:08,  2.88s/it]Loading pipeline components...:  71%|███████▏  | 5/7 [00:36<00:18,  9.14s/it]Loading pipeline components...:  86%|████████▌ | 6/7 [00:39<00:07,  7.47s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:46<00:00,  7.22s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:46<00:00,  6.57s/it]
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+Loaded GeoTex weights from /4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt
+============= length of dataset 2 =============
+base dir name: ['', '4T', 'CXY', 'MV-Painter', 'data', 'train_data']
+alpha count: 223051 176765
+reverse true
+Traceback (most recent call last):
+  File "/4T/CXY/MV-Painter-r1color/1009/engineering/color_cast_repair_v2/run_color_intervention.py", line 692, in <module>
+    main()
+    ~~~~^^
+  File "/4T/CXY/MV-Painter-r1color/1009/engineering/color_cast_repair_v2/run_color_intervention.py", line 469, in main
+    geo_hashes.append(tensor_sha(x))
+                      ~~~~~~~~~~^^^
+  File "/4T/CXY/MV-Painter-r1color/1009/engineering/color_cast_repair_v2/run_color_intervention.py", line 60, in tensor_sha
+    array = tensor.detach().cpu().contiguous().numpy()
+            ^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'detach'

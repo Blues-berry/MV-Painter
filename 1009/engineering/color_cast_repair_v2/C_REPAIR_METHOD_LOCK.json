@@ -1,0 +1,44 @@
+{
+  "protocol": "color-cast-v2-c1-final-development-gate-v1",
+  "decision_time_utc": "2026-10-09T05:39:42Z",
+  "development_only": true,
+  "candidate": "Source-conditioned Lab chroma anchoring on GFL six-view output",
+  "development_method_lock": {
+    "path": "protocol/C1_DEV_METHOD_LOCK.json",
+    "sha256": "20d8f579890a1bcb460ff57025dd81c3f23d8098fc31e7023a58c6010c4ecbc8"
+  },
+  "candidate_code": {
+    "path": "color_repair.py",
+    "sha256": "8d2f460509280e9cbe4e22081a47e3ce938f53262bd321d8971be18095572be8"
+  },
+  "development_objects": [
+    "eac4b392b7b448a2b6ec77e8936abe1b",
+    "ea7601dbeb2c46188571cb86e8fdb5bf",
+    "c76ac44df995482185077da81939b306",
+    "8bd93fcae54940bd903a94a9094da4ee"
+  ],
+  "development_evidence": {
+    "paired_results_sha256": "1151c16fafe6e38531fd5f56df935644634f513039c33adcf4066ce6d1249dc2",
+    "validation_csv_sha256": "c3be1dddfcbef5fe26836459e3c4b3df12e980dbc3275d5e986ca2dca2ec60fe",
+    "manual_visual_review_sha256": "68d3afbba5f47cd62c2cb4d3366b0e2bc9df79183c052c676a78585d55cb5a5c",
+    "visual_casebook_sha256": "47ba2ba6731d7c805a0a2a3b34d629962f73a22ea786afba4463aca8a3fb10c5"
+  },
+  "gate": {
+    "numeric_criteria_pass": true,
+    "failure_enriched_cases_visibly_improved_without_new_cast": false,
+    "normal_and_high_texture_quality_visually_preserved": true,
+    "all_development_criteria_pass": false,
+    "development_gate_pass": false
+  },
+  "decision": "STOP_AFTER_DEVELOPMENT",
+  "phase_b_supports_candidate": true,
+  "validation_authorized": false,
+  "fresh_b_outcomes_opened": false,
+  "fresh_b_candidate_run_authorized": false,
+  "reason": "The frozen visual gate failed: Fig. 4 row 1 has no clear visible improvement; Fig. 4 row 2 retains substantial color mismatch and develops a faint cyan/blue silhouette rim. No thresholds, mask rules, or parameters were changed after the lock.",
+  "holdout_separation": {
+    "fresh_b_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+    "validation_amendment_created": false,
+    "holdout_guard": "CLOSED"
+  }
+}

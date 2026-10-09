@@ -1,0 +1,33 @@
+{
+  "protocol": "r1-source-and-cross-view-color-readout-v1",
+  "locked_at_utc": "2026-10-09T02:25:22Z",
+  "development_objects": [
+    "eac4b392b7b448a2b6ec77e8936abe1b",
+    "ea7601dbeb2c46188571cb86e8fdb5bf",
+    "c76ac44df995482185077da81939b306",
+    "8bd93fcae54940bd903a94a9094da4ee"
+  ],
+  "conditions": ["No Adapter", "GFL cached-embedding baseline", "GFL recomputed-current-condition embedding", "LLH", "all frozen bidirectional VAE/global-embedding color perturbation arms from protocol/B_PROTOCOL_LOCK.json and its amendments"],
+  "source_view": "Tile 0 under the verified unique6 target order. Compare source RGB/condition/output with robust color distributions because the condition-only random geometry transform is not pixel registered to target RGB.",
+  "foreground_regions": {
+    "pixelwise_metrics": "target geometry/alpha mask >= 0.5",
+    "robust_color_statistics": "alpha/mask >= 0.75 eroded by 3 pixels; require at least 64 pixels",
+    "background": "excluded from all color statistics"
+  },
+  "readouts": [
+    "Per-view mean CIEDE2000 to GT over valid foreground pixels",
+    "Per-view signed mean and median Lab residuals (L*, a*, b*) to GT",
+    "Per-view median foreground L*, a*, b*, chroma C* and hue angle",
+    "Magenta-direction residual fraction: foreground fraction with output-minus-GT a* >= +5 and b* <= -5 Lab units; descriptive only, not a repair success endpoint",
+    "Per-view output color-shift vectors relative to paired GFL baseline and their direction consistency across the five non-reference views",
+    "Source condition versus source GT/output median Lab statistics; no pixelwise condition-to-target comparison"
+  ],
+  "aggregation": "Report source view separately; average the five unseen views equally per object. Do not pool pixels across objects.",
+  "image_identity": "Every RGB path and SHA-256 is recorded in the corresponding results CSV. The original PNGs remain unchanged.",
+  "gt_usage": "GT colors are evaluation-only. No repair parameter or condition embedding uses GT values.",
+  "forbidden": [
+    "Changing color thresholds after inspecting generated RGB",
+    "Using input-to-target pixel alignment for the geometrically augmented condition",
+    "Using residual correlation as causal evidence"
+  ]
+}

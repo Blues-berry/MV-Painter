@@ -1,0 +1,49 @@
+{
+  "started_utc": "2026-10-09T01:34:00.446517+00:00",
+  "worktree": "/4T/CXY/MV-Painter-r1color",
+  "branch": "codex/r1-color-cast-repair-v2-20261009",
+  "head": "46e741180a2fd539a43234c51f4f3019e346424e",
+  "frozen_parent": "46e741180a2fd539a43234c51f4f3019e346424e",
+  "remote_target_branch_exists_at_start": false,
+  "preexisting_git_status_sha256": "22e783a356f77d0ed676799cb906f6632483c7e1b3688782e1b20ef8b4671dba",
+  "preexisting_status_lines": 838,
+  "preexisting_status_counts_by_top_level": {
+    "1008": 837,
+    "geotex": 1
+  },
+  "preexisting_status_note": "Pre-existing 1008 untracked images/runs and geotex/tests/test_residual_gate.py are intentionally preserved; none is staged or modified by this campaign.",
+  "gpu_at_start": [
+    "0, NVIDIA GeForce RTX 5090, 44 MiB, 32607 MiB, 0 %",
+    "1, NVIDIA GeForce RTX 5090, 18 MiB, 32607 MiB, 0 %"
+  ],
+  "gpu_processes_at_start": "nvidia-smi reported no running processes",
+  "disk": "Filesystem              Size  Used Avail Use% Mounted on\n/dev/sda1               3.6T  3.0T  499G  86% /4T\ndefault/containers/CXY  340G  278G   62G  82% /",
+  "runtime": {
+    "python": "/4T/CXY/anaconda3_backup/bin/python3.13",
+    "python_version": "3.13.5",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "diffusers": "0.37.0",
+    "transformers": "4.57.6",
+    "torchvision": "0.22.1+cu128",
+    "numpy": "2.2.6",
+    "pillow": "12.2.0",
+    "scikit_image": "0.26.0",
+    "cuda_available": true,
+    "cuda_device_count": 2,
+    "cuda_0_name": "NVIDIA GeForce RTX 5090",
+    "cuda_1_name": "NVIDIA GeForce RTX 5090",
+    "tf32_matmul": false,
+    "cudnn_tf32": true,
+    "flash_sdp_enabled": true,
+    "mem_efficient_sdp_enabled": true,
+    "math_sdp_enabled": true
+  },
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "base_runner_sha256": "4ee5fdb84ad729663d65494c1fa9f97bdc692b8801c4b8bff9afedbdb7b68ec6",
+  "generation_helper_sha256": "14bf84690552c973bac9304d3ba80fe184ff68232329bacfc7c1d734a96fd99b",
+  "dataset_sha256": "b4220fe8e73e2193709bd09d682623ccace44a780d82afecf417edea49aa3d8a",
+  "pipeline_sha256": "d3bdbaa9de1b0daed7613da8f39074ffb4d6751a1cca9843f55df3bb0357c36c",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "new_gpu_generation_started": false
+}

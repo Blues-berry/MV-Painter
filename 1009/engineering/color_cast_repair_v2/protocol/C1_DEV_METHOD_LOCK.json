@@ -1,0 +1,45 @@
+{
+  "protocol": "color-cast-v2-c1-source-chroma-anchor-dev-v1",
+  "locked_at_utc": "2026-10-09T02:29:49Z",
+  "status": "method_frozen_execution_gated_on_phase_b",
+  "scope": "Development only. The four objects below are not independent validation data.",
+  "implementation": {
+    "path": "1009/engineering/color_cast_repair_v2/color_repair.py",
+    "sha256": "8d2f460509280e9cbe4e22081a47e3ce938f53262bd321d8971be18095572be8"
+  },
+  "candidate": {
+    "name": "Source-conditioned Lab chroma anchoring",
+    "estimate": "Compute the componentwise median Lab a*/b* difference between the transformed source condition RGB and generated unique6 tile 0. Estimate on alpha >= 0.75 after a 3-pixel binary erosion; require at least 64 pixels in each trusted region.",
+    "bound": "Clip each estimated a*/b* offset independently to [-6,+6] Lab units.",
+    "application": "Apply the same bounded offset to all six GFL output views, weighted by their antialiased silhouette masks. Preserve zero-mask RGB pixels exactly. Save to a new candidate path; never overwrite source predictions.",
+    "registration": "No source-to-target pixel correspondence is assumed. The estimate is a robust distribution anchor between source view and generated source view.",
+    "allowed_inputs": ["transformed source condition RGB", "transformed source alpha mask", "generated GFL six-view RGB", "six target silhouette masks from the geometry/alpha path"],
+    "forbidden_inputs": ["GT RGB/color statistics for parameter estimation", "GT UV or hidden target texture", "copying source pixels into unseen views", "per-object parameter tuning", "Fresh B outcomes"]
+  },
+  "development_objects": [
+    "eac4b392b7b448a2b6ec77e8936abe1b",
+    "ea7601dbeb2c46188571cb86e8fdb5bf",
+    "c76ac44df995482185077da81939b306",
+    "8bd93fcae54940bd903a94a9094da4ee"
+  ],
+  "evaluation": {
+    "unit": "object; average the five non-source views equally within each object",
+    "metrics": ["per-view FG-CIEDE2000", "per-view FG-PSNR", "per-view FG-LPIPS AlexNet", "source-view FG-CIEDE2000", "foreground L* SSIM", "GT-relative edge/high-frequency error", "mask coverage", "gamut-clipped pixel fraction"],
+    "GT_use": "GT RGB is opened only after correction parameters and candidate RGB are fixed; it is used for metrics and casebook panels only.",
+    "visual_review": "Record each failure-enriched case, plus the normal and high-texture case; inspect colors, fine detail, structure, boundary halos and unseen-view consistency."
+  },
+  "development_gate": {
+    "advance_to_independent_validation_only_if": [
+      "At least 3/4 objects have a lower five-view mean FG-CIEDE2000.",
+      "The four-object mean five-view FG-CIEDE2000 change is <= -1.0.",
+      "Mean five-view FG-PSNR change is > -0.50 dB and mean FG-LPIPS change is < +0.010.",
+      "Mean foreground L* SSIM change is > -0.010.",
+      "Both failure-enriched objects visibly improve without a new cast, and neither the normal nor high-texture object shows obvious detail or structure damage."
+    ],
+    "stop": "If any gate fails, report the negative result and do not run the Fresh B candidate. No parameter, mask, or threshold changes are permitted after this lock."
+  },
+  "holdout_separation": {
+    "Fresh_B_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+    "rule": "Do not open Fresh B prediction pixels or Fresh B repair metrics until the development gate passes and a final validation amendment records this lock hash, candidate code hash, and all validation endpoints."
+  }
+}

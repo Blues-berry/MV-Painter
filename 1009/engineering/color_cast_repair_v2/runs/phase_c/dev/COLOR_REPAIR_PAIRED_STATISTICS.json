@@ -1,0 +1,215 @@
+{
+  "cohort": "dev",
+  "n_objects": 4,
+  "unit": "object; equal average over the five non-source views",
+  "paired_bootstrap": {
+    "unseen_fg_ciede2000": {
+      "n_objects": 4,
+      "mean_delta": -1.5602162837982179,
+      "median_delta": -1.788629341125488,
+      "mean_delta_95_ci": [
+        -2.262115478515625,
+        -0.62990403175354
+      ],
+      "median_delta_95_ci": [
+        -2.4863731384277346,
+        -0.17723331451416016
+      ],
+      "paired_effect_dz": -1.5722683287915014,
+      "wins": 4,
+      "losses": 0,
+      "ties": 0,
+      "win_rate": 1.0,
+      "direction": "lower is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "unseen_fg_lpips": {
+      "n_objects": 4,
+      "mean_delta": -0.0018625933676958083,
+      "median_delta": -0.001188773661851883,
+      "mean_delta_95_ci": [
+        -0.005849505215883255,
+        0.0014504987746477129
+      ],
+      "median_delta_95_ci": [
+        -0.007667604088783264,
+        0.0025947779417037965
+      ],
+      "paired_effect_dz": -0.43213465611686797,
+      "wins": 3,
+      "losses": 1,
+      "ties": 0,
+      "win_rate": 0.75,
+      "direction": "lower is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "unseen_gt_laplacian_error": {
+      "n_objects": 4,
+      "mean_delta": -0.00023925714194774627,
+      "median_delta": -0.00038538798689842225,
+      "mean_delta_95_ci": [
+        -0.0005622163414955139,
+        0.00015290603041648868
+      ],
+      "median_delta_95_ci": [
+        -0.000573703646659851,
+        0.00038745105266571047
+      ],
+      "paired_effect_dz": -0.534105177291382,
+      "wins": 3,
+      "losses": 1,
+      "ties": 0,
+      "win_rate": 0.75,
+      "direction": "lower is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "source_fg_ciede2000": {
+      "n_objects": 4,
+      "mean_delta": -1.6204886436462402,
+      "median_delta": -1.6442108154296875,
+      "mean_delta_95_ci": [
+        -2.619699478149414,
+        -0.5975556373596191
+      ],
+      "median_delta_95_ci": [
+        -3.04791259765625,
+        -0.14562034606933594
+      ],
+      "paired_effect_dz": -1.3373073337437476,
+      "wins": 4,
+      "losses": 0,
+      "ties": 0,
+      "win_rate": 1.0,
+      "direction": "lower is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "source_fg_lpips": {
+      "n_objects": 4,
+      "mean_delta": -0.001390945166349411,
+      "median_delta": 0.000988885760307312,
+      "mean_delta_95_ci": [
+        -0.007002439349889755,
+        0.0026832520961761475
+      ],
+      "median_delta_95_ci": [
+        -0.010229453444480896,
+        0.002687901258468628
+      ],
+      "paired_effect_dz": -0.2278567930977595,
+      "wins": 2,
+      "losses": 2,
+      "ties": 0,
+      "win_rate": 0.5,
+      "direction": "lower is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "unseen_fg_psnr": {
+      "n_objects": 4,
+      "mean_delta": 0.18050909042358398,
+      "median_delta": 0.2503262758255005,
+      "mean_delta_95_ci": [
+        0.014028549194335938,
+        0.3022841215133667
+      ],
+      "median_delta_95_ci": [
+        -0.08176755905151367,
+        0.30315136909484863
+      ],
+      "paired_effect_dz": 0.9946773519168113,
+      "wins": 3,
+      "losses": 1,
+      "ties": 0,
+      "win_rate": 0.75,
+      "direction": "higher is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "unseen_lstar_ssim_to_gt": {
+      "n_objects": 4,
+      "mean_delta": -0.00014593675732612612,
+      "median_delta": 2.214089035987854e-05,
+      "mean_delta_95_ci": [
+        -0.0005212385207414628,
+        6.467103958129883e-05
+      ],
+      "median_delta_95_ci": [
+        -0.0007105812430381775,
+        8.255243301391602e-05
+      ],
+      "paired_effect_dz": -0.3860337442830826,
+      "wins": 2,
+      "losses": 2,
+      "ties": 0,
+      "win_rate": 0.5,
+      "direction": "higher is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "source_fg_psnr": {
+      "n_objects": 4,
+      "mean_delta": 0.20273327827453613,
+      "median_delta": 0.2396106719970703,
+      "mean_delta_95_ci": [
+        0.012131035327911377,
+        0.3564581274986267
+      ],
+      "median_delta_95_ci": [
+        -0.06636857986450195,
+        0.39808034896850586
+      ],
+      "paired_effect_dz": 1.042633519032192,
+      "wins": 3,
+      "losses": 1,
+      "ties": 0,
+      "win_rate": 0.75,
+      "direction": "higher is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    },
+    "source_lstar_ssim_to_gt": {
+      "n_objects": 4,
+      "mean_delta": 2.0656734704971313e-05,
+      "median_delta": 8.538365364074707e-06,
+      "mean_delta_95_ci": [
+        -0.00033415481448173523,
+        0.00038758665323257446
+      ],
+      "median_delta_95_ci": [
+        -0.00046646595001220703,
+        0.0005320161581039429
+      ],
+      "paired_effect_dz": 0.050349608350140414,
+      "wins": 2,
+      "losses": 2,
+      "ties": 0,
+      "win_rate": 0.5,
+      "direction": "higher is better",
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 20261009
+    }
+  },
+  "manual_review": {
+    "path": "/4T/CXY/MV-Painter-r1color/1009/engineering/color_cast_repair_v2/runs/phase_c/dev/C1_DEV_MANUAL_REVIEW.json",
+    "sha256": "68d3afbba5f47cd62c2cb4d3366b0e2bc9df79183c052c676a78585d55cb5a5c",
+    "failure_case_gate_pass": false,
+    "normal_high_texture_quality_pass": true
+  },
+  "development_gate": {
+    "at_least_three_of_four_unseen_ciede_improve": true,
+    "mean_unseen_ciede_delta_le_minus_1": true,
+    "mean_unseen_psnr_delta_above_minus_0p5_db": true,
+    "mean_unseen_lpips_delta_below_plus_0p010": true,
+    "mean_unseen_lstar_ssim_delta_above_minus_0p010": true,
+    "all_numeric_development_criteria": true,
+    "visual_failure_cases_reviewed": true,
+    "normal_and_high_texture_reviewed": true,
+    "both_failure_cases_visibly_improved_without_new_cast": false,
+    "normal_and_high_texture_quality_preserved": true,
+    "all_development_criteria_pass": false
+  }
+}

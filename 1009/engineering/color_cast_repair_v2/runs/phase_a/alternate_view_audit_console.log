@@ -1,0 +1,52 @@
+============= length of dataset 150 =============
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:02,  2.71it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:23<01:07, 13.51s/it]Loading pipeline components...:  43%|████▎     | 3/7 [00:37<00:56, 14.15s/it]Loading pipeline components...:  71%|███████▏  | 5/7 [00:40<00:13,  6.96s/it]Loading pipeline components...:  86%|████████▌ | 6/7 [00:52<00:08,  8.30s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:52<00:00,  7.50s/it]
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+Loaded GeoTex weights from /4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+{
+  "status": "complete",
+  "started_utc": "2026-10-09T02:06:53.367164+00:00",
+  "finished_utc": "2026-10-09T02:08:49.135354+00:00",
+  "pid": 317561,
+  "model_device": "cpu",
+  "torch": "2.7.1+cu128",
+  "torch_threads": 4,
+  "torch_interop_threads": 16,
+  "transformers": "4.57.6",
+  "diffusers": "0.37.0",
+  "uid_list_sha256": "f681e33cc4d2e7b86cba8bf986ff44bdabe927a1de34f88743eb976c09e4bb28",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "runner_sha256": "a6016efe35704b24ff0de7baab8665b21f32ae6c87b6da241770e56ea69c6ccd",
+  "previous_provenance_csv_sha256": "cc5162631846f67d3f387e2a7cf477a3e8c3c4cb7584d3d1f51bdefa7544d31b",
+  "lock_sha256": "56165a606e2a45b4f5eeb833697eecf7a7eefa70706e11910f8e12ff3c536ce1",
+  "n": 8,
+  "selected_view_cache_max_abs_delta_median": 3.187796950340271,
+  "alternate_raw_cache_max_abs_delta_median": 2.6692147254943848,
+  "alternate_condition_cache_max_abs_delta_median": 3.5646272897720337,
+  "alternate_raw_exact_match_count_within_0p03": 0,
+  "alternate_condition_exact_match_count_within_0p03": 0,
+  "interpretation_scope": "source-view/cache input identity only; no prediction, GT quality, or repair outcomes read",
+  "csv_sha256": "94c2936f22a109f5261a589cf5445ba2ecff72f2d2b619d3a7e2e3e35c89656b"
+}
