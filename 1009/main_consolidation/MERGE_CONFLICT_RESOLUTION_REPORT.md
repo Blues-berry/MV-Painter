@@ -245,3 +245,10 @@ No claim is made that the present audit resolved the historical conflicts. The c
 - 本分支按第四组规则保留为独立活动实验分支；未尝试 merge 或 cherry-pick。因此代码冲突和论文冲突均记为 NO_CONFLICT，实际冲突文件为 0；这里不把“未发生冲突”表述成“冲突已解决”。
 - main 中 M1、B′、M3 是同一 MV-Adapter holdout 上不同预先定义映射/敏感性版本；分支 M1 的三份逐对象 CSV 与 main 的 M1 输入完全相同，B′/M3 的映射不同不构成文件或结果冲突。MVDiffusion 核心结果文件也已在 main 精确存在。
 - 分支的原始 layer-wise 预注册、P1–P5 bootstrap 和结果解释尚未另行导入；这是保留活动分支的范围决定，不是冲突裁决。没有发生任何代码、统计或论文文件的合并解决操作。
+
+## codex/r1-color-cast-repair-v2-20261009（活动分支只读审计）
+
+- 未执行 merge/cherry-pick；代码冲突和论文冲突均为 NO_CONFLICT，实际冲突文件数 0。没有把预审差异误报为 Git 冲突。
+- main 的经审核 color-cast evidence archive 与来源 84 个文件逐项记录身份；AGENT_HANDOFF、C1_DEV_GATE_VERDICT、C_REPAIR_METHOD_LOCK 为精确字节匹配。来源另外有旧 1008/engineering/color_failure 诊断快照和 26-object/三对象复现记录，未覆盖 main 当前的 10/09 最新 B2 裁决。
+- 来源中的 geotex/residual_gate.py 是独有实验代码，主分支没有对应模块；其负结果不构成有效修复。工作树的未跟踪 test_residual_gate.py 与 1,048 个 ignored 项均保留原位，未纳入主分支。
+- C1 的门控差异（数值通过、视觉失败）及 B2 的负结果是科研结论，不是冲突。早期三例复现追踪的局部闭合不取代最新报告对 120-object 跨栈差异仍未解决的边界。

@@ -235,3 +235,11 @@ PAPER_IMPACT=DIRECT。分支的 76-object MV-Adapter layer-wise 面板属于论�
 MVDiffusion 的核心 75-object audit、panel、paired bootstrap 和逐对象结果已在 main 逐文件匹配；它报告 layer-wise 的结构/颜色指标偏向 global、GT-texture 偏向 layer-wise，仍是混合结果。两套模型的条件接口和队列不同，不得合并绝对分数或写成统一复现。
 
 活动主文/Supplement/Response SHA-256 仍为 Phase A 的 dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4、59f0809bf0cb3c03b645380afb1bc5f3849008588902b5ca8422c65cf5c2e7ed、1fadfc5714ed3864f702d0238aa348c8782500c5c42369d9d7763390ba974cdb；投稿目录 48/48 校验通过。未更改 TeX、Supplement、Response、图表或投稿包，因此不重编译；编辑器中的活动文档保持原样。SUBMISSION_APPROVED=NO。
+
+## codex/r1-color-cast-repair-v2-20261009
+
+PAPER_IMPACT=DIRECT。当前 Response to Reviewers 已明确写出 C1 通过数值门但未通过锁定视觉门、B2 未通过数值修复门、Fresh B 未作独立修复验证，且没有已验证的颜色修复；main 的 84 项审核档案包含相同的 C1 锁、视觉裁决和最新 B2 handoff/结果，支撑这些限制。不得把开发集上的指标改善单独表述为有效修复。
+
+来源还有未纳入 main 的较早 26-object color-failure 诊断和 3-object 跨软件栈追踪。它们可说明出现颜色差异的阶段及运行栈边界，但不能将三例追踪的局部复现解释成 120-object 问题已全部解决。较新的 10/09 handoff 与 main 的最终颜色裁决仍将完整根因列为部分、跨栈 120-object 差异列为未解决。当前 1008 的“无已验证修复”边界准确；如以后把更多诊断写入回复，应保留开发集、筛选集和局部复现范围，不把它们写成独立确认结果。
+
+main 中没有来源独有的 geotex/residual_gate.py。该试验性功能没有验证成修复，未改默认实现。未编辑当前论文；活动主文、Supplement 和 Response SHA-256 仍为 Phase A 值，canonical submission package 48/48 校验通过。没有 LaTeX 编译或投稿。SUBMISSION_APPROVED=NO。

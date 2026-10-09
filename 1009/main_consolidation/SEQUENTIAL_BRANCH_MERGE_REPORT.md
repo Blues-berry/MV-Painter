@@ -350,3 +350,14 @@
 - 冲突：代码和论文均为 NO_CONFLICT；因为本分支按要求只读，未执行 merge/cherry-pick，因此实际 Git 冲突为 0，没有冲突被“解决”。
 - PAPER_IMPACT=DIRECT：该 76-object MV-Adapter layer-wise 分析对跨骨干范围有直接参考价值；当前 1008 正文写有原 98/99-object MV-Adapter probe 和 MVDiffusion 75-object probe，但没有报告这组 76-object layer-wise 面板。它支持指标依赖的 MV-Adapter 内部响应，不支持普遍增益或唯一时间位置。当前稿“未建立一般跨骨干改进”的边界仍成立，但若后续论文纳入跨骨干层级调制结果，应对这组结果作针对性审阅；活动实验分支未收束前不改稿。
 - 验证：main 中三份 M1 原始 CSV 的 SHA-256 与分支完全相同；MVDiffusion 核心面板文件逐字节一致。活动主文 SHA-256 为 dd7cb925ea098f31a12753d8b368e621c458bdef2d8b7f4a57935aaadce73ff4；Supplement/Response 与 Phase A 值一致；投稿包 SHA256SUMS 48/48 通过。未改 TeX、图表或投稿包，不需重编译；未运行 GPU 实验。SUBMISSION_APPROVED=NO。
+
+### 28. codex/r1-color-cast-repair-v2-20261009（活动偏色实验分支，只读）
+
+- 来源 HEAD：32bb9106fa0ea6199e6a16f9279343c0b21581a6；本地分支、缓存 origin ref 和当前 origin 远端 HEAD 一致。私有 mvpainter 远端没有此分支。活动工作树为 /4T/CXY/MV-Painter-r1color；没有 tracked 修改，只有一个未跟踪的 geotex/tests/test_residual_gate.py（SHA-256 fc9fcb2bfa80d908683cb18f76fadb04924d3c6e648ada7430876be43696b761）以及 1,048 个 ignored 项。忽略项含生成 RGB、日志和复现材料；原目录均保留，未复制、移动、删除或做全量哈希。该测试文件不在 main 或分支 HEAD 中，留在原工作树，未提交。
+- 相对 merge-base 34c77a4417eb3e037756ad483c70ef9e3f0c2bdb，来源有 150 个独有提交；独有对象为 1,026 棵树、3,433 个 blob、1,040,722,641 bytes，19 个 blob ≥5 MiB，最大 76,043,516 bytes。来源树差异 3,911 项（A=3,460、M=8、D=443）。完整历史不适合合并；同时这是仍由用户保留的独立实验分支，本轮遵循只读要求。
+- main 已有 84 项经审核的 color-cast evidence archive，文件来源/身份见 README 与 MAIN_INTEGRATION_COPY_MANIFEST.csv。关键 AGENT_HANDOFF、C1_DEV_GATE_VERDICT 和 C_REPAIR_METHOD_LOCK 与来源逐字节相同；main 保存了最新 B2 结果、配对记录和限制。C1 的四对象数值门通过，但锁定视觉门失败；B2 的颜色改善门也失败（均值 ΔFG-CIEDE2000 +0.1729，95% CI [−0.2044,+0.6810]，1/4 对象改善），没有独立 Fresh B 修复验证。偏色修复不得称为已验证，也不得进入默认路径。
+- 来源另外保留 57 项较早的 1008/engineering/color_failure/final_closure 诊断材料，包括 26-object 选择性 P1 诊断、3 个代表对象的跨软件栈复现追踪和论文主张映射；这些材料没有作为本轮新增内容导入。其 10/08 FINAL_VERDICT 将三例范围的复现追踪称为 REPRODUCIBILITY_CLOSED=YES；范围只覆盖三例。随后 10/09 B2 handoff 和 main 当前 FINAL_COLOR_FIX_VERDICT 明确 120-object Fresh C 跨栈差异仍未解决，故保留较窄的“部分根因、总体复现差异未闭合”表述，不把早期标签扩展为全队列结论。
+- geotex/residual_gate.py 是该实验分支独有的试验性残差门控代码；当前 main 不含此模块。门控负结果没有形成有效颜色修复。未将模块或未跟踪测试带入 main；没有更改 .gitignore，也没有清除分支历史中的生成对象。
+- 决定：KEEP_ACTIVE_READ_ONLY；C1/B2 已审阅证据沿用 main 的 84 项档案；FULL_MERGE_REJECTED。分支 HEAD 和 origin 引用保持不变；未推送分支，也未操作活动工作树。代码和论文均为 NO_CONFLICT；未执行 merge/cherry-pick，实际冲突为 0。
+- PAPER_IMPACT=DIRECT：当前 1008 回复信已按 C1 视觉门失败、B2 数值门失败、Fresh B 未验证、没有 validated color fix 的口径陈述；main 的审阅档案支持这些表述。旧 26-object 根因诊断及三例追踪是额外的诊断性证据，不是新确认实验；其小样本范围和后续 120-object 未闭合状态需一起保留。没有改活动主文、Supplement、Response、图表或投稿包。
+- 验证：分支状态显示无 tracked 改动，单个未跟踪测试和 1,048 个 ignored 项仍在原位；关键 C1 文件身份匹配 main 的逐文件归档记录；最新 B2 verdict 与 1008 Response/Readiness 的失败边界一致。活动主文/Supplement/Response SHA-256 保持 Phase A 值；投稿包 48/48 校验通过。没有运行测试或 GPU 实验，也不需重编译。SUBMISSION_APPROVED=NO。
