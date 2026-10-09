@@ -105,3 +105,16 @@ The 13 non-main trees contain 1,452 untracked status files totaling 430,603,823 
 At this pre-commit capture, `/4T/MV-Painter-main` had 0 staged paths, 42 tracked worktree changes, and 9 untracked files awaiting the three authorized commits. Before those commits, local main and live `mvpainter/main` were both `7397fca31998901ca6048375f0e96ffb4a42e5e7`. The editor's open folder remains unverifiable; `/4T/MV-Painter-main` is still the only designated daily editing directory.
 
 The separate B2 raw-source embedding proposal has three launch attempts from a concurrent workflow. All stopped before diffusion generation: cumulative generation calls 0, prediction PNGs 0. Attempt 03 loaded the model and LPIPS evaluator before failing the first object's embedding-shape check. No Fresh B predictions or metrics were read; the proposal remains unvalidated and did not change the paper. The separate r1color campaign branch was pushed to its `origin` remote by that concurrent workflow; this task did not initiate or alter that push, and its files remain outside `mvpainter/main` pending author review.
+
+
+### Final authorized main and 1008 delivery
+
+The three requested content commits were published normally and in order to the authorized `mvpainter/main` remote:
+
+1. `2cb1045b4d49814928dbfd6000ce119f89452b7a` — worktree and source disposition.
+2. `811b51d7e9709ede0a6083ddcdcfe36fe281db60` — scientific narrative and second-round response.
+3. `b50b9cca3f7332d18c36159e274538f4de88ab94` — complete 1008 submission package.
+
+After the package push, local `main` and live `mvpainter/main` both resolved to `b50b9cca3f7332d18c36159e274538f4de88ab94`; the worktree was clean. No other remote was updated by this task. The package contains 47 files, its 46 manifest payload entries and 47 SHA-256 records passed verification, and the 44-member LaTeX source ZIP passed CRC. PDF page counts are 13 (manuscript), 11 (Supplement), 5 (response), 13 (marked-up manuscript), and 18 (combined convenience PDF). The administrative attachments remain `DRAFT`; no journal upload occurred and `SUBMISSION_APPROVED=NO`.
+
+This entry records the verified package-delivery SHA immediately before a documentation-only update to this report. The exact current SHA containing this report update is stated in the task completion record.
