@@ -7,9 +7,10 @@
 **Content commit pushed and verified:** `14ff9472df0281267c966b29210d63297ccfcfd7`  
 **Handover commits pushed:** `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`  
 **V3 reproducibility snapshot commit pushed:** `2fc3e7f1c338338dfd2d63e4f6977bac77976979`  
-**Remote verification time:** 2026-10-09T04:42:50Z UTC
+**Latest verified private-main handover commit:** `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9`  
+**Remote verification time:** 2026-10-09T04:44:33Z UTC
 
-The private remote advertised the same `main` tip as local at the time of this check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. The later commits add handover documentation and the frozen V3 reproducibility snapshot; none alter manuscript bytes. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
+The private remote advertised the same `main` tip as local at the time of the latest check. The following remote file bytes were fetched from `mvpainter/main` and SHA-256-matched to the local files: Manuscript TeX/PDF, marked-up PDF, Supplement TeX/PDF, response Markdown/PDF, LaTeX source ZIP, and the 7,230-path disposition report. The later commits add handover documentation and the frozen V3 reproducibility snapshot; none alter manuscript bytes. Three worktrees with no tracked, untracked, or ignored files were unregistered; other local roots with data remain preserved. The editor UI switch to `/4T/MV-Painter-main` remains unverified and must be confirmed in the editor.
 
 ## Direct GitHub files
 

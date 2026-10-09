@@ -1,6 +1,6 @@
 # Worktree closure and editor handover
 
-**Recorded:** 2026-10-09T04:42:50Z UTC
+**Recorded:** 2026-10-09T04:46:15Z UTC
 
 ## Selected daily repository
 
@@ -19,7 +19,7 @@
 
 - The shell has no usable `code`/`code-insiders` executable, and the Trae CLI could not connect to the running editor IPC socket. This app exposes no tool that switches the external Trae/VS Code folder. Therefore `EDITOR_ROOT_SWITCH_VERIFIED=NO`; the active UI root could not be verified.
 - To make `/4T/MV-Painter-main` the open editor folder, use the editor's **Open Folder** action and select that exact path. Keep the current old window open until the new root is visible and on branch `main`; then use only the new root for future edits.
-- Private main currently matches remote at `2fc3e7f1c338338dfd2d63e4f6977bac77976979`; content commit `14ff9472df0281267c966b29210d63297ccfcfd7`, handover commits `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`, and V3 snapshot commit `2fc3e7f1c338338dfd2d63e4f6977bac77976979` are pushed. The selected author-package file hashes were verified against remote. Future paper edits must append UTC timestamp and SHA-256 rows to `1008/MANUSCRIPT_REVISION_INTEGRITY.csv`; update the build and delivery reports in the same commit.
+- Private main currently matches the live remote at `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9` (verified 2026-10-09T04:44:33Z UTC). Content commit `14ff9472df0281267c966b29210d63297ccfcfd7`, handover commits `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`, V3 snapshot commit `2fc3e7f1c338338dfd2d63e4f6977bac77976979`, and latest handover commit `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9` are pushed. The selected author-package file hashes were verified against remote. Future paper edits must append UTC timestamp and SHA-256 rows to `1008/MANUSCRIPT_REVISION_INTEGRITY.csv`; update the build and delivery reports in the same commit.
 
 ## Remote handover
 

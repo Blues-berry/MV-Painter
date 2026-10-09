@@ -1,10 +1,10 @@
 # Local-to-private-main consolidation report
 
-**Captured:** 2026-10-09T04:42:50Z UTC  
+**Captured:** 2026-10-09T04:46:15Z UTC  
 **Private repository:** `Blues-berry/MVPainter`  
 **Active branch/worktree:** `main` at `/4T/MV-Painter-main`  
 **Private main baseline:** `34c77a4417eb3e037756ad483c70ef9e3f0c2bdb`  
-**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; handover commits: `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`; frozen V3 snapshot commit: `2fc3e7f1c338338dfd2d63e4f6977bac77976979`. Local and remote `main` matched at `2fc3e7f1c338338dfd2d63e4f6977bac77976979` at the recorded verification time.
+**Publication state:** pushed to private `main` and verified. Content commit: `14ff9472df0281267c966b29210d63297ccfcfd7`; handover commits: `b02a64102a40c83370902486d47b1ffad217a49e`, `814652a953d9563b7ab271fed36a8bb40c23d11b`, `bbd66249360d1613c22c6d5f86605e2a8caa6041`; frozen V3 snapshot commit: `2fc3e7f1c338338dfd2d63e4f6977bac77976979`; latest verified handover commit: `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9`. Local and live remote `main` matched at `788e08d503a7bef6a61a57dd3526ac6fdd17b8b9` at 2026-10-09T04:44:33Z UTC.
 
 ## Result
 
