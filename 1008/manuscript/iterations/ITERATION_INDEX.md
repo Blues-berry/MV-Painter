@@ -9,3 +9,5 @@
 - Round002: completed native-wrapper controls, all15 exploratory contrasts, complete-pipeline scope audit; experiment commit6b1e2362. Next: low-cost full-pipeline quality diagnostic.
 
 - Round003: complete four-call native base diagnostic, source API findings and full grids; experiment commit47eb7fb7. Next: controlled separation of guidance and image-feature preparation.
+
+- Round004: eight-call guidance/image-feature diagnostic; neither intervention validates repair. Round review includes acceptance outlook, likely objections and comparison with predecessor. Next: resolution bridge.

@@ -1,0 +1,7 @@
+# Round 004 reviewer-response addendum
+
+R1.1 — Controlled failure diagnosis. We hold 256-pixel views, 50-step Euler sampling, conditioning RGB and the seed policy fixed, crossing cached/online global image features with conditional-only/sequential CFG2. All eight calls complete. The cached conditional-only control reproduces both previous No Adapter outputs bitwise; positive reference-noise RNG trajectories match across arms. Online-to-cache feature cosines are 0.863 and 0.899, but neither online features nor guided prediction restores the source appearance. Guided dark outputs contain fewer colored patterns, not a validated quality improvement. Every grid is retained in S22.
+
+R1.4 — Intervention scope. CFG2 uses the standard 2εc−εu formula through sequential batch-one calls, with independent negative-branch randomness that leaves positive reference-noise states unchanged. This is a controlled diagnostic, not pixel-equivalence to the native batched API, independent confirmation, or a general fidelity benchmark. No new inferential family is created; previous paired results remain unchanged.
+
+R2.1 — Priority. This round reports a useful negative diagnostic, not a new algorithm. It narrows the next test to resolution and other full-path differences; repeated feature replacement or further schedule search has lower priority. Earlier C1/B2 failures remain in the evidence record. Novelty and broad application quality remain unresolved; no 90% acceptance claim is made.

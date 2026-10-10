@@ -1,0 +1,56 @@
+{
+  "status": "PASS_SOURCE_ARCHIVE_REBUILDS_AND_ALL_CONTRASTS_REPRODUCE",
+  "source_archive_sha256": "58cac2604601ab693786d0e0295d879dd494c18e54f4b839752e02e13b6c0537",
+  "extracted_checks": [
+    [
+      "python",
+      "scripts/verify_factorial_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/analyze_native_controls.py"
+    ],
+    [
+      "bash",
+      "build_round_004.sh"
+    ],
+    [
+      "bash",
+      "build_supplement_round_004.sh"
+    ],
+    [
+      "bash",
+      "build_marked_round_004.sh"
+    ]
+  ],
+  "previous_round_hash_unchanged": true,
+  "video_decode_pass": true,
+  "video_scope": "prior seven-condition outputs retained; new controls in S20 grids",
+  "pdfs": {
+    "Reviewer_Response_Addendum_round_004.pdf": {
+      "sha256": "3fc78ae10c2cef202bfb73548f30ad43a4f1b44d1d62e6a468620d92b25acd67",
+      "bytes": 27047
+    },
+    "Response_to_Reviewers_round_004.pdf": {
+      "sha256": "6d1a6534e645eeeabcd595f992d83bdb0cea4e963af0ee0ee121330a1478d133",
+      "bytes": 63025
+    },
+    "Marked_Manuscript_round_004.pdf": {
+      "sha256": "163d8305a33aeb1ebbc17f67306ec58eed17391449a97179b386ed0ccca009ed",
+      "bytes": 4523659
+    },
+    "Manuscript_round_004.pdf": {
+      "sha256": "bc788f8fc76cff90a6b728c305beadfe41386f237da21217d8f2b9ce262ddfff",
+      "bytes": 4521388
+    },
+    "Supplementary_round_004.pdf": {
+      "sha256": "30f70df329a35c0df55f76843633e6c2a58de983f123101d1cea47f104b5120e",
+      "bytes": 3735021
+    }
+  },
+  "experiment_commit": "8ce8cd71"
+}
