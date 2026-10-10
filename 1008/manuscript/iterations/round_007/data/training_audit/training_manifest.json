@@ -1,0 +1,28 @@
+{
+  "artifact": "controlled_retraining_main_adapter",
+  "source_commit": "f2f0019a008277213af0127fa7cb628cb5fa1eef",
+  "historical_model_source": "/tmp/mv_main_rerun/MVPainter/mvpainter/model_unet_geotex.py",
+  "historical_train_entry": "/tmp/mv_main_rerun/geotex/train.py",
+  "training_config": "training_config_snapshot.yaml",
+  "train_list": "train_objects_full_1118.txt",
+  "train_list_sha256": "7b3e998fc494ecffde247793e24efab715b4536b96382eb5fe559434fa57cae7",
+  "steps": 2000,
+  "learning_rate": 0.0001,
+  "checkpoint": "checkpoints/geotex_step_0002000.pt",
+  "checkpoint_md5": "acfb47eb48b6c567fc4e35ecb883cbcd",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "evaluation_seed": 42,
+  "evaluation_target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "evaluation_resolution": [
+    256,
+    256
+  ],
+  "evaluation_steps": 50
+}\n

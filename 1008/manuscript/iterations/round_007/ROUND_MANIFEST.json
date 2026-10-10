@@ -1,0 +1,22 @@
+{
+  "round": 7,
+  "predecessor": "round006, f2e9788d",
+  "predecessor_tex_sha256": "6958afbda64c61017ff6cfecb92c2c2e784030db6cce9aa19991417f82d67386",
+  "status": "COMPLETE_BOUNDED_ENCODING_BRANCH_AND_TRAINING_AUDIT",
+  "frozen_at_utc": "2026-10-10T13:44:17.629403+00:00",
+  "conditions": [
+    "g256_both",
+    "g256_conditional",
+    "g256_conditional_half",
+    "g512_both",
+    "g512_conditional",
+    "g512_conditional_half"
+  ],
+  "scope": "seen-case implementation diagnostic; training-source audit; no independent confirmation",
+  "acceptance_probability": "uncalibrated",
+  "experiment_commit": "00a02001",
+  "executed_calls": 12,
+  "repair_validated": false,
+  "acceptance_outlook": "high rejection risk; uncalibrated; net unchanged from round006",
+  "next_priority": "protocol-consistent main-adapter training preflight, then fixed-budget run if gates pass"
+}

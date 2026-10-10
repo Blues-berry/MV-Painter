@@ -1,0 +1,195 @@
+{
+  "status": "PASS_SOURCE_ARCHIVE_REBUILDS_AND_ALL_CONTRASTS_REPRODUCE",
+  "source_archive_sha256": "307632d2becf015c943c34736cf63158a7a5085ac15ec31e55d34076c2adb07c",
+  "extracted_checks": [
+    [
+      "python",
+      "scripts/verify_encoding_branch_matrix.py"
+    ],
+    [
+      "python",
+      "scripts/verify_recorded_training_audit.py"
+    ],
+    [
+      "python",
+      "scripts/verify_camera_contract.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_geometry_matrix.py"
+    ],
+    [
+      "python",
+      "scripts/verify_resolution_bridge.py"
+    ],
+    [
+      "python",
+      "scripts/verify_factorial_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/analyze_native_controls.py"
+    ],
+    [
+      "bash",
+      "build_round_007.sh"
+    ],
+    [
+      "bash",
+      "build_supplement_round_007.sh"
+    ],
+    [
+      "bash",
+      "build_marked_round_007.sh"
+    ]
+  ],
+  "previous_round_hash_unchanged": true,
+  "video_decode_pass": true,
+  "video_scope": "prior seven-condition video retained; encoding/branch diagnostic in S25",
+  "pdfs": {
+    "Supplementary_round_007.pdf": {
+      "sha256": "77bcce3c731c06b47508cbae92551901f18a330548d5a677a98db3028dc2ada6",
+      "bytes": 4066417
+    },
+    "Manuscript_round_007.pdf": {
+      "sha256": "871bfee5ded8a906e42b1489f1ab238d5c241a02a0527bbd345966235900d876",
+      "bytes": 4525391
+    },
+    "Marked_Manuscript_round_007.pdf": {
+      "sha256": "df9c4a0371eb71997805bc86dd5fe2f186b6dc43fb85702d401959555805baf3",
+      "bytes": 4527098
+    },
+    "Response_to_Reviewers_round_007.pdf": {
+      "sha256": "0cd4427e20d935f3656adc176c220332ef0d0bf1d8ae496c70a2054a71ba65ea",
+      "bytes": 64966
+    },
+    "Reviewer_Response_Addendum_round_007.pdf": {
+      "sha256": "f4fa438639c76866c60114957c40755e4ca255e3146aaefc46f6f1c258ee507a",
+      "bytes": 25955
+    }
+  },
+  "experiment_commit": "00a02001",
+  "inherited_evidence_byte_identical": [
+    "data/ITERATION002_STATISTICS.json",
+    "data/NATIVE_BASE_DIAGNOSTIC.json",
+    "data/PREVIOUS_CONTROL_INPUTS.json",
+    "data/NATIVE_BASE_RGB_FAILED_ATTEMPT.json",
+    "data/TARGET_RESOLUTION_BRIDGE.json",
+    "data/native_controls_with_repeated_gt.csv",
+    "data/bake10_object_metrics.csv",
+    "data/ITERATION002_CONTROL_EXTENSION.json",
+    "data/GUIDANCE_EMBEDDING_FACTORIAL.json",
+    "data/NATIVE_GEOMETRY_MATRIX.json",
+    "data/NATIVE_DISABLED_GATE.json",
+    "data/ITERATION002_SAMPLING_PROTOCOL_AUDIT.json",
+    "data/bake10_all_controls.csv",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_gen_linear.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_native_gfl.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_native_gfh.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_gen_linear.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_disabled.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_budget_fixed_mean.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_native_gfl.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_disabled.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_budget_late16.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_budget_fixed_mean.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_native_gfh.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_native_gc3.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_native_unset.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_native_unset.png",
+    "data/native_geometry_grids/1dc2c857f7614caeb6c2aa0559ccf973_native_gc3.png",
+    "data/native_geometry_grids/21678bd623654182b52c11d013de4e71_budget_late16.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r512_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r512_cfg2.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r256_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r256_off.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r256_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r512_off.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r256_off.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r512_off.png",
+    "data/native_geometry_failed_start/execution_source.py",
+    "data/native_geometry_failed_start/RUN_IDENTITY.json",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_cached_off.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_online_off.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_online_cfg2.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_online_off.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_cached_off.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_cached_cfg2.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_cached_cfg2.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_online_cfg2.png",
+    "data/native_grids/1dc2c857f7614caeb6c2aa0559ccf973_50.png",
+    "data/native_grids/1dc2c857f7614caeb6c2aa0559ccf973_75.png",
+    "data/native_grids/21678bd623654182b52c11d013de4e71_50.png",
+    "data/native_grids/21678bd623654182b52c11d013de4e71_75.png",
+    "data/native_camera_audit/mvpainter_dataset.py",
+    "data/native_camera_audit/bake_pipeline.py",
+    "data/native_camera_audit/infer_multiview.py",
+    "data/native_camera_audit/CAMERA_CONTRACT_AUDIT.json",
+    "data/native_camera_audit/blender_render_ortho.py",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/012.npy",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/016.npy",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/015.npy",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/014.npy",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/000.npy",
+    "data/native_camera_audit/camera_metadata/f1ccc55a65c744d7be201bf11b980e4d/013.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/012.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/016.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/015.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/014.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/000.npy",
+    "data/native_camera_audit/camera_metadata/e261c0fe85af46388260e2359a9bfc92/013.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/012.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/016.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/015.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/014.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/000.npy",
+    "data/native_camera_audit/camera_metadata/2dd9bc8172c6461797947cc7214db399/013.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/012.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/016.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/015.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/014.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/000.npy",
+    "data/native_camera_audit/camera_metadata/1dc2c857f7614caeb6c2aa0559ccf973/013.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/012.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/016.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/015.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/014.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/000.npy",
+    "data/native_camera_audit/camera_metadata/3c83796ca5f043f1beb8044dd2e51a0d/013.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/012.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/016.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/015.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/014.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/000.npy",
+    "data/native_camera_audit/camera_metadata/21678bd623654182b52c11d013de4e71/013.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/012.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/016.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/015.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/014.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/000.npy",
+    "data/native_camera_audit/camera_metadata/238ff3e41c964655b83aa9c8770cc766/013.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/012.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/016.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/015.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/014.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/000.npy",
+    "data/native_camera_audit/camera_metadata/85a7df80b79a4ba9b8c3a175de0dbce6/013.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/012.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/016.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/015.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/014.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/000.npy",
+    "data/native_camera_audit/camera_metadata/2f6c94487ee54cb88021f4643409d849/013.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/012.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/016.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/015.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/014.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/000.npy",
+    "data/native_camera_audit/camera_metadata/fa5c4b02c5b24ac09d7dd8bcf8c35142/013.npy"
+  ],
+  "scientific_scope": "recorded trainer and implementation gates verified; reference appearance repair, exact training replay and independent native quality remain unproven"
+}
