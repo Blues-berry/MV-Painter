@@ -1,6 +1,6 @@
 # 01549 → 1008 revision change note
 
-`01549` is the post-first-round manuscript submitted on 7 September 2026. The original source `1008/manuscript/source_01549/final_0903.tex` remains unchanged. This note summarizes the current author-review revision; the retained review PDF is an initial-submission export, so the exact wording of the second-round comments still needs author comparison with the editor's decision.
+`01549` is the post-first-round manuscript submitted on 7 September 2026. The original source `1008/manuscript/source_01549/final_0903.tex` remains unchanged. This note summarizes the current author-review revision. The exact local plain-text CAG-D-26-00962 review source is retained at `1008/audits/source_evidence/r2/reviewer_materials/SECOND_ROUND_REVIEWER_COMMENTS.txt` (SHA-256 `52d5a02718cbcf1b452293fe5a6953231f10fc9ce4cdf6cce400e86deb521245`); it matches the supplied attachment after line-ending normalization. The source header says “Initial submission,” while the author-confirmed chronology maps it to the second round. The response quotes the supplied concerns and explains that label.
 
 | Area | 01549 content | Current disposition | Evidence boundary |
 |---|---|---|---|

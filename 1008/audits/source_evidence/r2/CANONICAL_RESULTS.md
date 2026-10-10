@@ -28,7 +28,7 @@
 | strict-276 | 276 对象、14 个 endpoint/contrast 汇总。C3−GFL FG-PSNR +1.207771 dB，名义 95% CI [+1.116967,+1.294989]，259/276 有利。 | 回溯性 same-cohort 支持；旧 runner/input-tensor provenance 不完整，不能称独立确认或复制。
 | E1 multi-seed | 固定 48-object 子集、3 个固定 generation seeds；576 新行 gate PASS。LPIPS 对 GFL、C3、LFM-exact 有支持，PSNR 混合。 | 实现随机种子敏感性；不是独立对象确认，也不是随机种群 seed inference。
 | E2 static 2×2 | 同 48-object/3-seed 子集；576 个 logical rows gate PASS。Deep+middle 同步提高在两个主图像端点上有支持；shallow LPIPS 变差，FG-PSNR 有 deep+middle×shallow interaction。 | 固定 seed 的静态尺度敏感性；没有时间变化测试，不支持 equal-realized-dose 或 dose-free interaction。
-| MV-Adapter / MVDiffusion | 除 98/99 probe 外，MV-Adapter 新增 76-object 七条件 layer/time 面板（228 个 layer-wise 输出），端点对比混合，方案与结果在同一保留 commit 首次出现；30 个区间均为未校正 pointwise bootstrap。MVDiffusion 75-object 面板在 compatibility base 上完成，结果混合；后续 native-mirror 检查仅验证 1,552/1,552 个载入张量和单对象 12/12 视图，完整面板未重跑。 | 分开作为回顾性接口边界，不合并分数、不推断 architecture causality、等效或普适跨骨干迁移。
+| MV-Adapter / MVDiffusion | 除 98/99 probe 外，MV-Adapter 新增 76-object 七条件 layer/time 面板（228 个 layer-wise 输出），端点对比混合，方案与结果在同一保留 commit 首次出现；30 个区间均为未校正 pointwise bootstrap。MVDiffusion 75-object 面板在 compatibility base 上完成；525 行为 7 条件 × 75 个对象，每个 12-view 输出网格有 6 个冻结目标视图参与指标计算。原 archive 对低值更优指标使用 improvement-coded delta。按 raw A−B 复算后，L−LLH vs G−FL 的 CIEDE2000 为 +1.373 [+0.418,+2.375]（L−LLH 颜色误差更高），GT-relative variation-statistic error 为 −0.0823；30 个方向编码均值与区间均可复现。native-mirror 检查仅验证 1,552/1,552 个载入张量和单对象 12/12 视图，完整面板未重跑。 | 分开作为回顾性接口边界，不合并分数、不推断 architecture causality、texture fidelity、等效或普适跨骨干迁移；P5 的 raw G-LLH−G-LHL FG-LPIPS 为 −0.001371 [−0.002642,−0.000141]，仅此一个点位区间排除零并有利于 G-LLH；旧报告把方向写反。原分析文件保留作历史记录，阅读时以 raw-direction correction note 为准。
 
 ## 3D、seam、CAI、复现与发布
 

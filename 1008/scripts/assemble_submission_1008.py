@@ -106,6 +106,11 @@ def main() -> None:
     if cross_backbone_dest.exists():
         shutil.rmtree(cross_backbone_dest)
     shutil.copytree(cross_backbone_source, cross_backbone_dest)
+    direction_source = ROOT / "1008/audits/MVDIFFUSION_RAW_DIRECTION_CORRECTION_20261010"
+    direction_dest = OUT / "Author_Review/MVDIFFUSION_RAW_DIRECTION_CORRECTION_20261010"
+    if direction_dest.exists():
+        shutil.rmtree(direction_dest)
+    shutil.copytree(direction_source, direction_dest)
     preflight_source = ROOT / "1008/audits/source_evidence/r2/applied_budget_preflight_20261010"
     preflight_dest = OUT / "Author_Review/Applied_Budget_Preflight_20261010"
     if preflight_dest.exists():
@@ -116,6 +121,8 @@ def main() -> None:
     if dimension_dest.exists():
         shutil.rmtree(dimension_dest)
     shutil.copytree(dimension_source, dimension_dest)
+    copy(ROOT / "1008/audits/source_evidence/r2/reviewer_materials/SECOND_ROUND_REVIEWER_COMMENTS.txt",
+         "Author_Review/Reviewer_Source/SECOND_ROUND_REVIEWER_COMMENTS.txt")
     copy(REVIEW / "figures/FIGURE_ASSET_CREDITS.csv",
          "Author_Review/FIGURE_ASSET_CREDITS.csv")
     copy(REVIEW / "figures/FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv",

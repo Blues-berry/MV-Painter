@@ -37,5 +37,15 @@ if source.count(marker) != 1:
 path.write_text(source.replace(marker, float_marking + marker, 1), encoding="utf-8")
 PY
 python3 "${SCRIPT_DIR}/strip_latexdiff_deletions.py" Marked-up_Manuscript_1008.tex Marked-up_Manuscript_1008.tex
+python3 - <<'PY'
+from pathlib import Path
+path = Path("Marked-up_Manuscript_1008.tex")
+source = path.read_text(encoding="utf-8")
+marker = r"\begin{thebibliography}{45}"
+if source.count(marker) != 1:
+    raise SystemExit("Expected one bibliography in marked-up manuscript")
+source = source.replace(marker, marker + "\n\\linespread{0.90}\\selectfont\\setlength{\\itemsep}{-0.6pt}", 1)
+path.write_text(source, encoding="utf-8")
+PY
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${OUT_DIR}" Marked-up_Manuscript_1008.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${OUT_DIR}" Marked-up_Manuscript_1008.tex

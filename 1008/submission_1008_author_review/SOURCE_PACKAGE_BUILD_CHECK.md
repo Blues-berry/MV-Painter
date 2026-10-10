@@ -1,49 +1,38 @@
-# 1008 final build and clean-source check
+# 1008 final author-review build and source-package check
 
-**Captured:** 2026-10-10 · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
+**Captured:** 2026-10-10 05:47 UTC · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
 
 ## Source identity and archive
 
-- Active and author-review manuscript TeX are byte-identical (SHA-256 `b10909885558de1da6fb6c449bd2933142ad06e9749e1eda3617048f95d3cf50`). Active and author-review Supplement TeX are byte-identical (SHA-256 `811517c535a9398fafe4580be4982c1705d8dcd81a1c52467b2e9edcb5f858c2`).
-- Response Markdown, PDF, and DOCX are synchronized between `review/` and `submission_1008_author_review/`. Their hashes are `0ae658b1969e140ea56f7f09ccc57b4be80d451d9526f285c38c3c46462b6a47`, `b211405ba8eefcd9df4f99604744d444b2ce8bf5c4d9f07d4c5a97ba0f7ab831`, and `3626d504fd7b2ae8562eb6431698488226520f57c71bbc6436a459e26f37c611`, respectively.
-- `LaTeX_Source_1008.zip` has 62 members, 35,931,678 bytes, and SHA-256 `105bee245c213717813cf35a31a93639f7806f0bda3660ed6b73a8fbcb964bce`. ZIP CRC passes. It contains the active manuscript, Supplement, referenced figures, figure provenance, and authenticated 01549 baseline; it excludes experiment JSON, arrays, checkpoints, GLBs, generated PDFs, and caches.
-- The upload-style `submission_1008/` directory was regenerated with the refreshed manuscript, response, source archive, and separate author-review evidence snapshots. Its file manifest and checksum list are generated from the assembled contents.
-- The active Figure 1 is an author-generated vector diagram of the TCAS cap-aware residual path. The original 01549 Figure 1 remains preserved in `source_01549`.
+- Active and author-review manuscript TeX are byte-identical (SHA-256 `4dfb499c6115e17263e5f5bcb597b0db73167ad1a8f8882580da3efd694169f5`). Active and author-review Supplement TeX are byte-identical (SHA-256 `df35b089f9c967e75dccb1e81719a48068459bdaddd6e56b1009909f479f1ee1`).
+- `LaTeX_Source_1008.zip`: 63 members, 35,933,889 bytes, SHA-256 `4498eed902121127d190e3032e24c7af35be5ec1611c08d72b3e40bdb42538d4`. ZIP CRC passes. It includes the active TeX, build scripts, figures and source dependencies; it excludes experiment JSON, arrays, checkpoints, GLBs, generated PDFs, and caches.
+- The source ZIP was extracted into an empty temporary directory. The included scripts rebuilt the main paper, Supplement, and marked-up manuscript at 16 pages each. Whitespace-normalized `pdftotext -layout -nopgbrk` output matches the author-review PDFs for all three documents.
+- `submission_1008/SUBMISSION_FILE_MANIFEST.csv` has 121 payload entries. The exact second-round reviewer source is classified as `AUTHOR_REVIEW_MATERIAL`; it is stored under `Author_Review/Reviewer_Source/` and is not a journal upload file.
 
 ## Author-review artifacts
 
 | File | Pages | Bytes | SHA-256 |
 |---|---:|---:|---|
-| `Manuscript_1008.pdf` | 16 | 2,000,464 | `3315ce2acb1bb689f50ec5420e3cd2de10bd99561e7a82520670f30a02dcf148` |
-| `Marked-up_Manuscript_1008.pdf` | 16 | 2,023,794 | `004fac2bc9204091af80f5a7122503cdc4e6ed14d8c07c84e3e2527b0e33ef08` |
-| `Supplementary_1008.pdf` | 15 | 1,670,609 | `e31deed73b1c1620ea14130afdab4ae35d27cb9c13f3e13b810c89af3f177839` |
-| `Response_to_Reviewers_1008.pdf` | 4 | 36,200 | `b211405ba8eefcd9df4f99604744d444b2ce8bf5c4d9f07d4c5a97ba0f7ab831` |
-| `Response_to_Reviewers_1008.docx` | — | 14,872 | `3626d504fd7b2ae8562eb6431698488226520f57c71bbc6436a459e26f37c611` |
-| `LaTeX_Source_1008.zip` | — | 35,931,678 | `105bee245c213717813cf35a31a93639f7806f0bda3660ed6b73a8fbcb964bce` |
+| `Manuscript_1008.pdf` | 16 | 2,001,189 | `9446a5c69356e3847246aadd8b89e39514d73f88c50df4de85e5d89738a1cae0` |
+| `Marked-up_Manuscript_1008.pdf` | 16 | 2,024,582 | `7c6cc0a2bea85b73fca0e8f45a62aaae348f1d1518e325df3969ccfdbfd0c1bd` |
+| `Supplementary_1008.pdf` | 16 | 1,675,578 | `db0188400f520a47c97d935124c806f7b74dd3e5e3f28437ca67c9b697764fb6` |
+| `Response_to_Reviewers_1008.pdf` | 4 | 35,874 | `b6535a72fa09f0622781809ecd8e0dbf38b8ab318874848279e2a97dde0a8203` |
+| `Response_to_Reviewers_1008.docx` | — | 15,176 | `ccccae4f476a8c7a64355ed920ea954032f5f2e06e529d6aad8cbf5e84228705` |
+| `LaTeX_Source_1008.zip` | — | 35,933,889 | `4498eed902121127d190e3032e24c7af35be5ec1611c08d72b3e40bdb42538d4` |
 
-## Build and page review
+## Page and evidence review
 
-- The working-tree and fresh-extraction builds completed for the manuscript, Supplement, and marked-up manuscript at 16, 15, and 16 pages. Whitespace-normalized extracted text matches each author-review PDF. The final logs contain no unresolved citations or cross-references.
-- Main layout anchors: Figure 1 p. 4; historical fixed-scale Table 1 p. 6; Fresh C Tables 3–4 p. 8; Figure 5 p. 9; temporal/layer-window/color Tables 5–7 p. 11; licensed color-diagnostic Figure 6 p. 12; full-object Figure 7 p. 13; Cross-Interface Table 8 p. 14; Limitations p. 15. The A3b dimension limitation is legible on p. 10.
-- Supplement anchors: layer/window Tables S3–S5 pp. 3–5; requested/applied accounting Table S6 p. 6; placement Table S7 p. 7; MV-Adapter Tables S10–S11 pp. 9–10; FAC Table S15 p. 13; color Table S17 p. 15. The per-entry correction values and their descriptive-only caption are legible on p. 6.
-- Response anchors after the final 4-page build: R1.1 pp. 1–2; R1.2 p. 2; R1.3 p. 2; R1.4–R1.5 p. 3; R2.1 pp. 3–4; R2.2–R2.3 and Reviewer 3 p. 4. The final page and the A3b withdrawal paragraph were visually checked.
-- The reviewer-risk decision sheet is regenerated from its Markdown source during package assembly as a one-page landscape PDF; its dimension-aware A3b wording is retained.
-- The retained review PDF is labeled “Initial submission”; the exact second-round decision export remains unavailable. Response headings are paraphrased and require author verification rather than being presented as verbatim quotations.
-- Nonfatal TeX geometry, underfull/overfull box, and `latexdiff` Unicode warnings remain. The largest observed overfull line is about 1.1 pt; no clipping was observed in the checked pages.
+- All pages were reviewed in contact sheets; enlarged checks covered the main A3b withdrawal (p. 10), Cross-Interface Table 8 (p. 14), references (p. 16), Supplement S4 (p. 6), raw MVDiffusion Table S12 (p. 11), FAC/retrospective tables (p. 14), color diagnostics (p. 15), response p. 4, and marked-up references (p. 16). No pages are blank, and no clipping was seen. Table S12 contains all five comparisons × six metrics with raw A-minus-B differences and pointwise intervals.
+- The final locators are recorded in `1008/audits/1008_RESPONSE_LOCATOR_AUDIT.md`. The response is four pages; its R2.3 answer and A3b withdrawal fit on p. 4.
+- The exact local plain-text second-round reviewer source is `Reviewer_Source/SECOND_ROUND_REVIEWER_COMMENTS.txt` (SHA-256 `52d5a02718cbcf1b452293fe5a6953231f10fc9ce4cdf6cce400e86deb521245`). It matches the supplied attachment after CRLF normalization. The separate PDF text extraction has SHA-256 `1d2efb8f9250f8162304be57ce1d71c6d654d35511a186ad6e3c9b869ace5af5` and includes pagination/extraction artifacts. The original “Initial submission” header is reconciled with the author-confirmed round map identifying the review as the second round of 01549.
+- MVDiffusion correction: all 525 condition-object rows and six scheduled 75-object files were reconciled; the raw A-minus-B bootstrap reports five contrasts × six endpoints. In P1, L-LLH minus G-FL CIEDE2000 is `+1.373021` (95% CI `[+0.418244,+2.374678]`, higher error under L-LLH). Within P5, only FG-LPIPS excludes zero (`−0.001371 [−0.002642,−0.000141]`), favoring G-LLH. The old lower-is-better signs and erroneous P5 sentence are explicitly flagged; original analysis outputs remain preserved as historical records.
+- A3b's former `0/2,250` overlap and probe-24 calibration compare raw L2 values across layer groups with different spatial dimensions and unlogged channel counts. The manuscript withdraws the cross-layer dose-support and equal-dose interpretations; only response heterogeneity under tested settings and descriptive per-entry magnitudes remain.
+- Main, Supplement, and marked-up builds have no unresolved citations or cross-references. Nonfatal geometry/underfull-box and `latexdiff` Unicode warnings remain; page inspection showed no clipping. No GPU experiment was launched.
 
-## Evidence update and limits
+## Open author actions
 
-- The A3b `0/2,250` overlap statistic and probe-24 calibration both used integrated raw $L_2$ across feature groups at 24×16, 48×32, and 96×64 spatial resolutions; channel counts were not logged. The cross-layer common-support and equal-dose/imbalance interpretations are withdrawn. The recorded scale values remain tested settings. The CPU-only audit and per-entry sensitivity are packaged under `Author_Review/Residual_Norm_Dimension_Audit_20261010/`; they do not establish dose matching, common support, or causality.
-- Fresh C remains a matched 300-object image-space comparison. C3−GFL FG-PSNR is `+0.522352 dB` (95% object-bootstrap CI `[+0.404160,+0.640669]`); GFH and Generic Linear have more favorable means on all four displayed endpoints. C3/GFL applied deep/middle sums remain `82.5/62.5`; this is not a timing-only contrast.
-- The retrospective strict-276 L–L–H comparison favors that profile over C3 on six endpoints, but does not match layer-wise post-scale corrections. Fresh B/A3b and Core-7 remain retrospective sensitivity evidence.
-- The 76-object MV-Adapter panel is retrospective and interface-specific; its 30 temporal intervals are unadjusted. The 75-object MVDiffusion panel used a compatibility base; a later native-mirror check covered one object, not the full panel. Neither establishes matched cross-backbone transfer.
-- The failure-enriched 26-object color diagnosis and locked three-object P0 trace validate no repair and do not establish the full color cause. Figure 6 uses a licensed, hash-traced Fresh C case and is not a prevalence estimate or independent confirmation.
-- No validated color repair, native-default comparison, valid Fresh C bake, seam/PBR result, or matched cross-backbone trial is claimed. The CPU applied-budget preflight checked schedule arithmetic only. Its GPU-idle gate failed before inference; no GPU experiment was launched, and the historical base-model directory has no content hash.
-- `SUBMISSION_APPROVED=NO`; no journal submission was made.
+- Check Figure 6 caption and attribution against the rights record.
+- Verify carried-forward author metadata, funding, competing-interest statement, current manuscript ID, and portal requirements.
+- Review remaining editorial novelty risk and the open R1.1/R2.3 limitations before any submission.
 
-## Open author checks
-
-- Compare the response headings with the exact second-round decision and update any inaccurate paraphrase.
-- Verify Figure 6 attribution and caption against the review PDF.
-- Decide whether the task-specific empirical contribution meets the journal's novelty threshold; review the open R1.1 color/3D and R2.3 cross-backbone boundaries.
-- Verify carried-forward author metadata, funding, conflicts, current manuscript ID, and portal-specific requirements before any upload.
+`SUBMISSION_APPROVED=NO`; no journal submission has been made.

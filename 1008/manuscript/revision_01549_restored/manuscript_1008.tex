@@ -164,7 +164,7 @@ The submitted 01549 paper records C3 $=(1.25,2.50,1.25)$ as the selected profile
 
 GeoTex-Adapter is treated as the fixed geometry-residual backbone, not as a new contribution of this paper. It receives a five-channel input comprising a three-channel normal map, a one-channel depth map, and a one-channel foreground mask. A multi-scale encoder produces residual features that are injected into the frozen UNet. TCAS acts on the requested multiplier along denoising progress; it does not retrain the adapter, the UNet, or the VAE and introduces no learned parameters.
 
-The first-round 01549 revision also reported a learned Full Adaptive Correction (FAC) extension. We retain its controlled negative re-examination as a previously reported auxiliary result in Section~\ref{subsec:facreported} and Supplementary Table~S15; it is not a new 1008 training run. TCAS remains the paper's sole training-free method.
+The first-round 01549 revision also reported a learned Full Adaptive Correction (FAC) extension. We retain its controlled negative re-examination as a previously reported auxiliary result in Section~\ref{subsec:facreported} and Supplementary Table~S16; it is not a new 1008 training run. TCAS remains the paper's sole training-free method.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -414,7 +414,7 @@ A3b, $N=150$ & FG-LPIPS & 225.015 & $5.37\times10^{-43}$ & 14.0\%; 0.000342 \\
 \end{tabular}
 \end{table}
 
-The earlier A3b common-support calculation compared 10-step integrated raw $L_2$ norms across three layer groups. The saved corrections have different spatial resolutions (24$\times$16, 48$\times$32, and 96$\times$64), and the traces omit channel counts; raw norms and the reported 0/2,250 overlap result are therefore not used as a cross-layer dose test. Together with the Fresh B lock chronology, A3b remains retrospective sensitivity evidence. Its map shows response heterogeneity under the tested interventions, but does not identify a dose-independent layer-by-window effect or an optimal schedule.
+The earlier A3b common-support calculation compared 10-step integrated raw $L_2$ norms across three layer groups. The saved corrections have different spatial resolutions (24$\times$16, 48$\times$32, and 96$\times$64), and the traces omit channel counts, so absolute norms are dimension-dependent across groups. We withdraw the reported 0/2,250 overlap as a cross-layer dose-support conclusion. Together with the Fresh B lock chronology, A3b remains retrospective sensitivity evidence. Its map shows response heterogeneity under the tested interventions, but does not identify a dose-independent layer-by-window effect or an optimal schedule.
 
 A separate retrospective analysis on the \texttt{FRESH\_CONFIRM\_300} cohort found nine of ten plus-one-corrected associations between LLH--GFL image-space deltas and ground-truth descriptors; the FG-LPIPS/coverage test had adjusted $p=0.0508$. FG-PSNR means ranged from $+4.140$~dB in the lowest Laplacian-variance quartile to $-0.087$ and $-0.029$~dB in the upper two quartiles. These are cohort-specific associations, not a causal complexity effect, a threshold, a schedule selector, or a texture-fidelity result.
 
@@ -482,7 +482,7 @@ Table~\ref{tab:cross-interface} places the primary GeoTex path beside the auxili
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{Interface-specific intervention evidence. Nominal budgets are described within each implementation; no cross-interface realized-dose match is available. These rows are not architecture-matched replications.}
+\caption{Interface-specific intervention evidence. Nominal budgets are described within each implementation; no cross-interface realized-dose match is available. These rows are not architecture-matched replications. The MVDiffusion contrast is reported as raw condition A minus condition B; lower FG-LPIPS, CIEDE2000, and GT-relative texture error are favorable, whereas higher PSNR and SSIM are favorable.}
 \label{tab:cross-interface}
 \begin{tabular}{p{2.4cm}p{4.0cm}p{4.2cm}p{4.5cm}}
 \toprule
@@ -502,11 +502,13 @@ Layer-wise/global contrasts are metric-dependent. The two within-profile tempora
 Retrospective: protocol and outputs first appear in one preserved commit. This feature-scaling interface differs from GeoTex residual correction and does not establish TCAS transfer. \\
 MVDiffusion, compatibility interface &
 Correspondence-aware decoder-side CPBlocks; the tested multiplier is a product of a layer factor and temporal scale over five blocks. The 75-object panel used the compatibility base; a later check found 1,552/1,552 loaded tensors and 12/12 views identical to the native mirror on one object. &
-$N=75$, 12 target views, 50 steps. L--LLH vs.\ G--FL had lower CIEDE2000 ($-1.373$ [$-2.375,-0.418$]) but lower PSNR ($-0.454$ [$-0.752,-0.160$]) and FG-SSIM ($-0.0194$ [$-0.0294,-0.0099$]); LPIPS did not separate. &
+$N=75$, 12-view output grids, six frozen target views scored per object, and 50 steps. For raw L--LLH minus G--FL means: PSNR $-0.4538$, FG-SSIM $-0.01939$, Edge-SSIM $-0.005941$, FG-LPIPS $+0.002745$, CIEDE2000 $+1.3730$, and GT-relative texture error $-0.08229$. Full pointwise 95\% CIs for all endpoints and five contrasts are in Supplementary Table~S12. &
 Within-interface, mixed endpoint comparison on a different conditioning path; the 75-object panel itself was not rerun on the mirror. No shared scale semantics, cross-system dose match, or architecture-causal inference. \\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+Under the raw A-minus-B convention, L--LLH has higher CIEDE2000 (worse reference-color agreement) than G--FL, lower PSNR/FG-SSIM/Edge-SSIM, lower GT-relative error against the recorded variation statistics, and no separated FG-LPIPS difference. The lower variation-statistic error is not evidence of texture fidelity. The earlier negative CIEDE2000 value was an improvement-coded effect, not a raw contrast; the direction audit and all five comparisons are reported in Supplementary Table~S12.
 
 For the 98-object MV-Adapter probe, the original additive-residual bootstrap had an invalid zero-power null and was not used for interaction inference. The exploratory object-cluster Wald test is reported with its corrected family; its non-detection does not establish absence of interaction. In the separate 76-object Exact-holdout panel, layer-wise versus global contrasts trade PSNR, color, and ground-truth-relative texture endpoints against FG- and Edge-SSIM. For temporal placement, only one of six pointwise 95\% intervals excludes zero in L-LLH versus L-FIX (direction-adjusted CIEDE2000 $+0.072790$ [$+0.004371,+0.156696$]); only one does so in G-LLH versus G-LHL (Edge-SSIM $-0.000261$ [$-0.000522,-0.000032$]). The 30 intervals are descriptive and unadjusted. The protocol and outputs first appear in the same preserved commit, so this is retrospective sensitivity evidence, not confirmation or an equivalence test. The MVDiffusion panel used a compatibility deployment; a separate check matched its loaded tensors and one object's rendered views to a native mirror, but the full panel was not rerun. These probes remain interface-specific and do not establish architecture-invariant scheduling or transfer of the GeoTex residual intervention.
 
@@ -536,7 +538,7 @@ The reported analysis used a two-level participant/object bootstrap with 10,000 
 \subsection{FAC controlled re-examination reported in 01549}
 \label{subsec:facreported}
 
-A controlled re-examination of Full Adaptive Correction (FAC) was previously reported, with the base model, VAE, and GeoTex-Adapter frozen and roughly $6\times10^3$ controller parameters trainable. The stated protocol used the enhanced latent denoising objective (foreground weight 1.7, edge weight 1.3, and a latent-SSIM term), AdamW at peak learning rate $10^{-4}$ with 100 warm-up steps, and 2,000 training steps on a training pool reported as 1,706 objects and disjoint from evaluation. It reported a 300-object paired evaluation: every trained configuration reduced FG-PSNR versus TCAS by 1.10--2.94 dB, with at most 48/300 wins; the untrained C3-envelope control on 12 objects had $\Delta$FG-PSNR $=-0.18$ dB (95\% CI [$-0.42,+0.05$]). The seven reported configurations and endpoint values are retained in Supplementary Table~S15.
+A controlled re-examination of Full Adaptive Correction (FAC) was previously reported, with the base model, VAE, and GeoTex-Adapter frozen and roughly $6\times10^3$ controller parameters trainable. The stated protocol used the enhanced latent denoising objective (foreground weight 1.7, edge weight 1.3, and a latent-SSIM term), AdamW at peak learning rate $10^{-4}$ with 100 warm-up steps, and 2,000 training steps on a training pool reported as 1,706 objects and disjoint from evaluation. It reported a 300-object paired evaluation: every trained configuration reduced FG-PSNR versus TCAS by 1.10--2.94 dB, with at most 48/300 wins; the untrained C3-envelope control on 12 objects had $\Delta$FG-PSNR $=-0.18$ dB (95\% CI [$-0.42,+0.05$]). The seven reported configurations and endpoint values are retained in Supplementary Table~S16.
 
 These FAC outcomes are retained as previously reported results. They are not presented as a new 1008 training run. The current archive audit found that a recovered configuration points to a 1,200-object list rather than the 1,706-object pool stated in 01549, and does not bind the training seed and run outputs in one manifest. We therefore disclose the remaining reproducibility gap and make no code-release claim; TCAS remains the sole training-free method.
 
@@ -574,6 +576,8 @@ Aggregate results and the LaTeX source required to rebuild the manuscript and Su
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 
+\begingroup
+\linespread{0.94}\selectfont
 \begin{thebibliography}{45}
 \bibitem{liu2023zero1to3}
 Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
@@ -684,7 +688,8 @@ Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free accel
 Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{IEEE Transactions on Image Processing}, 2004, 13(4): 600--612.
 
 \bibitem{zhang2018lpips}
-Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2018.
+Zhang R, Isola P, Efros A A, et al. The unreasonable effectiveness of deep features as a perceptual metric. \textit{CVPR}, 2018.
 
 \end{thebibliography}
+\endgroup
 \end{document}

@@ -1,5 +1,7 @@
 # 1008 scientific and response consistency audit
 
+> **Historical candidate audit:** this report records an earlier 13-page main, 11-page Supplement, and 19-page marked-up PDF. Its artifact hashes and page locators are superseded by [`1008_RESPONSE_LOCATOR_AUDIT.md`](1008_RESPONSE_LOCATOR_AUDIT.md) and [`../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md`](../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md). Use those files for the current 16/16/16-page build.
+
 **Review basis:** authenticated 01549 post-first-round manuscript, final 1008 active TeX/PDFs, Supplementary Material, response Markdown/PDF, figure/table disposition, and reviewer locator matrix. This report replaces older consistency reports whose page counts and manuscript hashes belong to superseded candidates.
 
 ## Source and compiled artifact identity
