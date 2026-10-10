@@ -1,0 +1,102 @@
+{
+  "status": "PASS_SOURCE_ARCHIVE_REBUILDS_AND_ALL_CONTRASTS_REPRODUCE",
+  "source_archive_sha256": "dc3c5a331a2b8cf26080e99f90299d833d2af21cb90fc54328ab73bdd0f0050e",
+  "extracted_checks": [
+    [
+      "python",
+      "scripts/verify_camera_contract.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_geometry_matrix.py"
+    ],
+    [
+      "python",
+      "scripts/verify_resolution_bridge.py"
+    ],
+    [
+      "python",
+      "scripts/verify_factorial_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/analyze_native_controls.py"
+    ],
+    [
+      "bash",
+      "build_round_006.sh"
+    ],
+    [
+      "bash",
+      "build_supplement_round_006.sh"
+    ],
+    [
+      "bash",
+      "build_marked_round_006.sh"
+    ]
+  ],
+  "previous_round_hash_unchanged": true,
+  "video_decode_pass": true,
+  "video_scope": "prior seven-condition outputs retained; native diagnostics in S21\u2013S24",
+  "pdfs": {
+    "Marked_Manuscript_round_006.pdf": {
+      "sha256": "89e15051c93f7e5853c11f357f3dbe95aed0211936dcf38376d691d8c75df9b0",
+      "bytes": 4526845
+    },
+    "Manuscript_round_006.pdf": {
+      "sha256": "e9265fdd7c54682d9ffc9684460766c6f1a3f41f173a605229a0ed4b86dee5f6",
+      "bytes": 4524229
+    },
+    "Reviewer_Response_Addendum_round_006.pdf": {
+      "sha256": "08d4bc4bf41f4ca9616a223a8ebec77684f291488c5bc333e28b5094d2e21b30",
+      "bytes": 26624
+    },
+    "Response_to_Reviewers_round_006.pdf": {
+      "sha256": "92866342858e27dbb023686ba5244857072f84f50e96c9cbe3dd1fde66dfc0d8",
+      "bytes": 63202
+    },
+    "Supplementary_round_006.pdf": {
+      "sha256": "f42ec56c6b4e2ac59fa7a75728a450281e197981325bf77659dacd5bcf8f2fe6",
+      "bytes": 3955380
+    }
+  },
+  "experiment_commit": "b27f8d81",
+  "inherited_evidence_byte_identical": [
+    "data/ITERATION002_STATISTICS.json",
+    "data/NATIVE_BASE_DIAGNOSTIC.json",
+    "data/PREVIOUS_CONTROL_INPUTS.json",
+    "data/NATIVE_BASE_RGB_FAILED_ATTEMPT.json",
+    "data/TARGET_RESOLUTION_BRIDGE.json",
+    "data/native_controls_with_repeated_gt.csv",
+    "data/bake10_object_metrics.csv",
+    "data/ITERATION002_CONTROL_EXTENSION.json",
+    "data/GUIDANCE_EMBEDDING_FACTORIAL.json",
+    "data/ITERATION002_SAMPLING_PROTOCOL_AUDIT.json",
+    "data/bake10_all_controls.csv",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r512_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r512_cfg2.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r256_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r256_off.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r256_cfg2.png",
+    "data/resolution_grids/21678bd623654182b52c11d013de4e71_r512_off.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r256_off.png",
+    "data/resolution_grids/1dc2c857f7614caeb6c2aa0559ccf973_r512_off.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_cached_off.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_online_off.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_online_cfg2.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_online_off.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_cached_off.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_cached_cfg2.png",
+    "data/factorial_grids/1dc2c857f7614caeb6c2aa0559ccf973_cached_cfg2.png",
+    "data/factorial_grids/21678bd623654182b52c11d013de4e71_online_cfg2.png",
+    "data/native_grids/1dc2c857f7614caeb6c2aa0559ccf973_50.png",
+    "data/native_grids/1dc2c857f7614caeb6c2aa0559ccf973_75.png",
+    "data/native_grids/21678bd623654182b52c11d013de4e71_50.png",
+    "data/native_grids/21678bd623654182b52c11d013de4e71_75.png"
+  ],
+  "scientific_scope": "nominal camera directions and native implementation gates pass; full camera registration and appearance repair remain unproven"
+}

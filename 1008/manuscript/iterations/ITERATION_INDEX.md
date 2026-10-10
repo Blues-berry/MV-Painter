@@ -13,3 +13,5 @@
 - Round004: eight-call guidance/image-feature diagnostic; neither intervention validates repair. Round review includes acceptance outlook, likely objections and comparison with predecessor. Next: resolution bridge.
 
 - Round005: eight-call target-resolution bridge; 256 controls bitwise match round004. Six-position layout recovered at512, fidelity/cameras unverified. Comparative outlook: net unchanged, high rejection risk. Next: native-path/camera calibration.
+
+- Round006: 10-object nominal camera-direction audit, two native-disabled identity calls and sixteen native geometry calls. Implementation gates pass, appearance repair fails on seen cases. Includes004–006 comprehensive summary. Next: geometry-resolution/CFG-branch compatibility.
