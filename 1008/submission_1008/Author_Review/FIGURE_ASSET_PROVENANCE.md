@@ -2,7 +2,7 @@
 
 ## Figure 1 control-path schematic
 
-Figure 1 is an author-generated vector diagram built by `scripts/build_tcas_control_figure.py`. It places the TCAS request-to-applied-scale gate directly on the GeoTex-Adapter residual path and distinguishes that path from downstream projection/baking, which Fresh C did not validate. The figure contains no third-party images. The authenticated 01549 source remains unchanged at `1008/manuscript/source_01549/fig1.pdf` (SHA-256 `b574af56be9c11fb1dbabcf216ecd5e2ceda39d1de0d0d4445ffd4215ffe3831`); its redundant active-revision copy was removed.
+Figure 1 is an author-generated vector diagram built by `scripts/build_tcas_control_figure.py`. Its left-to-right layout follows the 01549 overview while directing attention to the TCAS request-to-applied-scale gate on the GeoTex-Adapter residual path. The requested profile, Fresh C shallow cap, and resulting residual are shown separately; projection/baking remains subdued and is marked as unevaluated downstream context. The withdrawn FAC extension is not shown. The figure contains no third-party images or new experimental results. The authenticated 01549 source remains unchanged at `1008/manuscript/source_01549/fig1.pdf` (SHA-256 `b574af56be9c11fb1dbabcf216ecd5e2ceda39d1de0d0d4445ffd4215ffe3831`); its redundant active-revision copy was removed.
 
 ## Main figure source
 

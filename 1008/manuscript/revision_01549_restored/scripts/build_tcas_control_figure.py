@@ -163,13 +163,13 @@ def draw() -> None:
           align="center")
     label(c, 740, 250, "r = s_app * r_geo", 17, color=INK, bold=True,
           align="center")
-    label(c, 740, 220, "correction magnitude depends on r_geo", 14,
+    label(c, 740, 220, "correction magnitude depends on r_geo", 15,
           color=MUTED, align="center")
 
     # The requested C3 schedule feeds the gate; a cap changes the applied
     # shallow scale, while the resulting correction still depends on r_geo.
-    label(c, 565, 166, "C3 requested profile  |  50 steps", 16,
-          color=TEAL, bold=True)
+    label(c, 565, 166, "C3 requested profile", 15, color=TEAL, bold=True)
+    label(c, 875, 166, "50 steps", 15, color=TEAL, bold=True, align="right")
     stages = [("0-16", "1.25", False), ("17-32", "2.50", True),
               ("33-49", "1.25", False)]
     for i, (window, value, active) in enumerate(stages):
@@ -178,15 +178,15 @@ def draw() -> None:
         fg = white if active else TEAL
         c.setFillColor(fill)
         c.roundRect(x, 82, 97, 70, 8, stroke=0, fill=1)
-        label(c, x + 48.5, 125, window, 13, color=fg,
+        label(c, x + 48.5, 125, window, 14, color=fg,
               bold=True, align="center")
         label(c, x + 48.5, 99, value, 17, color=fg,
               bold=True, align="center")
 
     box(c, 890, 82, 245, 70, fill=white, stroke=LINE, radius=8, width=1)
-    label(c, 1012.5, 124, "Fresh C shallow cap", 14, color=MUTED,
+    label(c, 1012.5, 124, "Fresh C shallow cap", 15, color=MUTED,
           bold=True, align="center")
-    label(c, 1012.5, 99, "1.25 requested -> 0.8 applied", 14,
+    label(c, 1012.5, 99, "1.25 requested -> 0.8 applied", 15,
           color=INK, bold=True, align="center")
     arrow(c, (740, 152), (740, 188), color=TEAL, width=2,
           dashed=True, head=9)
