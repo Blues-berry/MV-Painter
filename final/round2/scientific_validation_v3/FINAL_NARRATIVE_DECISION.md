@@ -38,12 +38,14 @@ distributions have no three-layer common support (0/2,250 rows retained);
 dose-adjusted significance is extrapolative. Therefore a dose-independent
 full interaction is not identified. The corresponding MV-Adapter map has no
 interaction metric that survives its exploratory four-metric correction
-(98/99 planned objects). This contrast is consistent with architecture-
-dependent response surfaces within the interventions tested. However,
-MV-Adapter used a different bounded one-window intervention and dose
-geometry, so this is not a matched causal test isolating architecture.
-Present it as bounded evidence of non-transfer or response heterogeneity, not
-a universal architecture-dependent timing law.
+(98/99 planned objects). MVDiffusion supplies a separate 75-object mixed/
+negative boundary: CPBlock interpolation trades structure/color metrics
+against texture error. These are interface-specific response differences,
+not a matched causal architecture test. MV-Adapter uses a bounded one-window
+additive-residual intervention; MVDiffusion interpolates serial CPBlock
+outputs. Present each within its own cohort as evidence that transfer was not
+established across the tested interfaces, not as an architecture-dependent
+timing law.
 
 **Permitted:** the main backbone shows a native-dose Layer × Window response
 map; bounded interventions also show heterogeneity, but dose-independent
@@ -147,7 +149,8 @@ justified.
   universally optimal three-stage schedule.
 - Keep one-third boundaries as a convenient discretization, not an
   empirically discovered phase boundary.
-- Limit MV-Adapter language to its tested 0.75-to-1.00 scale range; neither
-  transfer nor architecture-dependent scheduling has been established.
+- Report MV-Adapter and MVDiffusion separately within their tested scale
+  ranges and interfaces; neither broad transfer nor causal architecture-
+  dependent scheduling has been established.
 - Do not equate PSNR/LPIPS changes with faithful material or texture
   reproduction until the human gate is completed.

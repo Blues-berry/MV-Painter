@@ -1,0 +1,30 @@
+{
+  "family": "B2_H3_LLH_HLL_LLL",
+  "cohort": "FRESH_CONFIRM_B",
+  "family_size": 4,
+  "alpha": 0.05,
+  "holm_method": "Holm-Bonferroni across the four prespecified B2 metric-contrast tests",
+  "p_floor_note": "Where an input p is at the 1/10,000 bootstrap reporting floor, its adjusted value is an upper bound based on that floor.",
+  "tests": {
+    "H3_LLH-HLL_fg_psnr": {
+      "p_raw_upper_bound": 0.0001,
+      "p_holm_upper_bound": 0.0004,
+      "reject_holm_0.05": true
+    },
+    "H3_LLH-HLL_fg_lpips": {
+      "p_raw_upper_bound": 0.0001,
+      "p_holm_upper_bound": 0.0004,
+      "reject_holm_0.05": true
+    },
+    "H3_LLH-LLL_fg_psnr": {
+      "p_raw_upper_bound": 0.0001,
+      "p_holm_upper_bound": 0.0004,
+      "reject_holm_0.05": true
+    },
+    "H3_LLH-LLL_fg_lpips": {
+      "p_raw_upper_bound": 0.0001,
+      "p_holm_upper_bound": 0.0004,
+      "reject_holm_0.05": true
+    }
+  }
+}

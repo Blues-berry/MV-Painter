@@ -1,0 +1,49 @@
+{
+  "status": "SAME_PROTOCOL_RENDER_RESTARTED",
+  "recorded_utc": "2026-10-06T10:48:24.716545+00:00",
+  "failed_driver_pid": 3673605,
+  "failure_cause": "Unknown: renderer parent disappeared, children reparented to PID 1; no final log. Do not infer OOM without evidence.",
+  "orphan_pool_pids": [
+    3673637,
+    3673638,
+    3673639,
+    3673640,
+    3673641,
+    3673642,
+    3673643,
+    3673644,
+    3673645,
+    3673646
+  ],
+  "active_blender_child_pids": [
+    3810511,
+    3812436,
+    3815820,
+    3817531,
+    3817810,
+    3818123,
+    3818389,
+    3818978,
+    3819563,
+    3819605
+  ],
+  "prior_stage_identity_sha256": "a23903e958d8b08310b7c6bc8c4123d22c8ba5aed4a62a452c8c750659d85a18",
+  "recovery_policy": "Terminate only verified orphan renderer descendants; preserve unfinished directories separately; rerun original rendering script on unchanged full UID list, skipping complete outputs. No quality outputs exist; no cohort/renderer/settings changes.",
+  "new_render_driver_pid": 3820051,
+  "complete_outputs_preserved": 337,
+  "partial_output_uids_preserved": [
+    "c12ff3336656459e8607e93753cb5158",
+    "fd221213a2ba4a65ba5362cd6ebe6676",
+    "0fd7dd34038c4896a9a6e86b8a285d1d",
+    "5ca5304816bb4052b71defa53cb191f3",
+    "cc804d0e26f24cf29dfd830310f4786d",
+    "5be90c2562ef450fa2c994369ceb5480",
+    "6e2636119afc49009eb28f806dbf69db",
+    "073867f1618f4b518430fa13cb2695e7",
+    "701daa128b9b4a5890e3f3b116f446de",
+    "228d6764a01d47dfb5da927d830c2e43",
+    "8bde8eb73dcb45c6a3880e85e7b3694b",
+    "c514e0c2f1c4434c9ce3fa2b950ce9dc"
+  ],
+  "partial_archive_path": "1006/data/fresh_c/failed_render_attempt1"
+}

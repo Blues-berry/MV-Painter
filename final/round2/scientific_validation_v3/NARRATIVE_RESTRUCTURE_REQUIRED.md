@@ -35,10 +35,10 @@ statistically independent.
   data, not B; it was written after B exposure and is a retrospective scale
   reference, not a significance or acceptance threshold.
 - MV-Adapter is bounded to 98/99 planned objects and its tested intervention
-  range. The absence of a corrected global interaction is a boundary finding.
-  Different intervention geometry means it does not isolate architecture as
-  the cause of a response-surface difference. Do not search for a positive
-  grouping or scale.
+  range. MVDiffusion adds a separate 75-object mixed/negative boundary using
+  CPBlock interpolation. Keep the two cohorts and interfaces separate; these
+  results do not isolate architecture as the cause of a response-surface
+  difference. Do not search for a positive grouping or scale.
 - The 40-slot human study is pre-collection and locked at four pairs,
   including `gen_linear`; its fixed stop and minimum 36 valid completions
   remain unchanged.

@@ -1,0 +1,106 @@
+{
+  "status": "LAYOUT_QA_ONLY_NOT_FINAL_EVIDENCE",
+  "selection": "first UID in the pre-outcome frozen Visualization-24 list; no outcome-based selection",
+  "uid": "00002bcb84af4a4781174e62619f14e2",
+  "n_frozen_visualization_uids": 24,
+  "views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "conditions": [
+    "__reference__",
+    "native_gfl",
+    "native_gfh",
+    "no_adapter",
+    "native_gc3",
+    "layer_llh",
+    "gen_linear"
+  ],
+  "source_cohort": "historical same-object/same-seed experiment rows; retrospective and cross-campaign",
+  "source_campaign_by_condition": {
+    "native_gfl": "campaign_B3",
+    "native_gfh": "campaign_B3",
+    "no_adapter": "campaign_B3",
+    "native_gc3": "campaign_B3",
+    "layer_llh": "campaign_B1B2",
+    "gen_linear": "campaign_C"
+  },
+  "source_identity_checks": {
+    "same_uid_and_object_index": true,
+    "same_seed": true,
+    "same_six_input_hashes": true,
+    "runner_and_checkpoint_match_from_prior_audit": true,
+    "legacy_config_hash_missing": true
+  },
+  "metric_values_not_drawn_on_single_object_panel": true,
+  "single_object_significance_claim": false,
+  "output": "1006/figures/strategy_comparison_gallery/prototype/layout_qa_00002bcb84af4a4781174e62619f14e2.png",
+  "assets": {
+    "reference": [
+      {
+        "view": 0,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/000.png",
+        "sha256": "0627d4d784f47f1d48e8b25adf6d9d1d13ab6c3b89556e4c14b7a6e051873ee3"
+      },
+      {
+        "view": 15,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/015.png",
+        "sha256": "7d12b23a34949d878b2e177469b596e70e6f30eb0fecf41c4fbd978d217a1c2b"
+      },
+      {
+        "view": 12,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/012.png",
+        "sha256": "c375189d90cd7a09eb6ef027fb82a791c609c3139bb46f5bfb96b38ea07814fa"
+      },
+      {
+        "view": 16,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/016.png",
+        "sha256": "579d184137e9374b8e8d7cb1b290f23e7c34c3ea1c93941cf4748771a937ab10"
+      },
+      {
+        "view": 13,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/013.png",
+        "sha256": "45c64deb64be6904c8d16150f630c9572f1d8cb7f2955fdc93c328de514607df"
+      },
+      {
+        "view": 14,
+        "path": "data/fresh_confirm_v3_renders/00002bcb84af4a4781174e62619f14e2/image/014.png",
+        "sha256": "0cd00fa39f2d4a08eef39fb3d562113f816209e51d873d6ea1981b8ae3f3b171"
+      }
+    ],
+    "native_gfl": {
+      "campaign": "campaign_B3",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_B3/predictions/native_gfl/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "4d99c5c215dbfed950670d09dd1781bb2e99e06f1f9c0b8cf11ff6e0b3025caa"
+    },
+    "native_gfh": {
+      "campaign": "campaign_B3",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_B3/predictions/native_gfh/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "b7f9645755406762a762d3a6a5371e4eab04846821478b70403c3da607e83f6c"
+    },
+    "no_adapter": {
+      "campaign": "campaign_B3",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_B3/predictions/no_adapter/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "1400480e02ab1aa9bfa7749225208e20b8a887998c947fc2c2ad3ca9f10bdb4d"
+    },
+    "native_gc3": {
+      "campaign": "campaign_B3",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_B3/predictions/native_gc3/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "7fa5a9035aa7269e9f7b0fe22d24dc178b459be3cbc8dfd85df63fe6d7ea9959"
+    },
+    "layer_llh": {
+      "campaign": "campaign_B1B2",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_B1B2/predictions/layer_llh/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "113ef6cb1ed526dce539dc1d670229c30cbf475333a711fa6d241685fd445065"
+    },
+    "gen_linear": {
+      "campaign": "campaign_C",
+      "path": "final/round2/scientific_validation_v3/formal/campaign_C/predictions/gen_linear/00002bcb84af4a4781174e62619f14e2.png",
+      "sha256": "1da05b710d8ab96d99d5b5a88a01b1d60ac254f76abe41970cede35be76aa6b5"
+    }
+  }
+}
