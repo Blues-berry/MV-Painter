@@ -1,13 +1,14 @@
 # 1008 final author-review build and source-package check
 
-**Captured:** 2026-10-10 06:05 UTC · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
+**Build captured:** 2026-10-10 06:05 UTC · **Upload-package recheck:** 2026-10-10 06:28 UTC · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
 
 ## Source identity and archive
 
 - Active and author-review manuscript TeX are byte-identical (SHA-256 `070338bdd40db62e1fa869b0d934534b39d85aff8fb833a2a13c96524a814e5c`). Active and author-review Supplement TeX are byte-identical (SHA-256 `df35b089f9c967e75dccb1e81719a48068459bdaddd6e56b1009909f479f1ee1`).
 - `LaTeX_Source_1008.zip`: 63 members, 35,933,982 bytes, SHA-256 `5892aa2d0b0b6b71613ef6170c83b328d5975473d4054abf4bfd4970633365c4`. ZIP CRC passes. It includes the active TeX, build scripts, figures and source dependencies; it excludes experiment JSON, arrays, checkpoints, GLBs, generated PDFs, and caches.
 - The source ZIP was extracted into an empty temporary directory. The included scripts rebuilt the main paper, Supplement, and marked-up manuscript at 16 pages each; whitespace-normalized `pdftotext -layout -nopgbrk` output matches the author-review PDFs for all three finalized documents.
-- `submission_1008/SUBMISSION_FILE_MANIFEST.csv` has 122 payload entries, including `Author_Review/FINAL_REVIEWER_CLOSURE_MATRIX.md`. The exact second-round reviewer source is classified as `AUTHOR_REVIEW_MATERIAL`; it is stored under `Author_Review/Reviewer_Source/` and is not a journal upload file.
+- `submission_1008/SUBMISSION_FILE_MANIFEST.csv` has 121 payload entries, including `Author_Review/FINAL_REVIEWER_CLOSURE_MATRIX.md`. The exact second-round reviewer source is classified as `AUTHOR_REVIEW_MATERIAL`; it is stored under `Author_Review/Reviewer_Source/` and is not a journal upload file.
+- The upload `Figures/` directory now contains exactly the eight files referenced by the active manuscript and Supplement. A stale copy of the 01549 Figure 1 was removed from this upload directory; the authenticated original remains in `source_01549/fig1.pdf` and the reproducible source ZIP. All current package checksums pass.
 
 ## Author-review artifacts
 

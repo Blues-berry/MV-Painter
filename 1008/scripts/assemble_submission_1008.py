@@ -82,8 +82,9 @@ def main() -> None:
     for name, src in figure_sources.items():
         copy(src, f"Figures/{name}")
 
-    # Remove superseded color panels that were retired from the active package.
+    # Remove stale figures that are no longer part of the active upload set.
     for name in (
+        "fig1_01549_original.pdf",
         "fig8_color_failure_01549.pdf",
         "figS1_color_detail_failure.png",
     ):
