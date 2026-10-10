@@ -1,0 +1,52 @@
+[
+  {
+    "uid": "00603cadc4474dafb78cdb55278568f2",
+    "drop_condition": false,
+    "timestep": 100,
+    "latent_shape": [
+      1,
+      4,
+      192,
+      128
+    ],
+    "target_reference_max_error": 1.1920928955078125e-07,
+    "source_sha256": "a89acb6854b36f3ec97fcdea69be171fe84fd030205f506ae8d6571da30acd45",
+    "loss": 0.30508676171302795,
+    "components": {
+      "train/noise_loss": 0.07390525192022324,
+      "train/ssim_loss": 0.46236300468444824,
+      "train/loss": 0.30508676171302795,
+      "train/reg_loss": 1.1484535988870448e-08
+    },
+    "adapter_grad_norm": 0.008084215223789215,
+    "encoder_grad_norm": 5.2649006647698116e-06,
+    "elapsed_seconds": 3.0760650634765625,
+    "allocated_peak_bytes": 12579085824,
+    "reserved_peak_bytes": 12679380992
+  },
+  {
+    "uid": "00619c9de6f14f03940b6cf72575d822",
+    "drop_condition": true,
+    "timestep": 700,
+    "latent_shape": [
+      1,
+      4,
+      192,
+      128
+    ],
+    "target_reference_max_error": 1.1920928955078125e-07,
+    "source_sha256": "f32a9fec544e518175cae9cf50175a021e4e675b1b5f34397963fcbd235c507c",
+    "loss": 0.07776942849159241,
+    "components": {
+      "train/noise_loss": 0.004765629302710295,
+      "train/ssim_loss": 0.14600759744644165,
+      "train/loss": 0.07776942849159241,
+      "train/reg_loss": 3.927035052697647e-08
+    },
+    "adapter_grad_norm": 0.012589138932526112,
+    "encoder_grad_norm": 9.182777830574196e-06,
+    "elapsed_seconds": 0.40342116355895996,
+    "allocated_peak_bytes": 12605245952,
+    "reserved_peak_bytes": 12719226880
+  }
+]

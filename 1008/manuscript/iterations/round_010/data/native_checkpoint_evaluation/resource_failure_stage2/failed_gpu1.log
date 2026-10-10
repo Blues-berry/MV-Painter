@@ -1,0 +1,84 @@
+============= length of dataset 50 =============
+Loading MV-Painter pipeline...
+Loading pipeline components...:   0%|          | 0/7 [00:00<?, ?it/s]Loading pipeline components...:  14%|█▍        | 1/7 [00:00<00:01,  4.05it/s]Loading pipeline components...:  29%|██▊       | 2/7 [00:00<00:01,  3.90it/s]Loading pipeline components...:  86%|████████▌ | 6/7 [00:03<00:00,  1.55it/s]Loading pipeline components...: 100%|██████████| 7/7 [00:53<00:00, 11.39s/it]Loading pipeline components...: 100%|██████████| 7/7 [00:53<00:00,  7.71s/it]
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+libpng warning: eXIf: duplicate
+Gradient checkpointing DISABLED for GeoTex-Adapter compatibility
+Injected 9 GeoTex adapters (up_only mode)
+FAC disabled — using legacy static scaling
+GeoTex adapter params: 1.57M
+GeoTex encoder params: 0.63M
+Total trainable: 2.20M / 2569.03M UNet (0.09%)
+base dir name: ['', '4T', 'CXY', 'MV-Painter', '1006', 'data', 'fresh_c']
+alpha count: 254527 226425
+reverse true
+add_time_ids: tensor([[1536., 1024.,    0.,    0., 1536., 1024.]], device='cuda:1',
+       dtype=torch.float16)
+global_embeds: torch.Size([1, 1, 2048])
+ramp: torch.Size([1, 1, 2048])
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:00<00:20,  2.36it/s]  4%|▍         | 2/50 [00:00<00:15,  3.16it/s]  6%|▌         | 3/50 [00:00<00:13,  3.54it/s]  8%|▊         | 4/50 [00:01<00:12,  3.76it/s] 10%|█         | 5/50 [00:01<00:11,  3.88it/s] 12%|█▏        | 6/50 [00:01<00:11,  3.99it/s] 14%|█▍        | 7/50 [00:01<00:10,  4.06it/s] 16%|█▌        | 8/50 [00:02<00:10,  4.10it/s] 18%|█▊        | 9/50 [00:02<00:09,  4.13it/s] 20%|██        | 10/50 [00:02<00:09,  4.14it/s] 22%|██▏       | 11/50 [00:02<00:09,  4.18it/s] 24%|██▍       | 12/50 [00:03<00:08,  4.22it/s] 26%|██▌       | 13/50 [00:03<00:08,  4.25it/s] 28%|██▊       | 14/50 [00:03<00:08,  4.27it/s] 30%|███       | 15/50 [00:03<00:08,  4.29it/s] 32%|███▏      | 16/50 [00:03<00:07,  4.30it/s] 34%|███▍      | 17/50 [00:04<00:07,  4.30it/s] 36%|███▌      | 18/50 [00:04<00:07,  4.30it/s] 38%|███▊      | 19/50 [00:04<00:07,  4.30it/s] 40%|████      | 20/50 [00:04<00:06,  4.29it/s] 42%|████▏     | 21/50 [00:05<00:06,  4.30it/s] 44%|████▍     | 22/50 [00:05<00:06,  4.29it/s] 46%|████▌     | 23/50 [00:05<00:06,  4.29it/s] 48%|████▊     | 24/50 [00:05<00:06,  4.28it/s] 50%|█████     | 25/50 [00:06<00:05,  4.28it/s] 52%|█████▏    | 26/50 [00:06<00:05,  4.28it/s] 54%|█████▍    | 27/50 [00:06<00:05,  4.28it/s] 56%|█████▌    | 28/50 [00:06<00:05,  4.30it/s] 58%|█████▊    | 29/50 [00:06<00:04,  4.35it/s] 60%|██████    | 30/50 [00:07<00:04,  4.38it/s] 62%|██████▏   | 31/50 [00:07<00:04,  4.40it/s] 64%|██████▍   | 32/50 [00:07<00:04,  4.41it/s] 66%|██████▌   | 33/50 [00:07<00:03,  4.42it/s] 68%|██████▊   | 34/50 [00:08<00:03,  4.43it/s] 70%|███████   | 35/50 [00:08<00:03,  4.44it/s] 72%|███████▏  | 36/50 [00:08<00:03,  4.45it/s] 74%|███████▍  | 37/50 [00:08<00:02,  4.45it/s] 76%|███████▌  | 38/50 [00:09<00:02,  4.45it/s] 78%|███████▊  | 39/50 [00:09<00:02,  4.45it/s] 80%|████████  | 40/50 [00:09<00:02,  4.45it/s] 82%|████████▏ | 41/50 [00:09<00:02,  4.45it/s] 84%|████████▍ | 42/50 [00:09<00:01,  4.45it/s] 86%|████████▌ | 43/50 [00:10<00:01,  4.45it/s] 88%|████████▊ | 44/50 [00:10<00:01,  4.45it/s] 90%|█████████ | 45/50 [00:10<00:01,  4.46it/s] 92%|█████████▏| 46/50 [00:10<00:00,  4.45it/s] 94%|█████████▍| 47/50 [00:11<00:00,  4.44it/s] 96%|█████████▌| 48/50 [00:11<00:00,  4.44it/s] 98%|█████████▊| 49/50 [00:11<00:00,  4.45it/s]100%|██████████| 50/50 [00:11<00:00,  4.45it/s]100%|██████████| 50/50 [00:11<00:00,  4.27it/s]
+Traceback (most recent call last):
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/run_native_checkpoint_matrix009.py", line 61, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/run_native_checkpoint_matrix009.py", line 52, in main
+    with torch.no_grad():result=pipe(Image.open(source).convert('RGBA'),num_inference_steps=50,generator=torch.Generator(device=device).manual_seed(42),guidance_scale=2.,depth_image=None,output_type='pil')
+                                ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/4T/CXY/MV-Painter/MVPainter/mvpainter/mvpainter_pipeline.py", line 717, in __call__
+    image = self.vae.decode(latents / self.vae.config.scaling_factor, return_dict=False)[0]
+            ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/utils/accelerate_utils.py", line 46, in wrapper
+    return method(self, *args, **kwargs)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/models/autoencoders/autoencoder_kl.py", line 235, in decode
+    decoded = self._decode(z).sample
+              ~~~~~~~~~~~~^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/models/autoencoders/autoencoder_kl.py", line 206, in _decode
+    dec = self.decoder(z)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/models/autoencoders/vae.py", line 301, in forward
+    sample = up_block(sample, latent_embeds)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/models/unets/unet_2d_blocks.py", line 2643, in forward
+    hidden_states = upsampler(hidden_states)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/diffusers/models/upsampling.py", line 186, in forward
+    hidden_states = self.conv(hidden_states)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+    return F.conv2d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 384.00 MiB. GPU 1 has a total capacity of 31.37 GiB of which 173.44 MiB is free. Including non-PyTorch memory, this process has 11.14 GiB memory in use. Of the allocated memory 10.33 GiB is allocated by PyTorch, and 214.21 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
