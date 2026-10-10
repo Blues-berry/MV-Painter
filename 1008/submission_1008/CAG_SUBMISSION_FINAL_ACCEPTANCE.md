@@ -7,11 +7,11 @@
 ## 本轮完成
 
 - 重写活动主文，收窄 TCAS 的创新主张，定义 requested/applied/residual 语义，并同步 Supplement 与逐条回复信。
-- 重绘 Figure 1 为可复现的矢量控制路径图，直观显示 requested scale 经 native cap 后缩放 GeoTex residual 并注入 frozen UNet；01549 原图仍原样保存在 source baseline。
+- 重绘 Figure 1 为可复现的矢量控制路径图，保留原图中的参考照片、几何输入和六视角示例，并突出 requested scale 经 native cap 后缩放 GeoTex residual 的过程；01549 原图仍原样保存在 source baseline，FAC 未画成当前方法组件。
 - 保留 Fresh C 的正向配对结果和 GFH、Generic Linear 均值反例；将 applied-scale 剂量差、strict-276 的 L–L–H 结果及其 post-inspection、dose 不匹配限制写入主文。
 - 把偏色诊断、跨接口汇总、FAC/人评边界放入相应结果与限制；撤回 CAI 证明和最优性结论。新增的 76-object MV-Adapter layer/time 面板按回顾性接口敏感性处理；MVDiffusion native-mirror 检查仅覆盖一个对象，不代表完整面板重跑。
-- 交付主文 16 页、标注稿 16 页、Supplement 15 页、回复信 PDF 4 页及横向一页风险/实验决策表。
-- 62 项确定性源码 ZIP 在空目录中重建三份 LaTeX PDF；页数和提取文本与审阅副本一致，最终日志无悬空引用。
+- 交付主文 16 页、标注稿 16 页、Supplement 16 页、回复信 PDF 4 页及横向一页风险/实验决策表。
+- 70 项确定性源码 ZIP 在空目录中重建三份 LaTeX PDF；页数和提取文本与审阅副本一致，ZIP CRC 检查通过。
 
 ## 尚未解决
 
@@ -20,6 +20,7 @@
 - R2.3：MV-Adapter 与 MVDiffusion 探索使用不同接口；76-object layer/time 面板的方案与结果同 commit 首次出现，MVDiffusion mirror 检查仅覆盖一个对象，仍没有匹配的跨骨干验证。
 - 留存审稿 PDF 标为 initial submission；需作者对照二轮决定确认回复标题。现用 Figure 6 的 CC BY 4.0 授权、UID、样本选择记录和图像哈希已核验；旧历史图仅保留在 01549 源文件中。
 - 题名页、作者/资助信息、利益声明和上传草稿仍需作者审核。
+- Figure 1 的示例缩略图来自 01549 归档图；其底层照片/模型来源及所需署名未在本轮重新追溯，投稿前须由作者确认或替换。
 
 ## 实验决策
 

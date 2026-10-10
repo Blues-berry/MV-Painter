@@ -1,6 +1,6 @@
 # Clean LaTeX source package and final build check
 
-> **Historical build report:** this 2026-10-09 snapshot is superseded by [`../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md`](../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md), which records the current 2026-10-10 16/16/16-page build and 63-member source archive.
+> **Historical build report:** this 2026-10-09 snapshot is superseded by [`../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md`](../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md), which records the current 2026-10-10 16/16/16-page build and 70-member source archive.
 
 **Captured:** 2026-10-09T04:16:30Z UTC  
 **Package state:** `AUTHOR_REVIEW_READY` (not submission-approved)

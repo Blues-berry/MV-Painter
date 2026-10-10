@@ -31,7 +31,7 @@ The source-verified item-by-item closure, evidence identity, page locators, resp
 
 - Main manuscript: 16 pages. Marked-up copy: 16 pages. Supplement: 16 pages. Reviewer response: 4-page PDF plus editable DOCX. Risk/experiment decision table: 1-page landscape PDF.
 - Working-tree and clean ZIP extraction builds passed for the manuscript, Supplement, and marked-up PDF. Clean-build extracted text matches the review copies; no unresolved citations or cross-references remain. The build record, exact hashes, and page review are in [`Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md`](Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md).
-- The deterministic clean source archive contains 63 members, includes the selected Figure 6 and its frozen selection record, and excludes experiment JSON, checkpoints, GLBs, and caches. The separate author-review package includes hash-audited cross-backbone and CPU-only applied-budget preflight snapshots; the preflight validates schedule arithmetic only, and its GPU-idle gate failed before inference.
+- The deterministic clean source archive contains 70 members, includes the selected Figure 6 and its frozen selection record, plus Figure 1's source-derived thumbnail crops and provenance record, and excludes experiment JSON, checkpoints, GLBs, and caches. The separate author-review package includes hash-audited cross-backbone and CPU-only applied-budget preflight snapshots; the preflight validates schedule arithmetic only, and its GPU-idle gate failed before inference.
 
 ## Open author actions
 

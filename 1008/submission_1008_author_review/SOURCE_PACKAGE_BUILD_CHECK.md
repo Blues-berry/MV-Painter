@@ -1,34 +1,35 @@
 # 1008 final author-review build and source-package check
 
-**Build captured:** 2026-10-10 09:02 UTC · **Figure 1 refresh:** 2026-10-10 · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
+**Build captured:** 2026-10-10 09:30 UTC · **Figure 1 visual redesign:** 2026-10-10 · **State:** `AUTHOR_REVIEW_READY / DRAFT` · **Submission approval:** `NO`
 
 ## Source identity and archive
 
-- Active and author-review manuscript TeX are byte-identical (SHA-256 `070338bdd40db62e1fa869b0d934534b39d85aff8fb833a2a13c96524a814e5c`). Active and author-review Supplement TeX are byte-identical (SHA-256 `df35b089f9c967e75dccb1e81719a48068459bdaddd6e56b1009909f479f1ee1`).
-- `LaTeX_Source_1008.zip`: 63 members, 35,933,871 bytes, SHA-256 `f67ae40c5ece1edd5595c53a94e5d63986585a10b29f553a0bafdcc6a5fed788`. ZIP CRC passes. It includes the active TeX, build scripts, figure assets and source dependencies; it excludes experiment JSON, arrays, checkpoints, GLBs, compiled manuscript PDFs, and build caches.
+- Active and author-review manuscript TeX are byte-identical (SHA-256 `d977250d6b3452cad2415cf1374cfc30dbc68ab453207a35d4fb3b16e6830b3d`). Active and author-review Supplement TeX are byte-identical (SHA-256 `df35b089f9c967e75dccb1e81719a48068459bdaddd6e56b1009909f479f1ee1`).
+- `LaTeX_Source_1008.zip`: 70 members, 37,612,104 bytes, SHA-256 `3ac8e2e259c43c7df95e230677358f650613c1e54527631fbaafed6a6b1db808`. ZIP CRC passes. It includes the active TeX, build scripts, Figure 1 crop assets/provenance, and source dependencies; it excludes experiment JSON, arrays, checkpoints, GLBs, compiled manuscript PDFs, and build caches.
 - The source ZIP was extracted into an empty temporary directory. The included scripts rebuilt the main paper, Supplement, and marked-up manuscript at 16 pages each; whitespace-normalized `pdftotext -layout -nopgbrk` output matches the author-review PDFs for all three finalized documents.
 - `submission_1008/SUBMISSION_FILE_MANIFEST.csv` has 121 payload entries, including `Author_Review/FINAL_REVIEWER_CLOSURE_MATRIX.md`. The exact second-round reviewer source is classified as `AUTHOR_REVIEW_MATERIAL`; it is stored under `Author_Review/Reviewer_Source/` and is not a journal upload file.
-- The upload `Figures/` directory now contains exactly the eight files referenced by the active manuscript and Supplement. Figure 1 was refreshed while the authenticated 01549 source remains unchanged in `source_01549/fig1.pdf` and the reproducible source ZIP. All current package checksums pass.
+- The upload `Figures/` directory contains exactly the eight files referenced by the active manuscript and Supplement. Figure 1 was redesigned using illustrative thumbnails from 01549 while the authenticated source remains unchanged. All current package checksums pass.
 
 ## Author-review artifacts
 
 | File | Pages | Bytes | SHA-256 |
 |---|---:|---:|---|
-| `Manuscript_1008.pdf` | 16 | 2,001,310 | `02fdc398a96d3e73a5c37cfe9f144c82f82516803e379c5899f3048a806aa5b0` |
-| `Marked-up_Manuscript_1008.pdf` | 16 | 2,024,748 | `c6fc35e2d496a8db79f84695b9bddb326b0ba061e8173db2500fb8a87ccd88d2` |
+| `Manuscript_1008.pdf` | 16 | 3,310,194 | `9526900173262d20d09187531760e62a9599a3e37c218a44cd63cd977ee89366` |
+| `Marked-up_Manuscript_1008.pdf` | 16 | 3,333,973 | `87dc02f5b6069dc25f25168b17125f54051d9bae6633b9266c9c1a6491c29785` |
 | `Supplementary_1008.pdf` | 16 | 1,675,578 | `8a79b8eb2bb30a5a3cfaba73831b7eca392b05e07674eb012fc94e694291b59b` |
 | `Response_to_Reviewers_1008.pdf` | 4 | 35,363 | `fe58168c82744503d8151002f2c875716bee62d63a9b8400a894e22e84c15c60` |
-| `Response_to_Reviewers_1008.docx` | — | 15,246 | `61683013e9879301d47408ed04aa86b851b7d39054ff4316b1736b40118c2ca7` |
-| `LaTeX_Source_1008.zip` | — | 35,933,871 | `f67ae40c5ece1edd5595c53a94e5d63986585a10b29f553a0bafdcc6a5fed788` |
+| `Response_to_Reviewers_1008.docx` | — | 15,246 | `6aab8033bcbc23fc111ea78ca1baba4c610146c824d398e20a33f7c31db4aa1c` |
+| `LaTeX_Source_1008.zip` | — | 37,612,104 | `3ac8e2e259c43c7df95e230677358f650613c1e54527631fbaafed6a6b1db808` |
 
 Figure 1 asset:
 
-- `figures/fig1_tcas_control.pdf`: 5,859 bytes, SHA-256 `cfb335bd80b2e0f3094c9f2670c2ce7f8bf2ed2b12675be9ea83aa1c3ca44676`.
-- Builder `scripts/build_tcas_control_figure.py`: SHA-256 `ce0d03b471c1b5eb8f06cc468c1e645c8ace7188361679b9ac1fc086d290b155`.
+- `figures/fig1_tcas_control.pdf`: SHA-256 `cd6f30c496bce8116f11ac41f4f5a3a0a489351d004624483cf5d41dfa2dbbe5`.
+- Builder `scripts/build_tcas_control_figure.py`: SHA-256 `1eb3df2587f930446ba4c131772e0c1e38a7aa796ec57c973ac2a1ed5a62f2c7`.
+- Thumbnail extractor `scripts/extract_fig1_visual_assets.py`: SHA-256 `2e1a4650bbd028498a6629114c5b969b5d38db84f250ccfc2e52ab3154d24e31`.
 
 ## Page and evidence review
 
-- Figure 1 was redrawn in the original left-to-right overview structure and visually checked in its final page-4 placement. The C3 request windows, shallow cap, residual addition, and unevaluated downstream boundary remain legible; the withdrawn FAC extension is absent. The changed main pages (Related Work pp. 1–2 and Cross-Interface Table 8 p. 14) and response p. 4 were visually reinspected; the prior full contact-sheet review of remaining pages is retained. No blank pages or clipping were seen. Table S12 contains all five comparisons × six metrics with raw A-minus-B differences and pointwise intervals.
+- Figure 1 was checked in its final page-4 placement. It restores the original reference/geometry/target-view examples, shows the GeoTex residual and cap-aware TCAS gate in separate paths, distinguishes the requested schedule from the Fresh C shallow applied cap, and marks projection/baking as unevaluated context. The withdrawn FAC extension is absent. The 70-member source ZIP was extracted to an empty directory: manuscript, Supplement, and marked-up outputs rebuilt at 16 pages each, with `pdftotext -layout -nopgbrk` output matching the author-review PDFs; ZIP CRC passes. The archived input/target thumbnails' underlying source and credit still require author confirmation. Table S12 contains all five comparisons × six metrics with raw A-minus-B differences and pointwise intervals.
 - The response DOCX and PDF in the submission package are byte-identical to the author-review copies and derive from the same response Markdown.
 - The final locators are recorded in `1008/audits/1008_RESPONSE_LOCATOR_AUDIT.md` and `FINAL_REVIEWER_CLOSURE_MATRIX.md`. The response is four pages; its R2.3 answer and A3b withdrawal fit on pp. 3–4.
 - The exact local plain-text second-round reviewer source is `Reviewer_Source/SECOND_ROUND_REVIEWER_COMMENTS.txt` (SHA-256 `52d5a02718cbcf1b452293fe5a6953231f10fc9ce4cdf6cce400e86deb521245`). It matches the supplied attachment after CRLF normalization. The separate PDF text extraction has SHA-256 `1d2efb8f9250f8162304be57ce1d71c6d654d35511a186ad6e3c9b869ace5af5` and includes pagination/extraction artifacts. The original “Initial submission” header is reconciled with the author-confirmed round map identifying the review as the second round of 01549.
