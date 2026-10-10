@@ -68,6 +68,7 @@ def main() -> None:
         "fig4_freshc_context_roi.pdf": REVISION / "figures/fig4_freshc_context_roi.pdf",
         "fig5_freshc_context_roi.pdf": REVISION / "figures/fig5_freshc_context_roi.pdf",
         "fig7_c3_development.pdf": REVISION / "figures/fig7_c3_development.pdf",
+        "fig8_color_failure_01549.pdf": REVISION / "figures/fig8_color_failure_01549.pdf",
         "figS1_adverse_c3_gfl.png": REVISION / "figures/figS1_adverse_c3_gfl.png",
         "figS1_color_detail_failure.png": REVISION / "figures/figS1_color_detail_failure.png",
     }
@@ -82,6 +83,8 @@ def main() -> None:
         "FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv",
         "REVIEWER_CLAIM_EVIDENCE_MATRIX.csv",
         "REVIEWER_TO_MANUSCRIPT_TRACEABILITY.csv",
+        "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.md",
+        "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.pdf",
         "REVIEW_PACKAGE_INDEX.md",
         "SOURCE_PACKAGE_BUILD_CHECK.md",
     ]
