@@ -16,7 +16,7 @@ cp "${SCRIPT_DIR}/fig2.pdf" "${SCRIPT_DIR}/fig3.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/"* "${STAGE_DIR}/figures/"
 
 cd "${STAGE_DIR}"
-latexdiff --type=CFONT --flatten --math-markup=0 --graphics-markup=none --floattype=IDENTICAL --exclude-textcmd=section,subsection,subsubsection,paragraph source_01549.tex Manuscript_1008.tex > Marked-up_Manuscript_1008.tex
+latexdiff --type=CFONT --flatten --math-markup=0 --graphics-markup=none --floattype=IDENTICAL --exclude-textcmd=section,subsection,subsubsection,paragraph,caption source_01549.tex Manuscript_1008.tex > Marked-up_Manuscript_1008.tex
 python3 - <<'PY'
 from pathlib import Path
 path = Path("Marked-up_Manuscript_1008.tex")

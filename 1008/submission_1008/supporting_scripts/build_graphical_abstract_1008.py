@@ -1,99 +1,21 @@
-#!/usr/bin/env python3
-"""Build the scoped 1008 graphical abstract as vector PDF and a PNG preview."""
+"""Draw a source-derived results summary using Matplotlib; no generated artwork."""
 from pathlib import Path
-
+import json
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.patches import FancyBboxPatch
-
-
-OUT = Path(__file__).resolve().parents[1]
-OUT.mkdir(parents=True, exist_ok=True)
-
-NAVY = "#18324b"
-BLUE = "#3979a8"
-TEAL = "#278a85"
-GOLD = "#d59c3a"
-INK = "#23313d"
-MUTED = "#536574"
-PAPER = "#f5f8fa"
-WHITE = "#ffffff"
-
-fig = plt.figure(figsize=(13.2, 7.4), facecolor=PAPER)
-ax = fig.add_axes([0, 0, 1, 1])
-ax.set_xlim(0, 13.2)
-ax.set_ylim(0, 7.4)
-ax.axis("off")
-
-ax.text(0.62, 6.83, "Timestep-Conditioned Adapter Scaling", color=NAVY,
-        fontsize=25, weight="bold", va="center")
-ax.text(0.64, 6.38, "A bounded study of stage-wise geometry control in multi-view diffusion",
-        color=MUTED, fontsize=13, va="center")
-
-# Left panel: requested schedule, explicitly distinguished from realized scale.
-left = FancyBboxPatch((0.55, 2.02), 5.45, 3.85,
-                      boxstyle="round,pad=0.18,rounding_size=0.18",
-                      linewidth=0, facecolor=WHITE)
-ax.add_patch(left)
-ax.text(0.9, 5.45, "TCAS requested scale", color=NAVY, fontsize=16, weight="bold")
-ax.text(0.9, 5.08, "Training-free profile on an existing adapter path",
-        color=MUTED, fontsize=11.5)
-
-segments = [(1.0, 1.25, BLUE, "Early"), (2.72, 2.50, TEAL, "Middle"),
-            (4.44, 1.25, BLUE, "Late")]
-base_y, max_h = 2.76, 1.62
-for x, value, color, label in segments:
-    height = max_h * value / 2.5
-    ax.add_patch(FancyBboxPatch((x, base_y), 1.18, height,
-                                boxstyle="round,pad=0.05,rounding_size=0.08",
-                                linewidth=0, facecolor=color))
-    ax.text(x + 0.59, base_y + height + 0.16, f"{value:.2f}",
-            ha="center", color=NAVY, fontsize=13, weight="bold")
-    ax.text(x + 0.59, 2.42, label, ha="center", color=MUTED, fontsize=11)
-ax.plot([0.98, 5.62], [2.72, 2.72], color="#cbd5dd", lw=1.2)
-ax.text(0.92, 2.15, "Requested values; wrapper caps and residual magnitudes are separate.",
-        color=MUTED, fontsize=9.5)
-
-# Right panel: matched primary result and explicit counter-results.
-right = FancyBboxPatch((6.3, 2.02), 6.34, 3.85,
-                       boxstyle="round,pad=0.18,rounding_size=0.18",
-                       linewidth=0, facecolor=WHITE)
-ax.add_patch(right)
-ax.text(6.68, 5.45, "Fresh C · 300 matched objects", color=NAVY,
-        fontsize=16, weight="bold")
-ax.text(6.68, 5.08, "One frozen checkpoint · shared runner and inference protocol",
-        color=MUTED, fontsize=11.5)
-
-result = FancyBboxPatch((6.68, 3.75), 5.58, 1.0,
-                        boxstyle="round,pad=0.13,rounding_size=0.12",
-                        linewidth=0, facecolor="#eaf3f7")
-ax.add_patch(result)
-ax.text(6.97, 4.43, "C3 − GFL FG-PSNR", color=MUTED, fontsize=11.5)
-ax.text(6.97, 4.02, "+0.522 dB", color=BLUE, fontsize=23, weight="bold")
-ax.text(9.72, 4.08, "95% CI\n[+0.404, +0.641]", color=NAVY,
-        fontsize=11, va="center", linespacing=1.35)
-
-counter = FancyBboxPatch((6.68, 2.48), 5.58, 0.92,
-                         boxstyle="round,pad=0.13,rounding_size=0.12",
-                         linewidth=0, facecolor="#fbf3e4")
-ax.add_patch(counter)
-ax.text(6.97, 3.11, "Counter-results retained", color=GOLD,
-        fontsize=12, weight="bold")
-ax.text(6.97, 2.76,
-        "GFH and Generic Linear have more favorable means than C3\non all four displayed endpoints.",
-        color=INK, fontsize=10.3, va="center", linespacing=1.25)
-
-ax.text(0.66, 1.42,
-        "C3–GFL changes applied deep/middle scale sums; its estimate is not timing-only.",
-        color=NAVY, fontsize=12.2, weight="bold")
-ax.plot([0.64, 12.55], [1.12, 1.12], color="#d6dfe5", lw=1)
-ax.text(0.66, 0.70,
-        "Image-space endpoints do not establish baked-texture, seam, PBR, unseen-view, or human-preference quality.",
-        color=MUTED, fontsize=10.7)
-ax.text(12.55, 0.29, "1008 · DRAFT", ha="right", color=MUTED, fontsize=9)
-
-fig.savefig(OUT / "Graphical_Abstract_1008_DRAFT.pdf", facecolor=PAPER)
-preview_dir = OUT / "Author_Review"
-preview_dir.mkdir(parents=True, exist_ok=True)
-fig.savefig(preview_dir / "Graphical_Abstract_1008_DRAFT_preview.png", dpi=180,
-            facecolor=PAPER)
-plt.close(fig)
+ROOT=Path(__file__).resolve().parents[1]
+EVIDENCE=Path('/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010')
+fig,axes=plt.subplots(1,3,figsize=(13.4,5.0),facecolor='white')
+fig.suptitle('TCAS: controlled stage allocation and bounded texturing evidence',fontsize=18,y=.96)
+matched=json.loads((EVIDENCE/'MATCHED300_STATISTICS.json').read_text())
+order=['Fixed Low','Early-high','Middle-high','Fixed Applied Mean','Late-high','Fixed High'];labels=['Low','Early','C3 / Middle','Mean','Late','High']
+ax=axes[0];ax.barh(labels,[matched['means'][c]['fg_psnr'] for c in order],color=['#7d98ac','#7d98ac','#cd8b60','#7d98ac','#278a85','#3979a8']);ax.set_xlim(10.5,13.0);ax.set_xlabel('FG-PSNR (dB, higher is better)');ax.set_title('300 paired objects\nMiddle is not universally best',fontsize=12)
+for ax,key,title,primary in [(axes[1],'BAKE','10-object bake pilot','Late − Mean FG-LPIPS'),(axes[2],'MVADAPTER','50-object native MV-Adapter','Middle − Mean FG-PSNR')]:
+ d=json.loads((EVIDENCE/(key+'_STATISTICS.json')).read_text())['primary'];mean=d['mean_difference'];lo,hi=d['ci95'];ax.axvline(0,color='#adb6bd',lw=1);ax.errorbar(mean,0,xerr=[[mean-lo],[hi-mean]],fmt='o',color='#278a85' if key=='BAKE' else '#3979a8',capsize=5);ax.set_ylim(-1,1);ax.set_yticks([]);ax.set_title(title+'\n'+primary,fontsize=12);ax.set_xlabel('Paired mean and 95% object-bootstrap CI');ax.text(.5,.25,f'{mean:+.5f}\n[{lo:+.5f}, {hi:+.5f}]',ha='center',transform=ax.transAxes,fontsize=11)
+axes[1].text(.5,.06,'Small late-high benefit; C3 counter-results retained',ha='center',transform=axes[1].transAxes,fontsize=9)
+axes[2].text(.5,.06,'Primary does not separate; interface-specific result',ha='center',transform=axes[2].transAxes,fontsize=9)
+for ax in axes:
+ for spine in ['top','right','left']:ax.spines[spine].set_visible(False)
+fig.text(.5,.03,'Existing scheduling primitive • Unlit bake pilot • No universal C3 optimum or PBR-fidelity claim',ha='center',fontsize=11,color='#536574')
+fig.tight_layout(rect=(0,.09,1,.88));fig.savefig(ROOT/'Graphical_Abstract_1008_DRAFT.pdf');(ROOT/'Author_Review').mkdir(exist_ok=True);fig.savefig(ROOT/'Author_Review/Graphical_Abstract_1008_DRAFT_preview.png',dpi=160)

@@ -68,6 +68,11 @@ def main() -> None:
     for name, src in core.items():
         copy(src, name)
 
+    copy(REVISION / 'Supplementary_Video_1008.mp4', 'Supplementary_Video_1008.mp4')
+    copy(REVIEW / 'Reproduction_1008.zip', 'Reproduction_1008.zip')
+    copy(REVIEW / 'REPRODUCTION_SCOPE_20261010.md', 'Author_Review/REPRODUCTION_SCOPE_20261010.md')
+    copy(REVIEW / 'REVISION_EXECUTION_RESULTS_20261010.md', 'Author_Review/REVISION_EXECUTION_RESULTS_20261010.md')
+
     # Figures named by the active manuscript and supplement, kept upload-ready.
     figure_sources = {
         "fig1_tcas_control.pdf": REVISION / "figures/fig1_tcas_control.pdf",
@@ -78,6 +83,11 @@ def main() -> None:
         "fig6_color_diagnostic_freshc_context_roi.pdf": REVISION / "figures/fig6_color_diagnostic_freshc_context_roi.pdf",
         "fig7_c3_development.pdf": REVISION / "figures/fig7_c3_development.pdf",
         "figS1_adverse_c3_gfl.png": REVISION / "figures/figS1_adverse_c3_gfl.png",
+        "fig8_baked_unseen_context.pdf": REVISION / "figures/fig8_baked_unseen_context.pdf",
+        "fig8_baked_unseen_context.png": REVISION / "figures/fig8_baked_unseen_context.png",
+        "figS2_baked_full_conditions.png": REVISION / "figures/figS2_baked_full_conditions.png",
+        "BAKED_FIGURE_VIDEO_PROVENANCE.csv": REVISION / "figures/BAKED_FIGURE_VIDEO_PROVENANCE.csv",
+        "BAKED_ASSET_CREDITS.csv": REVISION / "figures/BAKED_ASSET_CREDITS.csv",
     }
     for name, src in figure_sources.items():
         copy(src, f"Figures/{name}")
@@ -205,7 +215,7 @@ This is the full local 1008 package layout for author review. It contains the cu
 - Verify the carried-forward title page, author metadata, funding acknowledgements, and declaration of interests.
 - Approve the cover letter and research highlights drafts.
 - Confirm whether the 0907 conference-paper attachment is still required.
-- Confirm any current graphical-abstract or demo-media requirement. The 0907 graphical abstract, highlights, cover letter, and demo were not reused because they contain superseded claims or have no authenticated 1008 update.
+- Confirm any current graphical-abstract or demo-media requirement. A new, source-traced 1008 video is included; the older 0907 demo is not reused. The current graphical abstract and text drafts accompany the new controlled results.
 - Review the response and all PDF page/line references before submission.
 
 No journal submission was made. `SUBMISSION_APPROVED=NO`.

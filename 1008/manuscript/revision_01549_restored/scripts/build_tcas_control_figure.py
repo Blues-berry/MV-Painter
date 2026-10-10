@@ -162,11 +162,17 @@ def build() -> None:
         <rect x="1490" y="120" width="370" height="570" fill="{BACKGROUND}"/>
         {target_cards()}
       </g>
+      <g id="exact-piecewise-request">
+        <rect x="350" y="610" width="1000" height="148" fill="{BACKGROUND}"/>
+        <path d="M 510,740 H 1250" fill="none" stroke="{MUTED}" stroke-width="1.5"/>
+        <path d="M 520,711 H 758 V 656 H 982 V 711 H 1220" fill="none" stroke="{TEAL}" stroke-width="5"/>
+        <path d="M 863,620 V 656" fill="none" stroke="{TEAL}" stroke-width="2" stroke-dasharray="4 4"/>
+      </g>
       <g id="vector-labels">
         {text(29, 69, "CONDITION INPUTS", 23, fill=NAVY, weight=700, spacing=0.7)}
         {text(366, 69, "FROZEN MULTI-VIEW DIFFUSION U-NET", 28, fill=NAVY, weight=700, spacing=0.35)}
         {text(1495, 181, "SIX TARGET VIEWS", 22, fill=NAVY, weight=700, spacing=0.5)}
-        {text(1495, 436, "Illustrative examples retained from 01549", 16, fill=MUTED, weight=500)}
+        {text(1495, 436, "Actual Fresh C example: Building03", 16, fill=MUTED, weight=500)}
         {text(369, 584, "GeoTex-Adapter", 22, fill=AMBER, weight=700)}
         {text(863, 412, "TCAS SCALE GATE", 22, fill=TEAL, weight=700, anchor="middle", spacing=0.4)}
         {text(1180, 580, "Applied scale: s_app = min(s_req, c_l)", 16, fill=INK, weight=600, anchor="start")}

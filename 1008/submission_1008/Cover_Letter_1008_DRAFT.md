@@ -1,28 +1,18 @@
-# Cover letter — 1008 second-round revision
-
-**DRAFT — author review only. Do not upload until the checks at the end are resolved.**
+# Cover letter — second-round revision draft
 
 Dear Editor,
 
-Please find the revised manuscript, supplementary material, marked-up manuscript, and point-by-point response for the second-round review of *Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation*.
+Please find the revised manuscript, Supplement, marked manuscript and point-by-point response for CAG-D-26-00962, *Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation*.
 
-The 01549 manuscript submitted on 7 September 2026 was the post-first-round version. This 1008 revision addresses the subsequent R1, R2, and R3 reports while retaining TCAS as the paper's method. We corrected the unsupported CAI optimality argument and narrowed claims about texture fidelity, human preference, and generality. The revision also clarifies the requested-versus-applied scale semantics and the historical distinction between the 01549 checkpoints and Fresh C.
+We retain TCAS and C3's historical identity while withdrawing the independent CAI derivation, optimality and broad texture-fidelity claims. Strong fixed and linear controls and all relevant negative results now appear with the historical development evidence. The completed 300-object equal-applied-budget comparison favors fixed mean and late-high over C3; it measures total stage-allocation effects rather than a residual-dose-independent mechanism.
 
-The new Fresh C evidence is a matched image-space comparison on 300 objects using one frozen checkpoint, shared runner, seed policy, inputs, views, and evaluation protocol. On the registered primary endpoint, C3 exceeds GFL by 0.522352 dB in mean FG-PSNR (95% object-bootstrap CI [0.404160, 0.640669]). The manuscript also reports the counter-results: GFH and Generic Linear have more favorable cohort means than C3 on all four displayed endpoints. C3 and GFL also differ in their applied deep/middle scale sums, so the primary contrast does not isolate timing alone. In a separate post-inspection stage-placement follow-up, temporal L–L–H is favored over C3 on all six formal endpoints. These results do not establish baked-texture quality, human preference, or a universal schedule.
+Two new validations extend the graphics evidence. A complete fifty-object native MV-Adapter comparison, with native-camera targets and default-path identity checks, does not yield a separated Middle-high–Fixed Mean PSNR gain. A calibrated ten-object native-UV bake pilot yields a Late-high–Fixed Mean unseen-view LPIPS difference of −0.00265 (95% object-bootstrap CI [−0.00414,−0.00137]), favorable on all ten, while C3's PSNR advantage over Fixed High does not repeat stably and its SSIM is lower. The bake set is smaller than planned because only ten inputs passed the frozen technical gates; we retain its pilot status. Historical N=20, corrected old five, old interface panels and the new cohorts are not pooled.
 
-We also report separate retrospective boundaries rather than treating them as new confirmation: a texture-complexity analysis with 9/10 corrected associations, and a failure-enriched 26-object color diagnosis in which reference-relative color error improves for GFL over No Adapter while visible hue shifts remain in two cases. Neither analysis establishes a causal selector or a validated color repair. The response and Supplement distinguish these cohorts and evidence levels from Fresh C.
-
-The attached response addresses each current reviewer comment and identifies the corresponding changes. A copy of the 7 September 2026 conference submission is included in a separate folder as an editorial-history attachment; please confirm whether it is still requested for this round.
+The resulting contribution is a controlled task-specific study, a bounded named deployment result and cross-interface limits, rather than a new scheduling primitive or a universal C3 rule. We provide complete-object and failure displays, a real unseen-view video, calibrated GT-256 controls, paired statistics and executable source/statistics archives. The FAC training-provenance gap remains disclosed. AI-assisted preparation and conceptual Figure 1 artwork are documented; experimental displays derive from actual recorded outputs.
 
 Thank you for your consideration.
 
 Sincerely,
-
 The Authors
 
-## Author checks before use
-
-- Confirm the current Editorial Manager manuscript ID and editor instructions.
-- Confirm the manuscript is not under consideration elsewhere and approve the submission declarations.
-- Verify the carried-forward author names, affiliations, corresponding-author contact, acknowledgements, and conflict-of-interest statement.
-- Confirm whether the original conference submission, graphical abstract, highlights, and any demo media are requested for this round.
+Author-review draft: author metadata, declarations and editorial attachments must be checked against the current submission record before use. No submission has been made.

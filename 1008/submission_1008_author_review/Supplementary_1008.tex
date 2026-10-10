@@ -19,7 +19,7 @@
 \section*{S1. Figure asset credits and selection status}
 Main Figures~4--7 use Fresh C reference and method-level RGB outputs in a compact context-plus-shared-ROI layout. The original six-view, seven-condition panels remain in Supplementary Figure~S1. The selected examples are outcome-ranked illustrations, not a representative sample. Image, checkpoint, run, seed, ROI, and output hashes are listed in \texttt{FRESH\_C\_FIGURE\_SOURCE\_ROI\_MANIFEST.csv}.
 
-The Fresh C No Adapter condition sets the geometry-adapter scale to zero. In the MVPainter wrapper, when \texttt{\_adapter\_scale} is unset the geometry residual is applied without a scale multiplier. These are different settings: No Adapter is not a rendered comparison against the unmodified native-default adapter path. Fresh C contains no separate output for that native-default path, so this part of the R1.1 request remains partially unresolved.
+The Fresh C No Adapter condition suppresses geometry-adapter correction. In the MVPainter wrapper, when \texttt{\_adapter\_scale} is unset the geometry residual is applied without a scale multiplier. These are different settings: No Adapter is not a rendered comparison against the unmodified native-default adapter path. Fresh C contains no separate output for that native-default path, so this part of the R1.1 request remains partially unresolved.
 
 The current rights ledger records the selected Fresh C assets below as CC Attribution (CC BY 4.0), with figure use allowed when attributed. The complete credit line for each use is:
 \begin{longtable}{p{4.3cm}p{10.9cm}}
@@ -421,5 +421,235 @@ GFL lowered reference-relative CIEDE2000 in 24/26 objects, but visible pink or p
 A locked P0 trace of three preselected objects reproduced saved RGB pixels exactly in repeated Python 3.13.5 runs; Python 3.10 reproduced its corresponding archived observer. The first cross-runtime tensor difference followed multiplication of the shared FP16 initial latent by the scheduler noise scale (maximum absolute difference 0.0625; RMSE 0.00966; 32.3\% changed). This resolves output identity only for these three traces; it establishes neither cohort-wide cross-stack equivalence nor the color cause.
 
 The feature-relative residual gate increased mean CIEDE2000 by 1.35 across 26 objects and 3.18 in the six earlier cases, with no clear visual improvement. The complete cause remains unresolved; no repair is validated.
+
+\section*{S16. Matched applied-budget comparison and revision validity corrections}
+The same-cohort GeoTex addendum contains 300 objects by six conditions, 1,800 rows. Each object uses the same initial latent, input tensors and checkpoint across conditions. Early-, Middle- and Late-high use 16 high updates at 0--15, 17--32 and 34--49. Low/high are 1.25/2.50, Fixed Mean is 1.65, and the native shallow cap is 0.8. Their exact applied per-group sums are 82.5, 82.5 and 40. This comparison measures the total effect of allocating the high segment at equal applied scalar budget. Evolving residual norms are outcomes of the trajectory; lack of equal residual norms limits a mechanism interpretation, not validity of the allocation contrast. The study is post-inspection on the already evaluated Fresh C objects, not an independent confirmation.
+
+\begingroup\scriptsize
+\begin{longtable}{llll}
+\caption{Selected paired contrasts from the 300-object equal-budget addendum. Mean A minus B and pointwise 95\% object-bootstrap interval (50,000 resamples). The other 59 pair--metric contrasts form one post hoc Holm family; no interval is multiplicity-adjusted.}\label{tab:budget300paired}\\
+\toprule Contrast & Endpoint & Mean [95\% CI] & Holm $p$ \\
+\midrule\endfirsthead
+\toprule Contrast & Endpoint & Mean [95\% CI] & Holm $p$ \\
+\midrule\endhead
+Middle $-$ Fixed Applied Mean & fg-psnr & $-0.13326\ [-0.16979,-0.09622]$ & 1e-05 (raw) \\
+Middle $-$ Fixed Applied Mean & fg-lpips & $+0.00199\ [+0.00147,+0.00254]$ & 0.00059 \\
+Middle $-$ Fixed Applied Mean & fg-ssim & $-0.01185\ [-0.01347,-0.01025]$ & 0.00059 \\
+Middle $-$ Fixed Applied Mean & edge-ssim & $-0.00703\ [-0.00764,-0.00643]$ & 0.00059 \\
+Middle $-$ Late-high & fg-psnr & $-0.56395\ [-0.63408,-0.49427]$ & 0.00059 \\
+Middle $-$ Late-high & fg-lpips & $+0.00466\ [+0.00381,+0.00553]$ & 0.00059 \\
+Middle $-$ Late-high & fg-ssim & $-0.00422\ [-0.00694,-0.00139]$ & 0.01375 \\
+Middle $-$ Late-high & edge-ssim & $-0.01409\ [-0.01526,-0.01291]$ & 0.00059 \\
+Middle $-$ Early-high & fg-psnr & $+0.49619\ [+0.37195,+0.62282]$ & 0.00059 \\
+Middle $-$ Early-high & fg-lpips & $-0.00472\ [-0.00568,-0.00378]$ & 0.00059 \\
+Middle $-$ Early-high & fg-ssim & $+0.00499\ [+0.00211,+0.00809]$ & 0.00432 \\
+Middle $-$ Early-high & edge-ssim & $+0.00080\ [-0.00008,+0.00170]$ & 0.1565 \\
+Middle $-$ Fixed High & fg-psnr & $-0.74767\ [-0.88995,-0.60691]$ & 0.00059 \\
+Middle $-$ Fixed High & fg-lpips & $+0.01070\ [+0.00889,+0.01255]$ & 0.00059 \\
+Middle $-$ Fixed High & fg-ssim & $-0.04553\ [-0.04937,-0.04165]$ & 0.00059 \\
+Middle $-$ Fixed High & edge-ssim & $-0.01881\ [-0.02083,-0.01678]$ & 0.00059 \\
+\bottomrule
+\end{longtable}\endgroup
+The named Middle--Fixed Mean FG-PSNR endpoint is shown with its raw $p$; remaining 59 contrasts use a common post hoc Holm correction in the delivered recomputation. All are retrospective. The rank counts in main matched-budget table are not cross-metric superiority tests.
+
+\paragraph{Validity corrections to earlier native experiments.}
+The earlier seven-object MV-Adapter temporal archive passed source-path identity, but used Fresh C targets with a different mesh normalization and orthographic range. In an input-only native geometry audit, one object's six foreground IoUs were about 0.21--0.61. Its old quality estimates are therefore not validated native-camera cross-backbone evidence; the original identity test remains valid. The new targets use the exact native mesh loader, orthographic cameras and nvdiffrast rasterizer, with a source embedded base-color texture and white background. This is unlit albedo, not a claim of PBR or source-render lighting equivalence.
+
+The earlier five-object bake rotated generated pole-view RGB back into raw-camera coordinates but also incorrectly rotated the raw-camera mask. Four of five objects have affected masks. Its old quality estimates are superseded by corrected evaluation and are not pooled with newly selected objects. In the REPEAT branch, bilinear fractions must be calculated before wrapping integer indices: the previous order could produce negative weights at tile edges and outside [0,1]. Corrected code passes nonnegative/unit-sum weight checks and integer-period translation invariance. Scalar coverage masks are read without an RGB transfer function; decoding grayscale coverage as sRGB would change the foreground threshold. GT source images are resized to 256 using bicubic RGB and the same nearest-index alpha masks as generated sources; atlas, camera, fill and render parameters are shared. The original GT-512 bake is retained only as an unmatched-resolution diagnostic.
+
+\paragraph{Default-path identity boundary.}
+For GeoTex, explicit requested scale 1.0 and an unset scale are different: the cap is applied only when the scale attribute exists. Executing the actual wrapper with a unit residual gives deep/middle/shallow applied factors (1,1,0.8) for explicit 1.0, versus (1,1,1) when unset. The stored condition name \texttt{native\_default\_1x} therefore denotes Constant 1.0 (capped), not an unmodified pipeline. This is a wrapper-level counterexample, not a claim of full-pipeline pixel equality. In contrast, the new MV-Adapter identity gate compares three textured meshes and 18 images: official default, deployed default and a constant-1 schedule produce bitwise-identical RGB pixels, condition-encoder features and injected residuals. The 13 texture-absent MV-Adapter inputs use the documented geometry-only loader compatibility branch; their targets are constant white albedo and remain in the primary cohort.
+
+
+
+\clearpage
+\section*{S17. Frozen native MV-Adapter comparison on fifty new-to-interface objects}
+The protocol was internally frozen before new scheduled outputs; it is not a public preregistration. Fifty inputs were selected in UID order from Fresh C after excluding every recorded previously inspected MV-Adapter UID. Selection uses available inputs and native geometry/material criteria, not quality or parameter search. Seeds are $20261010+\mathrm{index}$, shared across conditions. Six native-camera 512-pixel images use 50 DDPM-shift updates, CFG 3, reference strength 1 and the frozen high-quality text prompt. All 350 rows completed. Models, input identities, runner, native-target calibration and per-step residual traces are indexed in the reproduction archive.
+
+Early-, Middle- and Late-high use high=1 over steps 0--15, 17--32 and 34--49 respectively, with low=0.75 elsewhere. Fixed Mean=0.83 and Generic Linear spans 0.75--0.91 inclusively; each sums to 41.5 per feature, whereas Native/Fixed High sums to 50 and Fixed Low to 37.5. These are feature-scaling controls on MV-Adapter, not GeoTex's per-ResNet capped residual doses.
+
+Official/deployed default and constant-1 scheduled paths match exactly on three textured new objects, including 18 RGB images, encoded conditions and injected residuals. Native target geometry positions/masks match the control rasterization for all fifty inputs; an independent CPU bilinear source-UV sample agrees within the frozen tolerance. Thirteen texture-absent assets use geometry-only compatibility loading and white target albedo; they remain in the primary fifty. The 37-object textured subset is descriptive. It does not create a second primary or substitute after observing outcomes.
+
+The primary Middle-high--Fixed Mean FG-PSNR mean is $+0.02899$ dB, 95\% CI $[-0.01941,+0.08074]$, Monte Carlo sign-flip $p=0.28075$ (100,000 draws, plus-one correction); 29/50 favor Middle. Intervals use 50,000 object resamples. The other 104 contrasts (21 condition pairs by five endpoints, minus primary) form one predeclared Holm family; intervals remain pointwise. No non-inferiority or architecture-causal claim follows from a non-separated contrast.
+
+\begingroup\scriptsize
+\begin{longtable}{llrr}
+\caption{Complete native fifty-object pair--metric contrasts. A minus B; lower LPIPS/CIEDE2000 and higher other endpoints are favorable. $p$ is Holm-adjusted except the single primary marked raw.}\label{tab:mva50-paired}\\
+\toprule A -- B & Endpoint & Mean [95\% CI] & $p$ \\
+\midrule\endfirsthead
+\toprule A -- B & Endpoint & Mean [95\% CI] & $p$ \\
+\midrule\endhead
+High -- Low & fg-psnr & $-0.12682\ [-0.24503,-0.02980]$ & 0.85601 \\
+High -- Low & fg-lpips & $+0.00100\ [-0.00197,+0.00592]$ & 1.00000 \\
+High -- Low & fg-ssim & $-0.00250\ [-0.00594,+0.00029]$ & 1.00000 \\
+High -- Low & edge-ssim & $+0.00511\ [+0.00114,+0.00979]$ & 0.85601 \\
+High -- Low & ciede2000 & $+0.44730\ [+0.13967,+0.87441]$ & 0.20880 \\
+High -- Mean & fg-psnr & $-0.08309\ [-0.16282,-0.02065]$ & 0.78170 \\
+High -- Mean & fg-lpips & $+0.00013\ [-0.00120,+0.00214]$ & 1.00000 \\
+High -- Mean & fg-ssim & $-0.00268\ [-0.00534,-0.00051]$ & 1.00000 \\
+High -- Mean & edge-ssim & $+0.00163\ [-0.00023,+0.00339]$ & 1.00000 \\
+High -- Mean & ciede2000 & $+0.33298\ [+0.10737,+0.65171]$ & 0.13932 \\
+High -- Early & fg-psnr & $+0.00563\ [-0.03952,+0.05131]$ & 1.00000 \\
+High -- Early & fg-lpips & $-0.00158\ [-0.00243,-0.00081]$ & 0.01649 \\
+High -- Early & fg-ssim & $+0.00002\ [-0.00176,+0.00171]$ & 1.00000 \\
+High -- Early & edge-ssim & $+0.00228\ [-0.00040,+0.00477]$ & 1.00000 \\
+High -- Early & ciede2000 & $+0.03229\ [-0.06895,+0.13756]$ & 1.00000 \\
+High -- Middle & fg-psnr & $-0.11208\ [-0.22257,-0.02534]$ & 0.89608 \\
+High -- Middle & fg-lpips & $+0.00175\ [-0.00105,+0.00664]$ & 1.00000 \\
+High -- Middle & fg-ssim & $-0.00200\ [-0.00524,+0.00047]$ & 1.00000 \\
+High -- Middle & edge-ssim & $+0.00562\ [+0.00250,+0.00961]$ & 0.02112 \\
+High -- Middle & ciede2000 & $+0.41481\ [+0.13251,+0.81706]$ & 0.14875 \\
+High -- Late & fg-psnr & $-0.14046\ [-0.25619,-0.04753]$ & 0.26910 \\
+High -- Late & fg-lpips & $+0.00203\ [-0.00108,+0.00734]$ & 1.00000 \\
+High -- Late & fg-ssim & $-0.00341\ [-0.00673,-0.00079]$ & 0.87002 \\
+High -- Late & edge-ssim & $+0.00119\ [-0.00198,+0.00545]$ & 1.00000 \\
+High -- Late & ciede2000 & $+0.47923\ [+0.17811,+0.90198]$ & 0.05490 \\
+High -- Linear & fg-psnr & $-0.12216\ [-0.22718,-0.04049]$ & 0.22752 \\
+High -- Linear & fg-lpips & $+0.00174\ [-0.00098,+0.00639]$ & 1.00000 \\
+High -- Linear & fg-ssim & $-0.00309\ [-0.00618,-0.00068]$ & 0.90959 \\
+High -- Linear & edge-ssim & $+0.00243\ [-0.00040,+0.00605]$ & 1.00000 \\
+High -- Linear & ciede2000 & $+0.42004\ [+0.14924,+0.81173]$ & 0.05005 \\
+Low -- Mean & fg-psnr & $+0.04373\ [-0.00118,+0.09206]$ & 1.00000 \\
+Low -- Mean & fg-lpips & $-0.00087\ [-0.00381,+0.00085]$ & 1.00000 \\
+Low -- Mean & fg-ssim & $-0.00017\ [-0.00118,+0.00090]$ & 1.00000 \\
+Low -- Mean & edge-ssim & $-0.00348\ [-0.00757,-0.00081]$ & 0.36480 \\
+Low -- Mean & ciede2000 & $-0.11432\ [-0.24502,-0.00126]$ & 1.00000 \\
+Low -- Early & fg-psnr & $+0.13245\ [+0.04720,+0.24287]$ & 0.15288 \\
+Low -- Early & fg-lpips & $-0.00258\ [-0.00777,+0.00036]$ & 1.00000 \\
+Low -- Early & fg-ssim & $+0.00253\ [+0.00006,+0.00594]$ & 1.00000 \\
+Low -- Early & edge-ssim & $-0.00283\ [-0.00657,-0.00016]$ & 1.00000 \\
+Low -- Early & ciede2000 & $-0.41501\ [-0.81018,-0.14622]$ & 0.04876 \\
+Low -- Middle & fg-psnr & $+0.01475\ [-0.01731,+0.04840]$ & 1.00000 \\
+Low -- Middle & fg-lpips & $+0.00075\ [+0.00030,+0.00122]$ & 0.17384 \\
+Low -- Middle & fg-ssim & $+0.00050\ [-0.00056,+0.00160]$ & 1.00000 \\
+Low -- Middle & edge-ssim & $+0.00051\ [-0.00072,+0.00181]$ & 1.00000 \\
+Low -- Middle & ciede2000 & $-0.03249\ [-0.10291,+0.03715]$ & 1.00000 \\
+Low -- Late & fg-psnr & $-0.01363\ [-0.02840,+0.00083]$ & 1.00000 \\
+Low -- Late & fg-lpips & $+0.00103\ [+0.00051,+0.00167]$ & 0.00800 \\
+Low -- Late & fg-ssim & $-0.00091\ [-0.00156,-0.00021]$ & 0.79142 \\
+Low -- Late & edge-ssim & $-0.00392\ [-0.00547,-0.00234]$ & 0.00303 \\
+Low -- Late & ciede2000 & $+0.03193\ [+0.00504,+0.05951]$ & 1.00000 \\
+Low -- Linear & fg-psnr & $+0.00467\ [-0.02786,+0.03373]$ & 1.00000 \\
+Low -- Linear & fg-lpips & $+0.00074\ [+0.00032,+0.00118]$ & 0.09680 \\
+Low -- Linear & fg-ssim & $-0.00058\ [-0.00154,+0.00033]$ & 1.00000 \\
+Low -- Linear & edge-ssim & $-0.00267\ [-0.00418,-0.00118]$ & 0.10701 \\
+Low -- Linear & ciede2000 & $-0.02726\ [-0.09723,+0.04844]$ & 1.00000 \\
+Mean -- Early & fg-psnr & $+0.08872\ [+0.03375,+0.16183]$ & 0.07565 \\
+Mean -- Early & fg-lpips & $-0.00171\ [-0.00411,-0.00028]$ & 0.42750 \\
+Mean -- Early & fg-ssim & $+0.00270\ [+0.00064,+0.00545]$ & 0.78170 \\
+Mean -- Early & edge-ssim & $+0.00065\ [-0.00092,+0.00210]$ & 1.00000 \\
+Mean -- Early & ciede2000 & $-0.30069\ [-0.59160,-0.11032]$ & 0.02280 \\
+Middle -- Mean & fg-psnr & $+0.02899\ [-0.01941,+0.08074]$ & 0.28075 (raw) \\
+Mean -- Middle & fg-lpips & $+0.00162\ [-0.00005,+0.00462]$ & 1.00000 \\
+Mean -- Middle & fg-ssim & $+0.00067\ [-0.00064,+0.00204]$ & 1.00000 \\
+Mean -- Middle & edge-ssim & $+0.00399\ [+0.00170,+0.00764]$ & 0.00104 \\
+Mean -- Middle & ciede2000 & $+0.08184\ [-0.02823,+0.20315]$ & 1.00000 \\
+Mean -- Late & fg-psnr & $-0.05737\ [-0.10476,-0.01422]$ & 0.85601 \\
+Mean -- Late & fg-lpips & $+0.00190\ [-0.00003,+0.00530]$ & 1.00000 \\
+Mean -- Late & fg-ssim & $-0.00074\ [-0.00183,+0.00031]$ & 1.00000 \\
+Mean -- Late & edge-ssim & $-0.00044\ [-0.00301,+0.00363]$ & 1.00000 \\
+Mean -- Late & ciede2000 & $+0.14625\ [+0.03581,+0.27574]$ & 0.87002 \\
+Mean -- Linear & fg-psnr & $-0.03907\ [-0.07392,-0.01081]$ & 0.57941 \\
+Mean -- Linear & fg-lpips & $+0.00161\ [+0.00009,+0.00434]$ & 1.00000 \\
+Mean -- Linear & fg-ssim & $-0.00041\ [-0.00129,+0.00045]$ & 1.00000 \\
+Mean -- Linear & edge-ssim & $+0.00081\ [-0.00123,+0.00410]$ & 1.00000 \\
+Mean -- Linear & ciede2000 & $+0.08707\ [+0.01651,+0.17259]$ & 1.00000 \\
+Early -- Middle & fg-psnr & $-0.11771\ [-0.23017,-0.02649]$ & 0.98234 \\
+Early -- Middle & fg-lpips & $+0.00333\ [+0.00036,+0.00863]$ & 0.57941 \\
+Early -- Middle & fg-ssim & $-0.00203\ [-0.00568,+0.00081]$ & 1.00000 \\
+Early -- Middle & edge-ssim & $+0.00334\ [+0.00057,+0.00690]$ & 1.00000 \\
+Early -- Middle & ciede2000 & $+0.38253\ [+0.11622,+0.76613]$ & 0.19845 \\
+Early -- Late & fg-psnr & $-0.14609\ [-0.25687,-0.06083]$ & 0.03572 \\
+Early -- Late & fg-lpips & $+0.00361\ [+0.00036,+0.00933]$ & 0.80715 \\
+Early -- Late & fg-ssim & $-0.00344\ [-0.00694,-0.00080]$ & 0.80715 \\
+Early -- Late & edge-ssim & $-0.00109\ [-0.00429,+0.00294]$ & 1.00000 \\
+Early -- Late & ciede2000 & $+0.44694\ [+0.17823,+0.84174]$ & 0.01089 \\
+Early -- Linear & fg-psnr & $-0.12778\ [-0.22984,-0.04995]$ & 0.03572 \\
+Early -- Linear & fg-lpips & $+0.00332\ [+0.00045,+0.00838]$ & 0.31416 \\
+Early -- Linear & fg-ssim & $-0.00311\ [-0.00648,-0.00061]$ & 1.00000 \\
+Early -- Linear & edge-ssim & $+0.00016\ [-0.00259,+0.00353]$ & 1.00000 \\
+Early -- Linear & ciede2000 & $+0.38776\ [+0.14561,+0.75366]$ & 0.01176 \\
+Middle -- Late & fg-psnr & $-0.02838\ [-0.05857,-0.00004]$ & 1.00000 \\
+Middle -- Late & fg-lpips & $+0.00028\ [-0.00018,+0.00080]$ & 1.00000 \\
+Middle -- Late & fg-ssim & $-0.00141\ [-0.00243,-0.00042]$ & 0.66671 \\
+Middle -- Late & edge-ssim & $-0.00443\ [-0.00568,-0.00316]$ & 0.00104 \\
+Middle -- Late & ciede2000 & $+0.06442\ [-0.00064,+0.12764]$ & 1.00000 \\
+Middle -- Linear & fg-psnr & $-0.01008\ [-0.04413,+0.02065]$ & 1.00000 \\
+Middle -- Linear & fg-lpips & $-0.00001\ [-0.00041,+0.00033]$ & 1.00000 \\
+Middle -- Linear & fg-ssim & $-0.00109\ [-0.00220,-0.00019]$ & 1.00000 \\
+Middle -- Linear & edge-ssim & $-0.00318\ [-0.00412,-0.00227]$ & 0.00104 \\
+Middle -- Linear & ciede2000 & $+0.00523\ [-0.07199,+0.08600]$ & 1.00000 \\
+Late -- Linear & fg-psnr & $+0.01830\ [-0.01050,+0.04259]$ & 1.00000 \\
+Late -- Linear & fg-lpips & $-0.00029\ [-0.00101,+0.00020]$ & 1.00000 \\
+Late -- Linear & fg-ssim & $+0.00033\ [-0.00046,+0.00100]$ & 1.00000 \\
+Late -- Linear & edge-ssim & $+0.00125\ [+0.00038,+0.00194]$ & 0.15288 \\
+Late -- Linear & ciede2000 & $-0.05919\ [-0.12493,+0.00991]$ & 1.00000 \\
+\bottomrule\end{longtable}\endgroup
+\begin{table}[ht]\centering\scriptsize
+\caption{Descriptive 37-object textured subset, retained separately from the primary fifty. No subset inference is promoted to confirmation.}
+\begin{tabular}{lrrrrr}\toprule Condition & PSNR & LPIPS & SSIM & Edge-SSIM & CIEDE2000 \\
+\midrule
+High & 14.06 & 0.1159 & 0.4354 & 0.3239 & 18.04 \\
+Low & 14.14 & 0.1170 & 0.4345 & 0.3174 & 17.82 \\
+Mean & 14.11 & 0.1165 & 0.4356 & 0.3204 & 17.87 \\
+Early & 14.06 & 0.1168 & 0.4345 & 0.3182 & 17.99 \\
+Middle & 14.12 & 0.1165 & 0.4347 & 0.3182 & 17.84 \\
+Late & 14.16 & 0.1164 & 0.4359 & 0.3233 & 17.79 \\
+Linear & 14.14 & 0.1164 & 0.4360 & 0.3217 & 17.82 \\
+\bottomrule\end{tabular}\end{table}
+
+\clearpage
+\section*{S18. Calibrated bake pilot, historical separation and actual-output displays}
+The new bake list contains ten objects, chosen in frozen UID order before observing their bake results. All 300 Fresh C inputs were screened; old five-object outputs and the previously inspected REPEAT diagnostic object were excluded. Eligibility required available source GLB, one opaque white-factor base-color material, native TEXCOORD\_0, no vertex colors, at most 300,000 triangles, and source camera-mask alignment passing the frozen gate. This input-selected set is smaller than the target twenty and below fifteen; we retain the pilot designation and all ten outcomes. No failed or adverse-quality object was replaced. Seven conditions generated 70 object-condition rows; eight bake conditions including GT generated 80 artifacts, with 880 unseen renders and 480 source-camera renders.
+
+The frozen primary was Late-high--Fixed Mean FG-LPIPS. C3--GFH PSNR, LPIPS, SSIM and CIEDE2000 form one four-test secondary Holm family. All other complete pairs are descriptive. Views are averaged before inference. Intervals use 50,000 paired object resamples and are pointwise, not simultaneous. The ten-object primary uses all $2^{10}$ sign flips; the secondary family uses the same exact test. A sign-flip test assumes symmetry/exchangeability of paired differences under its null; an interval alone is not a practical-equivalence criterion. No non-inferiority margin was chosen.
+
+\begin{table}[ht]\centering\scriptsize
+\caption{Prespecified new-pilot comparisons: raw A minus B, 95\% object-bootstrap interval; no pooling with old five.}\label{tab:bake-paired}
+\begin{tabular}{llrr}
+\toprule Contrast & Endpoint & Mean [95\% CI] & $p$ \\
+\midrule
+Late--Mean & FG-LPIPS & $-0.00265\ [-0.00414,-0.00137]$ & 0.00195 (primary) \\
+C3--GFH & FG-PSNR & $+0.193\ [-0.649,+0.875]$ & 1.000 (Holm) \\
+C3--GFH & FG-LPIPS & $-0.00036\ [-0.00396,+0.00336]$ & 1.000 (Holm) \\
+C3--GFH & FG-SSIM & $-0.05274\ [-0.07459,-0.03170]$ & 0.00781 (Holm) \\
+C3--GFH & CIEDE2000 & $-1.102\ [-2.915,+0.939]$ & 0.95508 (Holm) \\
+\bottomrule\end{tabular}\end{table}
+
+The corrected earlier five-object bake uses the same source-resolution and mask corrections but retains its historical clamped-UV technical scope. Its descriptive means (PSNR / LPIPS / SSIM) are GFH 11.86 / 0.1609 / 0.5513, C3 14.24 / 0.1542 / 0.4170, Fixed Mean 14.19 / 0.1538 / 0.4348 and Late-high 15.02 / 0.1479 / 0.4428. C3--GFH is $+2.37$ dB, not the superseded $+2.27$ dB estimate. There was no independent predeclared primary for this reevaluation. The older N=20 result, old five, new ten and corrected single-object REPEAT diagnostic each retain separate source identifiers. Earlier wrong-mask, gamma-decoded-alpha and wrong-REPEAT-weight artifacts remain audit records and are superseded, never combined with the valid reevaluation.
+
+\begin{table}[ht]\centering\scriptsize
+\caption{Per-object generated-view versus unseen-bake rankings across seven conditions. Bootstrap unit is object. Positive overall agreement does not require an identical winning condition.}
+\begin{tabular}{lrr}
+\toprule Endpoint & Mean Spearman $\rho$ [95\% CI] & Winner changed \\
+\midrule
+FG-PSNR & $0.846\ [0.696,0.968]$ & 1/10 \\
+FG-LPIPS & $0.804\ [0.693,0.911]$ & 7/10 \\
+FG-SSIM & $0.746\ [0.450,0.964]$ & 4/10 \\
+Edge-SSIM & $0.907\ [0.871,0.943]$ & 6/10 \\
+\bottomrule\end{tabular}\end{table}
+
+GT and generated bake sources use the same six raw cameras and 256-pixel resolution. GT RGB uses bicubic downsampling; alpha uses the exact nearest-index mapping used for generated foreground inputs. Their six-view scalar masks are bitwise identical and their raw atlas coverage matches for every object and condition. No unseen view enters baking. Export checks retain binary geometry/UV buffers, transforms and mesh identity. REPEAT UV weights are nonnegative, sum to one and are invariant under integer UV shifts. These checks establish a valid unlit projection comparison, not PBR equivalence or a validated seam score. Texture boundaries can be natural appearance boundaries; seam diagnostics are not reported as a validated primary endpoint.
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.84\textheight,keepaspectratio]{figures/figS2_baked_full_conditions.png}
+\caption{Full-object same-camera source, GT-256 bake and all seven controls for the seven new-pilot objects whose publication licenses were verified. Three other objects remain in all numerical analyses but are omitted from distributed illustrations because image-publication permission is unresolved. No quality-based exclusion is made. Images are actual renders, resized for display without retouching. Source credits and input/output hashes are provided in BAKED\_ASSET\_CREDITS.csv and BAKED\_FIGURE\_VIDEO\_PROVENANCE.csv.}
+\end{figure}
+
+Supplementary Video presents two input-order, rights-cleared objects at all eleven discrete unseen cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized. It is an unlit comparison, not a claim of continuous-view or PBR quality.
+
+LG Remote by mohd.akmal.mahyudin; CC Attribution. Source: \url{https://sketchfab.com/3d-models/1dc2c857f7614caeb6c2aa0559ccf973}.
+
+Tire by Koto3D Stephane Vogley; CC Attribution. Source: \url{https://sketchfab.com/3d-models/21678bd623654182b52c11d013de4e71}.
+
+Asset 238ff3e41c964655b83aa9c8770cc766 by suntaree; CC Attribution. Source: \url{https://sketchfab.com/3d-models/238ff3e41c964655b83aa9c8770cc766}.
+
+Baptisimal Font - Aughrim by Galway3D\_DH\_AGe; CC0 Public Domain. Source: \url{https://sketchfab.com/3d-models/2dd9bc8172c6461797947cc7214db399}.
+
+Pittsburgh Bridge Collapse in Frick Park by C8X; CC Attribution. Source: \url{https://sketchfab.com/3d-models/2f6c94487ee54cb88021f4643409d849}.
+
+bricks on news boxes by bunnyhero; CC Attribution. Source: \url{https://sketchfab.com/3d-models/3c83796ca5f043f1beb8044dd2e51a0d}.
+
+Eastern Box Turtle Shell by Frank McMains; CC Attribution. Source: \url{https://sketchfab.com/3d-models/85a7df80b79a4ba9b8c3a175de0dbce6}.
 
 \end{document}

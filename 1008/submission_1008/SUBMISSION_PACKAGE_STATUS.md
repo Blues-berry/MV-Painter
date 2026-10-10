@@ -2,7 +2,7 @@
 
 **Status:** `DRAFT`
 
-**Captured:** `2026-10-10T09:30:53Z` UTC
+**Captured:** `2026-10-10T12:02:48Z` UTC
 
 **Journal submission:** not made
 
@@ -13,8 +13,8 @@ This is the full local 1008 package layout for author review. It contains the cu
 ## Authoritative paper files
 
 - Active source: `1008/manuscript/revision_01549_restored/manuscript_1008.tex`
-- Package TeX SHA-256: `d977250d6b3452cad2415cf1374cfc30dbc68ab453207a35d4fb3b16e6830b3d`
-- Package PDF SHA-256: `9526900173262d20d09187531760e62a9599a3e37c218a44cd63cd977ee89366`
+- Package TeX SHA-256: `d67f72312f8a7c5982cd01948546b2787b877623be1f35dd96bfc20faf8b8fd0`
+- Package PDF SHA-256: `d26d60bc1bdd329ff502bdb0ec89a7525819d6c4fd21112906e96e68c07096af`
 - Package TeX is byte-identical to the active source. This packaging step did not edit the paper source.
 
 ## Before any journal upload
@@ -23,7 +23,7 @@ This is the full local 1008 package layout for author review. It contains the cu
 - Verify the carried-forward title page, author metadata, funding acknowledgements, and declaration of interests.
 - Approve the cover letter and research highlights drafts.
 - Confirm whether the 0907 conference-paper attachment is still required.
-- Confirm any current graphical-abstract or demo-media requirement. The 0907 graphical abstract, highlights, cover letter, and demo were not reused because they contain superseded claims or have no authenticated 1008 update.
+- Confirm any current graphical-abstract or demo-media requirement. A new, source-traced 1008 video is included; the older 0907 demo is not reused. The current graphical abstract and text drafts accompany the new controlled results.
 - Review the response and all PDF page/line references before submission.
 
 No journal submission was made. `SUBMISSION_APPROVED=NO`.

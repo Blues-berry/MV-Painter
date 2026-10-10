@@ -16,3 +16,8 @@
 ## Current scientific position
 
 The contribution is a reproducible, graphics-task-specific account of how an existing geometry-residual control is requested, applied under native caps, and reflected in paired image-space outcomes. It records where apparent benefits are confounded or contradicted. It does not establish a color-cast correction, 3D material fidelity, general cross-backbone transfer, or a universal schedule.
+
+
+## Completed bounded execution, 10 October
+
+Added complete matched300 allocation evidence, native50 second-interface comparison and calibrated bake10 pilot. Preserved TCAS/title/C3 historical identity and old preference/FAC scope. C3 loses to stronger controls; Late-high pilot LPIPS gain remains named and limited. Corrected old5 and invalid old7 quality are explicitly separated. Added Figure8, Supplement FigureS2, verified-source Figure1 thumbnails/AI disclosure, 22-second actual-view video and weights-free reproduction archive. No new parameter search or training.
