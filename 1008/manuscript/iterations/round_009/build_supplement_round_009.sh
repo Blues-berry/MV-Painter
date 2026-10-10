@@ -11,6 +11,7 @@ cp "${SCRIPT_DIR}/tables/mvadapter_layerwise_supplement.tex" "${STAGE_DIR}/table
 cp "${SCRIPT_DIR}/tables/mvdiffusion_raw_contrasts.tex" "${STAGE_DIR}/tables/"
 cp "${SOURCE_DIR}/cag.sty" "${SOURCE_DIR}/elsarticle.cls" "${SOURCE_DIR}/cag-logo.pdf" "${SOURCE_DIR}/elsevier-logo.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/"* "${STAGE_DIR}/figures/"
+cp "${SCRIPT_DIR}/tables/native_round009_complete.tex" "${STAGE_DIR}/tables/"
 cd "${STAGE_DIR}"
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" Supplementary_round_009.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" Supplementary_round_009.tex
