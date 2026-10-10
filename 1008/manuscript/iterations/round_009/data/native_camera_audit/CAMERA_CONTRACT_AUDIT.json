@@ -1,0 +1,1086 @@
+{
+  "status": "PASS_ALL_TEN_SLOT_DIRECTIONS_WITH_LIMITS",
+  "official_commit": "f714682db5e6f78e8d1c7c0a43d1525638dda5a6",
+  "official_repository": "https://github.com/amap-cvlab/MV-Painter",
+  "official_sources": {
+    "mvpainter_dataset.py": "0a5e6d0743d99f6f175e7743316b1d77e5b2c4280738f028dcf3b935434de6cc",
+    "bake_pipeline.py": "752af1bd96603efd2c12100eeba080682102cf10f2bbd36c298685b6b01f507b",
+    "infer_multiview.py": "5dcb4c8536bc7b592daaeb4300e6eacde1ba98e316424c4ea08e95e5921f784b",
+    "blender_render_ortho.py": "c1141c83903fd3deb899e4329515c7c9758ab43b70faa3d7df2bd14d8bb66636"
+  },
+  "native_grid_raw_indices": [
+    0,
+    5,
+    1,
+    4,
+    2,
+    3
+  ],
+  "native_grid_directions": [
+    {
+      "slot": 0,
+      "relative_azimuth": 0,
+      "elevation": 0
+    },
+    {
+      "slot": 1,
+      "relative_azimuth": 0,
+      "elevation": 90
+    },
+    {
+      "slot": 2,
+      "relative_azimuth": 90,
+      "elevation": 0
+    },
+    {
+      "slot": 3,
+      "relative_azimuth": 0,
+      "elevation": -90
+    },
+    {
+      "slot": 4,
+      "relative_azimuth": 180,
+      "elevation": 0
+    },
+    {
+      "slot": 5,
+      "relative_azimuth": 270,
+      "elevation": 0
+    }
+  ],
+  "bake_result_permutation": [
+    1,
+    3,
+    5,
+    6,
+    4,
+    2
+  ],
+  "objects": [
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "238ff3e41c964655b83aa9c8770cc766",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "2dd9bc8172c6461797947cc7214db399",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "2f6c94487ee54cb88021f4643409d849",
+      "anchor_azimuth": 0.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        }
+      ]
+    },
+    {
+      "uid": "3c83796ca5f043f1beb8044dd2e51a0d",
+      "anchor_azimuth": 0.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        }
+      ]
+    },
+    {
+      "uid": "85a7df80b79a4ba9b8c3a175de0dbce6",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "e261c0fe85af46388260e2359a9bfc92",
+      "anchor_azimuth": 0.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        }
+      ]
+    },
+    {
+      "uid": "f1ccc55a65c744d7be201bf11b980e4d",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    },
+    {
+      "uid": "fa5c4b02c5b24ac09d7dd8bcf8c35142",
+      "anchor_azimuth": 270.0,
+      "slots": [
+        {
+          "slot": 0,
+          "raw_view_index": 14,
+          "azimuth": 270.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 0.0,
+          "expected": {
+            "slot": 0,
+            "relative_azimuth": 0,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "89b7cc04d6f5b3e7c9cae55f43fba7f26cde34eece2453832e713976ef5d2e70"
+        },
+        {
+          "slot": 1,
+          "raw_view_index": 15,
+          "azimuth": 0.0,
+          "elevation": 90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 1,
+            "relative_azimuth": 0,
+            "elevation": 90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "3b76a62e998756408741d8c4a5f7ce92e75137c61692cf8e554db62b09ec5ac0"
+        },
+        {
+          "slot": 2,
+          "raw_view_index": 0,
+          "azimuth": 0.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 2,
+            "relative_azimuth": 90,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "70f4a9c225fdcee69a374c8678619ea7ba10c03cb2d0e3b033929ad2e4d836be"
+        },
+        {
+          "slot": 3,
+          "raw_view_index": 16,
+          "azimuth": 0.0,
+          "elevation": -90.0,
+          "camera": "ortho",
+          "relative_azimuth": 90.0,
+          "expected": {
+            "slot": 3,
+            "relative_azimuth": 0,
+            "elevation": -90
+          },
+          "direction_match": true,
+          "rotated_ccw_90": true,
+          "camera_file_sha256": "5aa3a0bf8b98bd74f87aaad9989759a05be91c836f3f1a12fdb2752a2df66056"
+        },
+        {
+          "slot": 4,
+          "raw_view_index": 12,
+          "azimuth": 90.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 180.0,
+          "expected": {
+            "slot": 4,
+            "relative_azimuth": 180,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "f71b1187ad94287999187326bdb6628697abaab5f1d15850904ff0fbfd83a612"
+        },
+        {
+          "slot": 5,
+          "raw_view_index": 13,
+          "azimuth": 180.0,
+          "elevation": 0.0,
+          "camera": "ortho",
+          "relative_azimuth": 270.0,
+          "expected": {
+            "slot": 5,
+            "relative_azimuth": 270,
+            "elevation": 0
+          },
+          "direction_match": true,
+          "rotated_ccw_90": false,
+          "camera_file_sha256": "bc7ec25763113fc8cc74984f20b87e57b3a5679fcab77cdcaeab2e6491758685"
+        }
+      ]
+    }
+  ],
+  "all_direction_matches": true,
+  "pole_image_orientation_verified": false,
+  "cross_renderer_projection_verified": false,
+  "generated_camera_identities_verified": false,
+  "interpretation": "The current unique6 target direction order matches the native inference contract after conditioning-anchor rotation. Historical public training loader duplicates top, a separate issue. Matching nominal directions does not prove pixel registration, pole roll, projection or generated view fidelity."
+}
