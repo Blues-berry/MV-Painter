@@ -1,0 +1,72 @@
+{
+  "status": "PASS_SOURCE_ARCHIVE_REBUILDS_AND_ALL_CONTRASTS_REPRODUCE",
+  "source_archive_sha256": "da71662b985b646e4cddddcc1fef7cdcdf88c305562301b20fe891a11dddf5bd",
+  "extracted_checks": [
+    [
+      "python",
+      "scripts/verify_native_training_preflight.py"
+    ],
+    [
+      "python",
+      "scripts/verify_encoding_branch_matrix.py"
+    ],
+    [
+      "python",
+      "scripts/verify_recorded_training_audit.py"
+    ],
+    [
+      "python",
+      "scripts/verify_camera_contract.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_geometry_matrix.py"
+    ],
+    [
+      "python",
+      "scripts/verify_resolution_bridge.py"
+    ],
+    [
+      "python",
+      "scripts/verify_factorial_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/verify_native_diagnostic.py"
+    ],
+    [
+      "python",
+      "scripts/analyze_native_controls.py"
+    ],
+    [
+      "bash",
+      "build_round_008.sh"
+    ],
+    [
+      "bash",
+      "build_supplement_round_008.sh"
+    ],
+    [
+      "bash",
+      "build_marked_round_008.sh"
+    ]
+  ],
+  "previous_round_hash_unchanged": true,
+  "video_decode_pass": true,
+  "video_scope": "prior true outputs retained; training preflight is not a new quality video",
+  "pdfs": {
+    "Manuscript_round_008.pdf": {
+      "sha256": "203db63882c52f67b98cadffc1211c5e7395975710df722a9e11f5cb0ddf3a3e",
+      "bytes": 4526056
+    },
+    "Supplementary_round_008.pdf": {
+      "sha256": "956a646e647a7b61bf9776586e919d82c108c79a1c607be1382627d07766f635",
+      "bytes": 4069396
+    },
+    "Marked-up_Manuscript_round_008.pdf": {
+      "sha256": "8dd924db67f2d7f4a2c67a5b557030c216cd6a8470db4fe90e09e6bcb6daeaf3",
+      "bytes": 4528161
+    }
+  },
+  "experiment_commit": "e24d5cf4"
+}
