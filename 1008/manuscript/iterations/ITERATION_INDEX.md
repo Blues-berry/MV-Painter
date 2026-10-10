@@ -7,3 +7,5 @@
 每轮保存前置身份、分析、计划、执行、独立TeX及验证记录。科学结果与审稿缺口决定下一步，不能从语言优化推算90%以上中稿概率。当前目标持续运行，尚不宣称达到该概率。
 
 - Round002: completed native-wrapper controls, all15 exploratory contrasts, complete-pipeline scope audit; experiment commit6b1e2362. Next: low-cost full-pipeline quality diagnostic.
+
+- Round003: complete four-call native base diagnostic, source API findings and full grids; experiment commit47eb7fb7. Next: controlled separation of guidance and image-feature preparation.
