@@ -6,7 +6,7 @@
 
 Keep the original 01549 identity: title, TCAS, C3, and the MVPainter geometry-adapter path. Use the method-centered Version A as the manuscript spine, with one carefully bounded empirical contribution from Version B: matched schedule evidence shows that placement changes outcomes in this pipeline, but no stage is universally best and actual residual dose is not matched.
 
-This is the strongest supportable route for the current revision. Version B as a new “layer × time” method would collide directly with SSI, lean on A2/A3b heterogeneity with 0/2,250 common dose support, and drift away from the submitted C3 method. A residual-budget-aware controller is not validated. No new method component or GPU experiment is justified for this R2.1 revision.
+This is the strongest supportable route for the current revision. Version B as a new “layer × time” method would collide directly with SSI, lean on A2/A3b heterogeneity without a dimension-aware cross-layer dose test, and drift away from the submitted C3 method. A residual-budget-aware controller is not validated. No new method component or GPU experiment is justified for this R2.1 revision.
 
 ## Final contribution statement for the paper
 
@@ -55,7 +55,7 @@ The candidate main manuscript and supplement compile successfully to 9-page and 
 | `DESIGN_RATIONALE_SUPPORTED` | **PARTIAL** | Near-matched stage evidence and fixed-mean comparison support stage sensitivity; C3's exact shape is not optimally justified and residual norms are not matched. |
 | `DISTINCTION_FROM_SSI` | **TASK_AND_EVIDENCE** | Signal/interface, graphics task, and validation differ; SSI already covers layer/time scheduling and geometric ControlNet strength. |
 | `C3_VS_STRONG_BASELINE_EXPLAINED` | **YES** | Fresh C favors Generic Linear on all four means; the profile sums and object distributions are stated. No unsupported causal explanation is offered. |
-| `DOSE_INDEPENDENT_MECHANISM_PROVEN` | **NO** | 0/2,250 A3b common-support rows and post-treatment residual norms. |
+| `DOSE_INDEPENDENT_MECHANISM_PROVEN` | **NO** | A3b raw-$L_2$ dose support is dimension-confounded across feature groups; the fixed-map outcomes are not an equal-dose intervention. |
 | `NEW_METHOD_COMPONENT_JUSTIFIED` | **NO** | Candidate control is not implemented or independently validated. |
 | `NEW_GPU_EXPERIMENT_NEEDED` | **NO** | A new run cannot resolve the core prior-art novelty question for this scoped revision. |
 | `R2_1_REJECTION_RISK` | **HIGH** | The reviewer may still require a substantive algorithm beyond task-specific schedule application. |

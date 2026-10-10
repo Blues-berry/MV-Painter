@@ -12,6 +12,7 @@
 \setcounter{topnumber}{4}
 \setcounter{bottomnumber}{4}
 \renewcommand{\topfraction}{0.92}
+\renewcommand{\dbltopfraction}{0.95}
 \renewcommand{\textfraction}{0.05}
 \renewcommand{\floatpagefraction}{0.85}
 
@@ -28,7 +29,7 @@
 % (including funding) are provided only on the separately uploaded title page.
 
 \begin{abstract}
-Geometry-conditioned multi-view texturing uses adapter residuals to inject shape information into a denoiser, but a requested scale does not by itself specify the value applied by a wrapper or the resulting correction magnitude. We study Timestep-Conditioned Adapter Scaling (TCAS) on the existing GeoTex-Adapter path, distinguishing requested scale, native-cap applied scale, and post-scale residual magnitude. On the matched Fresh C cohort of 300 held-out objects, the recorded C3 profile $(1.25,2.50,1.25)$ exceeds global fixed-low scaling (GFL) on the registered FG-PSNR endpoint by $+0.522352$~dB (95\% object-bootstrap CI $[+0.404160,+0.640669]$). Global fixed-high scaling (GFH) and Generic Linear have more favorable means than C3 on each of the four displayed endpoints. C3 and GFL also differ in applied deep- and middle-layer scale sums, so this contrast does not isolate temporal placement. In a separate post-inspection 276-object placement analysis, temporal L--L--H is favored on all six formal endpoints despite near-matched scalar sums; post-scale residual norms remain unmatched. The results characterize endpoint- and object-dependent responses of this implementation. Piecewise scheduling itself is established prior work, and the evidence does not establish an optimal schedule, a dose-independent effect, general transfer, or PBR/material fidelity. The contribution is a reproducible, graphics-task-specific account of how this control is requested, applied, and realized in image-space evaluation, with its downstream boundary made explicit.
+Geometry-conditioned multi-view diffusion generates target views that can be projected or baked into a 3D texture; the strength of geometric control can alter both structure and appearance. We study Timestep-Conditioned Adapter Scaling (TCAS), a three-stage inference-time profile on the existing GeoTex-Adapter residual path. To make this control reproducible, we distinguish the requested scale, the wrapper-applied scale after native caps, and the resulting residual magnitude. On the matched Fresh C cohort of 300 held-out objects, the recorded C3 profile $(1.25,2.50,1.25)$ exceeds global fixed-low scaling (GFL) on the registered FG-PSNR endpoint by $+0.522352$~dB (95\% object-bootstrap CI $[+0.404160,+0.640669]$). Global fixed-high scaling (GFH) and Generic Linear have more favorable means than C3 on each of the four displayed endpoints. C3 and GFL also differ in applied deep- and middle-layer scale sums, so this contrast does not isolate temporal placement. In a separate post-inspection 276-object placement analysis, temporal L--L--H is favored on all six formal endpoints despite near-matched scalar sums; post-scale residual norms remain unmatched. A retrospective 76-object MV-Adapter panel shows metric-dependent layer-wise responses without a consistent temporal-position pattern. The results characterize endpoint- and object-dependent responses of these implementations. Piecewise scheduling itself is established prior work, and the evidence does not establish an optimal schedule, a dose-independent effect, general transfer, or PBR/material fidelity. The contribution is a reproducible, graphics-task-specific account of how this control is requested, applied, and realized in image-space evaluation, with its downstream boundary made explicit.
 \end{abstract}
 
 \begin{keyword}
@@ -49,7 +50,7 @@ This paper studies that control question in a fixed MVPainter-style multi-view t
 
 Layer- and timestep-dependent control is established prior work. Scheduled Style Injection (SSI) varies StyleID's attention-mixing parameter across decoder layers and denoising steps, and also schedules geometry-conditioned ControlNet strength along those axes. We therefore do not present TCAS as a new general scheduling primitive. Our contribution is an empirical graphics-system characterization of a specific residual path: we measure how requests pass through native caps, how the applied corrections vary, and how fixed and scheduled controls compare on paired multi-view image endpoints. SSI's style-transfer results do not determine the results of these object-level texturing comparisons; differences in task and interface require measurement here, but do not make the underlying scheduling idea new.
 
-We evaluate the recorded C3 profile against fixed and alternative scheduled controls on the held-out Fresh C cohort. The registered C3--GFL FG-PSNR result is reported with the stronger GFH and Generic Linear mean results and with the applied-scale difference that prevents a timing-only interpretation. A separate post-inspection placement analysis favors temporal L--L--H on six endpoints, while layer-window maps and cross-interface probes show that responses depend on the tested intervention and interface. These results support an empirical system contribution, not a dose-independent schedule law. Fresh C measures target-view images; it does not establish final baked appearance or PBR/material fidelity.
+We evaluate the recorded C3 profile against fixed and alternative scheduled controls on the held-out Fresh C cohort. The registered C3--GFL FG-PSNR result is reported with the stronger GFH and Generic Linear mean results and with the applied-scale difference that prevents a timing-only interpretation. A separate post-inspection placement analysis favors temporal L--L--H on six endpoints, while layer-window maps and cross-interface probes show that responses depend on the tested intervention and interface. A retrospective 76-object MV-Adapter panel likewise shows metric-dependent layer-wise responses without a consistent temporal-position pattern. These results support an empirical system contribution, not a dose-independent schedule law. Fresh C measures target-view images; it does not establish final baked appearance or PBR/material fidelity.
 
 The contributions are:
 
@@ -92,12 +93,12 @@ MV-Adapter uses a condition guider for camera or geometry maps together with dec
 \subsection{Task Definition and Base Pipeline}
 \label{subsec:task}
 
-This paper builds on the MVPainter-style geometry-controlled multi-view texture generation framework \cite{shao2025mvpainter} and studies how the inference-time strength of geometric condition injection affects the generated results. Figure~\ref{fig:overview} illustrates the overall pipeline: the adapter injects geometric residuals into UNet features, TCAS adjusts their strength across denoising stages, and the final multi-view outputs are projected and baked into a textured 3D mesh. Given a single reference image and the corresponding 3D geometry, the base pipeline first generates RGB texture images from six target views and then obtains a textured mesh through projection or texture baking. We do not modify the base UNet, VAE, or pretrained adapter weights. Instead, the adapter scaling factor is treated as the key inference-time control variable.
+This paper builds on the MVPainter-style geometry-controlled multi-view texture generation framework \cite{shao2025mvpainter} and studies how the inference-time strength of geometric condition injection affects the generated results. Figure~\ref{fig:overview} shows the TCAS control gate on the GeoTex-Adapter residual path: the requested scale is limited by the wrapper's group-specific cap before the residual is added to frozen UNet features. Given a single reference image and the corresponding 3D geometry, the base pipeline generates RGB texture images from six target views and can pass them to downstream projection or texture baking. Fresh C evaluates the target-view images; it does not validate the resulting baked mesh. We do not modify the base UNet, VAE, or pretrained adapter weights.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth,trim=0 24pt 0 0,clip]{figures/fig1_01549_original.pdf}
-\caption{Method overview reproduced from the authenticated 01549 submission. The optional FAC branch is retained as a previously reported extension; its controlled negative re-examination from 01549 is summarized in Section~\ref{subsec:facreported}. TCAS remains the paper's training-free method. Projection and baking are pipeline context, not outcomes validated by Fresh C image-space evidence.}
+\includegraphics[width=\textwidth]{figures/fig1_tcas_control.pdf}
+\caption{TCAS on the GeoTex-Adapter residual path. The requested C3 profile is $(1.25,2.50,1.25)$ over steps 0--16, 17--32, and 33--49; the wrapper applies the request after group-specific native caps, then adds the scaled residual to frozen UNet features. In Fresh C, the shallow-group cap is 0.8. Projection and baking are downstream pipeline context and were not validated by the image-space study.}
 \label{fig:overview}
 \end{figure*}
 
@@ -106,12 +107,12 @@ During multi-view diffusion, the 3D geometry is rendered into normal maps, depth
 \mathbf{G} = \{G_\text{normal}, G_\text{depth}, G_\text{mask}\}.
 \end{equation}
 
-The geometric adapter maps these conditions to a residual correction term and injects it into the intermediate hidden states of the UNet. For the $t$-th denoising step, the adapter injection can be written as:
+The geometric adapter maps these conditions to a residual correction term and injects it into the intermediate hidden states of the UNet. For inference step $j$ with normalized execution progress $p_j$, the adapter injection can be written as:
 \begin{equation}
-\mathbf{h}'_{t,\ell} = \mathbf{h}_{t,\ell} + s_{\mathrm{app}}(p_t,\ell)\, A^\ell_\phi(\mathbf{h}_{t,\ell}, \mathbf{G}),
+\mathbf{h}'_{j,\ell} = \mathbf{h}_{j,\ell} + s_{\mathrm{app}}(p_j,\ell)\, A^\ell_\phi(\mathbf{h}_{j,\ell}, \mathbf{G}),
 \label{eq:injection}
 \end{equation}
-Here $\ell$ indexes an injected layer group and $p_j$ is normalized sampling progress at inference step $j$. The \emph{requested scale} $s_{\mathrm{req}}(p_j,\ell)$ is the value assigned by the profile; the \emph{applied scale} is the value used by the wrapper,
+Here $\ell$ indexes an injected layer group. The \emph{requested scale} $s_{\mathrm{req}}(p_j,\ell)$ is the value assigned by the profile; the \emph{applied scale} is the value used by the wrapper,
 \begin{equation}
 s_{\mathrm{app}}(p_j,\ell)=\min\!\bigl(s_{\mathrm{req}}(p_j,\ell),c_\ell\bigr),
 \end{equation}
@@ -130,7 +131,7 @@ M_{\mathrm{var}}=\operatorname{Var}\!\left(\operatorname{Lap}(I_{\mathrm{out}}\o
 \end{equation}
 where $G_{\mathrm{mask}}$ is the foreground mask. A larger value is not necessarily better: detail, noise, repeated patterns, or artifacts can all increase local variation. We therefore do not interpret these proxies as texture fidelity or use them alone to claim that a schedule better preserves reference appearance.
 
-\subsection{TCAS Control Semantics and Identifiability}
+\subsection{TCAS Control Semantics and Comparison Design}
 \label{subsec:tcas}
 
 TCAS replaces a globally fixed requested adapter scale with a piecewise profile over normalized sampling progress. The early/middle/late partition is an operational description, not a universal claim about the function of every denoising stage. C3's low--high--low profile is the specific development choice evaluated in this revision; it is not presented as an independently derived optimum.
@@ -141,7 +142,7 @@ s_{\mathrm{req}}(p) = \begin{cases} s_e, & 0 \leq p < 1/3 \\ s_m, & 1/3 \leq p <
 \label{eq:tcas}
 \end{equation}
 
-We call this variation across the 50 inference steps the \emph{temporal allocation}. A \emph{layer allocation} varies the requested scale across the three wrapper groups at a fixed step. For a schedule with applied values $s_{\mathrm{app}}(j,\ell)$, its per-group applied-scale sum is $B_\ell=\sum_j s_{\mathrm{app}}(j,\ell)$; the unweighted sum $B_{\mathrm{nom}}=\sum_\ell B_\ell$ is a \emph{nominal applied-scale budget}. It does not weight scales by the adapter activations. The logged vector of post-scale magnitudes $\{m_{j,\ell}\}$, or a stated aggregation of that vector, is the \emph{realized residual dose}. It depends on the current hidden state and on earlier denoising updates, so equal nominal budgets do not imply equal realized doses.
+We call this variation across the 50 inference steps the \emph{temporal allocation}. A \emph{layer allocation} varies the requested scale across the three wrapper groups at a fixed step. For a schedule with applied values $s_{\mathrm{app}}(j,\ell)$, its per-group applied-scale sum is $B_\ell=\sum_j s_{\mathrm{app}}(j,\ell)$; the unweighted sum $B_{\mathrm{nom}}=\sum_\ell B_\ell$ is a \emph{nominal applied-scale budget}. It does not weight scales by adapter activations. We log post-scale correction summaries, including wrapper-level $L_2$ norm and mean absolute entry. The three wrapper groups operate on feature maps with different spatial dimensions, and the traces do not retain channel counts; raw $L_2$ values are therefore not used for cross-layer dose comparisons. The per-entry mean absolute correction reported in Supplementary Section~S4 is a dimension-normalized descriptive summary, not an equal-dose intervention. Correction magnitudes also depend on the current hidden state and earlier denoising updates, so equal nominal budgets do not imply equal realized corrections.
 
 The selected C3 configuration used in this paper is:
 \begin{equation}
@@ -153,7 +154,7 @@ The low--high--low profile is a concrete inference-time intervention motivated b
 \paragraph{What C3 changes and what its comparisons identify}
 C3 requests $(1.25,2.50,1.25)$ for each of the 50 steps across the three layer groups before native caps. In Fresh C, the applied deep and middle profiles retain those values; the shallow profile is clipped to 0.8 throughout. GFL requests 1.25 at every step and group, so its deep and middle values are 1.25 throughout and its shallow value is also clipped to 0.8. Their per-group applied-scale sums are therefore 82.5 versus 62.5 in deep and middle, and 40 for both in shallow. The C3--GFL contrast changes the middle-third deep/middle scale magnitude as well as its temporal allocation; it is not a timing-only comparison.
 
-To identify a temporal-placement contrast, controls must hold the per-layer applied values and nominal per-group sums fixed while moving the same values between time windows. To identify a scale-strength contrast, controls must hold the layer and temporal allocations fixed while changing amplitude. Both contrasts also require reporting post-scale residual magnitudes: matching requested values or applied-scale sums does not match the evolving residual corrections. The strict-276 placement analysis approaches scalar-sum matching but does not match realized residual dose; post-hoc adjustment for that state-dependent quantity does not by itself recover a dose-independent causal effect.
+To identify a temporal-placement contrast, controls must hold the per-layer applied values and nominal per-group sums fixed while moving the same values between time windows. To identify a scale-strength contrast, controls must hold the layer and temporal allocations fixed while changing amplitude. Both contrasts also require reporting post-scale correction summaries: matching requested values or applied-scale sums does not match the evolving residual corrections. Raw $L_2$ values are dimension-sensitive across wrapper groups and cannot establish cross-layer dose matching. The strict-276 placement analysis approaches scalar-sum matching but does not match its layer-wise post-scale corrections; post-hoc adjustment for such state-dependent quantities does not by itself recover a dose-independent causal effect.
 
 \paragraph{Development origin and scope of C3}
 The submitted 01549 paper records C3 $=(1.25,2.50,1.25)$ as the selected profile from a 24-object development probe containing 17 uniform, layer-wise, and time-conditioned variants. We retain that development record because it explains the origin of the profile studied here. The complete row-level outputs and selection-time provenance are not available in the current evidence authority, so the historical ranking and labels cannot be independently checked. We therefore make no formal optimality or uniqueness claim based on this probe. Fresh C evaluates the recorded profile without further schedule search.
@@ -163,7 +164,7 @@ The submitted 01549 paper records C3 $=(1.25,2.50,1.25)$ as the selected profile
 
 GeoTex-Adapter is treated as the fixed geometry-residual backbone, not as a new contribution of this paper. It receives a five-channel input comprising a three-channel normal map, a one-channel depth map, and a one-channel foreground mask. A multi-scale encoder produces residual features that are injected into the frozen UNet. TCAS acts on the requested multiplier along denoising progress; it does not retrain the adapter, the UNet, or the VAE and introduces no learned parameters.
 
-The first-round 01549 revision also reported a learned Full Adaptive Correction (FAC) extension. We retain its controlled negative re-examination as a previously reported auxiliary result in Section~\ref{subsec:facreported} and Supplementary Table~S11; it is not a new 1008 training run. TCAS remains the paper's sole training-free method.
+The first-round 01549 revision also reported a learned Full Adaptive Correction (FAC) extension. We retain its controlled negative re-examination as a previously reported auxiliary result in Section~\ref{subsec:facreported} and Supplementary Table~S15; it is not a new 1008 training run. TCAS remains the paper's sole training-free method.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -194,7 +195,7 @@ FG-PSNR, FG-LPIPS, FG-SSIM, and Edge-SSIM are computed per object after averagin
 \paragraph{Statistical reporting}
 Fresh C reports the object-level paired mean difference and percentile-bootstrap 95\% interval from 10{,}000 object resamples. The registered primary C3--GFL FG-PSNR contrast is unadjusted as the single primary endpoint. Secondary and addendum families and their multiplicity adjustments are detailed in Supplementary Section S2. CIs outside that prespecified family are pointwise and descriptive. The earlier three-condition 3AFC study is reported separately below as a subjective preference result; it is not a Fresh C endpoint or evidence of texture fidelity.
 
-\subsection{Shape-Texture Trade-off of Adapter Scaling}
+\subsection{Historical Fixed-Scale Image-Space Diagnostics}
 \label{subsec:tradeoff}
 
 Table~\ref{tab:sweep} reproduces the 13-scale sweep reported in the submitted 01549 manuscript. We retain it to preserve the original development question, but the object-level outputs, full run manifest, and metric implementation mapping are not available in the current authority. Its values and Figures~\ref{fig:curve}--\ref{fig:heatmap} are therefore historical diagnostics, not a new reanalysis or confirmatory evidence.
@@ -243,7 +244,7 @@ The submitted heatmap depicts object-level variation across the reported scales,
 \label{fig:heatmap}
 \end{figure}
 
-\subsection{Timestep-Conditioned Adapter Scaling: Shape-Texture Balance of C3}
+\subsection{C3 Development Record and Current Evaluation}
 \label{subsec:c3}
 
 The submitted paper records 17 uniform, layer-wise, and timestep-conditioned variants on a 24-object development probe and identifies C3 as its chosen profile. This study question remains relevant: does a stage-dependent request offer a useful control setting beyond a single global scale? Because the complete historical row-level data and selection provenance are not available in the current authority, the original Table~\ref{tab:probe} and Figure~\ref{fig:pareto} are retained as historical development records, not as a verified ranking or proof of optimality. Fresh C evaluates the recorded C3 profile without another schedule search.
@@ -283,19 +284,10 @@ s_{\mathrm{req}}(p) =
 \end{equation}
 This is an inference-time instruction on the existing adapter path; no weights are trained. Its tested value is task- and implementation-specific. The schedule operation itself is not claimed as a new general primitive.
 
-Figure~\ref{fig:c3compare} presents compact Fresh C full-object and local-detail comparisons for the original C3-versus-fixed-scale question and the Generic Linear counter-result. The object-paired estimates in Section~\ref{subsec:largescale} carry the quantitative comparison.
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/fig5_freshc_context_roi.pdf}
-\caption{Matched Fresh C comparisons under the same frozen object, reference, camera view, checkpoint, runner, seed policy, and inference protocol. (a) Reference, fixed-low GFL, fixed-high GFH, and C3 preserve the original fixed-scale comparison question; the selected object illustrates an endpoint trade-off between C3 and GFH. (b) Reference, GFL, C3, and Generic Linear show a counterexample in which both object-level FG-PSNR (C3 minus Generic Linear $=-3.491$~dB) and FG-LPIPS ($=+0.08172$) favor Generic Linear. Each context image marks the same pixel ROI used for the crop below. The examples were selected by outcome, so they do not estimate prevalence or establish a general winner or texture fidelity. They show qualitative local appearance rather than colorimetric agreement; object-specific hue mismatch may remain. Full six-view comparisons remain in Supplementary Figure~S1. Attribution is in Supplementary Table~S1; input and ROI hashes are in the Fresh C figure manifest.}
-\label{fig:c3compare}
-\end{figure*}
-
 \begin{figure*}[!t]
 \centering
 \includegraphics[width=0.78\textwidth]{figures/fig7_c3_development.pdf}
-\caption{Historical 17-variant shape--texture development plot from the submitted 01549 paper, restricted to the 24-object development probe and not an independent validation set. The plot labels have been locally changed to “Development region” and “C3 (probe)” to identify their development-set role; neither the shaded region nor C3 denotes a unique optimum, a texture-fidelity ranking, or a general schedule law. The underlying row-level candidate outputs are not available for independent reanalysis.}
+\caption{Historical 17-variant development probe from the submitted 01549 paper (24 objects). The axes show changes in FG-SSIM and Laplacian variance; variance is a texture-variation diagnostic, not a fidelity measure. “C3” identifies the selected historical profile, not an optimum or general schedule law. The candidate-level outputs are unavailable for independent reanalysis.}
 \label{fig:pareto}
 \end{figure*}
 
@@ -334,7 +326,7 @@ LLH & 300 & 12.4506 & 0.1876 & 0.3911 & 0.4863 \\
 
 \begin{table*}[t]
 \centering
-\caption{Fresh C paired differences, condition A minus B. Cells report the mean difference and pointwise 95\% object-bootstrap CI. Positive PSNR/SSIM and negative LPIPS differences favour A. C3--No Adapter and C3--GFH are post-hoc contrasts; the addendum shares the primary run's object identifiers. Multiplicity-adjusted tests and the full endpoint family are in Supplementary Section S2.}
+\caption{Fresh C paired mean differences (A minus B) and pointwise 95\% object-bootstrap CIs. Positive PSNR/SSIM and negative LPIPS favour A. C3--No Adapter/GFH are post hoc; the addendum shares object IDs. Full adjusted families are in Supplement S2.}
 \label{tab:freshc-contrasts}
 \scriptsize\setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcccc}
@@ -355,7 +347,15 @@ The C3--GFL comparison supports a bounded statement: on this frozen, UID-disjoin
 
 The counter-results delimit that finding. GFH has more favorable cohort means than C3 on all four displayed endpoints. Generic Linear also has more favorable means than C3 on all four; for C3 minus Generic Linear, the mean FG-PSNR difference is $-0.593$~dB (95\% CI $[-0.837,-0.351]$), although the median is $+0.073956$~dB and C3 is higher on 155/300 objects (51.7\%). LLH's FG-PSNR mean exceeds C3 by $+0.621$~dB, while its median difference is $-0.153$~dB and only 140/300 objects favour LLH; its lower mean FG-LPIPS favours LLH. For LLH versus Generic Linear, the FG-PSNR CI includes zero, which is not evidence of equivalence; the FG-LPIPS difference favours Generic Linear. The endpoint means and object-level distributions do not identify a universal winner.
 
-Fresh C contains no validated texture-variation or texture-fidelity endpoint. We therefore do not revive the original 300-object RGB/Laplacian/gradient tables or their “retention” interpretation. In those diagnostics, a larger response could represent meaningful detail or an artifact; it cannot by itself establish fidelity.
+Fresh C has no validated texture-fidelity endpoint. RGB, Laplacian, and gradient responses describe variation: a larger value can represent detail or an artifact. Figure~\ref{fig:c3compare} shows selected full-object/same-ROI fixed-scale and Generic Linear comparisons as qualitative context; they do not estimate prevalence, colorimetric agreement, or texture fidelity.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig5_freshc_context_roi.pdf}
+\caption{Matched Fresh C target-view RGB outputs for the same frozen object, reference, camera, checkpoint, runner, seed policy, and inference protocol. (a) shows a selected fixed-scale case with an endpoint trade-off between C3 and GFH. (b) shows a counterexample where C3 minus Generic Linear is $-3.491$~dB FG-PSNR and $+0.08172$ FG-LPIPS, favoring Generic Linear on both endpoints. Each context marks the exact pixel ROI shown below. Outcome-selected examples do not estimate prevalence or texture fidelity; the RGB crops do not establish colorimetric agreement. Full six-view panels remain in Supplementary Figure~S1; model credits and image/ROI provenance are in Supplementary Table~S1 and the Fresh C figure manifest.}
+\label{fig:c3compare}
+\end{figure*}
+\FloatBarrier
 
 
 \subsection{Applied-Scale Budget and Temporal Placement}
@@ -414,7 +414,7 @@ A3b, $N=150$ & FG-LPIPS & 225.015 & $5.37\times10^{-43}$ & 14.0\%; 0.000342 \\
 \end{tabular}
 \end{table}
 
-A3b has no common-support rows across its three layer groups among 2,250 layer-step observations. The within-group central 90\% realized-dose ranges are 56,359--79,927 (deep), 11,421--19,336 (middle), and 2,816--5,193 (shallow); they do not overlap. Dose-adjusted extrapolations cannot supply that missing support. Together with the Fresh B lock chronology, this limits A3b to retrospective sensitivity evidence. The A2/A3b maps support measurable response heterogeneity under their tested regimes, not equal-dose layer-by-time causality or an optimal schedule.
+The earlier A3b common-support calculation compared 10-step integrated raw $L_2$ norms across three layer groups. The saved corrections have different spatial resolutions (24$\times$16, 48$\times$32, and 96$\times$64), and the traces omit channel counts; raw norms and the reported 0/2,250 overlap result are therefore not used as a cross-layer dose test. Together with the Fresh B lock chronology, A3b remains retrospective sensitivity evidence. Its map shows response heterogeneity under the tested interventions, but does not identify a dose-independent layer-by-window effect or an optimal schedule.
 
 A separate retrospective analysis on the \texttt{FRESH\_CONFIRM\_300} cohort found nine of ten plus-one-corrected associations between LLH--GFL image-space deltas and ground-truth descriptors; the FG-LPIPS/coverage test had adjusted $p=0.0508$. FG-PSNR means ranged from $+4.140$~dB in the lowest Laplacian-variance quartile to $-0.087$ and $-0.029$~dB in the upper two quartiles. These are cohort-specific associations, not a causal complexity effect, a threshold, a schedule selector, or a texture-fidelity result.
 
@@ -425,8 +425,8 @@ The selected color diagnosis contains 26 failure-enriched objects: six earlier f
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.55\textwidth]{figures/fig8_color_failure_01549.pdf}
-\caption{Historical color-shift examples reproduced from the authenticated 01549 Figure~4. Fixed-scale target-view outputs show visible pink/purple mismatch against the reference. The original panel-level object/run mapping is not recoverable. This figure documents the historical failure that motivated the diagnosis; it is not a Fresh C panel, a representative sample, or a colorimetric estimate.}
+\includegraphics[width=\textwidth]{figures/fig6_color_diagnostic_freshc_context_roi.pdf}
+\caption{Matched Fresh C target-view RGB outputs for UID \texttt{f6979d7ff8e54c4daf00fee46f09a139}: reference, No Adapter, GFL, and LLH. Each column shows the same target view (view 0), full context, and shared pixel ROI. This previously viewed object is one of the 20 Fresh C panels in the 26-object diagnosis; its frozen stratum was the lowest C3--GFL FG-LPIPS, not color-selected. It is not independent confirmation or a population estimate, and it is distinct from the unrecoverable legacy 01549 color panels. Full attribution and source/ROI hashes are listed in Supplementary Table~S1 and the figure manifest.}
 \label{fig:color-failure}
 \end{figure*}
 
@@ -446,7 +446,9 @@ LLH -- GFL & $+3.583$ [$+0.462,+6.712$] & -- \\
 \end{tabular}
 \end{table}
 
-GFL lowered reference-relative CIEDE2000 in 24/26 objects, while pink or purple shifts remained in the two cases shown in the submitted 01549 Figure~4 under No Adapter, GFL, and LLH. The decoded RGB output showed the shift before UV projection or baking, and a late denoising snapshot (update 40 of 50) showed it as well. In one selected case, a ground-truth VAE encode--decode isolate had CIEDE2000 4.086 and $\Delta a^*\approx-1.35$, compared with 22.032 and $+1.977$ for GFL. This weakens ordinary VAE round-trip error as the sole explanation in that case; it does not identify the complete cause or rule out other model and conditioning effects.
+GFL lowered reference-relative CIEDE2000 in 24/26 objects, while visible pink or purple shifts remained in two legacy Fig.~4 cases under No Adapter, GFL, and LLH. Their mapping to the original submitted panels cannot be recovered; the traceable Fresh C example in Figure~\ref{fig:color-failure} is a different object and is not presented as a reproduction of those cases. The decoded RGB output showed the shifts before UV projection or baking, and a late denoising snapshot (update 40 of 50) showed one of them. In that case, a ground-truth VAE encode--decode isolate had CIEDE2000 4.086 and $\Delta a^*\approx-1.35$, compared with 22.032 and $+1.977$ for GFL. This weakens ordinary VAE round-trip error as the sole explanation in that case; it does not identify the complete cause or rule out other model and conditioning effects.
+
+A locked P0 trace reproduced the archived RGB pixels for three preselected objects in repeated Python 3.13.5 runs; the Python 3.10 trace reproduced its corresponding archived observer. The first cross-runtime numerical divergence occurred after multiplying the identical FP16 initial latent by the scheduler's initial noise scale (maximum absolute difference 0.0625; RMSE 0.00966). This localizes an execution-stack difference, not the color-generation cause; the three-object trace does not establish cohort-wide cross-stack equivalence.
 
 LLH--GFL also increased mean CIEDE2000 while reducing foreground gradient magnitude ($-0.06772$), high-frequency energy ($-0.00887$), and color entropy ($-0.598$). Lower local variation therefore did not imply better reference-color agreement or greater texture fidelity. The terminology follows Section~\ref{subsec:metrics}: texture variation, image-space agreement, reference-color agreement, subjective preference, baked 3D appearance, and PBR/material fidelity are reported separately.
 
@@ -459,14 +461,15 @@ The historical $N=20$ GLB-native check used 20 UV-compatible objects from the or
 
 The submitted 26-object texture audit and its quantitative Figure~5 cannot be re-traced to object IDs, selection criteria, raw values, and an executable metric definition in the current evidence archive. We therefore remove its 92\% prevalence statement, its “true shape gain” classification, and its RGB-standard-deviation/gradient ratios from the scientific claims. Those statistics would describe variation, not texture fidelity, even if their source records were complete.
 
-Figure~\ref{fig:qualitative} restores the original Fig.~4 role of showing full-object appearance beside a clearly marked local texture region. It compares the reference with GFL, GFH, and C3 for one selected C3--GFL favorable case and one adverse case; every column uses the same target view and pixel ROI within its object. Figure~\ref{fig:c3compare} retains the original C3-versus-fixed-scale question and adds a separate Generic Linear counterexample. These are selected Fresh C RGB illustrations, not a prevalence estimate or a texture-fidelity test. The full six-view, seven-condition panels, including No Adapter and LLH, remain in Supplementary Figure~S1.
+Figure~\ref{fig:qualitative} shows Fresh C full-object appearance beside the same-pixel ROI for a selected C3--GFL favorable case and an adverse case. Figure~\ref{fig:c3compare} shows the fixed-scale comparison and a Generic Linear counterexample. These outcome-selected RGB illustrations do not estimate prevalence or texture fidelity. The full six-view, seven-condition panels, including No Adapter and LLH, remain in Supplementary Figure~S1.
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig4_freshc_context_roi.pdf}
-\caption{Matched Fresh C comparisons under the same frozen object, reference, camera view, checkpoint, runner, seed policy, and inference protocol. Columns show the reference, fixed-low GFL, fixed-high GFH, and TCAS C3. Each panel shows the full target-view context with the shared ROI marked in red, followed by the same-pixel crop. Case (a) is selected because the paired C3--GFL FG-PSNR and FG-LPIPS differences both favor C3; case (b) is an adverse case in which both endpoints favor GFL. The outcome-selected examples are illustrative only and do not estimate case frequency or texture fidelity. They show qualitative local appearance rather than colorimetric agreement; object-specific hue mismatch may remain. The shown images are target-view RGB outputs, not baked textures, unseen-view renders, PBR results, or human-preference evidence. Model credits are in Supplementary Table~S1; source-image hashes and ROI coordinates are in the Fresh C figure manifest.}
+\caption{Matched Fresh C target-view RGB outputs for the same frozen object, reference, camera, checkpoint, runner, seed policy, and inference protocol. Each column pairs the full context (shared ROI in red) with its exact pixel crop. Case (a) was selected because C3 favors GFL on paired FG-PSNR and FG-LPIPS; both endpoints favor GFL in case (b). These outcome-selected examples do not estimate prevalence, texture fidelity, reference-color agreement, or downstream 3D/PBR quality. Model credits are in Supplementary Table~S1; image hashes and ROI coordinates are in the Fresh C figure manifest.}
 \label{fig:qualitative}
 \end{figure*}
+\FloatBarrier
 
 
 
@@ -493,19 +496,19 @@ MV-Adapter, layer/window probe &
 Condition guider plus decoupled multi-view attention; one of four down-block points is raised from 0.75 to 1.00 in one of five 10-step windows. Group residual-dose ratio is 1:0.57:1.46; no equal-realized-dose map was run. &
 98/99 planned objects. The exploratory four-metric Holm-corrected cluster-Wald family found no interaction detected after correction (primary FG-LPIPS Holm $p=0.303$). &
 Interface-specific layer/window sensitivity; not C3 temporal transfer. A corrected non-detection does not show no interaction or equivalence. \\
-MV-Adapter, mapping sensitivity &
-Four down-block points with a layer-wise LLH intervention under the alternate contiguous partition $B'$; per-point multipliers $[0.52018,0.52018,1.47982,1.47982]$ have weighted mean 1. &
-$N=76$. Endpoint responses were mixed; the difference between $B'$ and the original partition was not resolved on the reported metrics. &
-Budget-neutral nominal mapping sensitivity only; not a temporal transfer test, dose-independent mapping law, or general backbone result. The companion M3 profile also changes nominal budget and is retrospective. \\
+MV-Adapter, layer/time profile panel &
+Four condition-guider features were scaled per point; L-FIX, L-LHL, and L-LLH add 228 outputs to the existing global schedules on the same 76-object Exact holdout. &
+Layer-wise/global contrasts are metric-dependent. The two within-profile temporal contrasts show no consistent pattern; their 30 pointwise intervals are unadjusted. &
+Retrospective: protocol and outputs first appear in one preserved commit. This feature-scaling interface differs from GeoTex residual correction and does not establish TCAS transfer. \\
 MVDiffusion, compatibility interface &
-Correspondence-aware decoder-side CPBlocks; the tested multiplier is a product of a layer factor and temporal scale over five blocks. Official SD2-depth weights were unavailable, so all panel conditions used the same compatibility base. &
+Correspondence-aware decoder-side CPBlocks; the tested multiplier is a product of a layer factor and temporal scale over five blocks. The 75-object panel used the compatibility base; a later check found 1,552/1,552 loaded tensors and 12/12 views identical to the native mirror on one object. &
 $N=75$, 12 target views, 50 steps. L--LLH vs.\ G--FL had lower CIEDE2000 ($-1.373$ [$-2.375,-0.418$]) but lower PSNR ($-0.454$ [$-0.752,-0.160$]) and FG-SSIM ($-0.0194$ [$-0.0294,-0.0099$]); LPIPS did not separate. &
-Within-interface, mixed endpoint comparison on a different conditioning path; no shared scale semantics, cross-system dose match, or architecture-causal inference. \\
+Within-interface, mixed endpoint comparison on a different conditioning path; the 75-object panel itself was not rerun on the mirror. No shared scale semantics, cross-system dose match, or architecture-causal inference. \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
-For the 98-object MV-Adapter probe, the original additive-residual bootstrap had an invalid zero-power null and was not used for interaction inference. The exploratory object-cluster Wald test is reported with its corrected family; its non-detection does not establish absence of interaction. The 76-object mapping study is a layer mapping sensitivity analysis, not evidence that C3's temporal profile transfers. MVDiffusion's correspondence-aware path is also interface-specific. Taken together, these probes characterize tested interfaces and do not establish architecture-invariant scheduling.
+For the 98-object MV-Adapter probe, the original additive-residual bootstrap had an invalid zero-power null and was not used for interaction inference. The exploratory object-cluster Wald test is reported with its corrected family; its non-detection does not establish absence of interaction. In the separate 76-object Exact-holdout panel, layer-wise versus global contrasts trade PSNR, color, and ground-truth-relative texture endpoints against FG- and Edge-SSIM. For temporal placement, only one of six pointwise 95\% intervals excludes zero in L-LLH versus L-FIX (direction-adjusted CIEDE2000 $+0.072790$ [$+0.004371,+0.156696$]); only one does so in G-LLH versus G-LHL (Edge-SSIM $-0.000261$ [$-0.000522,-0.000032$]). The 30 intervals are descriptive and unadjusted. The protocol and outputs first appear in the same preserved commit, so this is retrospective sensitivity evidence, not confirmation or an equivalence test. The MVDiffusion panel used a compatibility deployment; a separate check matched its loaded tensors and one object's rendered views to a native mirror, but the full panel was not rerun. These probes remain interface-specific and do not establish architecture-invariant scheduling or transfer of the GeoTex residual intervention.
 
 \subsection{First-round cluster-aware preference study}
 \label{subsec:preference}
@@ -533,22 +536,23 @@ The reported analysis used a two-level participant/object bootstrap with 10,000 
 \subsection{FAC controlled re-examination reported in 01549}
 \label{subsec:facreported}
 
-A controlled re-examination of Full Adaptive Correction (FAC) was previously reported, with the base model, VAE, and GeoTex-Adapter frozen and roughly $6\times10^3$ controller parameters trainable. The stated protocol used the enhanced latent denoising objective (foreground weight 1.7, edge weight 1.3, and a latent-SSIM term), AdamW at peak learning rate $10^{-4}$ with 100 warm-up steps, and 2,000 training steps on a training pool reported as 1,706 objects and disjoint from evaluation. It reported a 300-object paired evaluation: every trained configuration reduced FG-PSNR versus TCAS by 1.10--2.94 dB, with at most 48/300 wins; the untrained C3-envelope control on 12 objects had $\Delta$FG-PSNR $=-0.18$ dB (95\% CI [$-0.42,+0.05$]). The seven reported configurations and endpoint values are retained in Supplementary Table~S11.
+A controlled re-examination of Full Adaptive Correction (FAC) was previously reported, with the base model, VAE, and GeoTex-Adapter frozen and roughly $6\times10^3$ controller parameters trainable. The stated protocol used the enhanced latent denoising objective (foreground weight 1.7, edge weight 1.3, and a latent-SSIM term), AdamW at peak learning rate $10^{-4}$ with 100 warm-up steps, and 2,000 training steps on a training pool reported as 1,706 objects and disjoint from evaluation. It reported a 300-object paired evaluation: every trained configuration reduced FG-PSNR versus TCAS by 1.10--2.94 dB, with at most 48/300 wins; the untrained C3-envelope control on 12 objects had $\Delta$FG-PSNR $=-0.18$ dB (95\% CI [$-0.42,+0.05$]). The seven reported configurations and endpoint values are retained in Supplementary Table~S15.
 
 These FAC outcomes are retained as previously reported results. They are not presented as a new 1008 training run. The current archive audit found that a recovered configuration points to a 1,200-object list rather than the 1,706-object pool stated in 01549, and does not bind the training seed and run outputs in one manifest. We therefore disclose the remaining reproducibility gap and make no code-release claim; TCAS remains the sole training-free method.
 
+\FloatBarrier
 \section{Limitations}
 \label{sec:limitations}
 
 Fresh C is a held-out 300-object comparison whose conditions share one frozen checkpoint, runner, seed policy, inputs, metric implementation, and recorded native-cap semantics. The checkpoint is a controlled retraining and differs from the v1 path named for 01549 Table~4; the 01549 Table~9/FAC work uses a separate v2 strong-residual adapter. These historical v1/v2 differences are reported separately from the within-Fresh-C paired comparison. Fresh C does not numerically reproduce the old $+0.96$~dB Table~4 estimate. The historical main-table endpoint implementation is not recoverable for a numerical equivalence claim. Core-7 and the post-inspection strict-276 profile-placement analysis use the clean-v2 276-object list and the checkpoint SHA recorded for Fresh C, but are separate runs from Fresh C; Core-7 condition records do not establish one shared runner or complete input-tensor identity. They remain retrospective supporting diagnostics rather than confirmatory comparisons.
 
-Texture variation and texture fidelity are distinct. The submitted RGB standard deviation, Laplacian variance, and gradient summaries are not re-used as fidelity measures; their source records and definitions are incomplete, and such metrics can rise with artifacts. Fresh C reports PSNR, LPIPS, and SSIM endpoints but has no validated texture-fidelity measure. The separate retrospective \texttt{FRESH\_CONFIRM\_300} analysis reports a 9/10 adjusted association family and quartile heterogeneity for LLH--GFL image-space deltas; it does not measure fidelity, establish causality, or predict which schedule should be used. The separate 26-object color diagnosis is a failure-enriched, paired analysis rather than a population confirmation: GFL reduced reference-relative CIEDE2000 versus No Adapter, but visible hue mismatch persisted in the two cases shown in the submitted 01549 Figure 4, and LLH reduced local texture measures. These results do not validate a color repair or treat texture variation as fidelity (Supplementary Section S13). The 01549 cluster-aware preference study is a separate subjective choice result, not a fidelity or 3D-quality endpoint. Fresh C has no validated baked-mesh, seam, or PBR measure. Historical N=20 unlit base-color renders provide only a small, mixed unseen-view result.
+Texture variation and texture fidelity are distinct. The submitted RGB standard deviation, Laplacian variance, and gradient summaries are not re-used as fidelity measures; their source records and definitions are incomplete, and such metrics can rise with artifacts. Fresh C reports PSNR, LPIPS, and SSIM endpoints but has no validated texture-fidelity measure. The separate retrospective \texttt{FRESH\_CONFIRM\_300} analysis reports a 9/10 adjusted association family and quartile heterogeneity for LLH--GFL image-space deltas; it does not measure fidelity, establish causality, or predict which schedule should be used. The 01549 cluster-aware preference study is a separate subjective choice result, not a fidelity or 3D-quality endpoint. Fresh C has no validated baked-mesh, seam, or PBR measure. Historical N=20 unlit base-color renders provide only a small, mixed unseen-view result.
 
 An exploratory four-object color-pathway audit found that changing the global appearance embedding can shift chroma. A separate Fresh B input-only audit found that stored embeddings matched neither of the two compared source-conditioning reconstructions within 0.03 for 150/150 inputs. This makes cache/source alignment a plausible contributor, not an established general cause of color drift. The C1 chroma-anchor candidate met its numeric gate (mean unseen-view $\Delta$FG-CIEDE2000 $=-1.5602$, 95\% CI [$-2.2621,-0.6299$], four of four) but failed the locked visual gate: one case showed no clear gain, and another retained mismatch with a faint cyan/blue rim. B2's selected raw-source embedding substitution did not meet its numeric gate (mean object-level change in the lower-is-better $\Delta$FG-CIEDE2000 endpoint $=+0.1729$, 95\% CI [$-0.2044,+0.6810$], one of four improved) and showed no clear visual correction. No independent Fresh B repair validation was performed. These development findings identify a control pathway and a plausible contributor, not a validated correction or a complete root cause.
 
-A separate, failure-enriched 26-object color diagnostic compared No Adapter, GFL, and LLH outputs with paired six-view references. GFL minus No Adapter reduced mean foreground CIEDE2000 by 19.65 (95\% paired object-bootstrap CI [$-26.37,-13.25$]; 24/26 objects), but the two cases shown in the submitted 01549 Figure~4 still showed visible pink or purple hue shifts under No Adapter, GFL, and LLH. LLH minus GFL increased mean CIEDE2000 by 3.58 (95\% CI [$+0.46,+6.71$]) while reducing measured local gradient and high-frequency variation. The selected diagnostic set is not an independent confirmation cohort, and variation measures are not fidelity measures. Pink coloration was visible in a decoded RGB snapshot before baking; a ground-truth VAE round trip did not reproduce the same direction or magnitude of the selected GFL mismatch. These findings narrow the location and exclude simple explanations, but do not identify a complete color-generation cause or validate a repair (Supplementary Section~S13).
+A separate, failure-enriched 26-object color diagnostic compared No Adapter, GFL, and LLH against paired six-view references. GFL reduced mean foreground CIEDE2000 by 19.65 (95\% paired object-bootstrap CI [$-26.37,-13.25$]; 24/26 objects), while visible pink or purple shifts remained in two legacy cases whose original panel mapping is unavailable. LLH increased mean CIEDE2000 by 3.58 (95\% CI [$+0.46,+6.71$]) while reducing local gradient and high-frequency variation. The selected set is not an independent confirmation cohort, and these measures do not establish texture fidelity. Figure~\ref{fig:color-failure} shows one of its 20 Fresh C panels, a different object from either legacy case. A decoded RGB snapshot showed one color shift before baking; a three-object P0 trace localized a cross-runtime divergence to the scheduler's scaling of the shared FP16 initial latent, but neither finding identifies the complete color-generation cause. No repair is validated (Supplementary Section~S13).
 
-The requested TCAS profile does not uniquely determine the applied scale or correction magnitude. Fresh C's native wrapper caps shallow requests at 0.8, and residual norms depend on the adapter output. The strict-276 schedule sums are only approximately matched and do not equalize realized dose; A3b has no cross-layer common support. These data do not identify a dose-independent mechanism, an optimal selector, or a schedule that dominates all endpoints and objects.
+The requested TCAS profile does not uniquely determine the applied scale or correction magnitude. Fresh C's native wrapper caps shallow requests at 0.8, and post-scale corrections depend on the adapter output. The strict-276 schedule sums are only approximately matched and do not equalize their layer-wise correction summaries. A3b's earlier raw-$L_2$ common-support comparison used feature groups with different dimensions, so it does not provide a dimension-normalized cross-layer dose-support test. These data do not identify a dose-independent mechanism, an optimal selector, or a schedule that dominates all endpoints and objects.
 
 We withdraw the CAI optimality proposition and the earlier positive FAC extension claim; the negative FAC controlled re-examination and the cluster-aware 01549 preference study are retained as previously reported first-round results with their stated scope and provenance limits. The old pooled $+0.96$~dB headline and broad texture-retention claim are not used as current evidence. CLIP-IQA is not used to establish texture fidelity. The revised claim boundaries are documented in the changelog.
 

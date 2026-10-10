@@ -41,6 +41,11 @@ def run(args: list[str], cwd: Path | None = None) -> None:
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    run(["python3", str(ROOT / "1008/scripts/build_latex_source_1008.py")])
+    run(["pandoc", str(REVIEW / "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.md"),
+         "--pdf-engine=xelatex", "-V", "geometry:landscape",
+         "-V", "geometry:margin=0.22in", "-V", "fontsize=6pt",
+         "-o", str(REVIEW / "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.pdf")])
 
     active_tex = REVISION / "manuscript_1008.tex"
     review_tex = REVIEW / "Manuscript_1008.tex"
@@ -62,18 +67,24 @@ def main() -> None:
 
     # Figures named by the active manuscript and supplement, kept upload-ready.
     figure_sources = {
-        "fig1_01549_original.pdf": REVISION / "figures/fig1_01549_original.pdf",
+        "fig1_tcas_control.pdf": REVISION / "figures/fig1_tcas_control.pdf",
         "fig2.pdf": REVISION / "fig2.pdf",
         "fig3.pdf": REVISION / "fig3.pdf",
         "fig4_freshc_context_roi.pdf": REVISION / "figures/fig4_freshc_context_roi.pdf",
         "fig5_freshc_context_roi.pdf": REVISION / "figures/fig5_freshc_context_roi.pdf",
+        "fig6_color_diagnostic_freshc_context_roi.pdf": REVISION / "figures/fig6_color_diagnostic_freshc_context_roi.pdf",
         "fig7_c3_development.pdf": REVISION / "figures/fig7_c3_development.pdf",
-        "fig8_color_failure_01549.pdf": REVISION / "figures/fig8_color_failure_01549.pdf",
         "figS1_adverse_c3_gfl.png": REVISION / "figures/figS1_adverse_c3_gfl.png",
-        "figS1_color_detail_failure.png": REVISION / "figures/figS1_color_detail_failure.png",
     }
     for name, src in figure_sources.items():
         copy(src, f"Figures/{name}")
+
+    # Remove superseded color panels that were retired from the active package.
+    for name in (
+        "fig8_color_failure_01549.pdf",
+        "figS1_color_detail_failure.png",
+    ):
+        (OUT / "Figures" / name).unlink(missing_ok=True)
 
     author_review_files = [
         "01549_TO_1008_CHANGELOG.md",
@@ -90,10 +101,27 @@ def main() -> None:
     ]
     for name in author_review_files:
         copy(REVIEW / name, f"Author_Review/{name}")
+    cross_backbone_source = ROOT / "1008/audits/source_evidence/r2/cross_backbone_20261010"
+    cross_backbone_dest = OUT / "Author_Review/Cross_Backbone_Evidence_20261010"
+    if cross_backbone_dest.exists():
+        shutil.rmtree(cross_backbone_dest)
+    shutil.copytree(cross_backbone_source, cross_backbone_dest)
+    preflight_source = ROOT / "1008/audits/source_evidence/r2/applied_budget_preflight_20261010"
+    preflight_dest = OUT / "Author_Review/Applied_Budget_Preflight_20261010"
+    if preflight_dest.exists():
+        shutil.rmtree(preflight_dest)
+    shutil.copytree(preflight_source, preflight_dest)
+    dimension_source = ROOT / "1008/audits/source_evidence/r2/audits/residual_norm_dimension_20261010"
+    dimension_dest = OUT / "Author_Review/Residual_Norm_Dimension_Audit_20261010"
+    if dimension_dest.exists():
+        shutil.rmtree(dimension_dest)
+    shutil.copytree(dimension_source, dimension_dest)
     copy(REVIEW / "figures/FIGURE_ASSET_CREDITS.csv",
          "Author_Review/FIGURE_ASSET_CREDITS.csv")
     copy(REVIEW / "figures/FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv",
          "Author_Review/FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv")
+    copy(ROOT / "1008/audits/source_evidence/r1/fresh_c_visual/FRESH_C_COLOR_FIGURE_SELECTION.csv",
+         "Author_Review/FRESH_C_COLOR_FIGURE_SELECTION.csv")
 
     # Keep the copy-forward forms visible but clearly separated from approved files.
     for name in (
@@ -129,7 +157,10 @@ def main() -> None:
         shutil.copy2(tmpdir / "Titlepage_1008_DRAFT.pdf",
                      OUT / "Titlepage_1008_DRAFT.pdf")
 
-    run(["python3", str(OUT / "supporting_scripts/build_graphical_abstract_1008.py")])
+    graphical_abstract = OUT / "Graphical_Abstract_1008_DRAFT.pdf"
+    graphical_abstract_preview = OUT / "Author_Review/Graphical_Abstract_1008_DRAFT_preview.png"
+    if not graphical_abstract.is_file() or not graphical_abstract_preview.is_file():
+        run(["python3", str(OUT / "supporting_scripts/build_graphical_abstract_1008.py")])
 
     # Verify the included source archive is a paper package, not a data dump.
     forbidden = (".json", ".npz", ".pt", ".pth", ".ckpt", ".glb")

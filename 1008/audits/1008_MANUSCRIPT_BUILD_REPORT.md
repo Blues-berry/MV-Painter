@@ -1,5 +1,7 @@
 # 1008 author-review package build report
 
+> **Historical build report:** this earlier 1008 candidate is superseded by [`../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md`](../submission_1008_author_review/SOURCE_PACKAGE_BUILD_CHECK.md), which records the current 2026-10-10 artifacts and clean-source rebuild.
+
 ## Built artifacts
 
 | Artifact | Result | Notes |

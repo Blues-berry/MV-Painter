@@ -1,0 +1,58 @@
+\paragraph{Retrospective MV-Adapter layer/time panel.} A separate Exact-holdout analysis combines existing global controls with three new layer-wise conditions (L-FIX, L-LHL, L-LLH), totaling 228 new outputs on 76 objects. The wrapper scales four condition-guider feature tensors before they enter the UNet as down-block residuals; this is not the GeoTex ResNet residual-correction interface. Its 3-object identity audit matched the wrapper to the existing global runner on 9/9 schedule/object cases, but does not test the unmodified official pipeline at native scale 1.0. Layer-wise versus global contrasts show metric-dependent directions: PSNR, CIEDE2000, and ground-truth-relative texture error favor layer-wise rows, while FG-/Edge-SSIM favor global rows; FG-LPIPS is not separated. Within-profile temporal comparisons have no consistent endpoint pattern. The 10,000-resample intervals below are pointwise and descriptive, without family-wise correction across 30 metric/comparison cells. The earliest preserved commit adds both protocol and outcomes, so the panel is treated as retrospective rather than confirmatory. It does not establish equivalence or TCAS transfer.
+\begingroup\scriptsize
+\begin{longtable}{lrrrrrr}
+\caption{MV-Adapter Exact-holdout condition means for the 76-object seven-condition panel. These are descriptive interface-specific image metrics and are not pooled with GeoTex or MVDiffusion.}\label{tab:mvadapter-layerwise-means}\\
+\toprule Condition & PSNR$\uparrow$ & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & CIEDE2000$\downarrow$ & GT-texture error$\downarrow$ \\
+\midrule\endfirsthead
+\toprule Condition & PSNR$\uparrow$ & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ & FG-LPIPS$\downarrow$ & CIEDE2000$\downarrow$ & GT-texture error$\downarrow$ \\
+\midrule\endhead
+R0 & 13.114180 & 0.498481 & 0.233429 & 0.183496 & 20.719805 & 1.700798 \\
+G-FL & 13.357177 & 0.527539 & 0.239997 & 0.187693 & 20.149543 & 2.224047 \\
+G-LHL & 13.344064 & 0.528325 & 0.240235 & 0.188051 & 20.182146 & 2.269096 \\
+G-LLH & 13.353306 & 0.527814 & 0.239974 & 0.188346 & 20.157122 & 2.198930 \\
+L-FIX & 13.431922 & 0.523473 & 0.239052 & 0.187647 & 19.877910 & 1.903374 \\
+L-LHL & 13.446348 & 0.525148 & 0.239619 & 0.187920 & 19.868912 & 1.980378 \\
+L-LLH & 13.453797 & 0.523564 & 0.238899 & 0.187731 & 19.805120 & 1.913272 \\
+\bottomrule
+\end{longtable}
+\endgroup
+\begingroup\scriptsize
+\begin{longtable}{p{2.7cm}p{2.3cm}p{5.4cm}p{2.2cm}p{1.7cm}}
+\caption{All five reported MV-Adapter paired contrasts. Deltas are direction-adjusted so positive favors the left condition (lower-is-better metrics are sign-reversed). Intervals are pointwise object-bootstrap percentiles (10,000 resamples; seed 20260928), descriptive and unadjusted.}\label{tab:mvadapter-layerwise-pairs}\\
+\toprule Contrast & Endpoint & Mean $\Delta$ [95\% CI] & Median $\Delta$ & Left favorable \\
+\midrule\endfirsthead
+\toprule Contrast & Endpoint & Mean $\Delta$ [95\% CI] & Median $\Delta$ & Left favorable \\
+\midrule\endhead
+P1: L-LLH vs. G-FL & PSNR$\uparrow$ & $+0.096619\;[+0.014894,+0.186322]$ & $+0.038948$ & 60.5\% \\
+P1: L-LLH vs. G-FL & FG-SSIM$\uparrow$ & $-0.003975\;[-0.007222,-0.001110]$ & $-0.000055$ & 47.4\% \\
+P1: L-LLH vs. G-FL & Edge-SSIM$\uparrow$ & $-0.001098\;[-0.002246,-0.000084]$ & $-0.000068$ & 48.7\% \\
+P1: L-LLH vs. G-FL & FG-LPIPS$\downarrow$ & $-0.000038\;[-0.002249,+0.001836]$ & $-0.000145$ & 43.4\% \\
+P1: L-LLH vs. G-FL & CIEDE2000$\downarrow$ & $+0.344422\;[+0.162359,+0.548366]$ & $+0.074472$ & 67.1\% \\
+P1: L-LLH vs. G-FL & GT-texture error$\downarrow$ & $+0.310776\;[+0.128347,+0.523530]$ & $-0.008452$ & 44.7\% \\
+P2: L-LLH vs. G-LLH & PSNR$\uparrow$ & $+0.100491\;[+0.016411,+0.193981]$ & $+0.033523$ & 60.5\% \\
+P2: L-LLH vs. G-LLH & FG-SSIM$\uparrow$ & $-0.004249\;[-0.007467,-0.001399]$ & $-0.000938$ & 46.1\% \\
+P2: L-LLH vs. G-LLH & Edge-SSIM$\uparrow$ & $-0.001075\;[-0.002200,-0.000087]$ & $-0.000020$ & 47.4\% \\
+P2: L-LLH vs. G-LLH & FG-LPIPS$\downarrow$ & $+0.000615\;[-0.001370,+0.002409]$ & $+0.000046$ & 50.0\% \\
+P2: L-LLH vs. G-LLH & CIEDE2000$\downarrow$ & $+0.352002\;[+0.161829,+0.565100]$ & $+0.083198$ & 63.2\% \\
+P2: L-LLH vs. G-LLH & GT-texture error$\downarrow$ & $+0.285659\;[+0.092803,+0.508436]$ & $-0.029244$ & 46.1\% \\
+P3: L-LLH vs. L-FIX & PSNR$\uparrow$ & $+0.021875\;[-0.021181,+0.064134]$ & $-0.003147$ & 43.4\% \\
+P3: L-LLH vs. L-FIX & FG-SSIM$\uparrow$ & $+0.000092\;[-0.001301,+0.001429]$ & $-0.000029$ & 46.1\% \\
+P3: L-LLH vs. L-FIX & Edge-SSIM$\uparrow$ & $-0.000152\;[-0.001051,+0.000628]$ & $-0.000030$ & 47.4\% \\
+P3: L-LLH vs. L-FIX & FG-LPIPS$\downarrow$ & $-0.000084\;[-0.000821,+0.000518]$ & $+0.000126$ & 59.2\% \\
+P3: L-LLH vs. L-FIX & CIEDE2000$\downarrow$ & $+0.072790\;[+0.004371,+0.156696]$ & $-0.004923$ & 48.7\% \\
+P3: L-LLH vs. L-FIX & GT-texture error$\downarrow$ & $-0.009898\;[-0.088568,+0.077841]$ & $+0.002578$ & 52.6\% \\
+P4: L-LHL vs. G-LHL & PSNR$\uparrow$ & $+0.102285\;[+0.022567,+0.195757]$ & $+0.048007$ & 67.1\% \\
+P4: L-LHL vs. G-LHL & FG-SSIM$\uparrow$ & $-0.003177\;[-0.005872,-0.000730]$ & $-0.000283$ & 47.4\% \\
+P4: L-LHL vs. G-LHL & Edge-SSIM$\uparrow$ & $-0.000615\;[-0.001482,+0.000167]$ & $+0.000066$ & 52.6\% \\
+P4: L-LHL vs. G-LHL & FG-LPIPS$\downarrow$ & $+0.000131\;[-0.002170,+0.002094]$ & $-0.000162$ & 44.7\% \\
+P4: L-LHL vs. G-LHL & CIEDE2000$\downarrow$ & $+0.313234\;[+0.153138,+0.486864]$ & $+0.094149$ & 67.1\% \\
+P4: L-LHL vs. G-LHL & GT-texture error$\downarrow$ & $+0.288718\;[+0.104317,+0.504549]$ & $-0.010427$ & 48.7\% \\
+P5: G-LLH vs. G-LHL & PSNR$\uparrow$ & $+0.009242\;[-0.022729,+0.055429]$ & $+0.000649$ & 53.9\% \\
+P5: G-LLH vs. G-LHL & FG-SSIM$\uparrow$ & $-0.000511\;[-0.001207,+0.000102]$ & $+0.000114$ & 60.5\% \\
+P5: G-LLH vs. G-LHL & Edge-SSIM$\uparrow$ & $-0.000261\;[-0.000522,-0.000032]$ & $+0.000029$ & 53.9\% \\
+P5: G-LLH vs. G-LHL & FG-LPIPS$\downarrow$ & $-0.000296\;[-0.001198,+0.000712]$ & $-0.000079$ & 36.8\% \\
+P5: G-LLH vs. G-LHL & CIEDE2000$\downarrow$ & $+0.025024\;[-0.032059,+0.108336]$ & $-0.003118$ & 42.1\% \\
+P5: G-LLH vs. G-LHL & GT-texture error$\downarrow$ & $+0.070166\;[-0.050221,+0.216403]$ & $-0.003606$ & 43.4\% \\
+\bottomrule
+\end{longtable}
+\endgroup

@@ -1,5 +1,7 @@
 # 1008 final delivery status
 
+> **Historical snapshot:** captured on 2026-10-09 from the then-current `main` branch. Its page counts, hashes, source-archive member count, and GitHub links do not describe this later isolated revision. Use [`submission_1008/FINAL_CG_SUBMISSION_READINESS.md`](submission_1008/FINAL_CG_SUBMISSION_READINESS.md) and [`submission_1008/Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md`](submission_1008/Author_Review/SOURCE_PACKAGE_BUILD_CHECK.md) for the 2026-10-10 author-review package.
+
 **Status:** `AUTHOR_REVIEW_READY / DRAFT`  
 **Submission approval:** `NO`; no journal upload occurred.  
 **Repository:** private `Blues-berry/MVPainter`  

@@ -21,9 +21,11 @@ measurable response heterogeneity in the tested adapter, and the Fresh C
 follow-up reports a positive C3-minus-GFL result on its primary image-space
 endpoint. Those
 findings do not rescue the original CAI optimality argument. Generic linear
-and LLH produce material counter-results, and the A3b dose map has no common
-support. The contribution therefore remains implementation-specific and may
-be judged incremental for *Computers & Graphics*.
+and LLH produce material counter-results. The earlier A3b raw-$L_2$ overlap
+calculation compared feature groups with different spatial dimensions, so it
+does not establish either presence or absence of cross-layer dose support.
+The contribution therefore remains implementation-specific and may be judged
+incremental for *Computers & Graphics*.
 
 ## Difference from prior work and from the original claim
 
@@ -68,12 +70,7 @@ independent replication.
 Fresh B A3b (N=150) reports Holm-adjusted object-cluster interaction
 p=5.37e-43 for FG-LPIPS and p=3.43e-107 for FG-PSNR. The corresponding
 interaction shares are 14.0% and 36.0%, with cell RMSE 0.000342 and 0.0205
-dB. The required common support is **0/2,250 rows**; central 90% realized-dose
-ranges do not overlap (deep 56,359–79,927; middle 11,421–19,336; shallow
-2,816–5,193). The allowed wording is: “Within the tested primary adapter,
-layer and denoising-stage interventions show measurable response
-heterogeneity.” This is not evidence that C3 is optimal or that the
-interaction is dose-independent.
+dB. The former **0/2,250 common-support** result compared integrated raw $L_2$ across feature groups with different spatial dimensions (24×16, 48×32, 96×64; channel counts absent), so it is withdrawn as a cross-layer dose-support test. The development calibration used the same dimension-sensitive quantity to choose A3b's fixed values; those values remain tested settings, not validated equal-dose targets. The allowed wording is: “Within the tested primary adapter, layer and denoising-stage interventions show measurable response heterogeneity.” This is not evidence that C3 is optimal or that the interaction is dose-independent.
 
 ### 3. Schedule profiles are not interchangeable with equal dose
 
@@ -177,7 +174,7 @@ material. The previous page-by-page action register is
 > inference strategy for the existing MVPainter geometry-residual path. The
 > revision will state its low-high-low form as a testable, adapter-specific
 > hypothesis. The A2 and Fresh B layer/window analyses detect response
-> heterogeneity, but the A3b realized-dose ranges have no common support, so
+> heterogeneity, but the A3b raw-$L_2$ support analysis is dimension-confounded across feature groups and does not establish cross-layer dose support, so
 > we do not treat them as proof of a dose-independent law or of C3
 > optimality. We also report that Fresh C supports C3 over GFL on the
 > primary FG-PSNR endpoint in a revision-era follow-up while generic linear

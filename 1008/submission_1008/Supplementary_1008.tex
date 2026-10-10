@@ -17,22 +17,22 @@
 \noindent This supplement supports the revised 01549 manuscript. Fresh C is an image-space comparison on 300 UIDs disjoint from the original 01549 evaluation/probe IDs, the 1,118-object training list, and clean-v2 evaluation IDs. Its primary conditions and same-cohort addendum share one frozen adapter checkpoint, runner source, seed policy, inputs, target views, and metric implementation; the addendum is not an independent replication. Fresh C uses a controlled-retraining checkpoint and is not presented as a numerical reproduction of historical Table 4. Historical cohorts and interface checks are reported separately. Object is the inferential unit; multiple views and wrapper records do not increase $N$.
 
 \section*{S1. Figure asset credits and selection status}
-Main Figures~4--5 use Fresh C reference and method-level RGB outputs in a compact context-plus-shared-ROI layout. The original six-view, seven-condition panels, including No Adapter, LLH, and Generic Linear, remain in Supplementary Figure~S1. The selected examples are outcome-ranked illustrations, not a representative sample. Image, checkpoint, run, seed, ROI, and output hashes are listed in \texttt{FRESH\_C\_FIGURE\_SOURCE\_ROI\_MANIFEST.csv}.
+Main Figures~4--7 use Fresh C reference and method-level RGB outputs in a compact context-plus-shared-ROI layout. The original six-view, seven-condition panels remain in Supplementary Figure~S1. The selected examples are outcome-ranked illustrations, not a representative sample. Image, checkpoint, run, seed, ROI, and output hashes are listed in \texttt{FRESH\_C\_FIGURE\_SOURCE\_ROI\_MANIFEST.csv}.
 
 The Fresh C No Adapter condition sets the geometry-adapter scale to zero. In the MVPainter wrapper, when \texttt{\_adapter\_scale} is unset the geometry residual is applied without a scale multiplier. These are different settings: No Adapter is not a rendered comparison against the unmodified native-default adapter path. Fresh C contains no separate output for that native-default path, so this part of the R1.1 request remains partially unresolved.
 
-The current rights ledger records the four main-figure assets below as CC Attribution (CC BY 4.0), with figure use allowed when attributed. The complete credit line for each use is:
+The current rights ledger records the selected Fresh C assets below as CC Attribution (CC BY 4.0), with figure use allowed when attributed. The complete credit line for each use is:
 \begin{longtable}{p{4.3cm}p{10.9cm}}
-\caption{Attribution for selected Fresh C assets in main Figures~4--5 and Supplementary Figure~S1.}\label{tab:supp-credits}\\
+\caption{Attribution for selected Fresh C assets in main Figures~5--7 and Supplementary Figure~S1.}\label{tab:supp-credits}\\
 \toprule Use & Full attribution \\
 \midrule\endfirsthead
 \toprule Use & Full attribution \\
 \midrule\endhead
-Figure 4(a), C3--GFL endpoint-favourable example & \emph{Building 03} by Shalmon, via Sketchfab (\url{https://sketchfab.com/3d-models/c76ac44df995482185077da81939b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
+Figure 7(a), C3--GFL endpoint-favourable example & \emph{Building 03} by Shalmon, via Sketchfab (\url{https://sketchfab.com/3d-models/c76ac44df995482185077da81939b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
 Figure 5(a), C3-versus-fixed-scale example & \emph{Octaèdre} by Segolene Delamare, via Sketchfab (\url{https://sketchfab.com/3d-models/0571e6db30c84b1593bc55a8e145a430}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
 Figure 5(b), Generic Linear counterexample & \emph{Cube 01} by b0rF4x, via Sketchfab (\url{https://sketchfab.com/3d-models/06fa4974f8cd4d4ea792e98fa1521457}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
-Figure 4(b) and Figure S1(a), adverse C3--GFL example & \emph{Boat Low Poly Game Ready} by INinja, via Sketchfab (\url{https://sketchfab.com/3d-models/d0e116a62bfc4cdd9edf60671073b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
-Figure S1(b), color/detail mismatch example & \emph{E5-5-2} by artsiyu, via Sketchfab (\url{https://sketchfab.com/3d-models/f6979d7ff8e54c4daf00fee46f09a139}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). The complete Fresh C contact sheet is retained for a broader-condition comparison. \\
+Figure 7(b) and Figure S1(a), adverse C3--GFL example & \emph{Boat Low Poly Game Ready} by INinja, via Sketchfab (\url{https://sketchfab.com/3d-models/d0e116a62bfc4cdd9edf60671073b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
+Figure 6, selected Fresh C color/detail illustration & \emph{E5-5-2} by artsiyu, via Sketchfab (\url{https://sketchfab.com/3d-models/f6979d7ff8e54c4daf00fee46f09a139}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). This previously viewed object came from a pre-existing C3--GFL FG-LPIPS stratum and was not selected for color. \\
 \bottomrule
 \end{longtable}
 
@@ -101,7 +101,7 @@ A3b & FG-PSNR & 525.700 & 36.0\%; 0.0205 dB & $3.43\times10^{-107}$ \\
 \bottomrule\end{tabular}
 \end{table}
 
-For A3b, the three layer groups had no common support across 2,250 layer-step rows. Their central 90\% realized-dose ranges were deep 56,359--79,927, middle 11,421--19,336, and shallow 2,816--5,193. Dose-adjusted extrapolations do not supply the missing common support. These results therefore support only measurable response heterogeneity under the tested intervention regime.
+The earlier A3b common-support calculation compared 10-step integrated raw $L_2$ norms across three layer groups. Because the saved correction tensors have different spatial resolutions (24$\times$16, 48$\times$32, and 96$\times$64) and the traces omit channel counts, its central-90\% intervals and 0/2,250 overlap result are not used as a cross-layer dose test. The fixed A3b scale values are retained as the tested bounded profiles; the earlier development calibration also used cross-layer raw $L_2$ and is not interpreted as equal-dose targeting. A3b remains retrospective sensitivity evidence: its map describes response heterogeneity under the tested interventions, but does not identify a dose-independent layer-by-window effect.
 
 The separate Fresh B cohort ($N=150$) supplies schedule-location context for LLH, not evidence for C3. Table~\ref{tab:supp-freshb} preserves both registered LLH comparisons and the post-outcome HLL--LLL diagnostic. Paired intervals use 10,000 object-bootstrap resamples (seed 20261002). The LLH--LFM-EXACT intervals lie within the protocol's practical margins (FG-PSNR $\pm0.5$ dB; FG-LPIPS $\pm0.01$); this is a budget-explained interpretation within those margins, not exact equality. HLL--LLL is exploratory and its endpoint directions differ.
 
@@ -124,6 +124,7 @@ HLL--LLL (exploratory) & FG-LPIPS & +0.00253 [+0.00155,+0.00354] & 40.0\% & $\le
 
 The post-lock generic-schedule extension on this same Fresh B cohort is a retrospective sensitivity analysis, not independent confirmation. Table~\ref{tab:supp-generic} reports the recorded budget-matched comparisons and endpoint-matched linear counter-result. Nominal requested-scale means do not equalize post-scale residual dose; these LLH comparisons do not establish dose-adjusted schedule superiority or strengthen C3 specifically.
 
+\clearpage
 \begingroup\scriptsize
 \begin{longtable}{p{3.4cm}p{1.7cm}p{4.4cm}p{1.3cm}p{2.4cm}}
 \caption{Post-lock Fresh B generic-schedule extension (same $N=150$ cohort). Effects are LLH minus comparator. Budget-matched schedules form the locked eight-schedule family; endpoint-matched linear is the registered counter-comparison.}\label{tab:supp-generic}\\
@@ -147,30 +148,30 @@ LLH--endpoint linear & FG-LPIPS & +0.00109 [+0.0004,+0.0019] & -- & Holm $p=0.00
 
 \clearpage
 \section*{S4. Requested/applied scale and residual-correction accounting}
-Table~\ref{tab:supp-execution} lists representative Fresh C C3 records at five denoising steps. The native caps are 3.0 (deep), 3.5 (middle), and 0.8 (shallow). A cap-active fraction of 100\% means all logged records in that group/step were clipped. The applied correction norm is computed after applying the effective scale and depends on the residual itself; it is a logged implementation quantity, not an independent dose or quality outcome. The 750-row source accounting table contains all 50 steps, three groups, and five strategies.
+Table~\ref{tab:supp-execution} lists representative Fresh C C3 records at five denoising steps. The native caps are 3.0 (deep), 3.5 (middle), and 0.8 (shallow). A cap-active fraction of 100\% means all logged records in that group/step were clipped. Raw correction $L_2$ depends on both the residual and tensor dimensions, so it is not compared across layer groups. The table instead reports the median of wrapper-level mean absolute entries, a dimension-normalized descriptive summary; differences in feature scales and distributions still prevent interpreting it as an equal-dose intervention or quality outcome. The 750-row source accounting table contains all 50 steps, three groups, and five strategies.
 
 \begingroup\scriptsize
 \begin{longtable}{c l c c c r}
-\caption{Representative Fresh C requested/applied scale and post-scale residual-correction accounting. Median correction norms are descriptive log summaries over implementation records; wrappers, objects, and timesteps are not independent experimental units.}\label{tab:supp-execution}\\
-\toprule Step & Layer group & Requested & Applied & Cap active & Median correction $L_2$ \\
+\caption{Representative Fresh C requested/applied scale and post-scale residual-correction accounting. The final column is the median wrapper-level mean absolute correction entry; it is dimension-normalized but remains descriptive. Wrappers, objects, and timesteps are not independent experimental units.}\label{tab:supp-execution}\\
+\toprule Step & Layer group & Requested & Applied & Cap active & Median per-wrapper mean $|c|$ \\
 \midrule\endfirsthead
-\toprule Step & Layer group & Requested & Applied & Cap active & Median correction $L_2$ \\
+\toprule Step & Layer group & Requested & Applied & Cap active & Median per-wrapper mean $|c|$ \\
 \midrule\endhead
-0 & Deep & 1.25 & 1.25 & 0\% & 1309.19 \\
-0 & Middle & 1.25 & 1.25 & 0\% & 468.97 \\
-0 & Shallow & 1.25 & 0.80 & 100\% & 30.86 \\
-12 & Deep & 1.25 & 1.25 & 0\% & 1238.42 \\
-12 & Middle & 1.25 & 1.25 & 0\% & 661.91 \\
-12 & Shallow & 1.25 & 0.80 & 100\% & 42.79 \\
-24 & Deep & 2.50 & 2.50 & 0\% & 2006.94 \\
-24 & Middle & 2.50 & 2.50 & 0\% & 1551.26 \\
-24 & Shallow & 2.50 & 0.80 & 100\% & 52.51 \\
-37 & Deep & 1.25 & 1.25 & 0\% & 672.23 \\
-37 & Middle & 1.25 & 1.25 & 0\% & 631.83 \\
-37 & Shallow & 1.25 & 0.80 & 100\% & 55.62 \\
-49 & Deep & 1.25 & 1.25 & 0\% & 659.98 \\
-49 & Middle & 1.25 & 1.25 & 0\% & 197.82 \\
-49 & Shallow & 1.25 & 0.80 & 100\% & 34.72 \\
+0 & Deep & 1.25 & 1.25 & 0\% & 1.4786 \\
+0 & Middle & 1.25 & 1.25 & 0\% & 0.3540 \\
+0 & Shallow & 1.25 & 0.80 & 100\% & 0.0128 \\
+12 & Deep & 1.25 & 1.25 & 0\% & 1.3969 \\
+12 & Middle & 1.25 & 1.25 & 0\% & 0.4881 \\
+12 & Shallow & 1.25 & 0.80 & 100\% & 0.0151 \\
+24 & Deep & 2.50 & 2.50 & 0\% & 2.2588 \\
+24 & Middle & 2.50 & 2.50 & 0\% & 1.1408 \\
+24 & Shallow & 2.50 & 0.80 & 100\% & 0.0169 \\
+37 & Deep & 1.25 & 1.25 & 0\% & 0.7513 \\
+37 & Middle & 1.25 & 1.25 & 0\% & 0.4596 \\
+37 & Shallow & 1.25 & 0.80 & 100\% & 0.0176 \\
+49 & Deep & 1.25 & 1.25 & 0\% & 0.7354 \\
+49 & Middle & 1.25 & 1.25 & 0\% & 0.1459 \\
+49 & Shallow & 1.25 & 0.80 & 100\% & 0.0116 \\
 \bottomrule
 \end{longtable}
 
@@ -244,13 +245,19 @@ LLH--C3 & FG-PSNR & $+2.036527$ [$+1.806804,+2.260756$] & 227/276 \\
 \bottomrule\end{tabular}
 \end{table}
 
-The frozen MV-Adapter probe analyzed 98 of 99 planned objects; the omitted input was a frozen GLB with path geometry and no triangle faces, so no substitute was used. The production additive-residual bootstrap interaction statistic is retained in the source audit but its null distribution is centered at or above the observed statistic; this test is invalid for interaction inference. The post hoc exploratory object-cluster robust Wald reanalysis uses 8 degrees of freedom and gives FG-LPIPS $W=13.322$, raw $p=0.101$, Holm $p=0.303$; PSNR $W=7.995$, raw $p=0.434$, Holm $p=0.868$; FG-SSIM $W=16.243$, raw $p=0.039$, Holm $p=0.156$; and CIEDE2000 $W=3.945$, raw and Holm $p=0.862$. No metric survives the exploratory four-metric correction. Small adverse shallow FG-LPIPS changes occur in late windows W3--W5 within the registered 15-cell family; the tested scale range may be too weak to reveal larger responses. This bounded, exploratory result does not establish absence of interaction or equivalence. MVDiffusion was evaluated separately on 75 objects using a different correspondence-aware conditioning interface; its within-interface results were mixed/negative across structure, color, and texture endpoints. Neither interface is a matched architecture comparison, so these analyses do not establish architecture causality or cross-backbone generalization. Each system uses its own conditioning and runner, and the measurements are reported within interface rather than as a controlled shared-checkpoint comparison.
+The frozen MV-Adapter layer/window probe analyzed 98 of 99 planned objects; the omitted input was a GLB with path geometry and no triangle faces, so no substitute was used. Its production additive-residual bootstrap had an invalid null and is not used for interaction inference. The post hoc object-cluster robust Wald reanalysis found no interaction surviving its exploratory four-metric Holm correction (FG-LPIPS Holm $p=0.303$; PSNR $p=0.868$; FG-SSIM $p=0.156$; CIEDE2000 $p=0.862$). This does not establish absence of interaction or equivalence.
+
+A separate 76-object Exact-holdout MV-Adapter panel adds layer-wise fixed, L--HL, and L--LH outputs to existing global controls. It scales condition-guider features before UNet down-block residual injection and does not reproduce the GeoTex ResNet residual interface. The wrapper matched the existing global runner bitwise in a 3-object identity audit, but this is not an identity comparison against the unmodified official pipeline at native scale. Table~\ref{tab:mvadapter-layerwise-means} gives the seven condition means and Table~\ref{tab:mvadapter-layerwise-pairs} gives all five paired contrasts across six endpoints. Layer-wise/global mean differences are metric-dependent; object medians and favorable fractions also vary. Within-profile temporal comparisons show one pointwise interval excluding zero in each comparison, with the other five including zero. These 30 intervals are unadjusted and descriptive. The protocol and result files first appear in one preserved commit, so we classify this analysis as retrospective sensitivity rather than confirmation. It establishes neither equivalence nor transfer of TCAS.
+
+The MVDiffusion 75-object schedule panel used a compatibility deployment base. A later check found 1,552/1,552 loaded tensors and 12/12 rendered views for one object identical to a native SD2-depth mirror; the full panel was not rerun. MVDiffusion scales correspondence-aware CPBlock outputs, while depth is concatenated into the latent and left unscaled. Its results remain a separate, mixed endpoint analysis on a different conditioning path; no cross-interface score pooling, architecture-causal claim, or general cross-backbone result is made.
 
 The first-round 01549 Section~4.7 adapter-dependence analysis is retained as a separate within-family result. It reported three outcomes for uniform high scale across adapter regimes: texture flattening without per-layer caps, high-frequency artifact amplification under a strong-residual adapter with per-layer caps, and negligible effect for a weakened adapter. Its same-checkpoint cap ablation reported both flattening and amplification, and its residual-magnitude sweep (0.1$\times$--3$\times$ output projection) reported increasing intervention strength with residual magnitude. A six-object stage ablation reported that the most sensitive stage differed between the main and artifact-prone adapters. These first-round results were explicitly described as adapter-dependent; they are retained as historical, within-architecture evidence and do not answer the current cross-backbone question.
 
 A separate 76-object MV-Adapter study tested layer-wise L--LLH under an alternative budget-neutral contiguous partition B$'$ (per-point multipliers $[0.52018,0.52018,1.47982,1.47982]$, weighted mean 1). Relative to the corresponding global controls, the B$'$ results are mixed across endpoints: the layer condition favors the global controls on FG-SSIM, favors the layer condition on the benefit-oriented CIEDE2000 and GT-relative texture summaries, and does not separate on FG-PSNR, Edge-SSIM, or FG-LPIPS. Its difference from the original partition is not resolved on any reported metric. These data describe this MV-Adapter layer intervention only and are not evidence for the TCAS timestep profile or for a general mapping rule.
 
 The companion M3 profile uses $[0.41953,0.41953,1.19349,1.19349]$, whose mean multiplier is approximately 0.8065. It changes both group assignment and total nominal residual budget, so it is not a pure mapping comparison with B$'$. Its audit classified 16 of 18 direction summaries as stable relative to the original partition, with one small Edge-SSIM attenuation and one near-zero FG-LPIPS sign change. Because the preserved protocol and result rows first appear in the same commit, M3 is retained as retrospective sensitivity. Neither M3 nor B$'$ establishes mapping robustness or cross-backbone generalization.
+
+\input{tables/mvadapter_layerwise_supplement.tex}
 
 \section*{S6. Historical N=20 unseen-view results}
 Table~\ref{tab:supp-n20} reports the bounded historical N=20 GLB results. The subset comprises 20 UV-compatible objects from the original 24-object pool; four inputs were excluded for lack of UVs. Each object is the paired unit after averaging 11 frozen unseen views. Rendering uses unlit base color with native sampler interpretation. Endpoint directions are mixed; these statistics do not establish population-level 3D superiority, PBR/material fidelity, seam quality, or human preference. The source GLB assets and internal montage are not included in this supplement.
@@ -271,15 +278,12 @@ No Adapter & CIEDE2000 & -12.508 [-18.556, -6.529] & 18/20 (90\%) \\
 \end{table}
 
 \section*{S7. Selected negative visual evidence and unresolved 3D checks}
-Figure~\ref{fig:supp-failures} presents selected illustrative Fresh C failure cases. Panel (a) is an object-level case where GFL favours C3 on the paired image-space comparison. Panel (b) illustrates a color/detail mismatch and repeated pattern in the No Adapter output; it is not a C3-specific failure claim. Neither panel estimates failure prevalence. Full attributions appear in Table S1.
+Figure~\ref{fig:supp-failures} presents one selected illustrative Fresh C case where GFL is adverse to C3 on the paired image-space comparison. It does not estimate failure prevalence or color-correction performance. Full attribution appears in Table S1.
 
 \begin{figure}[ht]
 \centering
-\small\textbf{(a) Selected C3--GFL adverse example}\par\vspace{2pt}
-\includegraphics[width=\textwidth,trim=0 36pt 0 0,clip]{figures/figS1_adverse_c3_gfl.png}\par\vspace{5pt}
-\small\textbf{(b) Selected color/detail mismatch example}\par\vspace{2pt}
-\includegraphics[width=\textwidth,trim=0 36pt 0 0,clip]{figures/figS1_color_detail_failure.png}
-\caption{Selected illustrative failure cases from the rights-cleared Fresh C 2D pool. They are not representative estimates and do not support PBR, seam, or human-preference claims.}
+\includegraphics[width=\textwidth,trim=0 36pt 0 0,clip]{figures/figS1_adverse_c3_gfl.png}
+\caption{Selected illustrative adverse C3--GFL case from the rights-cleared Fresh C 2D pool. It is not a representative estimate and does not support color-correction, PBR, seam, or human-preference claims.}
 \label{fig:supp-failures}
 \end{figure}
 
@@ -353,8 +357,9 @@ Gentle schedule & frozen at C3 & 8.77 & 0.4175 & $-1.10$ & 48/300 \\
 \bottomrule
 \end{longtable}
 
-The submitted protocol states that only the LTAG/GSG/FSC controllers (roughly $6\times10^3$ parameters) were trained; the base model, VAE, and GeoTex-Adapter remained frozen. It specifies the enhanced latent denoising objective, AdamW, peak learning rate $10^{-4}$, 100 warm-up steps, and 2,000 training steps on a training pool stated as 1,706 objects and disjoint from the 300-object evaluation set. The 12-object untrained warm-start control was reported at $\Delta$FG-PSNR $=-0.18$ dB, 95\% CI [$-0.42,+0.05$]. A current archive audit found a recovered configuration listing 1,200 training objects and no run-bound seed/output manifest. The original result is therefore retained as reported in 01549 with this reproducibility limitation disclosed; no code-release claim is made.
+The submitted protocol states that only the LTAG/GSG/FSC controllers (roughly $6\times10^3$ parameters) were trained; the base model, VAE, and GeoTex-Adapter remained frozen. It specifies the enhanced latent denoising objective and 2,000 AdamW steps on a training pool stated as 1,706 objects. The separate 12-object untrained control was reported at $\Delta$FG-PSNR $=-0.18$ dB (95\% CI [$-0.42,+0.05$]). A recovered configuration instead lists 1,200 training objects, and no run-bound seed/output manifest was found. We retain the original values as reported, disclose this reproducibility limit, and make no code-release claim.
 
+\clearpage
 \section*{S12. Retrospective texture-complexity boundary}
 This analysis uses the separate FRESH\_CONFIRM\_300 cohort ($N=300$), not Fresh C or Fresh B. LLH and native GFL rows match the frozen object list and share the recorded checkpoint, runner, seed, six unique target views, sampler, and protocol. The paired LLH--GFL mean differences are $+1.2877$ dB FG-PSNR (95\% object-bootstrap CI [$+0.9383,+1.6346$]; 57.7\% LLH-favorable objects) and $-0.01650$ FG-LPIPS ([$-0.01887,-0.01413$]; 73.3\% LLH-favorable objects).
 
@@ -383,8 +388,9 @@ FG-LPIPS & Foreground coverage & $-0.118$ [$-0.233,+0.0002$] & 0.0508 & not reje
 
 Ground-truth foreground Laplacian-variance quartiles contain 75 objects each. The FG-PSNR mean LLH--GFL difference declines from $+4.140$ dB in Q1 (92.0\% favor LLH) to $+1.127$ dB in Q2 (52.0\%), $-0.087$ dB in Q3 (41.3\%), and $-0.029$ dB in Q4 (45.3\%). The FG-LPIPS mean changes are $-0.03745$, $-0.01665$, $-0.00670$, and $-0.00520$ from Q1 to Q4; the favorable-object rates decline from 97.3\% to 50.7\%. These strata describe heterogeneity in this cohort. They do not establish that texture complexity causes the response, define a threshold, validate an object selector, or measure texture fidelity.
 
+\clearpage
 \section*{S13. Paired color-pathway diagnosis and failure boundaries}
-The color diagnosis is a selected, failure-enriched set of 26 objects: six earlier figure cases and 20 Fresh C panels. It is not a random sample, a new holdout, or a population estimate. No Adapter, GFL, and LLH were compared on the same object inputs, checkpoint and runner, with six unique target views per object (78 object-condition records). CIEDE2000 and color-difference components were recomputed from hash-identified RGB images and frozen foreground masks. The object-level intervals below are paired percentile bootstrap intervals (20,000 resamples, seed 61008); they are descriptive and no confirmatory multiplicity family was defined for this diagnostic.
+The color diagnosis is a selected, failure-enriched set of six earlier cases and 20 Fresh C panels; it is neither random nor a new holdout. No Adapter, GFL, and LLH were compared on the same inputs, checkpoint, and runner across six unique target views (78 object-condition records). CIEDE2000 was recomputed from hash-identified RGB and frozen masks. Intervals are descriptive paired object bootstraps (20,000 resamples, seed 61008); no confirmatory multiplicity family was defined. Figure~6 shows one of the 20 Fresh C panels (UID \texttt{f6979d7ff8e54c4daf00fee46f09a139}); its pre-existing C3--GFL stratum was lowest FG-LPIPS, not color-based, and it is distinct from the legacy pink-shift cases.
 
 \begin{table}[ht]
 \centering\scriptsize
@@ -408,8 +414,10 @@ LLH -- GFL & Foreground color entropy & $-0.598$ & [$-0.703,-0.502$] \\
 \end{tabular}
 \end{table}
 
-GFL lowered reference-relative CIEDE2000 in 24/26 objects, yet the two cases shown in the submitted 01549 Figure~4 retained pink or purple shifts under No Adapter, GFL, and LLH. LLH had higher mean CIEDE2000 and lower gradient, high-frequency energy, and color entropy than GFL; these changes do not show improved fidelity. The decoded RGB showed pink before UV projection or baking, and a late denoising snapshot (update 40 of 50) showed it as well. On one selected case, a ground-truth VAE encode--decode isolate gave CIEDE2000 4.086 and $\Delta a^*\approx-1.35$, while GFL gave 22.032 and $+1.977$. This weakens ordinary VAE round-trip error as the sole explanation but does not identify the complete cause.
+GFL lowered reference-relative CIEDE2000 in 24/26 objects, but visible pink or purple remained in two legacy cases under all three conditions. LLH increased mean color error while reducing local variation, not fidelity. The RGB shift was visible before baking and at denoising update 40. For one case, a ground-truth VAE round trip gave CIEDE2000 4.086 and $\Delta a^*\approx-1.35$, versus 22.032 and $+1.977$ for GFL; this weakens a VAE-only explanation but does not identify the cause.
 
-A feature-relative residual gate was negative: versus C3 it increased mean CIEDE2000 by 1.35 across 26 objects and by 3.18 in the six earlier cases, with no clear visual reduction in pink shift. No further repair search was started because no causal control point was identified. No complete cause or validated repair is established.
+A locked P0 trace of three preselected objects reproduced saved RGB pixels exactly in repeated Python 3.13.5 runs; Python 3.10 reproduced its corresponding archived observer. The first cross-runtime tensor difference followed multiplication of the shared FP16 initial latent by the scheduler noise scale (maximum absolute difference 0.0625; RMSE 0.00966; 32.3\% changed). This resolves output identity only for these three traces; it establishes neither cohort-wide cross-stack equivalence nor the color cause.
+
+The feature-relative residual gate increased mean CIEDE2000 by 1.35 across 26 objects and 3.18 in the six earlier cases, with no clear visual improvement. The complete cause remains unresolved; no repair is validated.
 
 \end{document}

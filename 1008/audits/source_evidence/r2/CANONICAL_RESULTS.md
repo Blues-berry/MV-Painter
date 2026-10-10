@@ -24,11 +24,11 @@
 | A2 | 300 对象、15 个 layer-window cell 的探索性/native-dose response map 显示异质性；早期 production interaction bootstrap 有零功效缺陷，后续以经验证的 cluster-Wald/GEE 重新审计。 | 仅探索性描述；不能证明 dose-independent 交互、最优 schedule 或确认性复制。
 | FRESH_CONFIRM_B / B2 | N=150、4,500/4,500 行门禁通过。LLH−LFM-EXACT：FG-PSNR +0.325 dB [+0.209,+0.446]，FG-LPIPS −0.00460 [−0.00563,−0.00357]；两项区间都落在预先设定的 practical margins 内。 | 同 cohort、按锁定比较解释；边际差异不等于普适或剂量独立机制。HLL−LLL 的方向不支持跨端点“early-high hurts”结论。
 | B generic extension | 八个 schedule 扩展条件通过行完整性门禁；在 B 解盲后的同 cohort sensitivity。 | 后锁定敏感性，不是独立确认；实际 residual-dose 的共同支持不足以建立剂量调整后的胜者。
-| A3b | 15 个有界 layer×window intervention；统计交互可检出，但发展期剂量校准偏离目标，deep/middle/shallow 三者实际剂量 central-90% 共同支持为 0/2,250 行。 | `PARTIAL`。不能称 equal-dose、dose-independent 或已识别的纯控制律。
+| A3b | 15 个有界 layer×window intervention；统计交互可检出。此前发展期“等剂量校准”和 0/2,250 common-support 结论都使用跨不同特征维度的 raw L2，现不作跨层剂量解释。 | `PARTIAL`。保留为测试干预下的响应异质性；未识别 equal-dose 或 dose-independent 控制律。
 | strict-276 | 276 对象、14 个 endpoint/contrast 汇总。C3−GFL FG-PSNR +1.207771 dB，名义 95% CI [+1.116967,+1.294989]，259/276 有利。 | 回溯性 same-cohort 支持；旧 runner/input-tensor provenance 不完整，不能称独立确认或复制。
 | E1 multi-seed | 固定 48-object 子集、3 个固定 generation seeds；576 新行 gate PASS。LPIPS 对 GFL、C3、LFM-exact 有支持，PSNR 混合。 | 实现随机种子敏感性；不是独立对象确认，也不是随机种群 seed inference。
 | E2 static 2×2 | 同 48-object/3-seed 子集；576 个 logical rows gate PASS。Deep+middle 同步提高在两个主图像端点上有支持；shallow LPIPS 变差，FG-PSNR 有 deep+middle×shallow interaction。 | 固定 seed 的静态尺度敏感性；没有时间变化测试，不支持 equal-realized-dose 或 dose-free interaction。
-| MV-Adapter / MVDiffusion | MV-Adapter 完成 98/99 planned objects；校正后的 interaction 未显著。MVDiffusion 75 objects、不同 conditioning interface，layer-wise 比较在结构/颜色与纹理指标间呈混合/负向取舍。 | 分开作为接口边界，不合并分数、不推断 architecture causality 或普适跨骨干迁移。
+| MV-Adapter / MVDiffusion | 除 98/99 probe 外，MV-Adapter 新增 76-object 七条件 layer/time 面板（228 个 layer-wise 输出），端点对比混合，方案与结果在同一保留 commit 首次出现；30 个区间均为未校正 pointwise bootstrap。MVDiffusion 75-object 面板在 compatibility base 上完成，结果混合；后续 native-mirror 检查仅验证 1,552/1,552 个载入张量和单对象 12/12 视图，完整面板未重跑。 | 分开作为回顾性接口边界，不合并分数、不推断 architecture causality、等效或普适跨骨干迁移。
 
 ## 3D、seam、CAI、复现与发布
 
@@ -37,7 +37,7 @@
 - CAI **DESCRIPTIVE_ONLY**：没有 prospective predictor 验证、没有唯一 schedule selector。R2.1 仍为 **OPEN / VENUE RISK**；不得主张 layer×timestep scheduling 的普遍新颖性或 C3 为已证最优。
 - Figure D 的当前 20 个候选图像有 20/20 当前 CC BY 校验和逐项 attribution。300-object 权利清单为 20 `FIGURE_ONLY`、271 `METRICS_ONLY`、9 `UNKNOWN`；未知资产和源 GLB 排除。
 - 旧 compact package 的有限 clean-checkout rebuild 曾 PASS；这不等于当前 submission candidate 通过。当前 candidate 缺少 clean committed snapshot / clean rebuild，故 `REPRODUCIBILITY=FAIL`、`PUBLIC_RELEASE=FAIL`。
-- 主稿文件 15/15 保持历史 hash；此次归档未改主稿。
+- 当前作者审阅稿已纳入上述回顾性跨接口证据；它不改变 Fresh C 主结果或本页证据等级，也不构成跨骨干迁移结论。
 
 ## 本阶段排除
 

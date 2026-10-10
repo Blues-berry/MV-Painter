@@ -31,12 +31,15 @@ ROI_BBOX = {
     "d0e116a62bfc4cdd9edf60671073b306": (48, 90, 208, 210),
     "0571e6db30c84b1593bc55a8e145a430": (48, 90, 208, 210),
     "06fa4974f8cd4d4ea792e98fa1521457": (48, 90, 208, 210),
+    "f6979d7ff8e54c4daf00fee46f09a139": (48, 90, 208, 210),
 }
 METHODS = {
     "Reference": ("reference", "reference"),
+    "No Adapter": ("primary", "no_adapter"),
     "GFL": ("primary", "native_gfl"),
     "GFH": ("primary", "native_gfh"),
     "C3": ("primary", "native_gc3"),
+    "LLH": ("addendum", "layer_llh"),
     "Generic Linear": ("addendum", "gen_linear"),
 }
 EXAMPLES = {
@@ -51,6 +54,11 @@ EXAMPLES = {
          ("Reference", "GFL", "GFH", "C3")),
         ("06fa4974f8cd4d4ea792e98fa1521457", "Generic Linear counterexample",
          ("Reference", "GFL", "C3", "Generic Linear")),
+    ],
+    "fig6_color_diagnostic": [
+        ("f6979d7ff8e54c4daf00fee46f09a139",
+         "Selected Fresh C color/detail example; not selected for color",
+         ("Reference", "No Adapter", "GFL", "LLH")),
     ],
 }
 
@@ -139,6 +147,7 @@ def draw_panel(
     manifests: dict,
     tables: dict[str, dict[str, dict[str, str]]],
     output_dir: Path,
+    selection_record: dict[str, str] | None = None,
 ) -> list[dict[str, str]]:
     scale = 2
     col_w, context_h = 320, 320
@@ -152,9 +161,11 @@ def draw_panel(
     label_font, small_font = font(17), font(15)
     display_names = {
         "Reference": "Reference",
+        "No Adapter": "No Adapter",
         "GFL": "Fixed Low (GFL)",
         "GFH": "Fixed High (GFH)",
         "C3": "TCAS (C3)",
+        "LLH": "Layer L-L-H (LLH)",
         "Generic Linear": "Generic Linear",
     }
 
@@ -273,6 +284,13 @@ def draw_panel(
                 "condition_group": group,
                 "condition": condition,
                 "inference_protocol": "Fresh C saved output; matched UID, frozen checkpoint, runner, shared object seed, reference and target-view camera",
+                "selection_record": selection_record.get("selection_record_source", "") if selection_record else "",
+                "selection_sample_id": selection_record.get("sample_id", "") if selection_record else "",
+                "selection_focal_contrast": selection_record.get("focal_contrast", "") if selection_record else "",
+                "selection_stratum": selection_record.get("selection_stratum", "") if selection_record else "",
+                "selection_previously_viewed": selection_record.get("previously_viewed", "") if selection_record else "",
+                "selection_independent_confirmation": selection_record.get("independent_confirmation", "") if selection_record else "",
+                "selection_use": selection_record.get("figure_use", "") if selection_record else "",
             })
 
         # Keep the crop label below context, with a small marker in each cell.
@@ -307,6 +325,26 @@ def main() -> None:
     if not (data_root / "fresh_c_objects.txt").is_file():
         raise FileNotFoundError(data_root / "fresh_c_objects.txt")
     cohort = {line.strip() for line in (data_root / "fresh_c_objects.txt").read_text().splitlines() if line.strip()}
+    selection_rows = read_csv(args.manifest_dir / "FRESH_C_COLOR_FIGURE_SELECTION.csv")
+    if len(selection_rows) != 1:
+        raise RuntimeError("expected one frozen Fresh C color-figure selection record")
+    selection = selection_rows[0]
+    expected_selection = {
+        "sample_id": "freshc_panel_13",
+        "uid": "f6979d7ff8e54c4daf00fee46f09a139",
+        "focal_contrast": "C3-GFL",
+        "selection_stratum": "lowest_focal_FG_LPIPS",
+        "reverse_orientation": "False",
+        "previously_viewed": "True",
+        "independent_confirmation": "False",
+        "output_action": "reuse_existing_identity_verified_rgb",
+    }
+    for field, expected in expected_selection.items():
+        if selection.get(field) != expected:
+            raise RuntimeError(f"unexpected frozen color-figure selection {field}: {selection.get(field)!r}")
+    selection_source = Path(selection["selection_record_source"])
+    if not selection_source.is_file() or sha256(selection_source) != selection["selection_source_sha256"]:
+        raise RuntimeError("frozen color-figure selection source hash mismatch")
     gallery_rows = read_csv(args.manifest_dir / "gallery_asset_sha256.csv")
     source_manifest: dict[tuple[str, str, str], dict[str, str]] = {}
     for row in gallery_rows:
@@ -320,11 +358,15 @@ def main() -> None:
         for uid, _, _ in examples:
             if uid not in cohort:
                 raise RuntimeError(f"selected UID is not in the frozen Fresh C cohort: {uid}")
-            for group, condition in (("primary", "native_gfl"), ("primary", "native_gfh"),
-                                     ("primary", "native_gc3"), ("addendum", "gen_linear")):
+            for group, condition in (("primary", "no_adapter"), ("primary", "native_gfl"),
+                                     ("primary", "native_gfh"), ("primary", "native_gc3"),
+                                     ("addendum", "layer_llh"), ("addendum", "gen_linear")):
                 if uid not in tables[group].get(condition, {}):
                     raise RuntimeError(f"missing Fresh C metric row: {uid}/{condition}")
-        all_rows.extend(draw_panel(figure_id, data_root, source_manifest, manifests, tables, args.output_dir))
+        all_rows.extend(draw_panel(
+            figure_id, data_root, source_manifest, manifests, tables, args.output_dir,
+            selection if figure_id == "fig6_color_diagnostic" else None,
+        ))
 
     manifest_path = args.output_dir / "FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv"
     with manifest_path.open("w", newline="", encoding="utf-8") as stream:

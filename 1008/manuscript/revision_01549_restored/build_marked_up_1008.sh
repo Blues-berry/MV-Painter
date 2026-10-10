@@ -28,6 +28,9 @@ float_marking = r"""\renewcommand{\DIFaddbeginFL}{}
 \renewcommand{\DIFdelendFL}{}
 \renewcommand{\DIFaddFL}[1]{#1}
 \renewcommand{\DIFdelFL}[1]{}
+\setcounter{dbltopnumber}{3}
+\renewcommand{\dbltopfraction}{0.90}
+\renewcommand{\textfraction}{0.10}
 """
 if source.count(marker) != 1:
     raise SystemExit("Expected one document start in latexdiff output")

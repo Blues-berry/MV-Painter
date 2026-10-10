@@ -12,10 +12,10 @@ A3b is the bounded Fresh B map on N=150 objects. Its corrected object-cluster Wa
 
 ## Dose and causal limits
 
-- A3b's three-layer dose model has **0/2,250 common-support rows**.
-- The central 90% dose ranges do not overlap as required for an observed equal-dose comparison: deep 56,359–79,927; middle 11,421–19,336; shallow 2,816–5,193.
-- Dose-adjusted linear/log fits are extrapolative. Realized dose is post-treatment and cannot be treated as a clean causal adjustment here.
-- A3 is a high-dose stress regime on the same underlying cohort; it does not independently replicate A2.
+- The earlier A3b common-support statistic (0/2,250) and central-90% ranges came from integrated raw $L_2$ norms across feature groups with spatial sizes 24×16, 48×32, and 96×64; channel counts were not logged. These raw-norm comparisons are not dimension-normalized across layer groups and are withdrawn as evidence about cross-layer dose support.
+- The probe-24 development calibration that set A3b's fixed scale values also used cross-layer raw $L_2$. Its equal-dose target and approximate-balance failure labels are not dimension-validated; retain the frozen values only as the tested bounded profiles.
+- The post-hoc per-entry mean-absolute sensitivity remains descriptive, not a validated dose metric. The A3b linear/log models used the dimension-sensitive raw-$L_2$ covariate and are post-treatment associations; they do not identify an independent dose effect.
+- A3 is a higher-scale stress intervention on the same underlying cohort, not an independent replication of A2. Its within-layer image-space stress observations remain reportable, but cross-layer equal-dose interpretations are not.
 
 ## Interface boundary
 

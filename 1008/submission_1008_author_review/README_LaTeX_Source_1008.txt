@@ -12,6 +12,8 @@ From revision_01549_restored/ run:
   bash build_marked_up_1008.sh
   bash build_original_01549.sh  # optional authenticated baseline comparison
 
-Build outputs go under revision_01549_restored/build/. The source lock is a plain SHA-256 text file. No experiment JSON, raw participant data, checkpoints, caches, or generated object collections are included. The Fresh C figure assets in the paper are selected final outputs; the full run manifests and provenance are in the repository author-review package, while large raw RGB outputs remain in their controlled local evidence store.
+Build outputs go under revision_01549_restored/build/. The source lock is a plain SHA-256 text file. No experiment JSON, raw participant data, checkpoints, caches, or generated object collections are included. The Fresh C figure assets in the paper are selected final outputs. Figure 6 uses a rights-cleared CC BY 4.0 asset and a frozen, previously viewed sample that was not selected for color; its one-row selection record and image/source hashes are included in the archive and author-review package. Large raw RGB outputs remain in their controlled local evidence store. The retired historical color panel remains only in the authenticated 01549 source archive and is not referenced by the active manuscript.
+
+The historical C3 development plot's title and axis labels can be regenerated with revision_01549_restored/scripts/relabel_development_probe_figure.py (Python 3, Pillow, ReportLab, and Poppler's pdfinfo/pdfimages). The script retains the original plotted pixels and replaces only the interpretive labels. The author-generated vector Figure 1 can be rebuilt with revision_01549_restored/scripts/build_tcas_control_figure.py (Python 3 and ReportLab); its PDF is included in the archive.
 
 Historical status: 01549 is the 2026-09-07 post-first-round submission. The enclosed 1008 source is a second-round revision. It is not a submission approval.

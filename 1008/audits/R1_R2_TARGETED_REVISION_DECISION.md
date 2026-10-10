@@ -13,9 +13,9 @@ does not edit the TeX or mark either reviewer concern closed.
 ### 1. Which R2 evidence strengthens TCAS without changing its identity?
 
 - A2 and Fresh B A3b show measurable response heterogeneity across the tested
-  layer/window interventions. A3b is bounded and has 0/2,250 realized-dose
-  common-support rows, so it supports motivation, not an equal-dose control
-  law or C3 optimality.
+  layer/window interventions. A3b is bounded; its raw-$L_2$ common-support
+  test is dimension-confounded across groups, so it cannot establish or rule
+  out equal-dose support, a dose-independent law, or C3 optimality.
 - Fresh B LLH profile comparisons show that timing placement can matter on
   named contrasts: LLH−LFM-EXACT is within prespecified practical margins,
   LLH−HLL is heterogeneous on FG-PSNR, and LLH−LLL changes requested
