@@ -54,7 +54,7 @@ We evaluate the recorded C3 profile against fixed and alternative scheduled cont
 
 The contributions are:
 
-(1) \textbf{Control formulation.} We define and implement three-stage, timestep-conditioned scaling on an existing geometry-adapter residual path, explicitly distinguishing requested scales, applied scales after native caps, and post-scale residual corrections. The Fresh C execution records and the 50-step, three-layer accounting in Supplementary Section~S4 make these semantics reproducible for the tested wrapper; the formulation is an operational description, not a new general scheduling operator.
+(1) \textbf{Measured control semantics.} We express the existing GeoTex inference-scale control as a three-stage request and document how native caps determine applied values and how adapter activations determine the resulting residual corrections. Fresh C execution records and the 50-step, three-layer accounting in Supplementary Section~S4 make these semantics reproducible for the tested wrapper; this is an operational account, not a new general scheduling operator.
 
 (2) \textbf{Controlled empirical characterization.} We provide a paired 300-object comparison of fixed and scheduled controls, including the registered C3--GFL FG-PSNR result, the stronger GFH and Generic Linear means, and the LLH endpoint trade-off (Table~\ref{tab:freshc-contrasts}). We separately report strict-276 temporal placement and layer-window sensitivity, identifying where nominal applied-scale sums or realized residual magnitudes prevent a timing-only or dose-independent interpretation (Table~\ref{tab:temporal-placement}; Supplementary Sections~S3--S5).
 
@@ -73,7 +73,7 @@ Paint3D, MVPaint, Hunyuan3D 2.0, and MVPainter use geometry-conditioned multi-vi
 \subsection{Adapter-Augmented Diffusion Models and Geometric Control}
 \label{subsec:adapter}
 
-T2I-Adapter and ControlNet inject spatial conditions into pretrained diffusion models through controllable branches \cite{mou2023t2iadapter,zhang2023controlnet}. IP-Adapter introduces image prompts through decoupled attention \cite{ye2023ipadapter}; LoRA and related methods use scaled low-rank updates \cite{hu2022lora,liu2024dora,zhang2023adalora}. These methods establish condition and residual scaling as common implementation controls. TCAS does not introduce adapter conditioning or a new multi-view backbone; it studies a requested scale on the existing GeoTex-Adapter residual path.
+ControlNet and T2I-Adapter provide learned spatial-conditioning branches or feature injections, whose contribution can be weighted by an inference-time condition-strength scale \cite{mou2023t2iadapter,zhang2023controlnet}. They establish conditioning strength as a practical control, but their injected tensors and scaling sites do not share a numerical dose with GeoTex. The GeoTex-Adapter path in the 01549 study already exposes an inference-time residual scale and evaluates fixed requests. TCAS reuses that control point as a three-stage request over sampling progress, while recording how wrapper-group caps change the applied values and how adapter activations determine the resulting corrections. It adds no learned branch or schedule selector. IP-Adapter introduces image prompts through decoupled attention \cite{ye2023ipadapter}; LoRA and related methods use scaled low-rank updates \cite{hu2022lora,liu2024dora,zhang2023adalora}.
 
 \subsection{Diffusion Guidance Scheduling and Timestep Control}
 \label{subsec:guidance}
@@ -482,7 +482,7 @@ Table~\ref{tab:cross-interface} places the primary GeoTex path beside the auxili
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{Interface-specific intervention evidence. Nominal budgets are described within each implementation; no cross-interface realized-dose match is available. These rows are not architecture-matched replications. The MVDiffusion contrast is reported as raw condition A minus condition B; lower FG-LPIPS, CIEDE2000, and GT-relative texture error are favorable, whereas higher PSNR and SSIM are favorable.}
+\caption{Interface-specific intervention evidence. Nominal budgets are described within each implementation; no cross-interface realized-dose match is available. These rows are not architecture-matched replications. The MVDiffusion contrast is reported as raw condition A minus condition B; lower FG-LPIPS, CIEDE2000, and GT-relative texture error are favorable, whereas higher PSNR, FG-SSIM, and Edge-SSIM are favorable.}
 \label{tab:cross-interface}
 \begin{tabular}{p{2.4cm}p{4.0cm}p{4.2cm}p{4.5cm}}
 \toprule

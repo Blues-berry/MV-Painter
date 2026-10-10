@@ -14,6 +14,8 @@ The A3b map is retained as response heterogeneity under the tested interventions
 
 ## Reviewer status
 
+The source-verified item-by-item closure, evidence identity, page locators, response coverage, and residual limits are recorded in `Author_Review/FINAL_REVIEWER_CLOSURE_MATRIX.md`.
+
 | Issue | Status |
 |---|---|
 | R1.1 color and 3D fidelity | Partial; failure-enriched color analysis, no validated repair or valid Fresh C bake/seam/PBR result. |
@@ -41,9 +43,10 @@ The A3b map is retained as response heterogeneity under the tested interventions
 ## Final gates
 
 `SCIENTIFIC_EVIDENCE_FREEZE = YES`  
-`REVIEWER_RESPONSE_READY = PARTIAL`  
+`REVIEWER_RESPONSE_READY = YES, WITH EXPLICIT PARTIAL/OPEN ITEMS`  
 `MANUSCRIPT_BUILD_PASSED = YES`  
 `SUBMISSION_PACKAGE_COMPLETE = YES`  
+`SUBMISSION_READY = NO`  
 `SUBMISSION_APPROVED = NO`
 
 “Build passed” refers to the repository's LaTeX scripts and clean-archive rebuilds. It does not imply author approval, authenticated reviewer wording, or journal submission. No GPU experiment was launched.

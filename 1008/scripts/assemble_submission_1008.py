@@ -46,6 +46,8 @@ def main() -> None:
          "--pdf-engine=xelatex", "-V", "geometry:landscape",
          "-V", "geometry:margin=0.22in", "-V", "fontsize=6pt",
          "-o", str(REVIEW / "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.pdf")])
+    run(["pandoc", str(REVIEW / "Response_to_Reviewers_1008.md"),
+         "-o", str(REVIEW / "Response_to_Reviewers_1008.docx")])
 
     active_tex = REVISION / "manuscript_1008.tex"
     review_tex = REVIEW / "Manuscript_1008.tex"
@@ -60,6 +62,7 @@ def main() -> None:
         "Supplementary_1008.pdf": REVIEW / "Supplementary_1008.pdf",
         "Response_to_Reviewers_1008.md": REVIEW / "Response_to_Reviewers_1008.md",
         "Response_to_Reviewers_1008.pdf": REVIEW / "Response_to_Reviewers_1008.pdf",
+        "Response_to_Reviewers_1008.docx": REVIEW / "Response_to_Reviewers_1008.docx",
         "LaTeX_Source_1008.zip": REVIEW / "LaTeX_Source_1008.zip",
     }
     for name, src in core.items():
@@ -94,6 +97,7 @@ def main() -> None:
         "FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv",
         "REVIEWER_CLAIM_EVIDENCE_MATRIX.csv",
         "REVIEWER_TO_MANUSCRIPT_TRACEABILITY.csv",
+        "FINAL_REVIEWER_CLOSURE_MATRIX.md",
         "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.md",
         "UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.pdf",
         "REVIEW_PACKAGE_INDEX.md",
@@ -141,9 +145,7 @@ def main() -> None:
         if not (OUT / "Administrative_Carryover_0907" / name).is_file():
             raise FileNotFoundError(OUT / "Administrative_Carryover_0907" / name)
 
-    # Produce editable reviewer-response and combined convenience copies.
-    run(["pandoc", str(OUT / "Response_to_Reviewers_1008.md"),
-         "-o", str(OUT / "Response_to_Reviewers_1008.docx")])
+    # Produce combined convenience copies.
     run(["pandoc", str(OUT / "Cover_Letter_1008_DRAFT.md"),
          "-o", str(OUT / "Cover_Letter_1008_DRAFT.docx")])
     run(["pandoc", str(OUT / "Cover_Letter_1008_DRAFT.md"),

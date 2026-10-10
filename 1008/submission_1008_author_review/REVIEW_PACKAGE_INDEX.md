@@ -10,6 +10,7 @@
 - Reviewer response: synchronized Markdown source, editable DOCX, and page count recorded in the build check.
 - Figure 1 (main p. 4) is an author-generated vector schematic that shows the TCAS cap-aware scale gate on the GeoTex residual path. Figures 4–7 appear with their related development/evaluation text (main pp. 8–13); none is deferred beyond the references. Figure 6 uses a licensed, hash-traced Fresh C case; the unrecoverable historical panel is absent from the active package.
 - `01549_TO_1008_CHANGELOG.md`: concise statement of retained, revised, removed, and added scientific claims.
+- `FINAL_REVIEWER_CLOSURE_MATRIX.md`: source-verified R1.1–R2.3 closure, with evidence identity, final PDF locations, response coverage, and remaining limits.
 - `Reviewer_Source/SECOND_ROUND_REVIEWER_COMMENTS.txt`: exact local plain-text reviewer source, retained for author traceability; it is not part of the journal upload files. SHA-256: `52d5a02718cbcf1b452293fe5a6953231f10fc9ce4cdf6cce400e86deb521245`.
 - `UNRESOLVED_REVIEWER_RISKS_AND_EXPERIMENT_DECISIONS.md` and its one-page PDF: current reviewer risks and gated E1–E3 decisions.
 - `LaTeX_Source_1008.zip`: deterministic clean source archive with the active figures, figure manifests, frozen Figure 6 selection row, and original 01549 baseline sources. Its manuscript and Supplement TeX match the active sources byte-for-byte.
