@@ -1,0 +1,67 @@
+{
+  "status": "FROZEN_BEFORE_MVA_APG_OUTPUTS_ON_EXISTING_GSO_COHORT",
+  "cohort": "Same fixed canonical100, no quality selections; candidate generation already underway",
+  "seeds": [
+    42,
+    2026,
+    31415
+  ],
+  "presets": {
+    "apg_projection_only": {
+      "eta": 0.0,
+      "norm_threshold": 0.0,
+      "momentum": 0.0
+    },
+    "apg_paper_sd21_at_native_cfg": {
+      "eta": 0.0,
+      "norm_threshold": 7.5,
+      "momentum": -0.75
+    }
+  },
+  "cfg_native": 3.0,
+  "cfg_original_paper_sd21": 10.0,
+  "steps": 50,
+  "norm_projection_layout": "Per-image C,H,W on six-view batch; no parameter search",
+  "comparison_family": [
+    [
+      "grid_projection",
+      "apg_projection_only"
+    ],
+    [
+      "grid_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ],
+    [
+      "view_projection",
+      "apg_projection_only"
+    ],
+    [
+      "view_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ],
+    [
+      "interaction_projection",
+      "apg_projection_only"
+    ],
+    [
+      "interaction_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ]
+  ],
+  "metrics": [
+    "fg_lpips",
+    "fg_psnr",
+    "fg_ssim",
+    "ciede2000"
+  ],
+  "primary": "FG-LPIPS, exclude matched reference native view1;3seed nested within object",
+  "correction": "Holm6 main comparisons; remaining pointwise descriptive",
+  "input_freeze_sha256": "1c754e2ef8344c4142bd0097e9079e686a976c90d8dd9659bd6cfffa1d661b11",
+  "source_hashes": {
+    "/4T/CXY/MV-Painter-1010/1010/experiments/run_mva_apg_external012.py": "f7b90e2059f58831c393735f504d6f047e9dcbfdf30e967e9ef3f205e4186f58",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/supervise_mva_apg_external012.py": "47a4d834c76951b40bcb661cf0350c6ddb8b7ba83083255a5ec400c80241c5ad",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/apg_denoised_baseline012.py": "762ac1bd88ee2721b2a5373bd4254bba7f546d6b7f9933af63af2e2b94b05f1a",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/score_mva_external012.py": "d5781b59b98e6984639a6e5780e1e75f637027ad284406a382922f6d1b914a8d"
+  },
+  "limits": "Existing APG, not new method. Paper preset at native CFG3 vs original paper CFG10. Source-selected convenience100; scanned colors not certified physical albedo. Baseline protocol frozen before APG outputs; not jointly preregistered with earlier candidate generation. All outcomes retained, no across-interface pooling."
+}

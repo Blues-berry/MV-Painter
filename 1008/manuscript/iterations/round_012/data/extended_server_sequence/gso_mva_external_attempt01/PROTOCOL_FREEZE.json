@@ -1,0 +1,98 @@
+{
+  "status": "FROZEN_BEFORE_EXTERNAL_METHOD_OUTPUTS",
+  "cohort": "All canonical100 GSO source-selected convenience objects; no candidate output selection",
+  "conditions": [
+    "native",
+    "fixed_mean",
+    "late_high",
+    "grid_projection",
+    "view_projection",
+    "interaction_projection"
+  ],
+  "seeds": [
+    42,
+    2026,
+    31415
+  ],
+  "steps": 50,
+  "cfg": 3.0,
+  "scale_controls": {
+    "fixed_mean": 0.83,
+    "late_high": {
+      "low": 0.75,
+      "high": 1.0,
+      "high_step_indices": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    }
+  },
+  "reference_view_index": 1,
+  "main_metric": "FG-LPIPS arithmetic mean over native views0,2,3,4,5, then3 seeds within each object",
+  "comparison_family": [
+    [
+      "grid_projection",
+      "native"
+    ],
+    [
+      "grid_projection",
+      "fixed_mean"
+    ],
+    [
+      "grid_projection",
+      "late_high"
+    ],
+    [
+      "view_projection",
+      "native"
+    ],
+    [
+      "view_projection",
+      "fixed_mean"
+    ],
+    [
+      "view_projection",
+      "late_high"
+    ],
+    [
+      "interaction_projection",
+      "native"
+    ],
+    [
+      "interaction_projection",
+      "fixed_mean"
+    ],
+    [
+      "interaction_projection",
+      "late_high"
+    ]
+  ],
+  "correction": "Holm9 across predefined LPIPS comparisons",
+  "secondary_metrics": [
+    "fg_psnr",
+    "fg_ssim",
+    "ciede2000"
+  ],
+  "statistical_unit": "Object; paired20000 percentile-bootstrap and200000 sign-flip draws seed20261011 plus-one",
+  "limits": "Different input domain from Fresh C; scanned-color source textures, not certified albedo/PBR. No cross-backbone score pooling. APG not yet integrated on MVA; no APG superiority claim. No baking or accepted-paper probability claim.",
+  "source_hashes": {
+    "/4T/CXY/MV-Painter-1010/1010/experiments/run_mva_external012.py": "d785041a9c713aea31ee8c7090958fde3ee4db0a1f2180a177f3f7ed3b79838a",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/prepare_gso_mva_external012.py": "1066328a2ab22115e2b36429925328aef8ca8bf7863452d44b38128c06b8bb1e",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/score_mva_external012.py": "d5781b59b98e6984639a6e5780e1e75f637027ad284406a382922f6d1b914a8d",
+    "/4T/CXY/MV-Painter-1010/1010/experiments/supervise_gso_mva_external012.py": "fc9640bcab31f63129c3ce167ab7f13baa6d657b160b0b3adcfd6de333bc3fbb"
+  }
+}
