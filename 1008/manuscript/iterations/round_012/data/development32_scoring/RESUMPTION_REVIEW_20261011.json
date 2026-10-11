@@ -1,0 +1,242 @@
+{
+  "status": "REVIEW_IDENTIFIED_STATISTICAL_LABEL_AND_EVALUATION_SCOPE_GAPS",
+  "source_sha256": "4ab025d1d58d7039c02d801a311d8bb721f580650aa70615acec87106779c5c0",
+  "corrections": [
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "grid_projection_minus_native|source|fg_lpips",
+      "reported_better": 18,
+      "reported_worse": 14,
+      "corrected_better": 14,
+      "corrected_worse": 18
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "grid_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 10,
+      "reported_worse": 22,
+      "corrected_better": 22,
+      "corrected_worse": 10
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "grid_projection_minus_native|source|ciede2000",
+      "reported_better": 10,
+      "reported_worse": 22,
+      "corrected_better": 22,
+      "corrected_worse": 10
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "grid_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 16,
+      "reported_worse": 16,
+      "corrected_better": 16,
+      "corrected_worse": 16
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "view_projection_minus_native|source|fg_lpips",
+      "reported_better": 16,
+      "reported_worse": 16,
+      "corrected_better": 16,
+      "corrected_worse": 16
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "view_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 15,
+      "reported_worse": 17,
+      "corrected_better": 17,
+      "corrected_worse": 15
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "view_projection_minus_native|source|ciede2000",
+      "reported_better": 9,
+      "reported_worse": 23,
+      "corrected_better": 23,
+      "corrected_worse": 9
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "view_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 19,
+      "reported_worse": 13,
+      "corrected_better": 13,
+      "corrected_worse": 19
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "interaction_projection_minus_native|source|fg_lpips",
+      "reported_better": 16,
+      "reported_worse": 16,
+      "corrected_better": 16,
+      "corrected_worse": 16
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "interaction_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 10,
+      "reported_worse": 22,
+      "corrected_better": 22,
+      "corrected_worse": 10
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "interaction_projection_minus_native|source|ciede2000",
+      "reported_better": 10,
+      "reported_worse": 22,
+      "corrected_better": 22,
+      "corrected_worse": 10
+    },
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "comparison": "interaction_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 17,
+      "reported_worse": 15,
+      "corrected_better": 15,
+      "corrected_worse": 17
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "grid_projection_minus_native|source|fg_lpips",
+      "reported_better": 24,
+      "reported_worse": 8,
+      "corrected_better": 8,
+      "corrected_worse": 24
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "grid_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "grid_projection_minus_native|source|ciede2000",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "grid_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 17,
+      "reported_worse": 15,
+      "corrected_better": 15,
+      "corrected_worse": 17
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "view_projection_minus_native|source|fg_lpips",
+      "reported_better": 23,
+      "reported_worse": 9,
+      "corrected_better": 9,
+      "corrected_worse": 23
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "view_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 26,
+      "reported_worse": 6,
+      "corrected_better": 6,
+      "corrected_worse": 26
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "view_projection_minus_native|source|ciede2000",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "view_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 18,
+      "reported_worse": 14,
+      "corrected_better": 14,
+      "corrected_worse": 18
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "interaction_projection_minus_native|source|fg_lpips",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "interaction_projection_minus_native|nonreference_mean|fg_lpips",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "interaction_projection_minus_native|source|ciede2000",
+      "reported_better": 25,
+      "reported_worse": 7,
+      "corrected_better": 7,
+      "corrected_worse": 25
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "comparison": "interaction_projection_minus_native|nonreference_mean|ciede2000",
+      "reported_better": 19,
+      "reported_worse": 13,
+      "corrected_better": 13,
+      "corrected_worse": 19
+    }
+  ],
+  "limits": [
+    "Correcting counts does not alter means or intervals.",
+    "MVA view0 source classification needs actual reference-camera alignment; native script uses azimuth -90 at view0 and 0 at view1.",
+    "Geometry-only white GT does not generally cancel in paired metric differences, especially nonlinear LPIPS; affects target meaning.",
+    "Confirmation64 is active additional single-backbone work; does not fulfill planned150 two-backbone strong-baseline confirmation."
+  ],
+  "candidate_evidence": [
+    {
+      "backbone": "MVPainter_v29_full_controlnet",
+      "lpips": {
+        "per_seed_mean_difference": {
+          "42": 0.0014595837157685317,
+          "2026": -0.0038769170321756976,
+          "31415": -0.0018406584771582868
+        },
+        "pooled_mean_difference": -0.0014193305978551511,
+        "ci95": [
+          -0.004615671312058113,
+          0.001680527539089475
+        ],
+        "objects_better": 10,
+        "objects_worse": 22,
+        "direction_consistent_across_seeds": false
+      }
+    },
+    {
+      "backbone": "MVAdapter_second_backbone",
+      "lpips": {
+        "per_seed_mean_difference": {
+          "42": 0.003053852336597631,
+          "2026": -0.004567653035337565,
+          "31415": -0.008203260001027956
+        },
+        "pooled_mean_difference": -0.0032390202332559653,
+        "ci95": [
+          -0.026268027030904098,
+          0.009745959965791067
+        ],
+        "objects_better": 25,
+        "objects_worse": 7,
+        "direction_consistent_across_seeds": false
+      }
+    }
+  ]
+}
