@@ -1,0 +1,87 @@
+\section*{S31. Additional projection development and evaluation limits}
+This section records completed development observations while confirmation and
+calibration remain in progress. The development matrix comprises 32 previously
+studied objects per interface, four conditions, and three sampling seeds
+(42, 2026, 31415), for 384 object--condition--seed cells per interface. The two
+interfaces use different object sets and are not pooled as paired subjects.
+Sampling seeds do not estimate training-checkpoint variation.
+
+For matched noisy latents, let $f_u,f_c$ denote negative/positive conditional
+predictions with geometry and $b_u,b_c$ the corresponding predictions without
+geometry. Define $a=b_c-b_u$, $g_0=f_u-b_u$, and
+$h=(f_c-f_u)-a$. The native guided prediction is $b_u+g_0+s(a+h)$.
+The development interaction candidate removes the negatively parallel component
+of $h$ along $a$ and retains $g_0$ algebraically. Total-geometry grid and
+view projections are separate comparison conditions. These are operations in
+noise-prediction space; $a$ is not a pure appearance-loss gradient. Algebraic
+decomposition and vector projection alone do not establish method novelty.
+
+On the unmodified first-interface seed-42 trajectories, 32 objects provide
+50 observations each. The object-averaged cosine between the guided geometry
+contribution and $a$ is $-0.6426$ (95\% object-bootstrap interval
+$[-0.6611,-0.6235]$); all 1600 measured whole-grid rows are negative.
+The auxiliary measurement preserves final native pixels exactly. This validates
+measurement without disturbing the trajectory; negative cosine does not prove
+that the geometry contribution harms final appearance. Two MV-Adapter objects
+also show negative whole-object cosines at all 50 steps, with respective means
+$-0.4965$ and $-0.4984$. Two objects do not establish population generalization.
+
+Table~\ref{tab:development012} reports projection-minus-native differences on
+first-interface development objects. Seeds and views are nested within objects;
+intervals use 20,000 object-bootstrap resamples and are descriptive rather than
+multiplicity-adjusted confirmatory tests. Source agreement improves, but the
+nonreference LPIPS intervals cross zero. No noninferiority margin was specified,
+and absence of a detected difference is not evidence of no quality loss.
+
+\begin{table}[ht]
+\centering\scriptsize
+\begin{tabular}{lccc}
+\toprule
+Condition & Source FG-PSNR (dB) & Source $\Delta E_{00}$ & Nonreference FG-LPIPS \\
+\midrule
+Total geometry, grid & $+2.74$ $[+1.57,+3.97]$ & $-1.09$ $[-2.09,-0.38]$ & $-0.0016$ $[-0.0044,+0.0012]$ \\
+Total geometry, view & $+3.01$ $[+1.80,+4.30]$ & $-1.16$ $[-2.16,-0.46]$ & $+0.0014$ $[-0.0017,+0.0047]$ \\
+Interaction only, grid & $+2.79$ $[+1.56,+4.09]$ & $-1.06$ $[-2.07,-0.34]$ & $-0.0014$ $[-0.0046,+0.0017]$ \\
+\bottomrule
+\end{tabular}
+\caption{Exploratory development differences and 95\% object intervals.
+PSNR is higher-better; color difference and LPIPS are lower-better. All three
+sampling seeds are averaged within each of the 32 objects. These are not new
+independent confirmation objects.}
+\label{tab:development012}
+\end{table}
+
+Second-interface endpoint interpretation needs additional calibration. Native
+view 0 has azimuth $-90^\circ$ and view 1 has azimuth $0^\circ$; source-view roles
+cannot be transferred from the first interface by index alone. In the current
+32-object set, eight target assets use a white texture fallback. The source-alpha
+and candidate native-view-1 target masks have median pixel IoU 0.2606, so azimuth
+agreement alone does not establish pixel registration. Earlier full-frame
+reference comparison is also confounded by background: reference-alpha
+background contributes a median 98.2\% of full-frame squared error for native
+seed-42 view-1 outputs. A separate foreground/background-controlled diagnostic
+has completed, but its pose-registration limitation prevents interpreting it as
+validated reference fidelity or changing the confirmation endpoints.
+
+\paragraph{Completed source-view confirmation and remaining tradeoffs.}
+The 64-object, four-condition, three-seed matrix is complete (768 outputs).
+The cohort excludes the 32 development objects but remains within historically
+exposed Fresh C. The pre-generation specified view-projection versus native
+comparisons give source FG-PSNR $+4.283$ dB (object-bootstrap 95\% CI
+$[+3.409,+5.205]$; 61/64 object means favorable) and CIEDE2000 $-2.230$
+($[-3.061,-1.563]$; 57/64 favorable). Both two-sided paired Monte Carlo
+sign-flip tests have Holm-adjusted $p\approx 0.000010$ across the two primaries.
+Seeds and views are nested within objects, not treated as independent samples.
+
+Descriptive nonreference-view differences are FG-PSNR $-0.282$ dB
+(pointwise 95\% CI $[-0.672,+0.102]$), FG-LPIPS $+0.000269$
+($[-0.001533,+0.002073]$), CIEDE2000 $+0.425$
+($[-0.157,+1.042]$), and FG-SSIM $+0.01062$
+($[+0.00171,+0.01957]$). These secondary intervals are unadjusted.
+Non-detection does not establish non-inferiority: no margin was specified.
+The result confirms source-view gains for this comparison, not universal
+multi-view gains, superiority of interaction projection, APG superiority,
+or cross-interface transfer. APG's enabled norm-clipping path initially
+failed because a matrix-norm operation received three reduction dimensions.
+An explicit vector norm fixes that implementation error without changing the
+frozen parameters; failed attempts are retained and a separate attempt is running.
