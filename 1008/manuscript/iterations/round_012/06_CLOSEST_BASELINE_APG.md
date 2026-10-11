@@ -9,3 +9,7 @@ APG投影对象是条件/无条件去噪预测之差，参考轴为条件去噪�
 原文SD2.1实验参数与当前两骨干不同，不能称统一默认。正式比较前冻结各骨干的预测类型、scheduler状态转换、视角/对象聚合布局、参数来源、有限开发选择和运行成本。不得修改正在执行的冻结worker；新增独立执行路径，并在其输出前保存配置。APG目标包含高CFG饱和控制，当前低CFG下表现需实测，不先宣称竞争力或不适用。
 
 新颖性结论仍待完整组合引导及条件分解先例核查；此项仅落实一个近邻基线，不称全面文献审计完成。
+
+## Euler采样器适配
+
+实际第一骨干模型配置为EulerAncestralDiscreteScheduler、epsilon预测。UNet接收经sqrt(1+sigma²)缩放的输入，须先恢复solver latent，再用x0=latent−sigma·epsilon处理APG；不能把浮点t直接用作训练alpha索引。已补上转换核心，四个sigma的恒等APG重构最大误差均为4.77e−7。初始FP32小sigma相减误差3.22e−5，改用FP64转换消除；保留原因而非放宽阈值。实际step_index读取、FP16轨迹一致性与GPU执行仍待完成。新增扩展后的源哈希以APG_EULER_ALGEBRA_CHECK.json为准，早期文件记录的是上一实现检查点。
