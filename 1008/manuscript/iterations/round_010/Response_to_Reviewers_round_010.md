@@ -152,3 +152,8 @@ In response to the reproducibility and practical-quality concerns, we checked an
 ## Round 9: completed training, negative temporal comparison and full v29 baseline
 
 We completed the fixed 2000-update training and all 450 cohort outputs. In the predeclared two-test family, unscaled geometry improves LPIPS over geometry disabled, whereas equal-budget Late-high does not improve over Fixed Mean. None of the eighteen corrected secondary tests establishes C3 superiority over Fixed Mean or GFH. The separately frozen full v29 comparison favors full v29 in PSNR, SSIM and LPIPS. We report these negative results and distinguish different frozen base weights rather than claiming an unmodified-default replay or attributing the differences to temporal scheduling. Supplement S28 and the packaged object-level data provide all contrasts and input-repair provenance. These results improve validation completeness, but do not fully resolve the novelty concern.
+
+
+## Round10: same-v29-base follow-up
+
+We replaced the comparison base with an isolated exact export of the local converted v29 UNet, verified all1680 tensors and native reference conditioning, and completed the fixed2000-step training. On the previously studied50 objects, geometry improves LPIPS over geometry disabled but remains worse than fullv29 in LPIPS and SSIM after the frozen corrections. These results reduce the base-weight confound without demonstrating competitive quality, equivalence, a temporal advantage or matching historical training budgets. All8 contrasts, reused baseline provenance and gate failure/correction records are reported in S29. This follow-up does not fully resolve the novelty concern.
