@@ -1,0 +1,38 @@
+{
+  "status": "VERIFIED_LIVE_SERVER_MANAGED_PERSISTENT_CHAIN",
+  "utc": "2026-10-11T02:19:18.337322+00:00",
+  "scope": "cg-round012-experiments.scope",
+  "monitor": "cg-round012-monitor.service",
+  "linger": "Linger=yes",
+  "stages": [
+    {
+      "file": "DEVELOPMENT32_SUPERVISOR.json",
+      "pid": 1633077,
+      "status": "RUNNING_FROZEN_DEVELOPMENT32_BASELINES",
+      "cmdline": "python 1010/experiments/supervise_development32_baselines012.py ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/cg-round012-experiments.scope\n"
+    },
+    {
+      "file": "INTERACTION_CANDIDATE_SUPERVISOR.json",
+      "pid": 1636597,
+      "status": "WAITING_VERIFIED_BASELINE_QUEUE",
+      "cmdline": "python 1010/experiments/supervise_interaction_candidate012.py ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/cg-round012-experiments.scope\n"
+    },
+    {
+      "file": "MVADAPTER_DEVELOPMENT_SUPERVISOR.json",
+      "pid": 1638031,
+      "status": "WAITING_VERIFIED_FIRST_BACKBONE_QUEUE",
+      "cmdline": "python 1010/experiments/supervise_mvadapter_development012.py ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/cg-round012-experiments.scope\n"
+    },
+    {
+      "file": "APG_NATIVE_GATE_SUPERVISOR.json",
+      "pid": 1645909,
+      "status": "WAITING_VERIFIED_SECOND_BACKBONE_QUEUE",
+      "cmdline": "/home/ubuntu/anaconda3/bin/python 1010/experiments/supervise_apg_native_gate012.py ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/cg-round012-experiments.scope\n"
+    }
+  ],
+  "limits": "Survives chat/session disconnect via user systemd with linger. No reboot recovery or automatic failed-job retries. Primary confirmation not authorized to start before validity and scientific gates."
+}
