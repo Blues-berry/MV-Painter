@@ -1,0 +1,44 @@
+{
+  "status": "PASS_COMPLETE_FIXED2000_NATIVE512_TRAINING",
+  "checkpoint_path": "1010/experiments/revision_expansion_20261010/iteration010_same_v29_base/formal_ddp_training/geotex_step2000.pt",
+  "checkpoint_sha256": "c74001953d74218d2ed3b993a9383b9e5d85db9bc1a441af59ddc4953a1b870a",
+  "formal_identity_sha256": "1c8a23e0ea951c4b1e3029dd34b2a7ea5b764b94dc59bccc5338a25390c51d32",
+  "logs": {
+    "train_rank0.csv": "5ba49c1b30685596c75eb67513958285aa3b7fa8c2efa5277e80d6fd7b472dad",
+    "train_rank1.csv": "ec7aa6583c59be3c7c1cb8ad788a639fd322ecf4f6727460f0f03491aa54162c"
+  },
+  "rank_summaries": [
+    {
+      "rank": 0,
+      "steps": 2000,
+      "drop_count": 184,
+      "drop_fraction": 0.092,
+      "peak_allocated_bytes": 12607959552.0,
+      "elapsed_seconds": 1776.1004090309143
+    },
+    {
+      "rank": 1,
+      "steps": 2000,
+      "drop_count": 217,
+      "drop_fraction": 0.1085,
+      "peak_allocated_bytes": 12607959552.0,
+      "elapsed_seconds": 1776.0996363162994
+    }
+  ],
+  "training_uid_count": 1090,
+  "total_object_exposures": 4000,
+  "exposure_histogram": {
+    "3": 360,
+    "4": 730
+  },
+  "exact_seeded_order_and_dropout_verified": true,
+  "synchronized_gradient_norms_verified": true,
+  "optimizer_parameter_steps": [
+    2000
+  ],
+  "optimizer_parameter_tensors": 116,
+  "active_trainable_parameter_count": 2201760,
+  "finite_checkpoint_tensors_verified": true,
+  "source_sha256": "e010d789fc4da02b4824cc8e201333895fe7952eb2bd6f0ea73638139dc224f4",
+  "scope": "training completion and numerical validity; no quality benefit or exact historical reproduction"
+}

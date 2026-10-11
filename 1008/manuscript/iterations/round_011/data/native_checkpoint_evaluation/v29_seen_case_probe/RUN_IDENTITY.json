@@ -1,0 +1,132 @@
+{
+  "status": "COMPLETE_V29_SEEN_CASE_PROBE",
+  "objects": [
+    "1dc2c857f7614caeb6c2aa0559ccf973",
+    "21678bd623654182b52c11d013de4e71"
+  ],
+  "conditions": [
+    "v29_bare",
+    "v29_full_controlnet"
+  ],
+  "seed": 42,
+  "steps": 50,
+  "cfg": 2.0,
+  "control_scale": 1.0,
+  "asset_sha256": "8c7aace08463b289965307517d45769e8c8c8e09cb2043b3a33d7dcf53358277",
+  "source_sha256": "580965bc6d725c0aa554533f83ee15f78d1bd57d3ee2838d21764e068b870c44",
+  "gpu": {
+    "index": 0,
+    "uuid": "GPU-ba120e01-77cd-7656-ffef-04ab75bbc7e6",
+    "name": "NVIDIA GeForce RTX 5090",
+    "memory_total_mib": 32607,
+    "memory_used_mib": 165,
+    "memory_free_mib": 31956,
+    "utilization_pct": 14,
+    "required_free_mib": 8537,
+    "visible_compute_apps": [],
+    "memory_basis": "measured official MVAdapter peak reserved plus 2 GiB margin"
+  },
+  "scope": "two seen development objects, controlled50/42/no-rembg; not unmodified75/12/rembg CLI or independent quality confirmation",
+  "rows": [
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "condition": "v29_bare",
+      "output_sha256": "9bc392d9d153617439a655fcd250fd79a4be903a1464884d56e3952f90b31951",
+      "source_sha256": "5de4c42325b7f0e62ec72a3867fc96cb3bce8c8f40ee366d3ecae0abdb134031",
+      "control_metadata": {
+        "raw_indices": [
+          14,
+          15,
+          0,
+          16,
+          12,
+          13
+        ],
+        "zero_depth_pixels": 0,
+        "normal_policy": "raw RGB channels, alpha discarded as official cv2 RGB save, no white composite",
+        "depth_policy": "official inverse-depth normalization with noninvertible zeros excluded",
+        "pole_policy": "Fresh target poles rotatedCCW90 to match current target layout; projection/roll equivalence to official renderer not proven",
+        "normal_array_sha256": "0997856cdf4908098cfdaaaa3a7c751b945d705fcc16db6128855cf00908e602",
+        "depth_array_sha256": "4f38c9caa1decbc19a38f53d64424a1b98cb07a611beeaacd843386ce8751a7b"
+      },
+      "elapsed_seconds": 13.749192953109741,
+      "peak_allocated_bytes": 16114091520,
+      "timing_scope": "instrumented development execution, not clean matched latency benchmark; both model branches remain resident"
+    },
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "condition": "v29_full_controlnet",
+      "output_sha256": "7b17d680ed9d47336d8cb25e95e8271db2b3dfda69e07f9e864cf4a40817436e",
+      "source_sha256": "5de4c42325b7f0e62ec72a3867fc96cb3bce8c8f40ee366d3ecae0abdb134031",
+      "control_metadata": {
+        "raw_indices": [
+          14,
+          15,
+          0,
+          16,
+          12,
+          13
+        ],
+        "zero_depth_pixels": 0,
+        "normal_policy": "raw RGB channels, alpha discarded as official cv2 RGB save, no white composite",
+        "depth_policy": "official inverse-depth normalization with noninvertible zeros excluded",
+        "pole_policy": "Fresh target poles rotatedCCW90 to match current target layout; projection/roll equivalence to official renderer not proven",
+        "normal_array_sha256": "0997856cdf4908098cfdaaaa3a7c751b945d705fcc16db6128855cf00908e602",
+        "depth_array_sha256": "4f38c9caa1decbc19a38f53d64424a1b98cb07a611beeaacd843386ce8751a7b"
+      },
+      "elapsed_seconds": 17.393883228302002,
+      "peak_allocated_bytes": 16151840768,
+      "timing_scope": "instrumented development execution, not clean matched latency benchmark; both model branches remain resident"
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "condition": "v29_bare",
+      "output_sha256": "fc6552e7b61e00f43c61ca3f69ce667e1ba066df9ef83f338147a98aa5026d32",
+      "source_sha256": "e597b03c8cffad7be6ed411477b36310d7171433c0df1f0da8a586a3a90f696e",
+      "control_metadata": {
+        "raw_indices": [
+          14,
+          15,
+          0,
+          16,
+          12,
+          13
+        ],
+        "zero_depth_pixels": 0,
+        "normal_policy": "raw RGB channels, alpha discarded as official cv2 RGB save, no white composite",
+        "depth_policy": "official inverse-depth normalization with noninvertible zeros excluded",
+        "pole_policy": "Fresh target poles rotatedCCW90 to match current target layout; projection/roll equivalence to official renderer not proven",
+        "normal_array_sha256": "1787c8d4540000ece386d49c15569d391c31df4b2211369b564435d2e082139d",
+        "depth_array_sha256": "8c7e5491a4214779d99266edb518a7fac901dc003a56f9af9d3be94ab93eb160"
+      },
+      "elapsed_seconds": 13.150601387023926,
+      "peak_allocated_bytes": 16114091520,
+      "timing_scope": "instrumented development execution, not clean matched latency benchmark; both model branches remain resident"
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "condition": "v29_full_controlnet",
+      "output_sha256": "b6c5f3d4bc8eb66315b620683b425219948cb7ba70b14ffc69d705dec847101f",
+      "source_sha256": "e597b03c8cffad7be6ed411477b36310d7171433c0df1f0da8a586a3a90f696e",
+      "control_metadata": {
+        "raw_indices": [
+          14,
+          15,
+          0,
+          16,
+          12,
+          13
+        ],
+        "zero_depth_pixels": 0,
+        "normal_policy": "raw RGB channels, alpha discarded as official cv2 RGB save, no white composite",
+        "depth_policy": "official inverse-depth normalization with noninvertible zeros excluded",
+        "pole_policy": "Fresh target poles rotatedCCW90 to match current target layout; projection/roll equivalence to official renderer not proven",
+        "normal_array_sha256": "1787c8d4540000ece386d49c15569d391c31df4b2211369b564435d2e082139d",
+        "depth_array_sha256": "8c7e5491a4214779d99266edb518a7fac901dc003a56f9af9d3be94ab93eb160"
+      },
+      "elapsed_seconds": 17.24004626274109,
+      "peak_allocated_bytes": 16151840768,
+      "timing_scope": "instrumented development execution, not clean matched latency benchmark; both model branches remain resident"
+    }
+  ]
+}
