@@ -1,6 +1,6 @@
 \section*{S31. Additional projection development and evaluation limits}
-This section records completed development observations while confirmation and
-calibration remain in progress. The development matrix comprises 32 previously
+This section records completed development and first-interface confirmation
+observations; external-input validation remains in progress. The development matrix comprises 32 previously
 studied objects per interface, four conditions, and three sampling seeds
 (42, 2026, 31415), for 384 object--condition--seed cells per interface. The two
 interfaces use different object sets and are not pooled as paired subjects.
@@ -51,7 +51,7 @@ independent confirmation objects.}
 \label{tab:development012}
 \end{table}
 
-Second-interface endpoint interpretation needs additional calibration. Native
+Second-interface reference-fidelity interpretation requires pose calibration. Native
 view 0 has azimuth $-90^\circ$ and view 1 has azimuth $0^\circ$; source-view roles
 cannot be transferred from the first interface by index alone. In the current
 32-object set, eight target assets use a white texture fallback. The source-alpha
@@ -84,4 +84,32 @@ multi-view gains, superiority of interaction projection, APG superiority,
 or cross-interface transfer. APG's enabled norm-clipping path initially
 failed because a matrix-norm operation received three reduction dimensions.
 An explicit vector norm fixes that implementation error without changing the
-frozen parameters; failed attempts are retained and a separate attempt is running.
+frozen parameters; failed attempts are retained and the repaired APG matrix
+and its scoring are now complete.
+
+\paragraph{Completed APG and calibrated second-interface comparisons.}
+On the same 32-object, three-seed first-interface development set, view
+projection minus APG has nonreference FG-LPIPS $+0.000800$ for projection-only
+APG (pointwise 95\% CI $[-0.002459,+0.004299]$) and $-0.000462$ for the
+paper SDXL clipping/momentum preset at native CFG 2
+($[-0.004354,+0.003482]$). Interaction projection gives $-0.002070$
+($[-0.005351,+0.001259]$) and $-0.003331$
+($[-0.007565,+0.000593]$), respectively. Holm correction across these four
+specified development comparisons detects no advantage (adjusted
+$p=1,1,0.7251,0.5100$). The paper preset is evaluated at the deployment CFG,
+not the original paper's CFG 15; no preset was selected or tuned on these results.
+
+The native-camera embedded-baseColor targets are distinct from the unregistered
+reference-image domain discussed above. Re-rendering three input-selected
+MV-Adapter objects reproduces all 18 archived RGBA target views exactly;
+geometry-control masks and positions match the target render bitwise.
+The full 32-object, four-condition, three-seed set can therefore be scored
+against these native-camera targets, with no source/nonreference role inferred
+from the view index. The all-six-view FG-LPIPS projection-minus-native
+differences are $+0.000184$ (grid), $-0.000522$ (view), and $-0.000864$
+(interaction). All pointwise intervals include zero and all three Holm-adjusted
+$p$ values are 1. Eight white targets have legal constant-white embedded
+baseColor; they remain in the full cohort, with the 24 textured objects reported
+as a separate descriptive subset. This calibrated interface-specific endpoint
+does not measure registered source-reference fidelity, physical albedo, or
+final baked-texture quality.
