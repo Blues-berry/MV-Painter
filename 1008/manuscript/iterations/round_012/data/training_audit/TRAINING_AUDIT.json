@@ -1,0 +1,171 @@
+{
+  "status": "COMPLETE_RECORDED_TRAINING_AUDIT_WITH_REPLAY_LIMITS",
+  "source_sha256": "fd19cfc2cf77314ab281639a4f78c511ed9132e721c3dbb86f7cbd912494e7a7",
+  "recorded_source_commit": "f2f0019a008277213af0127fa7cb628cb5fa1eef",
+  "source_comparisons": {
+    "geotex/train.py": {
+      "source_commit_sha256": "83c8d9b1a3d14caef340f6f02db75a083b7afab814c04ffa04dd43d8a3b255ac",
+      "surviving_tree_sha256": "83c8d9b1a3d14caef340f6f02db75a083b7afab814c04ffa04dd43d8a3b255ac",
+      "surviving_tree_equals_recorded_commit": true
+    },
+    "MVPainter/mvpainter/model_unet_geotex.py": {
+      "source_commit_sha256": "9151f3a02a09091069467e0f4042e112ca763002f9d195d0a270bef570545d4e",
+      "surviving_tree_sha256": "9151f3a02a09091069467e0f4042e112ca763002f9d195d0a270bef570545d4e",
+      "surviving_tree_equals_recorded_commit": true
+    },
+    "MVPainter/src/data/mvpainter_dataset.py": {
+      "source_commit_sha256": "c64d1db28089b2ba70662163cc9818621dc6da8a2e56eb139d5c49567a1fce3c",
+      "surviving_tree_sha256": "c16545cd60f8d022483e69bb16bfd7027603a2a4f6ca6037c1fe287064f94285",
+      "surviving_tree_equals_recorded_commit": false
+    }
+  },
+  "recorded_artifact_hashes": {
+    "training_manifest.json": "53b6f9a11b74c770b133d301e6e55a7da5e04373da8c40bf82afd9df7ac4550c",
+    "training_config_snapshot.yaml": "4b36a2636e76dc1d43d804cb93b88cae6db1af9d6b170b0b17cf4bf369ef754d",
+    "training_command.txt": "3ceb54c401fb955d7194b0eb07095eef2c8da207ca57fba314e7d394a4f5bd55",
+    "train_summary.json": "465ea6a32c4c27a4c0eff2c8e2d876186234c254f572cf4e8d8d2a0176e47843",
+    "train_metrics.csv": "cc4684aed28a5c4cc8a1556fd0bb95c3e9ad7092a7ba9b5de0e976a5b2d99cd3",
+    "train_objects_full_1118.txt": "7b3e998fc494ecffde247793e24efab715b4536b96382eb5fe559434fa57cae7"
+  },
+  "manifest_trailing_literal_newline": "'\\\\n'",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "checkpoint_keys": [
+    "adapters",
+    "encoder"
+  ],
+  "checkpoint_has_embedded_step": false,
+  "train_uid_count": 1118,
+  "fresh_uid_count": 300,
+  "train_fresh_overlap": [],
+  "training_image_size": 256,
+  "configured_drop_cond_prob": 0.1,
+  "actual_entry_reads_drop_cond_prob": false,
+  "actual_entry_is_drop_values": [
+    false,
+    false
+  ],
+  "actual_entry_has_unconditional_branch": false,
+  "metric_steps_complete_1_to_2000": true,
+  "recorded_final_loss": 0.019594017416238785,
+  "structural_input_missing": [
+    {
+      "uid": "1c913c27a7a8429a881c1c4f65450315",
+      "missing": [
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    },
+    {
+      "uid": "1e8b06bde8584f069cc0a26a27534da8",
+      "missing": [
+        "depth_png/012.png",
+        "depth_png/013.png",
+        "depth_png/014.png",
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    },
+    {
+      "uid": "1f76495b3a3a431d9e216f17a995915c",
+      "missing": [
+        "depth_png/012.png",
+        "depth_png/013.png",
+        "depth_png/014.png",
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    },
+    {
+      "uid": "226132928f29407c8d80b9f372b4958f",
+      "missing": [
+        "image/000.png",
+        "image/012.png",
+        "image/013.png",
+        "image/014.png",
+        "image/015.png",
+        "image/016.png",
+        "normal/000.png",
+        "normal/012.png",
+        "normal/013.png",
+        "normal/014.png",
+        "normal/015.png",
+        "normal/016.png",
+        "depth_png/000.png",
+        "depth_png/012.png",
+        "depth_png/013.png",
+        "depth_png/014.png",
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    },
+    {
+      "uid": "6666645b8525465a8a539dc30e015995",
+      "missing": [
+        "image/012.png",
+        "image/013.png",
+        "image/014.png",
+        "image/015.png",
+        "image/016.png",
+        "normal/012.png",
+        "normal/013.png",
+        "normal/014.png",
+        "normal/015.png",
+        "normal/016.png",
+        "depth_png/012.png",
+        "depth_png/013.png",
+        "depth_png/014.png",
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    },
+    {
+      "uid": "74cc3799cbd4400f895a4754fff43f93",
+      "missing": [
+        "image/012.png",
+        "image/013.png",
+        "image/014.png",
+        "image/015.png",
+        "image/016.png",
+        "normal/012.png",
+        "normal/013.png",
+        "normal/014.png",
+        "normal/015.png",
+        "normal/016.png",
+        "depth_png/012.png",
+        "depth_png/013.png",
+        "depth_png/014.png",
+        "depth_png/015.png",
+        "depth_png/016.png"
+      ]
+    }
+  ],
+  "structural_inputs_complete_count": 1112,
+  "training_target_view_mode_explicit_in_snapshot": false,
+  "historical_dataset_target_lists": [
+    [
+      14,
+      15,
+      0,
+      15,
+      12,
+      13
+    ],
+    [
+      0,
+      15,
+      12,
+      15,
+      13,
+      14
+    ]
+  ],
+  "replay_limits": [
+    "recorded runtime list override differs from YAML snapshot; transient wrapper is not preserved",
+    "training entry has no explicit seed setup; exact sampling order cannot be replayed from these artifacts",
+    "surviving dataset differs from source commit; executed dataset version is not fully authenticated",
+    "checkpoint has no embedded step; filename/manifest and complete step CSV are recorded lineage evidence",
+    "this main-adapter audit does not restore historical FAC training or explain failures causally"
+  ],
+  "interpretation": "Recorded trainer uses conditional-only B1 training at256 and ignores configured conditioning dropout. Inserting geometry into the native unconditional CFG branch is not supported by this trainer. Duplicate-top targets and inference-size differences are additional compatibility concerns; causal attribution remains unproven.",
+  "fresh_uid_list_sha256": "d93881865b6478dd31222a51c7d3ebafe44839fd5e1b76c5eb9605d3f1fdfa58"
+}
