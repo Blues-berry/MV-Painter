@@ -1,0 +1,211 @@
+{
+  "status": "COMPLETE_PIXEL_IDENTICAL_DEPLOYMENT_BENCHMARK",
+  "method": "geometry",
+  "device": "cuda:1",
+  "phase": 1,
+  "gpu": {
+    "index": 1,
+    "uuid": "GPU-2abab5d9-0ecf-fcff-c0f1-95921fe8c165",
+    "name": "NVIDIA GeForce RTX 5090",
+    "memory_total_mib": 32607,
+    "memory_used_mib": 18,
+    "memory_free_mib": 32103,
+    "utilization_pct": 0,
+    "required_free_mib": 8537,
+    "visible_compute_apps": [],
+    "memory_basis": "measured official MVAdapter peak reserved plus 2 GiB margin"
+  },
+  "protocol_sha256": "fc12cb33dd09b363f19e796ce43cafae56924bb1b1a681157505191ae90bda5e",
+  "source_sha256": "adb83f766436e0cb0ca60423a78faa30089ec17ef0c60e7bb57a398301f28b90",
+  "denoiser_geometry_parameter_count": 2569667556,
+  "time_scope": "synchronized wall time of native generation incl CLIP/VAE, geometry transfer/encoding and PIL conversion; excluding source IO/model load/normal-depth CPU input conversion/PNG writing/metric scoring; CPU and GPU shared host concurrency reported",
+  "rows": [
+    {
+      "uid": "02dba652a05246a7a6e2040a5fae956f",
+      "warmup": true,
+      "repeat": 0,
+      "seconds": 11.802866681944579,
+      "baseline_allocated_bytes": 9608995328,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252",
+      "expected_pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252"
+    },
+    {
+      "uid": "02dba652a05246a7a6e2040a5fae956f",
+      "warmup": true,
+      "repeat": 1,
+      "seconds": 11.303983215009794,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252",
+      "expected_pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252"
+    },
+    {
+      "uid": "02dba652a05246a7a6e2040a5fae956f",
+      "warmup": false,
+      "repeat": 0,
+      "seconds": 11.183886596933007,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252",
+      "expected_pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252"
+    },
+    {
+      "uid": "02dba652a05246a7a6e2040a5fae956f",
+      "warmup": false,
+      "repeat": 1,
+      "seconds": 11.203407144872472,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252",
+      "expected_pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252"
+    },
+    {
+      "uid": "02dba652a05246a7a6e2040a5fae956f",
+      "warmup": false,
+      "repeat": 2,
+      "seconds": 11.068775738123804,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252",
+      "expected_pixel_sha256": "d520c275a853b7dcaf2adb76207203cf4d50d6102c12951d1c78c80c108db252"
+    },
+    {
+      "uid": "033fc9d942504cb9b571dc088f6e68f2",
+      "warmup": false,
+      "repeat": 0,
+      "seconds": 11.108016034821048,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6",
+      "expected_pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6"
+    },
+    {
+      "uid": "033fc9d942504cb9b571dc088f6e68f2",
+      "warmup": false,
+      "repeat": 1,
+      "seconds": 11.109203805914149,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6",
+      "expected_pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6"
+    },
+    {
+      "uid": "033fc9d942504cb9b571dc088f6e68f2",
+      "warmup": false,
+      "repeat": 2,
+      "seconds": 11.17118942597881,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6",
+      "expected_pixel_sha256": "ed86c527641894c53d527d6d774e9f523e7f747e07cb7dfb040ced80bd8647d6"
+    },
+    {
+      "uid": "03657338956d41158be94cf19b150402",
+      "warmup": false,
+      "repeat": 0,
+      "seconds": 11.151267688954249,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372",
+      "expected_pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372"
+    },
+    {
+      "uid": "03657338956d41158be94cf19b150402",
+      "warmup": false,
+      "repeat": 1,
+      "seconds": 11.264160092920065,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372",
+      "expected_pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372"
+    },
+    {
+      "uid": "03657338956d41158be94cf19b150402",
+      "warmup": false,
+      "repeat": 2,
+      "seconds": 11.241466433973983,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372",
+      "expected_pixel_sha256": "010c017900f1d3ee0341daff92b52733bd486a98436b16149ad810bcdaae9372"
+    },
+    {
+      "uid": "03e56d297da241b58fc9eb85586bcb8a",
+      "warmup": false,
+      "repeat": 0,
+      "seconds": 11.21915452205576,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e",
+      "expected_pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e"
+    },
+    {
+      "uid": "03e56d297da241b58fc9eb85586bcb8a",
+      "warmup": false,
+      "repeat": 1,
+      "seconds": 11.171718362951651,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e",
+      "expected_pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e"
+    },
+    {
+      "uid": "03e56d297da241b58fc9eb85586bcb8a",
+      "warmup": false,
+      "repeat": 2,
+      "seconds": 11.147325763013214,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e",
+      "expected_pixel_sha256": "0820b943a2000544d04bb433583c19004dab29699b5556df8a190edfbfb6638e"
+    },
+    {
+      "uid": "051866dbfd054270ba58110b78ae6980",
+      "warmup": false,
+      "repeat": 0,
+      "seconds": 11.190343761118129,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68",
+      "expected_pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68"
+    },
+    {
+      "uid": "051866dbfd054270ba58110b78ae6980",
+      "warmup": false,
+      "repeat": 1,
+      "seconds": 11.161859214073047,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68",
+      "expected_pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68"
+    },
+    {
+      "uid": "051866dbfd054270ba58110b78ae6980",
+      "warmup": false,
+      "repeat": 2,
+      "seconds": 11.206706336000934,
+      "baseline_allocated_bytes": 9617515520,
+      "peak_allocated_bytes": 14148336640,
+      "peak_reserved_bytes": 15302918144,
+      "pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68",
+      "expected_pixel_sha256": "599f34fdc45d99e7f21f6ff0419bc6fe70beefae58e905a880abfc09357a1e68"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/benchmark_native_deployment011.py", line 40, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/benchmark_native_deployment011.py", line 10, in main
+    ap=argparse.ArgumentParser();ap.add_argument('--method',choices=['geometry','full_v29'],required=True);ap.add_argument('--device',required=True);ap.add_argument('--phase',type=int,choices=[0,1],required=True);a=ap.parse_args();protocol=json.loads((R11/'PROTOCOL_FREEZE.json').read_text());run=R11/f'phase{a.phase}_{a.method}_{a.device.replace(":","_")}';assert not run.exists();run.mkdir();device=torch.device(a.device);torch.cuda.set_device(device);torch.set_num_threads(4);seed_all(42);gpu=base.gpu_snapshot(a.device);config=OmegaConf.load(R10/'formal_ddp_training/native512_config.yaml');dataset=dataset_for(config,R10/'evaluation/objects.txt',base.DATA_ROOT);uids=protocol['uids'];inputs=[]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/run_fresh_c_glb_method_matrix.py", line 82, in gpu_snapshot
+    raise RuntimeError(f"GPU {index} is not clear for the measured profile: free={free}, apps={gpu_apps}")
+RuntimeError: GPU 1 is not clear for the measured profile: free=31601, apps=['GPU-2abab5d9-0ecf-fcff-c0f1-95921fe8c165, 1613108, 496']

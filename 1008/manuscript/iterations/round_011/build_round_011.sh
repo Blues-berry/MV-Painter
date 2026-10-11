@@ -10,6 +10,8 @@ cp "${SCRIPT_DIR}/manuscript_round_011.tex" "${STAGE_DIR}/manuscript_round_011.t
 cp "${SOURCE_DIR}/cag.sty" "${SOURCE_DIR}/elsarticle.cls" "${SOURCE_DIR}/cag-logo.pdf" "${SOURCE_DIR}/elsevier-logo.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/fig2.pdf" "${SCRIPT_DIR}/fig3.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/"* "${STAGE_DIR}/figures/"
+mkdir -p "${STAGE_DIR}/tables"
+cp "${SCRIPT_DIR}/tables/deployment_round011.tex" "${STAGE_DIR}/tables/"
 cd "${STAGE_DIR}"
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" manuscript_round_011.tex
 pdflatex -interaction=nonstopmode -halt-on-error -output-directory="${BUILD_DIR}" manuscript_round_011.tex

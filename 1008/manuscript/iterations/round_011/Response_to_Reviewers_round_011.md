@@ -157,3 +157,8 @@ We completed the fixed 2000-update training and all 450 cohort outputs. In the p
 ## Round10: same-v29-base follow-up
 
 We replaced the comparison base with an isolated exact export of the local converted v29 UNet, verified all1680 tensors and native reference conditioning, and completed the fixed2000-step training. On the previously studied50 objects, geometry improves LPIPS over geometry disabled but remains worse than fullv29 in LPIPS and SSIM after the frozen corrections. These results reduce the base-weight confound without demonstrating competitive quality, equivalence, a temporal advantage or matching historical training budgets. All8 contrasts, reused baseline provenance and gate failure/correction records are reported in S29. This follow-up does not fully resolve the novelty concern.
+
+
+## Round11: actual deployment cost and known quality loss
+
+We add a frozen two-GPU crossover benchmark with60 timed calls and8 warm-ups, all pixel-identical to their quality-evaluation outputs. The smaller geometry deployment has lower measured generation cost, accompanied by worse LPIPS and SSIM against fullv29. We report total peak GPU memory and base-plus-geometry parameters, distinguish them from additional module size, and do not attribute this architecture difference to TCAS or claim equal quality. The benchmark excludes loading and disk IO and uses five fixed objects; shared-host and thermal limits remain explicit (S30). Native diagnostics are consolidated in the main text with every negative result retained in the supplement. This does not fully resolve R2 novelty.

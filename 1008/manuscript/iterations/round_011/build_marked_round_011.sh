@@ -15,6 +15,8 @@ cp "${SOURCE_DIR}"/fig*.pdf "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/fig2.pdf" "${SCRIPT_DIR}/fig3.pdf" "${STAGE_DIR}/"
 cp "${SCRIPT_DIR}/figures/"* "${STAGE_DIR}/figures/"
 
+mkdir -p "${STAGE_DIR}/tables"
+cp "${SCRIPT_DIR}/tables/deployment_round011.tex" "${STAGE_DIR}/tables/"
 cd "${STAGE_DIR}"
 latexdiff --type=CFONT --flatten --math-markup=0 --graphics-markup=none --floattype=IDENTICAL --exclude-textcmd=section,subsection,subsubsection,paragraph,caption previous_round.tex Manuscript_round_011.tex > Marked-up_Manuscript_round_011.tex
 python3 - <<'PY'

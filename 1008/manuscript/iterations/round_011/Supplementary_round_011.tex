@@ -831,5 +831,14 @@ The formal run uses the same 1090 training objects, fixed final step 2000, seed 
 \includegraphics[width=\textwidth]{figures/figS10_same_base010.pdf}
 \caption{Complete grids for the first frozen object under the same-v29-UNet follow-up. The full ControlNet baseline was generated in the preceding round with the same inputs. All fifty objects enter the paired analysis; this fixed example is not selected by quality. View placement and texture appearance remain mixed in the image endpoints.}
 \end{figure}
+\section*{S30. Pixel-identical deployment performance}
+The performance protocol is frozen before timing. The first five UIDs in the fifty-object ordering are used without output-based selection. Phase 0 runs small geometry on GPU 0 and full v29 on GPU 1; phase 1 swaps them. Each process has its own resident pipeline, and the two GPUs share a CPU host during concurrent runs. This counterbalances card and order without removing every thermal or shared-host effect. Two first-object warm-ups precede fifteen timed calls per method/card. Geometry transfer and encoding, native reference preparation, denoising, VAE decoding and PIL conversion are inside the synchronized wall-time interval. Model load, disk input/output, CPU input-map construction and metric evaluation are outside it. No alternative precision, step count, reference cache or model compression is introduced.
+
+All 68 calls, including eight warm-ups, match their previously evaluated output pixels exactly. Five saved PNGs per method/card independently verify this identity. The first full-v29 startup fails before generation because a resource guard is placed after this process creates its CUDA context; the corrected startup checks availability first and retains the failed attempt. Completed small-geometry records are reused, and no unfavorable timing or object is dropped. Per-GPU summaries and all raw timings are packaged. Peak allocated and reserved memory are both recorded; the main table reports allocated memory. Parameter counts include the base denoiser and geometry branch but exclude shared image encoders and VAE. Performance summaries are descriptive; repetitions do not increase the independent object count beyond five.
+
+\begin{center}\scriptsize
+\input{tables/deployment_round011.tex}
+\end{center}
+The lower cost does not offset the measured quality loss by statistical fiat. No noninferiority bound or application utility function is introduced after observing results, and the architecture cost is not attributed to temporal scheduling.
 \end{document}
 
