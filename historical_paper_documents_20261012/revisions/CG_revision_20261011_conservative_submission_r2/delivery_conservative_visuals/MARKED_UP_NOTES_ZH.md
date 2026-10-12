@@ -1,0 +1,7 @@
+# 标记稿说明
+
+认证比较基准为source_01549/final_0903.tex（01549提交源）。阅读友好的Marked-up_Manuscript_conservative_visuals.pdf高亮新增/修改的保留文本，隐藏删除块，避免旧结论和失效图重复充满标记稿。它不是显示每一个删除字的完整红线。
+
+全部文本增删见review/Changes_from_01549_conservative_visuals.diff；相对上一保守轮见review/Changes_from_parent_conservative_visuals.diff。图形被整体替换时文本diff与图源/旧PDF共同提供核对，不能将文字diff当作像素差分。认证01549源与PDF完整保留。
+
+CAI推导/最优性、旧复现和保真主张的删除属于科学纠正，未在标记稿中恢复；历史结果和当前负结果保持实际证据身份。

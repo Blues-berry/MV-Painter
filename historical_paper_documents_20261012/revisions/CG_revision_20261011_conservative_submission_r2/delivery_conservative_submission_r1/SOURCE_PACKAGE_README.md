@@ -1,0 +1,3 @@
+# Source archive build notes
+
+All build commands start at the archive root. Run `bash manuscript/build_clean_conservative_submission_r1.sh`, `bash manuscript/build_marked_conservative_submission_r1.sh`, and `bash manuscript/build_supplement_conservative_submission_r1.sh`. Compile the reviewer response with two passes of `xelatex -interaction=nonstopmode -halt-on-error Response_to_Reviewers_conservative_submission_r1.tex` from `review/`. The source archive includes the required Elsevier style/class files, figures, tables, the 01549 source used for the marked-up comparison, evidence summaries, and figure/source manifests.

@@ -1,0 +1,494 @@
+This round also updates the Figure 8 raster panel header from “Reference” to “Target”; the target is low-variation, and the caption bounds it to image-space metric illustration. The raster is bound by the source/provenance manifests.
+
+
+## Main manuscript vs conservative_visuals parent
+
+--- manuscript/Manuscript_conservative_visuals.tex
++++ manuscript/Manuscript_conservative_submission_r1.tex
+@@ -28,7 +28,7 @@
+ % (including funding) are provided only on the separately uploaded title page.
+ 
+ \begin{abstract}
+-Geometry-conditioned multi-view diffusion uses adapter strength to balance geometric alignment and generated appearance. We evaluate Timestep-Conditioned Adapter Scaling (TCAS), a training-free temporal control on the existing GeoTex-Adapter residual path. In the original blinded study, C3 received 58.1\% of overall-quality choices (95\% cluster-bootstrap CI $[50.1,65.8]$; 30 objects, 24 participants). On 300 input-disjoint Fresh C objects, C3 improves paired FG-PSNR over Fixed Low by $+0.52$ dB (95\% object-bootstrap CI $[+0.40,+0.64]$). Strong fixed and linear controls show that the measured advantage depends on comparator and endpoint; equal-budget Fixed Mean and Late-high exceed C3 on FG-PSNR. A ten-object calibrated bake pilot finds lower unseen-view FG-LPIPS for Late-high than Fixed Mean. A native fifty-object MV-Adapter test estimates a second-interface effect whose primary interval includes zero. These results characterize temporal adapter control within the tested texturing pipeline.
++Geometry-conditioned multi-view diffusion uses adapter strength to balance geometric alignment and generated appearance. We evaluate Timestep-Conditioned Adapter Scaling (TCAS), a training-free temporal control on the existing GeoTex-Adapter residual path. In the original blinded study, C3 received 58.1\% of overall-quality choices (95\% cluster-bootstrap CI $[50.1,65.8]$; 30 objects, 24 participants). On 300 input-disjoint Fresh C objects, C3 improves paired FG-PSNR over global Fixed Low (GFL) by $+0.52$ dB (95\% object-bootstrap CI $[+0.40,+0.64]$). Strong fixed and linear controls show that the measured advantage depends on comparator and endpoint; equal-budget Fixed Mean and Late-high exceed C3 on FG-PSNR. A ten-object calibrated bake pilot finds lower unseen-view FG-LPIPS for Late-high than Fixed Mean. A native fifty-object MV-Adapter test estimates a second-interface effect whose primary interval includes zero. These results characterize temporal adapter control within the tested texturing pipeline.
+ \end{abstract}
+ 
+ \begin{keyword}
+@@ -195,9 +195,7 @@
+ 
+ \subsubsection{Evaluation sets and metrics}
+ 
+-The submitted paper also reports a 50-object scale sweep, a purposive 26-object texture audit, and the 24-object development probe. The sweep and probe remain historical context; the texture audit is retained as a selected diagnostic with its scope stated in Supplementary Sections S7 and S13. Current image-space comparisons use foreground PSNR, LPIPS, SSIM, and Edge-SSIM. Object is the inferential unit, and the frozen evaluator scores the six target views as one composite per object.
+-
+-Fresh C adds a revision-era 300-object image-space comparison with foreground PSNR, LPIPS, SSIM, and Edge-SSIM. These measure agreement with target-view renderings on their named endpoints; they do not measure texture fidelity, material appearance, seams, or human preference. The separately reported 01549 preference study is a subjective choice task, not a texture-fidelity measure. Laplacian variance, RGB standard deviation, and gradient magnitude are treated only as variation diagnostics, since larger values can also reflect artifacts. Object is the inferential unit. The six views are assembled into one composite before the frozen evaluator scores each object; views are not independent samples.
++The submitted paper also reports a 50-object scale sweep, a purposive 26-object texture audit, and the 24-object development probe. The sweep and probe remain historical context; the texture audit is retained as a selected diagnostic with its scope stated in Supplementary Sections S7 and S13. Fresh C reports foreground PSNR, LPIPS, SSIM, and Edge-SSIM for target-view image agreement. The original 01549 preference study measures choices for its own stimuli. Laplacian variance, RGB standard deviation, and gradient magnitude describe local variation, not fidelity or material quality.
+ 
+ \subsubsection{Implementation and dataset details}
+ 
+@@ -491,8 +489,8 @@
+ 
+ \begin{figure*}[!t]
+ \centering
+-\includegraphics[width=\textwidth]{figures/fig7_metric_favorable.pdf}
+-\caption{Metric-selected Fresh C examples: (a) Cube 01 and (b) E5-5-2. C3--Fixed Low object-level differences on the full 3$\times$2 composite are FG-PSNR $+1.79$ and $+1.26$ dB, FG-LPIPS $-0.0243$ and $-0.0327$, and FG-SSIM $+0.185$ and $+0.162$, respectively. Each strip shows complete view 0 and a common pixel crop enlarged below. The object-level values are computed on all six views together; displayed-view scoring is a selection diagnostic. Both examples favor C3 on the three composite metrics and on view 0, and are illustrative rather than estimates of prevalence. Full-cohort results are in Table~\ref{tab:freshc-absolute} and Figure~\ref{fig:freshc-effects}. Credits are in Supplementary Table S1.}
++\includegraphics[width=0.78\textwidth]{figures/fig7_metric_favorable.pdf}
++\caption{Metric-selected Fresh C examples: (a) Cube 01 and (b) E5-5-2. C3--Fixed Low object-level differences on the full 3$\times$2 composite are FG-PSNR $+1.79$ and $+1.26$ dB, FG-LPIPS $-0.0243$ and $-0.0327$, and FG-SSIM $+0.185$ and $+0.162$, respectively. Each strip shows the target render, complete view 0 and a shared pixel crop enlarged below. The target renders are low-variation; these examples illustrate the image-space metric contrast, not texture fidelity. Object-level values are computed on all six views together, and displayed-view scoring is a selection diagnostic. Both examples favor C3 on the three composite metrics and on view 0; they illustrate the measured direction, not its prevalence. Full-cohort results are in Table~\ref{tab:freshc-absolute} and Figure~\ref{fig:freshc-effects}. Credits are in Supplementary Table S1.}
+ \label{fig:qualitative}
+ \end{figure*}
+ 
+
+
+## Supplement vs conservative_visuals parent
+
+
+
+## Reviewer response vs conservative_visuals parent
+
+--- review/Response_to_Reviewers_conservative_visuals.md
++++ review/Response_to_Reviewers_conservative_submission_r1.md
+@@ -8,15 +8,17 @@
+ 
+ ## Summary of changes and remaining scope
+ 
+-| Request | Evidence and change | Remaining boundary |
+-|---|---|---|
+-| R1.1 Practical quality | Complete-object metric-selected examples, shared crops, GT-256 projection control, unseen-view bake pilot and actual-output video | Ten-object compatibility-selected pilot; unset-scale output and PBR/relighting remain outside the delivered bake comparison |
+-| R1.2 Holdout comparison | Input-disjoint Fresh C with paired fixed/linear controls and object-level intervals | Separate retrained checkpoint; the historical pooled result lacks archived pair rows for a new interval |
+-| R1.3–1.4 Interpretation/statistics | Variation separated from fidelity; paired intervals and endpoint losses reported | No equivalence, non-inferiority or perceptible-gain claim |
+-| R1.5 FAC reproduction | Executed inference/statistics materials and historical negative results retained | Missing FAC manifests and weights prevent full replay |
+-| R2.1 Contribution | Task-specific TCAS control with equal-budget allocation, preference, baking and native second-interface results | Contribution is the controlled graphics-system evaluation; no architecture-general schedule law is inferred |
+-| R2.2 CAI | Independent derivation, proof and optimality removed | C3 remains a historically selected profile |
+-| R2.3 Second backbone | Valid native-camera fifty-object MV-Adapter matrix and complete contrasts | Different scaling interface; its frozen primary interval includes zero |
++**R1.1, practical quality.** We add full-view comparisons with shared crops, a calibrated GT-256 bake control, a ten-object unseen-view pilot, and an actual-output video. The bake set is compatibility-selected; unset-scale GeoTex, validated seam quality, and PBR/relighting remain outside this evaluation.
++
++**R1.2, held-out comparison.** Fresh C supplies a UID-disjoint paired study with fixed and linear controls. It uses a separately retrained checkpoint; the historical pooled result has no retained object-paired rows for a new interval.
++
++**R1.3–1.4, interpretation and statistics.** We distinguish variation from fidelity and report paired intervals, including endpoint losses. No equivalence, non-inferiority, or perceptible-gain claim is made.
++
++**R1.5, FAC reproducibility.** The package includes executable inference/statistics materials and retains the earlier reported negative results. Missing FAC training manifests and weights prevent full replay.
++
++**R2.1, contribution.** We present TCAS as a task-specific control studied through matched image-space, preference, bake, and native-interface comparisons. We do not infer an architecture-general schedule law.
++
++**R2.2–2.3, formulation and second interface.** The independent CAI derivation and optimality claim are removed. The native fifty-object MV-Adapter matrix supplies a distinct interface test, whose primary interval includes zero.
+ 
+ The main text now moves from the texturing problem and TCAS control to quantitative/preference evidence, then to baking and the native second-interface test. Checkpoint history, earlier exploratory interface panels, recovery records and full statistics remain in the Supplement.
+ 
+@@ -36,7 +38,7 @@
+ 
+ **Response.** The authenticated 01549 main-table result reports pooled full-image PSNR of 18.86 dB for C3 and 17.90 dB for Fixed High on its original 300-object pool, which includes the 24 development objects. We retain the resulting +0.96 dB as a historical pooled result. The surviving archive does not contain the object-paired rows needed to reconstruct a paired confidence interval.
+ 
+-Fresh C is a separate, controlled retraining on 300 object IDs disjoint from the earlier development probe and original evaluation cohort. Its frozen primary comparison is C3 minus Fixed Low on foreground-masked PSNR: +0.522 dB (95% object-bootstrap CI [+0.404, +0.641]). The checkpoint, comparator, metric scope and object cohort differ from 01549, so this is a new matched result, not a numerical reproduction of the pooled +0.96 dB estimate. Fixed High, Generic Linear and equal-budget controls are reported alongside it.
++Fresh C is a separate, controlled retraining on 300 object IDs disjoint from the earlier development probe and original evaluation cohort. Its frozen primary comparison is C3 minus Fixed Low on foreground-masked PSNR: +0.522 dB (95% object-bootstrap CI [+0.404, +0.641]). The checkpoint, comparator, metric scope and object cohort differ from 01549, so this is a new matched result, not a numerical reproduction of the historical pooled result. Fixed High, Generic Linear and equal-budget controls are reported alongside it.
+ 
+ **Location.** Main manuscript: historical main-table result, Fresh C paired tables and effect figure. Supplement: S2, S3, S4–S5, S8, and S9.
+ 
+
+
+## Figure builder vs conservative_visuals parent
+
+--- ../CG_revision_20261011_conservative_visuals/manuscript/scripts/build_metric_favorable_figure.py
++++ manuscript/scripts/build_metric_favorable_figure.py
+@@ -1,59 +1,111 @@
+-"""Create a metric-selected qualitative plate from verified Fresh C outputs."""
++"""Build a compact, source-verified Fresh C comparison plate."""
+ from pathlib import Path
+-import csv, hashlib, json, sys
++import hashlib
++import json
++import sys
++import csv
++
+ sys.path.insert(0, str(Path(__file__).resolve().parent))
+ import build_review_figures as common
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-FIG = ROOT / 'figures'
+-METRICS = ROOT.parent / 'evidence' / 'REVISION_OBJECT_CONDITION_METRICS.csv'
+-MANIFEST = FIG / 'FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv'
+-CASES = {
+-    'c76ac44df995482185077da81939b306': 'Building 03',
+-    '06fa4974f8cd4d4ea792e98fa1521457': 'Cube 01',
+-}
+-with MANIFEST.open() as f:
+-    source_rows = list(csv.DictReader(f))
+-with METRICS.open() as f:
+-    metric_rows = list(csv.DictReader(f))
++PACKAGE_ROOT = ROOT.parent
++FIG = ROOT / "figures"
++SOURCE = FIG / "FIG7_METRIC_FAVORABLE_SOURCE_MANIFEST.json"
++AUDIT = ROOT.parent / "evidence/FRESH_C_DISPLAYED_VIEW_AUDIT.json"
++CASES = (
++    ("06fa4974f8cd4d4ea792e98fa1521457", "Cube 01"),
++    ("f6979d7ff8e54c4daf00fee46f09a139", "E5-5-2"),
++)
++METHODS = ("Reference", "Fixed Low", "C3")
++PALETTE = ("Target", "Fixed low", "C3")
++ROI_SOURCE = FIG / "FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv"
+ 
+-panels = []
+-provenance = []
+-for panel_i, (uid, title) in enumerate(CASES.items()):
+-    rows = {r['method']: r for r in source_rows if r['object_uid'] == uid}
+-    selected = [rows[k] for k in ['Reference', 'GFL', 'C3']]
+-    images = []
+-    for r in selected:
+-        image = common.actual(r['input_path'], r['input_sha256'])
+-        if r['method'] != 'Reference':
+-            image = image.crop(tuple(map(int, r['tile_bbox'].split(','))))
+-        images.append(image.resize((256, 256), common.Image.Resampling.LANCZOS))
+-    frame = common.shared_frame(images)
+-    panel = common.strip(images, ['Reference', 'Fixed Low', 'C3'],
+-                         f'({chr(97 + panel_i)})', frame, cell=340)
+-    panels.append(panel)
+ 
+-    group = {r['condition']: r for r in metric_rows
+-             if r['evaluation_domain'] == 'geotex_generated_six_views'
+-             and r['source_id'] == 'same_cohort_matched300'
+-             and r['object_uid'] == uid}
+-    low, c3 = group['Fixed Low'], group['Middle-high']
+-    deltas = {key: float(c3[key]) - float(low[key])
+-              for key in ['fg_psnr', 'fg_lpips', 'fg_ssim', 'edge_ssim']}
+-    assert deltas['fg_psnr'] > 0 and deltas['fg_lpips'] < 0 and deltas['fg_ssim'] > 0
+-    provenance.append({
+-        'panel': chr(97 + panel_i), 'object_uid': uid, 'title': title,
+-        'selection_rule': 'C3 vs Fixed Low: favorable direction in FG-PSNR, FG-LPIPS and FG-SSIM; rights-cleared existing Fresh C illustration',
+-        'metrics_are_object_means_over_six_generated_views': True,
+-        'fixed_low': {k: float(low[k]) for k in ['fg_psnr','fg_lpips','fg_ssim','edge_ssim']},
+-        'c3': {k: float(c3[k]) for k in ['fg_psnr','fg_lpips','fg_ssim','edge_ssim']},
+-        'delta_c3_minus_fixed_low': deltas,
+-        'sources': [{'path': r['input_path'], 'sha256': hashlib.sha256(common.actual(r['input_path'], r['input_sha256']).tobytes()).hexdigest(),
+-                     'file_sha256': r['input_sha256'], 'method': r['method']} for r in selected],
+-        'frame': frame,
+-    })
++def main() -> None:
++    sources = json.loads(SOURCE.read_text())
++    audit = json.loads(AUDIT.read_text())
++    audit_by_uid = {row["object_uid"]: row for row in audit["cases"]}
++    with ROI_SOURCE.open(newline="", encoding="utf-8") as stream:
++        roi_rows = list(csv.DictReader(stream))
++    panels, provenance = [], []
++    for panel_i, (uid, title) in enumerate(CASES):
++        case_rows = [r for r in sources if r["object_uid"] == uid]
++        by_method = {r["method"]: r for r in case_rows}
++        if set(by_method) != set(METHODS):
++            raise RuntimeError(f"Incomplete image sources for {uid}")
++        images, source_records = [], []
++        for method in METHODS:
++            row = by_method[method]
++            path = PACKAGE_ROOT / row["packaged_path"]
++            image = common.actual(path, row["packaged_sha256"])
++            if method != "Reference":
++                image = image.crop((0, 0, 256, 256))
++            else:
++                image = image.resize((256, 256), common.Image.Resampling.LANCZOS)
++            images.append(image)
++            source_records.append({
++                "method": method,
++                "original_path": row["original_path"],
++                "original_sha256": row["original_sha256"],
++                "packaged_path": row["packaged_path"],
++                "packaged_sha256": row["packaged_sha256"],
++            })
+ 
+-image = common.stack(panels, gap=18)
+-common.save(image, 'fig4_metric_favorable')
+-(FIG / 'FIG4_METRIC_FAVORABLE_PROVENANCE.json').write_text(json.dumps(provenance, indent=2) + '\n')
+-print(json.dumps(provenance, indent=2))
++        view = audit_by_uid[uid]
++        mean = view["object_mean_delta_c3_minus_fixed_low"]
++        first_view = view["view_deltas_c3_minus_fixed_low"][0]["delta_c3_minus_fixed_low"]
++        if not (mean["fg_psnr"] > 0 and mean["fg_lpips"] < 0 and mean["fg_ssim"] > 0):
++            raise RuntimeError(f"Object-level selection rule failed for {uid}")
++        if not view["view0_three_metrics_favorable"]:
++            raise RuntimeError(f"Displayed-view selection rule failed for {uid}")
++
++        roi_candidates = {
++            tuple(int(v) for v in row["crop_bbox"].split(","))
++            for row in roi_rows
++            if row["object_uid"] == uid
++            and row["figure_id"] in {"fig5", "fig6_color_diagnostic"}
++            and row["method"] in METHODS
++        }
++        if len(roi_candidates) != 1:
++            raise RuntimeError(f"Expected one shared, previously recorded ROI for {uid}: {roi_candidates}")
++        detail = roi_candidates.pop()
++        if len(detail) != 4 or not (0 <= detail[0] < detail[2] <= 256 and 0 <= detail[1] < detail[3] <= 256):
++            raise RuntimeError(f"ROI falls outside displayed view for {uid}: {detail}")
++        frame = common.shared_frame(images, detail)
++        panels.append(common.strip(images, PALETTE, f"({chr(97 + panel_i)})", frame, detail, cell=240))
++        provenance.append({
++            "panel": chr(97 + panel_i),
++            "object_uid": uid,
++            "object_title": title,
++            "selected_from": "five previously rights-cleared illustrations",
++            "selection_rule": "C3 versus Fixed Low is favorable on object-level composite FG-PSNR, FG-LPIPS and FG-SSIM and on the displayed saved view for all three endpoints",
++            "display_view_id": 0,
++            "object_metric_scope": "frozen 3x2 six-view composite evaluated once per object",
++            "object_delta_c3_minus_fixed_low": mean,
++            "display_view_delta_c3_minus_fixed_low": first_view,
++            "shared_roi_xyxy_view0": detail,
++            "png_quantization_audit": {
++                "mosaic_delta_vs_frozen": {
++                    condition: view["conditions"][condition]["png_minus_frozen"]
++                    for condition in METHODS[1:]
++                },
++                "interpretation": "saved-PNG recalculation only; not substituted for frozen cohort statistics",
++            },
++            "shared_frame_xyxy": frame,
++            "sources": source_records,
++        })
++
++    image = common.stack(panels, gap=12)
++    common.save(image, "fig7_metric_favorable")
++    out = FIG / "FIG7_METRIC_FAVORABLE_PROVENANCE.json"
++    out.write_text(json.dumps(provenance, indent=2, ensure_ascii=False) + "\n")
++    print(json.dumps({
++        "figure_png_sha256": hashlib.sha256((FIG / "fig7_metric_favorable.png").read_bytes()).hexdigest(),
++        "figure_pdf_sha256": hashlib.sha256((FIG / "fig7_metric_favorable.pdf").read_bytes()).hexdigest(),
++        "cases": provenance,
++    }, indent=2, ensure_ascii=False))
++
++
++if __name__ == "__main__":
++    main()
+
+
+## Figure selection provenance vs conservative_visuals parent
+
+--- ../CG_revision_20261011_conservative_visuals/manuscript/figures/FIG4_METRIC_FAVORABLE_PROVENANCE.json
++++ manuscript/figures/FIG7_METRIC_FAVORABLE_PROVENANCE.json
+@@ -1,104 +1,146 @@
+ [
+   {
+     "panel": "a",
+-    "object_uid": "c76ac44df995482185077da81939b306",
+-    "title": "Building 03",
+-    "selection_rule": "C3 vs Fixed Low: favorable direction in FG-PSNR, FG-LPIPS and FG-SSIM; rights-cleared existing Fresh C illustration",
+-    "metrics_are_object_means_over_six_generated_views": true,
+-    "fixed_low": {
+-      "fg_psnr": 12.695667743682861,
+-      "fg_lpips": 0.22659994661808014,
+-      "fg_ssim": 0.24309863150119781,
+-      "edge_ssim": 0.6736428141593933
+-    },
+-    "c3": {
+-      "fg_psnr": 15.339909791946411,
+-      "fg_lpips": 0.22477377951145172,
+-      "fg_ssim": 0.27677014470100403,
+-      "edge_ssim": 0.6865966320037842
+-    },
+-    "delta_c3_minus_fixed_low": {
+-      "fg_psnr": 2.64424204826355,
+-      "fg_lpips": -0.001826167106628418,
+-      "fg_ssim": 0.03367151319980621,
+-      "edge_ssim": 0.01295381784439087
+-    },
+-    "sources": [
+-      {
+-        "path": "1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/000.png",
+-        "sha256": "6a6cae7a4954179fc7906747673b0d7be48923fe69872dcadd8f6c114cda728b",
+-        "file_sha256": "111d732a38b2d9023696f66e40f58019f85f861be9c571aab35b3edf31e51ad5",
+-        "method": "Reference"
+-      },
+-      {
+-        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/c76ac44df995482185077da81939b306.png",
+-        "sha256": "aa99ebe78cc75609ad02411f5fca4823d16ad3b414f000bd360e937c102d19b8",
+-        "file_sha256": "8a7d5c30df97abd0bb4caf25f245252527549b90b41851a184111f526150d198",
+-        "method": "GFL"
+-      },
+-      {
+-        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/c76ac44df995482185077da81939b306.png",
+-        "sha256": "44d4d7e7248ad029c94aeabb239a8130e425c3164b36fd701af90a7f08dd89c2",
+-        "file_sha256": "fd8cd204cf5b7b2ac2c7756ca56a2b8007c20fd81f2837b04b1b7936e1b4aa96",
+-        "method": "C3"
+-      }
+-    ],
+-    "frame": [
+-      78,
+-      32,
+-      178,
+-      225
+-    ]
+-  },
+-  {
+-    "panel": "b",
+     "object_uid": "06fa4974f8cd4d4ea792e98fa1521457",
+-    "title": "Cube 01",
+-    "selection_rule": "C3 vs Fixed Low: favorable direction in FG-PSNR, FG-LPIPS and FG-SSIM; rights-cleared existing Fresh C illustration",
+-    "metrics_are_object_means_over_six_generated_views": true,
+-    "fixed_low": {
+-      "fg_psnr": 12.550090551376343,
+-      "fg_lpips": 0.4892510771751404,
+-      "fg_ssim": 0.4497387409210205,
+-      "edge_ssim": 0.5186532139778137
+-    },
+-    "c3": {
+-      "fg_psnr": 14.343361854553223,
+-      "fg_lpips": 0.46495482325553894,
+-      "fg_ssim": 0.6348596215248108,
+-      "edge_ssim": 0.5153311491012573
+-    },
+-    "delta_c3_minus_fixed_low": {
++    "object_title": "Cube 01",
++    "selected_from": "five previously rights-cleared illustrations",
++    "selection_rule": "C3 versus Fixed Low is favorable on object-level composite FG-PSNR, FG-LPIPS and FG-SSIM and on the displayed saved view for all three endpoints",
++    "display_view_id": 0,
++    "object_metric_scope": "frozen 3x2 six-view composite evaluated once per object",
++    "object_delta_c3_minus_fixed_low": {
+       "fg_psnr": 1.7932713031768799,
+       "fg_lpips": -0.02429625391960144,
+       "fg_ssim": 0.18512088060379028,
+       "edge_ssim": -0.0033220648765563965
+     },
+-    "sources": [
+-      {
+-        "path": "1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/000.png",
+-        "sha256": "464f37ef94b9e85692671afd269ad8d19d871b504ae6e18dd95b74f789fa2b54",
+-        "file_sha256": "57abc97392cf2a3080f06ba7319cf77588b6ca64a39596ce60fbdbb644eb2680",
+-        "method": "Reference"
++    "display_view_delta_c3_minus_fixed_low": {
++      "fg_psnr": 1.8168902397155762,
++      "fg_lpips": -0.019341319799423218,
++      "fg_ssim": 0.20728597044944763
++    },
++    "shared_roi_xyxy_view0": [
++      48,
++      90,
++      208,
++      210
++    ],
++    "png_quantization_audit": {
++      "mosaic_delta_vs_frozen": {
++        "Fixed Low": {
++          "fg_psnr": 0.00537872314453125,
++          "fg_lpips": 5.555152893066406e-05,
++          "fg_ssim": 0.0035295486450195312,
++          "edge_ssim": 0.00023639202117919922
++        },
++        "C3": {
++          "fg_psnr": 0.007528066635131836,
++          "fg_lpips": 3.167986869812012e-05,
++          "fg_ssim": 0.00925290584564209,
++          "edge_ssim": 0.006102621555328369
++        }
+       },
+-      {
+-        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/06fa4974f8cd4d4ea792e98fa1521457.png",
+-        "sha256": "58e06768c90cdfbd4c4de1b7fbbbcf98f3831804b2f0376522f132455974e402",
+-        "file_sha256": "a123c75f7feaadcd941bb4cd1c2b227fd6cad9201aeb53e9cf8cee2508cba2e9",
+-        "method": "GFL"
+-      },
+-      {
+-        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/06fa4974f8cd4d4ea792e98fa1521457.png",
+-        "sha256": "91bf55b57218c895d8a3ebd59c04552b04cb4ffc9a9843689725715db594c4c3",
+-        "file_sha256": "2c88b85daee4c10111dec0ce03a6bb039f09c27da3e50f534e0b72b7c9052c4c",
+-        "method": "C3"
+-      }
+-    ],
+-    "frame": [
++      "interpretation": "saved-PNG recalculation only; not substituted for frozen cohort statistics"
++    },
++    "shared_frame_xyxy": [
+       32,
+       32,
+       224,
+       224
++    ],
++    "sources": [
++      {
++        "method": "Reference",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/000.png",
++        "original_sha256": "57abc97392cf2a3080f06ba7319cf77588b6ca64a39596ce60fbdbb644eb2680",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/06fa4974f8cd4d4ea792e98fa1521457/reference.png",
++        "packaged_sha256": "57abc97392cf2a3080f06ba7319cf77588b6ca64a39596ce60fbdbb644eb2680"
++      },
++      {
++        "method": "Fixed Low",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/06fa4974f8cd4d4ea792e98fa1521457.png",
++        "original_sha256": "a123c75f7feaadcd941bb4cd1c2b227fd6cad9201aeb53e9cf8cee2508cba2e9",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/06fa4974f8cd4d4ea792e98fa1521457/fixed_low.png",
++        "packaged_sha256": "a123c75f7feaadcd941bb4cd1c2b227fd6cad9201aeb53e9cf8cee2508cba2e9"
++      },
++      {
++        "method": "C3",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/06fa4974f8cd4d4ea792e98fa1521457.png",
++        "original_sha256": "2c88b85daee4c10111dec0ce03a6bb039f09c27da3e50f534e0b72b7c9052c4c",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/06fa4974f8cd4d4ea792e98fa1521457/native_gc3.png",
++        "packaged_sha256": "2c88b85daee4c10111dec0ce03a6bb039f09c27da3e50f534e0b72b7c9052c4c"
++      }
++    ]
++  },
++  {
++    "panel": "b",
++    "object_uid": "f6979d7ff8e54c4daf00fee46f09a139",
++    "object_title": "E5-5-2",
++    "selected_from": "five previously rights-cleared illustrations",
++    "selection_rule": "C3 versus Fixed Low is favorable on object-level composite FG-PSNR, FG-LPIPS and FG-SSIM and on the displayed saved view for all three endpoints",
++    "display_view_id": 0,
++    "object_metric_scope": "frozen 3x2 six-view composite evaluated once per object",
++    "object_delta_c3_minus_fixed_low": {
++      "fg_psnr": 1.2649106979370117,
++      "fg_lpips": -0.03270834684371948,
++      "fg_ssim": 0.16150027513504028,
++      "edge_ssim": 0.024089574813842773
++    },
++    "display_view_delta_c3_minus_fixed_low": {
++      "fg_psnr": 1.8208825588226318,
++      "fg_lpips": -0.025233030319213867,
++      "fg_ssim": 0.18654486536979675
++    },
++    "shared_roi_xyxy_view0": [
++      48,
++      90,
++      208,
++      210
++    ],
++    "png_quantization_audit": {
++      "mosaic_delta_vs_frozen": {
++        "Fixed Low": {
++          "fg_psnr": 0.0023436546325683594,
++          "fg_lpips": 4.425644874572754e-05,
++          "fg_ssim": 0.0034285783767700195,
++          "edge_ssim": 5.936622619628906e-05
++        },
++        "C3": {
++          "fg_psnr": 0.0021445751190185547,
++          "fg_lpips": -2.7179718017578125e-05,
++          "fg_ssim": 0.007332742214202881,
++          "edge_ssim": 0.008451223373413086
++        }
++      },
++      "interpretation": "saved-PNG recalculation only; not substituted for frozen cohort statistics"
++    },
++    "shared_frame_xyxy": [
++      36,
++      32,
++      219,
++      224
++    ],
++    "sources": [
++      {
++        "method": "Reference",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/renders/f6979d7ff8e54c4daf00fee46f09a139/image/000.png",
++        "original_sha256": "084e465f4fd14cb7535786c1bd010fbccfd52bc0de455f6e40da8aef014fd425",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/f6979d7ff8e54c4daf00fee46f09a139/reference.png",
++        "packaged_sha256": "084e465f4fd14cb7535786c1bd010fbccfd52bc0de455f6e40da8aef014fd425"
++      },
++      {
++        "method": "Fixed Low",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/f6979d7ff8e54c4daf00fee46f09a139.png",
++        "original_sha256": "47c0a8996eb5f9658ec996f37b7c1ea236146e1ba1d9122c1867912d7d503f49",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/f6979d7ff8e54c4daf00fee46f09a139/fixed_low.png",
++        "packaged_sha256": "47c0a8996eb5f9658ec996f37b7c1ea236146e1ba1d9122c1867912d7d503f49"
++      },
++      {
++        "method": "C3",
++        "original_path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/f6979d7ff8e54c4daf00fee46f09a139.png",
++        "original_sha256": "60fa50a194ba4fb9439c3a9866e649f3b4ec597e4f8c96dc6411fd88df0e6f96",
++        "packaged_path": "manuscript/figures/fig7_metric_favorable_source/f6979d7ff8e54c4daf00fee46f09a139/native_gc3.png",
++        "packaged_sha256": "60fa50a194ba4fb9439c3a9866e649f3b4ec597e4f8c96dc6411fd88df0e6f96"
++      }
+     ]
+   }
+ ]
+

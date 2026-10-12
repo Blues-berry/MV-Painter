@@ -1,0 +1,11 @@
+# C&G 保守修订第2轮（建议审阅版本）
+
+独立版本conservative_r2，直接基于已验证并冻结的conservative_r1。旧稿、第一轮及激进稿均不覆盖。先分析计划见ROUND_ANALYSIS_PLAN_ZH.md，执行与剩余风险见ROUND_EXECUTION_ZH.md和ACCEPTANCE_ASSESSMENT_ZH.md。
+
+交付目录delivery_conservative_r2：带保守后缀的独立正文/补充/回复TeX，clean、01549 marked、Supplement、回复PDF与DOCX、真实视频、源码zip及沿用复算包。所有既有有效matched300/native50/bake10结果保留；没有新训练、推理或选图。
+
+重建：在manuscript目录分别运行build_clean_conservative_r2.sh、build_supplement_conservative_r2.sh、build_marked_conservative_r2.sh。图资产、期刊样式和真实01549基准随源码包交付，无需模型权重即可重建论文。原始图重绘需要图源；本轮图资产字节不变。
+
+Marked-up为阅读友好的增加/修改高亮稿，隐藏删除块。完整增删见review/Changes_from_01549_conservative_r2.diff；相对第一轮见Changes_from_parent_conservative_r2.diff；MARKED_UP_NOTES_ZH.md说明证据身份。
+
+S20只汇总原冻结配置和应用尺度算术。GeoTex unset默认尚无真实生成对照，wrapper合成单位修正检查不能替代它。native50默认检查只证明MV-Adapter接口。所有现存科学缺口保留。
