@@ -2,6 +2,15 @@
 
 本分支以 Round 015 已上传版本为基础，附加 2026-10-11 的保守投稿 r2 文档包。
 
+## 本地工作区清点与补充记录
+
+主工作区当时有 1,909 个未跟踪文件和 5 个已跟踪文件变更。分类、纳入与排除边界见[本地改动范围说明](local_work_notes/LOCAL_WORKTREE_SCOPE_ZH.md)。补充的 P0–P3 文字工作记录：
+
+- [P0–P3 计划](local_work_notes/PLAN_P0P3_ZH.md) · [执行记录](local_work_notes/ROUND_EXECUTION_ZH.md) · [P0 评估预案](local_work_notes/P0_EVALUATION_PREPLAN_ZH.md)
+- [P1 默认推理对照结果](local_work_notes/P1_RESULTS_ZH.md) · [P2 外观诊断](local_work_notes/P2_DIAGNOSIS_ZH.md) · [P3 整合预案](local_work_notes/P3_INTEGRATION_PLAN_ZH.md)
+
+这些是保留原始边界的工作记录；其引用的逐对象指标、原始渲染和日志仍留在本地，未作为实验产物上传。
+
 ## 当前投稿 r2
 
 `paper_bundle_r2/` 包含正文、标记稿、补充材料、审稿回复的 TeX/Markdown 与成品 PDF/DOCX；LaTeX 样式、构建脚本及正文和补充材料直接引用的图也一并提供。未引用的备选图、原始实验图、实验结果、日志、模型权重、数据和视频不在本次新增文件中。图源和署名记录位于 `paper_bundle_r2/provenance/`。
