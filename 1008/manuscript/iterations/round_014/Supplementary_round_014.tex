@@ -451,6 +451,13 @@ The companion M3 profile uses $[0.41953,0.41953,1.19349,1.19349]$, whose mean mu
 \input{tables/mvdiffusion_raw_contrasts.tex}
 
 \FloatBarrier
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_native50_all014.pdf}
+\caption{Native MV-Adapter targets and all seven controls for the two fixed input-order rights-cleared examples in the main text. All images use native view 0 and the same object seed; each object has one shared frame spanning target and every condition. Previously observed illustrative outputs do not establish the primary effect or a generally best schedule. Source hashes and display frames are in the final visual manifest; full attribution is in Sections S5 and S9.}
+\label{fig:supp-native50-full}
+\end{figure}
+\FloatBarrier
 \section*{S4. GSO external-input and complete baked evaluation}
 \label{supp:group4}
 \addcontentsline{toc}{section}{S4. GSO external-input and complete baked evaluation}
@@ -564,9 +571,40 @@ Edge-SSIM & $0.907\ [0.871,0.943]$ & 6/10 \\
 GT and generated bake sources use the same six raw cameras and 256-pixel resolution. GT RGB uses bicubic downsampling; alpha uses the exact nearest-index mapping used for generated foreground inputs. Their six-view scalar masks are bitwise identical and their raw atlas coverage matches for every object and condition. No unseen view enters baking. Export checks retain binary geometry/UV buffers, transforms and mesh identity. REPEAT UV weights are nonnegative, sum to one and are invariant under integer UV shifts. These checks establish a valid unlit projection comparison, not PBR equivalence or a validated seam score. Texture boundaries can be natural appearance boundaries; seam diagnostics are not reported as a validated primary endpoint.
 
 \begin{figure}[p]\centering
-\includegraphics[width=\textwidth,height=0.74\textheight,keepaspectratio]{figures/figS2_baked_full_conditions.png}
-\caption{Full-object same-camera source, GT-256 bake and all seven controls for the seven new-pilot objects whose publication licenses were verified. Three other objects remain in all numerical analyses but are omitted from distributed illustrations because image-publication permission is unresolved. No quality-based exclusion is made. Images are actual renders, resized for display without retouching. Source credits and input/output hashes are provided in BAKED\_ASSET\_CREDITS.csv and BAKED\_FIGURE\_VIDEO\_PROVENANCE.csv.}
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_01.pdf}
+\caption{Rights-cleared GeoTex bake object 1 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
 \end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_02.pdf}
+\caption{Rights-cleared GeoTex bake object 2 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_03.pdf}
+\caption{Rights-cleared GeoTex bake object 3 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_04.pdf}
+\caption{Rights-cleared GeoTex bake object 4 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_05.pdf}
+\caption{Rights-cleared GeoTex bake object 5 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_06.pdf}
+\caption{Rights-cleared GeoTex bake object 6 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{figures/figS_bake014_07.pdf}
+\caption{Rights-cleared GeoTex bake object 7 of seven, unseen camera 004. Source, matched GT-256 reference bake and all seven original generated conditions share one whole-object frame. These input/rights-selected displays retain visible failures and do not estimate prevalence. All ten eligible objects, including the three without verified display rights, remain in the numerical analysis. Source identities, native materials and credits are retained in the bake manifest and license ledger.}
+\end{figure}
+
 
 Supplementary Video presents two input-order, rights-cleared objects at all eleven discrete unseen cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized. It is an unlit comparison, not a claim of continuous-view or PBR quality.
 
@@ -622,8 +660,8 @@ A read-only source audit identifies additional differences. The frozen generator
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS3_native_controls.pdf}
-\caption{Complete generated six-view grids for the same first two input-ordered, rights-cleared objects used in the earlier bake display. The conditioning image is shown separately. Native residual means the unset-scale wrapper branch in the frozen sampling protocol; it does not mean the complete default pipeline. All grids retain their original contents, with only whole-grid resizing; visible color and detail failures are not retouched. LG Remote: mohd.akmal.mahyudin; Tire: Koto3D Stephane Vogley; both CC Attribution. Full source links are given in S18; new output hashes and credits accompany this figure.}
+\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS_native_controls014.pdf}
+\caption{Generated six-view grids for the same first two input-ordered, rights-cleared objects used in the earlier bake display. The malformed No Adapter visual column is omitted; all its numerical contrasts remain reported. The conditioning image is shown separately. Native residual means the unset-scale wrapper branch in the frozen sampling protocol; it does not mean the complete default pipeline. All grids retain their original contents, with only whole-grid resizing; visible color and detail failures are not retouched. LG Remote: mohd.akmal.mahyudin; Tire: Koto3D Stephane Vogley; both CC Attribution. Full source links are given in S5; new output hashes and credits accompany this figure.}
 \end{figure}
 
 
@@ -682,7 +720,7 @@ The attempted Fresh C 24-object GLB bake did not pass its input/output gate: 9/2
 \addcontentsline{toc}{section}{S6. Appearance failures and executed-protocol diagnostics}
 
 \subsection*{Paired color-pathway diagnosis and failure boundaries}
-The color diagnosis is a selected, failure-enriched set of six earlier cases and 20 Fresh C panels; it is neither random nor a new holdout. No Adapter, GFL, and LLH were compared on the same inputs, checkpoint, and runner across six unique target views (78 object-condition records). CIEDE2000 was recomputed from hash-identified RGB and frozen masks. Intervals are descriptive paired object bootstraps (20,000 resamples, seed 61008); no confirmatory multiplicity family was defined. Figure~6 shows one of the 20 Fresh C panels (UID \texttt{f6979d7ff8e54c4daf00fee46f09a139}); its pre-existing C3--GFL stratum was lowest FG-LPIPS, not color-based, and it is distinct from the legacy pink-shift cases.
+The color diagnosis is a selected, failure-enriched set of six earlier cases and 20 Fresh C panels; it is neither random nor a new holdout. No Adapter, GFL, and LLH were compared on the same inputs, checkpoint, and runner across six unique target views (78 object-condition records). CIEDE2000 was recomputed from hash-identified RGB and frozen masks. Intervals are descriptive paired object bootstraps (20,000 resamples, seed 61008); no confirmatory multiplicity family was defined. The main manuscript's color-diagnostic figure shows one of the 20 Fresh C panels (UID \texttt{f6979d7ff8e54c4daf00fee46f09a139}); its pre-existing C3--GFL stratum was lowest FG-LPIPS, not color-based, and it is distinct from the legacy pink-shift cases.
 
 \begin{table}[ht]
 \centering\scriptsize
@@ -719,10 +757,16 @@ The first RGB API attempt fails before any output because the native recenter he
 
 The frozen generator's image inverse scaling is $1.6x$, followed by $0.5x+0.5$, yielding $0.8x+0.5$. The full pipeline composes the same two factors. The formulas are algebraically equal; naming differences do not demonstrate a decoding error.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS4_native_base_diagnostic.pdf}
-\caption{All generated views of two seen failure objects, with whole-grid resizing and no retouching. Native base columns use a different sampling protocol and unverified camera conventions; these panels are not aligned GT comparisons or complete GeoTex default results. Front-looking native outputs retain reference colors/details, while other views remain imperfect. Conditioning image is shown once; all four native calls are displayed, with no outcome selection. LG Remote: mohd.akmal.mahyudin; Tire: Koto3D Stephane Vogley; both CC Attribution, source links in S18. New hashes and credits accompany the figure.}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_base_diagnostic014_01.pdf}
+\caption{Retained complete grids for a fixed input-order failure object. The disabled-adapter visual column is omitted; its records remain available. Native base outputs use a different sampler and unverified camera conventions, so these are protocol diagnostics rather than aligned GT comparisons or complete default GeoTex results. No reference-fidelity inference follows from the better front-looking native color. Object 1 of two.}
 \end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_base_diagnostic014_02.pdf}
+\caption{Retained complete grids for a fixed input-order failure object. The disabled-adapter visual column is omitted; its records remain available. Native base outputs use a different sampler and unverified camera conventions, so these are protocol diagnostics rather than aligned GT comparisons or complete default GeoTex results. No reference-fidelity inference follows from the better front-looking native color. Object 2 of two.}
+\end{figure}
+
 
 The diagnostic justifies prioritizing a controlled separation of online/cached image features, classifier-free guidance and other sampling differences. It does not identify a single cause, establish a new algorithm, validate broad material fidelity or replace any earlier paired comparison. No inferential statistics or new acceptance probability are assigned to these two examples.
 
@@ -731,22 +775,34 @@ The same two seen failure objects undergo eight calls: cached/online global imag
 
 The conditional-only arms reuse the original generation function. The cached arm reproduces both prior No Adapter RGB outputs bitwise. CFG2 uses the standard prediction $2\epsilon_c-\epsilon_u$ through sequential batch-one forwards. Negative conditioning encodes a zero tensor in the normalized VAE input space, with seed424242; its reference-noise call uses an independent RNG fork at each step (seed100042 plus step). The positive branch retains the original randomness: all fifty positive-call CUDA RNG states match across four arms for each object. Each guided arm records fifty positive and fifty negative calls; each conditional-only arm records fifty positive calls. This controlled sequential implementation is not claimed pixel-equivalent to the native batched CFG API.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS5_guidance_embedding_factorial.pdf}
-\caption{All eight six-view outputs from the frozen two-by-two diagnostic. Only whole-grid resizing is used. Online features do not restore reference appearance. Guided outputs lose much of the conspicuous colored pattern but retain incorrect dark shapes; this is not a demonstrated quality repair. Same previously inspected examples and rights as S21; all outputs, trace identities, hashes and credits are delivered.}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_guidance_diagnostic014_01.pdf}
+\caption{Guided cached/online-feature outputs for the fixed failure object. The two malformed unguided disabled-adapter columns are omitted from the display; all four original factorial arms and identity tests remain reported. Complete generated grids are resized only for presentation. The dark incorrect shapes remain, and online features do not establish a quality repair. These are previously inspected diagnostic examples, not a new holdout. Object 1 of two.}
 \end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_guidance_diagnostic014_02.pdf}
+\caption{Guided cached/online-feature outputs for the fixed failure object. The two malformed unguided disabled-adapter columns are omitted from the display; all four original factorial arms and identity tests remain reported. Complete generated grids are resized only for presentation. The dark incorrect shapes remain, and online features do not establish a quality repair. These are previously inspected diagnostic examples, not a new holdout. Object 2 of two.}
+\end{figure}
+
 
 No paired cross-camera GT endpoints, population tests or acceptance probability are assigned to these two examples. The result retains the earlier B2 feature-substitution failure and C1 visual-gate failure; it does not support erasing those records or claiming a validated appearance correction. Resolution and remaining full-pipeline differences should be separated before deploying an amended GeoTex path or developing a new method.
 
 \subsection*{Target-resolution bridge}
 The two seen diagnostic objects undergo eight calls: 256/512-pixel target views crossed with conditional-only/sequential CFG2. Reference RGB resizing and model.img\_size remain 256; online global features, frozen model weights, 50-step EulerDiscrete sampling, training time IDs and reference encoding remain fixed. Initial latents have shape $1\times4\times96\times64$ or $1\times4\times192\times128$. Within each target resolution, the two arms use identical initial latents and fifty matching positive-call CUDA RNG states. Across resolutions, the tensor dimensions differ: a common seed is not a claim of identical initial tensors. Guided arms reuse the previous sequential CFG2 implementation and independent negative RNG policy.
 
-Both 256-pixel arms reproduce the corresponding S22 online-feature RGB outputs bitwise for both objects. All conditions have identical reference-input and online-feature hashes within an object. Larger target grids change the object arrangement, but retained appearance defects prevent calling this a quality repair. Camera identities have not been independently calibrated across these generated grids, so there are no cross-path GT scores, population tests or deployment claims. The base pipeline source specifies a $1024\times1536$ output grid; this source fact and the controlled bridge motivate further protocol calibration, not retroactive pooling of different target resolutions.
+Both 256-pixel arms reproduce the corresponding S6 online-feature RGB outputs bitwise for both objects. All conditions have identical reference-input and online-feature hashes within an object. Larger target grids change the object arrangement, but retained appearance defects prevent calling this a quality repair. Camera identities have not been independently calibrated across these generated grids, so there are no cross-path GT scores, population tests or deployment claims. The base pipeline source specifies a $1024\times1536$ output grid; this source fact and the controlled bridge motivate further protocol calibration, not retroactive pooling of different target resolutions.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS6_target_resolution_bridge.pdf}
-\caption{Eight complete outputs for the same seen, licensed examples, with whole-grid resizing only. The 512-pixel-view arms produce six-position arrangements while the 256-pixel-view controls retain malformed two-group structures. Colors, shape and fine details remain imperfect. This bounded diagnostic does not establish overall fidelity, correct camera labels or a working geometry-adapter deployment.}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_resolution_diagnostic014_01.pdf}
+\caption{Guided 256/512-view outputs for the fixed failure object. Malformed unguided disabled-adapter columns are omitted; all original resolution arms remain in the protocol and numerical record. The complete grids preserve their contents. Camera identity has not been independently calibrated across target resolutions, so these are protocol/appearance diagnostics, not aligned GT comparisons or an established repair. Object 1 of two.}
 \end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_resolution_diagnostic014_02.pdf}
+\caption{Guided 256/512-view outputs for the fixed failure object. Malformed unguided disabled-adapter columns are omitted; all original resolution arms remain in the protocol and numerical record. The complete grids preserve their contents. Camera identity has not been independently calibrated across target resolutions, so these are protocol/appearance diagnostics, not aligned GT comparisons or an established repair. Object 2 of two.}
+\end{figure}
+
 
 \subsection*{Native geometry implementation and camera-contract audit}
 The published inference source at commit \texttt{f714682db5e6f78e8d1c7c0a43d1525638dda5a6} arranges rendered indices $[0,5,1,4,2,3]$ in row-major order; its bake script extracts result tiles $[1,3,5,6,4,2]$, the inverse permutation. Actual metadata for all ten baking objects matches those nominal directions after the conditioning-camera anchor rotation. Pole elevation matches, but pole-image roll, cross-renderer pixel registration and generated-view fidelity remain unverified. The historical public training loader's repeated top view is separate from this inference contract. Source snapshots, hashes and the ten-object audit are provided.
@@ -757,21 +813,27 @@ The subsequent matrix has eight conditions per object: disabled, original unscal
 
 Geometry features have batch one and broadcast to both batch-two CFG branches through hidden-state-dependent gates. All nine wrappers skip fifty reference-write corrections and execute fifty corrected read calls; each geometry-enabled correction has batch two and finite values. Within an object, geometry/input hashes, initial latents and the fifty outer-UNet CUDA RNG states match across all eight conditions. The disabled arm reproduces the previous bare native grid bitwise. The initial registry-import attempt failed before model loading because its required run configuration was absent; the failed source/record is retained, and the corrected attempt has a distinct output root.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS7_native_geometry_matrix.pdf}
-\caption{All sixteen complete native-loop outputs on the same two seen, licensed objects. Only full-grid display resizing is used. Geometry-enabled remote outputs lose most reference content; tire outputs retain some hub structure but several conditions blur it. Executable geometry control is not a demonstrated fidelity repair. Full-resolution images, observed wrapper counts, input/noise identities and credits accompany the figure.}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_geometry_diagnostic014_01.pdf}
+\caption{Retained complete native-loop geometry grids for a fixed input-order object. All seven enabled geometry settings are shown; the malformed disabled-adapter visual column is omitted, without changing any numerical results or failure records. Full-grid source pixels are preserved. The two input-order rights-cleared objects and their attribution remain the same; these observed outputs establish no general quality repair. Object 1 of two.}
 \end{figure}
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/figS_geometry_diagnostic014_02.pdf}
+\caption{Retained complete native-loop geometry grids for a fixed input-order object. All seven enabled geometry settings are shown; the malformed disabled-adapter visual column is omitted, without changing any numerical results or failure records. Full-grid source pixels are preserved. The two input-order rights-cleared objects and their attribution remain the same; these observed outputs establish no general quality repair. Object 2 of two.}
+\end{figure}
+
 
 These diagnostics are not an independent confirmation cohort, do not verify correct generated cameras and do not support population inference or cross-path GT statistics. They preserve the prior controlled and downstream results while restricting claims about native deployment. Geometry-encoding resolution and CFG-branch compatibility require further controlled examination.
 
 \subsection*{Geometry encoding, branch policy and recorded training audit}
 The same two seen objects undergo twelve native-loop calls: geometry encoding at 256/512 pixels crossed with both-branch, conditional-only and conditional-only half-amplitude corrections. The native target grid, reference RGBA, online features, CFG2 and fifty EulerAncestral steps remain fixed. A controller acts after native correction computation: the both mode returns the correction unchanged; conditional-only zeros the negative sample; half-amplitude also multiplies the positive sample by 0.5. This is an implementation diagnostic, not a newly validated algorithm or a residual-dose-matched comparison. Half amplitude checks the conditional coefficient in CFG2; different trajectories prevent claiming equal total residual norms.
 
-The 256/both output reproduces both S24 original-residual RGB grids bitwise. All nine wrappers retain fifty reference-write skips and fifty corrected reads. Input hashes, initial latents and outer-UNet RNG trajectories match within each object; geometry input/feature hashes match only within the same geometry encoding size. Every conditional-only read has zero negative correction norm. Complete output grids and trace identities are delivered.
+The 256/both output reproduces both S6 original-residual RGB grids bitwise. All nine wrappers retain fifty reference-write skips and fifty corrected reads. Input hashes, initial latents and outer-UNet RNG trajectories match within each object; geometry input/feature hashes match only within the same geometry encoding size. Every conditional-only read has zero negative correction norm. Complete output grids and trace identities are delivered.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=\linewidth,height=0.74\textheight,keepaspectratio]{figures/figS8_encoding_branch_matrix.pdf}
-\caption{All twelve full grids, resized only for display. Half-amplitude conditional corrections preserve more tire details, but remote reference content is still lost. Neither larger geometry encoding nor branch removal establishes an overall quality repair. Same previously inspected objects and attribution as S24.}
+\caption{All twelve full grids, resized only for display. Half-amplitude conditional corrections preserve more tire details, but remote reference content is still lost. Neither larger geometry encoding nor branch removal establishes an overall quality repair. Same previously inspected objects and attribution as S6.}
 \end{figure}
 
 The frozen checkpoint's recorded main-adapter training lineage includes a 1,118-object list, a matching checkpoint SHA256 and a complete 2,000-step loss CSV. The train list has no UID overlap with Fresh C; 1,112 objects have the six checked RGB/normal/depth input sets, and six have missing entries. These availability counts do not establish texture quality or authenticate each historical sampled object. The configuration specifies 256-pixel training and conditioning-drop probability 0.1, but the recorded custom training entry does not read that probability and uses only non-dropped conditioning. It bypasses the model-class training method. The historical dataset source has repeated-top target lists; the surviving dataset source differs from the recorded commit. Source and model-entry identities, the declared list override, checkpoint identity and current availability are audited separately.
@@ -1034,7 +1096,7 @@ Each endpoint is averaged over the five nonreference views per object. The two p
 \end{figure}
 
 \subsection*{Same-v29-base training and frozen exploratory follow-up}
-A subsequent same-base check exports all 1680 UNet tensors from the local converted v29 asset into an isolated pipeline, retaining the same CLIP/VAE assets and verifying every loaded UNet tensor at execution precision. Actual native positive/negative reference conditions match the existing cache on both GPUs. The same fixed 2000-update training protocol then completes, followed by the previously studied fifty-object cohort. Unscaled geometry improves FG-LPIPS relative to geometry disabled by 0.0131 (95\% interval $[-0.0189,-0.0083]$; 44/50 objects improve), but remains worse than full v29 by 0.0159 (interval $[0.0085,0.0237]$); both primary comparisons survive Holm correction. FG-SSIM also remains lower than full v29 by 0.0533 in the six-test secondary family. The PSNR and color differences are not separated after correction, which does not establish equivalence. Matching the base weights reduces a comparison confound but does not match geometry architectures, their training histories or all input representations. This exploratory follow-up reuses previously observed objects and neither demonstrates temporal-scheduling superiority nor establishes a competitive quality claim (S29).
+A subsequent same-base check exports all 1680 UNet tensors from the local converted v29 asset into an isolated pipeline, retaining the same CLIP/VAE assets and verifying every loaded UNet tensor at execution precision. Actual native positive/negative reference conditions match the existing cache on both GPUs. The same fixed 2000-update training protocol then completes, followed by the previously studied fifty-object cohort. Unscaled geometry improves FG-LPIPS relative to geometry disabled by 0.0131 (95\% interval $[-0.0189,-0.0083]$; 44/50 objects improve), but remains worse than full v29 by 0.0159 (interval $[0.0085,0.0237]$); both primary comparisons survive Holm correction. FG-SSIM also remains lower than full v29 by 0.0533 in the six-test secondary family. The PSNR and color differences are not separated after correction, which does not establish equivalence. Matching the base weights reduces a comparison confound but does not match geometry architectures, their training histories or all input representations. This exploratory follow-up reuses previously observed objects and neither demonstrates temporal-scheduling superiority nor establishes a competitive quality claim (S8).
 
 The isolated UNet export leaves original HF and v29 assets unchanged. Tensor identity is checked after geometry wrappers are installed, removing wrapper naming only and excluding adapter tensors. An actual native first-call hook verifies positive/negative CLIP embeddings, reference VAE latents and added time IDs against the existing cached conditions for two fixed training objects on each GPU. A two-rank conditional/\allowbreak unconditional backward gate passes before formal training. The first gate fails before optimizer updates because a newly added reference-condition check uses the evaluation data root; the corrected check uses the configured training root, and the failed record is retained. This does not change the formal training cohort or remove an unfavorable output.
 
@@ -1060,7 +1122,7 @@ The lower cost does not offset the measured quality loss by statistical fiat. No
 
 \subsection*{Archived projection development and first-interface evaluation}
 This section records completed development and first-interface confirmation
-observations and external-input comparisons. The full fixed twenty-object bake evaluation is completed and reported in Supplementary Section~S1. The development matrix comprises 32 previously
+observations and external-input comparisons. The full fixed twenty-object bake evaluation is completed and reported in Supplementary Section~S4. The development matrix comprises 32 previously
 studied objects per interface, four conditions, and three sampling seeds
 (42, 2026, 31415), for 384 object--condition--seed cells per interface. The two
 interfaces use different object sets and are not pooled as paired subjects.
@@ -1181,7 +1243,7 @@ final baked-texture quality.
 
 \subsection*{Figure sources, licenses and selection}
 Object identities, licenses and selection rules are unchanged. Figure references below use scientific display roles rather than obsolete parent figure numbers; the current figure/asset mapping is supplied in FIGURE\_ASSET\_PROVENANCE.md.
-The retained Fresh C comparisons use reference and method-level RGB outputs with shared pixel crops. Complete preserved displays and the former main-text C3--GFL examples are supplied in this section. The selected examples are outcome-ranked illustrations, not a representative sample. Image, checkpoint, run, seed, ROI, and output hashes are listed in \texttt{FRESH\_C\_FIGURE\_SOURCE\_ROI\_MANIFEST.csv}.
+The retained Fresh C comparisons use reference and method-level RGB outputs with shared pixel crops. Complete preserved displays and the former main-text C3--GFL examples are supplied in this section. The selected examples are outcome-ranked illustrations, not a representative sample. The inherited Fresh C manifest retains the original layout lineage. Current source bytes, conditions, views, shared frames and ROI coordinates are indexed in \path{FINAL_VISUAL_SOURCE_MANIFEST.json}. Malformed No Adapter visual columns are omitted; their metric rows, exploratory contrasts and failure records remain unchanged.
 
 The Fresh C No Adapter condition suppresses geometry-adapter correction. In the MVPainter wrapper, when \texttt{\_adapter\_scale} is unset the geometry residual is applied without a scale multiplier. These are different settings: No Adapter is not a rendered comparison against the unmodified native-default adapter path. The primary 300-object image matrix contains no separate output for that native-default branch. Later ten-object native-residual controls are exploratory and use the controlled sampler; native MV-Adapter comparisons have a separate default-path identity contract. These checks do not establish complete GeoTex default-pipeline equivalence.
 
@@ -1194,7 +1256,7 @@ The current rights ledger records the selected Fresh C assets below as CC Attrib
 \midrule\endhead
 C3--GFL favorable context, C3--GFL endpoint-favourable example & \emph{Building 03} by Shalmon, via Sketchfab (\url{https://sketchfab.com/3d-models/c76ac44df995482185077da81939b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
 Strong fixed-control context, C3-versus-fixed-scale example & \emph{Octaèdre} by Segolene Delamare, via Sketchfab (\url{https://sketchfab.com/3d-models/0571e6db30c84b1593bc55a8e145a430}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
-Generic Linear counterexample, Generic Linear counterexample & \emph{Cube 01} by b0rF4x, via Sketchfab (\url{https://sketchfab.com/3d-models/06fa4974f8cd4d4ea792e98fa1521457}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
+Generic Linear counterexample & \emph{Cube 01} by b0rF4x, via Sketchfab (\url{https://sketchfab.com/3d-models/06fa4974f8cd4d4ea792e98fa1521457}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
 C3--GFL adverse context, adverse C3--GFL example & \emph{Boat Low Poly Game Ready} by INinja, via Sketchfab (\url{https://sketchfab.com/3d-models/d0e116a62bfc4cdd9edf60671073b306}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). Fresh C target-view RGB outputs are cropped to the same ROI and arranged without color or detail adjustment. \\
 Color-failure context, selected Fresh C color/detail illustration & \emph{E5-5-2} by artsiyu, via Sketchfab (\url{https://sketchfab.com/3d-models/f6979d7ff8e54c4daf00fee46f09a139}), licensed CC BY 4.0 (\url{https://creativecommons.org/licenses/by/4.0/}). This previously viewed object came from a pre-existing C3--GFL FG-LPIPS stratum and was not selected for color. \\
 \bottomrule
@@ -1222,9 +1284,8 @@ Color-failure context, selected Fresh C color/detail illustration & \emph{E5-5-2
 
 
 
-\subsection*{Historical record disposition}
-The parent section containing repeated main-text discussions is retained verbatim as \path{history/retained_parent_section32.tex}. Its unique fixed-scale and C3-selection figures appear in Section~S7. Current scale accounting, complete paired results, native-interface comparisons and deployment tests appear once in their corresponding sections above. This reorganization changes presentation and figure numbers, not the observed results or their evidence grades.
 
-Archived protocol and attempt records keep their original filenames and statuses. Current completion is indexed by ROUND\_MANIFEST.json and FINAL\_VALIDATION.json. A failed archived status is not the current status of the completed supplementary experiment chain.
+\subsection*{Historical record index}
+Unique historical selections remain in Section S7; duplicate parent discussions are archived in \path{history/retained_parent_section32.tex}. Original protocol/attempt filenames retain their historical statuses. The release completion and validation manifests index the current completed experiment chain.
 
 \end{document}

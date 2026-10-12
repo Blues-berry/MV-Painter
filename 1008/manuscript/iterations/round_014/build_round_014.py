@@ -1,4 +1,4 @@
-"""Portable two-pass clean manuscript/Supplement build from vendored styles."""
+"""Portable three-pass build; resolve page-dependent outer-margin line numbers."""
 from pathlib import Path
 import shutil
 import subprocess
@@ -19,7 +19,7 @@ def main():
         for dirname in ["figures", "tables", "sections"]:
             shutil.copytree(ROOT / dirname, stage / dirname)
         for doc in ["manuscript_round_014", "Supplementary_round_014"]:
-            for pass_number in [1, 2]:
+            for pass_number in [1, 2, 3]:
                 with (BUILD / f"{doc}.pass{pass_number}.txt").open("w") as log:
                     subprocess.run(["pdflatex", "-interaction=nonstopmode", "-halt-on-error",
                                     f"-output-directory={BUILD}", f"{doc}.tex"],

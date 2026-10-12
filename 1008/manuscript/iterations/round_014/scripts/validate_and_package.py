@@ -121,10 +121,18 @@ def main():
          "identity": "Renamed byte-identical actual exported-GLB video; no appearance editing."}, indent=2)+"\n")
 
     parent = read(ROOT / "PARENT_SOURCE_FREEZE.json")
-    for name in ["fig1_tcas_control.pdf","fig5_freshc_context_roi.pdf",
-                 "fig6_color_diagnostic_freshc_context_roi.pdf","fig8_baked_unseen_context.pdf",
-                 "fig4_freshc_context_roi.pdf"]:
+    for name in ["fig4_freshc_context_roi.pdf"]:
         assert sha(ROOT/"figures"/name) == parent["files_sha256"]["figures/"+name]
+    visuals = read(ROOT / "FINAL_VISUAL_SOURCE_MANIFEST.json")
+    for record in visuals["sources"]:
+        assert sha(ROOT/record["packaged_path"]) == record["sha256"]
+        assert record["condition"].lower() not in ["no adapter","no_adapter"]
+    for record in visuals["displays"]:
+        if "asset" in record:
+            assert sha(ROOT/record["asset"]) == record["sha256"]
+    visual_review = read(ROOT / "VISUAL_MODEL_REVIEW.json")
+    assert visual_review["status"] == "PASS_PRESENTATION_WITH_DOCUMENTED_LIMITS"
+    assert all(sha(ROOT/name) == digest for name,digest in visual_review["reviewed_files_sha256"].items())
 
     validation = {
         "status": "PASS_ROUND014_COMPLETE_AUTHOR_REVIEW_ARTIFACTS",
@@ -135,7 +143,8 @@ def main():
         "data_reconstruction": facts["validation"],
         "GSO100_primary_bootstrap_and_signflip": {"status":"PASS", "p":mc_p},
         "GSO20_exact_signflip": {"status":"PASS_ALL_2_POW_20", "p":exact_p},
-        "figure_identity": "PASS_ALL_RETAINED_MEASURED_DISPLAYS_BYTE_IDENTICAL_TO_PARENT",
+        "figure_identity": "PASS_ORIGINAL_RESEARCH_BYTES_AND_RECORDED_SHARED_FRAMES; No Adapter display columns omitted only",
+        "visual_model_review": "VISUAL_MODEL_REVIEW.json",
         "video": {"status":"PASS_BYTE_IDENTITY_AND_FULL_DECODE","frames":11},
         "scientific_limits": "Historical adapter/FAC replay incomplete; no validated PBR/seam claim; empirical contribution remains editorial judgment.",
         "release_scope": "Private GitHub author-review upload; no journal submission.",
@@ -151,12 +160,18 @@ def main():
 
     # Select source/recomputation evidence; no weights, bulk image archives or raw NPZ.
     selected = set()
+    active_graphics = set()
+    for path in [ROOT/"manuscript_round_014.tex",ROOT/"Supplementary_round_014.tex",
+                 ROOT/"manuscript_round_014_marked.tex",*(ROOT/"sections").glob("*.tex")]:
+        for name in re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}",path.read_text()):
+            if (ROOT/name).is_file():active_graphics.add(ROOT/name)
+    visual_inputs = {ROOT/r["packaged_path"] for r in visuals["sources"]}
     for path in ROOT.iterdir():
         if path.is_file() and path.suffix in [".md",".json",".tex",".py",".txt",".diff",".pdf"]:
             if path.name not in ["FILES_SHA256.json","GIT_UPLOAD_FILES.json"]:
                 selected.add(path)
     for directory in ["scripts","figures","tables","sections","vendor","history/round_013",
-                      "data/primary_studies","data/gso_mva_external_attempt01",
+                      "history/pre_submission_visual_review","data/primary_studies","data/gso_mva_external_attempt01",
                       "data/gso_apg_closure_attempt01","data/final_supplement_audit013",
                       "data/completed_supplement013/analysis","data/completed_supplement013/temporal100",
                       "data/completed_supplement013/bake20_revised",
@@ -166,11 +181,13 @@ def main():
                       "data/completed_supplement013/scripts"]:
         for path in (ROOT/directory).rglob("*"):
             if path.is_file() and "__pycache__" not in path.parts:
+                if directory == "figures" and path not in active_graphics | visual_inputs and path.suffix not in [".json",".csv",".svg"]:
+                    continue
                 selected.add(path)
     # Four fixed first-object exports support the named application comparison;
     # all method metrics/video remain included and the full mesh archive stays on server.
-    for name in ["gt_seed0.glb","native_seed42.glb","fixed_mean_seed42.glb","late_high_seed42.glb"]:
-        selected.add(ROOT/"data/completed_supplement013/example_glbs"/name)
+    mesh_files = {ROOT/"data/completed_supplement013/example_glbs"/name for name in
+                  ["gt_seed0.glb","native_seed42.glb","fixed_mean_seed42.glb","late_high_seed42.glb"]}
     for path in (ROOT/"data/completed_supplement013/calibration").rglob("*"):
         if path.is_file() and path.suffix in [".json",".png"]:
             selected.add(path)
@@ -179,6 +196,12 @@ def main():
                  "data/completed_supplement013/VIDEO_PROVENANCE.json","history/retained_parent_section32.tex"]:
         selected.add(ROOT/name)
     selected.update(p for p in DELIVERY.iterdir() if p.is_file() and p.suffix != ".zip" and p.name != "ARCHIVE_SHA256.txt")
+    submission_files = set()
+    for directory in ["submission_package/Upload","submission_package/Editable"]:
+        submission_files.update(p for p in (ROOT/directory).rglob("*") if p.is_file() and p.suffix != ".zip")
+    for name in ["submission_package/README_UPLOAD_ZH.md","submission_package/SUBMISSION_FILE_MAP.csv",
+                 "submission_package/PACKAGE_BUILD_VALIDATION.json"]:
+        selected.add(ROOT/name)
     assert all(p.exists() and p.stat().st_size < 95_000_000 for p in selected)
     secrets = re.compile(r"(?:ghp_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{30,}|sk-proj-[A-Za-z0-9_-]{30,}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY-----)")
     for path in selected:
@@ -197,6 +220,11 @@ def main():
     digest = sha(archive)
     (DELIVERY/"ARCHIVE_SHA256.txt").write_text(digest+"  "+archive.name+"\n")
     selected.update([archive,DELIVERY/"ARCHIVE_SHA256.txt"])
+    selected.update(mesh_files)
+    selected.update(submission_files)
+    # Upload standalone submission archives without nesting large ZIPs in the author bundle.
+    selected.update(p for p in (ROOT/"submission_package/Upload").glob("*.zip"))
+    selected.update(p for p in (ROOT/"submission_package").glob("Submission_Files_round_014.zip"))
     (ROOT/"GIT_UPLOAD_FILES.json").write_text(json.dumps({
         "scope":"Only completed round014 author-review materials; private MVPainter repository.",
         "files":[str(p.relative_to(ROOT)) for p in sorted(selected)],

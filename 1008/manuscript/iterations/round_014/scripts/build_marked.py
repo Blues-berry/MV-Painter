@@ -74,7 +74,7 @@ def main():
         for dirname in ["figures", "tables", "sections"]:
             shutil.copytree(ROOT / dirname, stage / dirname)
         shutil.copy2(output, stage / output.name)
-        for i in [1, 2]:
+        for i in [1, 2, 3]:
             with (BUILD / f"manuscript_round_014_marked.pass{i}.txt").open("w") as log:
                 subprocess.run(["pdflatex", "-interaction=nonstopmode", "-halt-on-error",
                                 f"-output-directory={BUILD}", output.name],
