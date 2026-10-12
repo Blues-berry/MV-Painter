@@ -1,0 +1,63 @@
+{
+  "tool": "Matplotlib; reproducible vector/plot code",
+  "data": "data/FACTS_round_015.json",
+  "displayed_records": [
+    {
+      "a": "budget_late16",
+      "b": "budget_fixed_mean",
+      "metric": "fg_lpips",
+      "mean": -0.002651654895056381,
+      "ci95": [
+        -0.0041436635821380415,
+        -0.0013674424368549502
+      ],
+      "p_raw": 0.001953125,
+      "p_adjusted": null,
+      "source_record": {
+        "a": "budget_late16",
+        "b": "budget_fixed_mean",
+        "metric": "fg_lpips",
+        "n": 10,
+        "mean_difference": -0.002651654895056381,
+        "median_difference": -0.0022372041236270734,
+        "ci95": [
+          -0.0041436635821380415,
+          -0.0013674424368549502
+        ],
+        "p_raw": 0.001953125,
+        "test": "exact paired sign flip",
+        "positive_objects": 0,
+        "negative_objects": 10,
+        "direction": "lower",
+        "a_favorable_objects": 10,
+        "family": "primary"
+      }
+    },
+    {
+      "a": "late_high",
+      "b": "fixed_mean",
+      "metric": "fg_lpips",
+      "mean": 8.379243257822378e-05,
+      "ci95": [
+        -0.00010304753188834063,
+        0.0002859206000963833
+      ],
+      "p_raw": 0.42841785791071046,
+      "p_adjusted": 0.7876460617696912,
+      "source_record": {
+        "a": "late_high",
+        "b": "fixed_mean",
+        "metric": "fg_lpips",
+        "mean_difference": 8.379243257822378e-05,
+        "ci95_pointwise": [
+          -0.00010304753188834063,
+          0.0002859206000963833
+        ],
+        "p_raw": 0.42841785791071046,
+        "n_objects": 20,
+        "p_holm": 0.7876460617696912
+      }
+    }
+  ],
+  "no_general_purpose_image_generation": true
+}

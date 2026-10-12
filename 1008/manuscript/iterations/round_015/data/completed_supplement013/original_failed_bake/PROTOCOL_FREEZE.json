@@ -1,0 +1,163 @@
+{
+  "status": "FROZEN_BEFORE_BAKE_METHOD_OUTPUTS",
+  "uids": [
+    "Razer_Abyssus_Ambidextrous_Gaming_Mouse",
+    "Razer_BlackWidow_Stealth_2014_Keyboard_07VFzIVabgh",
+    "Razer_BlackWidow_Ultimate_2014_Mechanical_Gaming_Keyboard",
+    "Razer_Blackwidow_Tournament_Edition_Keyboard",
+    "Razer_Goliathus_Control_Edition_Small_Soft_Gaming_Mouse_Mat",
+    "Razer_Kraken_71_Chroma_headset_Full_size_Black",
+    "Razer_Kraken_Pro_headset_Full_size_Black",
+    "Razer_Naga_MMO_Gaming_Mouse",
+    "Razer_Taipan_Black_Ambidextrous_Gaming_Mouse",
+    "Razer_Taipan_White_Ambidextrous_Gaming_Mouse",
+    "Reef_Star_Cushion_Flipflops_Size_8_Black",
+    "Remington_TStudio_Hair_Dryer",
+    "Retail_Leadership_Summit",
+    "Retail_Leadership_Summit_eCT3zqHYIkX",
+    "Retail_Leadership_Summit_tQFCizMt6g0",
+    "Rexy_Glove_Heavy_Duty_Gloves_Medium",
+    "Rexy_Glove_Heavy_Duty_Large",
+    "Room_Essentials_Bowl_Turquiose",
+    "Room_Essentials_Dish_Drainer_Collapsible_White",
+    "Room_Essentials_Fabric_Cube_Lavender"
+  ],
+  "selection": "First20 fixed source-selected canonical GSO100 inputs; no method quality consulted",
+  "conditions": [
+    "native",
+    "fixed_mean",
+    "late_high",
+    "grid_projection",
+    "view_projection",
+    "interaction_projection",
+    "apg_projection_only",
+    "apg_paper_sd21_at_native_cfg"
+  ],
+  "seeds": [
+    42,
+    2026,
+    31415
+  ],
+  "unseen_azimuths": [
+    30,
+    60,
+    120,
+    150,
+    210,
+    240,
+    300,
+    330,
+    45,
+    165,
+    285
+  ],
+  "unseen_elevations": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    30,
+    -30,
+    45
+  ],
+  "bake_camera_azimuths": [
+    -90,
+    0,
+    90,
+    180,
+    90,
+    90
+  ],
+  "bake_camera_elevations": [
+    0,
+    0,
+    0,
+    0,
+    89.99,
+    -89.99
+  ],
+  "camera_distance": 1.8,
+  "source_resolution": 512,
+  "unseen_resolution": 512,
+  "texture_resolution": 1024,
+  "geometry": "Byte-preserved original GLB, no unwrap or remeshing; reload exported artifacts before rendering",
+  "projection": "Pinned native CameraProjection,shared GT masks,from_scratch,true;poisson=false,padding=false,AOI.2,depthgrad.1,blendalpha3,allviewweights1",
+  "gate": "Known constant color max error<1e-4; UV ramp mean error<.03 and99th percentile<.15; same UV coverage;GT512/commonmask;byte identity patch;GT-bake degradation fully report",
+  "primary_metric": "Object mean unseen FG-LPIPS,11views then3seeds nested perobject",
+  "comparison_family": [
+    [
+      "grid_projection",
+      "native"
+    ],
+    [
+      "grid_projection",
+      "fixed_mean"
+    ],
+    [
+      "grid_projection",
+      "late_high"
+    ],
+    [
+      "grid_projection",
+      "apg_projection_only"
+    ],
+    [
+      "grid_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ],
+    [
+      "view_projection",
+      "native"
+    ],
+    [
+      "view_projection",
+      "fixed_mean"
+    ],
+    [
+      "view_projection",
+      "late_high"
+    ],
+    [
+      "view_projection",
+      "apg_projection_only"
+    ],
+    [
+      "view_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ],
+    [
+      "interaction_projection",
+      "native"
+    ],
+    [
+      "interaction_projection",
+      "fixed_mean"
+    ],
+    [
+      "interaction_projection",
+      "late_high"
+    ],
+    [
+      "interaction_projection",
+      "apg_projection_only"
+    ],
+    [
+      "interaction_projection",
+      "apg_paper_sd21_at_native_cfg"
+    ],
+    [
+      "late_high",
+      "fixed_mean"
+    ]
+  ],
+  "correction": "Holm16 primary LPIPS comparisons; secondary pointwise",
+  "resampling": "Paired object,20000bootstrap and200000sign-flip plus-one;seed20261011",
+  "limits": "Small20-object convenience technical cohort; shared geometry silhouette not geometry quality; scanned appearance not certified physical albedo/PBR; pure projection without learned hole-filling; no seam metric claim",
+  "input_freeze_sha256": "1c754e2ef8344c4142bd0097e9079e686a976c90d8dd9659bd6cfffa1d661b11",
+  "worker_sha256": "3d0838b0f72baee62ca54032d3a3d2e2be9e8c2b909873c80ce9642ac8062176",
+  "addendum": "Add fixed nearestAPG inputs before any candidate bake/score; GT-only three-object gate already passed. Projection/masks/cameras/sentinel gate unchanged. Original pre-addendum protocol/worker and waiting-state archived."
+}

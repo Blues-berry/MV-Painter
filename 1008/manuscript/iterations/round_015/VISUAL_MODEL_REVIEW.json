@@ -1,0 +1,41 @@
+{
+  "status": "PASS_PRESENTATION_WITH_DOCUMENTED_LIMITS",
+  "reviewed_at_utc": "2026-10-12T12:27:10.301676+00:00",
+  "reviewer": "Vision-capable Codex assistant; direct inspection of actual plot and rendered PDF pages",
+  "scope": "New seed figure; clean pages 1/5/9/10/11/12; Supplement pages 9/21/22/34/35/54; marked page1; reply page2. Inherited real-output figures have unchanged source/display hashes. All-page build checks are separate from selected-page visual inspection.",
+  "observations": [
+    "Seed figure axes and pointwise intervals agree with paired JSON; LPIPS axis multiplies by 1000.",
+    "Native tire appearance mismatch and GeoTex brown texture/GT bake losses remain visible; captions make no fidelity/superiority claim.",
+    "Dominance and shared-UV tables fit the page and retain all comparisons; diagnostic formula and known-color limits are visible.",
+    "New paired means, signs, three fixture scope and limitations correspond across manuscript/Supplement/reply.",
+    "Marked colors/deletions render, with the original submitted source as baseline."
+  ],
+  "limits": [
+    "Presentation check is not a blind human preference study or scientific certification.",
+    "UV-overlap variance is not a seam/PBR/fidelity validation.",
+    "Seed and dominance analyses are post-inspection; no per-object significance or general repeatability is claimed."
+  ],
+  "reviewed_files_sha256": {
+    "figures/fig_seed_stability015.pdf": "f6b2c6b747b86952762e9676505d99e6d0b816c12dede071a291150cd4e7411c",
+    "figures/fig_seed_stability015.png": "04faac0e8179d6844b30b32f8e36882738a028b7fba56b9f0a459ab6443b79ba",
+    "figures/fig_allocation_effects014.pdf": "7cdf813547eabeca841c9d0c885863b80561f359722f9e3d98845cc5c451ce7b",
+    "visual_review/Response_to_Reviewers_round_015_page_02.png": "3a5132a5399746773a93a7d27ec9d6c3c8039ab1718c3f88e7e04a74ba8709af",
+    "visual_review/Supplementary_round_015_page_09.png": "b1d2054d8454de16058fa9cc1abf8575cd802eafd8d61fef5f7a4f745c473544",
+    "visual_review/Supplementary_round_015_page_21.png": "14928a6aeb77c8ee44ae926c74427b6f4ea48bacb16de3c4eac7228546f90144",
+    "visual_review/Supplementary_round_015_page_22.png": "0927e6ebefeab46c1077bde6c9a83d23970443fa796a87309028a2d7ca32f829",
+    "visual_review/Supplementary_round_015_page_34.png": "147a0656c8b441745f0580cc2e0f343d2f92e2cabdb26e02d3c49ef3b1b7ae94",
+    "visual_review/Supplementary_round_015_page_35.png": "b6b981b7dfe137fd9d99de0068ea06731a6cd5770a05fb3526f2aa9cb9564fc2",
+    "visual_review/Supplementary_round_015_page_54.png": "4445c7fa2f883308ba69640e46ccaa2ae8d0704eceaa392d63db8feba1864467",
+    "visual_review/manuscript_round_015_marked_page_01.png": "33376ea710c79346e318e04e012297505c7ee64796246e9fb94aab49cdc761fa",
+    "visual_review/manuscript_round_015_page_01.png": "f5cd49684a81ae2d869650f483e0a5d3d144fe4fce75310602185f20c57e3382",
+    "visual_review/manuscript_round_015_page_05.png": "25afd8c771ffa42205b609c7245add13f281fdb6b84d4c1eb548a1b4b337a2da",
+    "visual_review/manuscript_round_015_page_09.png": "ea619f83cc552dbc10469c54a465b3969603ff8dc6e674940778f946d04e3513",
+    "visual_review/manuscript_round_015_page_10.png": "72f2f5dd4447b92dd7fdebc34d7a78908fdc8f189f1cf83c336a3d05d7d95e99",
+    "visual_review/manuscript_round_015_page_11.png": "6154fcc3f3951f60633f13e181188f484885c8c2fd42f5374335f31823a3035d",
+    "visual_review/manuscript_round_015_page_12.png": "4b6e76f474cd3e0b47744d162c676fe74c25d6a44f4bb6b5aed72ffbbcbd4bc4",
+    "deliverables/Manuscript_round_015.pdf": "d9541f1021deef8a774930e09ec7081985ba4d422f385f20750ff65f84725ac0",
+    "deliverables/Manuscript_round_015_marked.pdf": "5bd1991adf4c325c9421f4fd1470638263460e1d1d79432be06151b8a70d15fc",
+    "deliverables/Supplementary_round_015.pdf": "4c08155642be6e52a003e615d91d47bcc4e117ff39592ed1bee29313354b2ab2",
+    "deliverables/Response_to_Reviewers_round_015.pdf": "c81acee680e1ec625ca7d44612066cf449a98f24280c2d005ad4eb1d6afa9989"
+  }
+}
