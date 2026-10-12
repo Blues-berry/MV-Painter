@@ -1,0 +1,104 @@
+[
+  {
+    "panel": "a",
+    "object_uid": "c76ac44df995482185077da81939b306",
+    "title": "Building 03",
+    "selection_rule": "C3 vs Fixed Low: favorable direction in FG-PSNR, FG-LPIPS and FG-SSIM; rights-cleared existing Fresh C illustration",
+    "metrics_are_object_means_over_six_generated_views": true,
+    "fixed_low": {
+      "fg_psnr": 12.695667743682861,
+      "fg_lpips": 0.22659994661808014,
+      "fg_ssim": 0.24309863150119781,
+      "edge_ssim": 0.6736428141593933
+    },
+    "c3": {
+      "fg_psnr": 15.339909791946411,
+      "fg_lpips": 0.22477377951145172,
+      "fg_ssim": 0.27677014470100403,
+      "edge_ssim": 0.6865966320037842
+    },
+    "delta_c3_minus_fixed_low": {
+      "fg_psnr": 2.64424204826355,
+      "fg_lpips": -0.001826167106628418,
+      "fg_ssim": 0.03367151319980621,
+      "edge_ssim": 0.01295381784439087
+    },
+    "sources": [
+      {
+        "path": "1006/data/fresh_c/renders/c76ac44df995482185077da81939b306/image/000.png",
+        "sha256": "6a6cae7a4954179fc7906747673b0d7be48923fe69872dcadd8f6c114cda728b",
+        "file_sha256": "111d732a38b2d9023696f66e40f58019f85f861be9c571aab35b3edf31e51ad5",
+        "method": "Reference"
+      },
+      {
+        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/c76ac44df995482185077da81939b306.png",
+        "sha256": "aa99ebe78cc75609ad02411f5fca4823d16ad3b414f000bd360e937c102d19b8",
+        "file_sha256": "8a7d5c30df97abd0bb4caf25f245252527549b90b41851a184111f526150d198",
+        "method": "GFL"
+      },
+      {
+        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/c76ac44df995482185077da81939b306.png",
+        "sha256": "44d4d7e7248ad029c94aeabb239a8130e425c3164b36fd701af90a7f08dd89c2",
+        "file_sha256": "fd8cd204cf5b7b2ac2c7756ca56a2b8007c20fd81f2837b04b1b7936e1b4aa96",
+        "method": "C3"
+      }
+    ],
+    "frame": [
+      78,
+      32,
+      178,
+      225
+    ]
+  },
+  {
+    "panel": "b",
+    "object_uid": "06fa4974f8cd4d4ea792e98fa1521457",
+    "title": "Cube 01",
+    "selection_rule": "C3 vs Fixed Low: favorable direction in FG-PSNR, FG-LPIPS and FG-SSIM; rights-cleared existing Fresh C illustration",
+    "metrics_are_object_means_over_six_generated_views": true,
+    "fixed_low": {
+      "fg_psnr": 12.550090551376343,
+      "fg_lpips": 0.4892510771751404,
+      "fg_ssim": 0.4497387409210205,
+      "edge_ssim": 0.5186532139778137
+    },
+    "c3": {
+      "fg_psnr": 14.343361854553223,
+      "fg_lpips": 0.46495482325553894,
+      "fg_ssim": 0.6348596215248108,
+      "edge_ssim": 0.5153311491012573
+    },
+    "delta_c3_minus_fixed_low": {
+      "fg_psnr": 1.7932713031768799,
+      "fg_lpips": -0.02429625391960144,
+      "fg_ssim": 0.18512088060379028,
+      "edge_ssim": -0.0033220648765563965
+    },
+    "sources": [
+      {
+        "path": "1006/data/fresh_c/renders/06fa4974f8cd4d4ea792e98fa1521457/image/000.png",
+        "sha256": "464f37ef94b9e85692671afd269ad8d19d871b504ae6e18dd95b74f789fa2b54",
+        "file_sha256": "57abc97392cf2a3080f06ba7319cf77588b6ca64a39596ce60fbdbb644eb2680",
+        "method": "Reference"
+      },
+      {
+        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gfl/06fa4974f8cd4d4ea792e98fa1521457.png",
+        "sha256": "58e06768c90cdfbd4c4de1b7fbbbcf98f3831804b2f0376522f132455974e402",
+        "file_sha256": "a123c75f7feaadcd941bb4cd1c2b227fd6cad9201aeb53e9cf8cee2508cba2e9",
+        "method": "GFL"
+      },
+      {
+        "path": "1006/data/fresh_c/runs/c3_confirmation/predictions/native_gc3/06fa4974f8cd4d4ea792e98fa1521457.png",
+        "sha256": "91bf55b57218c895d8a3ebd59c04552b04cb4ffc9a9843689725715db594c4c3",
+        "file_sha256": "2c88b85daee4c10111dec0ce03a6bb039f09c27da3e50f534e0b72b7c9052c4c",
+        "method": "C3"
+      }
+    ],
+    "frame": [
+      32,
+      32,
+      224,
+      224
+    ]
+  }
+]
