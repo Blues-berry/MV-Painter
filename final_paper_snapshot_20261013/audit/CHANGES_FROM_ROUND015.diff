@@ -1,0 +1,172 @@
+--- frozen_round015/manuscript.tex
++++ final/Manuscript_final.tex
+@@ -7,6 +7,7 @@
+ \usepackage[switch]{lineno}
+ \usepackage{graphicx}
+ \usepackage{booktabs}
++\usepackage{url}
+ \usepackage{placeins}
+ \setlength{\emergencystretch}{2em}
+ \setcounter{totalnumber}{6}
+@@ -24,13 +25,13 @@
+ 
+ \begin{frontmatter}
+ 
+-\title{Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation: A Controlled Empirical Study}
++\title{Geometry-Control Allocation in Multi-view Diffusion Texturing: A Controlled Empirical Study}
+ 
+ % Double-anonymized review: author names, affiliations, and acknowledgements
+ % (including funding) are provided only on the separately uploaded title page.
+ 
+ \begin{abstract}
+-Geometry-conditioned multi-view diffusion provides an inference-time strength control, but its practical effect depends on temporal allocation, the conditioning interface, and the evaluated output. We conduct a controlled empirical study of Timestep-Conditioned Adapter Scaling (TCAS), carrying forward the historical middle-high profile C3 without further schedule selection. On 300 held-out objects with a frozen retrained GeoTex checkpoint, C3 improves foreground PSNR by 0.52 dB over fixed low, while competitive fixed and linear controls have better means on all four image endpoints. Matching applied-scale budgets changes the interpretation: C3 is 0.13 dB below fixed mean and 0.56 dB below late-high. Native MV-Adapter studies on 50 Fresh C inputs and 100 GSO objects detect endpoint-specific stage effects but do not detect the primary middle-window benefit over fixed mean. A ten-object native-UV bake pilot finds a small late-high LPIPS reduction of 0.00265 on unseen views; a separate twenty-object GSO evaluation with revised calibration does not detect this benefit. Generated-view and baked-output method rankings remain positively associated, although the preferred point estimates often differ. Fixed-seed and shared-UV diagnostics distinguish group-average gains, objectwise repeatability and incoming-view consistency from fidelity. These findings quantify application-specific effects and limits of geometry-control allocation. They support neither a universally preferred schedule nor physically faithful materials.
++Geometry-conditioned multi-view diffusion exposes inference-time strength controls, but their value depends on competitive baselines, implemented budgets and evaluation endpoints. We study geometry-control allocation using the historical Timestep-Conditioned Adapter Scaling (TCAS) profile C3 without further schedule selection. On 300 held-out objects with a frozen retrained GeoTex checkpoint, equal-budget C3 is 0.13 dB below fixed mean and 0.56 dB below late-high in foreground PSNR. The addendum's internally specified middle-minus-average-of-early-and-late contrast is not detected: $-0.034$ dB, 95\% interval $[-0.117,+0.051]$. C3's 0.52 dB gain over fixed low changes strength as well as timing; competitive fixed and linear controls have better means on all four image endpoints. A separate retrained technical panel requested on the historical 276 UIDs illustrates endpoint dependence: C3 exceeds fixed high by 1.70 dB in full-frame PSNR but trails by 1.31 dB in foreground PSNR. One failed input was randomly substituted; excluding its requested slot preserves both directions, and this panel is not exact held-out confirmation. Native MV-Adapter evaluations on 50 Fresh C inputs and 100 GSO objects do not detect the specified middle-window benefit. Actual baking finds a small late-high LPIPS benefit on ten compatible GeoTex objects and no detected benefit on a separate twenty-object GSO cohort. Fixed-seed and shared-UV diagnostics distinguish average effects, objectwise repeatability and incoming-view consistency from fidelity. The findings support application-specific evaluation, rather than a universally preferred schedule or faithful material reproduction.
+ \end{abstract}
+ 
+ \begin{keyword}
+@@ -52,15 +53,15 @@
+ 
+ We study these questions through Timestep-Conditioned Adapter Scaling (TCAS), an intervention on an existing GeoTex-Adapter residual interface. C3, the low--high--low profile recorded in the original development study, is retained without another selection search. Scheduling strength across time or layers is established prior work, including geometry-conditioning schedules in Scheduled Style Injection (SSI) \cite{kulkarni2026ssi}. Here the contribution is the quantitative evidence for geometry-guided multi-view texturing under stated interfaces and protocols.
+ 
+-The complete comparisons change the original practical recommendation. On 300 held-out objects, C3 improves over fixed low but loses to competitive fixed and linear controls. At equal applied-scale sums, fixed mean and late-high outperform its middle window. Native MV-Adapter evaluations on fifty Fresh C inputs and one hundred GSO objects do not detect the primary middle-window advantage, although some secondary stage effects are measurable. Actual baking finds a small late-high benefit on ten compatible GeoTex objects and no detected LPIPS benefit on a separate twenty-object GSO cohort. These findings delimit when an allocation result has application value.
++The complete comparisons change the original practical recommendation. The internally specified matched-budget middle-versus-early/late-average contrast does not detect the proposed middle-window advantage. A later overlap-excluded retraining on the original 276 evaluation UIDs additionally reverses the C3--Fixed High direction between full-frame and foreground PSNR. On 300 held-out objects, C3 improves over fixed low but loses to competitive fixed and linear controls. At equal applied-scale sums, fixed mean and late-high outperform its middle window. Native MV-Adapter evaluations on fifty Fresh C inputs and one hundred GSO objects do not detect the primary middle-window advantage, although some secondary stage effects are measurable. Actual baking finds a small late-high benefit on ten compatible GeoTex objects and no detected LPIPS benefit on a separate twenty-object GSO cohort. These findings delimit when an allocation result has application value.
+ 
+ The contributions are:
+ 
+-(1) \textbf{A controlled assessment of strength and temporal allocation.} Matched comparisons with competitive fixed and linear controls distinguish the recorded C3 intervention from a timing-only interpretation. Equal per-group applied sums identify stage-allocation total effects within the frozen GeoTex pipeline.
++(1) \textbf{A controlled assessment of strength and temporal allocation.} Matched comparisons with competitive fixed and linear controls distinguish the recorded C3 intervention from a timing-only interpretation. Equal per-group applied sums identify stage-allocation total effects within the frozen GeoTex pipeline, while the retained primary timing contrast does not detect a middle-window advantage.
+ 
+ (2) \textbf{An application-level evaluation of those effects.} Actual native-UV meshes, matched-resolution GT self-bakes and eleven unseen cameras quantify small local gains, persistent appearance errors and changes in the preferred operating point. Both the ten-object gain and the twenty-object non-detection are reported. Known-color controls check the incoming-view disagreement diagnostic, which remains distinct from fidelity.
+ 
+-(3) \textbf{An evaluation of interface and protocol boundaries.} Native MV-Adapter matrices and retained MVDiffusion results test related allocation questions on different conditioning operators. They reveal endpoint-dependent effects and limits to transfer; fixed-seed sensitivity separates an aggregate effect from objectwise repeatability. Cohorts are not pooled and identical scale labels are not treated as a common residual dose.
++(3) \textbf{An evaluation of interface and protocol boundaries.} Native MV-Adapter matrices and retained MVDiffusion results test related allocation questions on different conditioning operators. They reveal endpoint-dependent effects and limits to transfer; fixed-seed sensitivity separates an aggregate effect from objectwise repeatability. An overlap-excluded historical-cohort retraining additionally tests endpoint sensitivity. Cohorts are not pooled and identical scale labels are not treated as a common residual dose.
+ 
+ Object-level records and runnable analyses support these findings. TCAS remains the study intervention and C3 a historical operating point; neither the scheduling concept nor the existence of an audit archive is presented as an independently new algorithm.
+ 
+@@ -82,9 +83,9 @@
+ \subsection{Diffusion Guidance Scheduling and Timestep Control}
+ \label{subsec:guidance}
+ 
+-Diffusion denoising is often discussed in terms of coarse-to-fine evolution, and prior work varies guidance strength over sampling progress to study quality, diversity, or fidelity \cite{ho2020ddpm,song2021ddim,ho2022cfg,castillo2023adaptive}. Limited-interval classifier-free guidance is one example; it changes the combination of conditional and unconditional score predictions \cite{kynkanniemi2024limited}.
+-
+-SSI is the closest scheduling precedent. It varies StyleID's query-mixing parameter across decoder layers and denoising time, tests schedule direction and shape, and applies scheduling to a separate geometry-conditioned ControlNet branch; its reported ControlNet scheduling gains over fixed conditioning are modest relative to its style-injection results \cite{kulkarni2026ssi}. This prior work already covers the general idea of layer/time scheduling and geometry-conditioning schedules. TCAS acts on the residual correction produced by GeoTex-Adapter from normal, depth, and foreground-mask conditions, with group-specific wrapper caps; it does not modulate StyleID attention mixing or add a ControlNet branch. The task, interface, and measured endpoints differ, so SSI does not imply the Fresh C paired estimates, the requested/applied/residual accounting, or the observed image- and color-agreement failures. These task-specific measurements are the empirical contribution; the scheduling concept itself is not claimed as new.
++Diffusion denoising is often discussed in terms of coarse-to-fine evolution \cite{ho2020ddpm,song2021ddim}. Classifier-free guidance combines conditional and unconditional score predictions \cite{ho2022cfg}; limiting it to an interval studies quality and diversity \cite{kynkanniemi2024limited}. Adaptive Guidance instead schedules conditional/unconditional evaluations for inference efficiency \cite{castillo2023adaptive}. These score-space and computation schedules differ from the geometry-residual intervention tested here.
++
++Earlier official ControlNet code already exposes layer-dependent control weights, and Diffusers v0.21.0 documents temporal conditioning start/end gates \cite{controlnet2023layercontrol,diffusers2023controlnet}. SSI is the closest combined layer/time scheduling precedent. It varies StyleID's query-mixing parameter \cite{chung2024styleid} across decoder layers and denoising time, tests schedule direction and shape, and applies scheduling to a separate geometry-conditioned ControlNet branch; its reported ControlNet scheduling gains over fixed conditioning are modest relative to its style-injection results \cite{kulkarni2026ssi}. This prior work already covers the general idea of layer/time scheduling and geometry-conditioning schedules. TCAS acts on the residual correction produced by GeoTex-Adapter from normal, depth, and foreground-mask conditions, with group-specific wrapper caps; it does not modulate StyleID attention mixing or add a ControlNet branch. The task, interface, and measured endpoints differ, so SSI does not imply the Fresh C paired estimates, the requested/applied/residual accounting, or the observed image- and color-agreement failures. These task-specific measurements are the empirical contribution; the scheduling concept itself is not claimed as new.
+ 
+ \subsection{Multi-view Adapter Interfaces}
+ \label{subsec:mvinterfaces}
+@@ -178,11 +179,11 @@
+ \subsection{Study Cohorts, Sampling and Statistical Units}
+ \label{subsec:setup}
+ 
+-Table~\ref{tab:study-design} separates the studies and their evidence classes. Fresh C contains 300 UIDs disjoint from the historical schedule-selection/evaluation pool, the recorded 1,118-object training list and the earlier clean-v2 evaluation list. Its primary four-condition comparison uses one frozen controlled-retraining checkpoint, shared inputs and per-object seeds. It does not reproduce the historical adapter's reported $+0.96$ dB estimate. The original checkpoint's exact identity remains unavailable.
++Table~\ref{tab:study-design} separates the studies and their evidence classes. Fresh C contains 300 UIDs disjoint from the historical schedule-selection/evaluation pool, the recorded 1,118-object training list and the earlier clean-v2 evaluation list. Its primary four-condition comparison uses one frozen controlled-retraining checkpoint, shared inputs and per-object seeds. It does not reproduce the historical adapter's reported $+0.96$ dB estimate. The original main v1 checkpoint's exact identity remains unavailable. Three local copies of the separate historical v2 EMA match its recorded MD5, but v2 served different strong-residual experiments and does not restore v1. A later overlap-excluded retraining on the original 276 UIDs is reported separately below.
+ 
+ \begin{table*}[t]
+ \centering\scriptsize\setlength{\tabcolsep}{3pt}
+-\caption{Studies, implemented protocols and evidence scope. Rows are studies rather than disjoint populations: the bake pilots and some interface tests reuse image-study inputs. Object is the statistical unit; views and seeds are nested within object.}
++\caption{Studies, implemented protocols and evidence scope. Rows are studies rather than disjoint populations: the bake pilots and some interface tests reuse image-study inputs. Object is the statistical unit for validated cohorts; views and seeds are nested within object. The historical-request technical panel instead describes requested slots with one unknown replacement and does not establish independent-object inference.}
+ \label{tab:study-design}
+ \begin{tabular}{p{0.16\textwidth}p{0.23\textwidth}p{0.20\textwidth}p{0.32\textwidth}}
+ \toprule Study / objects & Interface and sampling & Endpoint & Selection and scope \\
+@@ -193,6 +194,7 @@
+ GSO / 100 & Native MV-Adapter; 512 pixels; 50 steps; CFG 3; three seeds & All-six PSNR primary; five nonreference LPIPS secondary & Source-ordered convenience cohort; four inherited profiles frozen after earlier baseline exposure; external sensitivity \\
+ GSO bake / 20 & Same fixed GSO inputs; native UVs; three seeds & Eleven unseen unlit views & Revised GT-only calibration after fifteen original outcomes; full twenty retained; no GT-error subtraction \\
+ Reference-protocol / 50 & New frozen GeoTex checkpoint; native reference conditions; 512 pixels; 50 steps; CFG 2 & Five nonreference views & Supporting protocol/checkpoint sensitivity on previously studied inputs; not another independent backbone \\
++Historical-request retrain / 276 slots & New 2,000-step GeoTex checkpoint; 1,039 training UIDs; 256 pixels; 50 Euler steps & Six-view composite; full-frame and foreground endpoints & 79 requested-list overlaps excluded, but one unknown input substitution; exposed technical sensitivity, not exact held-out confirmation \\
+ MVDiffusion / 75 & Partial correspondence-block control; depth concatenation unscaled & Recorded six-view endpoints & Retrospective third-interface panel; narrow native-mirror identity check; not exact GeoTex operator transfer \\
+ \bottomrule
+ \end{tabular}
+@@ -231,6 +233,8 @@
+ \label{subsec:matched-budget300}
+ Early-, middle-, and late-high move the same sixteen high steps to updates 0--15, 17--32, and 34--49. Deep/middle low and high are 1.25 and 2.50; shallow stays at its 0.8 cap. Fixed Mean uses 1.65 before the cap. Each allocation therefore has per-group sums $(82.5,82.5,40)$. The completed six-condition matrix contains 1,800 paired rows with common-input and seed checks.
+ 
++The timing addendum's internally frozen primary question is Middle-high minus the objectwise average of Early-high and Late-high FG-PSNR. Its mean is $-0.0339$ dB (10,000-resample pointwise object-bootstrap interval $[-0.1172,+0.0514]$; two-sided 20,000-draw sign-flip $p=0.4324$), with 119/300 objects positive. The median is $-0.2296$ dB. This result does not support a middle-window advantage and does not establish equivalence. It was specified before the addendum's new allocations, after earlier Fresh C outcomes were known; it is not an independent prospective confirmation. The original primary, twelve-test secondary family and later descriptive all-pair recomputation are distinguished in Supplementary Section~S2.
++
+ C3 minus Fixed Mean is $-0.133$ dB (pointwise interval $[-0.170,-0.096]$); C3 minus Late-high is $-0.564$ dB ($[-0.634,-0.494]$). C3 also trails both on LPIPS, FG-SSIM and Edge-SSIM. It improves over Early-high by approximately 0.50 dB. Within these six conditions Fixed High wins FG-PSNR on 172 objects, Late-high on 64, and C3 on none; this is an endpoint-specific count, not a universal quality ranking.
+ 
+ A descriptive four-endpoint comparison complements these winner counts. On 270/300 objects, at least one of the other five controls weakly dominates C3 on all four recorded composite endpoints and improves at least one. Fixed High alone does so on 173 objects, but C3 dominates it on 16; their remaining 111 objects have competing endpoints. This post-inspection, point-estimate analysis is not statistical separation on each object or a ranking of unmeasured material quality. Full counts are in Supplementary Section~S2.
+@@ -244,6 +248,25 @@
+ \label{fig:c3compare}
+ \end{figure*}
+ 
++
++\subsection{Historical-cohort Retraining and Endpoint Sensitivity}
++\label{subsec:original276}
++
++A later controlled retraining excludes the historical 276 evaluation UIDs from its recorded training list. Their intersection with the earlier 1,118-UID list is 79; removing those entries leaves 1,039 training UIDs and zero requested-list overlap. The requested cohort comprises positions 24--299 of the original 300-object list. It was already exposed during research. Importantly, an empty-input error for requested slot 46 triggered the inherited loader's random replacement; its actual UID is unknown. Thus the 1,104 rows form 276 requested slots by four common-input conditions, not verified coverage of 276 distinct held-out objects. This is a technical protocol/checkpoint sensitivity panel, not exact held-out confirmation, recovery of the historical main v1 weights or reproduction of the old $+0.96$ dB result. List overlap is also not evidence that every listed UID was sampled in the unauthenticated historical run.
++
++\begin{table*}[t]
++\centering\scriptsize\setlength{\tabcolsep}{5pt}
++\caption{Retrained historical-request technical panel. Means retain all 276 requested slots and four conditions; one failed input was replaced by an unknown actual UID. Each slot shares a six-view composite across conditions. Full-frame and foreground PSNR have opposite C3--Fixed High directions. This panel is not exact held-out evidence and is not pooled with Fresh C.}
++\label{tab:original276}
++\begin{tabular}{lrrrrr}
++\toprule Condition & Full-frame PSNR$\uparrow$ & FG-PSNR$\uparrow$ & FG-LPIPS$\downarrow$ & FG-SSIM$\uparrow$ & Edge-SSIM$\uparrow$ \\
++\midrule
++\input{tables/original276_means.tex}
++\bottomrule
++\end{tabular}
++\end{table*}
++
++C3 minus Fixed High is $+1.699$ dB in full-frame PSNR (276/276 slots positive), but $-1.314$ dB in FG-PSNR (9/276 favorable). FG-LPIPS is higher by 0.01127, FG-SSIM lower by 0.05961, and Edge-SSIM lower by 0.02777. Excluding the known failed requested slot preserves the opposing PSNR means ($+1.697$ and $-1.311$ dB) and the LPIPS loss ($+0.01127$). White-background normalization also favors Fixed High. Thus the raw full-frame gain does not support reference-texture fidelity. C3 improves FG-PSNR over Fixed Low by 0.783 dB, while their descriptive FG-LPIPS interval includes zero. All original rows and the input-failure sensitivity remain in Supplementary Section~S7. Slot-bootstrap diagnostics do not establish independent-object inference because the substituted UID is unknown. Fixed Mean, moved high windows and Generic Linear were not evaluated here; this panel cannot validate a timing-only or middle-window advantage.
+ 
+ \subsection{Appearance and Color Failure Analysis}
+ \label{subsec:appearance-color}
+@@ -426,7 +449,7 @@
+ \label{sec:limitations}
+ 
+ \paragraph{What the controls establish.}
+-The Fresh C300 gain over fixed low supports the recorded intervention under its frozen protocol. It changes both budget and timing. The equal-applied-budget matrix then measures a timing-allocation total effect and changes the preferred image-space operating point. It does not identify a state-independent residual dose or an optimal middle window. Competitive fixed and linear controls are necessary before assigning practical value to a selected profile.
++The Fresh C300 gain over fixed low supports the recorded intervention under its frozen protocol. It changes both budget and timing. The equal-applied-budget matrix then measures a timing-allocation total effect and changes the preferred image-space operating point. It does not identify a state-independent residual dose or an optimal middle window. Competitive fixed and linear controls are necessary before assigning practical value to a selected profile. The retained Middle--average(Early,Late) primary does not detect the proposed middle-window gain. In the overlap-excluded historical-cohort retraining, the positive full-frame C3--Fixed High PSNR result coexists with worse foreground agreement; selecting the favorable region would change the conclusion.
+ 
+ \paragraph{Application value and operating points.}
+ In the GeoTex image protocol, Fixed High and Generic Linear have stronger endpoint means than C3; equal-budget late-high trades higher PSNR and lower LPIPS against lower FG-SSIM than fixed mean. The ten-object bake's approximately 2\% LPIPS reduction closes only 3.7\% of the gap to the matched GT reference bake, while visible appearance errors remain. The separate GSO20 study does not detect that allocation benefit. Its post hoc calibration, GT self-bake loss and incomplete coverage are disclosed; a small image effect alone does not justify replacing an existing deployment setting.
+@@ -441,19 +464,19 @@
+ \paragraph{Quality, selection and replication limits.}
+ The bake studies favor compatible native-UV assets, and GSO uses a source-ordered convenience sample. They do not establish representative asset quality, physical albedo, PBR fidelity or a validated seam score. Views and seeds are nested within object, and seed repetitions do not estimate training-checkpoint variation. The new seed, dominance and UV-overlap summaries were proposed after observing the original outcomes and remain descriptive; their diagnostic checks do not change that chronology. Separate test families and pointwise intervals retain their stated roles; non-detection is not equivalence.
+ 
+-Fresh C uses retrained weights and a controlled sampler rather than the authenticated historical main adapter or complete default pipeline. The old $+0.96$ dB contrast is not reproduced, and historical FAC training records remain incomplete. The original preference study concerns its own stimuli. These limitations constrain deployment and replication claims, while the matched within-protocol comparisons remain valid.
++Fresh C uses retrained weights and a controlled sampler rather than the authenticated historical main adapter or complete default pipeline. The old $+0.96$ dB contrast is not reproduced. Recovering the separate v2 EMA and training another overlap-excluded v1-family instance do not restore the original v1 experiment identity; historical FAC training records also remain incomplete. The original preference study concerns its own stimuli. These limitations constrain deployment and replication claims, while the matched within-protocol comparisons remain valid.
+ 
+ \section{Conclusion}
+ \label{sec:conclusion}
+ 
+-Geometry-control allocation changes generated-view agreement, but its effects depend on the tested interface, protocol and endpoint. The matched 300-object study shows that C3's gain over fixed low combines increased strength with timing; equal-budget fixed mean and late-high outperform the historical middle window. Native MV-Adapter studies do not detect the primary middle-window advantage, while some secondary image effects are small but measurable. Actual baking yields a limited late-high benefit on ten compatible GeoTex objects and no detected LPIPS benefit on a separate twenty-object GSO cohort. Method rankings are broadly associated across image and baked evaluation, yet their preferred operating points often differ. Competitive controls and application-level evaluation are therefore necessary when choosing a setting within a deployed pipeline. The results do not identify a universally preferred schedule or establish faithful material reproduction.
++Geometry-control allocation changes generated-view agreement, but its effects depend on the tested interface, protocol and endpoint. The matched 300-object study shows that C3's gain over fixed low combines increased strength with timing; equal-budget fixed mean and late-high outperform the historical middle window. Native MV-Adapter studies do not detect the primary middle-window advantage, while some secondary image effects are small but measurable. Actual baking yields a limited late-high benefit on ten compatible GeoTex objects and no detected LPIPS benefit on a separate twenty-object GSO cohort. Method rankings are broadly associated across image and baked evaluation, yet their preferred operating points often differ. The original middle-versus-early/late-average contrast does not detect a gain. A separately retrained historical cohort also demonstrates opposite full-frame and foreground PSNR directions. Competitive controls, explicitly named image regions and application-level evaluation are therefore necessary when choosing a setting within a deployed pipeline. The results do not identify a universally preferred schedule or establish faithful material reproduction.
+ 
+ \section*{Data availability}
+ 
+ Object-level revision metrics, frozen protocols/configuration records, verified inference and analysis scripts, and the LaTeX source required to rebuild the manuscript and Supplement are included in the author-review package. Recovered FAC source and its source/entry audit are supplied separately; standalone controller tests do not constitute historical full-model replay. The standalone reproduction archive supports statistic recomputation without model weights; fresh inference additionally requires the recorded weights, runtime and licensed source assets. The complete raw generated-image archives, trained checkpoints, and participant-level responses are not included. Source assets must be acquired under their recorded licenses; the review evidence includes attributed displays and a small licensed GSO example export. Additional analysis records may be requested from the corresponding author, subject to licensing, privacy, and archive constraints.
+ 
+ \section*{Declaration of generative AI and AI-assisted technologies in manuscript preparation}
+-OpenAI Codex assisted with revision drafting, implementation and reproducible statistical and figure code. The final interface diagram uses reproducible vector elements; research displays come from the recorded runs without image-generation retouching. A vision-capable AI assistant inspected final figures and rendered pages for legibility and consistency with the named comparisons; this check does not certify scientific validity or replace author review. Numerical tables are computed from delivered object-level records. Final scientific review, accuracy and responsibility remain with the authors.
++OpenAI Codex assisted with revision drafting, implementation and reproducible statistical and figure code. The final interface diagram uses reproducible vector elements; research displays come from the recorded runs without image-generation retouching. AI-assisted presentation checks cover rendered figures and pages for legibility; these checks do not certify scientific validity or replace author review. Numerical tables are computed from delivered object-level records. Final scientific review, accuracy and responsibility remain with the authors.
+ 
+ \section*{Declaration of competing interests}
+ 
+@@ -515,7 +538,7 @@
+ Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
+ 
+ \bibitem{zeng2024paint3d}
+-Zeng X, Chen X, Qi Z, et al. Paint3D: Paint anything 3D with lighting-immersive texture generation. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
++Zeng X, Chen X, Qi Z, et al. Paint3D: Paint Anything 3D with Lighting-Less Texture Diffusion Models. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+ 
+ \bibitem{cheng2024mvpaint}
+ Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for painting anything 3D. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2025.
+@@ -576,6 +599,15 @@
+ 
+ \bibitem{sad2024apg}
+ Sadat S, Hilliges O, Weber R M. Eliminating oversaturation and artifacts of high guidance scales in diffusion models. \textit{International Conference on Learning Representations}, 2025.
++
++\bibitem{chung2024styleid}
++Chung J, Hyun S, Heo J P. Style Injection in Diffusion: A Training-free Approach for Adapting Large-scale Diffusion Models for Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
++
++\bibitem{controlnet2023layercontrol}
++ControlNet project. Official depth-to-image demo: layer-dependent control scales. Source code, fixed commit f2e1bc38dc8d925fb542be4c138c46013ace1988, 2023. \url{https://github.com/lllyasviel/ControlNet/blob/f2e1bc38dc8d925fb542be4c138c46013ace1988/gradio_depth2image.py}. Accessed 12 October 2026.
++
++\bibitem{diffusers2023controlnet}
++Hugging Face. Diffusers v0.21.0: ControlNet conditioning scale and guidance start/end. Official versioned documentation, 2023. \url{https://huggingface.co/docs/diffusers/v0.21.0/api/pipelines/controlnet}. Accessed 12 October 2026.
+ 
+ \end{thebibliography}
+ \endgroup

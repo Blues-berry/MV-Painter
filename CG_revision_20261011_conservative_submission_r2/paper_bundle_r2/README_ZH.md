@@ -13,7 +13,7 @@
 
 ## 历史稿归档
 
-已把七个历史修订目录中的结论/审查文档、TeX 源、投稿 PDF/DOCX 和各稿直接引用图归入[历史论文文档归档](../../historical_paper_documents_20261012/README_ZH.md)。未引用图片、实验数据、日志、视频、权重和 ZIP 未纳入。正在更新的 `final_paper_20261012` 不影响这次历史材料上传。
+已把七个历史修订目录中的结论/审查文档、TeX 源、投稿 PDF/DOCX 和各稿直接引用图归入[历史论文文档归档](../../historical_paper_documents_20261012/README_ZH.md)。未引用图片、实验数据、日志、视频、权重和 ZIP 未纳入。后续从持续更新的 `final_paper_20261012` 另行固定了[当前最终论文快照](../../final_paper_snapshot_20261013/README_ZH.md)，包含最终正文/标记稿/补充材料、成品 PDF 和直接引用图；其它实验产物仍留在本地。
 
 ## 当前投稿 r2
 
