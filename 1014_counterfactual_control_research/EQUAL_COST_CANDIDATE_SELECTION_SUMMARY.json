@@ -1,0 +1,67 @@
+{
+  "status": "COMPLETE_EXPLORATORY_EQUAL_CALL_COMPARISON",
+  "objects_as_analysis_units": 6,
+  "per_object_generation_calls": {
+    "view_action_feedback": 2,
+    "fixed_mean_candidate_selection": 2
+  },
+  "fixed_mean_candidates": [
+    "latent_seed_42",
+    "latent_seed_43"
+  ],
+  "fixed_mean_seed43_input_hashes_equal_to_seed42_except_initial_latent": true,
+  "selected_fixed_mean_seed_by_reference_signal": {
+    "rgb_mae": {
+      "1dc2c857f7614caeb6c2aa0559ccf973": "seed43",
+      "21678bd623654182b52c11d013de4e71": "seed42",
+      "238ff3e41c964655b83aa9c8770cc766": "seed42",
+      "2dd9bc8172c6461797947cc7214db399": "seed42",
+      "2f6c94487ee54cb88021f4643409d849": "seed43",
+      "e261c0fe85af46388260e2359a9bfc92": "seed43"
+    },
+    "ciede2000": {
+      "1dc2c857f7614caeb6c2aa0559ccf973": "seed43",
+      "21678bd623654182b52c11d013de4e71": "seed42",
+      "238ff3e41c964655b83aa9c8770cc766": "seed42",
+      "2dd9bc8172c6461797947cc7214db399": "seed42",
+      "2f6c94487ee54cb88021f4643409d849": "seed43",
+      "e261c0fe85af46388260e2359a9bfc92": "seed43"
+    }
+  },
+  "mean_object_bake_lpips": {
+    "fixed_mean_two_call_mae_selected": [
+      0.1398071160144878,
+      0.09489782606110429,
+      0.18523993117339685
+    ],
+    "view_action_two_call_mae_selected": [
+      0.1411989179411621,
+      0.09669560261748054,
+      0.18738368808320074
+    ],
+    "view_action_two_call_ciede_selected": [
+      0.14118685917646598,
+      0.09664736755869606,
+      0.18738368808320074
+    ]
+  },
+  "paired_action_minus_fixed_mean_two_call": {
+    "rgb_mae": [
+      0.0013918019266742643,
+      -0.004837639291178096,
+      0.007499183951453725
+    ],
+    "ciede2000": [
+      0.001379743161978143,
+      -0.004837639291178096,
+      0.007499183951453725
+    ]
+  },
+  "action_beats_fixed_mean_two_call": {
+    "rgb_mae": 3,
+    "ciede2000": 3,
+    "n": 6
+  },
+  "interpretation": "Both policies use two full trajectories and choose by the same legal reference metrics. Fixed Mean candidate selection is a simple no-view-budget-control best-of-two baseline.",
+  "result_csv": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/EQUAL_COST_CANDIDATE_SELECTION_RESULTS.csv"
+}
