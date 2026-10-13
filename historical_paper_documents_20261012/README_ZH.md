@@ -14,7 +14,7 @@
 
 ## 排除范围
 
-未引用/备选图片、原始实验输出、逐对象指标与实验 JSON/CSV、运行日志、视觉检查截图、数据集/网格、视频、模型权重、提交 ZIP 与构建缓存均未复制。保守投稿 r2 主包仍位于 `CG_revision_20261011_conservative_submission_r2/paper_bundle_r2/`。随后形成的当前最终论文快照单独归入 [`final_paper_snapshot_20261013/`](../final_paper_snapshot_20261013/README_ZH.md)，按三份最终 TeX 的实际引用补入对应图件；不影响本目录仅收历史版本的范围。
+未引用/备选图片、原始实验输出、逐对象指标与实验 JSON/CSV、运行日志、视觉检查截图、数据集/网格、视频、模型权重、提交 ZIP 与构建缓存均未复制。保守投稿 r2 主包仍位于 `CG_revision_20261011_conservative_submission_r2/paper_bundle_r2/`。随后形成的当前最终论文快照单独归入 [`final_paper_snapshot_20261013/`](../final_paper_snapshot_20261013/README_ZH.md)，按三份最终 TeX 的实际引用补入对应图件；截图所示的独立 `1014finalv1` 版本也已单独归档在 [`1014finalv1/`](../1014finalv1/README_ZH.md)。这些补充目录不改变本目录仅收七组历史版本的范围。
 
 每份纳入的 TeX 稿中的 `\includegraphics` 引用均已解析，并只复制对应的图片资产。`SHA256SUMS.tsv` 记录归档文件路径、大小与 SHA-256。审查记录中的部分本地证据链接仍指向原工作区；对应实验数据按范围要求留在本地。
 
