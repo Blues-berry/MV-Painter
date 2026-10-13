@@ -1,0 +1,99 @@
+{
+  "bake_root": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake",
+  "bake_run_summary_path": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake/cpu_bake_v3/BAKE_RUN_SUMMARY.json",
+  "bake_run_summary_sha256": "3015e0b2a40ad53fb67cc54c97ccffa386cfcbabb5283090615b0b881340bc78",
+  "bbox_max_abs_errors": {
+    "1dc2c857f7614caeb6c2aa0559ccf973": 5.551115123125783e-17,
+    "21678bd623654182b52c11d013de4e71": 1.3322676295501878e-15,
+    "238ff3e41c964655b83aa9c8770cc766": 2.220446049250313e-15,
+    "2dd9bc8172c6461797947cc7214db399": 5.336349886420066e-07,
+    "2f6c94487ee54cb88021f4643409d849": 8.313500430290333e-07,
+    "e261c0fe85af46388260e2359a9bfc92": 2.220446049250313e-16
+  },
+  "completed_at_utc": "2026-10-13T03:37:04.142786+00:00",
+  "handoff_v3_path": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake/BAKE_INPUT_HANDOFF_V3.json",
+  "handoff_v3_sha256": "bc8237497fbd1276d96ad03d30981e152a2772931eadc06895691bf7bf12d275",
+  "input_adapter_path": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake/NATIVE_EGL_INPUT_ADAPTER.json",
+  "input_adapter_sha256": "58942e45f9fadbf15ee472c9d93719a23f05af0e2b057f5a39d9a46e67a913a6",
+  "interpretation_limit": "Embedded glTF baseColor sampler render is unlit and texture-only, not a full PBR or human-fidelity assessment.",
+  "methods": [
+    "gt",
+    "counterfactual_b0",
+    "counterfactual_bplus",
+    "counterfactual_bminus"
+  ],
+  "objects": [
+    "1dc2c857f7614caeb6c2aa0559ccf973",
+    "21678bd623654182b52c11d013de4e71",
+    "238ff3e41c964655b83aa9c8770cc766",
+    "2dd9bc8172c6461797947cc7214db399",
+    "2f6c94487ee54cb88021f4643409d849",
+    "e261c0fe85af46388260e2359a9bfc92"
+  ],
+  "protocol": "fresh-c-glb-native-egl-sampler-audit-v1",
+  "raw_views": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "render_count": 264,
+  "render_manifest_path": "/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake/native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json",
+  "render_manifest_sha256": "d11a30eee70ba8878badfc54d69760b0a117f09a6fd2cc7030a7be2b5f5a6f62",
+  "renderer_device": "NVIDIA GeForce RTX 5090/PCIe/SSE2",
+  "renderer_source_path": "/4T/CXY/MV-Painter-1010/1008/audits/source_evidence/r1/n20_glb/render_glb_native_egl.py",
+  "renderer_source_sha256": "ce729d45ff0e16098ef6dd907877b782f79d9e82a35c3f807078102f4c07e33a",
+  "resolution": 512,
+  "sampler_probe": {
+    "observed_rgba8": {
+      "bottom_left": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "bottom_right": [
+        255,
+        255,
+        0,
+        255
+      ],
+      "repeat_negative_u": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "repeat_u_above_one": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "top_left": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "top_right": [
+        0,
+        255,
+        0,
+        255
+      ]
+    },
+    "status": "PASS"
+  },
+  "started_at_utc": "2026-10-13T03:36:53.077028+00:00",
+  "status": "COMPLETED",
+  "wrapper_source_path": "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/run_fresh_c_native_egl_audit.py",
+  "wrapper_source_sha256": "63aa8b5e74031a8a74960dfe2db9512440dd419c0c7519fd26ec6e0a6e354ab4"
+}
