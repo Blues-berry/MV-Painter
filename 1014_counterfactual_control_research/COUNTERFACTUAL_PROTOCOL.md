@@ -46,3 +46,7 @@ Ground-truth texture and unseen-camera renders are evaluation-only. They may not
 Stop before quality generations if any camera identity, tile map, budget, shared-state, feature-shape, precision, cache or realized-residual gate fails. Stop after six objects if the action direction is not useful. Do not add another control rule, feedback feature, scale, time window or layer group.
 
 Formal controller development is allowed only if direction is useful on multiple objects, beats the simple equal-cost candidate rule on unseen baked quality, shows no systematic structure/color/other-view damage, is not driven by a few objects, offers a defensible distinction from existing online scale selection and 3D texture guidance, and pays for its extra inference cost. Otherwise issue STOP and return to the final 1014 empirical revision.
+
+## Equal-generation-cost add-on
+
+Phase C requires a simple baseline with the same number of complete generations as the B+/B− selector. On the same six objects only, one additional Fixed Mean B0 candidate was therefore generated with latent seed 43; the original Fixed Mean seed-42 candidate serves as the other draw. All inputs except the initial latent were hash-identical. The two Fixed Mean candidates were selected by the same legal reference RGB MAE and CIEDE2000 scores used for the action rule. This adds six generations, for 24/30 total. It does not change δ, the sampler window, adapter groups or the six-object cohort, and it is explicitly a two-call best-of-two baseline rather than a proposed controller.

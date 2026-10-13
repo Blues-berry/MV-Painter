@@ -24,6 +24,8 @@ These are direct counterexamples to treating source-view appearance as a suffici
 
 The RGB-MAE-selected and CIEDE-selected two-call policies each lower baked LPIPS relative to B0 on 4/6 objects, but their mean improvements are small and both object-bootstrap intervals include zero. Fixed B+ uses one generation, has a slightly lower mean LPIPS than either feedback-selected policy, and also has an interval crossing zero versus B0. The two-call rule therefore has no demonstrated quality-per-compute advantage.
 
+The explicit equal-call baseline reaches the same conclusion: with two complete generations per object on both sides, B+/B− selection averages 0.141199 LPIPS by reference MAE, versus 0.139807 for two Fixed Mean candidates selected by the same MAE. The action policy is lower on only 3/6 objects; its paired mean difference is +0.001392 LPIPS with a wide interval crossing zero. CIEDE2000 gives the same selected Fixed Mean seeds and a similarly worse action point estimate. Thus the two-call action selector does not beat a simple two-call fixed-profile choice.
+
 ## Output change is not product improvement
 
 The interventions do change generated panels: 32–48% of RGB channel values differ from B0, with mean absolute panel differences around 0.0016–0.0027 on `[0,1]`. That visible/model-output response does not translate into a useful feedback rule. Across this fixed-geometry cohort, silhouette IoU and raw UV coverage are identical across conditions by construction; UV variance and seam metrics shift slightly in mixed directions. This rules out an obvious coverage or silhouette failure in this setup, but does not establish general structural safety or full PBR quality.
@@ -38,5 +40,7 @@ Each per-object sheet compares all 11 native-EGL unseen-camera renders for B0, B
 - [Object `238ff3e4` UV texture comparison](visuals/UV_TEXTURES_238ff3e41c964655b83aa9c8770cc766.png)
 - [Object `2f6c9448` render comparison](visuals/UNSEEN_11VIEW_COMPARE_2f6c94487ee54cb88021f4643409d849.png)
 - [Object `2f6c9448` generated six-view panels](visuals/GENERATED_SIX_VIEW_PANELS_2f6c94487ee54cb88021f4643409d849.png)
+- [Equal-call comparison results](EQUAL_COST_CANDIDATE_SELECTION.md)
+- [Seed-42/seed-43 candidate artifacts and 11-view renders](EQUAL_COST_BASELINE/ARCHIVE_MAP.md)
 
 The visualizations are a presentation of the retained files, not a basis for selecting conditions. GT and unseen-camera renders were used only after all 18 generations and the paired bake outputs were complete.

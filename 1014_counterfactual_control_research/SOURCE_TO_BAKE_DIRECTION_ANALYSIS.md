@@ -44,6 +44,18 @@ The interventions changed generated RGB outputs: across objects, 32–48% of sav
 
 The selected actions lower reference error and baked LPIPS versus B0 for four of six objects, but they also lose on two. The wins are small, the action direction is inconsistent, and the fixed B+ policy has a slightly better mean LPIPS than either feedback selection while requiring one generation instead of two.
 
+## Same-generation-count simple-selection control
+
+The Phase C compute comparison was completed on the same six objects. Each feedback policy uses two full trajectories (B+ and B−); the no-view-budget-control baseline also uses two trajectories (Fixed Mean B0 at latent seeds 42 and 43) and chooses by the same reference error. The legal source metric selected the same seed on all six objects for both RGB MAE and CIEDE2000 in this realization.
+
+| Two-call policy | Mean object LPIPS | Object-bootstrap 95% interval | Action minus Fixed Mean best-of-two |
+|---|---:|---:|---:|
+| Fixed Mean best-of-two, MAE selected | 0.139807 | [0.094898, 0.185240] | reference |
+| B+/B−, MAE selected | 0.141199 | [0.096696, 0.187384] | +0.001392 [−0.004838, +0.007499] |
+| B+/B−, CIEDE selected | 0.141187 | [0.096647, 0.187384] | +0.001380 [−0.004838, +0.007499] |
+
+The view-action policy has lower LPIPS than the equal-cost Fixed Mean selector on 3/6 objects for either source metric. Its mean is worse and no interval establishes an advantage. This control removes the objection that the action selector's result is due simply to paying for a second trajectory; it still does not show that geometry-budget feedback helps.
+
 ## Quality, UV and inference cost
 
 - Mean unseen-view FG-LPIPS is 0.141271 for B0, 0.141178 for B+, and 0.141331 for B−. Fixed B+ is the best simple one-call profile on this cohort, but its paired difference from B0 is uncertain and tiny.

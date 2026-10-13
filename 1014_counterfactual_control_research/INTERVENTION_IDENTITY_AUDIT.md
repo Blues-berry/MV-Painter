@@ -47,3 +47,7 @@ Deep and middle caps are 3.0 and 3.5, so neither positive nor negative transfer 
 ## Phase A decision
 
 **PASS.** All six B0 generation panels, all six B0 baked textures, and all 66 B0 unseen renders match the frozen baseline pixel-for-pixel. Both signed interventions hit the reference tile and compensate the other five tiles exactly after native caps. Cross-condition input/latent hashes match for all six objects, and all actual residual-dose traces are finite. The full machine-readable checks are `phase_a_dynamic_audit.json`, the bake summary and the native-EGL render manifest.
+
+## Equal-cost Fixed Mean candidate audit
+
+To satisfy the same-generation-count Phase C control, a second Fixed Mean candidate was generated on the same six objects using latent seed 43. The per-object object seed and all conditioning/input hashes match seed 42; only the initial latent hashes differ. All 50 steps × 9 adapter sites were traced: deep/middle applied scales remain 1.65 and shallow remains at its native cap 0.8, with finite realized-residual dose logs. A fresh seed-42 replay passed the normal bake path and reproduced all six existing Fixed Mean UV textures pixel-for-pixel. The new seed-43 panels then passed the same native UV/GLB patch checks. The equal-cost baseline produced 18 bake records (GT, B0 seed42 replay and B0 seed43 for six objects) and 198 native-EGL images; the sampler probe passed. Machine-readable checks are in `equal_cost_phase_a_audit.json`, the separate bake handoff, bake summary and EGL manifests under `EQUAL_COST_BASELINE/`.
