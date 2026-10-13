@@ -42,6 +42,19 @@ def main() -> None:
     bake_summary = json.loads((BAKE / "cpu_bake_v3/BAKE_RUN_SUMMARY.json").read_text())
     egl_identity = json.loads((BAKE / "native_egl_unseen_RUN_IDENTITY.json").read_text())
     egl_manifest = json.loads((BAKE / "native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json").read_text())
+    original_egl_manifest = json.loads((ROOT / "bake/native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json").read_text())
+    original_render_hashes = {
+        (r["object"], r["method"], int(r["raw_view"])): r["render_sha256"]
+        for r in original_egl_manifest["renders"]
+    }
+    replayed_render_hashes = []
+    for record in egl_manifest["renders"]:
+        if record["method"] not in {"gt", "counterfactual_b0"}:
+            continue
+        key = (record["object"], record["method"], int(record["raw_view"]))
+        if record["render_sha256"] != original_render_hashes[key]:
+            raise RuntimeError(f"equal-cost EGL identity replay changed: {key}")
+        replayed_render_hashes.append(record["render_sha256"])
 
     objects = []
     for index in (0, 1, 2, 3, 4, 7):
@@ -104,6 +117,7 @@ def main() -> None:
         "generation_count": len(alternate),
         "bake_count": len(bake_summary["records"]),
         "native_egl_render_count": egl_manifest["render_count"],
+        "seed42_and_gt_render_replay_pixel_identical_count": len(replayed_render_hashes),
         "native_egl_sampler_probe": egl_manifest["renderer"]["sampler_probe"],
         "native_egl_renderer_sha256": egl_manifest["renderer_script_sha256"],
         "native_egl_output_resolution": egl_identity["resolution"],

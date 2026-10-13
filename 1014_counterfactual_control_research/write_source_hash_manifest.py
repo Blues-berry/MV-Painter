@@ -112,6 +112,9 @@ def main() -> None:
     for label, source in gen["code_source_sha256"].items():
         if sha256(Path(source["path"])) != source["sha256"]:
             raise RuntimeError(f"generation source hash mismatch: {label}")
+    for label, source in equal_cost_gen["code_source_sha256"].items():
+        if sha256(Path(source["path"])) != source["sha256"]:
+            raise RuntimeError(f"equal-cost generation source hash mismatch: {label}")
 
     source_code = {
         "worktree_changes": [item(WORKTREE / path, WORKTREE) for path in worktree_files],
