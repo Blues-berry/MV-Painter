@@ -1,0 +1,34 @@
+[CPU-BAKE] 1dc2c857f7614caeb6c2aa0559ccf973 gt
+[CPU-BAKE] 1dc2c857f7614caeb6c2aa0559ccf973 counterfactual_b0
+Traceback (most recent call last):
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 820, in <module>
+    main()
+    ~~~~^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 794, in main
+    bake_one(
+    ~~~~~~~~^
+        record,
+        ^^^^^^^
+    ...<4 lines>...
+        render_state=render_state,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 651, in bake_one
+    baked = bake_texture(record, source_geometry, method, args, raster_cache)
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 512, in bake_texture
+    image, source_mask = image_for_record(record, method, slot, raw_view,
+                         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                          bool(item["rotated_ccw_90"]),
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                          getattr(args, "gt_source_resolution", 0))
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 368, in image_for_record
+    rgb = load_rgba(path)[:, :, :3]
+          ~~~~~~~~~^^^^^^
+  File "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/bake_fresh_c_native_uv.py", line 97, in load_rgba
+    with Image.open(path) as image:
+         ~~~~~~~~~~^^^^^^
+  File "/home/ubuntu/anaconda3/lib/python3.13/site-packages/PIL/Image.py", line 3635, in open
+    fp = builtins.open(filename, "rb")
+FileNotFoundError: [Errno 2] No such file or directory: '/4T/CXY/MV-Painter/1014_counterfactual_control_research/bake/input_views/1dc2c857f7614caeb6c2aa0559ccf973/counterfactual_b0/slot_0.png'

@@ -1,0 +1,98 @@
+{
+  "bake_root": "/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research/bake_equal_cost_b0_seed43",
+  "bake_run_summary_path": "/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research/bake_equal_cost_b0_seed43/cpu_bake_v3/BAKE_RUN_SUMMARY.json",
+  "bake_run_summary_sha256": "98754e8be181bf32b3a77a39d9a5f782c2075fe5de4b810df6b0a7508c506506",
+  "bbox_max_abs_errors": {
+    "1dc2c857f7614caeb6c2aa0559ccf973": 5.551115123125783e-17,
+    "21678bd623654182b52c11d013de4e71": 1.3322676295501878e-15,
+    "238ff3e41c964655b83aa9c8770cc766": 2.220446049250313e-15,
+    "2dd9bc8172c6461797947cc7214db399": 5.336349886420066e-07,
+    "2f6c94487ee54cb88021f4643409d849": 8.313500430290333e-07,
+    "e261c0fe85af46388260e2359a9bfc92": 2.220446049250313e-16
+  },
+  "completed_at_utc": "2026-10-13T04:09:02.378680+00:00",
+  "handoff_v3_path": "/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research/bake_equal_cost_b0_seed43/BAKE_INPUT_HANDOFF_V3.json",
+  "handoff_v3_sha256": "f74ccedfcefa71c2ffea3d387485bbe4d491234adad9939f3531daa1e47cf747",
+  "input_adapter_path": "/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research/bake_equal_cost_b0_seed43/NATIVE_EGL_INPUT_ADAPTER.json",
+  "input_adapter_sha256": "ce12cbd1fef98b839e6d1de971f5a6d9517506152bd6696fc9c0b91473d4e26d",
+  "interpretation_limit": "Embedded glTF baseColor sampler render is unlit and texture-only, not a full PBR or human-fidelity assessment.",
+  "methods": [
+    "gt",
+    "counterfactual_b0",
+    "counterfactual_b0_seed43"
+  ],
+  "objects": [
+    "1dc2c857f7614caeb6c2aa0559ccf973",
+    "21678bd623654182b52c11d013de4e71",
+    "238ff3e41c964655b83aa9c8770cc766",
+    "2dd9bc8172c6461797947cc7214db399",
+    "2f6c94487ee54cb88021f4643409d849",
+    "e261c0fe85af46388260e2359a9bfc92"
+  ],
+  "protocol": "fresh-c-glb-native-egl-sampler-audit-v1",
+  "raw_views": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "render_count": 198,
+  "render_manifest_path": "/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research/bake_equal_cost_b0_seed43/native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json",
+  "render_manifest_sha256": "3d6bec851df7ed864e42212cdbea409ffebe248245e624f246bb1d222668595b",
+  "renderer_device": "NVIDIA GeForce RTX 5090/PCIe/SSE2",
+  "renderer_source_path": "/4T/CXY/MV-Painter-1010/1008/audits/source_evidence/r1/n20_glb/render_glb_native_egl.py",
+  "renderer_source_sha256": "ce729d45ff0e16098ef6dd907877b782f79d9e82a35c3f807078102f4c07e33a",
+  "resolution": 512,
+  "sampler_probe": {
+    "observed_rgba8": {
+      "bottom_left": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "bottom_right": [
+        255,
+        255,
+        0,
+        255
+      ],
+      "repeat_negative_u": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "repeat_u_above_one": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "top_left": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "top_right": [
+        0,
+        255,
+        0,
+        255
+      ]
+    },
+    "status": "PASS"
+  },
+  "started_at_utc": "2026-10-13T04:08:54.412075+00:00",
+  "status": "COMPLETED",
+  "wrapper_source_path": "/4T/CXY/MV-Painter-1010/1010/experiments/revision_expansion_20261010/final_code/run_fresh_c_native_egl_audit.py",
+  "wrapper_source_sha256": "63aa8b5e74031a8a74960dfe2db9512440dd419c0c7519fd26ec6e0a6e354ab4"
+}

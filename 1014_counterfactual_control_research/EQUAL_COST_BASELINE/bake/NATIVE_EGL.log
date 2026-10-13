@@ -1,0 +1,88 @@
+{
+  "protocol": "glb-native-basecolor-egl-render-v1",
+  "renderer": {
+    "backend": "EGL / PyOpenGL",
+    "vendor": "NVIDIA Corporation",
+    "device": "NVIDIA GeForce RTX 5090/PCIe/SSE2",
+    "version": "4.1.0 NVIDIA 570.172.08",
+    "resolution": 512,
+    "sampler_probe": {
+      "status": "PASS",
+      "observed_rgba8": {
+        "top_left": [
+          255,
+          0,
+          0,
+          255
+        ],
+        "top_right": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "bottom_left": [
+          0,
+          0,
+          255,
+          255
+        ],
+        "bottom_right": [
+          255,
+          255,
+          0,
+          255
+        ],
+        "repeat_negative_u": [
+          0,
+          255,
+          0,
+          255
+        ],
+        "repeat_u_above_one": [
+          255,
+          0,
+          0,
+          255
+        ]
+      }
+    }
+  },
+  "frozen_cohort_n": 6,
+  "prebake_no_uv_exclusions": [],
+  "rendered_objects": [
+    "1dc2c857f7614caeb6c2aa0559ccf973",
+    "21678bd623654182b52c11d013de4e71",
+    "238ff3e41c964655b83aa9c8770cc766",
+    "2dd9bc8172c6461797947cc7214db399",
+    "2f6c94487ee54cb88021f4643409d849",
+    "e261c0fe85af46388260e2359a9bfc92"
+  ],
+  "rendered_methods": [
+    "gt",
+    "counterfactual_b0",
+    "counterfactual_b0_seed43"
+  ],
+  "raw_views": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "render_count": 198,
+  "object_bbox_max_abs_errors": {
+    "1dc2c857f7614caeb6c2aa0559ccf973": 5.551115123125783e-17,
+    "21678bd623654182b52c11d013de4e71": 1.3322676295501878e-15,
+    "238ff3e41c964655b83aa9c8770cc766": 2.220446049250313e-15,
+    "2dd9bc8172c6461797947cc7214db399": 5.336349886420066e-07,
+    "2f6c94487ee54cb88021f4643409d849": 8.313500430290333e-07,
+    "e261c0fe85af46388260e2359a9bfc92": 2.220446049250313e-16
+  }
+}
