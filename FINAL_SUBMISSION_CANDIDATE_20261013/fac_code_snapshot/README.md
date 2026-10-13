@@ -1,0 +1,15 @@
+# Recoverable FAC source: two distinct entries
+
+This is source disclosure for the historical negative extension, not a new algorithm or a complete reconstruction of the old experiment. The recovered files are copied byte for byte. `SOURCE_AND_COMPONENT_AUDIT.json` records their original paths, hashes, syntax checks and the actually executed component checks.
+
+`earlier_entry/geotex/train_fac.py` updates the base adapter and geometry encoder by default. Its `--freeze_adapter` flag is necessary for a controller-only run. `controller_only_entry/geotex/train_fac_v2.py` freezes those base components and trains the controller; its warm-start, timestep-grid, frozen-LTAG and envelope options differ. No surviving authenticated run manifest establishes which complete source/CLI/checkpoint combination produced each reported historical FAC row. Neither directory is labeled the executed historical version.
+
+The recovered configuration refers to `train_objects_1200.txt`; it does not restore the historical reported 1,706-object pool. The historical seed, sampled training order and full checkpoint/output linkage remain missing. Paths in these archival configurations are historical local paths, not downloads or a portable dataset distribution. New model training would create a new study and would not recover these missing identities.
+
+The standalone component check imports only `MVPainter/mvpainter/adaptive_correction.py`. With Python/PyTorch on CPU it exercises nine-adapter LTAG, LTAG+GSG and LTAG+GSG+FSC fixtures, finite forward/gradient paths and bitwise state-save/load round trips. These tests do not load a diffusion model or establish full training/inference reproducibility, texture quality or the validity of the historical claims. They use a nonsaturating deep cap; a shallow cap can remove LTAG gradients as an ordinary consequence of clipping.
+
+Archival comments require care: FSC's actual implementation uses `torch.fft.rfft2`/`irfft2`, despite comments referring to DCT. Its initial frequency mask is a soft attenuating mask, not an exact identity. The spatial gate starts at one. These execution facts are recorded rather than inferred from comments. Assertions in old source comments about innovation, geometry/texture frequency separation or exact warm-start reproduction are not claims of the current manuscript.
+
+To rerun the controller check from the round015 root, use `python scripts/audit_fac_source015.py --snapshot-only` after installing PyTorch. The optional snapshot mode reads only delivered files. Full-model entries additionally need the matching upstream runtime, licensed source images, base diffusion weights and the appropriate GeoTex checkpoint. Their complete isolated execution has not been validated in this revision; no such claim is made.
+
+Original upstream license files are retained where recovered. No trained weights, participant-level data or raw bulk asset redistribution is included. This archive is supplied in the private author/reviewer package; no public code hosting or journal submission is asserted.

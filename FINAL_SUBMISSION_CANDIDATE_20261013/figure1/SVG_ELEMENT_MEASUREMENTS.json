@@ -1,0 +1,956 @@
+{
+  "physical_width_mm": 183.64051332503115,
+  "physical_height_mm": 150.99331095613672,
+  "canvas": [
+    1800,
+    1480
+  ],
+  "text": [
+    {
+      "id": "reference-heading",
+      "text": "Reference image",
+      "bbox": [
+        40,
+        39,
+        364,
+        72
+      ],
+      "font_pt": 9.832720398505606,
+      "kind": "text"
+    },
+    {
+      "id": "reference-camera-label",
+      "text": "Camera 014 \u00b7 Fresh C",
+      "bbox": [
+        40,
+        579,
+        342,
+        600
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "geometry-heading",
+      "text": "Geometry conditions",
+      "bbox": [
+        40,
+        621,
+        416,
+        652
+      ],
+      "font_pt": 9.254325080946453,
+      "kind": "text"
+    },
+    {
+      "id": "condition-label-Normal",
+      "text": "Normal",
+      "bbox": [
+        54.3359375,
+        818,
+        155.3359375,
+        839
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "condition-label-Depth",
+      "text": "Depth",
+      "bbox": [
+        217.34375,
+        818,
+        302.34375,
+        845
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "condition-label-Mask",
+      "text": "Mask",
+      "bbox": [
+        378.9375,
+        818,
+        451.9375,
+        839
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "frozen-heading",
+      "text": "Frozen diffusion U-Net",
+      "bbox": [
+        668.3125,
+        206,
+        1071.3125,
+        230
+      ],
+      "font_pt": 9.254325080946453,
+      "kind": "text"
+    },
+    {
+      "id": "frozen-schematic",
+      "text": "Schematic feature flow",
+      "bbox": [
+        708.3203125,
+        242,
+        1031.3203125,
+        263
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "frozen-feature-label",
+      "text": "hfrozen",
+      "bbox": [
+        698.046875,
+        303,
+        786.953125,
+        340.82
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "math"
+    },
+    {
+      "id": "feature-addition-symbol",
+      "text": "+",
+      "bbox": [
+        941.984375,
+        311,
+        977.984375,
+        338
+      ],
+      "font_pt": 12.435499327521795,
+      "kind": "text"
+    },
+    {
+      "id": "corrected-feature-label",
+      "text": "hout",
+      "bbox": [
+        1049.671875,
+        303,
+        1105.328125,
+        340.82
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "math"
+    },
+    {
+      "id": "reference-path-label1",
+      "text": "Reference",
+      "bbox": [
+        480,
+        175,
+        621,
+        196
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "reference-path-label2",
+      "text": "conditioning",
+      "bbox": [
+        480,
+        209,
+        653,
+        236
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "features-to-adapter-label",
+      "text": "features",
+      "bbox": [
+        614,
+        487,
+        730,
+        508
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "residual-addition-equation",
+      "text": "hout = hfrozen + sapp \u00d7 \u0394hgeo",
+      "bbox": [
+        628,
+        392,
+        1049.0,
+        429.82
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "math"
+    },
+    {
+      "id": "adapter-label1",
+      "text": "GeoTex-Adapter",
+      "bbox": [
+        573.953125,
+        571,
+        825.953125,
+        598
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "adapter-label2",
+      "text": "Residual path",
+      "bbox": [
+        604.5703125,
+        607,
+        795.5703125,
+        634
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "raw-residual-label",
+      "text": "\u0394hgeo",
+      "bbox": [
+        844.1015625,
+        535,
+        925.8984375,
+        572.82
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "math"
+    },
+    {
+      "id": "residual-scalar-multiplier-symbol",
+      "text": "\u00d7",
+      "bbox": [
+        941.984375,
+        587,
+        977.984375,
+        613
+      ],
+      "font_pt": 12.435499327521795,
+      "kind": "text"
+    },
+    {
+      "id": "scaled-residual-label1",
+      "text": "Scaled",
+      "bbox": [
+        979,
+        471,
+        1072,
+        492
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "scaled-residual-label2",
+      "text": "residual",
+      "bbox": [
+        979,
+        506,
+        1090,
+        527
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "existing-wrapper-heading",
+      "text": "Existing wrapper",
+      "bbox": [
+        746.640625,
+        787,
+        1033.640625,
+        816
+      ],
+      "font_pt": 8.6759297633873,
+      "kind": "text"
+    },
+    {
+      "id": "native-cap-qualifier",
+      "text": "Native cap cl",
+      "bbox": [
+        800.109375,
+        818,
+        979.890625,
+        852.16
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "math"
+    },
+    {
+      "id": "applied-scale-heading",
+      "text": "Applied scale",
+      "bbox": [
+        980,
+        682,
+        1166,
+        709
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "applied-scale-path-label",
+      "text": "sapp(t,l)",
+      "bbox": [
+        982.9765625,
+        710,
+        1087.0234375,
+        745.38
+      ],
+      "font_pt": 8.386732104607722,
+      "kind": "math"
+    },
+    {
+      "id": "scale-clipping-equation",
+      "text": "sapp(t,l) = min(sreq(t,l), cl)",
+      "bbox": [
+        666.3515625,
+        895,
+        1043.6484375,
+        931.6
+      ],
+      "font_pt": 8.6759297633873,
+      "kind": "math"
+    },
+    {
+      "id": "deep-middle-applied",
+      "text": "Deep / middle: 1.25 / 2.50 / 1.25",
+      "bbox": [
+        590,
+        954,
+        1047,
+        981
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "shallow-cap-applied",
+      "text": "Shallow: applied 0.80 throughout",
+      "bbox": [
+        590,
+        991,
+        1054,
+        1018
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "schedule-heading",
+      "text": "TCAS requested schedule",
+      "bbox": [
+        40,
+        881,
+        486,
+        912
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "text"
+    },
+    {
+      "id": "request-value-0",
+      "text": "1.25",
+      "bbox": [
+        112.69218749999999,
+        993.0,
+        186.6921875,
+        1015.0
+      ],
+      "font_pt": 8.6759297633873,
+      "kind": "text"
+    },
+    {
+      "id": "phase-0",
+      "text": "Early",
+      "bbox": [
+        114.34062499999999,
+        1115,
+        185.340625,
+        1142
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "window-0",
+      "text": "0\u201316",
+      "bbox": [
+        115.98124999999999,
+        1152,
+        182.98125,
+        1172
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "request-value-1",
+      "text": "2.50",
+      "bbox": [
+        247.9921875,
+        933.0,
+        321.9921875,
+        955.0
+      ],
+      "font_pt": 8.6759297633873,
+      "kind": "text"
+    },
+    {
+      "id": "phase-1",
+      "text": "Middle",
+      "bbox": [
+        238.7421875,
+        1115,
+        331.7421875,
+        1136
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "window-1",
+      "text": "17\u201332",
+      "bbox": [
+        242.375,
+        1152,
+        327.375,
+        1172
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "request-value-2",
+      "text": "1.25",
+      "bbox": [
+        383.2921875,
+        993.0,
+        457.2921875,
+        1015.0
+      ],
+      "font_pt": 8.6759297633873,
+      "kind": "text"
+    },
+    {
+      "id": "phase-2",
+      "text": "Late",
+      "bbox": [
+        389.815625,
+        1116,
+        450.815625,
+        1136
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "window-2",
+      "text": "33\u201349",
+      "bbox": [
+        377.675,
+        1152,
+        462.675,
+        1172
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "time-axis-zero",
+      "text": "0",
+      "bbox": [
+        71.09375,
+        1105,
+        89.09375,
+        1125
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "time-axis-last",
+      "text": "49",
+      "bbox": [
+        463.9875,
+        1105,
+        499.9875,
+        1125
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "requested-scale-connection-label",
+      "text": "sreq(t,l)",
+      "bbox": [
+        572.328125,
+        822,
+        669.671875,
+        856.16
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "math"
+    },
+    {
+      "id": "caps-existing-title",
+      "text": "Existing native caps",
+      "bbox": [
+        40,
+        1199,
+        357,
+        1226
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-group-0",
+      "text": "Deep",
+      "bbox": [
+        68.09375,
+        1242,
+        142.09375,
+        1268
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-value-0",
+      "text": "3.00",
+      "bbox": [
+        73.828125,
+        1278,
+        135.828125,
+        1298
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-group-1",
+      "text": "Middle",
+      "bbox": [
+        233.7421875,
+        1241,
+        326.7421875,
+        1262
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-value-1",
+      "text": "3.50",
+      "bbox": [
+        248.828125,
+        1278,
+        310.828125,
+        1298
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-group-2",
+      "text": "Shallow",
+      "bbox": [
+        400.859375,
+        1241,
+        508.859375,
+        1262
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "cap-value-2",
+      "text": "0.80",
+      "bbox": [
+        423.828125,
+        1278,
+        485.828125,
+        1298
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "outputs-heading",
+      "text": "Six generated RGB views",
+      "bbox": [
+        1200,
+        39,
+        1680,
+        72
+      ],
+      "font_pt": 9.832720398505606,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-0",
+      "text": "Camera 014",
+      "bbox": [
+        1249.8828125,
+        404,
+        1421.8828125,
+        424
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-1",
+      "text": "Camera 015",
+      "bbox": [
+        1537.8828125,
+        404,
+        1709.8828125,
+        424
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-2",
+      "text": "Camera 000",
+      "bbox": [
+        1249.8828125,
+        744,
+        1421.8828125,
+        764
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-3",
+      "text": "Camera 016",
+      "bbox": [
+        1537.8828125,
+        744,
+        1709.8828125,
+        764
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-4",
+      "text": "Camera 012",
+      "bbox": [
+        1249.8828125,
+        1084,
+        1421.8828125,
+        1104
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-camera-5",
+      "text": "Camera 013",
+      "bbox": [
+        1537.8828125,
+        1084,
+        1709.8828125,
+        1104
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-protocol",
+      "text": "Fresh C \u00b7 C3",
+      "bbox": [
+        1200,
+        1166,
+        1407,
+        1190
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "text"
+    },
+    {
+      "id": "output-order-note",
+      "text": "Recorded camera order",
+      "bbox": [
+        1200,
+        1209,
+        1531,
+        1230
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "output-shared-uid",
+      "text": "UID 0571e6\u2026 \u00b7 shared with inputs",
+      "bbox": [
+        1200,
+        1249,
+        1680,
+        1276
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "bake-heading",
+      "text": "Selected bake studies",
+      "bbox": [
+        595,
+        1046,
+        980,
+        1070
+      ],
+      "font_pt": 8.965127422166876,
+      "kind": "text"
+    },
+    {
+      "id": "independent-bake-uid",
+      "text": "Independent UID 3c8379\u2026",
+      "bbox": [
+        595,
+        1087,
+        973,
+        1114
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "atlas-label",
+      "text": "Native UV atlas",
+      "bbox": [
+        579.5859375,
+        1384,
+        795.5859375,
+        1405
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    },
+    {
+      "id": "unseen-label",
+      "text": "Unseen render \u00b7 004",
+      "bbox": [
+        854.2265625,
+        1437,
+        1141.2265625,
+        1458
+      ],
+      "font_pt": 8.097534445828146,
+      "kind": "text"
+    }
+  ],
+  "image_slots": [
+    {
+      "id": "reference-camera014",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/reference014.png",
+      "asset_sha256": "5765884bb1d50ae9dfb52ef7f1e3278911c4981307be879adf9879ea28e36220",
+      "bbox": [
+        40,
+        115,
+        450,
+        450
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "condition-Normal",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/normal014_representative.png",
+      "asset_sha256": "8a738be5bdcc4d9edb37184f8368fa07add3bc8ef0b38fe4d7671f0bef7fffff",
+      "bbox": [
+        40,
+        675,
+        130,
+        130
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "condition-Depth",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/depth014_display.png",
+      "asset_sha256": "cc9d2559636a9e7c5813dcfd65442703d755de0336a85488c81f4abe10d99ef3",
+      "bbox": [
+        195,
+        675,
+        130,
+        130
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "condition-Mask",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/mask014_alpha.png",
+      "asset_sha256": "bce9106ad0e4128e1d14efda430f998053c7b2ad1186b38aa728ae6219e8ba8d",
+      "bbox": [
+        350,
+        675,
+        130,
+        130
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-0",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile0_camera014.png",
+      "asset_sha256": "3c453850aa220e985cbd1b42ed0b6e7dfeac5fbf2aacd6b45dddbb31b598924b",
+      "bbox": [
+        1200,
+        115,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-1",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile1_camera015.png",
+      "asset_sha256": "73d5d6c709198417b219e78316ed5b5c4318c9817a34b88f126f224a8a427c5a",
+      "bbox": [
+        1488,
+        115,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-2",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile2_camera000.png",
+      "asset_sha256": "b3faf457aa197d158802cc47f738a05a36a315a788b1141c5d934018ee752fea",
+      "bbox": [
+        1200,
+        455,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-3",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile3_camera016.png",
+      "asset_sha256": "9d5f9c11575856cfd03e87cc1602002d1b2df2549f1059f1c12c667114e87c17",
+      "bbox": [
+        1488,
+        455,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-4",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile4_camera012.png",
+      "asset_sha256": "13f8c021045d1c9d4b6275336b2a0831b8ec4dbf666bb9288cd345f837868426",
+      "bbox": [
+        1200,
+        795,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "scientific-output-5",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/output_tile5_camera013.png",
+      "asset_sha256": "9f7853aeae0791789336b9dde2c51422db6194d400665c101a270d3c4fdbd56c",
+      "bbox": [
+        1488,
+        795,
+        272,
+        272
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "actual-native-UV-atlas",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/bake_native_gc3_uv_atlas.png",
+      "asset_sha256": "6ab6b25a0a76a9ed989cfe42b415f679ccee8d2f21993d94d24a62e2d99a0095",
+      "bbox": [
+        595,
+        1180,
+        185,
+        185
+      ],
+      "uniform_fit": "meet; no additional crop"
+    },
+    {
+      "id": "actual-unseen-camera004",
+      "asset_file": "/4T/CXY/MV-Painter/FINAL_SUBMISSION_CANDIDATE_20261013/figure1/assets/bake_unseen004_foreground_crop.png",
+      "asset_sha256": "0039d591bfa9dbb1e90fe665eadec83afd802888733c9266f63c200745104503",
+      "bbox": [
+        875,
+        1130,
+        245,
+        300
+      ],
+      "uniform_fit": "meet; no additional crop"
+    }
+  ],
+  "discrete_requested_trace": [
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    2.5,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25,
+    1.25
+  ],
+  "transition_steps": [
+    17,
+    33
+  ]
+}
