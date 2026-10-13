@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path("/4T/CXY/MV-Painter/1014_counterfactual_control_research")
 WORKTREE = Path("/4T/tmp/MV-Painter-counterfactual")
+LOCAL_EXCLUDED = Path("/4T/tmp/MV-Painter-local-excluded-20261013/1014_counterfactual_control_research")
 
 
 def sha256(path: Path) -> str:
@@ -34,12 +35,17 @@ def main() -> None:
     bake = json.loads((ROOT / "bake/BAKE_RUN_SUMMARY.json").read_text())
     egl_id = json.loads((ROOT / "bake/native_egl_unseen_RUN_IDENTITY.json").read_text())
     render = json.loads((ROOT / "bake/native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json").read_text())
+    equal_cost_gen = json.loads((LOCAL_EXCLUDED / "generation_equal_cost_b0_seed43/run_manifest_shard0.json").read_text())
+    equal_cost_bake = json.loads((LOCAL_EXCLUDED / "bake_equal_cost_b0_seed43/cpu_bake_v3/BAKE_RUN_SUMMARY.json").read_text())
+    equal_cost_egl_id = json.loads((LOCAL_EXCLUDED / "bake_equal_cost_b0_seed43/native_egl_unseen_RUN_IDENTITY.json").read_text())
+    equal_cost_render = json.loads((LOCAL_EXCLUDED / "bake_equal_cost_b0_seed43/native_egl_unseen/GLB_NATIVE_EGL_RENDER_MANIFEST.json").read_text())
 
     worktree_files = [
         "MVPainter/mvpainter/model_unet_geotex.py",
         "MVPainter/mvpainter/view_scale_audit.py",
         "geotex/explore_contradiction.py",
         "geotex/run_counterfactual_experiment.py",
+        "geotex/run_counterfactual_b0_seed43.py",
         "tests/test_view_scale_audit.py",
     ]
     local_scripts = sorted(ROOT.glob("*.py"))
@@ -114,6 +120,9 @@ def main() -> None:
         "upstream_baker_sha256": bake["records"][0]["baker_source_sha256"],
         "native_egl_renderer_sha256": egl_id["renderer_source_sha256"],
         "native_egl_wrapper_sha256": egl_id["wrapper_source_sha256"],
+        "equal_cost_generation_manifest_sources": equal_cost_gen["code_source_sha256"],
+        "equal_cost_upstream_baker_sha256": equal_cost_bake["records"][0]["baker_source_sha256"],
+        "equal_cost_native_egl_renderer_sha256": equal_cost_egl_id["renderer_source_sha256"],
     }
     output_files = [
         "ACTION_RESPONSE_RESULTS.csv",
@@ -125,6 +134,16 @@ def main() -> None:
         "bake/native_egl_unseen/NATIVE_EGL_UNSEEN_OBJECT_METRICS.csv",
         "bake/native_egl_unseen/NATIVE_EGL_UNSEEN_PER_VIEW_METRICS.csv",
         "bake/native_egl_unseen/NATIVE_EGL_METRIC_EVALUATION.json",
+        "EQUAL_COST_CANDIDATE_SELECTION.md",
+        "EQUAL_COST_CANDIDATE_SELECTION_RESULTS.csv",
+        "EQUAL_COST_CANDIDATE_SELECTION_SUMMARY.json",
+        "equal_cost_phase_a_audit.json",
+        "evaluate_equal_cost_b0_seed43.py",
+        "prepare_equal_cost_b0_handoff.py",
+        "run_equal_cost_native_egl.py",
+        "audit_equal_cost_identity.py",
+        "analyze_equal_cost_comparison.py",
+        "make_equal_cost_visuals.py",
         "COUNTERFACTUAL_PROTOCOL.md",
         "INTERVENTION_IDENTITY_AUDIT.md",
         "SOURCE_TO_BAKE_DIRECTION_ANALYSIS.md",
@@ -133,6 +152,39 @@ def main() -> None:
         "FINAL_GO_NO_GO.md",
     ]
     visual_outputs = sorted(path for path in (ROOT / "visuals").iterdir() if path.is_file())
+    archive_root = ROOT / "EQUAL_COST_BASELINE"
+    archive_files = sorted(path for path in archive_root.rglob("*") if path.is_file())
+    alternate_uids = [
+        "1dc2c857f7614caeb6c2aa0559ccf973", "21678bd623654182b52c11d013de4e71",
+        "238ff3e41c964655b83aa9c8770cc766", "2dd9bc8172c6461797947cc7214db399",
+        "2f6c94487ee54cb88021f4643409d849", "e261c0fe85af46388260e2359a9bfc92",
+    ]
+    alternate_panel_hashes = []
+    for uid in alternate_uids:
+        path = LOCAL_EXCLUDED / "generation_equal_cost_b0_seed43/predictions/counterfactual_b0" / f"{uid}.png"
+        alternate_panel_hashes.append(item(path, LOCAL_EXCLUDED))
+
+    equal_cost_unseen_renders = []
+    for record in equal_cost_render["renders"]:
+        path = LOCAL_EXCLUDED / "bake_equal_cost_b0_seed43/native_egl_unseen" / record["render_path"]
+        actual_sha = sha256(path)
+        if actual_sha != record["render_sha256"]:
+            raise RuntimeError(f"equal-cost EGL image hash mismatch: {path}")
+        equal_cost_unseen_renders.append({
+            "object": record["object"], "condition": record["method"],
+            "raw_camera": record["raw_view"],
+            "path": str(path.relative_to(LOCAL_EXCLUDED)), "sha256": actual_sha,
+        })
+
+    for subdir, source_dir in (
+        ("generation", LOCAL_EXCLUDED / "generation_equal_cost_b0_seed43"),
+        ("bake", LOCAL_EXCLUDED / "bake_equal_cost_b0_seed43"),
+    ):
+        for original in source_dir.rglob("*"):
+            if original.is_file():
+                copied = archive_root / subdir / original.relative_to(source_dir)
+                if sha256(original) != sha256(copied):
+                    raise RuntimeError(f"equal-cost archival copy mismatch: {copied}")
 
     manifest = {
         "study": "view-wise counterfactual geometry-control test",
@@ -149,6 +201,7 @@ def main() -> None:
             path: item(ROOT / path, ROOT) for path in output_files
         },
         "visualization_files": {path.name: item(path, ROOT) for path in visual_outputs},
+        "equal_cost_archive_file_hashes": [item(path, ROOT) for path in archive_files],
         "generated_artifact_hashes": {
             "generation_panels": [
                 {"path": path, "sha256": digest}
@@ -156,11 +209,17 @@ def main() -> None:
             ],
             "uv_textures_and_textured_glbs": textures_and_glbs,
             "native_egl_unseen_renders": unseen_renders,
+            "equal_cost_generation_panels": alternate_panel_hashes,
+            "equal_cost_native_egl_renders": equal_cost_unseen_renders,
+            "equal_cost_bake_records": equal_cost_bake["records"],
         },
         "counts": {
             "generation_panels": len(generation_panels),
             "uv_textures_and_textured_glbs": len(textures_and_glbs),
             "native_egl_unseen_renders": len(unseen_renders),
+            "equal_cost_generation_calls": len(json.loads((LOCAL_EXCLUDED / "generation_equal_cost_b0_seed43/rows_shard0.json").read_text())),
+            "equal_cost_bakes": len(equal_cost_bake["records"]),
+            "equal_cost_native_egl_renders": equal_cost_egl_id["render_count"],
             "objects": 6,
             "conditions": 3,
         },
