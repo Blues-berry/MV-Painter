@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETE_CONFIRMATION64_PREREGISTERED_PRIMARIES",
+  "freeze_sha256": "bbd070c6506ef52132bbadb2482900e4608c00ee5851ed74e6e02b3a22ec3459",
+  "scores_sha256": "96000872bc183618154f3c69ec439850cab3a5387fe077ca0ee677da2ead15f2",
+  "targets_verified": "target_tensor_hash asserted by frozen scorer against CONFIRMATION64_FREEZE",
+  "primaries": [
+    {
+      "mean_difference": 4.282713119561474,
+      "test_statistic": 4.282713119561474,
+      "p_value": 4.9999750001249995e-06,
+      "montecarlo": 200000,
+      "plus_one": true,
+      "comparison": "view_projection_minus_native",
+      "domain": "source",
+      "metric": "fg_psnr",
+      "ci95": [
+        3.4089128280368945,
+        5.205246477155014
+      ],
+      "n_objects": 64,
+      "seeds": [
+        42,
+        2026,
+        31415
+      ],
+      "objects_better": 61,
+      "objects_worse": 3,
+      "holm_adjusted_p": 9.999950000249999e-06
+    },
+    {
+      "mean_difference": -2.229900194099173,
+      "test_statistic": 2.229900194099173,
+      "p_value": 4.9999750001249995e-06,
+      "montecarlo": 200000,
+      "plus_one": true,
+      "comparison": "view_projection_minus_native",
+      "domain": "source",
+      "metric": "ciede2000",
+      "ci95": [
+        -3.060856196152357,
+        -1.562993866269245
+      ],
+      "n_objects": 64,
+      "seeds": [
+        42,
+        2026,
+        31415
+      ],
+      "objects_better": 57,
+      "objects_worse": 7,
+      "holm_adjusted_p": 9.999950000249999e-06
+    }
+  ],
+  "scope": "Pre-generation specified primaries on new-to-development objects within historically exposed Fresh C; no non-inferiority margin or cross-backbone superiority claim."
+}

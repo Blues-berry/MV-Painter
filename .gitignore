@@ -58,14 +58,39 @@ ossutil_output
 # Tensorboard events
 events.out.tfevents*
 
-# Paper (keep locally in final/, do not upload to GitHub)
+# Paper and submission packages
 final/*
-# Exception: authoritative EM upload package (submission_new_0907) must be tracked for backup
-!final/submission_new_0907
-!final/revision/response_letter_new0907.md
 
 # Archive
 archive/
 archive2.0/
 archive3.0/*
 !archive3.0/README.md
+
+# Keep distinct manuscript and supplement TeX/PDF versions in submission_versions/.
+# Ignore the surrounding submission bundles, generated assets, and package metadata.
+/1014finalv1/
+/final_paper_20261012/
+/final/submission_new_0907/
+/final/revision/response_letter_new0907.md
+/01549_BASELINE_BACKUP_20261008/submission_package/
+/archive_workspace_0907/submissions/
+/archive_workspace_0907/submissions revise.zip
+/CG_revision_*/delivery_*/
+/CG_revision_*/manuscript/
+/CG_revision_*/source_01549/
+/CG_revision_*/Reproduction_inherited_*.zip
+/1008/manuscript/iterations/**/submission_package/
+/1008/submission_1008/
+/final_candidate_20261013/
+/01549_revision_workspace/work/
+/1006/manuscript/
+/CG_revision_*/review/Response_to_Reviewers*
+/CG_revision_*/review/build/
+
+# submission_versions contains only manuscript/supplement TeX and PDF snapshots.
+/submission_versions/**
+!/submission_versions/**/
+!/submission_versions/**/*.tex
+!/submission_versions/**/*.pdf
+/FINAL_CANDIDATE_20261013/

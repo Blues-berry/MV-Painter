@@ -1,0 +1,136 @@
+================================================================================
+r1/Manuscript.tex -> r2/Manuscript.tex
+--- r1/Manuscript.tex
++++ r2/Manuscript.tex
+@@ -605,6 +605,8 @@
+ 
+ The two metric-selected examples in Figure~\ref{fig:qualitative} are consistent with their full-composite and displayed-view metric directions; the full 300-object distribution supports the cohort-level estimate. The calibrated bake pilot adds an unseen-view comparison favoring Late-high over Fixed Mean on FG-LPIPS, while the native MV-Adapter study supplies a distinct second-interface estimate. Together, these experiments characterize inference-time control across preference, image-space, bake, and native-interface evaluations.
+ 
++A separate post-submission study of per-view guidance projection is documented in Supplementary Section~S22. It evaluates a distinct intervention and is not used as evidence for TCAS or its schedule.
++
+ \section{Limitations}
+ \label{sec:limitations}
+ Historical 01549, Fresh C, MV-Adapter, and bake results retain separate checkpoints and cohorts. Fresh C is not a numerical reproduction of the historical pooled result; its equal-budget addendum is a same-cohort analysis. The preference study concerns its original stimuli. The bake pilot covers ten technically compatible objects and unlit base color; an unset-scale GeoTex output, validated seam metric, and PBR/relighting study are not included. The native MV-Adapter primary interval includes zero. FAC replay remains limited by missing run-bound training records and weights. Full provenance and scope are in Supplementary Sections S8, S11, S17--S21.
+@@ -615,7 +617,7 @@
+ 
+ \section*{Data availability}
+ 
+-Object-level revision metrics, frozen protocols/configuration records, verified inference and analysis scripts, and the LaTeX source required to rebuild the manuscript and Supplement are included in the author-review package. The standalone reproduction archive supports statistic recomputation without model weights; fresh inference additionally requires the recorded weights, runtime and licensed source assets. Raw generated-image archives, trained checkpoints, source 3D assets whose redistribution rights are not established, and participant-level responses are not included. Additional analysis records may be requested from the corresponding author, subject to licensing, privacy, and archive constraints.
++Object-level revision metrics, frozen protocols/configuration records, verified inference and analysis scripts, and the LaTeX source required to rebuild the manuscript and Supplement are included in the author-review package. The standalone reproduction archive supports statistic recomputation without model weights; fresh inference additionally requires the recorded weights, runtime and licensed source assets. The separate projection follow-up in Supplementary Section~S22 is supplied with its frozen cohort, score rows, comparison summaries, and analysis source. Raw generated-image archives, trained checkpoints, source 3D assets whose redistribution rights are not established, and participant-level responses are not included. Additional analysis records may be requested from the corresponding author, subject to licensing, privacy, and archive constraints.
+ 
+ \section*{Declaration of generative AI and AI-assisted technologies in manuscript preparation}
+ OpenAI Codex assisted with revision drafting, implementation and reproducible statistical and figure code. Figure~\ref{fig:overview} is a code-generated vector schematic; the earlier generated conceptual artwork is excluded from this revision. Actual input/output thumbnails and experimental displays come from the recorded research runs and were not retouched with an image-generation tool. Numerical tables are computed from delivered object-level records. Final scientific review, accuracy and responsibility remain with the authors.
+
+================================================================================
+r1/Supplement.tex -> r2/Supplement.tex
+--- r1/Supplement.tex
++++ r2/Supplement.tex
+@@ -776,4 +776,50 @@
+ 
+ A separate retrospective analysis on the \texttt{FRESH\_CONFIRM\_300} cohort found nine of ten plus-one-corrected associations between LLH--GFL image-space deltas and ground-truth descriptors; the FG-LPIPS/coverage test had adjusted $p=0.0508$. FG-PSNR means ranged from $+4.140$~dB in the lowest Laplacian-variance quartile to $-0.087$ and $-0.029$~dB in the upper two quartiles. These are cohort-specific associations, not a causal complexity effect, a threshold, a schedule selector, or a texture-fidelity result.
+ 
++\clearpage
++\begingroup\small
++\section*{S22. Separate follow-up: per-view projection of guidance interaction}
++This post-submission follow-up is separate from the TCAS/C3 study. It tests a projection-based intervention on a different decomposition of the denoiser prediction; it does not modify the GeoTex residual scale and is not a TCAS replication. Projection-based guidance and conflict projection have prior precedents, including Adaptive Projected Guidance (APG) and PCGrad~\cite{apg2025,pcgrad2020}. The experiment below is reported as a task-specific follow-up, not as a claim that projection itself is new.
++
++For a matched latent and denoising step, let $f_u,f_c$ denote the unconditional and conditional predictions with geometry, and $b_u,b_c$ their counterparts without the geometry condition. At guidance scale $s=2$, define the geometry-related guided difference $g=[f_u+s(f_c-f_u)]-[b_u+s(b_c-b_u)]$ and the no-geometry conditional difference $a=b_c-b_u$. The latter is a condition difference, not a pure appearance gradient. For each of the six view blocks in the packed latent, the tested view-wise projection adds back only the component of $a$ that is negatively aligned with $g$:
++\begin{equation}
++\widehat{f}=f_u+s(f_c-f_u)-\frac{\min(\langle g,a\rangle,0)}{\max(\|a\|_2^2,10^{-12})}a.
++\end{equation}
++The six blocks are defined by the model's $3\times2$ packed-view layout. Grid projection uses one block for the complete latent; interaction projection uses a separate conditional decomposition. The code, cohort freeze, 768-cell identity ledger, and score rows are supplied in \texttt{evidence/round012/confirmation64/}.
++
++The cohort comprises 64 objects excluded from the separate 32-object development cohort. It is not new to the broader research history: these object inputs were part of earlier Fresh C work. Four conditions (native, grid projection, view projection, and interaction projection) were generated with three seeds (42, 2026, 31415), 50 denoising steps, and CFG 2. Before generation, the two primary tests were fixed as view projection minus native on source-view FG-PSNR and CIEDE2000. The object is the resampling unit; seeds are averaged within object. We used paired object bootstrap intervals and two-sided sign-flip tests, with Holm correction across the two primaries.
++
++\begin{table}[ht]
++\centering\small
++\caption{Preregistered view-projection primaries on the 64-object follow-up cohort. Differences are view projection minus native; positive PSNR and negative CIEDE2000 favor projection.}
++\label{tab:s22-primary}
++\begin{tabular}{lrrrr}
++\toprule
++Source-view endpoint & Mean difference & 95\% object CI & Objects improved & Holm-adjusted $p$ \\
++\midrule
++FG-PSNR (dB) & $+4.283$ & $[+3.409,+5.205]$ & 61/64 & $1.0\times10^{-5}$ \\
++CIEDE2000 & $-2.230$ & $[-3.061,-1.563]$ & 57/64 & $1.0\times10^{-5}$ \\
++\bottomrule
++\end{tabular}
++\end{table}
++
++The descriptive nonreference-view results are mixed and do not establish noninferiority. View projection minus native gives FG-PSNR $-0.282$~dB (pointwise 95\% CI $[-0.672,+0.102]$), FG-LPIPS $+0.000269$ ($[-0.001533,+0.002073]$), CIEDE2000 $+0.425$ ($[-0.157,+1.042]$), and FG-SSIM $+0.01062$ ($[+0.00171,+0.01957]$). These secondary intervals are unadjusted; no noninferiority margin was specified. Thus the primary result concerns source-view image agreement only.
++
++\paragraph{Development comparisons with projection baselines.}
++On the separate 32-object, three-seed development cohort, view projection minus projection-only APG had nonreference FG-LPIPS difference $+0.000800$ (pointwise 95\% CI $[-0.002459,+0.004299]$); versus the APG paper-parameter preset evaluated at native CFG 2, the difference was $-0.000462$ ($[-0.004354,+0.003482]$). Interaction projection gave $-0.002070$ ($[-0.005351,+0.001259]$) and $-0.003331$ ($[-0.007565,+0.000593]$) against these two baselines. Holm-adjusted $p$ values across the four comparisons were 1.000, 1.000, 0.725, and 0.510, respectively. None establishes an advantage over APG; the preset is not the original paper's CFG-15 setting.
++
++\paragraph{Second-interface development comparison.}
++On 32 MV-Adapter objects, three seeds, and six native-camera embedded-baseColor target views, the all-six-view FG-LPIPS differences versus native were $+0.000184$ for grid projection (pointwise 95\% CI $[-0.018894,+0.011364]$), $-0.000522$ for view projection ($[-0.023768,+0.012842]$), and $-0.000864$ for interaction projection ($[-0.020489,+0.010455]$). The three prespecified candidate-versus-native Holm-adjusted $p$ values were all 1.000. This development-only endpoint uses the MV-Adapter feature-scaled interface and embedded baseColor, not registered source-reference fidelity or unseen baked appearance; eight legal constant-white targets remain in the full cohort, with the 24 textured objects only a descriptive subset.
++
++Together these follow-up results provide a bounded source-view comparison for one geometry-conditioned CFG interaction intervention. They do not establish view-general noninferiority, a baked-texture or PBR improvement, APG superiority, a cross-backbone effect, or any effect of TCAS/C3. The 64-object cohort also has historical Fresh C exposure. These records remain separate from the 300-object Fresh C TCAS study, the native MV-Adapter N=50 temporal-schedule study, the MVDiffusion N=75 panel, and the ten-object bake pilot.
++
++\begin{thebibliography}{2}
++\bibitem{apg2025}
++Sadat S, Hilliges O, Weber R M. Eliminating oversaturation and artifacts of high guidance scales in diffusion models. \textit{International Conference on Learning Representations}, 2025. arXiv:2410.02416.
++
++\bibitem{pcgrad2020}
++Yu T, Kumar S, Gupta A, Levine S, Hausman K, Finn C. Gradient surgery for multi-task learning. \textit{Advances in Neural Information Processing Systems}, 2020, 33: 5824--5836.
++\end{thebibliography}
++\endgroup
++
+ \end{document}
+
+================================================================================
+r1/Response.md -> r2/Response.md
+--- r1/Response.md
++++ r2/Response.md
+@@ -1,10 +1,10 @@
+-# Response to Reviewers — conservative_submission_r1
++# Response to Reviewers
+ 
+ **Round framing.** The manuscript designated 01549 was submitted on 7 September 2026 after the first review round. The Reviewer 1–3 comments below are the subsequent review of that revision for CAG-D-26-00962. The preserved export labels its reviewer headers “Initial submission”; the author-confirmed round map identifies this packet as the second round. The headings quote the supplied review text. We retain relevant 01549 work, including the preference study, FAC re-examination, original 276-object analysis, and historical adapter results; none is presented as a new Fresh C result.
+ 
+ Dear Editor and Reviewers,
+ 
+-We thank you for the careful assessment. This revision retains TCAS and the historical C3 profile, and brings together the original preference study, a matched 300-object Fresh C evaluation with fixed and linear controls, calibrated unseen-view baking, and a native fifty-object MV-Adapter test. We report paired object-level results, show complete objects with shared local crops, and distinguish the primary composite endpoint from display-view diagnostics. We also thank Reviewer 3 for the positive assessment.
++We thank you for the careful assessment. This revision retains TCAS and the historical C3 profile, and brings together the original preference study, a matched 300-object Fresh C evaluation with fixed and linear controls, calibrated unseen-view baking, and a native fifty-object MV-Adapter test. A separate post-submission follow-up on per-view guidance projection is documented in Supplementary Section S22 and kept distinct from the TCAS evidence. We report paired object-level results, show complete objects with shared local crops, and distinguish the primary composite endpoint from display-view diagnostics. We also thank Reviewer 3 for the positive assessment.
+ 
+ ## Summary of changes and remaining scope
+ 
+@@ -16,11 +16,11 @@
+ 
+ **R1.5, FAC reproducibility.** The package includes executable inference/statistics materials and retains the earlier reported negative results. Missing FAC training manifests and weights prevent full replay.
+ 
+-**R2.1, contribution.** We present TCAS as a task-specific control studied through matched image-space, preference, bake, and native-interface comparisons. We do not infer an architecture-general schedule law.
++**R2.1, contribution.** We present TCAS as a task-specific control studied through matched image-space, preference, bake, and native-interface comparisons. Supplementary Section S22 separately reports a pre-specified 64-object source-view comparison for a different projection intervention. Its nonreference-view outcomes do not establish noninferiority, its APG development comparisons do not show a separated advantage, and it is not used as evidence for TCAS. We do not infer an architecture-general schedule law.
+ 
+ **R2.2–2.3, formulation and second interface.** The independent CAI derivation and optimality claim are removed. The native fifty-object MV-Adapter matrix supplies a distinct interface test, whose primary interval includes zero.
+ 
+-The main text now moves from the texturing problem and TCAS control to quantitative/preference evidence, then to baking and the native second-interface test. Checkpoint history, earlier exploratory interface panels, recovery records and full statistics remain in the Supplement.
++The main text now moves from the texturing problem and TCAS control to quantitative/preference evidence, then to baking and the native second-interface test. The Supplement separately records the new projection follow-up, including its full primary and development comparisons. Checkpoint history, earlier exploratory interface panels, recovery records and full statistics remain in the Supplement.
+ 
+ ## Reviewer 1
+ 
+@@ -68,9 +68,9 @@
+ 
+ Prior work already studies layer/time scheduling, including SSI's geometry-conditioned ControlNet strength schedule. We therefore state the contribution as a controlled evaluation of this GeoTex residual-path intervention for multi-view texturing. Fresh C compares carried-forward C3 with fixed and linear controls and reports a paired C3--Fixed Low FG-PSNR gain; its strong controls and equal-applied-budget analysis identify comparator- and endpoint-dependent rankings. The original preference study, calibrated bake and native N=50 interface test extend the evaluation to subjective preference, projected appearance and a distinct geometry-conditioning interface.
+ 
+-Together, the paper contributes an executable control definition and matched evidence about its image-space, preference, bake and second-interface outcomes. We do not claim that C3 is a theorem-derived optimum or that its schedule law transfers across architectures.
++Together, the paper contributes an executable control definition and matched evidence about its image-space, preference, bake and second-interface outcomes. A separate follow-up in Supplementary Section S22 tests a per-view projection of a geometry-related CFG interaction: its two prespecified source-view outcomes improve over native on 64 objects, while its descriptive nonreference outcomes do not establish noninferiority. The cohort was previously exposed in Fresh C research; this intervention is distinct from TCAS, its APG development comparisons show no separated advantage, and it is not used as evidence for the TCAS estimates. We do not claim that C3 is a theorem-derived optimum or that its schedule law transfers across architectures.
+ 
+-**Location.** Main: Introduction/Related Work, Method, Fresh C and application results, Discussion. Supplement: S3–S5, S9/Table S14, S12, S17.
++**Location.** Main: Introduction/Related Work, Method, Fresh C and application results, Discussion. Supplement: S3–S5, S9/Table S14, S12, S17, and S22.
+ 
+ ### Concern 2 — “The CAI formulation appears to formalize an empirically selected schedule rather than derive it independently.”
+ 
+
+================================================================================
+r1/Traceability.csv -> r2/Traceability.csv
+--- r1/Traceability.csv
++++ r2/Traceability.csv
+@@ -4,7 +4,7 @@
+ R1.3,Distinguish texture variation from fidelity,01549 metrics and visual panels,"Separate image agreement, subjective preference, variation diagnostics and baked appearance; preserve selected color and visual counterexamples",Metric definitions; Figures 4–9; Discussion,"S2, S7, S12–S13, S18",Reviewer 1 Comment 3,INTERPRETATION ADDRESSED,No validated current texture-fidelity endpoint
+ R1.4,Paired CI and Edge-SSIM trade-off; no zero-crossing equivalence,01549 Table 4,Report paired object-level intervals and negative Edge-SSIM comparison; make no equivalence/non-inferiority claim,Table 5; Limitations,S2,Reviewer 1 Comment 4,ADDRESSED BY MODERATING CLAIM,No prespecified non-inferiority margin; historical estimates remain separate
+ R1.5,FAC reproducibility and code,01549 FAC,Deliver executable inference/statistics and source rebuild materials; identify FAC as previously reported and disclose archive discrepancy,FAC subsection; Data availability; Limitations,S11 and S19,Reviewer 1 Comment 5,PARTIAL,Missing run-bound FAC training manifest and weights prevent full replay
+-R2.1,Contribution beyond manual schedule selection,01549 TCAS and development,"Frame the contribution as controlled GeoTex residual-path evaluation, with matched controls, original preference, baking and a native second-interface test","Introduction/Related Work; Method; Figures 5, 9–10; Tables 4–5, 7, 10–12; Discussion","S3–S5, S9–S10, S16–S19",Reviewer 2 Concern 1,UNRESOLVED NOVELTY RISK,Evidence is task-specific and does not establish a new general schedule algorithm or general architecture law
++R2.1,Contribution beyond manual schedule selection,01549 TCAS and development,"Frame TCAS as a controlled GeoTex residual-path evaluation; separately report the 64-object projection follow-up without attributing it to TCAS","Introduction/Related Work; Method; Figures 5, 9–10; Tables 4–5, 7, 10–12; Discussion","S3–S5, S9–S10, S16–S19, S22",Reviewer 2 Concern 1,UNRESOLVED NOVELTY RISK; FOLLOW-UP IS CONTEXT ONLY,The follow-up cohort had historical Fresh C exposure; source-view gains do not establish nonreference-view noninferiority, APG superiority, or a general schedule law
+ R2.2,CAI post hoc formalization,01549 CAI proposition/proof,Remove CAI proposition/proof and independent optimality claim; retain C3 as the historically selected profile,TCAS Method; Table 3; Figure 4,S10 and S19,Reviewer 2 Concern 2,ADDRESSED BY WITHDRAWAL,Historical development output is not a derived optimum
+ R2.3,Genuinely different geometry-conditioned backbone,01549 within-family adapter dependence,Supply valid native-camera MV-Adapter N=50 matrix and paired primary result; keep earlier exploratory interface results separate,Second-Interface Evaluation; Table 12; Figure 10; Limitations,"S5, S12, S16–S17",Reviewer 2 Concern 3,SECOND-INTERFACE TEST SUPPLIED; GENERALIZATION LIMITED,Primary interval includes zero; 13 targets are white albedo and the tested scale acts on a different interface
+ R3,Positive assessment,Current reviewer source,Acknowledge the positive assessment; make no unsupported technical inference,Opening acknowledgment,Not applicable,Opening acknowledgment,NO NEW REQUIREMENT,Does not determine the editorial decision
