@@ -1,0 +1,180 @@
+{
+  "status": "PASS_ALL15_PRIMARY_MEANS_CIS_P_VALUES_AND_HOLM",
+  "families": [
+    {
+      "family": "gso_mva_external_attempt01",
+      "comparisons": [
+        {
+          "a": "grid_projection",
+          "b": "native",
+          "mean_difference": 0.012381180052955944,
+          "ci95_pointwise": [
+            0.009785899413454657,
+            0.01520706228997248
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "grid_projection",
+          "b": "fixed_mean",
+          "mean_difference": 0.01158095454766105,
+          "ci95_pointwise": [
+            0.00917005404762458,
+            0.014190310753113588
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "grid_projection",
+          "b": "late_high",
+          "mean_difference": 0.011667284489919742,
+          "ci95_pointwise": [
+            0.009214706125839927,
+            0.014330678262220072
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "view_projection",
+          "b": "native",
+          "mean_difference": 0.014636589855576558,
+          "ci95_pointwise": [
+            0.0119275363401665,
+            0.017557296475706
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "view_projection",
+          "b": "fixed_mean",
+          "mean_difference": 0.013836364350281658,
+          "ci95_pointwise": [
+            0.011255203354971799,
+            0.01659550859147372
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "view_projection",
+          "b": "late_high",
+          "mean_difference": 0.013922694292540352,
+          "ci95_pointwise": [
+            0.011297959581048539,
+            0.01674105552130689
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "interaction_projection",
+          "b": "native",
+          "mean_difference": 0.011174230702221392,
+          "ci95_pointwise": [
+            0.008717418404746179,
+            0.013830374942564708
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "interaction_projection",
+          "b": "fixed_mean",
+          "mean_difference": 0.010374005196926495,
+          "ci95_pointwise": [
+            0.008140788147443286,
+            0.012779675008597153
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        },
+        {
+          "a": "interaction_projection",
+          "b": "late_high",
+          "mean_difference": 0.01046033513918519,
+          "ci95_pointwise": [
+            0.008221981104587515,
+            0.012887861459826426
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 4.4999775001124996e-05
+        }
+      ]
+    },
+    {
+      "family": "gso_apg_closure_attempt01",
+      "comparisons": [
+        {
+          "a": "grid_projection",
+          "b": "apg_projection_only",
+          "mean_difference": 0.009113342122795682,
+          "ci95_pointwise": [
+            0.006270826170795288,
+            0.011996712444668324
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 2.9999850000749997e-05
+        },
+        {
+          "a": "grid_projection",
+          "b": "apg_paper_sd21_at_native_cfg",
+          "mean_difference": 0.008553460413590074,
+          "ci95_pointwise": [
+            0.005027113883942367,
+            0.011898217868416881
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 2.9999850000749997e-05
+        },
+        {
+          "a": "view_projection",
+          "b": "apg_projection_only",
+          "mean_difference": 0.011368751925416289,
+          "ci95_pointwise": [
+            0.00846624664472571,
+            0.014357046254584569
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 2.9999850000749997e-05
+        },
+        {
+          "a": "view_projection",
+          "b": "apg_paper_sd21_at_native_cfg",
+          "mean_difference": 0.010808870216210685,
+          "ci95_pointwise": [
+            0.00725528837518456,
+            0.014266035686790319
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 2.9999850000749997e-05
+        },
+        {
+          "a": "interaction_projection",
+          "b": "apg_projection_only",
+          "mean_difference": 0.007906392772061129,
+          "ci95_pointwise": [
+            0.0051834736334548034,
+            0.010647478323748022
+          ],
+          "p_raw": 4.9999750001249995e-06,
+          "p_holm": 2.9999850000749997e-05
+        },
+        {
+          "a": "interaction_projection",
+          "b": "apg_paper_sd21_at_native_cfg",
+          "mean_difference": 0.007346511062855521,
+          "ci95_pointwise": [
+            0.003934984544323135,
+            0.010590038117843988
+          ],
+          "p_raw": 2.4999875000624998e-05,
+          "p_holm": 2.9999850000749997e-05
+        }
+      ]
+    }
+  ]
+}

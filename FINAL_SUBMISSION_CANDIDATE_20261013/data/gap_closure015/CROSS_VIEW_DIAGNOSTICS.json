@@ -1,0 +1,314 @@
+{
+  "status": "COMPLETE_POST_INSPECTION_DIAGNOSTIC",
+  "objects": 10,
+  "means": {
+    "native_default_1x": {
+      "cross_view_variance": 0.02884735661811603,
+      "fg_lpips": 0.1353704066777771
+    },
+    "native_gfl": {
+      "cross_view_variance": 0.02573637786271087,
+      "fg_lpips": 0.13168395781381564
+    },
+    "native_gfh": {
+      "cross_view_variance": 0.01088799440085299,
+      "fg_lpips": 0.1305481073700569
+    },
+    "budget_fixed_mean": {
+      "cross_view_variance": 0.019639543325763544,
+      "fg_lpips": 0.13031842546029523
+    },
+    "native_gc3": {
+      "cross_view_variance": 0.02224155911027096,
+      "fg_lpips": 0.13018345572054385
+    },
+    "budget_late16": {
+      "cross_view_variance": 0.01719161927224756,
+      "fg_lpips": 0.12766677056523884
+    },
+    "gen_linear": {
+      "cross_view_variance": 0.012624975566883561,
+      "fg_lpips": 0.127625922604718
+    },
+    "gt": {
+      "cross_view_variance": 0.0017871685378984456,
+      "fg_lpips": 0.05902928358621219
+    }
+  },
+  "contrasts": [
+    {
+      "a": "native_default_1x",
+      "b": "native_gfl",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.003110978755405161,
+      "ci95_descriptive": [
+        0.00154814809801154,
+        0.004772540462101361
+      ],
+      "a_lower_objects": 2,
+      "exact_signflip_p": 0.0078125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_default_1x",
+      "b": "native_gfh",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.01795936221726304,
+      "ci95_descriptive": [
+        0.011967729275907987,
+        0.024607047836820002
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_default_1x",
+      "b": "budget_fixed_mean",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.00920781329235249,
+      "ci95_descriptive": [
+        0.005553786508132741,
+        0.012970177672781205
+      ],
+      "a_lower_objects": 1,
+      "exact_signflip_p": 0.00390625,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_default_1x",
+      "b": "native_gc3",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.006605797507845071,
+      "ci95_descriptive": [
+        0.0038100913721170935,
+        0.00970882200493406
+      ],
+      "a_lower_objects": 1,
+      "exact_signflip_p": 0.00390625,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_default_1x",
+      "b": "budget_late16",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.01165573734586847,
+      "ci95_descriptive": [
+        0.007677695639747673,
+        0.015918894518980837
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_default_1x",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.016222381051232467,
+      "ci95_descriptive": [
+        0.010458197220458612,
+        0.0226808023640139
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfl",
+      "b": "native_gfh",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.014848383461857882,
+      "ci95_descriptive": [
+        0.009781886703649002,
+        0.020292278283160013
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfl",
+      "b": "budget_fixed_mean",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.006096834536947328,
+      "ci95_descriptive": [
+        0.0036722066612819675,
+        0.008454134940363789
+      ],
+      "a_lower_objects": 1,
+      "exact_signflip_p": 0.00390625,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfl",
+      "b": "native_gc3",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.00349481875243991,
+      "ci95_descriptive": [
+        0.001986410353770507,
+        0.0050903023052384965
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfl",
+      "b": "budget_late16",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.00854475859046331,
+      "ci95_descriptive": [
+        0.005577455390432475,
+        0.011621669096058978
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfl",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.01311140229582731,
+      "ci95_descriptive": [
+        0.008330252272814873,
+        0.018323404471642442
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfh",
+      "b": "budget_fixed_mean",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": -0.008751548924910552,
+      "ci95_descriptive": [
+        -0.012032612542128914,
+        -0.005830989312477324
+      ],
+      "a_lower_objects": 10,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfh",
+      "b": "native_gc3",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": -0.01135356470941797,
+      "ci95_descriptive": [
+        -0.015333345543320588,
+        -0.007695882525998623
+      ],
+      "a_lower_objects": 10,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfh",
+      "b": "budget_late16",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": -0.006303624871394571,
+      "ci95_descriptive": [
+        -0.008838941662089202,
+        -0.004093576112749458
+      ],
+      "a_lower_objects": 10,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gfh",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": -0.0017369811660305722,
+      "ci95_descriptive": [
+        -0.002233747369338349,
+        -0.0012691558130953587
+      ],
+      "a_lower_objects": 10,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "budget_fixed_mean",
+      "b": "native_gc3",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": -0.0026020157845074187,
+      "ci95_descriptive": [
+        -0.0034636928229387397,
+        -0.0015712415033781058
+      ],
+      "a_lower_objects": 9,
+      "exact_signflip_p": 0.00390625,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "budget_fixed_mean",
+      "b": "budget_late16",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.002447924053515981,
+      "ci95_descriptive": [
+        0.0016038850092131925,
+        0.003472627414276984
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "budget_fixed_mean",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.007014567758879981,
+      "ci95_descriptive": [
+        0.004425736614390133,
+        0.010028102794798327
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gc3",
+      "b": "budget_late16",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.005049939838023399,
+      "ci95_descriptive": [
+        0.0034595469633325942,
+        0.006721199793764526
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "native_gc3",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.009616583543387399,
+      "ci95_descriptive": [
+        0.006250647789777822,
+        0.01332749430335822
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    },
+    {
+      "a": "budget_late16",
+      "b": "gen_linear",
+      "metric": "cross_view_texel_variance",
+      "mean_difference": 0.004566643705364,
+      "ci95_descriptive": [
+        0.0026428667007140924,
+        0.006901841687967297
+      ],
+      "a_lower_objects": 0,
+      "exact_signflip_p": 0.001953125,
+      "holm21_p": 0.041015625
+    }
+  ],
+  "scope": "All 21 generated-condition pairs on one additional diagnostic, Holm21. Pointwise descriptive object intervals. No confirmatory practical benefit or artifact-free calibration claim."
+}

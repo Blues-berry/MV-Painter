@@ -1,0 +1,237 @@
+{
+  "status": "PASS_RECOVERED_SOURCE_SYNTAX_AND_STANDALONE_CONTROLLER_CHECKS",
+  "tests": {
+    "earlier_entry": [
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": false,
+          "FSC": false
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "total": 3433
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias"
+        ]
+      },
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": true,
+          "FSC": false
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "gsg": 585,
+          "total": 4018
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias"
+        ],
+        "initial_spatial_gate": "EXACT_UNIT_GATE"
+      },
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": true,
+          "FSC": true
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "gsg": 585,
+          "fsc": 2304,
+          "total": 6322
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias",
+          "fsc_modules.0.freq_mask_residual"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias",
+          "fsc_modules.0.freq_mask_residual"
+        ],
+        "initial_spatial_gate": "EXACT_UNIT_GATE",
+        "initial_filter_relative_L2_change": 0.3112122714519501,
+        "actual_transform": "torch.fft.rfft2/irfft2; not DCT despite archival comments"
+      }
+    ],
+    "controller_only_entry": [
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": false,
+          "FSC": false
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "total": 3433
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias"
+        ]
+      },
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": true,
+          "FSC": false
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "gsg": 585,
+          "total": 4018
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias"
+        ],
+        "initial_spatial_gate": "EXACT_UNIT_GATE"
+      },
+      {
+        "enabled": {
+          "LTAG": true,
+          "GSG": true,
+          "FSC": true
+        },
+        "fixture": "CPU float32, nine adapters, one exercised adapter, 16x16 correction and 64-channel geometry",
+        "parameters": {
+          "ltag": 3433,
+          "gsg": 585,
+          "fsc": 2304,
+          "total": 6322
+        },
+        "finite_output_and_gradients": true,
+        "state_roundtrip_bitwise_equal": true,
+        "parameters_with_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias",
+          "fsc_modules.0.freq_mask_residual"
+        ],
+        "parameters_with_nonzero_gradients": [
+          "ltag.time_embed.0.weight",
+          "ltag.time_embed.0.bias",
+          "ltag.scale_head.0.weight",
+          "ltag.scale_head.0.bias",
+          "ltag.scale_head.2.weight",
+          "ltag.scale_head.2.bias",
+          "gsg_modules.0.gate_conv.weight",
+          "gsg_modules.0.gate_conv.bias",
+          "fsc_modules.0.freq_mask_residual"
+        ],
+        "initial_spatial_gate": "EXACT_UNIT_GATE",
+        "initial_filter_relative_L2_change": 0.3112122714519501,
+        "actual_transform": "torch.fft.rfft2/irfft2; not DCT despite archival comments"
+      }
+    ]
+  },
+  "unique_controller_source_versions": 1,
+  "unique_controller_fixtures": 3,
+  "entry_differences": {
+    "earlier_entry": "Default permits base-adapter and geometry-encoder optimization; --freeze_adapter is needed to restrict this entry to controller parameters.",
+    "controller_only_entry": "Freezes loaded base adapter and geometry encoder; optimizer uses controller parameters. Warm-start, freeze-LTAG and envelope options differ from earlier entry."
+  },
+  "not_verified": [
+    "Historical executed source/CLI identity",
+    "1706-object historical list and its relation to recovered 1200-object config",
+    "Historical random seed and optimizer/sampling trajectory",
+    "Historical FAC checkpoint and full-model evaluation identity",
+    "Fresh full-model training/inference in an isolated environment"
+  ],
+  "release_scope": "Recoverable source and tested controller components only, not a complete historical FAC replay or a new method."
+}

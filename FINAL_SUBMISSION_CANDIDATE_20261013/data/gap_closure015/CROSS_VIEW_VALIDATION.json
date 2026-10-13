@@ -1,0 +1,58 @@
+{
+  "status": "PASS_80_REPLAY_ROWS_AND_FOUR_KNOWN_COLOR_CONTROLS",
+  "objects": 10,
+  "methods": [
+    "gt",
+    "native_default_1x",
+    "native_gfl",
+    "native_gfh",
+    "budget_fixed_mean",
+    "native_gc3",
+    "budget_late16",
+    "gen_linear"
+  ],
+  "max_absolute_replay_error": 0.0,
+  "controls": [
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "control": "constant_black_all_views",
+      "actual_variance": 0.0,
+      "independent_expected": 0.0,
+      "shared_texels": 85200,
+      "atlas_texels": 1048576,
+      "shared_fraction": 0.0812530517578125,
+      "formula_error": 0.0
+    },
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "control": "different_camera_gray",
+      "actual_variance": 0.1272181898792137,
+      "independent_expected": 0.12721818035993745,
+      "shared_texels": 85200,
+      "atlas_texels": 1048576,
+      "shared_fraction": 0.0812530517578125,
+      "formula_error": 9.519276256142462e-09
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "control": "constant_black_all_views",
+      "actual_variance": 0.0,
+      "independent_expected": 0.0,
+      "shared_texels": 99423,
+      "atlas_texels": 1048576,
+      "shared_fraction": 0.0948171615600586,
+      "formula_error": 0.0
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "control": "different_camera_gray",
+      "actual_variance": 0.1246164461786428,
+      "independent_expected": 0.1246164361700345,
+      "shared_texels": 99423,
+      "atlas_texels": 1048576,
+      "shared_fraction": 0.0948171615600586,
+      "formula_error": 1.0008608303246902e-08
+    }
+  ],
+  "interpretation": "Pre-bake cross-view disagreement only at UV texels receiving at least two cameras. Natural texture, resampling, UV overlap and view-dependent source appearance can contribute. Constant incorrect color has zero variance; this is not fidelity, seam or PBR validation."
+}

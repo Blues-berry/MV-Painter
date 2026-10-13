@@ -1,0 +1,284 @@
+{
+  "status": "COMPLETE_DESCRIPTIVE_POST_INSPECTION_ANALYSIS",
+  "source_sha256": {
+    "data/final_supplement_audit013/ALL_GSO100_VIEW_METRICS.csv": "ab1d7e2a183023d966b6dac9f7cffb065a7f27372cc806c2a472b593528c7a16",
+    "data/completed_supplement013/analysis/BAKE_VIEW_METRICS.csv": "cf6af4b33ccb4fc367437ac210a895d0691533c8895a3a0bf79bcef0809051c5",
+    "data/primary_studies/MATCHED300_OBJECT_METRICS.csv": "5ab7c817e5b0fac30640d60e6fee3f0c5e967aacc71f595418f41798a7bdfa08"
+  },
+  "seed_contrasts": [
+    {
+      "label": "GSO100 Middle--Mean PSNR",
+      "a": "middle_high",
+      "b": "fixed_mean",
+      "metric": "fg_psnr",
+      "objects": 100,
+      "seed_order": [
+        42,
+        2026,
+        31415
+      ],
+      "per_seed": [
+        {
+          "seed": 42,
+          "mean": -0.008346889416376815,
+          "ci95_descriptive": [
+            -0.03194440253078969,
+            0.01751345604658101
+          ],
+          "favorable_objects": 46
+        },
+        {
+          "seed": 2026,
+          "mean": -0.023743611574172815,
+          "ci95_descriptive": [
+            -0.04915919918566929,
+            0.0011229935785135763
+          ],
+          "favorable_objects": 41
+        },
+        {
+          "seed": 31415,
+          "mean": -0.008890079955260007,
+          "ci95_descriptive": [
+            -0.037688851542770935,
+            0.020812939864893635
+          ],
+          "favorable_objects": 46
+        }
+      ],
+      "seed_averaged_mean": -0.013660193648603212,
+      "all_three_favorable": 14,
+      "all_three_adverse": 24,
+      "mixed_or_tied": 62,
+      "all_three_favorable_proportion_ci95": [
+        0.08,
+        0.21
+      ],
+      "interpretation": "Fixed seeds; object-resampled descriptive intervals. Sign agreement has no practical-effect threshold. No new significance/equivalence claim."
+    },
+    {
+      "label": "GSO100 Late--Mean PSNR",
+      "a": "late_high",
+      "b": "fixed_mean",
+      "metric": "fg_psnr",
+      "objects": 100,
+      "seed_order": [
+        42,
+        2026,
+        31415
+      ],
+      "per_seed": [
+        {
+          "seed": 42,
+          "mean": 0.05675377100706095,
+          "ci95_descriptive": [
+            0.03057046735038327,
+            0.08494339867184544
+          ],
+          "favorable_objects": 67
+        },
+        {
+          "seed": 2026,
+          "mean": 0.03831748515367494,
+          "ci95_descriptive": [
+            0.009787775961061274,
+            0.06736794194827472
+          ],
+          "favorable_objects": 60
+        },
+        {
+          "seed": 31415,
+          "mean": 0.03868389377991354,
+          "ci95_descriptive": [
+            0.005826551653444614,
+            0.07158684648573395
+          ],
+          "favorable_objects": 67
+        }
+      ],
+      "seed_averaged_mean": 0.04458504998021648,
+      "all_three_favorable": 27,
+      "all_three_adverse": 5,
+      "mixed_or_tied": 68,
+      "all_three_favorable_proportion_ci95": [
+        0.19,
+        0.36
+      ],
+      "interpretation": "Fixed seeds; object-resampled descriptive intervals. Sign agreement has no practical-effect threshold. No new significance/equivalence claim."
+    },
+    {
+      "label": "GSO100 Late--Mean nonreference LPIPS",
+      "a": "late_high",
+      "b": "fixed_mean",
+      "metric": "fg_lpips",
+      "objects": 100,
+      "seed_order": [
+        42,
+        2026,
+        31415
+      ],
+      "per_seed": [
+        {
+          "seed": 42,
+          "mean": -0.0003885311335325231,
+          "ci95_descriptive": [
+            -0.0007743871969170847,
+            -2.5323346024377406e-05
+          ],
+          "favorable_objects": 56
+        },
+        {
+          "seed": 2026,
+          "mean": -0.00026851798128336643,
+          "ci95_descriptive": [
+            -0.0008001267888350414,
+            0.0002649522297084328
+          ],
+          "favorable_objects": 53
+        },
+        {
+          "seed": 31415,
+          "mean": 0.0003980592880398042,
+          "ci95_descriptive": [
+            -0.0006261300528887642,
+            0.0015094684594776477
+          ],
+          "favorable_objects": 56
+        }
+      ],
+      "seed_averaged_mean": -8.632994225869511e-05,
+      "all_three_favorable": 24,
+      "all_three_adverse": 14,
+      "mixed_or_tied": 62,
+      "all_three_favorable_proportion_ci95": [
+        0.16,
+        0.33
+      ],
+      "interpretation": "Fixed seeds; object-resampled descriptive intervals. Sign agreement has no practical-effect threshold. No new significance/equivalence claim."
+    },
+    {
+      "label": "GSO20 Late--Mean unseen LPIPS",
+      "a": "late_high",
+      "b": "fixed_mean",
+      "metric": "fg_lpips",
+      "objects": 20,
+      "seed_order": [
+        42,
+        2026,
+        31415
+      ],
+      "per_seed": [
+        {
+          "seed": 42,
+          "mean": -6.39216000722198e-05,
+          "ci95_descriptive": [
+            -0.00027076634197411117,
+            0.00013382983997210472
+          ],
+          "favorable_objects": 9
+        },
+        {
+          "seed": 2026,
+          "mean": 0.0003083022226664121,
+          "ci95_descriptive": [
+            7.559132762252828e-05,
+            0.0006075960037891107
+          ],
+          "favorable_objects": 5
+        },
+        {
+          "seed": 31415,
+          "mean": 6.996675140479025e-06,
+          "ci95_descriptive": [
+            -0.0002950429456012166,
+            0.00031722056880508507
+          ],
+          "favorable_objects": 12
+        }
+      ],
+      "seed_averaged_mean": 8.379243257822377e-05,
+      "all_three_favorable": 1,
+      "all_three_adverse": 5,
+      "mixed_or_tied": 14,
+      "all_three_favorable_proportion_ci95": [
+        0.0,
+        0.15
+      ],
+      "interpretation": "Fixed seeds; object-resampled descriptive intervals. Sign agreement has no practical-effect threshold. No new significance/equivalence claim."
+    }
+  ],
+  "freshC_dominance": {
+    "objects": 300,
+    "endpoints": [
+      "fg_psnr",
+      "fg_lpips",
+      "fg_ssim",
+      "edge_ssim"
+    ],
+    "conditions": [
+      "Fixed Low",
+      "Fixed High",
+      "Fixed Applied Mean",
+      "Early-high",
+      "Late-high"
+    ],
+    "rules": "Point-estimate weak dominance on all four recorded composite endpoints and strict improvement on at least one; no dominance of unmeasured quality and no inferential separation.",
+    "comparisons": [
+      {
+        "control": "Fixed Low",
+        "dominates_C3": 28,
+        "dominated_by_C3": 156,
+        "incomparable_or_equal": 116,
+        "dominates_C3_proportion_ci95": [
+          0.06333333333333334,
+          0.12666666666666668
+        ]
+      },
+      {
+        "control": "Fixed High",
+        "dominates_C3": 173,
+        "dominated_by_C3": 16,
+        "incomparable_or_equal": 111,
+        "dominates_C3_proportion_ci95": [
+          0.52,
+          0.6333333333333333
+        ]
+      },
+      {
+        "control": "Fixed Applied Mean",
+        "dominates_C3": 143,
+        "dominated_by_C3": 4,
+        "incomparable_or_equal": 153,
+        "dominates_C3_proportion_ci95": [
+          0.42,
+          0.5333333333333333
+        ]
+      },
+      {
+        "control": "Early-high",
+        "dominates_C3": 48,
+        "dominated_by_C3": 90,
+        "incomparable_or_equal": 162,
+        "dominates_C3_proportion_ci95": [
+          0.12,
+          0.20333333333333334
+        ]
+      },
+      {
+        "control": "Late-high",
+        "dominates_C3": 122,
+        "dominated_by_C3": 1,
+        "incomparable_or_equal": 177,
+        "dominates_C3_proportion_ci95": [
+          0.35333333333333333,
+          0.4633333333333333
+        ]
+      }
+    ],
+    "dominated_by_at_least_one": 270,
+    "proportion_ci95": [
+      0.8633333333333333,
+      0.9333333333333333
+    ]
+  }
+}
