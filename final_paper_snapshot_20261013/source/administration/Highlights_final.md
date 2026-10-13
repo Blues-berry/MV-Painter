@@ -1,0 +1,7 @@
+# Highlights
+
+- Equal applied budgets do not support the historical middle-window preference.
+- Strong fixed and linear controls change the practical recommendation.
+- Full-frame gains can coexist with worse foreground agreement.
+- Small baked-view gains do not transfer consistently across protocols.
+- Fixed seeds distinguish average effects from repeatable object benefits.

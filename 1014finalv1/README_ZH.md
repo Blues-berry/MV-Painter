@@ -6,7 +6,7 @@
 
 - 正文与补充材料 TeX、对应成品 PDF、原目录 README 和 PDF 构建脚本。
 - 正文/补充材料递归引用的表格源、全部 33 张直接引用图（包括 `fig2.pdf`、`fig3.pdf`）、编译需要的期刊 class/style/logo，以及构建脚本引用的两段 TeX section 源。
-- `SOURCE_SNAPSHOT.json` 记录逐文件源路径、时间和 SHA-256；`SHA256SUMS.tsv` 可核验包内文件。引用依赖扫描未发现缺失项。
+- `BUILD_REPORT.json` 和 `SOURCE_SHA256SUMS.txt` 保留该版本原始构建报告与输入哈希；`SOURCE_SNAPSHOT.json` 记录逐文件源路径、时间和 SHA-256；`SHA256SUMS.tsv` 可核验包内文件。引用依赖扫描未发现缺失项。
 
 在本目录运行 `python3 build_1014finalv1.py` 可按源 README 中说明重建正文和补充 PDF；需要本地安装 LaTeX 工具链及所需宏包。
 

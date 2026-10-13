@@ -135,7 +135,11 @@ GSO20旧UV-ramp门槛失败、十五对象结果之后的后见校准、375原GL
 
 ## 8. 已恢复的权重与仍未闭合的历史身份
 
-旧v2 EMA在备份目录、原mvpoutput与share_kit三处实读到，MD5均为`a74cc1d16cb473a95022bdcbc58e1b22`。这修正了“只找到README”的判断。三份是同一模型副本，不是三套独立模型。
+旧v2 EMA在备份目录、原mvpoutput与share_kit三处实读到。
+
+三份的MD5均为：`a74cc1d16cb473a95022bdcbc58e1b22`。
+
+这修正了“只找到README”的判断。三份是同一模型副本，不是三套独立模型。
 
 原01549主表指向`geotex_refattn_v1/geotex_step_0002000.pt`，并非v2。全现存工作树未发现可绑定该旧主表的原文件；没有原hash、完整runner/hook/cap/端点链，当前同名step2000文件都是新重训。到此结束原身份追溯，不用重新训练冒充恢复。
 
