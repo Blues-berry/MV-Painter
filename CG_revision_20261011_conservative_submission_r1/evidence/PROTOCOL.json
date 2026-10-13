@@ -1,0 +1,131 @@
+{
+  "protocol": "cg-bounded-revision-expansion-v1",
+  "frozen_at_utc": "2026-10-10T10:49:49.763701+00:00",
+  "status": "DESIGN_FROZEN_BEFORE_NEW_OUTPUTS",
+  "source_cohort": "/4T/CXY/MV-Painter/1006/data/fresh_c/fresh_c_objects.txt",
+  "source_cohort_sha256": "d93881865b6478dd31222a51c7d3ebafe44839fd5e1b76c5eb9605d3f1fdfa58",
+  "source_cohort_previously_seen_geotex_image_results": true,
+  "selection": "ascending UID; inputs only; exclude prior MV-Adapter outputs and prior bake outputs separately; no replacement based on generated quality",
+  "mvadapter": {
+    "maximum_n": 50,
+    "pilot_below_n": 30,
+    "conditions": [
+      "native_default_1x",
+      "fixed_low_0p75",
+      "fixed_mean_0p83",
+      "budget_early16",
+      "budget_middle16",
+      "budget_late16",
+      "budget_linear_mean_0p83"
+    ],
+    "low": 0.75,
+    "high": 1.0,
+    "fixed_mean": 0.83,
+    "steps": 50,
+    "high_windows": [
+      [
+        0,
+        15
+      ],
+      [
+        17,
+        32
+      ],
+      [
+        34,
+        49
+      ]
+    ],
+    "primary": [
+      "budget_middle16",
+      "fixed_mean_0p83",
+      "fg_psnr"
+    ],
+    "gt": "source embedded baseColor rendered using the exact native mesh normalization, orthographic cameras and nvdiffrast rasterizer; white factor, single OPAQUE material, native REPEAT sampler",
+    "old_n7": "separate exploratory archive; source-camera/normalization mismatch found; not pooled and not interpreted as validated quality transfer"
+  },
+  "bake": {
+    "maximum_n": 20,
+    "pilot_below_n": 15,
+    "conditions": [
+      "native_default_1x",
+      "native_gfl",
+      "native_gfh",
+      "budget_fixed_mean",
+      "native_gc3",
+      "budget_late16",
+      "gen_linear"
+    ],
+    "primary": [
+      "budget_late16",
+      "budget_fixed_mean",
+      "fg_lpips"
+    ],
+    "secondary": [
+      [
+        "native_gc3",
+        "native_gfh",
+        "fg_psnr"
+      ],
+      [
+        "native_gc3",
+        "native_gfh",
+        "fg_lpips"
+      ],
+      [
+        "native_gc3",
+        "native_gfh",
+        "fg_ssim"
+      ],
+      [
+        "native_gc3",
+        "native_gfh",
+        "ciede2000"
+      ]
+    ],
+    "source_resolution": 256,
+    "gt_source_resolution": 256,
+    "texture_resolution": 1024,
+    "render_resolution": 512,
+    "source_cameras": [
+      0,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "unseen_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "inpaint_iterations": 8,
+    "maximum_triangles": 300000,
+    "camera_iou_minimum_and_mean": 0.9,
+    "repeat_uv": true,
+    "materials": "one OPAQUE white-factor material; native UV and REPEAT preserved; no material replacement or geometry simplification"
+  },
+  "statistics": {
+    "unit": "object; views averaged first",
+    "bootstrap_draws": 50000,
+    "seed": 20261010,
+    "primary_two_sided_alpha": 0.05,
+    "secondary": "Holm correction over frozen pair/metric families; no non-inferiority claim",
+    "ranking": "within-object Spearman rankings across all seven conditions, matched image-space and unseen-view endpoints; object bootstrap; descriptive"
+  },
+  "stopping": {
+    "input_preparation_limit_hours": 6,
+    "new_experiment_limit_hours": 48,
+    "incomplete_and_failed_rows": "retained and disclosed; never removed for quality direction"
+  },
+  "code_sha256": "af9589687ab13f854d35f13a1ab1b2e6a2b91cb7ed6d9946bfa763f9aefa832c"
+}

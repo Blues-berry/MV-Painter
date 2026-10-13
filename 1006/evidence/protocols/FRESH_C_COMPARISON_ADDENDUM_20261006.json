@@ -1,0 +1,104 @@
+{
+  "candidate_queue_lock_sha256": "9a7ee93cad6ac974f6efc186254f3736989dadc759b53663d1902798c540f468",
+  "cohort": {
+    "allowed_reduced_n": [
+      276,
+      299
+    ],
+    "conditions": [
+      "layer_llh",
+      "gen_linear"
+    ],
+    "expected_rows": "2 * frozen cohort N",
+    "run_namespace": "1006/data/fresh_c/runs/revision_era_addendum",
+    "source": "same as frozen Fresh C cohort; no re-selection or replacement",
+    "target_n": 300
+  },
+  "comparisons": [
+    {
+      "a": "layer_llh",
+      "b": "native_gc3",
+      "name": "LLH-C3"
+    },
+    {
+      "a": "layer_llh",
+      "b": "gen_linear",
+      "name": "LLH-linear"
+    },
+    {
+      "a": "native_gc3",
+      "b": "gen_linear",
+      "name": "C3-linear"
+    }
+  ],
+  "freeze_precondition": {
+    "evidence": "1006/data/fresh_c/FRESH_C_RENDER_STAGE_IDENTITY.json and absence of rows/manifests in 1006/data/fresh_c/runs before this lock",
+    "observed_method_outputs_exist": false,
+    "observed_method_row_count": 0,
+    "registration_label": "revision-era prospective comparison; motivated by previously inspected results",
+    "relationship_to_original_protocol": "addendum only; original C3 confirmation remains unchanged"
+  },
+  "implementation": {
+    "latent_seed": 42,
+    "native_caps": {
+      "deep": 3.0,
+      "middle": 3.5,
+      "shallow": 0.8
+    },
+    "object_seed": "42 + frozen object index",
+    "resume_only_if_all_locked_hashes_match": true,
+    "sampler": "EulerDiscreteScheduler",
+    "steps": 50,
+    "target_views": [
+      0,
+      15,
+      12,
+      16,
+      13,
+      14
+    ]
+  },
+  "locked_utc": "2026-10-06T11:48:12.919124+00:00",
+  "multiplicity": {
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20261007,
+    "equivalence_margin": null,
+    "interval": "95% percentile object bootstrap",
+    "primary_family_size": 6,
+    "primary_method": "Holm",
+    "primary_metrics": [
+      "fg_psnr",
+      "fg_lpips"
+    ],
+    "secondary_family_size": 15,
+    "secondary_method": "Holm",
+    "secondary_metrics": [
+      "fg_ssim",
+      "edge_ssim",
+      "full_psnr",
+      "full_lpips",
+      "full_ssim"
+    ],
+    "tests": "two-sided paired object-level t-tests"
+  },
+  "orchestration_hashes": {
+    "addendum_auditor_analyzer_sha256": "706e6c429a82de80069087a9a6431679e9f2d33322b3ea461d256051f0575283",
+    "addendum_launcher_sha256": "ef5fdad0353a0f9773a290c2230453b8294e7f46dfb6b1a93cacc0f41f6b4522",
+    "addendum_watcher_sha256": "edda1272acad4d29bfc8ef8611f58cb838d355e083aa40e02d31a4c140e75575",
+    "primary_launcher_sha256": "b084766b32e37993a514fd4a3e88c0eb9278eef971e3c196ab68c7d097dca153"
+  },
+  "original_protocol_sha256": "489dde225e65c7828baa15ab5fc6bc83974fcbc8268ee1f985afeda100d3eb36",
+  "protocol_id": "fresh_c_revision_era_llh_linear_addendum_v1",
+  "protocol_markdown_sha256": "0cc3757a1031f0aa75ce4090a8b4b68b947f1d6eec2840b0be2d2c1d550fce68",
+  "schema_version": 1,
+  "source_hashes": {
+    "adapter_wrapper": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+    "checkpoint": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+    "config": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+    "data_utils": "e078f9e2cb3d85447f036fa4c0158929fa4e5f3c7f17571ed6bf0c6f7e7f94f3",
+    "generation_logic": "5da7fff22ea73b6d9500603d0905eda9a1ac9c44406346b259f3aba368b6ca13",
+    "metric_implementation": "adb317473f7ba77a71d716a293b00243a2aca2b5caf250b702fcb333f7e019b5",
+    "runner": "e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3"
+  },
+  "status": "FROZEN_PRE_OUTPUT"
+}

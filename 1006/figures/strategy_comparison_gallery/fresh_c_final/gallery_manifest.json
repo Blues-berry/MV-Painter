@@ -1,0 +1,478 @@
+{
+  "status": "FINAL_GALLERY_BUILT_AFTER_BOTH_INTEGRITY_GATES",
+  "cohort_n": 300,
+  "uid_list_sha256": "d93881865b6478dd31222a51c7d3ebafe44839fd5e1b76c5eb9605d3f1fdfa58",
+  "primary_gate_sha256": "8365d846eb8c6fdf208ae3c416f580b69e678b67ff0311d0130e6d4e58abeeac",
+  "addendum_gate_sha256": "fa6a6b1e5d29b02fa35af304f175190c429a7c6e290e1e2f17899de660228559",
+  "primary_analysis_sha256": "fd5422de055dfde6f82d65091f1cfcec26823a7757a1e09c76a4067984d5cd58",
+  "addendum_analysis_sha256": "8dc691c7533cf30d0368f35f1851f15b9049e8b587d5c39509583ccb2be58a8c",
+  "views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "conditions": [
+    "__reference__",
+    "native_gfl",
+    "native_gfh",
+    "no_adapter",
+    "native_gc3",
+    "layer_llh",
+    "gen_linear"
+  ],
+  "rankings": "separate endpoint rankings; no cross-metric composite score or global winner",
+  "image_selection": "Up to 20 unique objects: five balanced examples for each locked comparison (C3-GFL, LLH-C3, LLH-linear, C3-linear); if N<20 show all objects. Within each comparison, sample FG-PSNR high/low/near-median and FG-LPIPS low/high separately, with no composite score.",
+  "gallery_order": "Locked comparison order; cohort-level contrast rankings are separate and sorted within endpoint/multiplicity family by Holm-adjusted p when defined, with effect sizes, confidence intervals, and favorable-object fractions.",
+  "human_study_selection": "these outcome-ranked examples are not used to select human-study objects",
+  "individual_panel_significance": "never estimated",
+  "asset_license_handling": "Fresh C queue was filtered to CC0/CC BY/CC BY-SA; per-image source paths and hashes are recorded. Public redistribution still requires attribution/license review, especially for CC BY-SA outputs.",
+  "figure_asset_manifest": "1006/figures/strategy_comparison_gallery/fresh_c_final/gallery_asset_sha256.csv",
+  "output_directory": "1006/figures/strategy_comparison_gallery/fresh_c_final",
+  "selected_groups": [
+    {
+      "panel_order": 1,
+      "object_uid": "c76ac44df995482185077da81939b306",
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 2.64424204826355,
+      "delta_fg_lpips_focal_a_minus_b": -0.001826167106628418,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 2,
+      "object_uid": "8bde8eb73dcb45c6a3880e85e7b3694b",
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 6.480646729469299,
+      "delta_fg_lpips_focal_a_minus_b": -0.04903343319892883,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 3,
+      "object_uid": "ca887928bb664bcba121219f0af41293",
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": -1.0552501678466797,
+      "delta_fg_lpips_focal_a_minus_b": 0.010520786046981812,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 4,
+      "object_uid": "94168bf0403d4372ace896c9ff824f58",
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "highest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 2.8482484817504883,
+      "delta_fg_lpips_focal_a_minus_b": 0.0012203827500343323,
+      "endpoint_pattern_focal_contrast": "metric_tradeoff_or_partial_tie",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 5,
+      "object_uid": "d0e116a62bfc4cdd9edf60671073b306",
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": -2.033565044403076,
+      "delta_fg_lpips_focal_a_minus_b": 0.0063101500272750854,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 6,
+      "object_uid": "033fc9d942504cb9b571dc088f6e68f2",
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": -0.1538550853729248,
+      "delta_fg_lpips_focal_a_minus_b": -0.018282070755958557,
+      "endpoint_pattern_focal_contrast": "metric_tradeoff_or_partial_tie",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 7,
+      "object_uid": "3c83796ca5f043f1beb8044dd2e51a0d",
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 0.01562356948852539,
+      "delta_fg_lpips_focal_a_minus_b": -0.0028397291898727417,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 8,
+      "object_uid": "0f1a74942b204c80a657fefe10e13050",
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "lowest_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": -5.213865041732788,
+      "delta_fg_lpips_focal_a_minus_b": 0.040007829666137695,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 9,
+      "object_uid": "0c8e1199b7b64ad2ac1c6ff784139dec",
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 0.5526632070541382,
+      "delta_fg_lpips_focal_a_minus_b": -0.00779271125793457,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 10,
+      "object_uid": "1d1bcb173c28475ba351eb604c7135dc",
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": -0.1885986328125,
+      "delta_fg_lpips_focal_a_minus_b": -0.05238667130470276,
+      "endpoint_pattern_focal_contrast": "metric_tradeoff_or_partial_tie",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 11,
+      "object_uid": "85a7df80b79a4ba9b8c3a175de0dbce6",
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": 1.0306322574615479,
+      "delta_fg_lpips_focal_a_minus_b": -0.010258957743644714,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 12,
+      "object_uid": "dd5ead807a5b4630b1feb802f7b0276c",
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "near_median_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 0.06991863250732422,
+      "delta_fg_lpips_focal_a_minus_b": -0.00536578893661499,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 13,
+      "object_uid": "f6979d7ff8e54c4daf00fee46f09a139",
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": 1.2649106979370117,
+      "delta_fg_lpips_focal_a_minus_b": -0.03270834684371948,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 14,
+      "object_uid": "b09220089d0e486bb1d11a5fd80d8fd3",
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": -1.4938163757324219,
+      "delta_fg_lpips_focal_a_minus_b": 0.02348555624485016,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 15,
+      "object_uid": "ebc5938fe6a04b5bbd5312fa2abb9ba5",
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": -0.8426129817962646,
+      "delta_fg_lpips_focal_a_minus_b": 0.045047223567962646,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 16,
+      "object_uid": "0571e6db30c84b1593bc55a8e145a430",
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "lowest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": 2.4423599243164062,
+      "delta_fg_lpips_focal_a_minus_b": -0.025967925786972046,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 17,
+      "object_uid": "0e96435a23ee42f9b0e76860066c62ff",
+      "focal_contrast": "C3-GFL",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": -1.0370630025863647,
+      "delta_fg_lpips_focal_a_minus_b": 0.023122012615203857,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 18,
+      "object_uid": "0f9579e2d298480aa26a0d9fed9307a9",
+      "focal_contrast": "LLH-C3",
+      "selection_stratum": "remaining_by_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 6.397894024848938,
+      "delta_fg_lpips_focal_a_minus_b": -0.03754275292158127,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 19,
+      "object_uid": "067aa0a948074dda86ad9fdad1fcef9d",
+      "focal_contrast": "LLH-linear",
+      "selection_stratum": "remaining_by_focal_FG_PSNR",
+      "delta_fg_psnr_focal_a_minus_b": 1.3583827018737793,
+      "delta_fg_lpips_focal_a_minus_b": -0.006264105439186096,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_A",
+      "per_object_significance": "not estimated"
+    },
+    {
+      "panel_order": 20,
+      "object_uid": "06fa4974f8cd4d4ea792e98fa1521457",
+      "focal_contrast": "C3-linear",
+      "selection_stratum": "highest_focal_FG_LPIPS",
+      "delta_fg_psnr_focal_a_minus_b": -3.4910190105438232,
+      "delta_fg_lpips_focal_a_minus_b": 0.08172363042831421,
+      "endpoint_pattern_focal_contrast": "both_endpoints_favor_B",
+      "per_object_significance": "not estimated"
+    }
+  ],
+  "generated_file_hashes": [
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/20_groups_contact_sheet.png",
+      "bytes": 3180895,
+      "sha256": "8e71723369d0c1de426c58a2afc7107d10e1f217ac4076808469a72b5bfd9d31"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/all_contrast_object_deltas.csv",
+      "bytes": 281046,
+      "sha256": "0cfc863f322dc8d5293a0ca7e702a274a01c5334fb2b68f8900da7206ef67e40"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/cohort_contrast_forest.png",
+      "bytes": 107318,
+      "sha256": "c77efc7cc191ada14850d54d968cd9b50457756409f15f33fba751b9531e427b"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/cohort_contrast_summary.csv",
+      "bytes": 8088,
+      "sha256": "cbc488cf398653519575d8be1d596722d14c397979cf975bf7b7d2ed282a8805"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/cohort_contrast_summary_ranked_within_family.csv",
+      "bytes": 9959,
+      "sha256": "947ac199846844440b6ea6942a8866b909b762f65aaae48af4790bf118076cbf"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/gallery_asset_sha256.csv",
+      "bytes": 55333,
+      "sha256": "aceb48f5fdb48c47081b0c01143edd55fce536b6c1bfd389be4b653bbd0014f8"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_01_c76ac44df995482185077da81939b306.png",
+      "bytes": 1816054,
+      "sha256": "0e151569813f80b47f0fd24f9585fbf13c198d08bd58271e52e7847cb1f8d305"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_02_8bde8eb73dcb45c6a3880e85e7b3694b.png",
+      "bytes": 1880217,
+      "sha256": "6d8a2dbd543dc50d81887204e48e2b67350c41fe578235cbc69ef4467d830812"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_03_ca887928bb664bcba121219f0af41293.png",
+      "bytes": 1711302,
+      "sha256": "1924b48758653fec7b35426b1c4fb933e71032f9aab2945eb4d92b6684269f05"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_04_94168bf0403d4372ace896c9ff824f58.png",
+      "bytes": 2148582,
+      "sha256": "8a549d4e2eac0730f80148273e9b9183900b546901b390544f69012e5fbb5fdd"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_05_d0e116a62bfc4cdd9edf60671073b306.png",
+      "bytes": 1284523,
+      "sha256": "d3485e2b40b26740f94f58f70d175f9ab54c6d17c4f1cc0df684374cca5eb7d7"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_06_033fc9d942504cb9b571dc088f6e68f2.png",
+      "bytes": 1663887,
+      "sha256": "8fc67ad8c7913cc6d7cbb0850dd04e4e10e3a78f732f687692aa336b892c128b"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_07_3c83796ca5f043f1beb8044dd2e51a0d.png",
+      "bytes": 1735069,
+      "sha256": "5988e878566249aa04e554b052dcd9b5dc0e8e7729cc51b169c9d3c928deedeb"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_08_0f1a74942b204c80a657fefe10e13050.png",
+      "bytes": 1503492,
+      "sha256": "3153214431f486dd9daa1fcf10dc85f20b42c49d28871e9c7843a0ce459ba4cd"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_09_0c8e1199b7b64ad2ac1c6ff784139dec.png",
+      "bytes": 1983010,
+      "sha256": "9737cdd13671ce9502f0bd8d5185142e20be055e39c7c68502e953d320ef9a0a"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_10_1d1bcb173c28475ba351eb604c7135dc.png",
+      "bytes": 1974803,
+      "sha256": "32899989e245ba3aee338d9edd19821c5b0dda93e9aa698d22dd5aeedde24eaf"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_11_85a7df80b79a4ba9b8c3a175de0dbce6.png",
+      "bytes": 1917349,
+      "sha256": "cf728a524eb9b4e39475f64f776e2e521122a19066ce589161242d81e3ed08ba"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_12_dd5ead807a5b4630b1feb802f7b0276c.png",
+      "bytes": 1428790,
+      "sha256": "3f6c606bc4f4f225cc515a3c8d9908f50dac34c534e0cb80dad65138fa0295b2"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_13_f6979d7ff8e54c4daf00fee46f09a139.png",
+      "bytes": 2368790,
+      "sha256": "6e2f7518297898aa20c8c200a3cc4042fa7427d4be0ebe6ad1a138e2e85f8e17"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_14_b09220089d0e486bb1d11a5fd80d8fd3.png",
+      "bytes": 1858663,
+      "sha256": "8055dc506cd5ce520467ebba488091830b662a51c2aa813b65616bd397095055"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_15_ebc5938fe6a04b5bbd5312fa2abb9ba5.png",
+      "bytes": 2360322,
+      "sha256": "37a49d17cbc66c840370d90c310d583870fdd6bb1f7d33687ac8ad19a04cacbd"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_16_0571e6db30c84b1593bc55a8e145a430.png",
+      "bytes": 2455082,
+      "sha256": "9024e9991d46dc1b550dcc22586e21bcfd5d0b1726c1b526e3162ed9dbcf2079"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_17_0e96435a23ee42f9b0e76860066c62ff.png",
+      "bytes": 1956484,
+      "sha256": "a3383953b0d5a989cd577304b49bbd9ba0fbdb9e4bc2d41d34ade5785eb240da"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_18_0f9579e2d298480aa26a0d9fed9307a9.png",
+      "bytes": 1770844,
+      "sha256": "74a200ff8c2eac43c07f261fde59d4b9d2cf5a7572a66c7ccd1e6cabc2767d69"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_19_067aa0a948074dda86ad9fdad1fcef9d.png",
+      "bytes": 1853310,
+      "sha256": "42ddd9c62b877950809a961b15726606f942a46e9642985af263b24a9f471e29"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/panels/panel_20_06fa4974f8cd4d4ea792e98fa1521457.png",
+      "bytes": 2304608,
+      "sha256": "e4f65346400c4abd4776e4bc1d3937be1ab22ce8770783ede8ac735c32b49fed"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_GFL_all_objects.csv",
+      "bytes": 46263,
+      "sha256": "1a6f85dc5e5f9553f7d6eb3a561c882c35ea7d50425b371ad8917495141dc495"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_GFL_by_fg_lpips.csv",
+      "bytes": 46263,
+      "sha256": "b4e5e37cf2c9eb2ba63d6205848c63d48694d5af2ca32d2f25be3268d8826e5b"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_GFL_by_fg_psnr.csv",
+      "bytes": 46263,
+      "sha256": "18e21be2b06f93900907d0e94d5466c964d175aa88932ff53b41d9b66886b3f3"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_linear_all_objects.csv",
+      "bytes": 47224,
+      "sha256": "29c905250f7013c99579c7c7a746476ca7b961922f7be353eaa6a7b04515eff3"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_linear_by_fg_lpips.csv",
+      "bytes": 47224,
+      "sha256": "dc118d02461a66cc3e71f4c51dfff8faa12c3a328e3d8399735f82ce6b77f19b"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/C3_linear_by_fg_psnr.csv",
+      "bytes": 47224,
+      "sha256": "155cf90f5398519fa2f187f20090d3945a602025ec02c600a5ec888bd0f09d9c"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_C3_all_objects.csv",
+      "bytes": 46294,
+      "sha256": "bd6129c97c92f3ca229e66419b39dd9b1190d5e38bd6d75bb3a82b17f7377d03"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_C3_by_fg_lpips.csv",
+      "bytes": 46294,
+      "sha256": "a192de750fe2922e36d59ffc74a9a77cac5d09c2a0f0c5337e479942cc56074b"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_C3_by_fg_psnr.csv",
+      "bytes": 46294,
+      "sha256": "7f7f2d740a564b7c87c79cdbab306b0aebfd8839c23e422561237d5d90fb80cf"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_GFL_all_objects.csv",
+      "bytes": 46559,
+      "sha256": "4605fec75aaf66aa501be111025af48dedf5a57a16e67d0f3b055bc161ca0b06"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_GFL_by_fg_lpips.csv",
+      "bytes": 46559,
+      "sha256": "17227eb03a707419307ddc5d3f6045f12fb320ab2cdab6aeb3c5692524ca997f"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_GFL_by_fg_psnr.csv",
+      "bytes": 46559,
+      "sha256": "baa373e371ae6d7950405639539f2de80ccea62ad972dd24adc528ea11b94970"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_linear_all_objects.csv",
+      "bytes": 47859,
+      "sha256": "6903b5cfbbba7f5a9a1cd067bb29e59ff1f0f56705c4764edf498cd08929674f"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_linear_by_fg_lpips.csv",
+      "bytes": 47859,
+      "sha256": "84c3dfde1f57301cd72de1cfc06a15b38b437fed5e22bdb6b4883e2e9b58d4ab"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/LLH_linear_by_fg_psnr.csv",
+      "bytes": 47859,
+      "sha256": "5d0d4afa0631f8225b80aa2b3aae286206bbcd5cca89135465a6a9a0f6c06167"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/linear_GFL_all_objects.csv",
+      "bytes": 47727,
+      "sha256": "28ccf9946fcc2bcf4a38a43bfd4546138849890f0d440b3b940425eb89a18681"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/linear_GFL_by_fg_lpips.csv",
+      "bytes": 47727,
+      "sha256": "33904d821aa57474f261a7020034523477c09070b15c4528840737debb772629"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/rankings/linear_GFL_by_fg_psnr.csv",
+      "bytes": 47727,
+      "sha256": "c4ae807a1a562e0f1dcd33e6c2238931ecf4916ca687fd010f0d2d533ef13e61"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/selected_20_uid_index.csv",
+      "bytes": 3099,
+      "sha256": "a55e4f4450c998f4a535ec9165c670920e50796e09983764ce4799595a405941"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/strategy_ranking_pages/C3_GFL.png",
+      "bytes": 133820,
+      "sha256": "54ad4c71e0391f2ef8745ce6210a840a65fbf980e5b0c1ed7f5305b33a8cf91c"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/strategy_ranking_pages/LLH_GFL.png",
+      "bytes": 138513,
+      "sha256": "cd97ec64b61643aee25f5452f3882da2db5f018d84a23809c1a07cae9b15f1a9"
+    },
+    {
+      "path": "1006/figures/strategy_comparison_gallery/fresh_c_final/strategy_ranking_pages/linear_GFL.png",
+      "bytes": 140482,
+      "sha256": "44da19b36f441a4a3f214b4afe937ea0571d0525d8b2b314eb82a5167190d4cc"
+    }
+  ]
+}

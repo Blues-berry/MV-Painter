@@ -1,0 +1,89 @@
+{
+  "snapshot_utc": "2026-10-07T01:52:00Z",
+  "scope": "non-human experiments and audits; no participant answers or standalone human-study files were opened, copied, analyzed, or interpreted; one mixed-scope GLB audit was read solely for historical non-human aggregate metrics, with human-study content excluded",
+  "fresh_c_primary": {
+    "gate": "PASS",
+    "rows": 1200,
+    "combined_csv_hash_matches_gate": true
+  },
+  "fresh_c_addendum": {
+    "gate": "PASS",
+    "rows": 600,
+    "combined_csv_hash_matches_gate": true
+  },
+  "fresh_c_numeric_recomputation": {
+    "checks": 28,
+    "matched_locked_means_medians_object_bootstrap_ci_p_values_holm_and_favorable_fractions": true,
+    "sign_direction_errors": 0
+  },
+  "strict276": {
+    "paired_rows": 552,
+    "contrasts": {
+      "gc3-gfl": 276,
+      "gc3-gfh": 276
+    },
+    "summary_rows": 14,
+    "classification": "RETROSPECTIVE_SUPPORT"
+  },
+  "e1": {
+    "integrity": "PASS",
+    "objects": 48,
+    "new_rows": 576
+  },
+  "e2": {
+    "integrity": "PASS",
+    "objects": 48,
+    "new_rows": 480,
+    "logical_rows": 576
+  },
+  "rights": {
+    "inventory_rows": 300,
+    "FIGURE_ONLY": 20,
+    "METRICS_ONLY": 271,
+    "UNKNOWN": 9,
+    "figure_d_attribution_rows": 20
+  },
+  "native_sampler_synthetic": {
+    "status": "PASS",
+    "passed": 11,
+    "total": 11,
+    "scope": "synthetic-only"
+  },
+  "seam_synthetic": {
+    "status": "PASS_SYNTHETIC_NUMERIC_ONLY",
+    "production_metric_frozen": false,
+    "real_asset_seam_improvement": "NOT_TESTED"
+  },
+  "manuscript_preservation": {
+    "recorded_files": 15,
+    "rehash_matches": 15,
+    "status": "PASS"
+  },
+  "authority_ledger_reference_audit": {
+    "old_nonhuman_authority_ledger_snapshot_hash_matches_its_validation_record": true,
+    "nonhuman_source_references_verified": 149,
+    "nonhuman_source_reference_mismatches": 1,
+    "human_scope_references_skipped_without_opening": 5,
+    "mismatch": {
+      "path": "1006/evidence/audits/next_stage_20261006/CLAIM_EVIDENCE_AUTHORITY_LEDGER.json",
+      "expected_sha256": "ca3b9f52ecc0e890caeec65d496e4ba0fcf1490d85fb407601e33ba7e3450ce8",
+      "observed_sha256_sequence": [
+        "97ffb95a53fa811de427987afac781cb088f59cd090225da43c6eff337dfef1c",
+        "3fb9031b28d6a0f12efdfe8522847f8d8f4bf84c44f0765e28543ab06fda5cf4",
+        "5e1ab7006a8cf36c22007a4797944637a51bd2b36d108ce1fc96b7ffb6231a75"
+      ],
+      "disposition": "not opened or copied; mixed-scope source changed during the audit and needs a separate non-human-only reconciliation"
+    },
+    "status": "PARTIAL"
+  },
+  "current_submission_candidate_rebuild": "FAIL per 2026-10-07 non-human freeze verdict",
+  "overall": "CORE_NONHUMAN_RESULTS_VERIFIED_WITH_ONE_UPSTREAM_LEDGER_HASH_GAP",
+  "historical_glb_n20_nonhuman_extract": {
+    "status": "VERIFIED_BOUNDED",
+    "source_path": "1006/evidence/audits/GLB_NATIVE_EGL_RENDER_REPORT_20261006.md",
+    "source_sha256": "3a28469e45efa89b677b8ed95d008e1707ce276d5b5c55744ff44ba67c28230c",
+    "source_report_copied": false,
+    "human_scope_content_included": false,
+    "endpoints": 3
+  }
+}

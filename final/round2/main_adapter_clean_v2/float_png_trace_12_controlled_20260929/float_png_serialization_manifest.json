@@ -1,0 +1,35 @@
+{
+  "mode": "controlled_rerun",
+  "status": "completed",
+  "config": "/tmp/mv_main_rerun/MVPainter/configs/mvpainter-geotex-full-train.yaml",
+  "checkpoint": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "object_list": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/eval_objects_300_clean_v2.txt",
+  "object_list_sha256": "49627906573f2781de0eddea775485430a1863987db859af694d543f12db9ccf",
+  "fixed12_indices": [
+    13,
+    15,
+    38,
+    48,
+    54,
+    66,
+    68,
+    78,
+    82,
+    83,
+    110,
+    111
+  ],
+  "methods": [
+    "no_adapter",
+    "fixed_low",
+    "fixed_high",
+    "c3"
+  ],
+  "steps": 50,
+  "seed": 42,
+  "device": "cuda:0",
+  "shared_initial_latent": true,
+  "same_generation_for_A_B_C": true,
+  "png_encoder": "torchvision.utils.save_image: round clamp to uint8 then PIL PNG"
+}

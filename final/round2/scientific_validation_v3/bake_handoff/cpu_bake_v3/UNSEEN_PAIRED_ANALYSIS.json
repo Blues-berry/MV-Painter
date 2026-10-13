@@ -1,0 +1,244 @@
+{
+  "n_objects": 20,
+  "note": "GT is a bake sanity check, not a method claim. DISTS unavailable (model download), excluded.",
+  "comparisons": {
+    "layer_llh - no_adapter": {
+      "masked_psnr": {
+        "mean": 3.6754,
+        "ci95": [
+          2.4896,
+          4.5922
+        ],
+        "win_rate": 0.95
+      },
+      "fg_lpips": {
+        "mean": -0.0208,
+        "ci95": [
+          -0.0331,
+          -0.0088
+        ],
+        "win_rate": 0.25
+      },
+      "ciede2000": {
+        "mean": -11.9289,
+        "ci95": [
+          -16.1127,
+          -7.7392
+        ],
+        "win_rate": 0.1
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "layer_llh - native_gfl": {
+      "masked_psnr": {
+        "mean": 0.1436,
+        "ci95": [
+          -1.2878,
+          1.6526
+        ],
+        "win_rate": 0.4
+      },
+      "fg_lpips": {
+        "mean": -0.0239,
+        "ci95": [
+          -0.032,
+          -0.0167
+        ],
+        "win_rate": 0.05
+      },
+      "ciede2000": {
+        "mean": 1.3022,
+        "ci95": [
+          -3.5289,
+          5.686
+        ],
+        "win_rate": 0.6
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "layer_llh - native_gfh": {
+      "masked_psnr": {
+        "mean": -0.1802,
+        "ci95": [
+          -0.7988,
+          0.5022
+        ],
+        "win_rate": 0.3
+      },
+      "fg_lpips": {
+        "mean": -0.0019,
+        "ci95": [
+          -0.0052,
+          0.0012
+        ],
+        "win_rate": 0.55
+      },
+      "ciede2000": {
+        "mean": 1.4353,
+        "ci95": [
+          -0.2581,
+          3.0678
+        ],
+        "win_rate": 0.65
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "layer_llh - native_gc3": {
+      "masked_psnr": {
+        "mean": -0.1036,
+        "ci95": [
+          -1.0137,
+          0.9231
+        ],
+        "win_rate": 0.3
+      },
+      "fg_lpips": {
+        "mean": -0.0144,
+        "ci95": [
+          -0.0198,
+          -0.0095
+        ],
+        "win_rate": 0.1
+      },
+      "ciede2000": {
+        "mean": 2.0221,
+        "ci95": [
+          -1.0916,
+          4.8713
+        ],
+        "win_rate": 0.7
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "layer_llh - lfm_exact": {
+      "masked_psnr": {
+        "mean": 0.0837,
+        "ci95": [
+          -0.2271,
+          0.4283
+        ],
+        "win_rate": 0.35
+      },
+      "fg_lpips": {
+        "mean": -0.0049,
+        "ci95": [
+          -0.0067,
+          -0.0031
+        ],
+        "win_rate": 0.05
+      },
+      "ciede2000": {
+        "mean": 0.2231,
+        "ci95": [
+          -0.6719,
+          1.1054
+        ],
+        "win_rate": 0.6
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "layer_llh - layer_lhl": {
+      "masked_psnr": {
+        "mean": 0.0581,
+        "ci95": [
+          -0.2464,
+          0.4037
+        ],
+        "win_rate": 0.45
+      },
+      "fg_lpips": {
+        "mean": -0.0065,
+        "ci95": [
+          -0.0091,
+          -0.0042
+        ],
+        "win_rate": 0.1
+      },
+      "ciede2000": {
+        "mean": 0.3276,
+        "ci95": [
+          -0.5498,
+          1.2097
+        ],
+        "win_rate": 0.65
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    },
+    "lfm_exact - no_adapter": {
+      "masked_psnr": {
+        "mean": 3.5917,
+        "ci95": [
+          2.1522,
+          4.7108
+        ],
+        "win_rate": 0.95
+      },
+      "fg_lpips": {
+        "mean": -0.0159,
+        "ci95": [
+          -0.029,
+          -0.003
+        ],
+        "win_rate": 0.3
+      },
+      "ciede2000": {
+        "mean": -12.1521,
+        "ci95": [
+          -16.889,
+          -7.3555
+        ],
+        "win_rate": 0.2
+      },
+      "silhouette_iou": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "win_rate": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "protocol": "layer-lhl-shared-input-ablation-v1",
+  "checkpoint": "mvpoutput/reviewer1_main_rerun_20260928/checkpoints/geotex_step_0002000.pt",
+  "object_list_file": "/4T/CXY/MV-Painter/final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "steps": 50,
+  "seed_argument": 42,
+  "object_seed": "seed_argument + object_idx",
+  "methods": [
+    "fixed_low",
+    "c3_lhl",
+    "layer_fixed_low",
+    "layer_fixed_mean",
+    "layer_lhl",
+    "layer_llh"
+  ],
+  "layer_fixed_mean": {
+    "deep": 1.65,
+    "middle": 1.65,
+    "shallow": 0.58
+  },
+  "layer_llh_definition": {
+    "deep_middle": [
+      1.25,
+      1.25,
+      2.5
+    ],
+    "shallow": [
+      0.5,
+      0.5,
+      0.75
+    ]
+  },
+  "shared_inputs": [
+    "single collated batch",
+    "geo features",
+    "initial latent"
+  ],
+  "condition_vae_seed_reset_per_method": true
+}

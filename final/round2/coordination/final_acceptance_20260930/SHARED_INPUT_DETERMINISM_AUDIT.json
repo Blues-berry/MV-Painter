@@ -1,0 +1,43 @@
+{
+  "SHARED_INPUT_AUDIT": "PASS",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "cross_method_mismatches_within_process": 0,
+  "cross_process_mismatches": 0,
+  "design": "10 strict-276 objects x 5 methods, full input-pipeline SHA-256, two separate processes",
+  "initial_latent": {
+    "cpu_sha256": "aca807638627956ff9d51ebdb953c9f2ef5782b0dc2c1d8bfc7e25ff007f7b10",
+    "gpu_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd"
+  },
+  "methods": [
+    "global_fixed_low",
+    "global_c3",
+    "layer_fixed_mean",
+    "layer_lhl",
+    "layer_llh"
+  ],
+  "object_list_sha256": "a6aa8ab6e475763e1b5e67dc8c712ec8f1940e3952d65897c820887554bbd044",
+  "object_sample_indices": [
+    11,
+    25,
+    113,
+    141,
+    157,
+    207,
+    214,
+    236,
+    239,
+    256
+  ],
+  "raw_pass_files": [
+    "SHARED_INPUT_DETERMINISM_AUDIT.pass1.json",
+    "SHARED_INPUT_DETERMINISM_AUDIT.pass2.json"
+  ],
+  "rows": 50,
+  "schedule_record": {
+    "init_noise_sigma": 25.146116256713867,
+    "sigmas_sha256": "7faef71ea7b80ca8022d15f2bddef0586859c449eb286d10dc57bef12d006bc1",
+    "steps": 50,
+    "timesteps_sha256": "79a41694581e64189868038bde5ba5f85515f3ad3af29cd44ed05505b022b394"
+  },
+  "seed_rule": "object_seed = 42 + obj_idx (random/np/torch), latent seed 42"
+}

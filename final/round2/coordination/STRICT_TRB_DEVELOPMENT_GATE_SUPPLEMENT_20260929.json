@@ -1,0 +1,126 @@
+{
+  "TRB_TCAS": {
+    "artifact": "/4T/tmp/mvpainter-adaptive-control/outputs/trb_clean_v2_dev24_seed42_lpips_r1/pilot_results.json",
+    "protocol": "strict-trb-development-v2",
+    "method": "TRB_TCAS",
+    "checks": {
+      "num_objects": true,
+      "method_rows": true,
+      "primary_metric_present": true,
+      "timing_present": true,
+      "calibration_records": true,
+      "forward_steps": true
+    },
+    "summary": {
+      "n": 24,
+      "fg_ssim": 0.5901962282756964,
+      "edge_ssim": 0.5949558739860853,
+      "fg_lpips": 0.13488954647133747,
+      "psnr": 22.699790745973587,
+      "fg_lap_var": 0.00882705052693685,
+      "fg_lap_corr": 0.14288327776982138,
+      "fg_mae": 0.5598272650192181,
+      "excess_hf_mean": 0.00601516501531781,
+      "inference_seconds_mean": 6.260163804681118,
+      "controller_total_seconds_mean": 12.34228548706839
+    },
+    "comparisons": {
+      "fixed_low": {
+        "n": 24,
+        "mean_delta_method_minus_comparator": -0.005508459794024627,
+        "ci95": [
+          -0.00782967401513209,
+          -0.003390914605309566
+        ],
+        "win_rate_favoring_method": 0.8333333333333334,
+        "lower_is_better": true
+      },
+      "C3_TCAS": {
+        "n": 24,
+        "mean_delta_method_minus_comparator": 0.0013023456558585167,
+        "ci95": [
+          9.162233521540959e-05,
+          0.002537659447019298
+        ],
+        "win_rate_favoring_method": 0.4166666666666667,
+        "lower_is_better": true
+      }
+    },
+    "primary_gate": {
+      "rule": "primary FG-LPIPS CI must be strictly below zero versus both fixed_low and C3_TCAS",
+      "comparators": [
+        "fixed_low",
+        "C3_TCAS"
+      ],
+      "passed": false
+    },
+    "decision": "do_not_promote",
+    "source_sha256": "f579098dafcdd9b8b20c19fa565825b5e559d495754980dfb8507e9b33f9a739",
+    "bootstrap_seed_offsets": {
+      "fixed_low": 0,
+      "C3_TCAS": 1000
+    }
+  },
+  "TRB2_TCAS": {
+    "artifact": "/4T/tmp/mvpainter-adaptive-control/outputs/trb2_clean_v2_dev24_seed42/pilot_results.json",
+    "protocol": "strict-trb-development-v2",
+    "method": "TRB2_TCAS",
+    "checks": {
+      "num_objects": true,
+      "method_rows": true,
+      "primary_metric_present": true,
+      "timing_present": true,
+      "calibration_records": true,
+      "forward_steps": true
+    },
+    "summary": {
+      "n": 24,
+      "fg_ssim": 0.5910205195347468,
+      "edge_ssim": 0.5953956345717112,
+      "fg_lpips": 0.13354230299592018,
+      "psnr": 22.87149305144946,
+      "fg_lap_var": 0.00851207971572876,
+      "fg_lap_corr": 0.1393158525849382,
+      "fg_mae": 0.5450400995711485,
+      "excess_hf_mean": 0.005816585432815676,
+      "inference_seconds_mean": 7.074035940667575,
+      "controller_total_seconds_mean": 13.908762006501396
+    },
+    "comparisons": {
+      "fixed_low": {
+        "n": 24,
+        "mean_delta_method_minus_comparator": -0.006855703269441922,
+        "ci95": [
+          -0.009789806130963067,
+          -0.0041253194057693085
+        ],
+        "win_rate_favoring_method": 0.875,
+        "lower_is_better": true
+      },
+      "C3_TCAS": {
+        "n": 24,
+        "mean_delta_method_minus_comparator": -4.4897819558779396e-05,
+        "ci95": [
+          -0.0008267936296761036,
+          0.0006703686589996016
+        ],
+        "win_rate_favoring_method": 0.4583333333333333,
+        "lower_is_better": true
+      }
+    },
+    "primary_gate": {
+      "rule": "primary FG-LPIPS CI must be strictly below zero versus both fixed_low and C3_TCAS",
+      "comparators": [
+        "fixed_low",
+        "C3_TCAS"
+      ],
+      "passed": false
+    },
+    "decision": "do_not_promote",
+    "source_sha256": "c576a7b943da420cf400434c05b1d09bc743be009e89a6c90ec73391610b6a68",
+    "bootstrap_seed_offsets": {
+      "fixed_low": 0,
+      "C3_TCAS": 0
+    }
+  }
+}

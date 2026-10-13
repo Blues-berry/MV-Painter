@@ -1,0 +1,92 @@
+{
+  "status": "EXECUTION_LOCKED",
+  "scope": "Post-B fixed static-factor intervention on E1 48 objects; not new independent-object confirmation",
+  "profiles": {
+    "F00": {
+      "deep": 1.25,
+      "middle": 1.25,
+      "shallow": 0.5
+    },
+    "F01": {
+      "deep": 1.25,
+      "middle": 1.25,
+      "shallow": 0.8
+    },
+    "F10": {
+      "deep": 1.675,
+      "middle": 1.675,
+      "shallow": 0.5
+    },
+    "F11": {
+      "deep": 1.675,
+      "middle": 1.675,
+      "shallow": 0.8
+    }
+  },
+  "steps": 50,
+  "temporal_variation": false,
+  "generation_seeds": [
+    42,
+    43,
+    44
+  ],
+  "factor_effects": {
+    "deep_middle": "0.5*((F10-F00)+(F11-F01))",
+    "shallow": "0.5*((F01-F00)+(F11-F10))",
+    "interaction": "(F11-F10)-(F01-F00)"
+  },
+  "unit": "object; average paired effect across fixed three seeds first",
+  "primary": "fg_lpips",
+  "secondary": "fg_psnr",
+  "families": "three fixed tests per endpoint; Holm separately",
+  "limits": "No equal-realized-dose claim; deep/middle moved together; no winner selection",
+  "formal_total_rows": 576,
+  "new_rows_if_seed42_F00_F01_reuse_verified": 480,
+  "dependencies": [
+    "E1 multi-seed integrity PASS",
+    "2-object four-profile technical preflight PASS",
+    "F00/F01 seed-42 aliases match official B predictions and effective traces",
+    "synthetic additive/null/injected interaction and order-invariance checks PASS",
+    "design hash pinned into runner before formal output generation"
+  ],
+  "do_not_run_until_dependencies_pass": false,
+  "run_wrapper_sha256_current": null,
+  "row_accounting": {
+    "logical_rows": 576,
+    "new_rows": 480,
+    "reused_seed42_rows": 96,
+    "objects": 48,
+    "profiles_per_seed": 4,
+    "generation_seeds": [
+      42,
+      43,
+      44
+    ],
+    "new_seed42_profiles": [
+      "F10",
+      "F11"
+    ]
+  },
+  "inference": {
+    "unit": "object; average paired factor contrast across the three fixed generation seeds within object first",
+    "bootstrap_draws": 10000,
+    "bootstrap_rng_seed": 20261006,
+    "test": "two-sided centered object bootstrap for mean factor contrast",
+    "interval": "percentile object-bootstrap 95% CI",
+    "multiplicity": "Holm over three factor tests within each metric; endpoints analyzed separately",
+    "seed_level_results": "descriptive only; no random-seed population CI",
+    "simple_contrasts": "descriptive only; no multiplicity-adjusted inference"
+  },
+  "claim_scope": [
+    "Post-B sensitivity on the frozen 48-object subset, not independent-object confirmation.",
+    "Deep and middle adapter scales move together; no separate deep-versus-middle attribution.",
+    "Static 50-step requested scales; no equal-realized-dose or causal dose-normalization claim.",
+    "No winner selection or profile tuning after this execution lock."
+  ],
+  "dependency_gate_files": {
+    "multiseed_integrity": "MULTISEED_INTEGRITY_GATE.json",
+    "static_pilot": "STATIC_PILOT_GATE.json",
+    "seed42_aliases": "STATIC_SEED42_REUSE_GATE.json"
+  },
+  "runner_hash_recorded_in": "STATIC_EXECUTION_LOCK.json"
+}

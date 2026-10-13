@@ -1,0 +1,27 @@
+{
+  "status": "NOT_EQUIVALENT_NATIVE_SCALE_PATH",
+  "source_path": "/4T/CXY/MV-Painter/MVPainter/mvpainter/model_unet_geotex.py",
+  "source_sha256": "b6464225ce367e4140d56588ea805921caa1c53bf217898a6a7b05a8e11c13d0",
+  "groups": [
+    {
+      "group": "deep",
+      "default_applied_scale": 1.0,
+      "explicit_one_applied_scale": 1.0,
+      "outputs_exact": true
+    },
+    {
+      "group": "middle",
+      "default_applied_scale": 1.0,
+      "explicit_one_applied_scale": 1.0,
+      "outputs_exact": true
+    },
+    {
+      "group": "shallow",
+      "default_applied_scale": 1.0,
+      "explicit_one_applied_scale": 0.800000011920929,
+      "outputs_exact": false
+    }
+  ],
+  "test_domain": "actual wrapper forward with a synthetic unit correction; not full generated-image comparison",
+  "consequence": "native_default_1x stored GeoTex condition is a constant requested scale 1.0 under native caps; label Constant 1.0 (capped), never unmodified pipeline"
+}

@@ -1,0 +1,147 @@
+{
+ "loss_profile": {
+  "n": 34,
+  "mean_loss_delta_fg_psnr": -1.1723,
+  "mean_crop_area": 0.925,
+  "mean_gt_lap_var": 0.0284,
+  "mean_gt_rgb_std": 0.0599,
+  "mean_gfl_baseline_fg_psnr": 11.9562
+ },
+ "win_profile": {
+  "n": 242,
+  "mean_loss_delta_fg_psnr": 3.8648,
+  "mean_crop_area": 0.9489,
+  "mean_gt_lap_var": 0.0099,
+  "mean_gt_rgb_std": 0.0293,
+  "mean_gfl_baseline_fg_psnr": 10.5586
+ },
+ "realization_stability": {
+  "losses_checked": 34,
+  "also_loss_at_R1": 32,
+  "fraction": 0.941,
+  "objects_also_loss_R1": [
+   "obj_0027",
+   "obj_0062",
+   "obj_0069",
+   "obj_0080",
+   "obj_0086",
+   "obj_0096",
+   "obj_0106",
+   "obj_0124",
+   "obj_0128",
+   "obj_0131",
+   "obj_0137",
+   "obj_0155",
+   "obj_0158",
+   "obj_0168",
+   "obj_0169",
+   "obj_0172",
+   "obj_0176",
+   "obj_0178",
+   "obj_0179",
+   "obj_0188",
+   "obj_0193",
+   "obj_0202",
+   "obj_0204",
+   "obj_0208",
+   "obj_0210",
+   "obj_0226",
+   "obj_0227",
+   "obj_0234",
+   "obj_0257",
+   "obj_0265",
+   "obj_0266",
+   "obj_0271"
+  ]
+ },
+ "realization_stability_wins": {
+  "wins_checked": 242,
+  "also_win_at_R1": 239
+ },
+ "schedule_consistency": {
+  "also_loss_under_LHL": 32,
+  "also_loss_under_LFM": 30,
+  "losses_also_worse_than_LHL": 13,
+  "losses_also_worse_than_LFM": 23
+ },
+ "metric_signature_on_losses": {
+  "full_psnr": {
+   "mean": -0.6323,
+   "also_lose": 26,
+   "n": 34
+  },
+  "fg_ssim": {
+   "mean": 0.0066,
+   "also_lose": 17,
+   "n": 34
+  },
+  "full_ssim": {
+   "mean": -0.0021,
+   "also_lose": 21,
+   "n": 34
+  },
+  "edge_ssim": {
+   "mean": -0.0049,
+   "also_lose": 22,
+   "n": 34
+  },
+  "fg_lpips": {
+   "mean": 0.0055,
+   "also_lose": 12,
+   "n": 34
+  },
+  "full_lpips": {
+   "mean": -0.0118,
+   "also_lose": 30,
+   "n": 34
+  }
+ },
+ "rgb_std_ratio_pred_over_gt": {
+  "losses_LLH": 3.1828,
+  "losses_GFL": 3.4195,
+  "wins_LLH": 14.5162,
+  "wins_GFL": 14.9496
+ },
+ "lap_var_ratio_pred_over_gt": {
+  "losses_LLH": 0.4697,
+  "losses_GFL": 1.0471,
+  "wins_LLH": 1.6054,
+  "wins_GFL": 4.021
+ },
+ "loss_objects_sorted": [
+  "obj_0106",
+  "obj_0062",
+  "obj_0124",
+  "obj_0086",
+  "obj_0027",
+  "obj_0178",
+  "obj_0080",
+  "obj_0208",
+  "obj_0096",
+  "obj_0266",
+  "obj_0204",
+  "obj_0227",
+  "obj_0176",
+  "obj_0131",
+  "obj_0265",
+  "obj_0226",
+  "obj_0210",
+  "obj_0172",
+  "obj_0168",
+  "obj_0271",
+  "obj_0188",
+  "obj_0158",
+  "obj_0234",
+  "obj_0169",
+  "obj_0257",
+  "obj_0128",
+  "obj_0202",
+  "obj_0114",
+  "obj_0179",
+  "obj_0155",
+  "obj_0123",
+  "obj_0137",
+  "obj_0193",
+  "obj_0069"
+ ]
+}

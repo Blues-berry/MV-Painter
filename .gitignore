@@ -69,8 +69,8 @@ ossutil_output
 # Tensorboard events
 events.out.tfevents*
 
-# Paper (keep locally in final/, do not upload to GitHub)
-final/
+# Paper and submission packages
+final/*
 
 # Reproducible paper sources and review PDFs live under 1008/.
 # Keep generated TeX intermediates out of Git without ignoring source PDFs or figures.
@@ -84,6 +84,9 @@ final/
 # Local experiment outputs: retain protocols, source code, small summary tables,
 # and explicitly selected paper figures; do not track regenerable per-object assets.
 **/residual_logs/
+!/1014_counterfactual_control_research/generation/residual_logs/
+!/1014_counterfactual_control_research/generation/residual_logs/**
+/1014_counterfactual_control_research/bake/**/*.glb
 **/predictions/
 **/visualizations/
 **/tensorboard/
@@ -99,3 +102,38 @@ final/
 
 # Archive
 archive/
+archive2.0/
+archive3.0/*
+!archive3.0/README.md
+
+# Keep distinct manuscript and supplement TeX/PDF versions in submission_versions/.
+# Ignore the surrounding submission bundles, generated assets, and package metadata.
+/1008/**/*.zip
+/1008/**/*.mp4
+/1008/**/*.glb
+/final/round2/scientific_validation_v3/bake_handoff/**/*.glb
+/1014finalv1/
+/final_paper_20261012/
+/final/submission_new_0907/
+/final/revision/response_letter_new0907.md
+/01549_BASELINE_BACKUP_20261008/submission_package/
+/archive_workspace_0907/submissions/
+/archive_workspace_0907/submissions revise.zip
+/CG_revision_*/delivery_*/
+/CG_revision_*/manuscript/
+/CG_revision_*/source_01549/
+/CG_revision_*/Reproduction_inherited_*.zip
+/1008/manuscript/iterations/**/submission_package/
+/1008/submission_1008/
+/final_candidate_20261013/
+/01549_revision_workspace/work/
+/1006/manuscript/
+/CG_revision_*/review/Response_to_Reviewers*
+/CG_revision_*/review/build/
+
+# submission_versions contains only manuscript/supplement TeX and PDF snapshots.
+/submission_versions/**
+!/submission_versions/**/
+!/submission_versions/**/*.tex
+!/submission_versions/**/*.pdf
+/FINAL_CANDIDATE_20261013/

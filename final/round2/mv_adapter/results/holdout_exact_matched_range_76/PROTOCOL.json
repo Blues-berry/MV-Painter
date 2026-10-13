@@ -1,0 +1,34 @@
+{
+  "protocol_label": "matched-scale-range-follow-up-v1",
+  "status": "pre_registered_before_run",
+  "interpretation": "Targeted follow-up analysis; not part of the originally frozen five-condition confirmatory holdout.",
+  "split": "obj_0024-obj_0099",
+  "object_count": 76,
+  "geometry_source": "exact_mesh",
+  "low": 0.75,
+  "high": 1.0,
+  "new_schedules": ["linear_warmup", "cosine_bump"],
+  "schedule_definitions": {
+    "linear_warmup": "0.75 + (1.00 - 0.75) * progress",
+    "cosine_bump": "0.75 + (1.00 - 0.75) * sin(pi * progress)"
+  },
+  "reused_schedules": {
+    "no_geometry": "reuse exact holdout output; schedule is constant 0.0 and independent of high",
+    "fixed_low": "reuse exact holdout output; schedule is constant low=0.75 and independent of high",
+    "fixed_1.0": "reuse exact holdout output; schedule is constant 1.0 and independent of low/high"
+  },
+  "seed": 20260928,
+  "inference_steps": 50,
+  "reference_image_and_geometry_conditioning": "same as holdout_exact_76",
+  "runner_sha256": "ac29e58c7c8efa1d95799cb2d02b59f34941252a151ff7ce16524d7791a1f6a3",
+  "geometry_scale_sha256": "a89f15042696b06a1e8fb5196fc7da2cd816cbf1cc94f49c880edf6188edcde4",
+  "manifest_sha256": "d256c9327d35c26dbcab4dc0cb30d1cffb7802e27827d9950763529df0211db5",
+  "model_provenance": "final/round2/mv_adapter/BASE_MODEL_VERIFICATION.json",
+  "bootstrap": {
+    "unit": "object",
+    "resamples": 10000,
+    "seed": 20260928,
+    "confidence": 0.95,
+    "planned_comparators": ["no_geometry", "fixed_low", "fixed_1.0", "LHL"]
+  }
+}

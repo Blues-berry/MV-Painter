@@ -1,0 +1,362 @@
+{
+  "status": "CONFIRMATION64_COHORT_FROZEN_BEFORE_GENERATION",
+  "source_audit": "CANDIDATE_EXPOSURE_AUDIT_STAGE02.json",
+  "eligible_sha256": "d942a0e73e60119d00e33b79a98b24a75060f4bec3c7cbe1d23b53b138b3ff41",
+  "uids": [
+    "2c4ed9b0c68945e8bedd004c832c1e8d",
+    "2d8da64ae6734d0ca08eba1a011a03f3",
+    "2e63042e5da54bd1ab9a122ad3b987b9",
+    "2e8e044c740b43438b68da67cfafcae4",
+    "2f622128d566435a97564781735e0ab4",
+    "2fe417ae929f45d790093c1676306578",
+    "304eb0d8c95347d3b89423e74e62d412",
+    "30ddfb8dabbb43798be21a39f8f4a94c",
+    "32d71367c1ff421ca80fe121723b1fc0",
+    "35e3c1c992dd4e7c9677a341a66db6bf",
+    "3661f48408244f45b656921908b5fae6",
+    "38333a4335704ccfaadbe323c25a2efb",
+    "3a352abda1a44dee95087895b8ff9c8f",
+    "3b4d51128238447ea0339aca6f399781",
+    "3d1b3900ca954de9a2dfdfacca269b6d",
+    "3d72fed5fd38452eadb433b1ce695576",
+    "3e632b0a45e047259c7fa23ce8c3e3df",
+    "3f0c24f89e3e4b33ba50193e8bd77af3",
+    "3fef443e20504e0b8a6b9f94a8602780",
+    "40f3398b639c4b91a227fec856c7b35b",
+    "427a94c8194947fba076c385e2c49206",
+    "433a1d5bd31b4fa9903e306baab9f47b",
+    "4434ef5d4b8a4cc4b794ce346f4e0738",
+    "45309185ade64afbb91137b044b74bc5",
+    "46faf219f586448b903d8159b34822dc",
+    "488fe4f896084c1487944db923b54cea",
+    "48aa625f11df47b68588bc3f476a3cb1",
+    "49efa66f7e9c417994962e7671c89651",
+    "4ba7a33962534f079c555fc2902a8e48",
+    "4c3bdb0ce75347cca71006a36e189db2",
+    "4dc762ee5d764b19a4de8a7a3e8b0db9",
+    "511a346d65294b57b5024391f5547bb5",
+    "549eb243dfe24f029d053e8c420dddbd",
+    "54aa675a07144da683002dee3ad39eb5",
+    "54d5dd1c7c00466fbad50ec144fd8f42",
+    "56fba0847d1548f88e0d2fb8a7237871",
+    "57e0be4f860d42b0a0d7fd9257b4e356",
+    "588f047dc97646799452243e6f17bd60",
+    "5b957a4f1e6f403ab6eca5699777a1d4",
+    "5be90c2562ef450fa2c994369ceb5480",
+    "5c0dcbb8e7f74b33aaaf0f4a60d89cf8",
+    "5c381426fc614e72bf4062d8295f906b",
+    "5c3d28ca34a64fd8bae069ab4677e310",
+    "5df3586e9c034d5a8996f80f75e775bf",
+    "6088ed94509a49cca546f0686bea139b",
+    "61147d45fa974cf1b9dde544ad1c3868",
+    "614ce9a2b7c54beea6a8d411ec5bd9d4",
+    "62a9ef09a0814f578b50f5eb5947eb01",
+    "63ae895edb69438092d12afbcce3f924",
+    "65134f2a5c8241ff85e62c70af011ca1",
+    "678ed83880ba4aa3b16873f9aa118d8f",
+    "6f0d830323d14492bd96ae9848fbe8c4",
+    "6f975796e1a1490d8dd43be0017b179a",
+    "701daa128b9b4a5890e3f3b116f446de",
+    "71090c13923441ee8a056628f45c69a6",
+    "7122310d061344f9978eebf294bc4ccf",
+    "71878fdedeb340858fece0b8d2cc8f45",
+    "7384f32939ee4fedaa1029f2b7978e70",
+    "752954ca57af4f3e89c890dda630aa6d",
+    "75dc5d1d60c94d19966a9e67bb78aeda",
+    "7858c0e606b442a7b3f50b823fd9703e",
+    "78efa1a5d15a4c8984233d33029e46e3",
+    "7908c9b3b5ea4ee1bbf87260c27334bc",
+    "7b4dd5fa121a4021875d9b72c7aa52c8"
+  ],
+  "seeds": [
+    42,
+    2026,
+    31415
+  ],
+  "steps": 50,
+  "cfg": 2.0,
+  "conditions": [
+    "native",
+    "grid_projection",
+    "view_projection",
+    "interaction_projection"
+  ],
+  "primary_comparisons": [
+    [
+      "view_projection",
+      "native",
+      "source",
+      "fg_psnr"
+    ],
+    [
+      "view_projection",
+      "native",
+      "source",
+      "ciede2000"
+    ]
+  ],
+  "primary_family_correction": "Holm2",
+  "secondary": "nonreference non-inferiority + remaining projections, descriptive; no winner selection beyond primaries",
+  "interval": "paired object bootstrap 20000 seed 20261010 95 percent percentile; objects equally weighted; seeds nested",
+  "test": "two-sided paired sign-flip mean; MonteCarlo 200000 seed 20261010 plus-one for N=64",
+  "cohort_selection": "first 64 of eligible_uids in frozen audit order; no output-based selection",
+  "exposure_caveat": "Fresh C objects have earlier research exposure; not globally unseen; documented in response",
+  "targets": [
+    {
+      "uid": "2c4ed9b0c68945e8bedd004c832c1e8d",
+      "target_tensor_hash": "376a246481e59ca991d89a1539bd638b07fcc51ea790d2a7a55da51ebbad4506"
+    },
+    {
+      "uid": "2d8da64ae6734d0ca08eba1a011a03f3",
+      "target_tensor_hash": "e8a77842fb76be65b75ed0b421fd675b29321e05f9786c1a2d9e02c0d80d9fb0"
+    },
+    {
+      "uid": "2e63042e5da54bd1ab9a122ad3b987b9",
+      "target_tensor_hash": "2b408d1813038502eac200fb4f1fe8d4759966a0aec2d117808446a0cb6a42f5"
+    },
+    {
+      "uid": "2e8e044c740b43438b68da67cfafcae4",
+      "target_tensor_hash": "adc13656cdec31253b14c0a6e1feee7bdc5245dcf29a866d50060bb49fb76423"
+    },
+    {
+      "uid": "2f622128d566435a97564781735e0ab4",
+      "target_tensor_hash": "ac798e0a8293da67091ac5fc39a2d616d6f473885937fb54235595caebec9274"
+    },
+    {
+      "uid": "2fe417ae929f45d790093c1676306578",
+      "target_tensor_hash": "08cc05546ccaad93bbfc764d15d4bece7a73b9f3a03274f3e182265bff5b3eb8"
+    },
+    {
+      "uid": "304eb0d8c95347d3b89423e74e62d412",
+      "target_tensor_hash": "c555747ae553db78c460ff4cc27dd47cd6fa28e0b8dde0275646d6c196995f54"
+    },
+    {
+      "uid": "30ddfb8dabbb43798be21a39f8f4a94c",
+      "target_tensor_hash": "63d1bdf940e4a58b043fe39488d188b7da71fc9e277845929b40d90ad1f274f2"
+    },
+    {
+      "uid": "32d71367c1ff421ca80fe121723b1fc0",
+      "target_tensor_hash": "5cb8ffcc78d07e943cb0040ce462f91e66439d6d5430416418bbfd8d32c128c0"
+    },
+    {
+      "uid": "35e3c1c992dd4e7c9677a341a66db6bf",
+      "target_tensor_hash": "74a26e7197aa40360a2e234b85bd7c3dcbd451ebb8d8eb197096ef2ad93705cc"
+    },
+    {
+      "uid": "3661f48408244f45b656921908b5fae6",
+      "target_tensor_hash": "a4bd1c7abcc458549366c2c2fe9c8f96b8c2d7ea238ccb741b95b80b6d977f77"
+    },
+    {
+      "uid": "38333a4335704ccfaadbe323c25a2efb",
+      "target_tensor_hash": "77ff194bbcf33a44cea470bc21b6e7a6a14f30eb8c9a1d94f1065eec35ef9871"
+    },
+    {
+      "uid": "3a352abda1a44dee95087895b8ff9c8f",
+      "target_tensor_hash": "d6cf3b10dac722f2f073443c3ffa5e2f84266a4ef20589cf1a4b5e58c6007a2e"
+    },
+    {
+      "uid": "3b4d51128238447ea0339aca6f399781",
+      "target_tensor_hash": "e4a9f3a2c816a0ea9eb86ad68ddac459f3df7cb60d88c32bef6a9b8f2d2ad7f1"
+    },
+    {
+      "uid": "3d1b3900ca954de9a2dfdfacca269b6d",
+      "target_tensor_hash": "3324f79a124f064fe27e10111580d03bc8871486e1d0eb37826fa2b60f5c2fc4"
+    },
+    {
+      "uid": "3d72fed5fd38452eadb433b1ce695576",
+      "target_tensor_hash": "8bdc4a60561527989f8542841c0e14dddcdf358f2391000f1a906f5a676ea200"
+    },
+    {
+      "uid": "3e632b0a45e047259c7fa23ce8c3e3df",
+      "target_tensor_hash": "e291f9f179343bfb7f671260083a9fb655d684877212cea78c1ae8da1f6ab23a"
+    },
+    {
+      "uid": "3f0c24f89e3e4b33ba50193e8bd77af3",
+      "target_tensor_hash": "3b5b8c83c9a680979e16196e2627559553dc1e5b7c343bc3457d195b763847f3"
+    },
+    {
+      "uid": "3fef443e20504e0b8a6b9f94a8602780",
+      "target_tensor_hash": "c5b2f7c42ff8a528a225601ea944e3a31456027c9ba23eb221f17cd0df4b5f29"
+    },
+    {
+      "uid": "40f3398b639c4b91a227fec856c7b35b",
+      "target_tensor_hash": "37ba3c1e921d341d53cda0aa1bdd40b3a1fbe9aa219f86d9a2370fe56ceba49d"
+    },
+    {
+      "uid": "427a94c8194947fba076c385e2c49206",
+      "target_tensor_hash": "0ce40fb8bf1a21759c244b529d18382e5eed6ae9e8ff337b2bedc311bb6a2c33"
+    },
+    {
+      "uid": "433a1d5bd31b4fa9903e306baab9f47b",
+      "target_tensor_hash": "27bcfec720372edb286237205c1dacb877b367307399960f4e84395f8ad80148"
+    },
+    {
+      "uid": "4434ef5d4b8a4cc4b794ce346f4e0738",
+      "target_tensor_hash": "f97888c7858042090ecb4ce5aff367991a4e23e2f039770b34e8790d39bb6e6f"
+    },
+    {
+      "uid": "45309185ade64afbb91137b044b74bc5",
+      "target_tensor_hash": "38e1b1f8ff0ff401b921308d7e10b8c3155e7dc1d8b866d4d9e68eaf584b04a0"
+    },
+    {
+      "uid": "46faf219f586448b903d8159b34822dc",
+      "target_tensor_hash": "807c81474c00fa815985f0c44994c56aeeb4b3c3e06c8a56cdb8c3682135a4fa"
+    },
+    {
+      "uid": "488fe4f896084c1487944db923b54cea",
+      "target_tensor_hash": "cfb7b2dad2c4485f5b8717af99f5e1025efc26086c8791dcceed4852fe52a4fc"
+    },
+    {
+      "uid": "48aa625f11df47b68588bc3f476a3cb1",
+      "target_tensor_hash": "d87b5346795b1c0d09750d2b95b25b08f3a1677a3731d73ddf4eebff386dbb7a"
+    },
+    {
+      "uid": "49efa66f7e9c417994962e7671c89651",
+      "target_tensor_hash": "388bb111d4f2c270b65a533caea27f0f0d59f95df3765203af3cca307bebea8b"
+    },
+    {
+      "uid": "4ba7a33962534f079c555fc2902a8e48",
+      "target_tensor_hash": "29bebfb54139bee0a83ffa8d85cd979d8905e32dd461e6b78045b9948d74bb1a"
+    },
+    {
+      "uid": "4c3bdb0ce75347cca71006a36e189db2",
+      "target_tensor_hash": "b167c896390adb5233860968e46b9fbc26e17bec3afd3d5611a358d5737bc01e"
+    },
+    {
+      "uid": "4dc762ee5d764b19a4de8a7a3e8b0db9",
+      "target_tensor_hash": "d3398a21b6b9c1c9a170568a7d44bb8f1c1a975f36b1c171b854cf7689ca64cc"
+    },
+    {
+      "uid": "511a346d65294b57b5024391f5547bb5",
+      "target_tensor_hash": "8c606c01a3f0d11db3ec9f445e8b21f8207dc87124640acdd566dfb3e4fc81f4"
+    },
+    {
+      "uid": "549eb243dfe24f029d053e8c420dddbd",
+      "target_tensor_hash": "8b687b5b55bf9fe2c26e8557a12a6895ca5a985483ed58b099a7f0d50c9376f9"
+    },
+    {
+      "uid": "54aa675a07144da683002dee3ad39eb5",
+      "target_tensor_hash": "34f3ff9a13fa83d07f776a730dbc65b02ae3539bcb2ada5d92086f12247bf627"
+    },
+    {
+      "uid": "54d5dd1c7c00466fbad50ec144fd8f42",
+      "target_tensor_hash": "c286a338748f1de12e59ba89698cc6f4951ccf4a6f90ca681549dafec9c5aacc"
+    },
+    {
+      "uid": "56fba0847d1548f88e0d2fb8a7237871",
+      "target_tensor_hash": "76e1c5a56bf62e753b940edf3a70c54ec61e0ef3f397814ecd96289248c16c76"
+    },
+    {
+      "uid": "57e0be4f860d42b0a0d7fd9257b4e356",
+      "target_tensor_hash": "a0564650111e6f96f396bd98fb8996d23055a999f7538d093c82625d82c3177b"
+    },
+    {
+      "uid": "588f047dc97646799452243e6f17bd60",
+      "target_tensor_hash": "799b2ab09d14fecb573eb38bcf911466f5cbb3893749361ee6acde0d699c7454"
+    },
+    {
+      "uid": "5b957a4f1e6f403ab6eca5699777a1d4",
+      "target_tensor_hash": "e1fcc55446fd6a30367c7628d1b00d068f91a1ce36e0a637c520fd7e4217c6fe"
+    },
+    {
+      "uid": "5be90c2562ef450fa2c994369ceb5480",
+      "target_tensor_hash": "96ed1aed648e0dedeb2709bcca032c1b78d7c28658df49627b7e5930050b5a09"
+    },
+    {
+      "uid": "5c0dcbb8e7f74b33aaaf0f4a60d89cf8",
+      "target_tensor_hash": "86471e8fa0251b260e5c6bfd4c5530bd1163020c5f09f2520d696c489ddc7751"
+    },
+    {
+      "uid": "5c381426fc614e72bf4062d8295f906b",
+      "target_tensor_hash": "1fa3a67941230fe2723f1a5ee280bbc7208c67a50d5f39cc96ecdba60567b5d4"
+    },
+    {
+      "uid": "5c3d28ca34a64fd8bae069ab4677e310",
+      "target_tensor_hash": "8fb88acfb1e1a463a1688649bd229e695c33413d86fc0f1e1ba001f5a4f45743"
+    },
+    {
+      "uid": "5df3586e9c034d5a8996f80f75e775bf",
+      "target_tensor_hash": "61717439950e08a88444bc17e1cc268576d9cc36073bac93399d48088a7c4ff7"
+    },
+    {
+      "uid": "6088ed94509a49cca546f0686bea139b",
+      "target_tensor_hash": "859539687c58b05d1a1b5e39220afb81d781862a0a54eb7c7e4428a39a293191"
+    },
+    {
+      "uid": "61147d45fa974cf1b9dde544ad1c3868",
+      "target_tensor_hash": "6aa6df22065607d5f7c147e92d84699cacff0924ceee21d0707b412cb66338d3"
+    },
+    {
+      "uid": "614ce9a2b7c54beea6a8d411ec5bd9d4",
+      "target_tensor_hash": "8c3610fa6a7e9ce79afe417fd65c43e821350a2b6d950e478e31f7cd5d1b6ff5"
+    },
+    {
+      "uid": "62a9ef09a0814f578b50f5eb5947eb01",
+      "target_tensor_hash": "615b48baefb9406b3b2a6bcf43e1e247b29a0e235f29ade67d5b3bfb388e8ada"
+    },
+    {
+      "uid": "63ae895edb69438092d12afbcce3f924",
+      "target_tensor_hash": "89925c2962b92872dbebbd6d1c6162984098e4f44fa16fa5cafba5c53c0976fd"
+    },
+    {
+      "uid": "65134f2a5c8241ff85e62c70af011ca1",
+      "target_tensor_hash": "ec9ff5b175ba2aea2827c8846441366220556343d6b5367b3467b46be778b9b3"
+    },
+    {
+      "uid": "678ed83880ba4aa3b16873f9aa118d8f",
+      "target_tensor_hash": "e96117ace122f82a90ec6a8776ad65b5438b8e69602cccab8b4002d2045ef5fa"
+    },
+    {
+      "uid": "6f0d830323d14492bd96ae9848fbe8c4",
+      "target_tensor_hash": "18c282a60ab7af9806e3240d6c34da67be40d4884dc935488f4257eee8b64437"
+    },
+    {
+      "uid": "6f975796e1a1490d8dd43be0017b179a",
+      "target_tensor_hash": "a05ddad1e5d2d9c1d17977cda812184987dba12412e8f0db7bdaf6fc39800b94"
+    },
+    {
+      "uid": "701daa128b9b4a5890e3f3b116f446de",
+      "target_tensor_hash": "e6aee85a6c1bc0dfb853fa3fb3b6f76443143e71096c6f8e1553f2821a5a2802"
+    },
+    {
+      "uid": "71090c13923441ee8a056628f45c69a6",
+      "target_tensor_hash": "7c0ece5aef7ef919fb6b0f1c49292cc09e7325434581231d3753dfd30a5ee2ce"
+    },
+    {
+      "uid": "7122310d061344f9978eebf294bc4ccf",
+      "target_tensor_hash": "2adc48cf69298e1a02741a4310d00e42e3f9a205bf2805a5265985ff9caabf19"
+    },
+    {
+      "uid": "71878fdedeb340858fece0b8d2cc8f45",
+      "target_tensor_hash": "21bf0bf545a9c970e938cfcc7c82ee853fb8701e4664f63a9ca2cf6f8bd94eab"
+    },
+    {
+      "uid": "7384f32939ee4fedaa1029f2b7978e70",
+      "target_tensor_hash": "14aeeeb5ad110267013dd354232128ed9d0fe59aa74dee9fd7a6d9ec8ccb42ed"
+    },
+    {
+      "uid": "752954ca57af4f3e89c890dda630aa6d",
+      "target_tensor_hash": "4b9c164d6ebeeaba085e92a09edfb31a890eb4091a3071adcbc7bd56ea4a8ad7"
+    },
+    {
+      "uid": "75dc5d1d60c94d19966a9e67bb78aeda",
+      "target_tensor_hash": "efbdc4dd992089382e58a795c19aaf13dbe18b318c2c5c065549dcc403c9c1dc"
+    },
+    {
+      "uid": "7858c0e606b442a7b3f50b823fd9703e",
+      "target_tensor_hash": "dcd750b2f692112f60a6f45e2ad6a09730f3eef8f3bebde58044a073040ff9c2"
+    },
+    {
+      "uid": "78efa1a5d15a4c8984233d33029e46e3",
+      "target_tensor_hash": "6d85fa28c06e46d7190b457883d1d2c73d8f8320c3cd17630d95a13c1e16892a"
+    },
+    {
+      "uid": "7908c9b3b5ea4ee1bbf87260c27334bc",
+      "target_tensor_hash": "d8bec2cd69f5f955b78cac914f6438ed1c7f67397b181cb0b874709e7f353b33"
+    },
+    {
+      "uid": "7b4dd5fa121a4021875d9b72c7aa52c8",
+      "target_tensor_hash": "f410d1e30b51df848e550bef14cd22e4697846777ed054bba977d33844f535fc"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "COMPLETE",
+  "elapsed_seconds": 6.9461095333099365,
+  "objects_as_analysis_units": 6,
+  "conditions": [
+    "counterfactual_b0",
+    "counterfactual_bplus",
+    "counterfactual_bminus"
+  ],
+  "views_per_object_condition": 6,
+  "metric_source_hashes": {
+    "image_metrics": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/image_metrics.py",
+      "sha256": "ff5fe347036c1a48e478855570128d62e0b4c1fbb44b7486bf93b88100ab55e3"
+    },
+    "mask_ops": {
+      "path": "/4T/CXY/MV-Painter/geotex/metrics/mask_ops.py",
+      "sha256": "47bc0e12cff5ebb1d7fe107e24defb32e2fc98a08b269715f39bafc960d45e3d"
+    },
+    "round2_texture": {
+      "path": "/4T/CXY/MV-Painter/geotex/round2_texture.py",
+      "sha256": "702576c21b02e666aa5b1406920c2fb0098d62f2a4ac5eedfa850942d706dc4f"
+    }
+  },
+  "config_sha256": "295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b",
+  "checkpoint_sha256": "0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0",
+  "metric_csv_sha256": "667b7e47d9420cc8fc80a15085d3e472450e0eac57252cd1a392d399751d2643",
+  "reference_rgb_mae": "foreground masked mean absolute RGB error in [0,1]",
+  "ciede2000": "frozen masked CIEDE2000 implementation, erosion_radius=1",
+  "ground_truth_use": "metrics only; no condition selection or control parameter choice"
+}

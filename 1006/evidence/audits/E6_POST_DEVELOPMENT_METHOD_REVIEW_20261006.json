@@ -1,0 +1,30 @@
+{
+  "status": "STOP_METHOD_DIFFERENCE_AND_DEVELOPMENT_VALUE_GATE",
+  "reviewed_utc": "2026-10-06T10:45:12.234731+00:00",
+  "frozen_quantitative_selection_status": "DEVELOPMENT_QUALIFIED_REQUIRES_NOVELTY_REVIEW",
+  "selected_multiplier": 1.25,
+  "frozen_selection_unchanged": true,
+  "technical_gate": "PASS",
+  "independent_confirmation": false,
+  "fresh_d_launch": false,
+  "scientific_freeze": false,
+  "reason": [
+    "Candidate-specific execution is implemented, but its mathematical ingredients remain native clipping, layerwise reference norm control and an inherited time curve; substantive methodological differentiation is not established.",
+    "Both frozen foreground selection criteria passed. However all 24 object-averaged full-LPIPS differences are unfavorable, and the deterministic first-object visual spot check shows background artifacts. Practical whole-object fidelity value is not established. This is a qualitative final gate decision, not a retroactive modification of the quantitative selection rule."
+  ],
+  "full_lpips": {
+    "mean_delta": 0.1967047339098321,
+    "median_delta": 0.20217724641164145,
+    "favorable_objects": 0,
+    "objects": 24,
+    "range": [
+      0.07032188773155212,
+      0.3073185433944066
+    ]
+  },
+  "sources": {
+    "selection_sha256": "1228390dc0cd17f9a785eda579637837ed1fc5b0127bbb0f340b97f8ea09a39d",
+    "diagnostic_sha256": "4061c74ff61051e1d91a376b630a679fa6cba398758bd66f7f9735fc05b4659c"
+  },
+  "next_action": "Archive candidate without retuning; finish unchanged Fresh C; use C3 controlled empirical framing and explicitly reassess R2.1 submission fit. Any later method requires a separately approved prospective plan; do not rename this stopped candidate."
+}

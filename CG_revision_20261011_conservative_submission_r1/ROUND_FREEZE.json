@@ -1,0 +1,88 @@
+{
+  "version": "conservative_submission_r1",
+  "frozen_at_utc": "2026-10-11T13:19:34+00:00",
+  "parent": "/4T/CXY/MV-Painter/CG_revision_20261011_conservative_visuals",
+  "parent_file_count": 194,
+  "parent_sha256_all_unchanged": true,
+  "protected_file_count": 29,
+  "protected_manuscript_hashes_unchanged": true,
+  "no_new_model_outputs_training_or_schedule_search": true,
+  "source_archive_sha256": "7d34e09b6978d64368440a03266fb3e16822cd345160a9e514742e2829cc7273",
+  "source_archive_rebuild_status": "PASS",
+  "source_archive_rebuild_total_pages": 71,
+  "validation_status": "PASS",
+  "pdf_pages": {
+    "clean": 15,
+    "marked": 16,
+    "supplement": 36,
+    "review_response": 4
+  },
+  "historical_0_96_db_main_occurrences": 1,
+  "fresh_c_primary": "C3 minus Fixed Low foreground FG-PSNR; separate checkpoint and UID-disjoint cohort",
+  "figure8_cases": [
+    {
+      "uid": "06fa4974f8cd4d4ea792e98fa1521457",
+      "title": "Cube 01",
+      "composite_delta": {
+        "fg_psnr": 1.7932713031768799,
+        "fg_lpips": -0.02429625391960144,
+        "fg_ssim": 0.18512088060379028,
+        "edge_ssim": -0.0033220648765563965
+      },
+      "view0_delta": {
+        "fg_psnr": 1.8168902397155762,
+        "fg_lpips": -0.019341319799423218,
+        "fg_ssim": 0.20728597044944763
+      }
+    },
+    {
+      "uid": "f6979d7ff8e54c4daf00fee46f09a139",
+      "title": "E5-5-2",
+      "composite_delta": {
+        "fg_psnr": 1.2649106979370117,
+        "fg_lpips": -0.03270834684371948,
+        "fg_ssim": 0.16150027513504028,
+        "edge_ssim": 0.024089574813842773
+      },
+      "view0_delta": {
+        "fg_psnr": 1.8208825588226318,
+        "fg_lpips": -0.025233030319213867,
+        "fg_ssim": 0.18654486536979675
+      }
+    }
+  ],
+  "video": {
+    "sha256": "6191b81e6336c6be62fcd8962a33f1e84245667b68ae6346be2815da1d9502a3",
+    "full_decode_passed": true,
+    "duration_seconds": 22
+  },
+  "artifact_sha256": {
+    "clean_pdf": "dde83b7bc2eab4bae25a2a86024dec621f6047465f58d5b61ed9252e88a2c763",
+    "clean_tex": "32b3b2e1a0e237da9f1014f2345ad14a6a2cf62a2649aa8eb343d4a5630ea738",
+    "marked_pdf": "5ce6f2690d6213fae34ac3334ad60468e39fded78da5377afd1e94557f40e657",
+    "marked_tex": "9d7092ab2e2ca3e79864806342b72dca4f26983517c8eb278e6ac0784949b68d",
+    "supplement_pdf": "475ea53a0baf47b5f0bf13a3ccba8a9b7c0219e8b60d432be72067f3608e9a16",
+    "supplement_tex": "180907ec6f70c96f6f5ec39e2138300fac424676386aa4fe2f68c1d4378073cc",
+    "response_pdf": "49017c7ee93f1cf01538089c4a50c53fdf29f6c25a4dead9862241671b1fbdb1",
+    "response_tex": "94024c29d2c7538fcaf3643c4a4472695b9d423b5b129f1e5c32af9e7fd39d0c",
+    "response_docx": "4f3e0fae32ccd5b85205e5653ccd3eea1d69f01fbb9facb2efc832e74f8d5ac1",
+    "response_markdown": "bc17ba36cee4fd5bda1c8684da080c0c45610750ad14b1dc0532284cd8050d61",
+    "source_zip": "7d34e09b6978d64368440a03266fb3e16822cd345160a9e514742e2829cc7273",
+    "video": "6191b81e6336c6be62fcd8962a33f1e84245667b68ae6346be2815da1d9502a3",
+    "figure8_png": "ab0ec5bbf1438bd6e75207e967a41cd8204aaf91ea5510e8653e7230f1aa6c65",
+    "figure8_pdf": "f0deeb8d4d44fcf8bae8bdbfbde83317d4a85921ae2f1c003e1be5b88b4370e8",
+    "figure8_provenance": "7abcce42a4ef3d44d8ca19b4ce78a61df51c8ae69e0fbb60c3448728146bdfec",
+    "asset_credits": "19e6dce13e2aecfea0d04a4d6252fd9d83272a2a61a376bc9f27bd3876b44f70",
+    "seed_audit": "14100d0268baa43a978752cbdf15b9c9e5c9c684b6f6b0116bf9afa1163317ff",
+    "parent_snapshot": "86897f4a7607d19c7756af821ca0bbf5622d155c350896ac5c0441606d8d6d67",
+    "protected_manifest": "c546852c587f920b97e3a584d75861244f6832b10a2954b4a7843a41bf5a1418",
+    "validation": "c414be0e9728c264c79fa21d150a9e4c8ce9b9f39c0f70deaa086383bbdbcc60",
+    "independent_rebuild": "122a5006f58c37e3c1e16f77215246e210f35fd647e1e479414831c492023334",
+    "diff_parent": "e482b23500ad998dc947fb5afadd321b043f1a0be076f71f462880372e307d5c",
+    "diff_01549": "2de9ac81b5bb37733895fdd59d741b5c1dcb8e8ad08694fe484bdc076fb39585"
+  },
+  "versioned_change_records": [
+    "Changes_from_parent_conservative_submission_r1.diff",
+    "Changes_from_01549_conservative_submission_r1.diff"
+  ]
+}

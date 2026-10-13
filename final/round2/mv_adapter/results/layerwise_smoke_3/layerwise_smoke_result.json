@@ -1,0 +1,52 @@
+{
+  "audit": "MVADAPTER_LAYERWISE_SMOKE",
+  "verdict": "PASS",
+  "checks": {
+    "rows_present_9": true,
+    "all_metrics_finite": true,
+    "methods_pairwise_distinct": true,
+    "norm_ratios_match_frozen_multipliers": true,
+    "all_views_generated": true
+  },
+  "frozen_multipliers": [
+    0.4195298372513563,
+    1.193490054249548,
+    1.193490054249548,
+    1.193490054249548
+  ],
+  "observed_norm_ratios": [
+    0.41952932500109474,
+    1.193488978006394,
+    1.193489924537051,
+    1.1934905325084035
+  ],
+  "pairwise_png_distinct": {
+    "obj_0024": {
+      "L-FIX_vs_L-LHL": true,
+      "L-FIX_vs_L-LLH": true,
+      "L-LHL_vs_L-LLH": true
+    },
+    "obj_0025": {
+      "L-FIX_vs_L-LHL": true,
+      "L-FIX_vs_L-LLH": true,
+      "L-LHL_vs_L-LLH": true
+    },
+    "obj_0026": {
+      "L-FIX_vs_L-LHL": true,
+      "L-FIX_vs_L-LLH": true,
+      "L-LHL_vs_L-LLH": true
+    }
+  },
+  "finite_by_row": {
+    "obj_0024:L-FIX": true,
+    "obj_0024:L-LHL": true,
+    "obj_0024:L-LLH": true,
+    "obj_0025:L-FIX": true,
+    "obj_0025:L-LHL": true,
+    "obj_0025:L-LLH": true,
+    "obj_0026:L-FIX": true,
+    "obj_0026:L-LHL": true,
+    "obj_0026:L-LLH": true
+  },
+  "note": "technical smoke only; no quality judgment, no tuning permitted"
+}

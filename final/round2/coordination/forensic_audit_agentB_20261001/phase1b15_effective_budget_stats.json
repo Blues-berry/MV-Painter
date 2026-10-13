@@ -1,0 +1,370 @@
+{
+ "effective_scale_table": {
+  "no_adapter": {
+   "deep": {
+    "requested_mean": 0.0,
+    "effective_mean": 0.0,
+    "capped": false,
+    "eff_per_stage": [
+     0,
+     0,
+     0
+    ]
+   },
+   "middle": {
+    "requested_mean": 0.0,
+    "effective_mean": 0.0,
+    "capped": false,
+    "eff_per_stage": [
+     0,
+     0,
+     0
+    ]
+   },
+   "shallow": {
+    "requested_mean": 0.0,
+    "effective_mean": 0.0,
+    "capped": false,
+    "eff_per_stage": [
+     0,
+     0,
+     0
+    ]
+   },
+   "total_effective": 0.0
+  },
+  "global_fixed_low": {
+   "deep": {
+    "requested_mean": 1.25,
+    "effective_mean": 1.25,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     1.25,
+     1.25
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.25,
+    "effective_mean": 1.25,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     1.25,
+     1.25
+    ]
+   },
+   "shallow": {
+    "requested_mean": 1.25,
+    "effective_mean": 0.8,
+    "capped": true,
+    "eff_per_stage": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "total_effective": 3.3
+  },
+  "global_fixed_high": {
+   "deep": {
+    "requested_mean": 2.5,
+    "effective_mean": 2.5,
+    "capped": false,
+    "eff_per_stage": [
+     2.5,
+     2.5,
+     2.5
+    ]
+   },
+   "middle": {
+    "requested_mean": 2.5,
+    "effective_mean": 2.5,
+    "capped": false,
+    "eff_per_stage": [
+     2.5,
+     2.5,
+     2.5
+    ]
+   },
+   "shallow": {
+    "requested_mean": 2.5,
+    "effective_mean": 0.8,
+    "capped": true,
+    "eff_per_stage": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "total_effective": 5.8
+  },
+  "global_fixed_mean": {
+   "deep": {
+    "requested_mean": 1.6667,
+    "effective_mean": 1.6667,
+    "capped": false,
+    "eff_per_stage": [
+     1.667,
+     1.667,
+     1.667
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.6667,
+    "effective_mean": 1.6667,
+    "capped": false,
+    "eff_per_stage": [
+     1.667,
+     1.667,
+     1.667
+    ]
+   },
+   "shallow": {
+    "requested_mean": 1.6667,
+    "effective_mean": 0.8,
+    "capped": true,
+    "eff_per_stage": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "total_effective": 4.1334
+  },
+  "global_c3": {
+   "deep": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     2.5,
+     1.25
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     2.5,
+     1.25
+    ]
+   },
+   "shallow": {
+    "requested_mean": 1.65,
+    "effective_mean": 0.8,
+    "capped": true,
+    "eff_per_stage": [
+     0.8,
+     0.8,
+     0.8
+    ]
+   },
+   "total_effective": 4.1
+  },
+  "layer_llh": {
+   "deep": {
+    "requested_mean": 1.675,
+    "effective_mean": 1.675,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     1.25,
+     2.5
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.675,
+    "effective_mean": 1.675,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     1.25,
+     2.5
+    ]
+   },
+   "shallow": {
+    "requested_mean": 0.585,
+    "effective_mean": 0.585,
+    "capped": false,
+    "eff_per_stage": [
+     0.5,
+     0.5,
+     0.75
+    ]
+   },
+   "total_effective": 3.935
+  },
+  "layer_lhl": {
+   "deep": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     2.5,
+     1.25
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.25,
+     2.5,
+     1.25
+    ]
+   },
+   "shallow": {
+    "requested_mean": 0.58,
+    "effective_mean": 0.58,
+    "capped": false,
+    "eff_per_stage": [
+     0.5,
+     0.75,
+     0.5
+    ]
+   },
+   "total_effective": 3.88
+  },
+  "layer_fixed_mean": {
+   "deep": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.65,
+     1.65,
+     1.65
+    ]
+   },
+   "middle": {
+    "requested_mean": 1.65,
+    "effective_mean": 1.65,
+    "capped": false,
+    "eff_per_stage": [
+     1.65,
+     1.65,
+     1.65
+    ]
+   },
+   "shallow": {
+    "requested_mean": 0.58,
+    "effective_mean": 0.58,
+    "capped": false,
+    "eff_per_stage": [
+     0.58,
+     0.58,
+     0.58
+    ]
+   },
+   "total_effective": 3.88
+  }
+ },
+ "gradient_energy_ratio_pred_over_gt": {
+  "no_adapter(core7)": [
+   0.8897,
+   276
+  ],
+  "global_fixed_high(core7)": [
+   1.1095,
+   276
+  ],
+  "layer_llh(confirmation)": [
+   1.1279,
+   276
+  ],
+  "layer_lhl(confirmation)": [
+   1.2538,
+   276
+  ],
+  "layer_fixed_mean(confirmation)": [
+   1.201,
+   276
+  ],
+  "global_fixed_low(robustness1-R1)": [
+   1.5415,
+   276
+  ]
+ },
+ "llh_minus_layer_fixed_mean": {
+  "fg_psnr": {
+   "mean": 0.875,
+   "median": 0.6097,
+   "wins": 240,
+   "losses": 36
+  },
+  "full_psnr": {
+   "mean": 1.3112,
+   "median": 1.2763,
+   "wins": 275,
+   "losses": 1
+  },
+  "fg_lpips": {
+   "mean": 0.0089,
+   "median": 0.0075,
+   "wins": 258,
+   "losses": 18
+  },
+  "fg_ssim": {
+   "mean": 0.007,
+   "median": 0.0044,
+   "wins": 175,
+   "losses": 101
+  }
+ },
+ "anchors": {
+  "GFM_minus_GFL_fg_psnr (budget +33% deep/mid anchor)": {
+   "mean": -2.3693,
+   "median": -2.7141,
+   "wins": 31,
+   "losses": 245
+  },
+  "GFM_minus_GFL_full_psnr": {
+   "mean": -1.2876,
+   "median": -1.26,
+   "wins": 51,
+   "losses": 225
+  },
+  "LLH_minus_LHL_fg_psnr (temporal pair, LLH +1.5% deep budget)": {
+   "mean": -1.0008,
+   "median": -0.899,
+   "wins": 15,
+   "losses": 261
+  },
+  "LLH_minus_LHL_full_psnr": {
+   "mean": -1.1926,
+   "median": -1.1647,
+   "wins": 0,
+   "losses": 276
+  },
+  "LLH_minus_LHL_fg_lpips": {
+   "mean": -0.011,
+   "median": -0.0106,
+   "wins": 12,
+   "losses": 264
+  },
+  "LLH_minus_LHL_full_ssim": {
+   "mean": -0.0028,
+   "median": -0.0037,
+   "wins": 66,
+   "losses": 210
+  },
+  "LLH_minus_LHL_edge_ssim": {
+   "mean": -0.0203,
+   "median": -0.0203,
+   "wins": 22,
+   "losses": 254
+  },
+  "LLH_minus_GFL_fg_psnr (reference)": {
+   "mean": -3.2443,
+   "median": -3.3657,
+   "wins": 34,
+   "losses": 242
+  }
+ }
+}

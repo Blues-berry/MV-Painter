@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "cohort": "FROZEN_FRESH_C_300",
+  "n_objects": 300,
+  "methods": [
+    "native_gfl",
+    "native_gfh",
+    "no_adapter",
+    "native_gc3",
+    "layer_llh",
+    "gen_linear"
+  ],
+  "rows": 1800,
+  "metrics": [
+    "fg_psnr",
+    "fg_lpips",
+    "fg_ssim",
+    "edge_ssim",
+    "full_psnr",
+    "full_lpips",
+    "full_ssim"
+  ],
+  "ranking_rule": "per-object, per-metric ranking across six method outputs; PSNR/SSIM higher is better, LPIPS lower is better; metrics are not combined",
+  "input_csv_sha256": {
+    "1006/data/fresh_c/runs/c3_confirmation/per_object_metrics.csv": "6967375a66a523beeab2089a9e51fbd68b756f2a07b13439d443078bd4482cd6",
+    "1006/data/fresh_c/runs/revision_era_addendum/per_object_metrics.csv": "c690c8fe87f89463744ef24d702dc3dd1dcf3b1b2f67324a8c174924971ad989"
+  },
+  "output_csv": "1006/figures/strategy_comparison_gallery/fresh_c_final/six_method_complete_object_index.csv",
+  "output_sha256": "266fa1b2113b503ef49084af13fbd57960050593d18ebd7442cf09e4dec09086"
+}

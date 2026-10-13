@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "cohort_n": 300,
+  "conditions": [
+    "gen_linear",
+    "layer_llh"
+  ],
+  "expected_rows": 600,
+  "verified_rows": 600,
+  "shared_input_objects": 300,
+  "verified_output_files": 1200,
+  "cohort_manifest_sha256": "0f2c50f0bcce6678d578bd7ec4e8931e39606045b1b105ccbdae7546556a3859",
+  "input_embeddings_manifest_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+  "primary_integrity_gate_sha256": "8365d846eb8c6fdf208ae3c416f580b69e678b67ff0311d0130e6d4e58abeeac",
+  "combined_csv_sha256": "c690c8fe87f89463744ef24d702dc3dd1dcf3b1b2f67324a8c174924971ad989",
+  "output_hash_manifest_sha256": "ae5458b15ed654bbac590fb475712132f30757c386976a4f564db56fb9e797f4",
+  "status_reason": "same-cohort identity, complete rows, shared inputs, finite metrics, native caps, predictions, and residual logs passed"
+}

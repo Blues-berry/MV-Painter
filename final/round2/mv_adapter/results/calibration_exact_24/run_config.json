@@ -1,0 +1,30 @@
+{
+  "manifest": "final/round2/mv_adapter/data_manifest.json",
+  "base_model": "final/round2/mv_adapter/models/sd21_base",
+  "adapter_path": "final/round2/mv_adapter/models/mv-adapter",
+  "output_dir": "final/round2/mv_adapter/results/calibration_exact_24",
+  "split": "calibration",
+  "geometry_source": "exact",
+  "proxy_manifest": null,
+  "exact_mesh_root": null,
+  "object_ids": null,
+  "device": "cuda:0",
+  "seed": 20260928,
+  "steps": 50,
+  "low": 0.75,
+  "high": 1.5,
+  "schedule": [
+    "fixed_low",
+    "fixed_1.0",
+    "fixed_1.25",
+    "fixed_high",
+    "LLL",
+    "LLH",
+    "LHL",
+    "LHH",
+    "HLL",
+    "HLH",
+    "HHL",
+    "HHH"
+  ]
+}

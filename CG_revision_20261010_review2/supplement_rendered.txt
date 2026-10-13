@@ -1,0 +1,2949 @@
+Supplementary Material for
+Timestep-Conditioned Adapter Scaling for Multi-view Diffusion
+Texture Generation
+Anonymous authors
+
+This supplement supports the revised 01549 manuscript. Fresh C is an image-space comparison on 300
+UIDs disjoint from the original 01549 evaluation/probe IDs, the 1,118-object training list, and clean-v2
+evaluation IDs. Its primary conditions and same-cohort addendum share one frozen adapter checkpoint,
+runner source, seed policy, inputs, target views, and metric implementation; the addendum is not an
+independent replication. Fresh C uses a controlled-retraining checkpoint and is not presented as a numerical
+reproduction of historical Table 4. Historical cohorts and interface checks are reported separately. Object
+is the inferential unit; multiple views and wrapper records do not increase N .
+
+S1. Figure asset credits and selection status
+Main Figures 5–7 use Fresh C reference and method-level RGB outputs in a compact context-plus-sharedROI layout. One selected six-view, seven-condition Boat panel remains in Supplementary Figure S1. The
+selected examples are outcome-ranked illustrations, not a representative sample. Image, checkpoint, run,
+seed, ROI, and output hashes are listed in FRESH_C_FIGURE_SOURCE_ROI_MANIFEST.csv.
+The Fresh C No Adapter condition suppresses geometry-adapter correction. In the MVPainter wrapper,
+when _adapter_scale is unset the geometry residual is applied without a scale multiplier. These are
+different settings: No Adapter is not a rendered comparison against the unmodified native-default adapter
+path. Fresh C contains no separate output for that native-default path, so this part of the R1.1 request
+remains partially unresolved.
+The current rights ledger records the selected Fresh C assets below as CC Attribution (CC BY 4.0),
+with figure use allowed when attributed. The complete credit line for each use is:
+Table S1: Attribution for selected Fresh C assets in main
+Figures 5–7 and Supplementary Figure S1.
+Use
+
+Full attribution
+
+Figure 7(a), C3–GFL Building 03 by Shalmon, via Sketchfab (https://sketchfab.
+endpoint-favourable
+com/3d-models/c76ac44df995482185077da81939b306), licensed
+example
+CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Fresh C target-view RGB outputs are cropped to the same ROI
+and arranged without color or detail adjustment.
+Figure 5(a), C3-versus- Octaèdre
+by
+Segolene
+Delamare,
+via
+Sketchfixed-scale example
+fab
+(https://sketchfab.com/3d-models/
+0571e6db30c84b1593bc55a8e145a430), licensed CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Fresh C
+target-view RGB outputs are cropped to the same ROI and
+arranged without color or detail adjustment.
+
+1
+
+Use
+
+Full attribution
+
+Figure 5(b), Generic Lin- Cube 01 by b0rF4x, via Sketchfab (https://sketchfab.
+ear counterexample
+com/3d-models/06fa4974f8cd4d4ea792e98fa1521457), licensed
+CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Fresh C target-view RGB outputs are cropped to the same ROI
+and arranged without color or detail adjustment.
+Figure 7(b) and Figure Boat
+Low
+Poly
+Game
+Ready
+by
+INinja,
+via
+S1(a), adverse C3–GFL ex- Sketchfab
+(https://sketchfab.com/3d-models/
+ample
+d0e116a62bfc4cdd9edf60671073b306), licensed CC BY 4.0
+(https://creativecommons.org/licenses/by/4.0/). Fresh C
+target-view RGB outputs are cropped to the same ROI and
+arranged without color or detail adjustment.
+Figure 6, selected Fresh C E5-5-2 by artsiyu, via Sketchfab (https://sketchfab.com/
+color/detail illustration
+3d-models/f6979d7ff8e54c4daf00fee46f09a139), licensed CC
+BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+This previously viewed object came from a pre-existing C3–GFL
+FG-LPIPS stratum and was not selected for color.
+
+S2. Complete Fresh C paired image-space statistics
+Table S2 reports the complete seven-endpoint paired results for C3–GFL and each of the three named
+addendum contrasts. The primary C3–GFL FG-PSNR result is unadjusted as the single registered primary
+endpoint. The six registered secondary C3–GFL endpoints use their Holm family. The addendum’s
+FG-PSNR and FG-LPIPS contrasts use the frozen six-test primary family; the other five endpoints per
+contrast use the separate 15-test secondary Core-7 family. All contrasts are mean A-minus-B differences
+with 10,000 object bootstrap resamples and pointwise two-sided percentile 95% CIs. Positive values favour
+A for PSNR/SSIM; negative values favour A for LPIPS. Adjusted p-values are from the frozen analysis
+authority. “A favourable” is the fraction of object-level differences in A’s favourable direction and is
+descriptive.
+Table S2: Complete paired object-level image-space results for the primary C3–
+GFL contrast and the three named same-cohort addendum contrasts. Differences are A minus B; favorable-object percentages respect endpoint direction.
+Endpoint
+
+Mean difference [95% CI]
+
+C3 minus GFL
+FG-PSNR (dB)
+FG-LPIPS
+
++0.522 [+0.404, +0.641]
+-0.005345
+[-0.006326,
+0.004403]
+FG-SSIM
++0.02453
+[+0.02120,
++0.02805]
+Edge-SSIM
++0.004494
+[+0.003411,
++0.005586]
+Full-view
+PSNR +0.271 [+0.170, +0.373]
+(dB)
+Full-view LPIPS
+-0.003880
+[-0.004926,
+0.002873]
+Full-view SSIM
++0.005619
+[+0.004627,
++0.006704]
+C3 minus Generic Linear
+FG-PSNR (dB)
+-0.593 [-0.837, -0.351]
+FG-LPIPS
++0.013512
+[+0.011601,
++0.015487]
+FG-SSIM
+-0.02810 [-0.03197, -0.02439]
+
+2
+
+Median
+
+A favorable Adjusted p
+
++0.555
+-0.004547
+
+68.7%
+71.0%
+
+primary
+3.2 × 10−22
+
++0.02004
+
+84.3%
+
+5.9 × 10−33
+
++0.003613
+
+69.0%
+
+9.4 × 10−14
+
++0.220
+
+59.3%
+
+4 × 10−07
+
+-0.003029
+
+64.3%
+
+8 × 10−13
+
++0.005205
+
+83.0%
+
+7.9 × 10−22
+
++0.074
++0.012229
+
+51.7%
+25.7%
+
+7.2 × 10−06
+1.3 × 10−32
+
+-0.02521
+
+20.0%
+
+2.9 × 10−35
+
+Endpoint
+Edge-SSIM
+
+Mean difference [95% CI]
+
+Full-view SSIM
+
+-0.000897
++0.000862]
++0.000046
++0.001011]
+
+A favorable Adjusted p
+33.7%
+
+1.6 × 10−17
+
+46.7%
+
+2.7 × 10−07
+
+[-0.002578, -0.001307
+
+54.3%
+
+0.611
+
+[-0.000984, +0.001213
+
+57.0%
+
+0.927
+
+-0.153
+-0.010837
+
+46.7%
+75.0%
+
+1.2 × 10−06
+9 × 10−34
+
++0.01307
+
+67.0%
+
+9 × 10−18
+
++0.006741
+
+63.3%
+
+2.3 × 10−13
+
++0.419
+
+59.3%
+
+3.2 × 10−16
+
++0.004538
+
+36.7%
+
+3.5 × 10−08
+
+-0.004563
+
+27.7%
+
+5.9 × 10−20
+
++0.017
++0.000176
+
+52.3%
+46.7%
+
+0.201
+0.000114
+
+-0.00945
+-0.001648
+
+8.0%
+27.3%
+
+2.6 × 10−31
+1.2 × 10−12
+
++0.304
+
+87.3%
+
+2 × 10−47
+
++0.003904
+
+18.0%
+
+1.7 × 10−26
+
+-0.003432
+
+5.7%
+
+8.5 × 10−20
+
+-0.010693
+[-0.013004,
+0.008495]
+PSNR -0.503 [-0.686, -0.322]
+
+Full-view
+(dB)
+Full-view LPIPS
+
+Median
+
+LLH minus C3
+FG-PSNR (dB)
+FG-LPIPS
+
+- -0.008967
+
++0.621 [+0.391, +0.855]
+-0.012140
+[-0.013861,
+0.010480]
+FG-SSIM
++0.01658
+[+0.01311,
++0.02003]
+Edge-SSIM
++0.009033
+[+0.006867,
++0.011296]
+Full-view
+PSNR +0.816 [+0.639, +0.998]
+(dB)
+Full-view LPIPS
++0.004909
+[+0.003266,
++0.006510]
+Full-view SSIM
+-0.004330
+[-0.005176,
+0.003482]
+LLH minus Generic Linear
+FG-PSNR (dB)
++0.028 [-0.015, +0.070]
+FG-LPIPS
++0.001372
+[+0.000762,
++0.002081]
+FG-SSIM
+-0.01152 [-0.01337, -0.00996]
+Edge-SSIM
+-0.001660
+[-0.002096,
+0.001256]
+Full-view
+PSNR +0.313 [+0.278, +0.347]
+(dB)
+Full-view LPIPS
++0.004011
+[+0.003390,
++0.004684]
+Full-view SSIM
+-0.004284
+[-0.005217,
+0.003543]
+
+-0.139
+
+S3. Supporting layer/window and schedule evidence
+A2 is exploratory discovery evidence; A3 is a higher-dose stress regime on the same underlying cohort. A3b
+is a bounded Fresh B layer/window analysis. Object-cluster tests detect response heterogeneity under the
+tested interventions, but they do not identify a dose-independent layer-by-time mechanism or an optimal
+schedule.
+Table S3: Object-cluster Wald interaction summaries for the tested layer-by-window maps. Cell RMSE
+and interaction share describe these observed maps; they are not causal effect sizes.
+Map Endpoint
+A2
+A2
+A3
+A3
+A3b
+A3b
+
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+
+Wald statistic Interaction
+RMSE
+481.081
+1879.963
+657.237
+1389.118
+225.015
+525.700
+
+share;
+
+43.5%; 0.001695
+56.8%; 0.1222 dB
+11.9%; 0.00643
+0.8%; 0.207 dB
+14.0%; 0.000342
+36.0%; 0.0205 dB
+
+cell Wald p
+Holm)
+
+(A3b
+
+8.04 × 10−99
+< 10−300
+1.14 × 10−136
+1.28 × 10−294
+5.37 × 10−43
+3.43 × 10−107
+
+The earlier A3b common-support calculation compared 10-step integrated raw L2 norms across three
+layer groups. Because the saved correction tensors have different spatial resolutions (24×16, 48×32,
+
+3
+
+and 96×64) and the traces omit channel counts, absolute norms are dimension-dependent across groups.
+We withdraw the central-90% intervals and 0/2,250 overlap as cross-group dose-support evidence. The
+earlier development calibration also used cross-layer raw L2 and is not interpreted as equal-dose targeting.
+The fixed A3b scale values remain the tested bounded profiles. A3b remains retrospective sensitivity
+evidence: its map describes response heterogeneity under the tested interventions, but does not identify a
+dose-independent layer-by-window effect.
+The separate Fresh B cohort (N = 150) supplies schedule-location context for LLH, not evidence for C3.
+Table S4 preserves both registered LLH comparisons and the post-outcome HLL–LLL diagnostic. Paired
+intervals use 10,000 object-bootstrap resamples (seed 20261002). The LLH–LFM-EXACT intervals lie
+within the protocol’s practical margins (FG-PSNR ±0.5 dB; FG-LPIPS ±0.01); this is a budget-explained
+interpretation within those margins, not exact equality. HLL–LLL is exploratory and its endpoint directions
+differ.
+The Fresh B protocol-lock file states a freeze time of 2026-10-05 08:40 UTC, while the earliest preserved
+commit containing that file is dated 2026-10-06 00:52 UTC; its parent does not contain the file. This
+history does not establish when the lock was first created outside Git, but it cannot authenticate pre-run
+availability. Accordingly, Fresh B temporal contrasts, the A3b map, and the post-lock generic extension
+are treated as retrospective sensitivity evidence in this paper, even where their calculations follow the
+recorded comparison family. They are not described as verified preregistered confirmation.
+Table S4: Fresh B paired object-level LLH comparisons, classified here as retrospective sensitivity because
+pre-run lock availability cannot be authenticated from the preserved history. Effects are A minus B;
+favorable rates respect endpoint direction. Holm values reproduce the recorded family.
+Mean [95% CI]
+
+A favors p / status
+
+Contrast
+
+Endpoint
+
+LLH–LFM-EXACT
+LLH–LFM-EXACT
+LLH–HLL
+
+FG-PSNR +0.325 [+0.209,+0.446] dB
+FG-LPIPS −0.00460 [−0.00563, −0.00357]
+FG-PSNR +0.687 [+0.404,+0.981] dB
+
+54.0%
+76.0%
+45.3%
+
+LLH–HLL
+LLH–LLL
+LLH–LLL
+HLL–LLL (exploratory)
+
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+
+−0.01098 [−0.01349, −0.00851]
++0.734 [+0.597,+0.875] dB
+−0.00845 [−0.01029, −0.00659]
++0.047 [−0.120, +0.208] dB
+
+80.7%
+79.3%
+82.0%
+66.0%
+
+HLL–LLL (exploratory) FG-LPIPS +0.00253 [+0.00155,+0.00354]
+
+40.0%
+
+raw ≤ 0.0001
+raw ≤ 0.0001
+≤ 0.0004; median −0.104
+dB
+≤ 0.0004
+≤ 0.0004
+≤ 0.0004
+0.5696;
+median +0.476
+dB
+≤ 0.0002; median +0.00139
+
+The post-lock generic-schedule extension on this same Fresh B cohort is a retrospective sensitivity
+analysis, not independent confirmation. Table S5 reports the recorded budget-matched comparisons
+and endpoint-matched linear counter-result. Nominal requested-scale means do not equalize post-scale
+residual dose; these LLH comparisons do not establish dose-adjusted schedule superiority or strengthen C3
+specifically.
+
+4
+
+Table S5: Post-lock Fresh B generic-schedule extension (same N = 150 cohort). Effects are LLH minus comparator. Budget-matched schedules form the
+locked eight-schedule family; endpoint-matched linear is the registered countercomparison.
+Contrast
+
+Endpoint
+
+Mean [95% CI]
+
+A favors
+
+Holm p
+
+LLH–budget linear
+LLH–budget linear
+LLH–budget cosine
+LLH–budget cosine
+LLH–budget trapezoid
+LLH–budget trapezoid
+LLH–budget Gaussian
+LLH–budget Gaussian
+LLH–endpoint linear
+LLH–endpoint linear
+
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+FG-PSNR
+FG-LPIPS
+
++0.0967 [+0.0594,+0.1357] dB
+-0.0009 [-0.0013,-0.0004]
++0.4629 [+0.3526,+0.5780] dB
+-0.0059 [-0.0071,-0.0046]
++0.4404 [+0.3334,+0.5521] dB
+-0.0057 [-0.0070,-0.0045]
++0.4711 [+0.3584,+0.5892] dB
+-0.0058 [-0.0071,-0.0045]
+-0.0373 [-0.0829,+0.0086] dB
++0.00109 [+0.0004,+0.0019]
+
+65.3%
+65.3%
+74.7%
+80.0%
+74.0%
+78.0%
+74.7%
+79.3%
+–
+–
+
+Holm
+Holm
+Holm
+Holm
+Holm
+Holm
+Holm
+Holm
+Holm
+Holm
+
+5
+
+p ≤ 0.0008
+p = 0.0008
+p ≤ 0.0008
+p ≤ 0.0008
+p ≤ 0.0008
+p ≤ 0.0008
+p ≤ 0.0008
+p ≤ 0.0008
+p = 0.1150
+p = 0.0024
+
+S4. Requested/applied scale and residual-correction accounting
+Table S6 lists representative Fresh C C3 records at five denoising steps. The native caps are 3.0 (deep), 3.5
+(middle), and 0.8 (shallow). A cap-active fraction of 100% means all logged records in that group/step
+were clipped. Raw correction L2 depends on both the residual and tensor dimensions, so it is not compared
+across layer groups. The table instead reports the median of wrapper-level mean absolute entries, a
+dimension-normalized descriptive summary; differences in feature scales and distributions still prevent
+interpreting it as an equal-dose intervention or quality outcome. The 750-row source accounting table
+contains all 50 steps, three groups, and five strategies.
+Table S6: Representative Fresh C requested/applied scale and post-scale
+residual-correction accounting. The final column is the median wrapper-level
+mean absolute correction entry; it is dimension-normalized but remains descriptive. Wrappers, objects, and timesteps are not independent experimental
+units.
+Step Layer group Requested Applied Cap active Median per-wrapper mean |c|
+0
+0
+0
+12
+12
+12
+24
+24
+24
+37
+37
+37
+49
+49
+49
+
+Deep
+Middle
+Shallow
+Deep
+Middle
+Shallow
+Deep
+Middle
+Shallow
+Deep
+Middle
+Shallow
+Deep
+Middle
+Shallow
+
+1.25
+1.25
+1.25
+1.25
+1.25
+1.25
+2.50
+2.50
+2.50
+1.25
+1.25
+1.25
+1.25
+1.25
+1.25
+
+1.25
+1.25
+0.80
+1.25
+1.25
+0.80
+2.50
+2.50
+0.80
+1.25
+1.25
+0.80
+1.25
+1.25
+0.80
+
+0%
+0%
+100%
+0%
+0%
+100%
+0%
+0%
+100%
+0%
+0%
+100%
+0%
+0%
+100%
+
+1.4786
+0.3540
+0.0128
+1.3969
+0.4881
+0.0151
+2.2588
+1.1408
+0.0169
+0.7513
+0.4596
+0.0176
+0.7354
+0.1459
+0.0116
+
+S5. Historical and cross-interface boundaries
+The completed MAIN-STAGE-276 follow-up contains 1,104 records (276 objects by four schedules), with 50
+Euler steps, seed 42, unique-six target views, shared initial latents, and a common runner within the run.
+Its final run manifest records completion with exit code 0. The follow-up was specified after inspection of
+earlier clean-v2 results and was not blind. It is reported separately from Fresh C and is not an independent
+replication of the original 01549 development probe.
+Here, temporal L–L–H means that the requested values are low in early and middle steps and high
+in late steps. This is distinct from the layer-conditioned Fresh C LLH addendum condition described in
+the main paper. With 50 steps, the code assigns 17/16/17 steps to early/middle/late. C3 therefore has
+deep/middle applied-scale sums of 82.5; temporal L–L–H has 83.75 because its high stage occupies 17
+rather than 16 steps; the shallow applied sum is 40 for both after the 0.8 cap. The fixed-mean comparator
+has a deep/middle sum of 83.33 and a shallow sum of 40. These are near-matched scalar sums, not exactly
+equal sums or matched residual-norm doses.
+Table S7 gives all six formal paired endpoints for C3 versus temporal L–L–H and C3 versus the fixedmean comparator. Effects are C3 minus comparator; positive values favor C3 for PSNR/SSIM, and negative
+values favor C3 for LPIPS. Temporal L–L–H outperforms C3 on all six formal endpoints in this postinspection stage-placement experiment: it has higher PSNR/SSIM and lower LPIPS endpoints. In contrast,
+C3 exceeds fixed-mean on five of six formal endpoints. These results show that the measured response
+varies with tested stage placement; they do not establish a universal schedule winner. The contrasts do
+not isolate placement from the small applied-scale-sum differences or the resulting residual-state trajectory,
+and post-scale residual norms are not matched.
+6
+
+Table S7: Formal paired comparisons from the strict-276 stageplacement follow-up. Effects are C3 minus comparator; 95%
+percentile-bootstrap intervals are object-level.
+Contrast
+
+Endpoint
+
+Mean difference [95% CI]
+
+C3 minus temporal L–L–H
+Full-view
+PSNR (dB)
+FG-PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+Full-view
+LPIPS
+C3 minus fixed-mean
+Full-view
+PSNR (dB)
+FG-PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+Full-view
+LPIPS
+
+−0.268100 [−0.311101, −0.227797]
+−0.177084
+−0.008851
+−0.035301
++0.001896
++0.008658
+
+[−0.230539, −0.130784]
+[−0.011455, −0.006291]
+[−0.036581, −0.034031]
+[+0.001205, +0.002578]
+[+0.007465, +0.009831]
+
++0.556369 [+0.525520, +0.589220]
++0.502875
++0.032083
++0.001696
+−0.003797
++0.001420
+
+[+0.462018, +0.542244]
+[+0.028966, +0.035172]
+[+0.000611, +0.002782]
+[−0.004341, −0.003260]
+[+0.000778, +0.002072]
+
+The saved-artifact Full-SSIM branch is kept separate from the formal pre-save metrics above: C3
+minus temporal L–L–H is −0.001697 (95% CI [−0.002047, −0.001340]); C3 minus fixed-mean is +0.007486
+([+0.006736, +0.008262]). These saved-artifact values are not pooled with the formal metric column.
+A retrospective strict-276 Core-7 summary uses the clean-v2 object list (SHA-256 a6aa8ab6e475763e
+1b5e67dc8c712ec8f1940e3952d65897c820887554bbd044) and the same recorded checkpoint SHA as Fresh
+C. It shares the 276-object cohort/checkpoint lineage with the separate MAIN-STAGE-276 profile-placement
+follow-up, so those results are not independent cohort replications. The row audit verifies 276 unique
+object indices per condition and identical object labels by index. However, Core-7 does not establish one
+common runner or fully shared inputs across all seven conditions: No Adapter and GFH are the two
+newly rerun arms with per-object input-tensor hashes; their recorded runner hash is ae5d5664e7d0ebcd
+4bd84c7c7d688c4a8962c6d74463fe88e7a866404911e7e0. C3 records a different runner hash, d4af0c1d
+7f42168a585b505a6d775ea3ff7ffb18345156ebf358f272025fa7f2; GFL and the three layer conditions
+do not establish the same runner hash, and their serialized rows do not contain per-object input-tensor
+hashes. Thus Core-7 is a retrospective diagnostic, not a same-runner confirmatory comparison. It is not
+pooled with Fresh C, and the shared checkpoint hash does not make it a numerical reproduction of the
+original 01549 Table 4 result.
+Table S8 gives the seven-condition means for the requested image-space endpoints. These stored metrics
+show an endpoint trade-off: C3 has a higher Full-view PSNR mean than GFH but a lower FG-PSNR
+mean. The Core-7 Layer LLH row is distinct from Fresh C’s layer-conditioned LLH addendum and Fresh
+B’s temporal LLH condition. Table S9 reports selected object-indexed contrasts. C3–GFH intervals were
+recalculated from the serialized per-object rows after inspection of the Core-7 summary; they are post-hoc,
+nominal pointwise intervals. The other listed contrasts reproduce the separate Core-7 paired-statistics
+file. The intervals describe the saved metric rows and do not overcome the common-runner/input-hash
+limitations.
+7
+
+Table S8: Retrospective Core-7 strict-276 condition means. Rows contain 276 object-level metrics per
+condition. The collection has incomplete common runner/input identity as described above; means are
+descriptive and are not Fresh C or an independently verified same-runner comparison.
+Condition
+
+Full-view PSNR↑ FG-PSNR↑
+
+No Adapter
+GFL
+GFH
+C3
+Layer Fixed Mean
+Layer LHL
+Layer LLH
+
+10.563
+18.229
+18.242
+18.968
+19.516
+19.635
+20.828
+
+8.826
+10.731
+13.153
+11.939
+13.100
+12.974
+13.975
+
+FG-LPIPS↓ FG-SSIM↑
+0.2059
+0.1917
+0.1677
+0.1817
+0.1698
+0.1719
+0.1610
+
+0.4799
+0.3987
+0.4783
+0.4296
+0.4550
+0.4445
+0.4620
+
+Edge-SSIM↑
+0.4794
+0.5201
+0.5538
+0.5278
+0.5363
+0.5273
+0.5476
+
+Table S9: Selected retrospective Core-7 paired contrasts (first condition minus second). Intervals are
+pointwise 95% object-bootstrap percentile intervals with 10,000 resamples and seed 20260930; they are
+unadjusted and descriptive. The C3–GFH intervals were recalculated post hoc. The final column counts
+objects where the first condition is favorable for PSNR.
+Contrast
+
+Endpoint
+
+C3–GFH
+C3–GFH
+C3–GFL
+LLH–GFH
+LLH–C3
+
+Full-view PSNR
+FG-PSNR
+FG-PSNR
+FG-PSNR
+FG-PSNR
+
+Mean difference [95% CI] (dB)
++0.725229
+−1.214235
++1.207771
++0.822292
++2.036527
+
+[+0.647134, +0.806467]
+[−1.313952, −1.114705]
+[+1.116967, +1.294989]
+[+0.616795, +1.033035]
+[+1.806804, +2.260756]
+
+Objects favoring first
+240/276
+25/276
+259/276
+148/276
+227/276
+
+The frozen MV-Adapter layer/window probe analyzed 98 of 99 planned objects; the omitted input was a
+GLB with path geometry and no triangle faces, so no substitute was used. Its production additive-residual
+bootstrap had an invalid null and is not used for interaction inference. The post hoc object-cluster robust
+Wald reanalysis found no interaction surviving its exploratory four-metric Holm correction (FG-LPIPS
+Holm p = 0.303; PSNR p = 0.868; FG-SSIM p = 0.156; CIEDE2000 p = 0.862). This does not establish
+absence of interaction or equivalence.
+A separate 76-object Exact-holdout MV-Adapter panel adds layer-wise fixed, L–HL, and L–LH outputs
+to existing global controls. It scales condition-guider features before UNet down-block residual injection
+and does not reproduce the GeoTex ResNet residual interface. The wrapper matched the existing global
+runner bitwise in a 3-object identity audit, but this is not an identity comparison against the unmodified
+official pipeline at native scale. Table S10 gives the seven condition means and Table S11 gives all five
+paired contrasts across six endpoints. Layer-wise/global mean differences are metric-dependent; object
+medians and favorable fractions also vary. Within-profile temporal comparisons show one pointwise interval
+excluding zero in each comparison, with the other five including zero. These 30 intervals are unadjusted
+and descriptive. The protocol and result files first appear in one preserved commit, so we classify this
+analysis as retrospective sensitivity rather than confirmation. It establishes neither equivalence nor transfer
+of TCAS.
+The MVDiffusion schedule panel contains 525 object-condition rows: seven conditions over the same 75
+objects. All six scheduled-condition per-object CSVs match their rows in the combined panel. The runs
+generated 12-view output grids; the frozen metric manifest scores six target views per object. The archived
+paired-bootstrap output used positive values to favor the left condition; for lower-is-better FG-LPIPS,
+CIEDE2000, and GT-relative texture error, those values are improvement-coded (B − A), not raw A − B.
+We independently recomputed the five planned contrasts from the 75 paired object rows and now report raw
+A − B in Table S12. For L–LLH minus G–FL, CIEDE2000 is +1.373021 (95% CI [+0.418244, +2.374678]),
+so the layer-wise setting has higher color error; PSNR, FG-SSIM, and Edge-SSIM also favor G–FL, GTrelative texture error is lower for L–LLH, and FG-LPIPS does not separate. The corresponding LLH/LHL
+8
+
+layer-wise-versus-global contrasts have the same endpoint direction pattern. Within the global LLH/LHL
+comparison, the single pointwise FG-LPIPS interval favors G–LLH; the other five endpoints include zero.
+All 30 intervals are pointwise and unadjusted. GT-relative texture error summarizes agreement with three
+reference variation statistics and is not a fidelity measure. A correction note and the full recomputation
+outputs accompany the preserved original analysis files in the author-review package.
+MVDiffusion scales correspondence-aware CPBlock outputs, while depth is concatenated into the latent
+and left unscaled. The 75-object schedule panel used a compatibility deployment base. A later check
+found 1,552/1,552 loaded tensors and 12/12 rendered views for one object identical to a native SD2-depth
+mirror; the full panel was not rerun. These results remain separate, mixed endpoint evidence on a different
+conditioning path; no cross-interface score pooling, architecture-causal claim, or general cross-backbone
+result is made.
+The first-round 01549 Section 4.7 adapter-dependence analysis is retained as a separate within-family
+result. It reported three outcomes for uniform high scale across adapter regimes: texture flattening without
+per-layer caps, high-frequency artifact amplification under a strong-residual adapter with per-layer caps,
+and negligible effect for a weakened adapter. Its same-checkpoint cap ablation reported both flattening
+and amplification, and its residual-magnitude sweep (0.1×–3× output projection) reported increasing
+intervention strength with residual magnitude. A six-object stage ablation reported that the most sensitive
+stage differed between the main and artifact-prone adapters. These first-round results were explicitly
+described as adapter-dependent; they are retained as historical, within-architecture evidence and do not
+answer the current cross-backbone question.
+A separate 76-object MV-Adapter study tested layer-wise L–LLH under an alternative budget-neutral
+contiguous partition B0 (per-point multipliers [0.52018, 0.52018, 1.47982, 1.47982], weighted mean 1).
+Relative to the corresponding global controls, the B0 results are mixed across endpoints: the layer condition
+favors the global controls on FG-SSIM, favors the layer condition on the benefit-oriented CIEDE2000
+and GT-relative texture summaries, and does not separate on FG-PSNR, Edge-SSIM, or FG-LPIPS. Its
+difference from the original partition is not resolved on any reported metric. These data describe this
+MV-Adapter layer intervention only and are not evidence for the TCAS timestep profile or for a general
+mapping rule.
+The companion M3 profile uses [0.41953, 0.41953, 1.19349, 1.19349], whose mean multiplier is approximately 0.8065. It changes both group assignment and total nominal residual budget, so it is not a pure
+mapping comparison with B0 . Its audit classified 16 of 18 direction summaries as stable relative to the original partition, with one small Edge-SSIM attenuation and one near-zero FG-LPIPS sign change. Because
+the preserved protocol and result rows first appear in the same commit, M3 is retained as retrospective
+sensitivity. Neither M3 nor B0 establishes mapping robustness or cross-backbone generalization.
+Retrospective MV-Adapter layer/time panel. A separate Exact-holdout analysis combines existing
+global controls with three new layer-wise conditions (L-FIX, L-LHL, L-LLH), totaling 228 new outputs
+on 76 objects. The wrapper scales four condition-guider feature tensors before they enter the UNet as
+down-block residuals; this is not the GeoTex ResNet residual-correction interface. Its 3-object identity
+audit matched the wrapper to the existing global runner on 9/9 schedule/object cases, but does not
+test the unmodified official pipeline at native scale 1.0. Layer-wise versus global contrasts show metricdependent directions: PSNR, CIEDE2000, and ground-truth-relative texture error favor layer-wise rows,
+while FG-/Edge-SSIM favor global rows; FG-LPIPS is not separated. Within-profile temporal comparisons
+have no consistent endpoint pattern. The 10,000-resample intervals below are pointwise and descriptive,
+without family-wise correction across 30 metric/comparison cells. The earliest preserved commit adds
+both protocol and outcomes, so the panel is treated as retrospective rather than confirmatory. It does not
+establish equivalence or TCAS transfer.
+
+9
+
+Table S10: MV-Adapter Exact-holdout condition means for the 76-object
+seven-condition panel. These are descriptive interface-specific image metrics
+and are not pooled with GeoTex or MVDiffusion.
+Condition
+R0
+G-FL
+G-LHL
+G-LLH
+L-FIX
+L-LHL
+L-LLH
+
+PSNR↑ FG-SSIM↑ Edge-SSIM↑ FG-LPIPS↓ CIEDE2000↓ GT-texture error↓
+13.114180
+13.357177
+13.344064
+13.353306
+13.431922
+13.446348
+13.453797
+
+0.498481
+0.527539
+0.528325
+0.527814
+0.523473
+0.525148
+0.523564
+
+0.233429
+0.239997
+0.240235
+0.239974
+0.239052
+0.239619
+0.238899
+
+0.183496
+0.187693
+0.188051
+0.188346
+0.187647
+0.187920
+0.187731
+
+20.719805
+20.149543
+20.182146
+20.157122
+19.877910
+19.868912
+19.805120
+
+1.700798
+2.224047
+2.269096
+2.198930
+1.903374
+1.980378
+1.913272
+
+Table S11: All five reported MV-Adapter paired contrasts. Deltas are directionadjusted so positive favors the left condition (lower-is-better metrics are signreversed). Intervals are pointwise object-bootstrap percentiles (10,000 resamples; seed 20260928), descriptive and unadjusted.
+Mean ∆ [95% CI]
+
+Median ∆
+
+Left
+able
+
++0.096619 [+0.014894, +0.186322]
+−0.003975 [−0.007222, −0.001110]
+−0.001098 [−0.002246, −0.000084]
+−0.000038 [−0.002249, +0.001836]
++0.344422 [+0.162359, +0.548366]
++0.310776 [+0.128347, +0.523530]
+
++0.038948
+−0.000055
+−0.000068
+−0.000145
++0.074472
+−0.008452
+
+60.5%
+47.4%
+48.7%
+43.4%
+67.1%
+44.7%
+
+vs.
+
+PSNR↑
+FG-SSIM↑
+Edge-SSIM↑
+FG-LPIPS↓
+CIEDE2000↓
+GT-texture
+error↓
+G- PSNR↑
+
++0.100491 [+0.016411, +0.193981]
+
++0.033523
+
+60.5%
+
+vs.
+
+G- FG-SSIM↑
+
+−0.004249 [−0.007467, −0.001399]
+
+−0.000938
+
+46.1%
+
+vs.
+
+G- Edge-SSIM↑
+
+−0.001075 [−0.002200, −0.000087]
+
+−0.000020
+
+47.4%
+
+vs.
+
+G- FG-LPIPS↓
+
++0.000615 [−0.001370, +0.002409]
+
++0.000046
+
+50.0%
+
+vs.
+
+G- CIEDE2000↓
+
++0.352002 [+0.161829, +0.565100]
+
++0.083198
+
+63.2%
+
+vs.
+
++0.285659 [+0.092803, +0.508436]
+
+−0.029244
+
+46.1%
+
+vs.
+
+G- GT-texture
+error↓
+L- PSNR↑
+
++0.021875 [−0.021181, +0.064134]
+
+−0.003147
+
+43.4%
+
+vs.
+
+L- FG-SSIM↑
+
++0.000092 [−0.001301, +0.001429]
+
+−0.000029
+
+46.1%
+
+vs.
+
+L- Edge-SSIM↑
+
+−0.000152 [−0.001051, +0.000628]
+
+−0.000030
+
+47.4%
+
+vs.
+
+L- FG-LPIPS↓
+
+−0.000084 [−0.000821, +0.000518]
+
++0.000126
+
+59.2%
+
+vs.
+
+L- CIEDE2000↓
+
++0.072790 [+0.004371, +0.156696]
+
+−0.004923
+
+48.7%
+
+vs.
+
+−0.009898 [−0.088568, +0.077841]
+
++0.002578
+
+52.6%
+
+vs.
+
+L- GT-texture
+error↓
+G- PSNR↑
+
++0.102285 [+0.022567, +0.195757]
+
++0.048007
+
+67.1%
+
+vs.
+
+G- FG-SSIM↑
+
+−0.003177 [−0.005872, −0.000730]
+
+−0.000283
+
+47.4%
+
+vs.
+
+G- Edge-SSIM↑
+
+−0.000615 [−0.001482, +0.000167]
+
++0.000066
+
+52.6%
+
+vs.
+
+G- FG-LPIPS↓
+
++0.000131 [−0.002170, +0.002094]
+
+−0.000162
+
+44.7%
+
+vs.
+
+G- CIEDE2000↓
+
++0.313234 [+0.153138, +0.486864]
+
++0.094149
+
+67.1%
+
+vs.
+
+G- GT-texture
+error↓
+G- PSNR↑
+
++0.288718 [+0.104317, +0.504549]
+
+−0.010427
+
+48.7%
+
++0.009242 [−0.022729, +0.055429]
+
++0.000649
+
+53.9%
+
+Contrast
+P1:
+P1:
+P1:
+P1:
+P1:
+P1:
+
+Endpoint
+
+L-LLH vs.
+L-LLH vs.
+L-LLH vs.
+L-LLH vs.
+L-LLH vs.
+L-LLH vs.
+
+P2: L-LLH
+LLH
+P2: L-LLH
+LLH
+P2: L-LLH
+LLH
+P2: L-LLH
+LLH
+P2: L-LLH
+LLH
+P2: L-LLH
+LLH
+P3: L-LLH
+FIX
+P3: L-LLH
+FIX
+P3: L-LLH
+FIX
+P3: L-LLH
+FIX
+P3: L-LLH
+FIX
+P3: L-LLH
+FIX
+P4: L-LHL
+LHL
+P4: L-LHL
+LHL
+P4: L-LHL
+LHL
+P4: L-LHL
+LHL
+P4: L-LHL
+LHL
+P4: L-LHL
+LHL
+P5: G-LLH
+LHL
+
+G-FL
+G-FL
+G-FL
+G-FL
+G-FL
+G-FL
+
+vs.
+
+10
+
+favor-
+
+Contrast
+P5: G-LLH
+LHL
+P5: G-LLH
+LHL
+P5: G-LLH
+LHL
+P5: G-LLH
+LHL
+P5: G-LLH
+LHL
+
+Endpoint
+
+Mean ∆ [95% CI]
+
+Median ∆
+
+Left
+able
+
+vs.
+
+G- FG-SSIM↑
+
+−0.000511 [−0.001207, +0.000102]
+
++0.000114
+
+60.5%
+
+vs.
+
+G- Edge-SSIM↑
+
+−0.000261 [−0.000522, −0.000032]
+
++0.000029
+
+53.9%
+
+vs.
+
+G- FG-LPIPS↓
+
+−0.000296 [−0.001198, +0.000712]
+
+−0.000079
+
+36.8%
+
+vs.
+
+G- CIEDE2000↓
+
++0.025024 [−0.032059, +0.108336]
+
+−0.003118
+
+42.1%
+
+vs.
+
+G- GT-texture
+error↓
+
++0.070166 [−0.050221, +0.216403]
+
+−0.003606
+
+43.4%
+
+Table S12: MVDiffusion 75-object paired contrasts, reported as raw condition
+A minus condition B. Every comparison has N = 75 paired objects; intervals are pointwise 95% object-bootstrap percentile CIs (10,000 resamples, seed
+20260928), without multiplicity adjustment. Higher PSNR, FG-SSIM, and
+Edge-SSIM are favorable; lower FG-LPIPS, CIEDE2000, and GT-relative texture error are favorable. The last metric is a mean symmetric-log error across
+three reference-relative variation statistics and is not a texture-fidelity measure.
+Contrast (A − B)
+
+Endpoint
+
+Raw mean difference [95% CI]
+
+PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+CIEDE2000
+GT-relative texture error
+
+−0.453828 [−0.752102, −0.160451]
+−0.019393 [−0.029361, −0.009856]
+−0.005941 [−0.010305, −0.001382]
++0.002745 [−0.001808, +0.007632]
++1.373021 [+0.418244, +2.374678]
+−0.082286 [−0.145316, −0.020073]
+
+PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+CIEDE2000
+GT-relative texture error
+
+−0.466728 [−0.767571, −0.174846]
+−0.019245 [−0.029244, −0.009725]
+−0.006207 [−0.010601, −0.001620]
++0.002998 [−0.001458, +0.007765]
++1.377180 [+0.400867, +2.393609]
+−0.064768 [−0.124369, −0.005093]
+
+PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+CIEDE2000
+GT-relative texture error
+
+−0.092564 [−0.182342, −0.003231]
++0.000528 [−0.003700, +0.004874]
+−0.002828 [−0.005185, −0.000405]
+−0.001089 [−0.002704, +0.000499]
++0.082626 [−0.235252, +0.410153]
+−0.037090 [−0.081113, +0.000258]
+
+PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+CIEDE2000
+GT-relative texture error
+
+−0.520646 [−0.810872, −0.232104]
+−0.021431 [−0.032306, −0.011114]
+−0.007282 [−0.011359, −0.003234]
++0.002491 [−0.001895, +0.007174]
++1.545280 [+0.592682, +2.526751]
+−0.098921 [−0.154601, −0.044345]
+
+PSNR (dB)
+FG-SSIM
+Edge-SSIM
+FG-LPIPS
+CIEDE2000
+GT-relative texture error
+
+−0.078763 [−0.163889, +0.004507]
+−0.0000003 [−0.002323, +0.002393]
+−0.001471 [−0.003510, +0.000589]
+−0.001371 [−0.002642, −0.000141]
++0.015861 [−0.264829, +0.299044]
+−0.032667 [−0.068249, +0.002649]
+
+P1: L-LLH − G-FL
+
+P2: L-LLH − G-LLH
+
+P3: L-LLH − L-FIX
+
+P4: L-LHL − G-LHL
+
+P5: G-LLH − G-LHL
+
+11
+
+favor-
+
+S6. Historical N=20 unseen-view results
+Table S13 reports the bounded historical N=20 GLB results. The subset comprises 20 UV-compatible
+objects from the original 24-object pool; four inputs were excluded for lack of UVs. Each object is
+the paired unit after averaging 11 frozen unseen views. Rendering uses unlit base color with native
+sampler interpretation. Endpoint directions are mixed; these statistics do not establish population-level
+3D superiority, PBR/material fidelity, seam quality, or human preference. The source GLB assets and
+internal montage are not included in this supplement.
+Table S13: Historical N=20 unlit base-color paired unseen-view summaries (C3 minus comparator). The
+20-object UV-compatible subset comes from the historical 24-object pool; four objects were excluded for
+missing UVs. Each object is averaged over 11 frozen unseen views. Intervals are 10,000-object-bootstrap
+percentile CIs (seed 20261005), descriptive and unadjusted.
+Comparator Endpoint
+GFL
+GFL
+GFL
+GFH
+GFH
+GFH
+No Adapter
+No Adapter
+No Adapter
+
+Mean difference [95% CI]
+
+FG-PSNR (dB)
+-0.066 [-0.413, +0.290]
+FG-LPIPS
+-0.004719 [-0.007504, -0.002544]
+CIEDE2000
++0.133 [-1.161, +1.319]
+FG-PSNR (dB)
++0.084 [-0.290, +0.426]
+FG-LPIPS
++0.007709 [+0.004230, +0.012101]
+CIEDE2000
+-1.027 [-2.224, +0.229]
+FG-PSNR (dB)
++3.135 [+1.721, +4.493]
+FG-LPIPS
+-0.014519 [-0.029860, -0.001326]
+CIEDE2000
+-12.508 [-18.556, -6.529]
+
+Objects favoring C3
+5/20 (25%)
+17/20 (85%)
+6/20 (30%)
+14/20 (70%)
+4/20 (20%)
+14/20 (70%)
+18/20 (90%)
+16/20 (80%)
+18/20 (90%)
+
+S7. Selected negative visual evidence and unresolved 3D checks
+Figure S1 presents one selected illustrative Fresh C case where C3 is adverse to GFL on the paired
+image-space comparison. It does not estimate failure prevalence or color-correction performance. Full
+attribution appears in Table S1.
+
+Figure S1: Selected illustrative adverse C3–GFL case from the rights-cleared Fresh C 2D pool. It is not a
+representative estimate and does not support color-correction, PBR, seam, or human-preference claims.
+The attempted Fresh C 24-object GLB bake did not pass its input/output gate: 9/24 sources had
+out-of-range native UVs, and 5 assets / 27 primitives used unsupported BLEND. No valid Fresh C 24-object
+bake results were generated. The seam endpoint is retired because the required seam truth set and native
+full-panel validation did not pass. No full PBR comparison is available. These checks are limitations, not
+evidence of method failure or success.
+
+12
+
+S8. Statistical authority and reproduction map
+Each numerical result in this Supplement is mapped to the internal claim ledger and scoped result sources.
+Fresh C primary contrasts use object-level deltas and a locked analysis; requested/applied-scale records
+use the per-step accounting table. Layer/window and Fresh B results are maintained in separate source
+summaries, with Fresh B classified as retrospective sensitivity because its lock chronology cannot be
+authenticated from preserved Git history. The texture-complexity cohort and the color-diagnostic set are
+separate from Fresh C and from each other. The historical N=20 GLB-native summary has a separate
+analysis record; no N=20 image assets are redistributed. Original Table 9 and Table 3 below are reproduced
+only as historical source text with explicit provenance limits; neither is treated as a newly verified current
+result.
+Fresh C identity details. The 300-object Fresh C list is disjoint by UID from the original eval300,
+including the 24-object development probe, the 1,118-object training list, and the clean-v2 eval300.
+The primary four-condition run and same-cohort Generic Linear/LLH addendum use the same frozen
+checkpoint SHA-256 0618d6b284ab47aa16d7a89dc447f5ba4455ff6c9d918e5e129478a99e0114c0, runner
+source SHA-256 e5c28e915ba137d3541eb4c032daaf62a798332d63b32917b749fe1bcc74e9e3, cohort, input tensors, endpoint implementation, and seed policy. The seed is 42 + object_idx and is shared across
+the matched conditions for each object. Primary and addendum integrity gates pass for 1,200/1,200
+and 600/600 condition rows. Fresh C uses the recorded deep/middle/shallow caps of 3.0/3.5/0.8, with
+requested, applied, and residual scales logged separately. This is a held-out paired comparison under the
+stated protocol. The historical identity remains explicit: 01549 names v1 weights for its main tables and
+a separate v2 strong-residual, per-layer-capped instance for Section 4.7/FAC. Fresh C uses a controlled
+retraining and is not presented as a numerical reproduction of the old Table 4 +0.96 dB estimate.
+
+S9. Historical 01549 Table 9: strict-276 schedule transfer
+The 01549 submission reports this schedule-transfer comparison on the 276 objects disjoint from the
+24-object probe. It uses the strong-residual, per-layer-capped v2 adapter, not the v1 checkpoint named for
+01549 Table 4. The values below are reproduced from the authenticated 01549 submission; they are not
+pooled with Fresh C or the separate MAIN-STAGE-276 profile-placement analysis. The table therefore
+documents schedule transfer on its stated adapter instance and remains distinct from Fresh C’s matched
+single-checkpoint comparison.
+Table S14: Values reproduced from original 01549 Table 9 for the stated strict-276 retrospective scheduletransfer comparison. The adapter/run differs from Fresh C; row-level runner and input provenance are
+incomplete. Values are preserved as submitted historical results, not independently verified statistics.
+Schedule
+Trapezoid
+Gaussian peak
+Linear warm-up
+Cosine bump
+C3 (TCAS)
+
+FG-SSIM PSNR C3–schedule ∆PSNR (95% CI) C3-favourable objects
+0.356
+0.358
+0.377
+0.330
+0.376
+
+19.04
+18.97
+18.97
+18.39
+19.29
+
++0.258
++0.324
++0.323
++0.902
+
+13
+
+[+0.207, +0.308]
+[+0.281, +0.367]
+[+0.263, +0.386]
+[+0.824, +0.981]
+–
+
+206/276
+232/276
+214/276
+253/276
+–
+
+S10. Historical 01549 Table 3: extended 24-object development diagnostics
+The table below is transcribed from the authenticated 01549 source and moved from the main text to
+preserve the original 24-object development record. The candidate-level row outputs and selection-time
+provenance are unavailable for independent reanalysis. Laplacian variance, RGB standard deviation,
+gradient magnitude, and high-frequency energy are variation diagnostics; this historical table does not
+establish texture fidelity, a population effect, or an optimal schedule.
+Table S15: Values transcribed from original 01549 Table 3 for representative variants in the 24-object
+development probe. These are historical values, not independently recomputed statistics; variation measures
+do not establish texture fidelity.
+Variant
+C3
+C4
+A_s2.50
+A_s2.00
+A_s1.25
+
+∆Lap Var ∆RGB Std ∆Grad ∆HF Energy
+−0.001
+−0.012
+−0.011
+−0.006
+−0.005
+
+−0.023
+−0.032
+−0.044
+−0.040
+−0.032
+
++0.142
++0.086
++0.054
++0.100
++0.104
+
++0.058
++0.062
++0.078
++0.070
++0.053
+
+S11. First-round FAC controlled re-examination
+The 01549 first-round package reports seven trained FAC configurations under the paired 300-object
+protocol. All values below are retained as originally reported; this is not a new 1008 training run. The
+12-object untrained C3-envelope control is separate and is described in the main text.
+Table S16: FAC dose-response table reported in the first-round
+01549 supplement. FG-PSNR and FG-SSIM are the reported
+absolute values; ∆FG-PSNR and wins compare each trained
+configuration with TCAS.
+FG-PSNR FG-SSIM ∆FG-PSNR
+
+Configuration
+
+Temporal gate
+
+Wins
+
+TCAS baseline (C3)
+LTAG only
+LTAG+GSG
+Full FAC
+Two-stage
++
+GSG/FSC
+Envelope penalty
+(λ = 1)
+Fidelity weighting
+Gentle schedule
+
+fixed C3
+joint, unconstrained
+joint, unconstrained
+joint, unconstrained
+frozen at C3
+
+9.88
+7.79
+7.03
+6.94
+7.32
+
+0.3681
+0.3487
+0.3163
+0.3204
+0.3074
+
+–
+−2.08
+−2.84
+−2.94
+−2.56
+
+–
+4/300
+6/300
+5/300
+4/300
+
+joint, penalized to C3
+
+7.14
+
+0.3021
+
+−2.74
+
+2/300
+
+frozen at C3
+frozen at C3
+
+7.51
+8.77
+
+0.3110
+0.4175
+
+−2.37 5/300
+−1.10 48/300
+
+The submitted protocol states that only the LTAG/GSG/FSC controllers (roughly 6 × 103 parameters)
+were trained; the base model, VAE, and GeoTex-Adapter remained frozen. It specifies the enhanced latent
+denoising objective and 2,000 AdamW steps on a training pool stated as 1,706 objects. The separate
+12-object untrained control was reported at ∆FG-PSNR = −0.18 dB (95% CI [−0.42, +0.05]). A recovered
+configuration instead lists 1,200 training objects, and no run-bound seed/output manifest was found. We
+14
+
+retain the original values as reported, disclose this reproducibility limit, and make no code-release claim.
+
+S12. Retrospective texture-complexity boundary
+This analysis uses the separate FRESH_CONFIRM_300 cohort (N = 300), not Fresh C or Fresh B.
+LLH and native GFL rows match the frozen object list and share the recorded checkpoint, runner, seed,
+six unique target views, sampler, and protocol. The paired LLH–GFL mean differences are +1.2877 dB
+FG-PSNR (95% object-bootstrap CI [+0.9383, +1.6346]; 57.7% LLH-favorable objects) and −0.01650
+FG-LPIPS ([−0.01887, −0.01413]; 73.3% LLH-favorable objects).
+The descriptor analysis tests two image-space outcomes against five ground-truth descriptors: foreground
+Laplacian variance, RGB standard deviation, gradient magnitude, high-frequency energy, and coverage.
+Spearman correlations use average ranks and paired-object percentile bootstrap intervals (10,000 resamples,
+seed 20261002). The family contains ten plus-one-corrected bootstrap sign tests and Holm correction across
+all ten. Nine tests reject at 0.05; the only non-rejection is FG-LPIPS versus coverage (adjusted p = 0.0508).
+The preserved H5 hypothesis excerpt predates one archived outcome bundle, but the main multiplicity lock
+classifies this family as retrospective after prior outcome exposure; that chronology has not been reconciled.
+We therefore report all associations as retrospective sensitivity evidence, not as preregistered confirmation.
+Table S17: Retrospective Spearman associations between LLH–GFL image-space deltas and ground-truth
+descriptors in FRESH_CONFIRM_300. Correlation intervals are paired-object bootstrap intervals;
+adjusted p values use the ten-test Holm family with plus-one-corrected bootstrap sign tests.
+ρ [95% CI] Holm p Decision
+
+Outcome delta Ground-truth descriptor
+FG-PSNR
+FG-PSNR
+FG-PSNR
+FG-PSNR
+FG-PSNR
+FG-LPIPS
+FG-LPIPS
+FG-LPIPS
+FG-LPIPS
+FG-LPIPS
+
+Laplacian variance
+−0.524 [−0.603, −0.435]
+RGB standard deviation −0.380 [−0.488, −0.266]
+Gradient magnitude
+−0.464 [−0.548, −0.371]
+High-frequency energy
+−0.691 [−0.745, −0.626]
+Foreground coverage
+−0.134 [−0.241, −0.026]
+Laplacian variance
++0.604 [+0.511, +0.681]
+RGB standard deviation +0.379 [+0.272, +0.482]
+Gradient magnitude
++0.563 [+0.469, +0.643]
+High-frequency energy
++0.677 [+0.599, +0.744]
+Foreground coverage
+−0.118 [−0.233, +0.0002]
+
+0.0020
+0.0020
+0.0020
+0.0020
+0.0352
+0.0020
+0.0020
+0.0020
+0.0020
+0.0508
+
+reject
+reject
+reject
+reject
+reject
+reject
+reject
+reject
+reject
+not rejected
+
+Ground-truth foreground Laplacian-variance quartiles contain 75 objects each. The FG-PSNR mean
+LLH–GFL difference declines from +4.140 dB in Q1 (92.0% favor LLH) to +1.127 dB in Q2 (52.0%),
+−0.087 dB in Q3 (41.3%), and −0.029 dB in Q4 (45.3%). The FG-LPIPS mean changes are −0.03745,
+−0.01665, −0.00670, and −0.00520 from Q1 to Q4; the favorable-object rates decline from 97.3% to 50.7%.
+These strata describe heterogeneity in this cohort. They do not establish that texture complexity causes
+the response, define a threshold, validate an object selector, or measure texture fidelity.
+
+15
+
+S13. Paired color-pathway diagnosis and failure boundaries
+The color diagnosis is a selected, failure-enriched set of six earlier cases and 20 Fresh C panels; it is neither
+random nor a new holdout. No Adapter, GFL, and LLH were compared on the same inputs, checkpoint,
+and runner across six unique target views (78 object-condition records). CIEDE2000 was recomputed
+from hash-identified RGB and frozen masks. Intervals are descriptive paired object bootstraps (20,000
+resamples, seed 61008); no confirmatory multiplicity family was defined. Figure 6 shows one of the 20
+Fresh C panels (UID f6979d7ff8e54c4daf00fee46f09a139); its pre-existing C3–GFL stratum was lowest
+FG-LPIPS, not color-based, and it is distinct from the legacy pink-shift cases.
+Table S18: Selected paired endpoints from the failure-enriched 26-object color diagnosis. Each row is
+condition A minus B with an object-level 95% paired-bootstrap CI. Lower CIEDE2000 and FG-LPIPS
+are favorable; higher PSNR and Edge-SSIM are favorable. Local texture statistics describe variation, not
+fidelity.
+Contrast
+
+Endpoint
+
+GFL – No Adapter
+GFL – No Adapter
+GFL – No Adapter
+GFL – No Adapter
+LLH – GFL
+LLH – GFL
+LLH – GFL
+LLH – GFL
+LLH – GFL
+LLH – GFL
+LLH – GFL
+
+Foreground CIEDE2000
+FG-PSNR (dB)
+FG-LPIPS
+Edge-SSIM
+Foreground CIEDE2000
+FG-PSNR (dB)
+FG-LPIPS
+Edge-SSIM
+Foreground gradient magnitude
+Foreground high-frequency energy
+Foreground color entropy
+
+Mean difference
+
+95% CI
+
+−19.654
++6.646
+−0.03251
++0.06510
++3.583
+−0.197
+−0.01294
+−0.00080
+−0.06772
+−0.00887
+−0.598
+
+[−26.370, −13.248]
+[+5.556, +7.635]
+[−0.05363, −0.01072]
+[+0.04853, +0.08202]
+[+0.462, +6.712]
+[−1.562, +1.297]
+[−0.02742, +0.00066]
+[−0.00776, +0.00659]
+[−0.08132, −0.05494]
+[−0.01091, −0.00672]
+[−0.703, −0.502]
+
+GFL lowered reference-relative CIEDE2000 in 24/26 objects, but visible pink or purple remained in two
+legacy cases under all three conditions. LLH increased mean color error while reducing local variation, not
+fidelity. The RGB shift was visible before baking and at denoising update 40. For one case, a ground-truth
+VAE round trip gave CIEDE2000 4.086 and ∆a∗ ≈ −1.35, versus 22.032 and +1.977 for GFL; this weakens
+a VAE-only explanation but does not identify the cause.
+A locked P0 trace of three preselected objects reproduced saved RGB pixels exactly in repeated Python
+3.13.5 runs; Python 3.10 reproduced its corresponding archived observer. The first cross-runtime tensor
+difference followed multiplication of the shared FP16 initial latent by the scheduler noise scale (maximum
+absolute difference 0.0625; RMSE 0.00966; 32.3% changed). This resolves output identity only for these
+three traces; it establishes neither cohort-wide cross-stack equivalence nor the color cause.
+The feature-relative residual gate increased mean CIEDE2000 by 1.35 across 26 objects and 3.18 in the
+six earlier cases, with no clear visual improvement. The complete cause remains unresolved; no repair is
+validated.
+
+S16. Matched applied-budget comparison and revision validity corrections
+The same-cohort GeoTex addendum contains 300 objects by six conditions, 1,800 rows. Each object uses
+the same initial latent, input tensors and checkpoint across conditions. Early-, Middle- and Late-high use
+16 high updates at 0–15, 17–32 and 34–49. Low/high are 1.25/2.50, Fixed Mean is 1.65, and the native
+shallow cap is 0.8. Their exact applied per-group sums are 82.5, 82.5 and 40. This comparison measures
+the total effect of allocating the high segment at equal applied scalar budget. Evolving residual norms are
+outcomes of the trajectory; lack of equal residual norms limits a mechanism interpretation, not validity of
+the allocation contrast. The study is post-inspection on the already evaluated Fresh C objects, not an
+16
+
+independent confirmation.
+Table S19: Selected paired contrasts from the 300-object equal-budget addendum. Mean A minus B and pointwise 95% object-bootstrap interval (50,000 resamples). The revised pairwise analysis designates C3–Fixed Mean FG-PSNR
+as a post-inspection focal contrast. The other 59 pair–metric contrasts form
+one post hoc Holm family; no interval is multiplicity-adjusted.
+Contrast
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+Middle
+
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+−
+
+Endpoint Mean [95% CI]
+Fixed Applied
+Fixed Applied
+Fixed Applied
+Fixed Applied
+Late-high
+Late-high
+Late-high
+Late-high
+Early-high
+Early-high
+Early-high
+Early-high
+Fixed High
+Fixed High
+Fixed High
+Fixed High
+
+Mean
+Mean
+Mean
+Mean
+
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+
+−0.13326
++0.00199
+−0.01185
+−0.00703
+−0.56395
++0.00466
+−0.00422
+−0.01409
++0.49619
+−0.00472
++0.00499
++0.00080
+−0.74767
++0.01070
+−0.04553
+−0.01881
+
+[−0.16979, −0.09622]
+[+0.00147, +0.00254]
+[−0.01347, −0.01025]
+[−0.00764, −0.00643]
+[−0.63408, −0.49427]
+[+0.00381, +0.00553]
+[−0.00694, −0.00139]
+[−0.01526, −0.01291]
+[+0.37195, +0.62282]
+[−0.00568, −0.00378]
+[+0.00211, +0.00809]
+[−0.00008, +0.00170]
+[−0.88995, −0.60691]
+[+0.00889, +0.01255]
+[−0.04937, −0.04165]
+[−0.02083, −0.01678]
+
+Holm p
+1e-05 (raw)
+0.00059
+0.00059
+0.00059
+0.00059
+0.00059
+0.01375
+0.00059
+0.00059
+0.00059
+0.00432
+0.1565
+0.00059
+0.00059
+0.00059
+0.00059
+
+The named Middle–Fixed Mean FG-PSNR endpoint is shown with its raw p; remaining 59 contrasts
+use a common post hoc Holm correction in the delivered recomputation. All are retrospective. The rank
+counts in main matched-budget table are not cross-metric superiority tests.
+Validity corrections to earlier native experiments. The earlier seven-object MV-Adapter temporal
+archive passed source-path identity, but used Fresh C targets with a different mesh normalization and
+orthographic range. In an input-only native geometry audit, one object’s six foreground IoUs were about
+0.21–0.61. Its old quality estimates are therefore not validated native-camera cross-backbone evidence;
+the original identity test remains valid. The new targets use the exact native mesh loader, orthographic
+cameras and nvdiffrast rasterizer, with a source embedded base-color texture and white background. This
+is unlit albedo, not a claim of PBR or source-render lighting equivalence.
+The earlier five-object bake rotated generated pole-view RGB back into raw-camera coordinates but
+also incorrectly rotated the raw-camera mask. Four of five objects have affected masks. Its old quality
+estimates are superseded by corrected evaluation and are not pooled with newly selected objects. In the
+REPEAT branch, bilinear fractions must be calculated before wrapping integer indices: the previous order
+could produce negative weights at tile edges and outside [0,1]. Corrected code passes nonnegative/unit-sum
+weight checks and integer-period translation invariance. Scalar coverage masks are read without an RGB
+transfer function; decoding grayscale coverage as sRGB would change the foreground threshold. GT source
+images are resized to 256 using bicubic RGB and the same nearest-index alpha masks as generated sources;
+atlas, camera, fill and render parameters are shared. The original GT-512 bake is retained only as an
+unmatched-resolution diagnostic.
+Default-path identity boundary. For GeoTex, explicit requested scale 1.0 and an unset scale are
+different: the cap is applied only when the scale attribute exists. Executing the actual wrapper with a unit
+residual gives deep/middle/shallow applied factors (1,1,0.8) for explicit 1.0, versus (1,1,1) when unset. The
+stored condition name native_default_1x therefore denotes Constant 1.0 (capped), not an unmodified
+pipeline. This is a wrapper-level counterexample, not a claim of full-pipeline pixel equality. In contrast, the
+new MV-Adapter identity gate compares three textured meshes and 18 images: official default, deployed
+default and a constant-1 schedule produce bitwise-identical RGB pixels, condition-encoder features and
+
+17
+
+injected residuals. The 13 texture-absent MV-Adapter inputs use the documented geometry-only loader
+compatibility branch; their targets are constant white albedo and remain in the primary cohort.
+
+18
+
+S17. Frozen native MV-Adapter comparison on fifty new-to-interface
+objects
+The protocol was internally frozen before new scheduled outputs; it is not a public preregistration. Fifty
+inputs were selected in UID order from Fresh C after excluding every recorded previously inspected
+MV-Adapter UID. Selection uses available inputs and native geometry/material criteria, not quality or
+parameter search. Seeds are 20261010 + index, shared across conditions. Six native-camera 512-pixel
+images use 50 DDPM-shift updates, CFG 3, reference strength 1 and the frozen high-quality text prompt.
+All 350 rows completed. Models, input identities, runner, native-target calibration and per-step residual
+traces are indexed in the reproduction archive.
+Early-, Middle- and Late-high use high=1 over steps 0–15, 17–32 and 34–49 respectively, with low=0.75
+elsewhere. Fixed Mean=0.83 and Generic Linear spans 0.75–0.91 inclusively; each sums to 41.5 per feature,
+whereas Native/Fixed High sums to 50 and Fixed Low to 37.5. These are feature-scaling controls on
+MV-Adapter, not GeoTex’s per-ResNet capped residual doses.
+Official/deployed default and constant-1 scheduled paths match exactly on three textured new objects, including 18 RGB images, encoded conditions and injected residuals. Native target geometry
+positions/masks match the control rasterization for all fifty inputs; an independent CPU bilinear source-UV
+sample agrees within the frozen tolerance. Thirteen texture-absent assets use geometry-only compatibility
+loading and white target albedo; they remain in the primary fifty. The 37-object textured subset is
+descriptive. It does not create a second primary or substitute after observing outcomes.
+The primary Middle-high–Fixed Mean FG-PSNR mean is +0.02899 dB, 95% CI [−0.01941, +0.08074],
+Monte Carlo sign-flip p = 0.28075 (100,000 draws, plus-one correction); 29/50 favor Middle. Intervals use
+50,000 object resamples. The other 104 contrasts (21 condition pairs by five endpoints, minus primary)
+form one predeclared Holm family; intervals remain pointwise. No non-inferiority or architecture-causal
+claim follows from a non-separated contrast.
+Table S20: Complete native fifty-object pair–metric contrasts. A minus B;
+lower LPIPS/CIEDE2000 and higher other endpoints are favorable. p is Holmadjusted except the single primary marked raw.
+A–B
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+High
+
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+–
+
+Mean [95% CI]
+
+p
+
+[−0.24503, −0.02980]
+[−0.00197, +0.00592]
+[−0.00594, +0.00029]
+[+0.00114, +0.00979]
+[+0.13967, +0.87441]
+[−0.16282, −0.02065]
+[−0.00120, +0.00214]
+[−0.00534, −0.00051]
+[−0.00023, +0.00339]
+[+0.10737, +0.65171]
+[−0.03952, +0.05131]
+[−0.00243, −0.00081]
+[−0.00176, +0.00171]
+[−0.00040, +0.00477]
+[−0.06895, +0.13756]
+[−0.22257, −0.02534]
+[−0.00105, +0.00664]
+[−0.00524, +0.00047]
+[+0.00250, +0.00961]
+[+0.13251, +0.81706]
+[−0.25619, −0.04753]
+[−0.00108, +0.00734]
+[−0.00673, −0.00079]
+[−0.00198, +0.00545]
+[+0.17811, +0.90198]
+[−0.22718, −0.04049]
+[−0.00098, +0.00639]
+
+0.85601
+1.00000
+1.00000
+0.85601
+0.20880
+0.78170
+1.00000
+1.00000
+1.00000
+0.13932
+1.00000
+0.01649
+1.00000
+1.00000
+1.00000
+0.89608
+1.00000
+1.00000
+0.02112
+0.14875
+0.26910
+1.00000
+0.87002
+1.00000
+0.05490
+0.22752
+1.00000
+
+Endpoint
+Low
+Low
+Low
+Low
+Low
+Mean
+Mean
+Mean
+Mean
+Mean
+Early
+Early
+Early
+Early
+Early
+Middle
+Middle
+Middle
+Middle
+Middle
+Late
+Late
+Late
+Late
+Late
+Linear
+Linear
+
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+
+−0.12682
++0.00100
+−0.00250
++0.00511
++0.44730
+−0.08309
++0.00013
+−0.00268
++0.00163
++0.33298
++0.00563
+−0.00158
++0.00002
++0.00228
++0.03229
+−0.11208
++0.00175
+−0.00200
++0.00562
++0.41481
+−0.14046
++0.00203
+−0.00341
++0.00119
++0.47923
+−0.12216
++0.00174
+
+19
+
+A–B
+
+Endpoint
+
+High – Linear
+High – Linear
+High – Linear
+Low – Mean
+Low – Mean
+Low – Mean
+Low – Mean
+Low – Mean
+Low – Early
+Low – Early
+Low – Early
+Low – Early
+Low – Early
+Low – Middle
+Low – Middle
+Low – Middle
+Low – Middle
+Low – Middle
+Low – Late
+Low – Late
+Low – Late
+Low – Late
+Low – Late
+Low – Linear
+Low – Linear
+Low – Linear
+Low – Linear
+Low – Linear
+Mean – Early
+Mean – Early
+Mean – Early
+Mean – Early
+Mean – Early
+Middle – Mean
+Mean – Middle
+Mean – Middle
+Mean – Middle
+Mean – Middle
+Mean – Late
+Mean – Late
+Mean – Late
+Mean – Late
+Mean – Late
+Mean – Linear
+Mean – Linear
+Mean – Linear
+Mean – Linear
+Mean – Linear
+Early – Middle
+Early – Middle
+Early – Middle
+Early – Middle
+Early – Middle
+Early – Late
+Early – Late
+Early – Late
+Early – Late
+Early – Late
+Early – Linear
+Early – Linear
+Early – Linear
+Early – Linear
+Early – Linear
+Middle – Late
+
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+
+Mean [95% CI]
+−0.00309
++0.00243
++0.42004
++0.04373
+−0.00087
+−0.00017
+−0.00348
+−0.11432
++0.13245
+−0.00258
++0.00253
+−0.00283
+−0.41501
++0.01475
++0.00075
++0.00050
++0.00051
+−0.03249
+−0.01363
++0.00103
+−0.00091
+−0.00392
++0.03193
++0.00467
++0.00074
+−0.00058
+−0.00267
+−0.02726
++0.08872
+−0.00171
++0.00270
++0.00065
+−0.30069
++0.02899
++0.00162
++0.00067
++0.00399
++0.08184
+−0.05737
++0.00190
+−0.00074
+−0.00044
++0.14625
+−0.03907
++0.00161
+−0.00041
++0.00081
++0.08707
+−0.11771
++0.00333
+−0.00203
++0.00334
++0.38253
+−0.14609
++0.00361
+−0.00344
+−0.00109
++0.44694
+−0.12778
++0.00332
+−0.00311
++0.00016
++0.38776
+−0.02838
+
+p
+
+[−0.00618, −0.00068]
+0.90959
+[−0.00040, +0.00605]
+1.00000
+[+0.14924, +0.81173]
+0.05005
+[−0.00118, +0.09206]
+1.00000
+[−0.00381, +0.00085]
+1.00000
+[−0.00118, +0.00090]
+1.00000
+[−0.00757, −0.00081]
+0.36480
+[−0.24502, −0.00126]
+1.00000
+[+0.04720, +0.24287]
+0.15288
+[−0.00777, +0.00036]
+1.00000
+[+0.00006, +0.00594]
+1.00000
+[−0.00657, −0.00016]
+1.00000
+[−0.81018, −0.14622]
+0.04876
+[−0.01731, +0.04840]
+1.00000
+[+0.00030, +0.00122]
+0.17384
+[−0.00056, +0.00160]
+1.00000
+[−0.00072, +0.00181]
+1.00000
+[−0.10291, +0.03715]
+1.00000
+[−0.02840, +0.00083]
+1.00000
+[+0.00051, +0.00167]
+0.00800
+[−0.00156, −0.00021]
+0.79142
+[−0.00547, −0.00234]
+0.00303
+[+0.00504, +0.05951]
+1.00000
+[−0.02786, +0.03373]
+1.00000
+[+0.00032, +0.00118]
+0.09680
+[−0.00154, +0.00033]
+1.00000
+[−0.00418, −0.00118]
+0.10701
+[−0.09723, +0.04844]
+1.00000
+[+0.03375, +0.16183]
+0.07565
+[−0.00411, −0.00028]
+0.42750
+[+0.00064, +0.00545]
+0.78170
+[−0.00092, +0.00210]
+1.00000
+[−0.59160, −0.11032]
+0.02280
+[−0.01941, +0.08074] 0.28075 (raw)
+[−0.00005, +0.00462]
+1.00000
+[−0.00064, +0.00204]
+1.00000
+[+0.00170, +0.00764]
+0.00104
+[−0.02823, +0.20315]
+1.00000
+[−0.10476, −0.01422]
+0.85601
+[−0.00003, +0.00530]
+1.00000
+[−0.00183, +0.00031]
+1.00000
+[−0.00301, +0.00363]
+1.00000
+[+0.03581, +0.27574]
+0.87002
+[−0.07392, −0.01081]
+0.57941
+[+0.00009, +0.00434]
+1.00000
+[−0.00129, +0.00045]
+1.00000
+[−0.00123, +0.00410]
+1.00000
+[+0.01651, +0.17259]
+1.00000
+[−0.23017, −0.02649]
+0.98234
+[+0.00036, +0.00863]
+0.57941
+[−0.00568, +0.00081]
+1.00000
+[+0.00057, +0.00690]
+1.00000
+[+0.11622, +0.76613]
+0.19845
+[−0.25687, −0.06083]
+0.03572
+[+0.00036, +0.00933]
+0.80715
+[−0.00694, −0.00080]
+0.80715
+[−0.00429, +0.00294]
+1.00000
+[+0.17823, +0.84174]
+0.01089
+[−0.22984, −0.04995]
+0.03572
+[+0.00045, +0.00838]
+0.31416
+[−0.00648, −0.00061]
+1.00000
+[−0.00259, +0.00353]
+1.00000
+[+0.14561, +0.75366]
+0.01176
+[−0.05857, −0.00004]
+1.00000
+
+20
+
+A–B
+
+Endpoint
+
+Middle – Late
+Middle – Late
+Middle – Late
+Middle – Late
+Middle – Linear
+Middle – Linear
+Middle – Linear
+Middle – Linear
+Middle – Linear
+Late – Linear
+Late – Linear
+Late – Linear
+Late – Linear
+Late – Linear
+
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+fg-psnr
+fg-lpips
+fg-ssim
+edge-ssim
+ciede2000
+
++0.00028
+−0.00141
+−0.00443
++0.06442
+−0.01008
+−0.00001
+−0.00109
+−0.00318
++0.00523
++0.01830
+−0.00029
++0.00033
++0.00125
+−0.05919
+
+Mean [95% CI]
+
+p
+
+[−0.00018, +0.00080]
+[−0.00243, −0.00042]
+[−0.00568, −0.00316]
+[−0.00064, +0.12764]
+[−0.04413, +0.02065]
+[−0.00041, +0.00033]
+[−0.00220, −0.00019]
+[−0.00412, −0.00227]
+[−0.07199, +0.08600]
+[−0.01050, +0.04259]
+[−0.00101, +0.00020]
+[−0.00046, +0.00100]
+[+0.00038, +0.00194]
+[−0.12493, +0.00991]
+
+1.00000
+0.66671
+0.00104
+1.00000
+1.00000
+1.00000
+1.00000
+0.00104
+1.00000
+1.00000
+1.00000
+1.00000
+0.15288
+1.00000
+
+Table S21: Descriptive 37-object textured subset, retained separately from the primary fifty. No subset
+inference is promoted to confirmation.
+Condition PSNR LPIPS
+High
+Low
+Mean
+Early
+Middle
+Late
+Linear
+
+14.06
+14.14
+14.11
+14.06
+14.12
+14.16
+14.14
+
+0.1159
+0.1170
+0.1165
+0.1168
+0.1165
+0.1164
+0.1164
+
+SSIM Edge-SSIM CIEDE2000
+0.4354
+0.4345
+0.4356
+0.4345
+0.4347
+0.4359
+0.4360
+
+21
+
+0.3239
+0.3174
+0.3204
+0.3182
+0.3182
+0.3233
+0.3217
+
+18.04
+17.82
+17.87
+17.99
+17.84
+17.79
+17.82
+
+S18. Calibrated bake pilot, historical separation and actual-output displays
+The new bake list contains ten objects, chosen in frozen UID order before observing their bake results.
+All 300 Fresh C inputs were screened; old five-object outputs and the previously inspected REPEAT
+diagnostic object were excluded. Eligibility required available source GLB, one opaque white-factor
+base-color material, native TEXCOORD_0, no vertex colors, at most 300,000 triangles, and source
+camera-mask alignment passing the frozen gate. This input-selected set is smaller than the target twenty
+and below fifteen; we retain the pilot designation and all ten outcomes. No failed or adverse-quality object
+was replaced. Input-audit exclusions included 157 objects outside the single-OPAQUE-material domain,
+27 nonwhite base-color factors, 21 missing native UVs, 20 vertex-color assets and one non-REPEAT
+sampler. Seventy-four passed that material/input check; later gates excluded 13 oversized meshes and 46
+camera-mask alignment failures, with previously baked objects excluded separately. These restrictions
+describe the current preparation/evaluation implementation, not TCAS failure rates or intrinsic asset
+quality. Seven conditions generated 70 object-condition rows; eight bake conditions including GT generated
+80 artifacts, with 880 unseen renders and 480 source-camera renders.
+The frozen primary was Late-high–Fixed Mean FG-LPIPS. C3–GFH PSNR, LPIPS, SSIM and
+CIEDE2000 form one four-test secondary Holm family. All other complete pairs are descriptive. Views are
+averaged before inference. Intervals use 50,000 paired object resamples and are pointwise, not simultaneous.
+The ten-object primary uses all 210 sign flips; the secondary family uses the same exact test. A sign-flip
+test assumes symmetry/exchangeability of paired differences under its null; an interval alone is not a
+practical-equivalence criterion. No non-inferiority margin was chosen.
+Table S22: Prespecified new-pilot comparisons: raw A minus B, 95% object-bootstrap interval; no pooling
+with old five.
+p
+
+Contrast
+
+Endpoint
+
+Mean [95% CI]
+
+Late–Mean
+C3–GFH
+C3–GFH
+C3–GFH
+C3–GFH
+
+FG-LPIPS −0.00265 [−0.00414, −0.00137] 0.00195 (primary)
+FG-PSNR
++0.193 [−0.649, +0.875]
+1.000 (Holm)
+FG-LPIPS −0.00036 [−0.00396, +0.00336]
+1.000 (Holm)
+FG-SSIM
+−0.05274 [−0.07459, −0.03170]
+0.00781 (Holm)
+CIEDE2000
+−1.102 [−2.915, +0.939]
+0.95508 (Holm)
+
+The corrected earlier five-object bake uses the same source-resolution and mask corrections but retains
+its historical clamped-UV technical scope. Its descriptive means (PSNR / LPIPS / SSIM) are GFH
+11.86 / 0.1609 / 0.5513, C3 14.24 / 0.1542 / 0.4170, Fixed Mean 14.19 / 0.1538 / 0.4348 and Late-high
+15.02 / 0.1479 / 0.4428. C3–GFH is +2.37 dB, not the superseded +2.27 dB estimate. There was no
+independent predeclared primary for this reevaluation. The older N=20 result, old five, new ten and
+corrected single-object REPEAT diagnostic each retain separate source identifiers. Earlier wrong-mask,
+gamma-decoded-alpha and wrong-REPEAT-weight artifacts remain audit records and are superseded,
+never combined with the valid reevaluation.
+Table S23: Per-object generated-view versus unseen-bake rankings across seven conditions. Bootstrap unit
+is object. Positive overall agreement does not require an identical winning condition.
+Endpoint
+FG-PSNR
+FG-LPIPS
+FG-SSIM
+Edge-SSIM
+
+Mean Spearman ρ [95% CI] Winner changed
+0.846
+0.804
+0.746
+0.907
+
+[0.696, 0.968]
+[0.693, 0.911]
+[0.450, 0.964]
+[0.871, 0.943]
+
+1/10
+7/10
+4/10
+6/10
+
+GT and generated bake sources use the same six raw cameras and 256-pixel resolution. GT RGB uses
+bicubic downsampling; alpha uses the exact nearest-index mapping used for generated foreground inputs.
+22
+
+Their six-view scalar masks are bitwise identical and their raw atlas coverage matches for every object and
+condition. No unseen view enters baking. Export checks retain binary geometry/UV buffers, transforms
+and mesh identity. REPEAT UV weights are nonnegative, sum to one and are invariant under integer UV
+shifts. These checks establish a valid unlit projection comparison, not PBR equivalence or a validated
+seam score. Texture boundaries can be natural appearance boundaries; seam diagnostics are not reported
+as a validated primary endpoint.
+Supplementary Video presents two input-order, rights-cleared objects at all eleven discrete unseen
+cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized.
+It is an unlit comparison, not a claim of continuous-view or PBR quality.
+LG Remote by mohd.akmal.mahyudin; CC Attribution. Source: https://sketchfab.com/3d-models/
+1dc2c857f7614caeb6c2aa0559ccf973.
+Tire by Koto3D Stephane Vogley; CC Attribution. Source: https://sketchfab.com/3d-models/
+21678bd623654182b52c11d013de4e71.
+Asset 238ff3e41c964655b83aa9c8770cc766 by suntaree; CC Attribution. Source: https://sketchfab.
+com/3d-models/238ff3e41c964655b83aa9c8770cc766.
+Baptisimal Font - Aughrim by Galway3D_DH_AGe; CC0 Public Domain. Source: https://
+sketchfab.com/3d-models/2dd9bc8172c6461797947cc7214db399.
+Pittsburgh Bridge Collapse in Frick Park by C8X; CC Attribution. Source: https://sketchfab.com/
+3d-models/2f6c94487ee54cb88021f4643409d849.
+bricks on news boxes by bunnyhero; CC Attribution. Source: https://sketchfab.com/3d-models/
+3c83796ca5f043f1beb8044dd2e51a0d.
+Eastern Box Turtle Shell by Frank McMains; CC Attribution. Source: https://sketchfab.com/
+3d-models/85a7df80b79a4ba9b8c3a175de0dbce6.
+
+23
+
+Figure S2: LG Remote: source, GT-256 bake and all seven generated controls at unseen camera 004.
+Full-object views are arranged in two rows without retouching. Credit: mohd.akmal.mahyudin, CC
+Attribution. Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+Figure S3: Tire: source, GT-256 bake and all seven generated controls at unseen camera 004. Full-object
+views are arranged in two rows without retouching. Credit: Koto3D Stephane Vogley, CC Attribution.
+Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+24
+
+Figure S4: Asset 238ff3e41c96: source, GT-256 bake and all seven generated controls at unseen camera
+004. Full-object views are arranged in two rows without retouching. Credit: suntaree, CC Attribution.
+Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+Figure S5: Baptisimal Font - Aughrim: source, GT-256 bake and all seven generated controls at unseen
+camera 004. Full-object views are arranged in two rows without retouching. Credit: Galway3D_DH_AGe,
+CC0 Public Domain. Full asset links and hashes are supplied below and in the delivered credit/source
+manifests.
+
+25
+
+Figure S6: Pittsburgh Bridge Collapse in Frick Park: source, GT-256 bake and all seven generated controls
+at unseen camera 004. Full-object views are arranged in two rows without retouching. Credit: C8X, CC
+Attribution. Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+Figure S7: bricks on news boxes: source, GT-256 bake and all seven generated controls at unseen camera
+004. Full-object views are arranged in two rows without retouching. Credit: bunnyhero, CC Attribution.
+Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+26
+
+Figure S8: Eastern Box Turtle Shell: source, GT-256 bake and all seven generated controls at unseen
+camera 004. Full-object views are arranged in two rows without retouching. Credit: Frank McMains, CC
+Attribution. Full asset links and hashes are supplied below and in the delivered credit/source manifests.
+
+27
+
+

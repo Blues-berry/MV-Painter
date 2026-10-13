@@ -1,0 +1,75 @@
+{
+  "comparisons": {
+    "c3_lhl_vs_fixed_mean": {
+      "full_ssim": {
+        "ci95": [
+          0.006736267142105794,
+          0.008262033614775408
+        ],
+        "mean": 0.007485531162524569,
+        "n": 276,
+        "resamples": 10000,
+        "seed": 20260928,
+        "ties": 0,
+        "win_rate": 0.9057971014492754,
+        "wins": 250
+      }
+    },
+    "c3_lhl_vs_hll": {
+      "full_ssim": {
+        "ci95": [
+          0.019844880090027616,
+          0.023185068800829458
+        ],
+        "mean": 0.021508081235747406,
+        "n": 276,
+        "resamples": 10000,
+        "seed": 20260928,
+        "ties": 0,
+        "win_rate": 0.9963768115942029,
+        "wins": 275
+      }
+    },
+    "c3_lhl_vs_llh": {
+      "full_ssim": {
+        "ci95": [
+          -0.0020466000219618065,
+          -0.0013403296956549524
+        ],
+        "mean": -0.0016965086477390234,
+        "n": 276,
+        "resamples": 10000,
+        "seed": 20260928,
+        "ties": 0,
+        "win_rate": 0.19927536231884058,
+        "wins": 55
+      }
+    }
+  },
+  "ground_truth": "original RGBA composited over white float32",
+  "mean_by_schedule": {
+    "c3_lhl": 0.8814376553763514,
+    "fixed_mean": 0.8739521242138268,
+    "hll": 0.859929574140604,
+    "llh": 0.8831341640240904
+  },
+  "metric": "full_ssim",
+  "objects": 276,
+  "paired_bootstrap": {
+    "ci": 0.95,
+    "resamples": 10000,
+    "seed": 20260928,
+    "unit": "object-level paired bootstrap"
+  },
+  "paper_edit_allowed": false,
+  "prediction": "PNG reload float32",
+  "protocol": "clean-v2-stage-placement-followup-v1",
+  "schedules": [
+    "fixed_mean",
+    "hll",
+    "llh",
+    "c3_lhl"
+  ],
+  "source_csv": "/4T/CXY/MV-Painter/final/round2/stage_placement_276_20260929/serialized_full_ssim_per_object.csv",
+  "status": "complete"
+}

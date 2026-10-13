@@ -1,0 +1,224 @@
+{
+  "a2_discovery": {
+    "cohort": "FRESH_CONFIRM_300",
+    "layer_by_window_interaction": {
+      "fg_lpips": {
+        "df": 8,
+        "interaction_rmse_per_cell": 0.0016950896851461558,
+        "interaction_ss_share": 0.43483220286370344,
+        "n_objects": 300,
+        "p_value": 8.044522756677515e-99,
+        "test": "object-cluster robust Wald test on 8 orthogonal interaction contrasts",
+        "wald_chi2": 481.08066853243645
+      },
+      "fg_psnr": {
+        "df": 8,
+        "interaction_rmse_per_cell": 0.12215354448650018,
+        "interaction_ss_share": 0.5680290133494726,
+        "n_objects": 300,
+        "p_upper_bound": "<1e-300",
+        "test": "object-cluster robust Wald test on 8 orthogonal interaction contrasts",
+        "wald_chi2": 1879.962664405783
+      }
+    },
+    "middle_W5_minus_baseline": {
+      "fg_lpips": {
+        "ci95": [
+          -0.007075010823706786,
+          -0.005732054791723689
+        ],
+        "favorable_direction": "lower",
+        "favorable_rate": 0.8466666666666667,
+        "loss_rate_negative": 0.8466666666666667,
+        "mean_delta": -0.006404908299446106,
+        "median_delta": -0.006036929786205292,
+        "n": 300,
+        "p_bootstrap": 0.0001,
+        "win_rate_positive": 0.15333333333333332
+      },
+      "fg_psnr": {
+        "ci95": [
+          0.46098116802672545,
+          0.569516624386112
+        ],
+        "favorable_direction": "higher",
+        "favorable_rate": 0.84,
+        "loss_rate_negative": 0.16,
+        "mean_delta": 0.5145460675160091,
+        "median_delta": 0.44931530952453613,
+        "n": 300,
+        "p_bootstrap": 0.0001,
+        "win_rate_positive": 0.84
+      }
+    },
+    "n_objects": 300
+  },
+  "bootstrap_draws": 10000,
+  "bootstrap_seed": 20261002,
+  "fresh_confirm_b": {
+    "all_directional_signature_criteria_supported": false,
+    "cohort": "FRESH_CONFIRM_B",
+    "delta_convention": "condition A minus condition B; a3_baseline is the frozen all-low LLL trace",
+    "frozen_practical_margins": {
+      "fg_lpips": 0.01,
+      "fg_psnr": 0.5
+    },
+    "llh_lfm_exact_within_frozen_practical_margins": true,
+    "locked_h3_holm_upper_bounds": {
+      "LLH_minus_HLL::fg_lpips": 0.0004,
+      "LLH_minus_HLL::fg_psnr": 0.0004,
+      "LLH_minus_LLL::fg_lpips": 0.0004,
+      "LLH_minus_LLL::fg_psnr": 0.0004
+    },
+    "n_objects": 150,
+    "signature_failure": "HLL-minus-LLL FG-PSNR 95% CI crosses zero; the exploratory three-direction signature fails as a two-endpoint criterion.",
+    "tests": {
+      "HLL_minus_LLL": {
+        "fg_lpips": {
+          "ci95": [
+            0.001551031264786919,
+            0.003543019190430641
+          ],
+          "favorable_direction": "lower",
+          "favorable_rate": 0.4,
+          "loss_rate_negative": 0.4,
+          "mean_delta": 0.002533458744486173,
+          "median_delta": 0.0013905391097068787,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "win_rate_positive": 0.6
+        },
+        "fg_psnr": {
+          "ci95": [
+            -0.11967086777091024,
+            0.20829383740822474
+          ],
+          "favorable_direction": "higher",
+          "favorable_rate": 0.66,
+          "loss_rate_negative": 0.34,
+          "mean_delta": 0.047174368302027384,
+          "median_delta": 0.4757261276245117,
+          "n": 150,
+          "p_bootstrap": 0.5696,
+          "win_rate_positive": 0.66
+        }
+      },
+      "LLH_minus_HLL": {
+        "fg_lpips": {
+          "ci95": [
+            -0.013491334783534209,
+            -0.008508681651204823
+          ],
+          "favorable_direction": "lower",
+          "favorable_rate": 0.8066666666666666,
+          "loss_rate_negative": 0.8066666666666666,
+          "mean_delta": -0.010981636593739191,
+          "median_delta": -0.007725417613983154,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "p_holm_upper_bound": 0.0004,
+          "win_rate_positive": 0.19333333333333333
+        },
+        "fg_psnr": {
+          "ci95": [
+            0.40350391224026677,
+            0.9813038988411427
+          ],
+          "favorable_direction": "higher",
+          "favorable_rate": 0.4533333333333333,
+          "loss_rate_negative": 0.5466666666666666,
+          "mean_delta": 0.6867705086867014,
+          "median_delta": -0.10415792465209961,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "p_holm_upper_bound": 0.0004,
+          "win_rate_positive": 0.4533333333333333
+        }
+      },
+      "LLH_minus_LFM_EXACT": {
+        "fg_lpips": {
+          "ci95": [
+            -0.005629423425843318,
+            -0.0035678667519241573
+          ],
+          "favorable_direction": "lower",
+          "favorable_rate": 0.76,
+          "loss_rate_negative": 0.76,
+          "mean_delta": -0.004603816941380501,
+          "median_delta": -0.003533482551574707,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "win_rate_positive": 0.24
+        },
+        "fg_psnr": {
+          "ci95": [
+            0.209001208593448,
+            0.44584889302651076
+          ],
+          "favorable_direction": "higher",
+          "favorable_rate": 0.54,
+          "loss_rate_negative": 0.46,
+          "mean_delta": 0.3251651644706726,
+          "median_delta": 0.046642422676086426,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "win_rate_positive": 0.54
+        }
+      },
+      "LLH_minus_LLL": {
+        "fg_lpips": {
+          "ci95": [
+            -0.010286077717940012,
+            -0.006592687773207823
+          ],
+          "favorable_direction": "lower",
+          "favorable_rate": 0.82,
+          "loss_rate_negative": 0.82,
+          "mean_delta": -0.008448177849253018,
+          "median_delta": -0.0073285773396492004,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "p_holm_upper_bound": 0.0004,
+          "win_rate_positive": 0.18
+        },
+        "fg_psnr": {
+          "ci95": [
+            0.5973575657606125,
+            0.875423730313778
+          ],
+          "favorable_direction": "higher",
+          "favorable_rate": 0.7933333333333333,
+          "loss_rate_negative": 0.20666666666666667,
+          "mean_delta": 0.7339448769887288,
+          "median_delta": 0.39973676204681396,
+          "n": 150,
+          "p_bootstrap": 0.0001,
+          "p_holm_upper_bound": 0.0004,
+          "win_rate_positive": 0.7933333333333333
+        }
+      }
+    }
+  },
+  "input_sha256": {
+    "data/campaign_A2/a_baseline_per_object_metrics.csv": "9b8d47894b60d77f8f2c456010ada6f3bf6ac2f39194ef29e133688f800980f3",
+    "data/campaign_A2/a_deep_W1_per_object_metrics.csv": "45c6b47283e3c97af6bafff1f2b5ce4ce6349b672f042ae5c0d0870b6f160ca4",
+    "data/campaign_A2/a_deep_W2_per_object_metrics.csv": "bd621372ce5af0c176400cc604d31b809979ab660c5a5adbcc6a8eb73dceee8d",
+    "data/campaign_A2/a_deep_W3_per_object_metrics.csv": "2e863e7fbed8d2e307ec6a11f13c5ea6b47982645915a8d0871e83c006f4abc5",
+    "data/campaign_A2/a_deep_W4_per_object_metrics.csv": "52b9501ddc7c8d1bf3a1fe80990d81b98634c9d0cac01e01a6e137c833dca3f4",
+    "data/campaign_A2/a_deep_W5_per_object_metrics.csv": "78395359c4bf832aff87b6aa1b5ee1f4aa642325c59d84a1f07083d3cb045995",
+    "data/campaign_A2/a_middle_W1_per_object_metrics.csv": "08fc463a00cce79fb354bab83caf9d2a5c1373d98da9ce6c1a09e2c672f88545",
+    "data/campaign_A2/a_middle_W2_per_object_metrics.csv": "80614bf7da269bcfb6578b4b8f2e554fc35850ace3ca4864e7a93e8bde908279",
+    "data/campaign_A2/a_middle_W3_per_object_metrics.csv": "3ff3114fc6fdd169f3f31b7fa6e3ce36e076ac16a126904cdbff7838c4c8e8cd",
+    "data/campaign_A2/a_middle_W4_per_object_metrics.csv": "b650a25e9aad1308e9a277a7535a3a5671eb424855b2b09d20e5d38f5641e0f6",
+    "data/campaign_A2/a_middle_W5_per_object_metrics.csv": "5ef5805ea7159161bc9205a55ee3b26bf3ea8956a41f125b2533f0baa80e39f0",
+    "data/campaign_A2/a_shallow_W1_per_object_metrics.csv": "aa86fbf1e9e4f0d9b712845831a48701f62951f3258a6140208c0c52962cde5c",
+    "data/campaign_A2/a_shallow_W2_per_object_metrics.csv": "8ff886f6ab59d7b2721681e8684ea1a1aefcaa428277fb41524c89188a0a7ca5",
+    "data/campaign_A2/a_shallow_W3_per_object_metrics.csv": "9c9308899ab10b5f587184396b4eb3a49d8ab1cb411986e40aa83817bfcbf9e0",
+    "data/campaign_A2/a_shallow_W4_per_object_metrics.csv": "3c4e715ed54ac914c58e6c1b278e6b64fc04905ee4ba8b9cca9f94e7ce9f0644",
+    "data/campaign_A2/a_shallow_W5_per_object_metrics.csv": "4d964b17eeb5ac5690ed8162c8ed5684e612d3fe450125f538dc50e329d57c6a",
+    "data/campaign_B/a3_baseline_per_object_metrics.csv": "c65d3bf41950e645d9fa4d418096c4cc639f26b2c5c087c8163696b6e38ce756",
+    "data/campaign_B/layer_hll_per_object_metrics.csv": "81ff07376414b720a88941ce1400d98e1db7cca2c3524b00c184a842503e38ee",
+    "data/campaign_B/layer_llh_per_object_metrics.csv": "f57aebf8735d11b420d232b0faf1d0f6efe558f62d9de39c7f5dd92111b63de9",
+    "data/campaign_B/lfm_exact_per_object_metrics.csv": "f41f02e9f803b30d862a950550d74357a3fea6a84a365d2a54fe41527e3515b1"
+  }
+}

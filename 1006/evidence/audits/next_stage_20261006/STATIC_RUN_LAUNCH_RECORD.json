@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "execution_lock_sha256": "0a02e52a540d8a1d9e5092b193fc483ad4e3e8a367cf8a14c9becf31acd5278f",
+  "design_sha256": "1abe76502b60ca0e1c99356d5c4b110c1118bd52b50bc014da3e60a1f51688e5",
+  "runner_sha256": "5522b2c67ed90bb7d5bf60d0388d671ac4d65ec1a53bb0a6c6905decacb35dd4",
+  "launch_orchestrator_sha256": "717c8348821fb7c8b6e2a7d3ec7499b3816fdb4aafbb5a8d1c0a59e84d94df04",
+  "tasks": [
+    {
+      "seed": 42,
+      "device": "cuda:0",
+      "exit_code": 0,
+      "elapsed_seconds": 750.009,
+      "log_sha256": "ae1cc647d1153c081b6b83a310ce5f9d1f118083234ba29b46bdc6c5fb3d05f6"
+    },
+    {
+      "seed": 43,
+      "device": "cuda:1",
+      "exit_code": 0,
+      "elapsed_seconds": 1510.019,
+      "log_sha256": "8cc005ee7f1ee224ae1ea534760f117b7db09c50437bc21916d0c4426982387b"
+    },
+    {
+      "seed": 44,
+      "device": "cuda:0",
+      "exit_code": 0,
+      "elapsed_seconds": 1460.018,
+      "log_sha256": "83d656f87578dcb2676749b17fe956197c78e36076168741bc6add18e186ee54"
+    }
+  ],
+  "expected_new_rows": 480,
+  "rows_by_seed": {
+    "42": 96,
+    "43": 192,
+    "44": 192
+  }
+}

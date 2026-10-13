@@ -1,0 +1,13 @@
+{
+  "status": "passed_smoke_test",
+  "base_model": "final/round2/mv_adapter/models/sd21_base",
+  "adapter": "final/round2/mv_adapter/models/mv-adapter/mvadapter_ig2mv_sd21.safetensors",
+  "object": "obj_0000",
+  "steps": 4,
+  "seed": 20260928,
+  "comparison": "geometry_scale_schedule=None versus constant_scale(1.0)",
+  "max_abs_pixel_diff": 0,
+  "mean_abs_pixel_diff": 0.0,
+  "equivalent": true,
+  "note": "Actual GPU0 pipeline smoke test; this is not a calibration or holdout result."
+}

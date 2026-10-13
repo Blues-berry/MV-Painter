@@ -1,0 +1,298 @@
+{
+  "suite": "FRESH_C_NATIVE_GLTF_SAMPLER_SYNTHETIC",
+  "scope": "synthetic in-memory triangles/quads through EGLBaseColorRenderer.prepare_asset/render; no paper GLB or method output loaded",
+  "resolution": 32,
+  "cases": [
+    {
+      "case": "A_standard_unit_uv",
+      "observed_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "expected_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "nearest sample at uv=(0.140625,0.140625), top-left texel",
+      "status": "PASS"
+    },
+    {
+      "case": "B_repeat_uv_above_one",
+      "observed_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "expected_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "u=1.140625 wraps to 0.140625",
+      "status": "PASS"
+    },
+    {
+      "case": "C_repeat_uv_below_zero",
+      "observed_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "expected_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "u=-0.859375 wraps to 0.140625",
+      "status": "PASS"
+    },
+    {
+      "case": "D_mirrored_repeat",
+      "observed_rgba8": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "expected_rgba8": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "u=1.140625 mirrors to 0.859375",
+      "status": "PASS"
+    },
+    {
+      "case": "E_clamp_to_edge",
+      "observed_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "expected_rgba8": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "negative u clamps to the left edge",
+      "status": "PASS"
+    },
+    {
+      "case": "F_texture_borders",
+      "observed_rgba8": [
+        [
+          255,
+          0,
+          0,
+          255
+        ],
+        [
+          255,
+          255,
+          0,
+          255
+        ]
+      ],
+      "expected_rgba8": [
+        [
+          255,
+          0,
+          0,
+          255
+        ],
+        [
+          255,
+          255,
+          0,
+          255
+        ]
+      ],
+      "tolerance_code_values": 2,
+      "reference": "CLAMP_TO_EDGE with linear filter at uv=(0,0) and (1,1)",
+      "status": "PASS"
+    },
+    {
+      "case": "G_high_frequency_magnification",
+      "observed_rgba8": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          255,
+          255,
+          255,
+          255
+        ]
+      ],
+      "expected_rgba8": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          255,
+          255,
+          255,
+          255
+        ]
+      ],
+      "tolerance_code_values": 2,
+      "reference": "8x8 checker, four screen pixels per texel, nearest MAG",
+      "status": "PASS"
+    },
+    {
+      "case": "H_mipmapped_minification",
+      "observed_rgba8": [
+        188,
+        188,
+        188,
+        255
+      ],
+      "expected_rgba8": [
+        188,
+        188,
+        188,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "8x8 black/white checker spans 8 repeats on 32px; expected 0.5 linear gray encoded to sRGB",
+      "status": "PASS"
+    },
+    {
+      "case": "I_linear_magnification",
+      "observed_rgba8": [
+        188,
+        188,
+        188,
+        255
+      ],
+      "expected_rgba8": [
+        188,
+        188,
+        188,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "linear interpolation halfway between black and white texel centers",
+      "status": "PASS"
+    },
+    {
+      "case": "J_known_uv_discontinuity",
+      "observed_rgba8": [
+        [
+          255,
+          0,
+          0,
+          255
+        ],
+        [
+          0,
+          255,
+          0,
+          255
+        ]
+      ],
+      "expected_rgba8": [
+        [
+          255,
+          0,
+          0,
+          255
+        ],
+        [
+          0,
+          255,
+          0,
+          255
+        ]
+      ],
+      "tolerance_code_values": 2,
+      "reference": "two adjacent geometry regions use duplicated vertices with distinct constant UVs",
+      "status": "PASS"
+    },
+    {
+      "case": "K_base_color_factor_and_opaque_alpha",
+      "observed_rgba8": [
+        137,
+        188,
+        225,
+        255
+      ],
+      "expected_rgba8": [
+        137,
+        188,
+        225,
+        255
+      ],
+      "tolerance_code_values": 2,
+      "reference": "factor RGB in linear color; OPAQUE ignores factor alpha for output coverage",
+      "status": "PASS"
+    }
+  ],
+  "built_in_orientation_repeat_probe": {
+    "status": "PASS",
+    "observed_rgba8": {
+      "top_left": [
+        255,
+        0,
+        0,
+        255
+      ],
+      "top_right": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "bottom_left": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "bottom_right": [
+        255,
+        255,
+        0,
+        255
+      ],
+      "repeat_negative_u": [
+        0,
+        255,
+        0,
+        255
+      ],
+      "repeat_u_above_one": [
+        255,
+        0,
+        0,
+        255
+      ]
+    }
+  },
+  "pass_count": 11,
+  "case_count": 11,
+  "status": "PASS",
+  "scope_limit": "This validates EGL sampling on synthetic geometry, not the absent original-UV-preserving view-to-texture baker. Source assets with BLEND alpha mode also require correct alpha compositing before a 24-object output gate can pass."
+}

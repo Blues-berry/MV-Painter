@@ -1,0 +1,33 @@
+{
+  "run_dir": "final/round2/scientific_validation_v3/formal/campaign_C",
+  "a": "layer_llh",
+  "b": "gen_cosine_bump",
+  "n_common": 300,
+  "n_disjoint": 0,
+  "tests": {
+    "fg_psnr": {
+      "n": 300,
+      "mean_delta": 0.45551809171835583,
+      "median_delta": 0.2791830897331238,
+      "ci95": [
+        0.3733022852987051,
+        0.5406644015510877
+      ],
+      "win_rate": 0.7,
+      "loss_rate": 0.3,
+      "p_bootstrap": 0.0001
+    },
+    "fg_lpips": {
+      "n": 300,
+      "mean_delta": -0.004636464615662893,
+      "median_delta": -0.0043115317821502686,
+      "ci95": [
+        -0.005458064110328754,
+        -0.0038078067842870953
+      ],
+      "win_rate": 0.23333333333333334,
+      "loss_rate": 0.7666666666666667,
+      "p_bootstrap": 0.0001
+    }
+  }
+}

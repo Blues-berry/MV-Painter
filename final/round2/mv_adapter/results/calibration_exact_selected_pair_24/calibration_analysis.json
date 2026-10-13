@@ -1,0 +1,110 @@
+{
+  "status": "selected_pair_stage_ablation_exact",
+  "csv": "final/round2/mv_adapter/results/calibration_exact_selected_pair_24/per_object_metrics.csv",
+  "row_count": 192,
+  "object_count": 24,
+  "schedule_row_counts": {
+    "LLL": 24,
+    "HLL": 24,
+    "LHL": 24,
+    "LLH": 24,
+    "HHL": 24,
+    "HLH": 24,
+    "LHH": 24,
+    "HHH": 24
+  },
+  "geometry_source_counts": {
+    "exact_mesh": 192
+  },
+  "low": 0.75,
+  "high": 1.0,
+  "stage_full_factorial": {
+    "LLL": {
+      "psnr": 13.180365274743101,
+      "fg_ssim": 0.5397207114017671,
+      "edge_ssim": 0.24673279085093072,
+      "fg_lpips": 0.21405625868485204,
+      "ciede2000": 21.10108912653393,
+      "gt_relative_texture_error": 2.0146518329243577,
+      "structure_utility": 0.3932267511263489
+    },
+    "HLL": {
+      "psnr": 13.16406941676613,
+      "fg_ssim": 0.539913487724132,
+      "edge_ssim": 0.246682523491068,
+      "fg_lpips": 0.2126018703242557,
+      "ciede2000": 21.137086782190533,
+      "gt_relative_texture_error": 2.0257201489217667,
+      "structure_utility": 0.3932980056076
+    },
+    "LHL": {
+      "psnr": 13.188347234315929,
+      "fg_ssim": 0.5419848151504993,
+      "edge_ssim": 0.24739082473226717,
+      "fg_lpips": 0.21260715338091055,
+      "ciede2000": 21.098781327406567,
+      "gt_relative_texture_error": 2.166349137051759,
+      "structure_utility": 0.39468781994138324
+    },
+    "LLH": {
+      "psnr": 13.188644635309016,
+      "fg_ssim": 0.5407008619772063,
+      "edge_ssim": 0.24707118390748897,
+      "fg_lpips": 0.21416538211310077,
+      "ciede2000": 21.088926434516907,
+      "gt_relative_texture_error": 2.0147782779087597,
+      "structure_utility": 0.39388602294234765
+    },
+    "HHL": {
+      "psnr": 13.185923881484035,
+      "fg_ssim": 0.541765707027581,
+      "edge_ssim": 0.24715705583285955,
+      "fg_lpips": 0.21150881815184322,
+      "ciede2000": 21.099462072054546,
+      "gt_relative_texture_error": 2.2919304664922744,
+      "structure_utility": 0.39446138143022025
+    },
+    "HLH": {
+      "psnr": 13.176108114418037,
+      "fg_ssim": 0.5408436788452996,
+      "edge_ssim": 0.2470087592696978,
+      "fg_lpips": 0.2128868121912496,
+      "ciede2000": 21.112331291039784,
+      "gt_relative_texture_error": 2.044952515149102,
+      "structure_utility": 0.3939262190574987
+    },
+    "LHH": {
+      "psnr": 13.195733023876706,
+      "fg_ssim": 0.542454088313712,
+      "edge_ssim": 0.2475748549008535,
+      "fg_lpips": 0.21285739641947052,
+      "ciede2000": 21.088517765204113,
+      "gt_relative_texture_error": 2.2168841800862458,
+      "structure_utility": 0.39501447160728276
+    },
+    "HHH": {
+      "psnr": 13.189398910007887,
+      "fg_ssim": 0.5421699198583761,
+      "edge_ssim": 0.24732900980032155,
+      "fg_lpips": 0.2118759826084392,
+      "ciede2000": 21.090341912375557,
+      "gt_relative_texture_error": 2.2880517972037384,
+      "structure_utility": 0.39474946482934886
+    }
+  },
+  "stage_selection": {
+    "status": "undefined_set_valued",
+    "candidate_set": [
+      "LLL",
+      "HLL",
+      "LHL",
+      "LLH",
+      "HHL",
+      "HLH",
+      "LHH",
+      "HHH"
+    ],
+    "post_hoc_selection": false,
+    "note": "The frozen calibration rule requires direct reporting of all eight combinations but specifies no unique winner or tie-break rule."
+  }
+}

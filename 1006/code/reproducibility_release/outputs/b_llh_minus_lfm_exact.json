@@ -1,0 +1,33 @@
+{
+  "run_dir": "data/campaign_B",
+  "a": "layer_llh",
+  "b": "lfm_exact",
+  "n_common": 150,
+  "n_disjoint": 0,
+  "tests": {
+    "fg_psnr": {
+      "n": 150,
+      "mean_delta": 0.3251651644706726,
+      "median_delta": 0.046642422676086426,
+      "ci95": [
+        0.209001208593448,
+        0.44584889302651076
+      ],
+      "win_rate": 0.54,
+      "loss_rate": 0.46,
+      "p_bootstrap": 0.0001
+    },
+    "fg_lpips": {
+      "n": 150,
+      "mean_delta": -0.004603816941380501,
+      "median_delta": -0.003533482551574707,
+      "ci95": [
+        -0.005629423425843318,
+        -0.0035678667519241573
+      ],
+      "win_rate": 0.24,
+      "loss_rate": 0.76,
+      "p_bootstrap": 0.0001
+    }
+  }
+}

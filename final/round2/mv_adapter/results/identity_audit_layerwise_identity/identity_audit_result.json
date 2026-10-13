@@ -1,0 +1,277 @@
+{
+  "audit": "MVADAPTER_LAYERWISE_IDENTITY_AUDIT",
+  "verdict": "PASS",
+  "identity_checks": {
+    "all_png_sha_equal": true,
+    "all_pixel_equal": true,
+    "all_max_abs_pixel_diff_zero": true,
+    "all_metrics_equal": true,
+    "all_cases_present": true,
+    "cond_encoder_features_count_ok": true,
+    "norm_ratios_are_one": true
+  },
+  "cond_encoder_diagnostics": {
+    "shapes_logged": true,
+    "identity_mode": true,
+    "multipliers": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "adapter_state_shapes": [
+      [
+        12,
+        320,
+        64,
+        64
+      ],
+      [
+        12,
+        640,
+        32,
+        32
+      ],
+      [
+        12,
+        1280,
+        16,
+        16
+      ],
+      [
+        12,
+        1280,
+        8,
+        8
+      ]
+    ],
+    "first_call_input_norms": [
+      2285.84716796875,
+      1763.89599609375,
+      2535.650390625,
+      2316.997802734375
+    ],
+    "first_call_scaled_norms": [
+      2285.84716796875,
+      1763.89599609375,
+      2535.650390625,
+      2316.997802734375
+    ],
+    "first_call_norm_ratios": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "expected_shapes_note": "batch B=12 (6 views x CFG); expected feature shapes [B,320,64,64],[B,640,32,32],[B,1280,16,16],[B,1280,8,8] at 512x512",
+  "cases": [
+    {
+      "schedule": "fixed_low",
+      "identity_label": "fixed_low",
+      "object": "obj_0024",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "e153cbaf6cb86b0c0a8b995b0fc3edfc9078421bdcc31c223b7ef0910953b666",
+        "png_sha_b": "e153cbaf6cb86b0c0a8b995b0fc3edfc9078421bdcc31c223b7ef0910953b666"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "e153cbaf6cb86b0c0a8b995b0fc3edfc9078421bdcc31c223b7ef0910953b666",
+        "png_sha_b": "e153cbaf6cb86b0c0a8b995b0fc3edfc9078421bdcc31c223b7ef0910953b666"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "fixed_low",
+      "identity_label": "fixed_low",
+      "object": "obj_0025",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "4ec8395ea8dd0e54821655a6482222ed6d74dd5313fe0d98c470b6fc38aead87",
+        "png_sha_b": "4ec8395ea8dd0e54821655a6482222ed6d74dd5313fe0d98c470b6fc38aead87"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "4ec8395ea8dd0e54821655a6482222ed6d74dd5313fe0d98c470b6fc38aead87",
+        "png_sha_b": "4ec8395ea8dd0e54821655a6482222ed6d74dd5313fe0d98c470b6fc38aead87"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "fixed_low",
+      "identity_label": "fixed_low",
+      "object": "obj_0026",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "47b000d477822db5797e89735aa90a6bc66e4bd2d704c984586a4f9d45e38d59",
+        "png_sha_b": "47b000d477822db5797e89735aa90a6bc66e4bd2d704c984586a4f9d45e38d59"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "47b000d477822db5797e89735aa90a6bc66e4bd2d704c984586a4f9d45e38d59",
+        "png_sha_b": "47b000d477822db5797e89735aa90a6bc66e4bd2d704c984586a4f9d45e38d59"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LHL",
+      "identity_label": "L-LHL",
+      "object": "obj_0024",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "58af8b3d87b848a3b127e7380b7ecdc702b258d9a4c853b25ebb6c522d9140a9",
+        "png_sha_b": "58af8b3d87b848a3b127e7380b7ecdc702b258d9a4c853b25ebb6c522d9140a9"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "58af8b3d87b848a3b127e7380b7ecdc702b258d9a4c853b25ebb6c522d9140a9",
+        "png_sha_b": "58af8b3d87b848a3b127e7380b7ecdc702b258d9a4c853b25ebb6c522d9140a9"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LHL",
+      "identity_label": "L-LHL",
+      "object": "obj_0025",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "8b64ad7c3367e803dbe4457a87f8c6957c1ab317b916a0e5c319ebd48199e88c",
+        "png_sha_b": "8b64ad7c3367e803dbe4457a87f8c6957c1ab317b916a0e5c319ebd48199e88c"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "8b64ad7c3367e803dbe4457a87f8c6957c1ab317b916a0e5c319ebd48199e88c",
+        "png_sha_b": "8b64ad7c3367e803dbe4457a87f8c6957c1ab317b916a0e5c319ebd48199e88c"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LHL",
+      "identity_label": "L-LHL",
+      "object": "obj_0026",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "1727b7ccd19afc65924e71ce0e0a0ecbe63814c40c62d601bfd9dc6fe9d1692b",
+        "png_sha_b": "1727b7ccd19afc65924e71ce0e0a0ecbe63814c40c62d601bfd9dc6fe9d1692b"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "1727b7ccd19afc65924e71ce0e0a0ecbe63814c40c62d601bfd9dc6fe9d1692b",
+        "png_sha_b": "1727b7ccd19afc65924e71ce0e0a0ecbe63814c40c62d601bfd9dc6fe9d1692b"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LLH",
+      "identity_label": "L-LLH",
+      "object": "obj_0024",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "9e5de756c020e5e8cb6d1cab14b17a3e1a2d7b8050b58834df3080365a40f2f7",
+        "png_sha_b": "9e5de756c020e5e8cb6d1cab14b17a3e1a2d7b8050b58834df3080365a40f2f7"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "9e5de756c020e5e8cb6d1cab14b17a3e1a2d7b8050b58834df3080365a40f2f7",
+        "png_sha_b": "9e5de756c020e5e8cb6d1cab14b17a3e1a2d7b8050b58834df3080365a40f2f7"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LLH",
+      "identity_label": "L-LLH",
+      "object": "obj_0025",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "1be90e5cd0bbe5b595caa5a7269260a37b57498c4f930cece89c80a6bea7ba8c",
+        "png_sha_b": "1be90e5cd0bbe5b595caa5a7269260a37b57498c4f930cece89c80a6bea7ba8c"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "1be90e5cd0bbe5b595caa5a7269260a37b57498c4f930cece89c80a6bea7ba8c",
+        "png_sha_b": "1be90e5cd0bbe5b595caa5a7269260a37b57498c4f930cece89c80a6bea7ba8c"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    },
+    {
+      "schedule": "LLH",
+      "identity_label": "L-LLH",
+      "object": "obj_0026",
+      "global_vs_identity": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "2bbff8d9a8e7076e5d32b28ad0f996be0ee7b7a403b96cc4242d340616845a4a",
+        "png_sha_b": "2bbff8d9a8e7076e5d32b28ad0f996be0ee7b7a403b96cc4242d340616845a4a"
+      },
+      "global_vs_archived": {
+        "exists": true,
+        "png_sha_equal": true,
+        "pixel_equal": true,
+        "max_abs_pixel_diff": 0,
+        "png_sha_a": "2bbff8d9a8e7076e5d32b28ad0f996be0ee7b7a403b96cc4242d340616845a4a",
+        "png_sha_b": "2bbff8d9a8e7076e5d32b28ad0f996be0ee7b7a403b96cc4242d340616845a4a"
+      },
+      "metric_max_abs_diff": 0.0,
+      "metric_equal": true
+    }
+  ]
+}

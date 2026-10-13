@@ -1,0 +1,21 @@
+{
+  "config": "MVPainter/configs/mvpainter-geotex-v2-train.yaml",
+  "output_dir": "mvpoutput/geotex_v3_anticollapse",
+  "steps": 6000,
+  "warmup_steps": 300,
+  "peak_lr": 8e-05,
+  "min_lr": 1e-05,
+  "grad_accum": 2,
+  "ema_decay": 0.9995,
+  "save_every": 1000,
+  "eval_every": 2000,
+  "device": "cuda:0",
+  "grad_clip": 1.0,
+  "seed": 42,
+  "fg_weight": 0.7,
+  "edge_weight": 0.3,
+  "ssim_weight": 0.2,
+  "reg_weight": 5e-05,
+  "ratio_reg_weight": 0.0,
+  "var_weight": 0.01
+}

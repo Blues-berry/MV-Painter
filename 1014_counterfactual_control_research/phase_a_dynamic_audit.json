@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "objects": [
+    {
+      "uid": "1dc2c857f7614caeb6c2aa0559ccf973",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    },
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    },
+    {
+      "uid": "238ff3e41c964655b83aa9c8770cc766",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    },
+    {
+      "uid": "2dd9bc8172c6461797947cc7214db399",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    },
+    {
+      "uid": "2f6c94487ee54cb88021f4643409d849",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    },
+    {
+      "uid": "e261c0fe85af46388260e2359a9bfc92",
+      "input_hashes_equal_all_conditions": true,
+      "initial_latent_sha256": "0340047558809127cfbef95fc332f3ae1ce4145167192ddcfc30e1e5778e94dd",
+      "b0_pixel_identical_to_frozen": true,
+      "bplus_bminus_trace_pass": true
+    }
+  ],
+  "conditions": [
+    "counterfactual_b0",
+    "counterfactual_bplus",
+    "counterfactual_bminus"
+  ],
+  "per_condition_generations": 6,
+  "total_generations": 18,
+  "steps_per_generation": 50,
+  "adapter_sites_per_step": 9,
+  "bplus_vector": [
+    1.85,
+    1.61,
+    1.61,
+    1.61,
+    1.61,
+    1.61
+  ],
+  "bminus_vector": [
+    1.45,
+    1.69,
+    1.69,
+    1.69,
+    1.69,
+    1.69
+  ],
+  "affected_steps_inclusive": [
+    34,
+    49
+  ],
+  "affected_groups": [
+    "deep",
+    "middle"
+  ],
+  "shallow_applied": [
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8,
+    0.8
+  ],
+  "budget_sum": 9.9,
+  "residual_dose_logged": true
+}

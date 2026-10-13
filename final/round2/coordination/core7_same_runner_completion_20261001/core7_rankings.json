@@ -1,0 +1,149 @@
+{
+  "fg_psnr": {
+    "direction": "higher-is-better",
+    "order_best_to_worst": [
+      "layer_llh",
+      "global_fixed_high",
+      "layer_fixed_mean",
+      "layer_lhl",
+      "global_c3",
+      "global_fixed_low",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 10.730782388776973,
+      "global_c3": 11.938553661971852,
+      "layer_fixed_mean": 13.10007300713788,
+      "layer_lhl": 12.974319285240727,
+      "layer_llh": 13.975080826144287,
+      "no_adapter": 8.826063423269037,
+      "global_fixed_high": 13.152788801901583
+    }
+  },
+  "fg_ssim": {
+    "direction": "higher-is-better",
+    "order_best_to_worst": [
+      "no_adapter",
+      "global_fixed_high",
+      "layer_llh",
+      "layer_fixed_mean",
+      "layer_lhl",
+      "global_c3",
+      "global_fixed_low"
+    ],
+    "means": {
+      "global_fixed_low": 0.39869325775383174,
+      "global_c3": 0.4295512966379739,
+      "layer_fixed_mean": 0.4549551912030016,
+      "layer_lhl": 0.44452334800060245,
+      "layer_llh": 0.4619674612700507,
+      "no_adapter": 0.4799450144873581,
+      "global_fixed_high": 0.478331137880467
+    }
+  },
+  "fg_lpips": {
+    "direction": "lower-is-better",
+    "order_best_to_worst": [
+      "layer_llh",
+      "global_fixed_high",
+      "layer_fixed_mean",
+      "layer_lhl",
+      "global_c3",
+      "global_fixed_low",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 0.19171319780803786,
+      "global_c3": 0.18167951275540542,
+      "layer_fixed_mean": 0.1698469340538039,
+      "layer_lhl": 0.17192777521921782,
+      "layer_llh": 0.160959685727468,
+      "no_adapter": 0.20589620433747768,
+      "global_fixed_high": 0.16771884855098915
+    }
+  },
+  "full_psnr": {
+    "direction": "higher-is-better",
+    "order_best_to_worst": [
+      "layer_llh",
+      "layer_lhl",
+      "layer_fixed_mean",
+      "global_c3",
+      "global_fixed_high",
+      "global_fixed_low",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 18.22872200305911,
+      "global_c3": 18.96760460259258,
+      "layer_fixed_mean": 19.516357857248057,
+      "layer_lhl": 19.634919525056645,
+      "layer_llh": 20.82756235547688,
+      "no_adapter": 10.562881596278453,
+      "global_fixed_high": 18.242375526739202
+    }
+  },
+  "full_ssim": {
+    "direction": "higher-is-better",
+    "order_best_to_worst": [
+      "layer_llh",
+      "global_c3",
+      "layer_fixed_mean",
+      "global_fixed_high",
+      "layer_lhl",
+      "global_fixed_low",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 0.8438619925923969,
+      "global_c3": 0.8510458735020264,
+      "layer_fixed_mean": 0.8502890789422436,
+      "layer_lhl": 0.8486313135295674,
+      "layer_llh": 0.8514293488385021,
+      "no_adapter": 0.7281766065220902,
+      "global_fixed_high": 0.8498166715321334
+    }
+  },
+  "full_lpips": {
+    "direction": "lower-is-better",
+    "order_best_to_worst": [
+      "global_fixed_high",
+      "layer_llh",
+      "global_c3",
+      "layer_fixed_mean",
+      "global_fixed_low",
+      "layer_lhl",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 0.21072985105000544,
+      "global_c3": 0.202911160832298,
+      "layer_fixed_mean": 0.20816696861731834,
+      "layer_lhl": 0.22777329401477522,
+      "layer_llh": 0.1988035627519307,
+      "no_adapter": 0.6260108929397403,
+      "global_fixed_high": 0.1967351087031589
+    }
+  },
+  "edge_ssim": {
+    "direction": "higher-is-better",
+    "order_best_to_worst": [
+      "global_fixed_high",
+      "layer_llh",
+      "layer_fixed_mean",
+      "global_c3",
+      "layer_lhl",
+      "global_fixed_low",
+      "no_adapter"
+    ],
+    "means": {
+      "global_fixed_low": 0.5200764055269352,
+      "global_c3": 0.5278359410771425,
+      "layer_fixed_mean": 0.5362978680194288,
+      "layer_lhl": 0.5273258700103,
+      "layer_llh": 0.5476323393160019,
+      "no_adapter": 0.4794475387619889,
+      "global_fixed_high": 0.5538484150732773
+    }
+  }
+}

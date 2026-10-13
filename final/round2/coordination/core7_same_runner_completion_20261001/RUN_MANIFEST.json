@@ -1,0 +1,37 @@
+{
+  "task": "Core-7 same-runner completion + round-2 priority experiments and forensic audits",
+  "date": "2026-10-01",
+  "branch": "codex/round2-evidence-integrated-20261001",
+  "base_commit": "d30ed4f",
+  "task_boundary": "experiments and audits ONLY; no paper/supplementary/letter edits",
+  "deliverables": {
+    "core7": {
+      "protocol_lock": "PROTOCOL_LOCK_CORE7_COMPLETION.md",
+      "runner": "scripts/run_core7_completion_276_20261001.py",
+      "preflight": "preflight/ (PASS-a/b/c)",
+      "formal": ["formal_no_adapter/", "formal_global_fixed_high/"],
+      "analysis": ["aggregate_metrics_core7.csv", "core7_rankings.json", "paired_bootstrap_core7.json", "CORE7_SAME_RUNNER_REPORT.md"]
+    },
+    "p2_texture_fidelity_extension": {
+      "script": "scripts/analyze_texture_fidelity_extension_20261001.py",
+      "outputs": ["TEXTURE_FIDELITY_EXTENSION_AGGREGATES.csv", "TEXTURE_FIDELITY_EXTENSION_COMPARISONS.csv", "TEXTURE_FIDELITY_EXTENSION_BOOTSTRAP.json"]
+    },
+    "p1_mapping_sensitivity": {
+      "protocol_lock": "MAPPING_SENSITIVITY_PROTOCOL.md",
+      "profile_variant": "final/round2/mv_adapter/layer_profile_transfer_mappingM3.json",
+      "launcher": "scripts/launch_mappingM3_20261001.sh",
+      "chronology_audit": "MAPPING_CHRONOLOGY_AUDIT.md"
+    },
+    "p3_seam_audit": {
+      "dir": "../BAKE_SEAM_AUDIT_20261001/",
+      "script": "scripts/audit_bake_seams_20261001.py"
+    },
+    "audits": [
+      "METRIC_SIGN_CONVENTION_AUDIT.md (+ erratum in main_backbone_robustness1_20260930/)",
+      "PROTOCOL_LOCK_SAMPLE_INDICES_ERRATUM.md",
+      "ARCHIVED_LHL_PROVENANCE_AUDIT.md",
+      "GENERATION_SEED_AUDIT.md",
+      "MAPPING_CHRONOLOGY_AUDIT.md"
+    ]
+  }
+}

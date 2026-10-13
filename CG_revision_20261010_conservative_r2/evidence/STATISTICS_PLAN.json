@@ -1,0 +1,14 @@
+{
+  "status": "FROZEN_BEFORE_NEW_SCHEDULE_OUTCOMES",
+  "mvadapter_primary": ["budget_middle16", "fixed_mean_0p83", "fg_psnr"],
+  "mvadapter_secondary_family": "all 21 unordered pairs among the seven frozen conditions, each on fg_psnr, fg_lpips, fg_ssim, edge_ssim, ciede2000, excluding the primary endpoint: 104 two-sided tests, Holm adjusted together",
+  "bake_primary": ["budget_late16", "budget_fixed_mean", "fg_lpips"],
+  "bake_secondary_family": "native_gc3 minus native_gfh on fg_psnr, fg_lpips, fg_ssim, ciede2000: 4 two-sided tests, Holm adjusted together",
+  "other_bake_pairs": "complete descriptive paired means and pointwise bootstrap intervals; no confirmatory claims",
+  "bootstrap": {"unit": "object", "draws": 50000, "seed": 20261010},
+  "sign_flip": {"exact_max_n": 16, "monte_carlo_draws_above_16": 100000, "seed": 20261010, "correction": "(extreme+1)/(draws+1)"},
+  "ranking": "Spearman correlation within each object across seven methods, for matched image and unseen-view metrics; average over objects and bootstrap objects; retain undefined constant rankings in failure report",
+  "missing": "retain failure manifest; do not replace or drop objects because of endpoint direction; comparisons use explicitly reported complete pairs",
+  "textured_mvadapter_subset": "descriptive only; all 50 remain primary including 13 geometry-only white-albedo objects",
+  "source_cohort": "previously observed GeoTex image outcomes; new MV-Adapter and baking outcomes unobserved at freeze"
+}

@@ -1,0 +1,33 @@
+{
+  "current_stop_state_sha256": "f48902b2d1ab23f4f423fb828d5b497371609dda816ad3c1c7e34c876ca50cb2",
+  "failed_resume_attempt_record_sha256": "985c6e8104de67bdaebaa17f364c0090899416a82447f58946fdfe0dca4603d8",
+  "hotfix_id": "fresh_c_preinference_resume_driver_sha256_fix_20261006_v1",
+  "hotfix_markdown_sha256": "36015e30b686b09d1e65bd22362a8b1fb4efce23acdf417dcbd7a9db350379ef",
+  "input_embeddings_manifest_sha256": "50f28b3f17ef5537ec0ab56a36c3c3c142486e5a7333adaf2a51d87cc83c8a2f",
+  "input_preprocessing_amendment_v3_sha256": "10eaa8b038eca93f30e07d0f3c93c09ff806222801c45bb840934df187f574b0",
+  "locked_at_utc": "2026-10-06T14:40:16.745491+00:00",
+  "method_outputs_existed_at_freeze": false,
+  "original_smoke_failure_record_sha256": "dbe556837435732d70f07fa2cb8f4dbe7a997aa3c39f7cc1579aa35b304b7baa",
+  "original_smoke_log_hashes": {
+    "shard0.log": {
+      "bytes": 2189,
+      "error": "KeyError: global_embeds",
+      "exit_status": 1,
+      "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/technical_smoke/shard0.log",
+      "sha256": "2da504f7ca7a27f69d1286c3dc42614f053256ef79692d0a0793d26e959e3bf3"
+    },
+    "shard1.log": {
+      "bytes": 2273,
+      "error": "KeyError: global_embeds",
+      "exit_status": 1,
+      "path": "/4T/CXY/MV-Painter/1006/data/fresh_c/runs/technical_smoke/shard1.log",
+      "sha256": "b81b733dd171aa02dfbfef087fe00ba5ca4fd785f8f8c5174c32cf231dfb6bcc"
+    }
+  },
+  "parent_closure_driver_sha256": "124639d767faafbd34375077551f0910ce691d1f4b2bea59f7efbb13d22cef6b",
+  "resume_driver_sha256": "ada6ef51ba5aa3c9075e48b89e02461c18cd7f1f9265804361ae69454447deec",
+  "retry_directory": "1006/data/fresh_c/runs/technical_smoke_retry1",
+  "schema_version": 1,
+  "scientific_protocol_changes": [],
+  "status": "FROZEN_PRE_INFERENCE_RESUME_DRIVER"
+}

@@ -1,0 +1,600 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.2cm]{geometry}
+\setlength{\emergencystretch}{2em}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup{font=small}
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Supplementary Material}\\[4pt]
+ {\large\bfseries Layer-wise Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation}
+\end{center}
+
+\section{S1. Frozen protocols and provenance}
+
+The main clean-v2 evaluation uses the controlled-retraining checkpoint with
+SHA-256:
+\begin{center}
+\texttt{0618d6b284ab47aa16d7a89dc447f5ba}\\
+\texttt{4455ff6c9d918e5e129478a99e0114c0}
+\end{center}
+The strict holdout contains 276 objects and has ordered-list SHA-256:
+\begin{center}
+\texttt{a6aa8ab6e475763e1b5e67dc8c712ec8}\\
+\texttt{f1940e3952d65897c820887554bbd044}
+\end{center}
+All image evaluations use six unique views $(0,15,12,16,13,14)$, 50
+denoising steps, seed 42, and object-level paired bootstrap with 10,000
+resamples and seed 20260928. The main four-condition run and the
+stage-placement follow-up are separate protocol surfaces, both retained as
+legacy uncapped diagnostics. Their repeated C3 outputs are not identical and
+are therefore not pooled, and neither surface is pooled with the capped
+strict-276 Core-7 confirmation.
+
+\paragraph{Reproducibility scope of the Core-7 protocol.} The same-runner
+Core-7 protocol is verified through shared-input audits, protocol identity
+and paired records; full per-object serialized tensor hashes are available
+for the added completion arms but were not retained for all earlier frozen
+Core-5 arms.
+
+The complete records/CSV/PNG/hash audit is in
+\texttt{coordination/E0A\_EVIDENCE\_FREEZE\_20260929.json}. It verifies 276
+record JSON files, 1,104 stage rows, 1,104 serialized Full-SSIM rows, and
+exact object--condition pairing. The follow-up uses early/middle/late step
+counts 17/16/17. Nominal scale summaries are:
+
+\begin{table}[h]
+\centering\small
+\caption{Nominal and recorded budget quantities for the stage-placement follow-up.}
+\begin{tabular}{lrrrr}
+\toprule
+Schedule & Step mean & Scale sum & Squared-scale sum & Actual L2 mean \\
+\midrule
+Fixed mean & 1.6667 & 83.3333 & 138.8889 & 8936.92 \\
+HLL & 1.6750 & 83.7500 & 157.8125 & 9239.76 \\
+LHL & 1.6500 & 82.5000 & 153.1250 & 8799.86 \\
+LLH & 1.6750 & 83.7500 & 157.8125 & 8777.53 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The residual norms are descriptive measures of effective intervention
+intensity; they do not identify residual-direction alignment or establish a
+causal mechanism.
+
+\section{S2. Legacy uncapped panels (within-panel diagnostics only)}
+
+This section receives the two earlier strict-276 panels produced under the
+uncapped legacy runner semantics. Both are retained as within-panel
+diagnostics only; their absolute values are not pooled with the capped
+strict-276 Core-7 in the main text, and no current baseline-family ranking
+is taken from them.
+
+\subsection{S2a. Clean-v2 four-condition panel}
+
+\begin{table}[h]
+\centering\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+No adapter & 10.514 & 0.726 & 0.627 & 8.776 & 0.478 & 0.207 & 0.479 \\
+Fixed-low & 15.086 & 0.850 & 0.194 & 7.030 & 0.355 & 0.202 & 0.500 \\
+Fixed-high & 13.365 & 0.823 & 0.190 & 5.410 & 0.229 & 0.210 & 0.494 \\
+C3 (LHL) & 14.875 & 0.855 & 0.190 & 6.763 & 0.348 & 0.201 & 0.500 \\
+\bottomrule
+\end{tabular}}
+\caption{Strict-276 main-adapter clean-v2 panel (legacy uncapped semantics).
+Metrics are pre-save float-evaluation means over the same six unique views;
+the Full-SSIM column is an audit value, not the saved-artifact branch.}
+\end{table}
+
+Within this legacy uncapped panel, the four-condition comparison is a
+non-dominance result: C3 is above fixed-high on foreground PSNR/SSIM and is
+close to fixed-low on foreground LPIPS and Edge-SSIM, but fixed-low has
+higher Full-PSNR, FG-PSNR, and FG-SSIM. This reading holds within the legacy
+uncapped panel only.
+
+\subsection{S2b. Stage-placement follow-up}
+
+The follow-up means are reproduced below (legacy uncapped diagnostic;
+within-panel only). LPIPS is lower-is-better. The six non-SSIM metrics all
+favor LLH over LHL under their intended directions.
+
+\begin{table}[h]
+\centering\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Schedule & Full-PSNR & Full-SSIM (pre-save) & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+Fixed mean & 14.311 & 0.8435 & 0.188 & 6.257 & 0.316 & 0.205 & 0.499 \\
+HLL & 13.397 & 0.8252 & 0.202 & 5.583 & 0.259 & 0.212 & 0.464 \\
+LHL & 14.868 & 0.8546 & 0.190 & 6.760 & 0.348 & 0.201 & 0.500 \\
+LLH & 15.136 & 0.8518 & 0.181 & 6.937 & 0.357 & 0.200 & 0.536 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{table}[h]
+\centering\small
+\caption{Saved-artifact Full-SSIM in the stage-placement follow-up (legacy uncapped semantics; within-panel only). Prediction is PNG-reloaded float32; GT is the original RGBA composited over white in float32. C3 deltas use object-level paired bootstrap with 10,000 resamples and seed 20260928.}
+\begin{tabular}{lcc}
+\toprule
+Schedule & Full-SSIM$\uparrow$ & C3 paired difference \\
+\midrule
+Fixed mean & 0.87395 & +0.00749 \\
+HLL & 0.85993 & +0.02151 \\
+LHL (C3) & 0.88144 & reference \\
+LLH & 0.88313 & $-$0.00170 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The saved-artifact Full-SSIM means are fixed-mean 0.87395, HLL 0.85993, LHL
+0.88144, and LLH 0.88313. LHL minus fixed-mean is $+0.00749$
+([0.00674,0.00826]), LHL minus HLL is $+0.02151$ ([0.01984,0.02319]), and
+LHL minus LLH is $-0.00170$ ([-0.00205,-0.00134]). These are paired
+object-level 95\% bootstrap intervals, not equivalence tests. The last
+interval is a detected loss for C3 on this saved-artifact Full-SSIM branch,
+not evidence that the schedules are equivalent.
+
+\section{S3. Fixed-GT Full-SSIM decomposition}
+
+The controlled 12-object trace saved A (pre-save prediction), B (PNG encoder
+input), C (PNG-reloaded prediction), the original float GT, and the
+PNG-reloaded GT. A and B are exactly equal. With the GT held fixed, the mean
+SSIM effects are:
+
+\begin{table}[h]
+\centering\small
+\caption{Mean Full-SSIM changes in the fixed-GT 12-object decomposition.}
+\begin{tabular}{lr}
+\toprule
+Comparison & Mean change \\
+\midrule
+A fp16 $\rightarrow$ A fp32, original GT fixed & $+0.03198$ \\
+A fp32 $\rightarrow$ C fp32, original GT fixed & $-0.00036$ \\
+Original GT $\rightarrow$ PNG GT, A fp32 fixed & $-0.00007$ \\
+A/original GT $\rightarrow$ C/PNG GT & $-0.00043$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This decomposition is diagnostic and does not recover historical 300-object
+pre-save tensors. The machine-readable rows are in
+\texttt{FIXED\_GT\_SSIM\_DECOMPOSITION.csv/json} under the controlled trace
+directory.
+
+\section{S4. Twelve-object Exact-GLB baking audit}
+
+The stratified case study contains 12 frozen Exact-GLB objects, four generated
+conditions, 48 exported textured GLBs, and 528 unseen-view rows (11 views per
+object--condition). Six source views were used for baking. The object-level
+means are:
+
+\begin{table}[h]
+\centering\small
+\caption{Unseen-view baking means for the selected case-study cohort.}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Masked PSNR & CIEDE2000 & FG-LPIPS & Silhouette IoU \\
+\midrule
+No adapter & 11.824 & 18.200 & 0.156 & 0.99968 \\
+Fixed-low & 6.001 & 48.623 & 0.199 & 0.99968 \\
+Fixed-high & 3.891 & 60.420 & 0.216 & 0.99968 \\
+C3/LHL & 5.638 & 51.183 & 0.201 & 0.99968 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Coverage, post-inpainting coverage, seam definitions, and per-object rows are
+provided in the \texttt{cpu\_bake\_12} audit directory. DISTS was
+unavailable; the cohort has no generated 12-object GT bake. Blender reindexed
+vertices for \texttt{obj\_0048}; this is not a byte-identity guarantee.
+Generated renders show source-fusion colour inconsistency, so this audit is
+implementation/case-study evidence, not a population-level TCAS advantage.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Concrete object-level baking failure boundaries. Values are
+object means over 11 unseen views; paired entries are fixed-low/C3.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Object & Raw cov. & Inpaint frac. & Masked PSNR & CIEDE2000 & FG-LPIPS & Boundary \\
+\midrule
+\texttt{obj\_0048} & 0.1547 & 0.8441 & 5.090/4.927 & 53.328/54.339 & 0.388/0.375 & Blender reindexing \\
+\texttt{obj\_0078} & 0.0328 & 0.2802 & 4.278/3.879 & 58.822/61.431 & 0.066/0.068 & very low raw coverage \\
+\texttt{obj\_0082} & 0.0286 & 0.4951 & 4.144/3.823 & 55.558/57.364 & 0.081/0.082 & very low raw coverage \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+These cases make the failure boundary concrete: the low-coverage objects
+remain limited even after propagation, while \texttt{obj\_0048} obtains most
+of its final texture coverage from inpainting. The GT-to-GT sanity check was
+only a two-object smoke (\texttt{obj\_0013} and \texttt{obj\_0015}); it is not
+a 12-object GT bake. The bake handoff has blank canonical
+\texttt{source\_asset\_sha256} fields, and the saved seam scalar does not
+include a seam-pair count, so source identity and seam denominators remain
+audit limitations.
+
+\section{S4a. Complete-object and unseen-view index}
+
+Figure~\ref{fig:allobjects} provides the complete 12-object contact sheet
+used to select the qualitative panels in the main paper. Individual full-size
+PNG panels are retained under
+\texttt{main\_adapter\_clean\_v2/comparisons/}, with one file per object and
+the columns GT, no adapter, fixed-low, fixed-high, and C3. The object IDs are
+the frozen stratified baking cohort and the same IDs are used by the
+object-level CSV rows in \texttt{cpu\_bake\_12}. The unseen-view directory
+contains 11 rendered views per object--condition; missing or low-coverage
+rows are retained as limited observations and are not converted to zero
+scores.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.98\textwidth,height=0.72\textheight,keepaspectratio]{main_adapter_clean_v2/comparisons/exact_cohort_contact_sheet.png}
+\caption{Complete 12-object comparison contact sheet. This is the full
+qualitative cohort, not a success-only selection; object-level baking metrics
+and coverage are reported separately in S4.}
+\label{fig:allobjects}
+\end{figure*}
+
+\section{S4b. Layer-wise bake extension with same-draw global controls}
+
+The layer-wise bake uses the same 12 Exact-GLB objects, the same bake
+protocol (1024 texture resolution, 512 render resolution, 6 source views,
+11 unseen views), and the same frozen handoff geometry/UV/cameras/GT as S4.
+The layer-wise panels and fresh global fixed-low/C3 controls were generated
+by ONE seeded runner (per-object seeds fix the reference preprocessing draw,
+the initial latent, and the condition-VAE path), so the rows below are
+directly comparable; they are NOT comparable with the absolute values in S4,
+which come from an earlier runner invocation and are not pooled with them.
+
+\begin{table}[h]
+\centering\small
+\caption{Same-draw unseen-view bake means over the 12-object cohort
+(layer-wise extension; 11 unseen views per object--condition).}
+\begin{tabular}{lrrrr}
+\toprule
+Method & Masked PSNR$\uparrow$ & CIEDE2000$\downarrow$ & FG-LPIPS$\downarrow$ & Texture coverage \\
+\midrule
+Global fixed-low (same-draw) & 10.763 & 26.287 & 0.1705 & 0.1574 \\
+Global C3 (same-draw) & 12.565 & 21.643 & 0.1562 & 0.1574 \\
+Layer-LHL & 15.005 & 16.922 & 0.1420 & 0.1574 \\
+Layer-LLH & 16.679 & 14.186 & 0.1215 & 0.1574 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Layer-LLH beats layer-LHL on masked PSNR (12/12 objects), CIEDE2000
+(12/12), and FG-LPIPS (12/12), and also beats the same-draw global C3 control
+(12/12 on all three); the global C3-vs-fixed-low ordering is preserved
+(12/12). The ordering holds on the failure-boundary objects
+\texttt{obj\_0048} (14.97 vs 13.67 dB), \texttt{obj\_0078} (12.02 vs
+9.18 dB), and \texttt{obj\_0082} (11.01 vs 8.63 dB). As in S4, this is a
+stratified case study: no generated GT bake, no DISTS, seam scalars without
+a seam-pair denominator, and the same inpainting rule for all conditions.
+The per-object and per-view rows are in
+\texttt{cpu\_bake\_12\_layerwise/}.
+
+\section{S5. Generic schedule audit from the original protocol}
+
+The first-round request for generic schedules is answered with the retained
+strong-residual, per-layer-capped audit rather than by mixing it into the
+clean-v2 main table. It compares the frozen C3 schedule with a linear warm-up
+and a cosine bump on the original 276-object record. C3 minus each competitor
+is positive for PSNR in the paired bootstrap comparison, but the adapter
+instance, protocol, and metric path are distinct from the clean-v2 panel.
+These values support a bounded comparison of schedule families, not a new
+claim of cross-protocol transfer.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Original-protocol generic schedule comparison.}
+\begin{tabular}{lrrrr}
+\toprule
+Schedule & FG-SSIM & PSNR & $\Delta$PSNR vs. C3 & C3 wins \\
+\midrule
+Linear warm-up & 0.377 & 18.97 & +0.323 [0.263,0.386] & 214/276 \\
+Cosine bump & 0.330 & 18.39 & +0.902 [0.824,0.981] & 253/276 \\
+C3 (TCAS) & 0.376 & 19.29 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The original record also contains trapezoid and Gaussian-peak controls; their
+complete rows remain in the internal evidence freeze. The linear warm-up is
+close in FG-SSIM but lower in PSNR, while the cosine bump is lower on both
+values. We retain this as evidence that TCAS is meaningfully comparable to
+common smooth schedules, without claiming optimality across adapters.
+
+\section{S6. Independent MV-Adapter audit}
+
+The Exact 76-object audit records 11 evaluated conditions/schedules and
+separates high-scale 1.50 and high-scale 1.00 families. The selected-pair CAI rule is
+\texttt{undefined\_set\_valued}. The LHL direct transfer has no clear
+practical gain over fixed-low or fixed mean; confidence intervals crossing
+zero are not interpreted as equivalence. Official pretraining UID
+disjointness is unknown. Absolute PSNR and other scores are not compared with
+the main MVPainter-style backbone. The full evidence is in
+\texttt{MV\_ADAPTER\_UNIFIED\_RESULTS.csv} and
+\texttt{MV\_ADAPTER\_PAIRED\_COMPARISONS.json}.
+The original \texttt{results/holdout\_exact\_76/PROTOCOL.json} is absent;
+\texttt{run\_config.json} and \texttt{paired\_bootstrap\_exact.json} provide
+the available partial provenance.
+
+\paragraph{Layer-wise MV-Adapter records and MVDiffusion interface audit.}
+The layer-wise MV-Adapter validation under the prespecified topology-derived
+grouping is recorded in
+\texttt{final/round2/mv\_adapter/} (protocol, layer-profile transfer,
+identity audit, and
+\texttt{MVADAPTER\_LAYERWISE\_PAIRED\_BOOTSTRAP.json}); the mapping
+sensitivity tests are summarized in S12. The MVDiffusion interface audit
+(interpolated CPBlock surface, $\alpha\equiv 1$ identity check, and paired
+bootstrap) is recorded in \texttt{final/round2/mvdiffusion/}. Only
+within-backbone paired contrasts are valid for both deployments.
+
+\section{S7. FAC controlled re-examination}
+
+FAC is a separate learned extension protocol, not a main contribution. The
+base model, VAE, and adapter are frozen; only lightweight controllers are
+trained on a disjoint training pool. Training details: the controllers are
+trained with the same enhanced denoising objective as the base adapter---a
+latent noise-prediction MSE with $1.7\times$ foreground and $1.3\times$ edge
+spatial reweighting plus a latent-SSIM term---using AdamW (peak learning
+rate $10^{-4}$, 100 warm-up steps) for 2{,}000 steps on the strong-residual
+adapter's 1{,}706-object training pool, which is strictly disjoint from all
+evaluation objects. FAC uses the shared-layer TCAS schedule as its base and
+adds GSG and FSC for spatial and frequency correction; all variants are
+evaluated under the separately documented strong-residual, per-layer-capped
+audit protocol with identical objects, seeds, and evaluation code.
+Under the paired re-examination, no
+trained configuration improves the training-free schedule. The paired
+foreground-PSNR deficits range from $-1.10$ to $-2.94$ dB, while the
+untrained exact-envelope control has $\Delta=-0.18$ dB with 95\% CI
+$[-0.42,+0.05]$. The interval crossing zero is not an equivalence claim.
+The complete dose--response records are retained as a negative extension
+audit; the earlier positive FAC comparison used a different protocol and is
+not used in the revised claims.
+
+\section{S8. Bounded residual-budget controller pilot}
+
+We tested one residual-budget controller extension (TRB-TCAS) on the
+24-object clean-v2 development probe before considering any holdout run. The
+run used 50 denoising steps, six unique target views, seed 42, shared
+per-object batches and initial latents, and fixed-low, C3/LHL, HLL and LLH
+controls. FG-LPIPS was the pre-specified primary metric. TRB obtained
+FG-LPIPS $0.1349$, compared with $0.1404$ for fixed-low and $0.1336$ for C3;
+its PSNR was $22.700$ dB, compared with $22.261$ dB for fixed-low and
+$22.971$ dB for C3. The calibration pass approximately doubled the mean
+controller time per object (12.342 s versus 6.075 s for C3). Since TRB did
+not improve the existing C3 schedule and added cost, the branch was stopped
+before a holdout run. These results are retained as a negative method-iteration
+record, not as a claim about the main TCAS method.
+
+The machine-readable output is
+\texttt{TRB\_DEV24\_GATE\_20260929.md} and the independent pilot
+\texttt{pilot\_results.json}. The pilot does not justify relabelling LLH as a
+CAI-selected schedule: LLH is reported only as a fixed schedule control.
+
+\section{S9. Shared-input layer-wise ablation}
+
+The development ablation used 24 clean-v2 probe objects and seeds 42, 43, and
+44. Each object was collated once per seed. All six methods reused the same
+target tensor, geometric input/features, and initial latent; the generation
+seed was reset before each method, including the stochastic condition-VAE
+encoding. The hash rows are in
+\texttt{coordination/layer\_lhl\_v1/shared\_input\_hashes.json}; raw rows,
+manifests, and SHA-256 sums are stored alongside it.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Shared-input development ablation. Means are over 72 object-seed
+pairs. Lower is better for LPIPS.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Method & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+Fixed-low & 15.085 & 0.8235 & 0.2922 & 8.125 & 0.3454 & 0.2195 & 0.4896 \\
+C3/LHL & 16.058 & 0.8299 & 0.2748 & 9.556 & 0.3929 & 0.2072 & 0.5063 \\
+Layer-fixed-low & 16.861 & 0.8274 & 0.3501 & 10.753 & 0.4249 & 0.1964 & 0.5238 \\
+Layer-fixed-mean & 16.892 & 0.8316 & 0.2796 & 11.179 & 0.4352 & 0.1889 & 0.5287 \\
+Layer-LHL & 17.036 & 0.8315 & 0.3143 & 11.209 & 0.4352 & 0.1928 & 0.5239 \\
+Layer-LLH & 18.165 & 0.8378 & 0.2562 & 12.364 & 0.4467 & 0.1785 & 0.5438 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+The paired layer-LHL minus fixed-low improvements are +1.951 dB Full-PSNR
+([+1.624,+2.277]), +3.083 dB FG-PSNR ([+2.745,+3.387]), +0.0899 FG-SSIM
+([+0.0802,+0.0992]), and $-0.0267$ FG-LPIPS
+([$-0.0295,-0.0238$]). The layer-LHL minus layer-fixed-mean FG-LPIPS
+difference is $+0.00388$ ([$+0.00273,+0.00518$]), favoring layer-fixed-mean
+because lower is better. Layer-LLH minus layer-LHL is $-0.01436$
+([$-0.01642,-0.01224$]) on FG-LPIPS and is also better on the other six
+reported metrics. These intervals are paired percentile bootstrap intervals
+with 10,000 resamples and seed 20260929; they are not equivalence tests.
+
+The shallow group uses the implementation cap of 0.8; the largest layer-LHL
+shallow value is 0.75, so no candidate value is clipped. This ablation supports
+layer-wise adapter scaling, but it does not establish a unique temporal optimum.
+
+\paragraph{Runner sensitivity of the probe.} The reference conditioning image
+undergoes a random stretch/compress (scale 0.5--1.5$\times$) inside the
+dataset loader; targets, masks, depths, and view order are deterministic.
+Consequently all methods within one run are strictly paired, but absolute
+values are not comparable across separate runner invocations. A second,
+independent shared-input probe run of the same schedules (conducted for the
+complete factorial below) reproduces the LLH-over-LHL direction but changes
+the sign of the small LHL-vs-constant-low difference; we therefore claim only
+directions that hold in both runs and on the holdout.
+
+\section{S10. Complete binary temporal-pattern factorial (layer-wise)}
+
+The complete enumeration uses the same checkpoint, probe objects, seeds
+(42, 43, 44), unique6 views, 50 Euler steps, shared per-object inputs, and
+metric path as S9. The two levels are low = (deep 1.25, middle 1.25, shallow
+0.50) and high = (deep 2.50, middle 2.50, shallow 0.75); each pattern assigns
+one level to each of the 17/16/17 early/middle/late step segments. The
+protocol manifest records that holdout selection is forbidden
+(development-only surface). Raw rows, manifests, and SHA-256 sums are in
+\texttt{coordination/layer\_factorial\_v1\_20260930/}.
+
+\begin{table}[h]
+\centering\scriptsize
+\caption{Complete binary layer-wise factorial; means over 72 object--seed
+pairs. Lower is better for LPIPS.}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrr}
+\toprule
+Pattern & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+LLL & 20.801 & 0.8759 & 0.2200 & 16.020 & 0.6112 & 0.1124 & 0.5942 \\
+LLH & 21.856 & 0.8832 & 0.1805 & 17.466 & 0.6219 & 0.1046 & 0.6131 \\
+LHL & 20.561 & 0.8784 & 0.2008 & 15.661 & 0.6038 & 0.1193 & 0.5887 \\
+LHH & 21.413 & 0.8837 & 0.1734 & 17.171 & 0.6194 & 0.1093 & 0.6113 \\
+HLL & 18.433 & 0.8636 & 0.2246 & 14.082 & 0.5951 & 0.1295 & 0.5849 \\
+HLH & 19.321 & 0.8721 & 0.1860 & 15.382 & 0.6132 & 0.1206 & 0.6089 \\
+HHL & 18.155 & 0.8675 & 0.2092 & 13.747 & 0.5894 & 0.1355 & 0.5796 \\
+HHH & 18.828 & 0.8731 & 0.1828 & 15.063 & 0.6114 & 0.1248 & 0.6073 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Paired bootstrap comparisons on FG-LPIPS (first minus second; positive means
+the first is worse because lower is better): LHL$-$LLH $+0.01472$
+([$+0.01168,+0.01864$]), LHL$-$LHH $+0.01008$ ([$+0.00799,+0.01226$]),
+LHL$-$LLL $+0.00693$ ([$+0.00419,+0.01076$]), LHL$-$HLL $-0.01012$
+([$-0.01286,-0.00736$]), LHL$-$HLH $-0.00123$ ([$-0.00401,+0.00168$]),
+LHL$-$HHL $-0.01612$ ([$-0.01940,-0.01283$]), LHL$-$HHH $-0.00547$
+([$-0.00847,-0.00221$]). LLH is the strongest pattern on five of seven
+metrics and LHH on the remaining two (Full-SSIM, Full-LPIPS); no pattern
+dominates every metric.
+
+\section{S11. Strict-276 confirmation of pre-registered layer-wise candidates}
+
+The confirmation set re-runs layer-LLH, layer-fixed-mean, a layer-LHL
+replica, and the global fixed-low control in one seeded runner (276
+strict-holdout objects, unique6 views, 50 Euler steps, seed 42; per-object
+seeds fixed before dataset access, the initial latent, and the condition-VAE
+path). The protocol was frozen in
+\texttt{coordination/revision\_next\_20260930/EXPERIMENT\_PROTOCOL\_LOCK.md}
+before any of these holdout numbers existed; candidates were selected only on
+probe FG-LPIPS. Raw rows, CSVs, manifests, and the analysis JSON are in
+\texttt{mvpainter-layer-confirmation-20260930}/ (copies in
+\texttt{coordination/layer\_confirmation\_20260930/}).
+
+\begin{table}[h]
+\centering\small
+\caption{Strict-276 same-runner confirmation means.}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Schedule & Full-PSNR & Full-SSIM & Full-LPIPS & FG-PSNR & FG-SSIM & FG-LPIPS & Edge-SSIM \\
+\midrule
+Global fixed-low & 18.229 & 0.8439 & 0.2107 & 10.731 & 0.3987 & 0.1917 & 0.5201 \\
+Layer-fixed-mean & 19.516 & 0.8503 & 0.2082 & 13.100 & 0.4550 & 0.1698 & 0.5363 \\
+Layer-LHL (replica) & 19.635 & 0.8486 & 0.2278 & 12.974 & 0.4445 & 0.1719 & 0.5273 \\
+Layer-LLH & 20.828 & 0.8514 & 0.1988 & 13.975 & 0.4620 & 0.1610 & 0.5476 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Paired object-level 95\% bootstrap intervals (10,000 resamples, seed
+20260930; positive values favor the first schedule under its metric
+direction):
+
+\begin{itemize}
+\item \textbf{LLH $-$ fixed-mean:} all seven metrics favor LLH
+  (Full-PSNR $+1.311$ $[+1.219,+1.400]$, 275/276; Full-SSIM $+0.00114$
+  $[+0.00062,+0.00164]$; Full-LPIPS $-0.00936$; FG-PSNR $+0.875$
+  $[+0.769,+0.982]$, 240/276; FG-SSIM $+0.00701$; FG-LPIPS $-0.00889$
+  $[-0.0097,-0.0081]$, 258/276; Edge-SSIM $+0.01133$).
+\item \textbf{LLH $-$ layer-LHL replica:} all seven metrics favor LLH
+  (Full-PSNR $+1.193$ $[+1.123,+1.262]$, 276/276; Full-SSIM $+0.00280$;
+  Full-LPIPS $-0.02897$; FG-PSNR $+1.001$ $[+0.907,+1.097]$, 261/276;
+  FG-SSIM $+0.01744$; FG-LPIPS $-0.01097$ $[-0.0118,-0.0101]$, 264/276;
+  Edge-SSIM $+0.02031$).
+\item \textbf{LLH $-$ global fixed-low:} all seven metrics favor LLH
+  (Full-PSNR $+2.599$ $[+2.353,+2.838]$, 249/276; Full-SSIM $+0.00763$;
+  Full-LPIPS $-0.01189$; FG-PSNR $+3.244$ $[+2.936,+3.542]$, 242/276;
+  FG-SSIM $+0.0633$; FG-LPIPS $-0.0308$ $[-0.0331,-0.0283]$, 261/276;
+  Edge-SSIM $+0.0276$ $[+0.0242,+0.0308]$).
+\item \textbf{Fixed-mean $-$ global fixed-low:} all seven metrics favor
+  fixed-mean (Full-PSNR $+1.288$ $[+1.108,+1.461]$, 225/276; FG-PSNR
+  $+2.369$ $[+2.155,+2.576]$, 245/276; FG-LPIPS $-0.0219$
+  $[-0.0236,-0.0201]$, 254/276; Full-LPIPS $-0.00263$
+  $[-0.0045,-0.0006]$; Full-SSIM $+0.00637$; FG-SSIM $+0.0563$;
+  Edge-SSIM $+0.0162$).
+\item \textbf{Layer-LHL replica $-$ global fixed-low:} mixed. The replica is
+  better on Full-PSNR ($+1.406$ $[+1.212,+1.592]$, 227/276), Full-SSIM
+  ($+0.00483$), FG-PSNR ($+2.244$ $[+2.009,+2.468]$, 234/276), FG-SSIM
+  ($+0.0458$), FG-LPIPS ($-0.0198$ $[-0.0216,-0.0180]$, 250/276), and
+  Edge-SSIM ($+0.0072$ $[+0.0050,+0.0095]$, 181/276); the global control is
+  better on Full-LPIPS ($+0.0170$ $[+0.0138,+0.0206]$ in the
+  replica-minus-global direction, 80/276 for the replica).
+\item \textbf{Fixed-mean $-$ layer-LHL replica:} mixed. Fixed-mean is better
+  on FG-LPIPS ($+0.00208$ $[+0.0017,+0.0025]$, 202/276), FG-PSNR ($+0.126$),
+  Full-SSIM ($+0.00166$), Full-LPIPS ($-0.01961$), FG-SSIM ($+0.01043$), and
+  Edge-SSIM ($+0.00897$); the replica is better on Full-PSNR ($+0.119$
+  $[+0.084,+0.153]$).
+\end{itemize}
+
+\paragraph{Historical layer-LHL record.} A historical layer-LHL record is
+retained only as a forensic artifact and excluded from quantitative claims
+because its runner-time provenance cannot be reconstructed. All paired
+holdout conclusions use the seeded same-runner protocol.
+
+These results confirm the development-probe direction for the two promoted
+candidates on the holdout. They do not re-open schedule selection, do not
+compare absolute values across runners, and do not establish equivalence for
+any interval that crosses zero.
+
+\paragraph{Relation to the Core-7 matrix bootstrap.} The intervals in this
+section come from the pre-registered confirmation analysis; the Core-7
+matrix in the main text re-derives the overlapping contrasts under the full
+seven-condition pairing. The two bootstrap runs agree in sign and
+significance for every overlapping contrast; their interval endpoints differ
+by bootstrap noise, and each section quotes only its own protocol-locked
+run. No contrast is quoted with two different intervals in the same context.
+
+\section{S12. Robustness and stability audits}
+
+\paragraph{Preprocessing-realization robustness (R0/R1).}
+The paired conclusions were re-evaluated under two frozen preprocessing
+realization sets (R0 and R1) covering 28 audited contrasts of the strict
+holdout and development comparisons: 27 of 28 are STABLE\_STRONG (direction
+and significance preserved) and one is STABLE\_DIRECTIONAL. Preprocessing
+realization therefore does not explain the historical layer-LHL discrepancy,
+which remains excluded from quantitative claims on provenance grounds (main
+text, Core-7 section).
+
+\paragraph{Mapping sensitivity (M3).}
+On the MV-Adapter deployment, a frozen-value reassignment of the
+deep/middle boundary (budget-changing; 3 conditions $\times$ 76 objects
+$=$ 228 new rows under a pre-registered protocol) leaves 16 of 18 audited
+contrasts MAPPING\_STABLE, one attenuated (Edge-SSIM $|\delta|\le 0.001$),
+and one near-zero sign flip reported as-is (P1 FG-LPIPS, $|\delta|\le
+0.001$). The primary effects are slightly stronger under M3: P1
+(L-LLH$-$G-FL) PSNR $+0.097\to+0.147$~dB and CIEDE2000
+$+0.344\to+0.484$. The layer-wise advantage is robust across the tested
+contiguous mapping choices.
+
+\paragraph{Budget-neutral regrouping (B$'$).}
+Also on the MV-Adapter deployment, a budget-neutral regrouping (mean
+multiplier 1.0, 76 objects) is indistinguishable from the registered
+mapping on all six metrics. B$'$ is a budget-neutral axis and is reported
+separately from the budget-changing M3; the two are never combined in a
+single comparison. These audits address the mapping-arbitrariness concern
+for the tested contiguous partitions; they do not extend to arbitrary
+partitions.
+
+\end{document}

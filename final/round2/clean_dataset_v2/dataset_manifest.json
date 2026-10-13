@@ -1,0 +1,41 @@
+{
+  "protocol": "round2-clean-eval-v2",
+  "status": "ready_for_new_inference",
+  "data_root": "/4T/CXY/MV-Painter/data/train_data/rendered_full",
+  "historical_train_list": "/4T/CXY/MV-Painter/mvpoutput/reviewer1_main_rerun_20260928/train_objects_full_1118.txt",
+  "historical_train_count": 1118,
+  "historical_train_sha256": "7b3e998fc494ecffde247793e24efab715b4536b96382eb5fe559434fa57cae7",
+  "old_eval_list": "/4T/CXY/MV-Painter/data/train_data/rendered_full/test_objects_300.txt",
+  "old_eval_count": 300,
+  "old_eval_sha256": "e1bb89bb5924790ccd924be5f010b36b174e40fd221ce9cf712d768ff2f2ed84",
+  "candidate_pool_source": "/4T/CXY/MV-Painter/data/train_data/rendered_full/train_objects_1200.txt",
+  "candidate_pool_source_sha256": "f7e0a608ecce00651189dad36d1b300bd038a528bb9b875af175a08e31254ffd",
+  "candidate_pool_complete_count": 189,
+  "replacement_count": 101,
+  "new_eval_count": 300,
+  "new_eval_train_uid_intersection_count": 0,
+  "new_eval_sha256": "49627906573f2781de0eddea775485430a1863987db859af694d543f12db9ccf",
+  "probe_count": 24,
+  "probe_sha256": "187185c6e94d5cf72a647b7c150b338429cee15d82da449678896bfb181f79f6",
+  "strict_holdout_count": 276,
+  "strict_holdout_sha256": "a6aa8ab6e475763e1b5e67dc8c712ec8f1940e3952d65897c820887554bbd044",
+  "replacement_rule": "preserve old order and replace only UID-level historical-training overlaps",
+  "target_view_mode": "unique6",
+  "target_views": [
+    0,
+    15,
+    12,
+    16,
+    13,
+    14
+  ],
+  "required_views_per_object": 17,
+  "invalid_candidate_count": 0,
+  "invalid_candidate_examples": {},
+  "files": {
+    "eval_objects_300_clean_v2.txt": "final/round2/clean_dataset_v2/eval_objects_300_clean_v2.txt",
+    "probe_objects_24_clean_v2.txt": "final/round2/clean_dataset_v2/probe_objects_24_clean_v2.txt",
+    "strict_holdout_objects_276_clean_v2.txt": "final/round2/clean_dataset_v2/strict_holdout_objects_276_clean_v2.txt",
+    "replacement_candidate_pool_189.txt": "final/round2/clean_dataset_v2/replacement_candidate_pool_189.txt"
+  }
+}
