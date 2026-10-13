@@ -668,7 +668,7 @@ GT and generated bake sources use the same six raw cameras and 256-pixel resolut
 \end{figure}
 
 
-Supplementary Video presents two input-order, rights-cleared objects at all eleven discrete unseen cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized. It is an unlit comparison, not a claim of continuous-view or PBR quality.
+The separately supplied \texttt{Supplementary\_GeoTex\_Baked\_Comparison.mp4} presents two input-order, rights-cleared GeoTex objects at all eleven discrete unseen cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized. It is an unlit comparison, not a claim of continuous-view or PBR quality.
 
 LG Remote by mohd.akmal.mahyudin; CC Attribution. Source: \url{https://sketchfab.com/3d-models/1dc2c857f7614caeb6c2aa0559ccf973}.
 
@@ -1392,13 +1392,13 @@ final baked-texture quality.
 \label{supp:group9}
 \addcontentsline{toc}{section}{S9. Figure credits, retained displays and record index}
 
-\subsection*{Figure 1 source identity and control ownership}
-\addcontentsline{toc}{subsection}{Figure 1 source identity and control ownership}
-The task example uses Fresh C UID \texttt{0571e6db30c84b1593bc55a8e145a430} (\emph{Octa\`edre}, Segolene Delamare, CC BY 4.0). Its frozen reference is camera 014. Six saved C3 tiles retain row-major camera order 014, 015, 000, 016, 012, 013 and their dataset-native in-plane orientation. Single normal/depth/mask thumbnails are representative raw camera-014 sources, not the transformed six-view conditioning tensor. Depth has a uniform 16-to-8-bit display conversion; the mask is the exact reference alpha. RGB outputs are exact saved-tile crops, without color/detail changes.
+\subsection*{Figure 1 interface and control ownership}
+\addcontentsline{toc}{subsection}{Figure 1 interface and control ownership}
+The current Figure 1 is an author-supplied workflow schematic. Its building imagery illustrates reference conditioning, six-view generation and downstream texture construction; it is not presented as Fresh C or Bake10 cohort evidence. The drawing does not assert that all Fresh C objects were baked or that the historical C3 profile is optimal.
 
-The separate bake illustration is UID \texttt{3c83796ca5f043f1beb8044dd2e51a0d} (\emph{bricks on news boxes}, bunnyhero, CC BY 4.0; source credited in S5). Its atlas is an actual saved native-UV result and its render is unseen camera 004. Only transparent render margins are cropped, preserving all nontransparent pixels. It is not the Fresh C object and no cross-sample arrow connects them. These images illustrate pipeline outputs and remaining appearance discrepancies, not high-fidelity replication.
+TCAS supplies the temporal requested profile. GeoTex-Adapter, the frozen U-Net feature path and group caps belong to the existing evaluated implementation. A wrapper caps the request before residual multiplication and frozen-feature addition. The correction depends on both geometry features and the current hidden features, as in Main Equation~(2); the schematic abstracts that state dependency. The evaluated up-only Fresh C configuration uses up blocks 0, 1 and 2 as deep, middle and shallow groups. The shallow 0.8 cap applies throughout all three requested phases.
 
-TCAS supplies the temporal requested profile. GeoTex-Adapter, the frozen U-Net feature path and group caps belong to the existing evaluated implementation. A wrapper applies the cap before multiplying the geometry residual and adding it to the frozen feature. The feature dependency shown into GeoTex agrees with the implemented hidden-state-dependent correction. The portable index \path{figure1/FIG1_SOURCE_INDEX_FINAL.csv} records original and packaged sources, cameras, display operations and SHA-256 values. The editable source contains separate raster slots and native vector text/paths; no concept raster is used as an experimental output.
+The editable author SVG, export script and embedded-image checksum index are supplied in \path{figure1/}. The original author artwork retains separate raster slots and native vector text and paths. The former experimental Figure 1 and its verified Fresh C/Bake10 identity records are preserved in the e943 baseline archive; those identities are not assigned to the current illustration. All other experimental displays retain the frozen source identities and credits described below.
 
 \subsection*{Figure sources, licenses and selection}
 \addcontentsline{toc}{subsection}{Figure sources, licenses and selection}

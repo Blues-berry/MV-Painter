@@ -1,13 +1,10 @@
-# Final candidate state
+# Pre-submission revised candidate
 
-SCIENTIFIC_GATE = PASS
-EDITORIAL_GATE = PASS
-SUBMISSION_TECHNICAL_READY = YES
-R1_CLOSURE = PARTIAL
-R2_CLOSURE = PARTIAL
+SCIENTIFIC_INTEGRITY = VERIFIED_WITH_STATED_HISTORICAL_LIMITS
+REVIEWER_RESPONSE_QUALITY = IMPROVED / R1_PARTIAL / R2_PARTIAL
 R2.1 = PARTIALLY ADDRESSED
+PUBLIC_RELEASE_SAFETY = AUTHOR_DECISION_REQUIRED
+SUBMISSION_TECHNICAL_READINESS = DOCUMENT_BUILDS_READY / JOURNAL_AND_AUTHOR_FIELDS_PENDING
 AUTHOR_APPROVAL = PENDING
 
-One independent final candidate. No new GPU experiments or algorithms. Original01549,1014finalv1 andFINAL_CANDIDATE_20261013 remain unchanged. Figure design ends after the one literature-informed refinement. One TableS2 layout correction followed independent inspection; numerical results are unchanged.
-
-The user subsequently authorized GitHub upload. Delivery uses codex/tcas-final-submission-20261013, without force push or main merge. No formal journal submission was performed.
+Author-selected illustrative Figure1 integrated; main14 pages,Supplement71,response5,marked22. e943 original snapshot preserved. Actual up_only mapping, GT-context code, two separately identified videos, Fig6 contrast class and formal response language corrected. Frozen numerical data unchanged. Private audit/author records are kept outside this candidate. No formal journal submission performed.

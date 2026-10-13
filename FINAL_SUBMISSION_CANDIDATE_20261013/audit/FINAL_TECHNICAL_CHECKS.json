@@ -1,49 +1,58 @@
 {
-  "status": "PASS",
-  "scope": "Finaltechnicalchecks plus numerics/sourcecontinuity; author approval remains pending",
-  "protected_baselines_unchanged": 6,
-  "frozen_datafiles_byte_identical": 144,
-  "S2_numeric_rows_unchanged": 28,
-  "resolved_response_locations": 68,
-  "integrated_figure_byte_identity": true,
-  "document_logs": {
+  "document_build_checks": "PASS",
+  "logs": {
     "1014finalv1": {
       "no_latex_error": true,
       "no_undefined_references_or_citations": true,
       "no_missing_glyphs": true,
-      "overfull_hbox_count": 2,
-      "template_geometry_warning": true,
-      "marked_frontmatter_warning": false
+      "overfull_hboxes": 2
     },
     "Supplementary_1014finalv1": {
       "no_latex_error": true,
       "no_undefined_references_or_citations": true,
       "no_missing_glyphs": true,
-      "overfull_hbox_count": 0,
-      "template_geometry_warning": false,
-      "marked_frontmatter_warning": false
+      "overfull_hboxes": 0
     },
     "Response_to_Reviewers": {
       "no_latex_error": true,
       "no_undefined_references_or_citations": true,
       "no_missing_glyphs": true,
-      "overfull_hbox_count": 0,
-      "template_geometry_warning": false,
-      "marked_frontmatter_warning": false
+      "overfull_hboxes": 0
     },
     "Marked_up_Manuscript_01549": {
       "no_latex_error": true,
       "no_undefined_references_or_citations": true,
       "no_missing_glyphs": true,
-      "overfull_hbox_count": 2,
-      "template_geometry_warning": true,
-      "marked_frontmatter_warning": true
+      "overfull_hboxes": 2
     }
   },
-  "final_pdfs": {
-    "1014finalv1.pdf": "a736e84e2d591933b7a94177201b8c6073945b0291478167be8d371d24ab4237",
-    "Supplementary_1014finalv1.pdf": "6e734884c396d864bf788ec09afb2cce0b5b849be83c056fd2c82238f40f46b5",
-    "review/Response_to_Reviewers.pdf": "8a58e3491ca88cbea390cd84b23db5e4f61fc78a8dbaced689361ecb48c9be53",
-    "marked/Marked_up_Manuscript_01549.pdf": "b246e6dafa29b526b788ed3596a86d440d1299864cd431a3838937fa477e0cce"
-  }
+  "documents": {
+    "1014finalv1.pdf": {
+      "sha256": "1f6f57caf4fd8c3b7d9a66052a1773b886a6973429240e9f59ed5daaf7523c65",
+      "bytes": 9322308,
+      "pages": 14
+    },
+    "Supplementary_1014finalv1.pdf": {
+      "sha256": "59c11face93c44559ac7e459608c83fc85012752e8b5258d915d759b95a938cf",
+      "bytes": 16129127,
+      "pages": 71
+    },
+    "review/Response_to_Reviewers.pdf": {
+      "sha256": "353fd4ad53a1779e9ec55d1509a43d47d68a8e8708d25e08217c9919087ac553",
+      "bytes": 156024,
+      "pages": 5
+    },
+    "marked/Marked_up_Manuscript_01549.pdf": {
+      "sha256": "b222ba0d5e8541f373892970da0e8e5c5d3d660820196090ff8b6a530a19084f",
+      "bytes": 9423324,
+      "pages": 22
+    }
+  },
+  "frozen_data_files": 144,
+  "frozen_data_mismatches": [],
+  "claim_map_rows": 15,
+  "response_locations": 68,
+  "restored_GT_context_exact_old_JSON": true,
+  "integrated_figure_byte_identity": true,
+  "scope": "Tracked frozen data exclude transient Python bytecode. Technical integrity is separate from ethics, licensing, reviewer acceptance and author approval."
 }

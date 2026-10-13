@@ -1,0 +1,1 @@
+Archived Figure1 records from published e943. These records describe the former experimental figure, not the current author-supplied illustrative schematic. Original e943 candidate remains separately preserved.

@@ -4,7 +4,7 @@ Current figures use reproducible vector/plot code or original recorded research 
 
 | Figure | Role | Asset | SHA256 |
 |---|---|---|---|
-| 1 | Interface vector schematic | figures/fig1_tcas_control.pdf | c70a0271b2d8410492a0ad93ded46bee8bcac35461d021a4194a4eebed75cc1a |
+| 1 | Author-supplied illustrative interface | figures/fig1_tcas_control.pdf | 1a952d7a209445d42025152569d4bda087e677cbd39a39b00f22197a5e27497a |
 | 2 | Strong fixed / Generic Linear counterexample | figures/fig5_freshc_context_roi.pdf | fccb71e14613dfc9393cd93ffec4a40acfd2bc9ed7a995953a63b0957abc3622 |
 | 3 | Color/detail failure without malformed No Adapter display | figures/fig6_color_diagnostic_freshc_context_roi.pdf | 68ccbb4daf898fb05d5fde9e5f990cc40603b858089cedc9481416a6384524eb |
 | 4 | Source / GT-256 / Fixed Mean / Late-high actual unseen bake | figures/fig8_baked_unseen_context.pdf | 5a164218c8bb225d72a863910ac3c5438094a5f5f767ade5812d46c24beed761 |
@@ -17,8 +17,10 @@ The bake and MV-Adapter main cases are the first two input-order, rights-cleared
 
 Model credits remain in Supplement S5/S9 and original license ledgers. The inherited Fresh C figure manifest documents the old layout lineage; it must not be mistaken for the final PDF hash index. New display transformations preserve content: RGBA-on-white, shared full-object frame, identical ROI, uniform resampling.
 
-Figure1 is an editable vector schematic with no OpenAI Images raster artwork. The earlier diagram is preserved in the pre-submission snapshot and commit b19420b40aab18e36b51fc5156648f6ba0556a1f. Figure6 comes directly from object-level data through scripts/build_evidence.py.
+Figure1 is an editable author-supplied vector schematic; its illustrative image slots are not experimental evidence. The earlier diagram is preserved in the pre-submission snapshot and commit b19420b40aab18e36b51fc5156648f6ba0556a1f. Figure6 comes directly from object-level data through scripts/build_evidence.py.
 
-Two videos are provided: GeoTex native-UV bake (22 seconds, two rights-cleared objects × eleven discrete unseen cameras) and GSO exported mesh (5.5 seconds, eleven discrete cameras). Both retain recorded output pixels and have separate scope/provenance.
+Two videos are provided: `Supplementary_GeoTex_Baked_Comparison.mp4` (22 seconds, two rights-cleared GeoTex objects × eleven discrete unseen cameras) and `Supplementary_GSO_Baked_Comparison.mp4` (5.5 seconds, one GSO object × eleven discrete cameras). Both retain recorded output pixels and have separate scope/provenance.
 
 Round015 retains the round014 experimental images and display crops unchanged. The additional figure figures/fig_seed_stability015.pdf is a Matplotlib plot of complete archived GSO100/GSO20 per-object/seed metrics; its descriptive intervals and source checksums are in data/gap_closure015/STABILITY_AND_DOMINANCE.json. No generated or retouched model output is introduced.
+
+Pre-submission revision: Figure 1 is now the author-supplied illustrative interface schematic. Its building imagery is not Fresh C/Bake10 cohort evidence. The former traceable experimental Figure 1 and its source audit are preserved in the e943 baseline; the active SVG and caption govern the revised manuscript.

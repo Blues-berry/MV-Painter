@@ -1,27 +1,7 @@
-# Final verification report
+# Pre-submission verification
 
-## Gates and scope
+Main14p,Supplement71p,response5p,marked22p rebuilt without LaTeX errors, undefined references/citations or missing glyphs. All68 response locations resolve against finalaux, and15 claim locations are refreshed. All144 tracked frozen datafiles remain byte-identical; generated Python caches are excluded. The original timing primary, its CI/p and original secondary family reproduce; recoveredGTcontext script gives byte-identical historicalJSON.
 
-Scientific accuracy PASS; editorial scope PASS; submission technical readiness YES. R1/R2 closure PARTIAL; R2.1 PARTIALLY ADDRESSED; author approval PENDING. No claim of reviewer acceptance or universal algorithmic novelty follows.
+New author-selected Figure1 preserves all7 embedded PNGbytes and27 editable text/68path elements. Captions/Section3/SuppS9/formalresponse agree on its illustrative role and actualup_only control semantics. Nativecap/TCAS ownership and state-dependent residuals remain distinct. Both archivedvideos are identified separately, and the GeoTex22s file is restored byte-identically.
 
-## Numerical evidence
-
-`audit/NUMERICAL_VERIFICATION.json` records reconstructed object means and paired comparisons for FreshC300, nativeMV-Adapter50, GeoTex10, GSO100, GSO20 and the reference-protocol50 named contrasts. It checks originalHolm families, not a new pooled family. All300 original timing-primary deltas and exact10,000-bootstrap CI,20,000-signflip p and12 original secondary tests reproduce. LaterMiddle−Mean remains separate. Frozen data files are not overwritten.
-
-## Figure identity andpublication
-
-`figure1/FIG1_SOURCE_INDEX_FINAL.csv` and independent scientific review verify12 raster slots and24 source/displaySHA comparisons, sameUIDcamera014 conditioning and native order014,015,000,016,012,013. IndependentBake10UID/atlas/unseen004 remains isolated. Figure exposes62 editable texts and18 native paths, with no conceptual bitmap as scientific output. ActualC&Gwidth183.6405mm and bodyfontabout8.10pt are measured; actual mainpage4 is inspected. Appearance mismatches remain real.
-
-## Documents andcross-references
-
-Main15pages,supplement71,response5,marked22 are complete and readable within the independent visual inspection scope. Logs have no LaTeX error, undefined citation/reference or missing glyph. All68 response locations resolve against finalaux. TableS2's28 scientific rows retain exact numbers after the one layoutrepair; finalpp5–7 were independently reinspected. Figure integration is byte-identical to finalfigurePDF. Marked source uses authenticated01549 SHA203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01.
-
-## Baseline anddata continuity
-
-Six protected baseline/source hashes remain unchanged. All144 frozen datafiles are byte-identical to their original source. No inference, training or bake experiment was added. Only source/document/layout and deterministic verification work was performed.
-
-## Nonblocking technicalnotes
-
-The unchangedC&Gtemplate emits geometry over-specification warnings; actual runtimewidth was used. Main/marked have two frontmatteroverfullhboxes below1.1pt; independentPDF inspection found no clipping. Markedp1 has a frontmatterheight warning while its two abstract versions remain within thepage. Supplemental density, float whitespace and stylistic repetition are recorded rather than prompting anotherrewrite.
-
-Detailed evidence: audit/FINAL_TECHNICAL_CHECKS.json; audit/INDEPENDENT_SCIENTIFIC_REVIEW.md; audit/INDEPENDENT_EDITORIAL_VISUAL_REVIEW.md; audit/FIGURE_PUBLICATION_CHECK.json; audit/RESPONSE_REFERENCE_MAP.json.
+Independent R1/R2 baseline reviews and final targeted science/PDF review support the named repairs; they do not establish reviewer acceptance, method novelty, ethics compliance or publication permission. Full new audit/author administration records remain private. Authorapproval remains pending, R1/R2partial, R2.1partiallyaddressed. Technical document readiness does not close author/policy decisions.

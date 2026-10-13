@@ -1,5 +1,5 @@
-# Final Figure1 visualreview
+# Current Figure1 export and publication check
 
-ActualmainPDFp4 and fullpublicationwidth were independently inspected; see../audit/INDEPENDENT_EDITORIAL_VISUAL_REVIEW.md. Realinput/output textures, control identity and independentbake are discernible. Reference-label placement avoids theU-Nettitle; no blocking overlap, clipping or ambiguoussamplearrow remains. Bodylabels areabout8.10pt at183.64mmwidth. SparseUVcoverage and appearance mismatch remain genuineoutputlimitations.
+The approved layout is retained. Visio's em font values were normalized to equivalent absolute12px-root sizes for CairoSVG export; no module, arrow or image pixels were moved or regenerated. SVG retains27 editable text nodes,68 paths and7 independently embedded PNGs. Width183.640513mm matches measured C&G template width; height102.635mm approximately. Actual,half-size and1800px previews are supplied. The final mainp4 and marked figure are inspected independently; the final visual report is in the private audit workspace.
 
-No remaining blocking issue found within reviewscope. AUTHOR_APPROVAL=PENDING. No further aestheticiteration is planned.
+No broader aesthetic redesign was opened. Author chose the design; independent checks do not substitute for approval of the complete manuscript.
