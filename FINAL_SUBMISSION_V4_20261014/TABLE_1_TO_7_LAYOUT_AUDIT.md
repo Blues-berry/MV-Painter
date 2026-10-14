@@ -1,15 +1,15 @@
-# Actual PDF table audit
+# Main-text table audit — current V4
 
-Inspected the complete 14-page final manuscript at page scale. Source baseline was PR #1 `0aa1c9b3`; Table 3 prose and compact-table alternatives were both compiled. `VISUAL_AND_TABLE_BEFORE_AFTER.pdf` contains the actual pages for Tables 3, 5 and 7 before/after.
+The audit refers to the 13-page final main manuscript. Table locations and complete captions were checked in the rendered PDF. Numeric table bodies are byte-identical to the starting V4 source; the frozen-content check records the comparison.
 
-| Table | Final page / width | Decision |
+| Table | Page / layout | Review |
 |---|---|---|
-| 1 | p6, double column | Eight study identities and selection scopes remain. Dense but readable; shortening any more would lose cohort/protocol caveats. Detailed execution stays S1. |
-| 2 | p6, double column | Strong Fixed High and Generic Linear controls remain visible with four endpoints; no clipping or hidden comparator. |
-| 3 | p7, single column | Four distinct fields now align contrast, ΔCIEDE2000, 95% CI and 24/26 direction count. Retained over prose variant because both positive and negative contrasts are easier to compare and table numbering stays stable. The 26-object failure-enriched limitation remains adjacent. |
-| 4 | p8, single column | GT-256 reference and all original controls remain legible; footnote states reference bake is not a theoretical bound. |
-| 5 | p9, single column | Two study-specific LPIPS estimates, separate intervals, and p values align. Test types move into note; N=10/N=20 and non-pooling remain explicit. |
-| 6 | p10, single column | Native MV-Adapter 50-object means fit four endpoints; actual native interface is named. |
-| 7 | p11, double column | First row is original GeoTex Middle−mean(Early,Late) primary. Distinct study, contrast, N, ΔFG-PSNR, interval and p columns are legible; sign-flip draw counts are in note. No forest figure. |
+| 1 | p6, double column | Keeps study identities, endpoints, cohort selection and scope together. Dense but readable; no cohort is implied to be interchangeable. |
+| 2 | p6, double column | Shows C3 beside Fixed Low, Fixed High and Generic Linear across the four image endpoints. |
+| 3 | p6, single column | Keeps the failure-enriched color diagnostic’s paired contrast, interval and direction count adjacent to its selection caveat. |
+| 4 | p8, single column | Preserves all native-UV bake controls and the GT-256 reference-bake caveat. |
+| 5 | p8, single column | Shows the separate GeoTex and GSO unseen-view LPIPS primaries and their distinct tests; no pooling or equivalence claim. |
+| 6 | p10, single column | Reports the input-selected native MV-Adapter cohort with its four measured endpoints. |
+| 7 | p11, double column | Labels the results study-specific, preserves each primary contrast and makes clear that GSO100 uses the same MV-Adapter backbone as the 50-object study. |
 
-No table has a detected overfull box or an interval crossing into the next numeric column. The Table 3 prose alternative was a real 14-page TeX build, retained only in the comparison PDF; the final source uses the compact table.
+The original GeoTex timing primary remains Middle-high minus mean(Early-high, Late-high), −0.033877 dB, with interval [−0.117170,+0.051422] and p=0.432378. Displayed precision and test families remain unchanged. No inference was recomputed for the text/layout revision.

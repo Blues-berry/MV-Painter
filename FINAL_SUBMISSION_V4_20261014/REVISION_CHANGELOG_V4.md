@@ -1,22 +1,14 @@
-# V4 c3017645 → final-quality continuation
+# V4 revision history
 
-- Continued only from PR#1 c3017645; verified its committed artifact identities.
-- Compared actual Figure3 A/B pages; selected source-property median plus post-outcome benefit example, keeping subtle changes and appearance errors explicit.
-- Compared actual Figure2 four/three-row pages; selected larger three-row display with all five columns and positive/adverse examples.
-- Added accurate current credits/source file references and distinguished the GSO video's source-mesh column from a GT self-bake.
-- Reduced one repeated budget explanation and placed current native-interface evidence before the retrospective MVDiffusion paragraph.
-- Copied and decoded both frozen MP4s into the new complete journal directory, preserving their hashes; prepared stills and upload handoff.
-- Reproduced the old marked source exactly, then regenerated original01549→finalV4 markup and complete source diff.
-- Rebuilt all four PDFs and final SHA records. Main/Supplement table content, cohorts, tests, intervals and p-values remain unchanged. No GPU run or inferential recomputation occurred.
+## Current final-quality text revision — 14 October 2026
 
-## Evidence reintegration after 0aa1c9b3
+- Continued the official PR #1 branch from verified starting HEAD `11006e003842b25976e20cafd51a7970770f269f`.
+- Reorganized the official abstract, Introduction, method framing, baked-appearance analysis, cross-interface section, Discussion and Conclusion around executed controls, competitive comparisons and final textured assets.
+- Kept full-v29 in the main results and limitations as a non-default deployment boundary; removed it from the abstract so it does not read as an isolated TCAS result.
+- Selected Figure 3 candidate B after comparing actual page 9s: input-property-selected Tire plus explicitly post-outcome Baptisimal Font. The complete ten-object distribution remains in Supplement S5. Figure 2 uses the three-row five-column version after actual-page comparison.
+- Preserved all numeric table bodies, cohorts, inferential tests and the Supplement source; no GPU run or inference recomputation occurred.
+- Rebuilt the 13-page main, 71-page Supplement, five-page response and 20-page marked manuscript. Current local delivery is in a new versioned sibling directory, leaving the earlier handoff directory intact.
 
-- Main expanded to 14 pages to bring S8 full-v29/same-base quality boundary, S5 ten-object effect distribution, and a bounded S7 retrospective texture-complexity association into the scientific argument.
-- Figure 3 candidate C replaces the second outcome-selected image with a complete ten-object frozen-effect strip while retaining one pose-matched native-UV asset and a separately labelled input inset. A/B/C decisions and actual pages are archived.
-- Tables 3, 5 and 7 were re-laid out with aligned estimates, intervals and p values. No original numeric result or statistical cohort changed.
-- Response and original-to-final marked manuscript rebuilt; local journal PDFs/source ZIP refreshed. Videos retain verified original hashes. See `SCIENTIFIC_CONTENT_ADDITION_LOG.md` and `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`.
+## Preserved earlier V4 evidence work
 
-
-## Abstract update on latest PR head 1b46e166
-
-Applied the supplied quantitative abstract structure to the official manuscript source, added the current S8 full-v29 boundary with its non-default-protocol and non-isolation caveat, and left review-only editorial drafts untouched. No claim, experiment or statistic was added. See `ABSTRACT_REVIEW_V4.md`.
+The preceding V4 continuation integrated the full-v29/same-base deployment boundary, the S5 Bake10 evidence, the retrospective S7 texture-complexity association, revised table layouts and the current response package. Those changes remain part of the source lineage. Earlier candidate-C Figure 3 pages and 14-page manuscript snapshots are archived history, not the current main submission. The current decision records in `quality_review/` supersede those older layouts.

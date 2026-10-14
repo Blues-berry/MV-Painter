@@ -1,5 +1,6 @@
-"""Figure 3 candidate C: one matched asset and all ten frozen object effects."""
+"""Rebuild archived Figure 3 candidate C for review; never used by the main manuscript."""
 from pathlib import Path
+import argparse
 import hashlib, json
 from reportlab.pdfgen import canvas
 from reportlab.lib.utils import ImageReader
@@ -7,8 +8,8 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'figures/fig3_bake10_distribution_v4.pdf'
-ROW = json.loads((ROOT/'visual_candidates/FIGURE3_SELECTION_V4.json').read_text())['rows'][0]
+DEFAULT_OUT = ROOT / 'quality_review/FIGURE3_C_REVIEW_ONLY_V4.pdf'
+ROW = json.loads((ROOT/'quality_review/FIGURE3_C_SELECTION_ARCHIVE_V4.json').read_text())['rows'][0]
 # Transcribed without recalculation from S5's frozen ten-object table, in source UID order.
 EFFECTS = [
  ('LG remote',-.00408), ('Tire',-.00279), ('Stone',-.00046),
@@ -30,8 +31,11 @@ def box(c,im,x,y,w,h):
     c.drawImage(im,x+3,y+3,w-6,h-6,preserveAspectRatio=True,anchor='c',mask='auto')
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--output',type=Path,default=DEFAULT_OUT)
+    out=parser.parse_args().output
     pdfmetrics.registerFont(TTFont('V4Sans','/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
-    c=canvas.Canvas(str(OUT),pagesize=(576,340))
+    c=canvas.Canvas(str(out),pagesize=(576,340))
     c.setTitle('GeoTex Bake10: matched appearance and ten-object effects')
     label(c,12,323,'Input reference',8)
     label(c,12,311,'raw000; different camera',6.8)
@@ -54,6 +58,6 @@ def main():
         c.setFillColorRGB(.14,.36,.57) if name=='Tire' else c.setFillColorRGB(.40,.48,.56)
         c.circle(xpos(v),y,2.6,fill=1,stroke=0)
     c.save()
-    print(OUT)
+    print(out)
 
 if __name__=='__main__':main()

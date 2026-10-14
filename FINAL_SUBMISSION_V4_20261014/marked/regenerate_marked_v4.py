@@ -61,7 +61,8 @@ def main():
 
     body = re.sub(r"\\cite\{([^}]+)\}", citation, body)
     body = re.sub(r"\\(eqref|ref|pageref)\{([^}]+)\}", reference, body)
-    OUTPUT.write_text(head + body)
+    marked_source = head + body
+    OUTPUT.write_text("\n".join(line.rstrip() for line in marked_source.splitlines()) + "\n")
 
     expanded = re.sub(
         r"\\input\{([^}]+)\}",

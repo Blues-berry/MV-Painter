@@ -1,28 +1,31 @@
-# Figure 3 scientific decision — V4 continuation
+# Figure 3 scientific decision — final text revision V4
 
-唯一稿件基准是 PR #1 的 c3017645。本次没有从历史稿件重新建稿，也没有改变十对象统计队列。比较框架固定为七个出版授权对象；原七个生成条件与 GT self-bake 均在 raw004 核对，并保留本地十一视角审阅 PDF。所有候选的实际源图为 512×512，输入/输出原字节 SHA 已验证。每个对象在同一相机的三个显示条件使用共同裁剪；没有逐方法色彩或纹理修饰。
+**Authority:** PR #1 branch `codex/cg-final-v4-20261014`, starting source HEAD `11006e003842b25976e20cafd51a7970770f269f`. The final comparison uses the same revised main text, changing only the Figure 3 candidate, its aligned sentence, and its caption. Actual rendered page 9 for each candidate is in `FIGURE3_AB_ACTUAL_PAGES_FINAL_V4.pdf` and the side-by-side image `FIGURE3_AB_ACTUAL_PAGES_FINAL_V4.png`.
 
-| 对象 | 输入复杂度排序 | GT self-bake LPIPS | Fixed Mean | Late-high | Late−Mean | 科学解释 |
+## Evidence checked across the seven display-cleared Bake10 assets
+
+All seven objects were reviewed at held-out raw camera 004 against their GT self-bake and the seven recorded generated settings. The review sheet `BAKE10_ALL_CONDITIONS_VIEW004.png` shows the same camera across columns; `BAKE10_SEVEN_COMPARISONS_VIEW004.png` compares GT self-bake, Fixed Mean and Late-high for all seven. `BAKE10_ELEVEN_VIEW_REVIEW_V4.pdf` preserves the same seven assets across all eleven unseen views. Every source render is 512×512. Figure 3 display panels use exact, pixel-identical crops from those source renders: candidate A uses 299×118 pixels; candidate B uses 392×372 for Tire and 469×222 for the font. Each object's crop is identical across its GT, Fixed Mean and Late-high panels. The six selected candidate-B source/display identities are hash-checked in `FIGURE3_B_SELECTION_V4.json` and `FIGURE3_IDENTITY_VALIDATION_V4.json`. Every asset has publication permission recorded in the source/credit manifests; Tire is CC BY 4.0 with attribution and the Baptisimal Font is CC0. No method-specific color adjustment or altered output pixel is used in either candidate.
+
+The LPIPS values below are the existing eleven-view means against the source target. The GT column is the error of the matched reference self-bake; it is **not** a direct pairwise LPIPS between the self-bake and a generated bake. `Fixed−GT` and `Late−GT` in the assessment CSV are differences between those source-target errors.
+
+| Asset | Input-property rank | GT self-bake FG-LPIPS | Fixed Mean | Late-high | Late−Mean | Reading of the same-camera renders |
 |---|---:|---:|---:|---:|---:|---|
-| LG Remote | 1 | 0.076739 | 0.153067 | 0.148982 | -0.004084 | 参考的按钮与灰色外壳可以辨认，但自烘焙已有投影模糊；生成条件以棕色纹理替代原外观，Mean/Late 的变化很小。 |
-| bricks on news boxes | 2 | 0.055970 | 0.177575 | 0.174395 | -0.003180 | 彩色文字和箱体材质有强参考可辨识度；所有生成条件明显丢失原颜色，调度差别较小。 |
-| Eastern Box Turtle Shell | 3 | 0.040515 | 0.109641 | 0.105189 | -0.004452 | 黄色纹理与壳体分区有清晰参考，生成棕色细纹不能恢复原材质；轻微调度差异不足以宣称明显视觉提升。 |
-| Tire | 4 | 0.073667 | 0.171982 | 0.169192 | -0.002791 | 机械轮毂、黑色轮胎和银灰材质清晰，是本轮输入属性中位例；生成棕色表面与参考明显不符，调度变化小。 |
-| Pittsburgh Bridge Collapse in Frick Park | 5 | 0.065250 | 0.093194 | 0.093169 | -0.000026 | 破碎扫描与稀疏细部限制物体/材质辨识；两条件几乎相同，适合完整留存而非主文解释调度。 |
-| หิน | 6 | 0.023278 | 0.058953 | 0.058489 | -0.000464 | 绝对 LPIPS 最低，但参考与输出本身皆接近土石色，材质辨识与调度区分弱；不能当作最大改善案例。 |
-| Baptisimal Font - Aughrim | 7 | 0.141099 | 0.237632 | 0.229822 | -0.007810 | 灰色石雕浮雕参考较清晰、输入纹理复杂度最高；最大 LPIPS 改善伴随 PSNR 下降，棕色失配仍然存在。 |
+| LG Remote | 1 | 0.076739 | 0.153067 | 0.148982 | −0.004084 | Buttons and gray shell are identifiable in GT; generated textures turn brown and the schedule change is small. |
+| Bricks on news boxes | 2 | 0.055970 | 0.177575 | 0.174395 | −0.003180 | Source colors and lettering are clear; generated conditions lose them, with little visible schedule separation. |
+| Eastern Box Turtle Shell | 3 | 0.040515 | 0.109641 | 0.105189 | −0.004452 | Yellow shell panels are recognizable in GT; generated brown texture does not restore that material. |
+| Tire | 4 | 0.073667 | 0.171982 | 0.169192 | −0.002791 | Dark tire and silver wheel are clear in GT; generated outputs become brown, while Fixed Mean and Late-high remain close. |
+| Pittsburgh Bridge Collapse | 5 | 0.065250 | 0.093194 | 0.093169 | −0.000026 | Sparse scan detail limits object/material recognition; the two schedule outputs are nearly identical. |
+| Stone | 6 | 0.023278 | 0.058953 | 0.058489 | −0.000464 | Lowest absolute FG-LPIPS among these seven, but near-zero schedule change and weak material discrimination. |
+| Baptisimal Font | 7 | 0.141099 | 0.237632 | 0.229822 | −0.007810 | Gray carved relief is recognizable in GT; the generated version remains brown. This is the largest LPIPS decrease, with PSNR decreasing by 0.271 dB. |
 
+Input-property rank uses source raw000 foreground Laplacian variance; it is an editorial display descriptor, not a material-quality rank or a representative population sample. All seven objects remain in their original statistical roles and queues. The full ten-object numeric cohort and generated conditions remain in Supplement S5.
 
-表中 LPIPS 均为既有十一视角对象均值，GT 行是 self-bake 对原始目标的误差，并不是直接计算生成条件与 self-bake 两张图的 LPIPS。原冻结统计未重算。新的输入描述量仅用于本轮显示选例：source raw000 的 RGB 均值灰度除以255，四邻域 Laplacian，在 alpha>127 且向内腐蚀3像素的前景上取方差。Tire 是排序第四的中位输入；不腐蚀的敏感性检查仍选出 Tire。这个“典型”仅指该输入属性，不代表总体质量或物体类别分布。
+## Candidate comparison and decision
 
-A 把当前石质单例改为三个较大的同相机面板。它能正确说明绝对误差低仍不等于材质保真，但 Late−Mean 只有 −0.000464，GT 与生成材质的视觉反差也较弱。A 的实际主文页面是对照 PDF 的第1页。
+**A — single Stone example.** The held-out-view Stone crop is enlarged to the maximum available panel width with the same crop for GT-256, Fixed Mean and Late-high; it uses the original display pixels without method-specific edits. This makes the object as legible as its low-profile scan permits, but the lowest absolute LPIPS still does not imply a larger schedule effect: Late-high−Fixed Mean is only −0.000464 FG-LPIPS and +0.001 dB FG-PSNR. The displayed schedule difference remains nearly imperceptible, and the similar earth-tone renders add little explanation of material preservation.
 
-B 采用 Tire 输入属性中位例与明确事后选择的洗礼池最大 LPIPS 收益例。两者分别为 −0.002791 和 −0.007810；洗礼池的十一视角 PSNR 同时下降约0.271 dB。B 不支持“显著视觉改善”，而是更清楚地解释局部指标改善、端点权衡与持续材质误差。三个面板同 raw004，相机未依照效果重新筛选。B 的实际主文页面是对照 PDF 的第2页。
+**B — input-property example plus declared post-outcome example.** The first row is Tire, selected before inspecting bake outcomes by the median source-foreground Laplacian variance among seven display-cleared assets. The second is the Baptisimal Font, explicitly selected after outcomes because it has the largest existing eleven-view LPIPS decrease among those seven. Its simultaneous −0.271 dB PSNR change makes the endpoint tradeoff visible. Both rows show GT-256, Fixed Mean and Late-high at the same raw004 unseen camera for that object, with a common within-object crop and original rendered pixels.
 
-裁决：选择 B。依据是参考材质更容易辨认、能同时显示输入属性选例和事后收益选例、能体现 LPIPS/PSNR 权衡；并非更美观或产生更大总体收益。A 保留为审阅备选，不作为最终主文。实际页面对照为 `FIGURE3_AB_ACTUAL_PAGES_V4.pdf`，两套完整候选主文均为13页。
+**Decision: use B in the main manuscript.** B has better explanatory evidence and page-level readability for this paper: it distinguishes an input-selected case from a post-outcome case and shows why the LPIPS change does not imply consistent improvement. B is not evidence of a cohort-wide visual benefit. Its caption and nearby prose label the post-outcome selection and the opposite PSNR direction; the full ten-object distribution remains in S5. Candidate A is retained as a review alternative. Neither the statistical queue nor any inferential result changed.
 
-全七对象的原始七条件面板已在最终 Supplement S5 保留。十一视角完整本地审阅文件位于本轮 `review/BAKE10_ELEVEN_VIEW_REVIEW_V4.pdf`；未向 GitHub 增加未选对象的原始输出图库。
-
-## Subsequent evidence-reintegration decision (based on 0aa1c9b3)
-
-This document's preceding A-versus-B decision records the previous V4 visual-quality pass. The present final manuscript uses **C**. Actual B and C manuscript page 9 are consecutive pages 5–6 of `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`. C gives GT-256, Fixed Mean and Late-high a shared camera004 crop for the input-property-selected Tire, places source raw000 in a separate small inset, and uses the second row's space for all ten frozen object-level Late−Mean FG-LPIPS effects. The ten-effect plot makes the near-zero stone/bridge cases visible and prevents the post-outcome font from anchoring the main visual conclusion. The effects are descriptive values from Supplement S5, not a new test or a general-material population distribution. Candidate B remains archived for author review, and no generated pixel or statistical queue changed.
+The final Figure 3 is `figures/fig3_bake10_two_object_v4.pdf`; the original pixels and file hashes are recorded in the candidate manifest. The prior one-object-plus-effect-strip candidate remains an archived review option and is not the current main figure.

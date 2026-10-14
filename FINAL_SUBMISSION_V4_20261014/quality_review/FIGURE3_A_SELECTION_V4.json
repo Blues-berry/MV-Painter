@@ -34,7 +34,16 @@
           "width": 512,
           "height": 512,
           "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
         },
         {
           "label": "Fixed Mean",
@@ -53,7 +62,16 @@
           "width": 512,
           "height": 512,
           "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
         },
         {
           "label": "Late-high",
@@ -72,9 +90,19 @@
           "width": 512,
           "height": 512,
           "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
         }
       ]
     }
-  ]
+  ],
+  "pixel_validation": "PASS: every display crop is an exact pixel crop from its 512x512 source render; within-object crop coordinates match across GT, Fixed Mean, and Late-high."
 }

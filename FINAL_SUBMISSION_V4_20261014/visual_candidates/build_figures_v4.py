@@ -36,7 +36,7 @@ def figure2(config,out):
  text(c,8,5,'Full raw-view-000 frames; all five conditions retained. Selected illustrations do not estimate prevalence.',6.9)
  c.save()
 def main():
- p=argparse.ArgumentParser();p.add_argument('--figure3-selection',type=Path,default=ROOT/'visual_candidates/FIGURE3_SELECTION_V4.json');p.add_argument('--figure3-output',type=Path,default=ROOT/'figures/fig3_bake10_context_v4.pdf');p.add_argument('--skip-figure2',action='store_true');a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--figure3-selection',type=Path,default=ROOT/'quality_review/FIGURE3_B_SELECTION_V4.json');p.add_argument('--figure3-output',type=Path,default=ROOT/'figures/fig3_bake10_two_object_v4.pdf');p.add_argument('--skip-figure2',action='store_true');a=p.parse_args()
  figure3(json.loads(a.figure3_selection.read_text()),a.figure3_output)
  if not a.skip_figure2:figure2(json.loads((ROOT/'visual_candidates/FIGURE2_SELECTION_V4.json').read_text()),ROOT/'figures/fig2_freshc_controls_v4.pdf')
 if __name__=='__main__':main()

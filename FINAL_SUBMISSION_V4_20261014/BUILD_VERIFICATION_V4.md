@@ -1,12 +1,9 @@
-# V4 evidence-reintegration build verification
+# Final V4 build verification
 
-Starting remote HEAD: `0aa1c9b3`, itself continuing `c3017645`. All four final PDFs rebuilt from current V4 TeX/Markdown and original-submission marked-source baseline. Main 14 pages, Supplement 71, response 5, marked 21. Manuscript and Supplement build passes found no undefined citation/reference. Main Tables 1–7 and their actual PDF pages were inspected; details in `TABLE_1_TO_7_LAYOUT_AUDIT.md`.
+The authoritative V4 text revision started from PR #1 HEAD `11006e003842b25976e20cafd51a7970770f269f` on `codex/cg-final-v4-20261014`. The official manuscript, response and marked source were rebuilt from that continuation. Current page counts are: main 13, Supplement 71, response 5, marked manuscript 20.
 
-Tables 1, 2, 4 and 6 retain their original numeric entries; redesigned Tables 3, 5 and 7 retain their numerical estimates, interval endpoints and p values. The original GeoTex Middle−mean(Early,Late) primary remains Table 7's first row. The two separate bake LPIPS primaries remain Table 5. `quality_review/FROZEN_CONTENT_CHECK_V4.json` records this limited frozen-content check; no GPU work or inferential recomputation occurred.
+The official main text now uses the revised abstract, six-paragraph Introduction, implementation-aware method framing, a three-part baked-appearance section, the study-specific native-interface comparison, a compressed historical sensitivity section, and a four-theme Discussion. The Supplement source and all seven numeric table bodies are unchanged from the starting V4 baseline. `quality_review/FROZEN_CONTENT_CHECK_V4.json` records seven unchanged table bodies, unchanged numeric table sources and Supplement source, and zero inference or GPU runs.
 
-The marked TeX is regenerated from authenticated original 01549 source SHA `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01` against current V4 source; the complete expanded-source diff is supplied. Layout and scientific readiness are judged separately from build success in `quality_review/INDEPENDENT_CG_ASSESSMENT_V4.md`.
+The marked manuscript was regenerated against the authenticated original submission source. The baseline identity and current target, marked source, PDF and full expanded-source diff hashes are recorded in `quality_review/MARKED_MANUSCRIPT_CHECK_V4.json` and `marked/MARKED_DIFF_SCOPE_V4.json`.
 
-
-## Abstract update on latest PR head
-
-After PR head `1b46e166` added review-only editorial candidates, the official `FINAL_V4_MANUSCRIPT.tex` abstract alone was updated. The full manuscript draft and review-only candidate were not copied over the submission source. Abstract rationale and current exact wording are in `ABSTRACT_REVIEW_V4.md`. Main remains 14 pages; Supplement 71 and marked 21 pages.
+The final PDF page audit is in `FINAL_LAYOUT_AND_SCIENCE_CHECK_V4.md` and `TABLE_1_TO_7_LAYOUT_AUDIT.md`. Figure 2 is on p7 and Figure 3 on p9; the actual A/B Figure 3 and four/three-row Figure 2 pages are retained in `quality_review/`. Build success is reported separately from the independent scientific readiness judgment.

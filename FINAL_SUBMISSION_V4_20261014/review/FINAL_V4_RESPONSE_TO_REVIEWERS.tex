@@ -107,18 +107,18 @@ video}\label{comment-1-color-shifts-full-object-comparisons-native-pipeline-and-
 \textbf{Changes and evidence.} Main Figure 2 shows three Fresh C objects
 with Target, Fixed Low, C3, Fixed High and Generic Linear at the same
 camera; its positive/adverse examples are explicitly post-outcome
-selections. Main Figure 3 separates a small input reference at raw view
-000 from pose-matched GT-256, Fixed Mean and Late-high renders at unseen
-view 004. Tire is selected by the median source-texture descriptor among
-seven display-cleared assets; the adjacent effect plot retains all ten
-compatibility-selected Bake10 objects, including the three without
-publication display rights. Its eleven-view effects range from about
-−0.00781 to nearly zero, while visible schedule differences remain
-subtle and reference-material mismatch persists. The input image is not
-treated as a pixel-matched target for the unseen render. Figure 4
-retains a complete-object color failure. All displayed Bake10 PNGs are
-actually 512×512, with common within-object crops and no method-specific
-recoloring.
+selections. Main Figure 3 shows two objects at the same held-out camera
+(raw004), each with GT-256, Fixed Mean and Late-high rendered from
+shared mesh/UVs and a common within-object crop. Tire is selected by
+median source-foreground Laplacian variance among seven display-cleared
+assets. The carved font is explicitly post-outcome selected for the
+largest existing eleven-view LPIPS decrease among those seven; its PSNR
+also decreases. The examples show persistent reference-appearance
+mismatch and an endpoint tradeoff, not population prevalence. The
+complete ten-object effect distribution and values remain in Supplement
+S5, including objects without publication display rights. Figure 4
+retains a complete-object color failure. The displayed Bake10 PNGs are
+512×512 and have no method-specific recoloring.
 
 The main text now places the native-pipeline quality boundary next to
 the bake results. On the same fifty inputs and five nonreference views,
@@ -146,9 +146,9 @@ source-mesh column is not a GT self-bake. Neither video estimates
 population quality.
 
 \textbf{Locations.} Main Figure 1 (p.~4), Figure 2 (p.~7), Figure 3
-(p.~9) and Figure 4 (p.~11); Main Tables 2--5 (pp.~6--9), Table 6
+(p.~9) and Figure 4 (p.~11); Main Tables 2--5 (pp.~6--8), Table 6
 (p.~10) and Table 7 (p.~11); Main Sections 3.5 (p.~5) and 4.4
-(pp.~8--10); Supplement Sections S3--S6/S8/S9; separate
+(pp.~7--9); Supplement Sections S3--S6/S8/S9; separate
 \texttt{Supplementary\_GeoTex\_Baked\_Comparison.mp4} and
 \texttt{Supplementary\_GSO\_Baked\_Comparison.mp4}.
 
@@ -186,8 +186,8 @@ foreground evidence remains reported, along with exclusion of the known
 failed requested slot as sensitivity rather than outcome filtering.
 
 \textbf{Locations.} Main Table 1 (p.~6); Main Section 4.1 (p.~5); Main
-Table 2 (p.~6); Main Section 4.6 (p.~11); Supplement Sections S1/S2/S7,
-including Supplement Table S35 (p.~58).
+Table 2 (p.~6); Main Section 4.6 (pp.~10--11); Supplement Sections
+S1/S2/S7, including Supplement Table S35 (p.~58).
 
 \textbf{Remaining limitation.} The original main checkpoint cannot be
 authenticated from the retained archive. Fresh C cannot be called an
@@ -210,9 +210,9 @@ preserve the discrepancy between generated patterns and reference
 appearance. The asset results contextualize the small GeoTex bake change
 relative to the matched GT reference bake; substantial error remains.
 
-\textbf{Locations.} Main Section 3.2; Main Section 4.3 (p.~7); Main
-Figure 4 (p.~11); Main Figure 3 (p.~9) and Section 4.4 (pp.~8--10); Main
-Section 5 (pp.~11--12); Supplement Sections S5--S7.
+\textbf{Locations.} Main Section 3.2 (p.~3); Main Section 4.3 (p.~6);
+Main Figure 4 (p.~11); Main Figure 3 (p.~9) and Section 4.4 (pp.~7--9);
+Main Section 5 (pp.~11--12); Supplement Sections S5--S7.
 
 \textbf{Remaining limitation.} Unlit base-color scores and variation
 proxies do not establish faithful materials or appearance under changing
@@ -254,9 +254,9 @@ comparison remains a separate reported historical analysis. Component
 checks exercise synthetic tensors and state serialization rather than
 the complete historical diffusion training run.
 
-\textbf{Locations.} Main Section 4.6 (p.~11); Supplement Section S7;
-Supplement Table S30 (p.~50); recovered-source and component-validation
-records in the accompanying evidence package.
+\textbf{Locations.} Main Section 4.6 (pp.~10--11); Supplement Section
+S7; Supplement Table S30 (p.~50); recovered-source and
+component-validation records in the accompanying evidence package.
 
 \textbf{Remaining limitation.} The submitted training pool states 1,706
 objects, whereas a recovered configuration lists 1,200; run-bound
@@ -384,14 +384,16 @@ validation}\label{concern-3-missing-cross-backbone-validation}}
 evaluates fifty input-selected objects with seven shared conditions. Its
 specified Middle−Fixed Mean foreground-PSNR primary is +0.029 dB (95\%
 object interval {[}−0.019,+0.081{]}; paired p=0.281; 29/50 favorable). A
-separate GSO100 study uses this same native interface on different
-inputs and does not detect its specified middle-window advantage. The
-retained 75-object MVDiffusion study scales a partial
-correspondence-block operator while leaving depth concatenation
-unscaled. We report their genuine, endpoint-dependent results separately
-and do not pool them as equal-dose replications.
+separate GSO100 study uses this same MV-Adapter interface on different
+inputs and does not detect its specified middle-window advantage; it is
+not an independent third backbone. Its primary compares Middle with
+Fixed Mean, whereas the GeoTex timing primary compares Middle with
+mean(Early,Late). The retained 75-object MVDiffusion study scales a
+partial correspondence-block operator while leaving depth concatenation
+unscaled. We report these study-specific, endpoint-dependent results
+separately and do not pool them as equal-dose replications.
 
-\textbf{Locations.} Main Section 4.5 (pp.~9--11); Main Table 6 for
+\textbf{Locations.} Main Section 4.5 (pp.~10--11); Main Table 6 for
 native MV-Adapter means; Main Table 7 for the specified native-interface
 FG-PSNR primaries; Supplement Sections S3/S4/S8 and Supplement Table
 S15.
@@ -451,7 +453,7 @@ not Fresh C or baked-fidelity validation. \\
 R2.1: generalizability of stages/control & Distinct native conditioning
 interfaces and external inputs now test related allocation questions;
 heterogeneous/non-detected results are preserved. & Main Section 4.5,
-pp.~9--11; Supplement S3/S4/S8. General stage roles or common-dose
+pp.~10--11; Supplement S3/S4/S8. General stage roles or common-dose
 transfer are unestablished. \\
 R2.2: heuristic three-stage novelty and boundaries & Prior schedules are
 explicitly credited; the contribution is reformulated as controlled task
@@ -461,9 +463,9 @@ pp.~11--12. The methodological novelty concern remains unresolved. \\
 R2.3: cohort overlaps and learned FAC reproducibility & Current cohort
 identities are separated from the historical 24/300 overlap and
 276-request substitution; FAC negative results and identity gaps remain
-disclosed. & Main Table 1, p.~6; Main Section 4.6, p.~11; Supplement
-S1/S7. Source recovery and component checks do not verify historical
-training. \\
+disclosed. & Main Table 1, p.~6; Main Section 4.6, pp.~10--11;
+Supplement S1/S7. Source recovery and component checks do not verify
+historical training. \\
 R3.1: large-cohort generic timing competitors & Fresh C includes Generic
 Linear and strong fixed controls; equal-applied-budget allocations test
 the preserved timing primary. Earlier generic-schedule studies remain
@@ -492,10 +494,5 @@ Supplement S1/S6/S7. Historical subset and training-run gaps are
 disclosed, not inferred from later configuration files. \\
 \bottomrule
 \end{longtable}
-
-The controlled empirical findings and reproducibility package are
-presented for author and editorial assessment. No universal performance
-claim is substituted for the remaining methodological and historical
-limitations.
 
 \end{document}
