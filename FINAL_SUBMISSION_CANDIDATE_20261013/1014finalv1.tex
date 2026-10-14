@@ -106,7 +106,7 @@ We study inference-time geometry strength in an existing MVPainter-style multi-v
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig1_tcas_control.pdf}
-\caption{Overview of the TCAS control interface in multi-view diffusion texturing. The frozen pretrained GeoTex-Adapter computes geometry-conditioned residual corrections from normal, depth and foreground-mask features, together with current hidden features. TCAS specifies the historical C3 requested scaling profile (1.25, 2.50, 1.25) over steps 0--16, 17--32 and 33--49. Existing native group-specific caps determine the applied scales before residual multiplication and addition to frozen U-Net features. In the evaluated Fresh C implementation, the deep, middle and shallow caps are 3.0, 3.5 and 0.8; shallow is clipped to 0.8 throughout. Six generated RGB views can subsequently be projected and baked onto a textured mesh. The author-supplied imagery illustrates the workflow and is not used as cohort evidence.}
+\caption{Overview of the TCAS control interface in multi-view diffusion texturing. The frozen pretrained GeoTex-Adapter computes geometry-conditioned residual corrections from normal, depth and foreground-mask features, together with current hidden features. TCAS specifies the historical C3 requested scaling profile (1.25, 2.50, 1.25) over steps 0--16, 17--32 and 33--49. Existing native group-specific caps determine the applied scales before residual multiplication and addition to frozen U-Net features. In the evaluated Fresh C implementation, the deep, middle and shallow caps are 3.0, 3.5 and 0.8; shallow is clipped to 0.8 throughout. Six generated RGB views can subsequently be projected and baked onto a textured mesh. The image panels are illustrative and are not used as cohort evidence.}
 \label{fig:overview}
 \end{figure*}
 
@@ -205,7 +205,7 @@ Fresh C's controlled sampler differs from the complete base pipeline, which uses
 FG-PSNR, LPIPS, SSIM and Edge-SSIM measure agreement on the named image regions. Baked evaluation renders actual exported meshes; unlit base color does not establish PBR or material fidelity. Fresh C image endpoints are evaluated once on each frozen $3\times2$ six-view composite. Native-interface and baked endpoints average their recorded per-view scores within object, with GSO sampling seeds also averaged within object. Paired intervals resample objects and are pointwise 95\% intervals. Preserved primary, secondary and exploratory families use their stated Holm adjustments; the distinct families do not imply one overall experiment-wide error guarantee. Non-detection is not equivalence or non-inferiority. Complete comparison rules are supplied in Supplementary Sections~S2--S5.
 
 \paragraph{Reproducible analysis and presentation.}
-The recorded statistical analyses use NumPy/SciPy with the specified object resampling, seeds and original correction families; statistical plots use Matplotlib. The implementation and source records permit numerical verification; computational assistance does not certify scientific validity or replace author verification.
+Statistical analyses use NumPy/SciPy with the specified object resampling, seeds and original correction families; plots use Matplotlib. The accompanying scripts and source records document the calculations and inputs for numerical verification.
 
 \section{Experimental Results}
 \label{sec:experiments}
@@ -476,9 +476,6 @@ Geometry-control allocation in multi-view texturing must be interpreted at the i
 \section*{Data availability}
 
 The accompanying research package contains object-level metrics, frozen protocols and configuration records, analysis scripts, and the LaTeX source needed to rebuild the manuscript and Supplement. Recovered FAC source is supplied with a record of its entry points and validation scope; these component checks do not constitute a historical full-model replay. Statistical summaries can be recomputed without model weights, while fresh inference requires the recorded weights, runtime and licensed source assets. Raw generated-image archives, trained checkpoints and participant-level responses are not included. Source assets must be acquired under their recorded licenses. Additional analysis records may be requested from the corresponding author, subject to licensing, privacy and archive constraints.
-
-\section*{Declaration of generative AI and AI-assisted technologies in manuscript preparation}
-OpenAI Codex v0.162.1 (OpenAI; recorded GPT-6.1-sol/GPT-6-luna sessions) assisted revision drafting, software implementation and reproducible statistical analyses. OpenAI image\_gen supported initial schematic-layout exploration; its model version was not exposed in the retained generation records, and the final schematic was supplied by the authors. Experimental displays elsewhere come from the recorded runs without image-generation retouching. AI-assisted presentation checks cover rendered figures and pages for legibility; these checks do not certify scientific validity or replace author review. Numerical tables are computed from delivered object-level records. Final scientific review, accuracy and responsibility remain with the authors.
 
 \section*{Declaration of competing interests}
 

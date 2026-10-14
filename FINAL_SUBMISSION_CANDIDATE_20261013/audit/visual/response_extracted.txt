@@ -21,18 +21,19 @@ Changes and evidence. Complete objects and matched pixel crops are presented in 
 Main Figure 3, p. 8; actual source colors and appearance defects are preserved. Fresh C includes competitive Fixed
 High and Generic Linear alongside the original C3/Fixed Low comparison and matched-budget allocations. The
 revised Figure 1 identifies separate reference and geometry routes, the TCAS request intervention and inherited
-native caps before feature addition. Its traceable Fresh C reference/conditions/output views share one UID; its
-independently identified bake example uses another UID. This improves method explanation without supplying
-new evidence of fidelity.
+native caps before feature addition. The illustrative schematic depicts the control interface and downstream
+workflow; its image panels are not used as experimental evidence. This improves method explanation without
+supplying new evidence of fidelity.
 The asset assessment exports native-UV meshes and averages eleven unseen unlit renders within each object,
 alongside matched GT-256 self-bakes. GeoTex10 Late-high minus Fixed Mean FG-LPIPS is −0.002652 (95%
 object-bootstrap interval [−0.004144,−0.001367]; exact sign-flip p=0.00195). The separate GSO20 difference is
 +0.00008379 (interval [−0.00010305,+0.00028592]; original-family Holm p=0.78765), which does not detect the
-same benefit. The retained video illustrates one matched GSO object under recorded conditions and eleven unseen
-cameras, rather than estimating population quality.
-Locations. Main Figure 1, p. 4; Main Figure 2, p. 7; Main Figure 3, p. 8; Main Table 2, p. 6; Main Section 3.5,
-p. 5; Main Section 4.4, p. 8; Main Table 4, p. 8; Main Table 5, p. 10; Main Figure 4, p. 10; Supplement Sections
-S4–S6/S9; separate Supplementary_GSO_Baked_Comparison.mp4.
+same benefit. The GeoTex video presents two input-order, rights-cleared objects at eleven discrete unseen cameras.
+A separate GSO video illustrates one matched object under its recorded conditions; neither video estimates
+population quality.
+Locations. Main Figure 1, p. 4; Main Figure 2, p. 7; Main Figure 3, p. 8; Main Table 2, p. 6; Main Section 3.5, p. 5;
+Main Section 4.4, p. 8; Main Table 4, p. 8; Main Table 5, p. 10; Main Figure 4, p. 10; Supplement Sections S4–S6/S9;
+separate Supplementary_GeoTex_Baked_Comparison.mp4 and Supplementary_GSO_Baked_Comparison.mp4.
 Remaining limitation. The controlled Fresh C setting lacks an input- and seed-matched complete-default/native
 GeoTex quality comparison. Native/unset residual and capped Constant 1.0 controls do not equal that complete
 pipeline. The bake cohorts are small and compatibility-selected; unfilled coverage and sampling/UV limitations
@@ -45,16 +46,18 @@ recorded training lists. Conditions share a frozen retrained checkpoint, inputs,
 original C3−Fixed Low FG-PSNR primary is +0.522 dB (95% object-bootstrap interval [+0.404,+0.641]; 206/300
 favorable). Strong fixed and linear controls are reported on this same cohort. The paper explicitly separates this
 controlled retraining from numerical reproduction of the historical +0.96 dB result.
-The separate historical-request retraining excludes recorded training-list intersections. However, a failed input was
-replaced without recording its actual UID. Its 276 records are therefore requested slots, not a verified 276-unique-
+
+
 
 
                                                          1
-object holdout. C3−Fixed High is +1.699 dB full-frame PSNR but −1.314 dB foreground PSNR; foreground
+The separate historical-request retraining excludes recorded training-list intersections. However, a failed input was
+replaced without recording its actual UID. Its 276 records are therefore requested slots, not a verified 276-unique-
+object holdout. C3−Fixed High is +1.699 dB full-frame PSNR but −1.314 dB foreground PSNR; foreground
 LPIPS worsens by 0.01127 and foreground SSIM by 0.05961. This adverse foreground evidence remains reported,
 along with exclusion of the known failed requested slot as sensitivity rather than outcome filtering.
 Locations. Main Table 1, p. 6; Main Section 4.1, p. 5; Main Table 2, p. 6; Main Section 4.6, p. 11; Main Table 8,
-p. 13; Supplement Sections S1/S2/S7, including Supplement Table S35, p. 58.
+p. 12; Supplement Sections S1/S2/S7, including Supplement Table S35, p. 58.
 Remaining limitation. The original main checkpoint cannot be authenticated from the retained archive. Fresh
 C cannot be called an exact reproduction of it, and the unknown substituted UID prevents certified independent-
 object inference for the 276-request record. The request for an exact historical-checkpoint holdout is therefore not
@@ -68,7 +71,7 @@ failure-enriched and has no prevalence interpretation. Complete-object displays 
 between generated patterns and reference appearance. The asset results contextualize the small GeoTex bake
 change relative to the matched GT reference bake; substantial error remains.
 Locations. Main Section 3.2, p. 3; Main Section 4.3, p. 6; Main Figure 3, p. 8; Main Section 4.4, p. 8; Main
-Section 5, p. 13; Supplement Sections S5–S7.
+Section 5, p. 12; Supplement Sections S5–S7.
 Remaining limitation. Unlit base-color scores and variation proxies do not establish faithful materials or
 appearance under changing illumination. We do not replace that missing validation with better diagram presentation
 or the historical preference result.
@@ -79,7 +82,7 @@ High Edge-SSIM is −0.01881 (95% interval [−0.02083,−0.01678]; frozen Holm 
 −0.04553 (interval approximately [−0.04937,−0.04165]). These losses remain visible in the competitive-control
 results. We state that an interval crossing zero does not establish equivalence or non-inferiority. The 276-slot
 diagnostics have a separate, explicitly weaker identity.
-Locations. Main Table 2, p. 6; Main Section 4.1, p. 5; Main Section 4.2, p. 6; Main Section 3.5, p. 5; Supplement
+Locations. Main Table 2, p. 6; Main Section 4.1, p. 5; Main Section 4.2, p. 5; Main Section 3.5, p. 5; Supplement
 Section S2 and Supplement Table S2, p. 5; Section S7 for requested-slot sensitivity.
 Remaining limitation. No non-inferiority margin was prespecified. Pointwise intervals and separate correction
 families do not provide one global experiment-wide guarantee; non-detection is not equivalence.
@@ -102,7 +105,8 @@ full-model replay or reclassify those historical negative results as newly confi
                                                          2
 Reviewer 2 — second round
 Concern 1: The methodological contribution remains limited
-Status: R2.1 = PARTIALLY ADDRESSED.
+The revision addresses the controlled empirical question and its graphics relevance; the limitation in methodological
+novelty remains.
 Changes and distinction from prior work. We agree that adding a temporal scale profile does not establish
 a new general scheduling method. The official ControlNet depth-to-image demo assigns a fixed thirteen-block
 profile in guess mode according to block index; it is not adaptive to the depth-map contents. Diffusers v0.21.0
@@ -129,8 +133,8 @@ treating a shared scale label as a transferable dose. These findings correct the
 identify when a control comparison can support a timing interpretation or an asset-quality claim. Their value
 rests on this controlled task knowledge, rather than experimental volume or statistical significance alone.
 Locations. Main Section 1, p. 1; Main Section 2.3, p. 2; Main Section 3.1, p. 3; Main Section 3.3, p. 3; Main
-Table 2, p. 6; Main Section 4.2, p. 6; Main Table 5, p. 10; Main Table 6, p. 10; Main Table 7, p. 12; Main Section
-5, p. 13; Supplement Sections S1–S5.
+Table 2, p. 6; Main Section 4.2, p. 5; Main Table 5, p. 10; Main Table 6, p. 10; Main Table 7, p. 11; Main Section
+5, p. 12; Supplement Sections S1–S5.
 Remaining limitation. TCAS remains a manually specified intervention on an existing adapter. The equal-
 budget addendum reuses previously inspected Fresh C objects and is not independent prospective confirmation;
 equal applied sums do not establish equal residual dose. Cohort, interface and projection differences prevent causal
@@ -143,7 +147,7 @@ Changes and evidence. The independent CAI derivation and optimality claims are r
 as the recorded choice from the historical 24-object/17-variant development probe and carried forward without a
 new schedule search. One-third windows are operational partitions of sampling progress, not a universal semantic
 decomposition. The preserved matched-budget primary does not detect the proposed middle-window advantage.
-Locations. Main Section 3.3, p. 3; Main Section 4.2, p. 6; Main Section 5, p. 13; Supplement Section S7,
+Locations. Main Section 3.3, p. 3; Main Section 4.2, p. 5; Main Section 5, p. 12; Supplement Section S7,
 Supplement S7 (C3 Development Record), p. 52 and Supplement Table S33, p. 54.
 Remaining limitation. Historical candidate-level records cannot reconstruct the original ranking. C3 is neither
 independently derived nor verified as unique or optimal; no causal stage-utility theory is claimed.
@@ -159,7 +163,7 @@ interval [−0.019,+0.081]; paired p=0.281; 29/50 favorable). A separate GSO100 
 interface on different inputs and does not detect its specified middle-window advantage. The retained 75-object
 MVDiffusion study scales a partial correspondence-block operator while leaving depth concatenation unscaled. We
 report their genuine, endpoint-dependent results separately and do not pool them as equal-dose replications.
-Locations. Main Section 4.5, p. 9; Main Table 6, p. 10; Main Figure 5, p. 11; Main Table 7, p. 12; Main Figure 6,
+Locations. Main Section 4.5, p. 9; Main Table 6, p. 10; Main Figure 5, p. 11; Main Table 7, p. 11; Main Figure 6,
 p. 12; Supplement Sections S3/S4/S8 and Supplement Table S15, p. 18.
 Remaining limitation. Native MV-Adapter is a different conditioning-interface test, not an architecture-
 matched replication of GeoTex residual scaling. GSO100 is not another backbone, and MVDiffusion tests a partial
@@ -208,8 +212,8 @@ stages/control                         interfaces and external inputs now      S
                                                                               boundary
 R2.2: heuristic three-stage novelty   Prior schedules are explicitly          Main Section 2.3, p. 2; Main
 and boundaries                        credited; the contribution is           Section 3.3, p. 3; Main Section 5,
-                                      reformulated as controlled task         p. 13. R2.1 remains PARTIALLY
-                                      knowledge; universal scheduling         ADDRESSED.
+                                      reformulated as controlled task         p. 12. The methodological novelty
+                                      knowledge; universal scheduling         concern remains unresolved.
                                       and independent derivation claims
                                       are withdrawn.
 R2.3: cohort overlaps and learned     Current cohort identities are           Main Table 1, p. 6; Main Section
@@ -218,7 +222,7 @@ FAC reproducibility                   separated from the historical           4.
                                       substitution; FAC negative results      checks do not verify historical
                                       and identity gaps remain disclosed.     training.
 R3.1: large-cohort generic timing     Fresh C includes Generic Linear         Main Table 2, p. 6; Main Section
-competitors                           and strong fixed controls;              4.2, p. 6; Supplement S2/S7. These
+competitors                           and strong fixed controls;              4.2, p. 5; Supplement S2/S7. These
                                       equal-applied-budget allocations        do not establish C3 superiority; the
                                       test the preserved timing primary.      timing addendum is same-cohort,
                                       Earlier generic-schedule studies        not a new holdout.

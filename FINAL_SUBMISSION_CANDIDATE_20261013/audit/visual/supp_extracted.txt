@@ -131,8 +131,8 @@ S8. Auxiliary training, deployment and projection exploration                   
    Archived projection development and first-interface evaluation . . . . . .                        .   .   .   .   .   .   .   .   .   .   .   .   .   63
 
 S9. Figure credits, retained displays and record index                                                                                                   66
-   Figure 1 source identity and control ownership . . . . . .        .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   66
-   Figure sources, licenses and selection . . . . . . . . . . . .    .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   67
+   Figure 1 interface and control ownership . . . . . . . . . .      .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   66
+   Figure sources, licenses and selection . . . . . . . . . . . .    .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   66
    Retained C3–Fixed Low favorable and adverse examples .            .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   68
    Historical record index . . . . . . . . . . . . . . . . . . . .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   69
 
@@ -1212,7 +1212,7 @@ is object. Positive overall agreement does not require an identical winning cond
                                   Edge-SSIM          0.907   [0.871, 0.943]       6/10
 
 
-     GT and generated bake sources use the same six raw cameras and 256-pixel resolution. GT RGB uses
+    GT and generated bake sources use the same six raw cameras and 256-pixel resolution. GT RGB uses
 bicubic downsampling; alpha uses the exact nearest-index mapping used for generated foreground inputs.
 Their six-view scalar masks are bitwise identical and their raw atlas coverage matches for every object and
 condition. No unseen view enters baking. Export checks retain binary geometry/UV buffers, transforms
@@ -1220,16 +1220,16 @@ and mesh identity. REPEAT UV weights are nonnegative, sum to one and are invaria
 shifts. These checks establish a valid unlit projection comparison, not PBR equivalence or a validated
 seam score. Texture boundaries can be natural appearance boundaries; seam diagnostics are not reported
 as a validated primary endpoint.
-     Supplementary Video presents two input-order, rights-cleared objects at all eleven discrete unseen
-cameras. Each actual rendered view is held for one second; no interpolated camera image is synthesized.
-It is an unlit comparison, not a claim of continuous-view or PBR quality.
-     LG Remote by mohd.akmal.mahyudin; CC Attribution. Source: https://sketchfab.com/3d-models/
+    The separately supplied Supplementary_GeoTex_Baked_Comparison.mp4 presents two input-order,
+rights-cleared GeoTex objects at all eleven discrete unseen cameras. Each actual rendered view is held
+for one second; no interpolated camera image is synthesized. It is an unlit comparison, not a claim of
+continuous-view or PBR quality.
+    LG Remote by mohd.akmal.mahyudin; CC Attribution. Source: https://sketchfab.com/3d-models/
 1dc2c857f7614caeb6c2aa0559ccf973.
-     Tire by Koto3D Stephane Vogley; CC Attribution. Source: https://sketchfab.com/3d-models/
+    Tire by Koto3D Stephane Vogley; CC Attribution. Source: https://sketchfab.com/3d-models/
 21678bd623654182b52c11d013de4e71.
-     Asset 238ff3e41c964655b83aa9c8770cc766 by suntaree; CC Attribution. Source: https://sketchfab.
+    Asset 238ff3e41c964655b83aa9c8770cc766 by suntaree; CC Attribution. Source: https://sketchfab.
 com/3d-models/238ff3e41c964655b83aa9c8770cc766.
-
 
                                                              25
 Figure S3: Rights-cleared GeoTex bake object 1 of seven, unseen camera 004. Source, matched GT-256
@@ -2505,34 +2505,30 @@ fidelity, physical albedo, or final baked-texture quality.
 
 
 S9. Figure credits, retained displays and record index
-Figure 1 source identity and control ownership
-The task example uses Fresh C UID 0571e6db30c84b1593bc55a8e145a430 (Octaèdre, Segolene Delamare,
-CC BY 4.0). Its frozen reference is camera 014. Six saved C3 tiles retain row-major camera order 014, 015,
-000, 016, 012, 013 and their dataset-native in-plane orientation. Single normal/depth/mask thumbnails
-are representative raw camera-014 sources, not the transformed six-view conditioning tensor. Depth has
-a uniform 16-to-8-bit display conversion; the mask is the exact reference alpha. RGB outputs are exact
-saved-tile crops, without color/detail changes.
-    The separate bake illustration is UID 3c83796ca5f043f1beb8044dd2e51a0d (bricks on news boxes,
-bunnyhero, CC BY 4.0; source credited in S5). Its atlas is an actual saved native-UV result and its render
-is unseen camera 004. Only transparent render margins are cropped, preserving all nontransparent pixels.
-It is not the Fresh C object and no cross-sample arrow connects them. These images illustrate pipeline
-outputs and remaining appearance discrepancies, not high-fidelity replication.
+Figure 1 interface and control ownership
+The current Figure 1 is an illustrative workflow schematic. Its building imagery illustrates reference
+conditioning, six-view generation and downstream texture construction; it is not presented as Fresh C
+or Bake10 cohort evidence. The drawing does not assert that all Fresh C objects were baked or that the
+historical C3 profile is optimal.
     TCAS supplies the temporal requested profile. GeoTex-Adapter, the frozen U-Net feature path and
-group caps belong to the existing evaluated implementation. A wrapper applies the cap before multiplying
-the geometry residual and adding it to the frozen feature. The feature dependency shown into GeoTex
-agrees with the implemented hidden-state-dependent correction. The portable index figure1/FIG1_
-SOURCE_INDEX_FINAL.csv records original and packaged sources, cameras, display operations and SHA-256
-values. The editable source contains separate raster slots and native vector text/paths; no concept raster
-is used as an experimental output.
+group caps belong to the existing evaluated implementation. A wrapper caps the request before residual
+multiplication and frozen-feature addition. The correction depends on both geometry features and the
+current hidden features, as in Main Equation (2); the schematic abstracts that state dependency. The
+evaluated up-only Fresh C configuration uses up blocks 0, 1 and 2 as deep, middle and shallow groups.
+The shallow 0.8 cap applies throughout all three requested phases.
+    The editable SVG, export script and embedded-image checksum index are supplied in figure1/. The
+SVG retains separate raster slots and native vector text and paths. The former experimental Figure 1 and
+its verified Fresh C/Bake10 identity records are preserved in the e943 baseline archive; those identities are
+not assigned to the current illustration. All other experimental displays retain the frozen source identities
+and credits described below.
 
-
+Figure sources, licenses and selection
+Object identities, licenses and selection rules are unchanged. Figure references below use scientific
+display roles rather than obsolete parent figure numbers; the current figure/asset mapping is supplied in
 
 
                                                      66
-Figure sources, licenses and selection
-Object identities, licenses and selection rules are unchanged. Figure references below use scientific
-display roles rather than obsolete parent figure numbers; the current figure/asset mapping is supplied in
-FIGURE_ASSET_PROVENANCE.md. The retained Fresh C comparisons use reference and method-level
+FIGURE_ASSET_PROVENANCE.md. The retained Fresh C comparisons use reference and method-level
 RGB outputs with shared pixel crops. Complete preserved displays and the former main-text C3–GFL
 examples are supplied in this section. The selected examples are outcome-ranked illustrations, not a
 representative sample. The inherited Fresh C manifest retains the original layout lineage. Current
@@ -2557,7 +2553,7 @@ with figure use allowed when attributed. The complete credit line for each use i
       favourable example          CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
                                   Fresh C target-view RGB outputs are cropped to the same ROI
                                   and arranged without color or detail adjustment.
-      Strong fixed-control con- Octaèdre       by     Segolene      Delamare,      via     Sketch-
+      Strong fixed-control con- Octaèdre       by      Segolene     Delamare,      via     Sketch-
       text, C3-versus-fixed-scale fab                       (https://sketchfab.com/3d-models/
       example                     0571e6db30c84b1593bc55a8e145a430), licensed CC BY 4.0
                                   (https://creativecommons.org/licenses/by/4.0/). Fresh C
@@ -2568,18 +2564,12 @@ with figure use allowed when attributed. The complete credit line for each use i
                                   CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
                                   Fresh C target-view RGB outputs are cropped to the same ROI
                                   and arranged without color or detail adjustment.
-      C3–GFL adverse context, Boat        Low    Poly     Game      Ready    by    INinja,     via
+      C3–GFL adverse context, Boat        Low     Poly    Game      Ready    by    INinja,     via
       adverse C3–GFL example Sketchfab                      (https://sketchfab.com/3d-models/
                                   d0e116a62bfc4cdd9edf60671073b306), licensed CC BY 4.0
                                   (https://creativecommons.org/licenses/by/4.0/). Fresh C
                                   target-view RGB outputs are cropped to the same ROI and
                                   arranged without color or detail adjustment.
-
-
-
-
-                                                    67
-      Use                        Full attribution
       Color-failure context, se- E5-5-2 by artsiyu, via Sketchfab (https://sketchfab.com/
       lected Fresh C color/detail 3d-models/f6979d7ff8e54c4daf00fee46f09a139), licensed CC
       illustration                BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
@@ -2588,8 +2578,8 @@ with figure use allowed when attributed. The complete credit line for each use i
 
 
 
-
-Figure S26: Selected illustrative adverse C3–GFL case from the rights-cleared Fresh C 2D pool. It is not a
+                                                    67
+Figure S26: Selected illustrative adverse C3–GFL case from the rights-cleared Fresh C 2D pool. It is not a
 representative estimate and does not support color-correction, PBR, seam, or human-preference claims.
 
 
@@ -2598,7 +2588,7 @@ Retained C3–Fixed Low favorable and adverse examples
 
 
 
-                                                    68
+                                                   68
 Figure S27: Matched Fresh C target-view RGB outputs for the same frozen object, reference, camera,
 checkpoint, runner, seed policy, and inference protocol. Each column pairs the full context (shared ROI in
 red) with its exact pixel crop. Case (a) was selected because C3 favors GFL on paired FG-PSNR and

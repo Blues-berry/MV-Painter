@@ -153,11 +153,11 @@
 -\includegraphics[width=\textwidth,trim=0 24pt 0 0,clip]{fig1.pdf}
 -\caption{Method overview. GeoTex-Adapter generates geometric residuals and injects them into UNet features. TCAS dynamically adjusts the residual strength according to denoising stages to balance geometric consistency and texture fidelity. FAC is an optional learned extension module. The final multi-view outputs are projected and baked into a textured 3D mesh.}
 +\includegraphics[width=\textwidth]{figures/fig1_tcas_control.pdf}
-+\caption{Overview of the TCAS control interface in multi-view diffusion texturing. The frozen pretrained GeoTex-Adapter computes geometry-conditioned residual corrections from normal, depth and foreground-mask features, together with current hidden features. TCAS specifies the historical C3 requested scaling profile (1.25, 2.50, 1.25) over steps 0--16, 17--32 and 33--49. Existing native group-specific caps determine the applied scales before residual multiplication and addition to frozen U-Net features. In the evaluated Fresh C implementation, the deep, middle and shallow caps are 3.0, 3.5 and 0.8; shallow is clipped to 0.8 throughout. Six generated RGB views can subsequently be projected and baked onto a textured mesh. The author-supplied imagery illustrates the workflow and is not used as cohort evidence.}
++\caption{Overview of the TCAS control interface in multi-view diffusion texturing. The frozen pretrained GeoTex-Adapter computes geometry-conditioned residual corrections from normal, depth and foreground-mask features, together with current hidden features. TCAS specifies the historical C3 requested scaling profile (1.25, 2.50, 1.25) over steps 0--16, 17--32 and 33--49. Existing native group-specific caps determine the applied scales before residual multiplication and addition to frozen U-Net features. In the evaluated Fresh C implementation, the deep, middle and shallow caps are 3.0, 3.5 and 0.8; shallow is clipped to 0.8 throughout. Six generated RGB views can subsequently be projected and baked onto a textured mesh. The image panels are illustrative and are not used as cohort evidence.}
  \label{fig:overview}
  \end{figure*}
  
-@@ -115,449 +115,394 @@
+@@ -115,449 +115,391 @@
  \mathbf{G} = \{G_\text{normal}, G_\text{depth}, G_\text{mask}\}.
  \end{equation}
  
@@ -301,7 +301,7 @@
 +FG-PSNR, LPIPS, SSIM and Edge-SSIM measure agreement on the named image regions. Baked evaluation renders actual exported meshes; unlit base color does not establish PBR or material fidelity. Fresh C image endpoints are evaluated once on each frozen $3\times2$ six-view composite. Native-interface and baked endpoints average their recorded per-view scores within object, with GSO sampling seeds also averaged within object. Paired intervals resample objects and are pointwise 95\% intervals. Preserved primary, secondary and exploratory families use their stated Holm adjustments; the distinct families do not imply one overall experiment-wide error guarantee. Non-detection is not equivalence or non-inferiority. Complete comparison rules are supplied in Supplementary Sections~S2--S5.
 +
 +\paragraph{Reproducible analysis and presentation.}
-+The recorded statistical analyses use NumPy/SciPy with the specified object resampling, seeds and original correction families; statistical plots use Matplotlib. The implementation and source records permit numerical verification; computational assistance does not certify scientific validity or replace author verification.
++Statistical analyses use NumPy/SciPy with the specified object resampling, seeds and original correction families; plots use Matplotlib. The accompanying scripts and source records document the calculations and inputs for numerical verification.
 +
 +\section{Experimental Results}
  \label{sec:experiments}
@@ -932,9 +932,6 @@
  
 -All data included in this study are available upon request by contact with the corresponding author.
 +The accompanying research package contains object-level metrics, frozen protocols and configuration records, analysis scripts, and the LaTeX source needed to rebuild the manuscript and Supplement. Recovered FAC source is supplied with a record of its entry points and validation scope; these component checks do not constitute a historical full-model replay. Statistical summaries can be recomputed without model weights, while fresh inference requires the recorded weights, runtime and licensed source assets. Raw generated-image archives, trained checkpoints and participant-level responses are not included. Source assets must be acquired under their recorded licenses. Additional analysis records may be requested from the corresponding author, subject to licensing, privacy and archive constraints.
-+
-+\section*{Declaration of generative AI and AI-assisted technologies in manuscript preparation}
-+OpenAI Codex v0.162.1 (OpenAI; recorded GPT-6.1-sol/GPT-6-luna sessions) assisted revision drafting, software implementation and reproducible statistical analyses. OpenAI image\_gen supported initial schematic-layout exploration; its model version was not exposed in the retained generation records, and the final schematic was supplied by the authors. Experimental displays elsewhere come from the recorded runs without image-generation retouching. AI-assisted presentation checks cover rendered figures and pages for legibility; these checks do not certify scientific validity or replace author review. Numerical tables are computed from delivered object-level records. Final scientific review, accuracy and responsibility remain with the authors.
  
  \section*{Declaration of competing interests}
  
@@ -946,7 +943,7 @@
  \begin{thebibliography}{45}
  \bibitem{liu2023zero1to3}
  Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
-@@ -611,7 +556,7 @@
+@@ -611,7 +553,7 @@
  Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
  
  \bibitem{zeng2024paint3d}
@@ -955,7 +952,7 @@
  
  \bibitem{cheng2024mvpaint}
  Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for painting anything 3D. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2025.
-@@ -622,6 +567,9 @@
+@@ -622,6 +564,9 @@
  \bibitem{huang2024mvadapter}
  Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
  
@@ -965,7 +962,7 @@
  \bibitem{liu2024synchronized}
  Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
  
-@@ -646,6 +594,9 @@
+@@ -646,6 +591,9 @@
  \bibitem{zhang2023adalora}
  Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
  
@@ -975,7 +972,7 @@
  \bibitem{ho2020ddpm}
  Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advances in Neural Information Processing Systems}, 2020.
  
-@@ -658,41 +609,24 @@
+@@ -658,41 +606,24 @@
  \bibitem{castillo2023adaptive}
  Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.
  

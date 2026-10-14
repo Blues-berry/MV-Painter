@@ -8,6 +8,6 @@
 | Scale and feature addition | Existing wrapper operations | s_app × A(h,G), then addition to frozen ResNet output |
 | Actual FreshC groups | Run-bound up_only configuration | up0/up1/up2, three wrappers per group; optional middle-block injection inactive |
 | UV projection/baking | Downstream workflow | No new model module or claim all FreshC objects were baked |
-| Building panels | Author-supplied illustrative imagery | No experiment UID/protocol identity or effectiveness evidence is assigned |
+| Building panels | Illustrative image panels | No experiment UID/protocol identity or effectiveness evidence is assigned |
 
 Run-bound config SHA295311ba717b2e360a6ab1eb54306afcfaa5ac66a7441410868b69714818ba8b; archived trace is in baseline_e943/source_files/C3_residual_trace.json. Original frozen code operations are compute_correction, min, multiplication, feature addition. The complete final review remains separate from author approval.
