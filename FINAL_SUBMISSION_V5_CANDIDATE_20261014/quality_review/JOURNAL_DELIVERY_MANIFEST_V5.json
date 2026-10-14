@@ -2,16 +2,16 @@
   "status": "PASS",
   "version": "V5 candidate",
   "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
-  "submission_manifest_sha256": "89ae0315d5288435b1772f7845cbc162ef804a7e613b1516baeb07e420ca72a8",
+  "submission_manifest_sha256": "c3145af49fa32b9a19652a7fc905db87ab3c858e94d48304f246a811dcef78a6",
   "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
-  "checksum_sha256": "2f90cbdeac9cddd4d45646c332525a08158c6b9be6060e98948dc45391bc4837",
+  "checksum_sha256": "f6ffe5d061e73857b1c692a53e775f49f2bce6de4281909309839ed607ea8a39",
   "page_counts": {
     "main": 13,
-    "supplement": 71,
+    "supplement": 70,
     "response": 6,
     "marked": 20
   },
-  "source_archive_sha256": "554859203ae61103e2b7d9abb3e9f246af9a1980964d8f0b1c85eec4332ddc56",
+  "source_archive_sha256": "d6b81dd046ffb58b91351fe0430e9a87a89f966ce341fd0ee9919eb4b7456b70",
   "video_paths": {
     "GeoTex": {
       "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison.mp4",
@@ -29,5 +29,50 @@
     }
   },
   "upload_method": "Upload both MP4s and matching stills separately in the journal portal; verify role and portal preview. GitHub is not the media-delivery location.",
-  "portal_submission": "NOT_PERFORMED"
+  "portal_submission": "NOT_PERFORMED",
+  "source_archive_upload_item_type": "LaTeX source files",
+  "source_archive_archive_layout": "flat; no subdirectories; 49 entries; independently rebuilt",
+  "reference_audit": {
+    "citation_style": "numeric; reference list follows first citation order",
+    "unique_citations": 40,
+    "bibliography_entries": 40,
+    "uncited_entries": 0,
+    "unresolved_citations": 0,
+    "verified_changes": [
+      "InstantMesh corrected to its arXiv preprint record rather than NeurIPS 2024.",
+      "Classifier-free guidance workshop year and arXiv year disambiguated.",
+      "LPIPS reference completed with all five authors and CVPR pages 586–595."
+    ],
+    "metadata_basis": "Citation/bibliography consistency checked locally for all 40 entries; amended/disputed records checked against primary publisher, proceedings, or archive records."
+  },
+  "page_sizes": {
+    "main": "595.276 x 793.701 pts",
+    "supplement": "595.276 x 793.701 pts",
+    "marked": "595.276 x 793.701 pts"
+  },
+  "highlight_audit": {
+    "file": "Highlights_V5.docx",
+    "word_bullets": 5,
+    "maximum_characters_including_spaces": 85,
+    "actual_character_counts": [
+      59,
+      80,
+      84,
+      83,
+      82
+    ],
+    "word_and_text_copy_match": true,
+    "abbreviations_removed": true,
+    "official_guideline": "https://www.elsevier.com/researcher/author/tools-and-resources/highlights"
+  },
+  "format_audit": {
+    "main": "Anonymous, C&G elsarticle/cag 5p two-column PDF with line numbers; 13 pages; 210 x 280 mm.",
+    "abstract_words": 237,
+    "keywords": 5,
+    "supplement": "70 pages; 210 x 280 mm.",
+    "marked_manuscript": "20 pages; generated against authenticated original submission and same page box.",
+    "response": "6 pages; Letter page size.",
+    "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
+    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview"
+  }
 }

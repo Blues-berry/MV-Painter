@@ -8,15 +8,15 @@ This is an additive V5 candidate based on the V4 files at PR #1 branch `codex/cg
 - `FINAL_V5_SUPPLEMENTARY.pdf` and `FINAL_V5_SUPPLEMENTARY.tex`
 - `FINAL_V5_RESPONSE_TO_REVIEWERS.pdf` and the editable Markdown/TeX source in `review/`
 - `FINAL_V5_MARKED_MANUSCRIPT.pdf` and its source/diff under `marked/`
-- `Manuscript_LaTeX_Sources_V5.zip`
+- `Manuscript_LaTeX_Sources_V5.zip` (flat upload archive; no subfolders)
 - `Research_Evidence_V5.zip`, unchanged from the V4 evidence archive, in the local journal package
 - `SHA256SUMS_V5.txt`
 
-The main manuscript is 13 pages, the Supplement is 71 pages, the response is 6 pages, and the marked manuscript is 20 pages. See `quality_review/FINAL_READINESS_V5.json`, `JOURNAL_SUBMISSION_MANIFEST_V5.json`, and `quality_review/JOURNAL_DELIVERY_MANIFEST_V5.json` for the checks, file hashes, local MP4 paths, and journal-upload instructions. The complete local upload package is `/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate`; its MP4s must be uploaded separately in the journal portal. They are not in the GitHub source archive.
+The main manuscript is 13 pages; the 70-page Supplement uses the same 210 × 280 mm page size. The response is 6 pages and the marked manuscript is 20 pages. See `quality_review/FINAL_READINESS_V5.json`, `JOURNAL_SUBMISSION_MANIFEST_V5.json`, and `quality_review/JOURNAL_DELIVERY_MANIFEST_V5.json` for the checks, file hashes, local MP4 paths, and journal-upload instructions. The complete local upload package is `/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate`; its MP4s must be uploaded separately in the journal portal. They are not in the GitHub source archive.
 
 ## Rebuild
 
-Run `python3 build_v5_manuscript.py`, then `python3 marked/regenerate_marked_v5.py`, `python3 marked/build_v5_marked_pdf.py`, and `bash review/build_v5_response.sh`. The V5 source archive contains the full TeX dependencies and these scripts.
+Run `python3 build_v5_manuscript.py`, then `python3 marked/regenerate_marked_v5.py`, `python3 marked/build_v5_marked_pdf.py`, and `bash review/build_v5_response.sh`. Rebuild the flat Editorial Manager archive with `python3 build_v5_source_archive.py`.
 
 ## Editorial decision
 

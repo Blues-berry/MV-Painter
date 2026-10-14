@@ -22,7 +22,7 @@ def main():
         subprocess.run([
             "latexdiff", "--type=CFONT", "--subtype=SAFE", "--floattype=FLOATSAFE",
             "--graphics-markup=none", "--math-markup=0", "--disable-citation-markup",
-            "--exclude-textcmd=section,subsection,subsubsection,paragraph,title",
+            "--exclude-textcmd=section,subsection,subsubsection,paragraph,title,textit",
             r"--config=PICTUREENV=(?:picture[\w\d*@]*|tikzpicture[\w\d*@]*|DIFnomarkup|figure\*?|table\*?|tabular\*?|longtable)",
             "--flatten", "--no-label", str(BASE), str(TARGET),
         ], cwd=SRC, stdout=tex, stderr=log, check=True)
@@ -56,6 +56,30 @@ def main():
 
     body = re.sub(r"\\cite\{([^}]+)\}", citation, body)
     body = re.sub(r"\\(eqref|ref|pageref)\{([^}]+)\}", reference, body)
+
+    # Citation-order renumbering moves nearly every reference. The ordinary
+    # line matcher pairs unrelated entries and produces a misleading list, so
+    # render the final bibliography as one added block. The exact old-to-new
+    # bibliography remains visible in CHANGES_FROM_01549_V5.diff.
+    target_bibliography = re.search(
+        r"\\begingroup\s*\\linespread\{0\.94\}\\selectfont\s*"
+        r"\\begin\{thebibliography\}\{[^}]+\}.*?"
+        r"\\end\{thebibliography\}\s*\\endgroup",
+        active_source,
+        re.S,
+    )
+    marked_bibliography = re.compile(
+        r"\\DIFdelbegin %DIFDELCMD < \\begin\{thebibliography\}\{[^}]+\}.*?"
+        r"\\end\{thebibliography\}\s*\\DIFaddbegin\s*\\endgroup\s*\\DIFaddend",
+        re.S,
+    )
+    if target_bibliography is None or len(marked_bibliography.findall(body)) != 1:
+        raise RuntimeError("Could not atomically mark the reordered reference list.")
+    target_bibliography_text = target_bibliography.group(0).replace(
+        r"\begingroup", r"\begingroup" + "\n" + r"\color{blue}\sffamily", 1
+    )
+    marked_block = r"\DIFaddbegin" + "\n" + target_bibliography_text + "\n" + r"\DIFaddend"
+    body = marked_bibliography.sub(lambda _: marked_block, body, count=1)
     OUTPUT.write_text("\n".join(line.rstrip() for line in (head + body).splitlines()) + "\n")
 
     expanded = re.sub(
@@ -74,7 +98,7 @@ def main():
         "target_tex_sha256": hashlib.sha256(TARGET.read_bytes()).hexdigest(),
         "expanded_source_diff": "marked/CHANGES_FROM_01549_V5.diff",
         "baseline_sha256": EXPECTED_BASELINE,
-        "mode": "CFONT text additions/deletions; figure/table bodies are treated atomically; full expanded source changes are in CHANGES_FROM_01549_V5.diff.",
+        "mode": "CFONT text additions/deletions; figure/table bodies are atomic; the renumbered bibliography is shown as one added block because linewise matching pairs unrelated reordered entries; the full expanded source diff records every reference change.",
         "removed_only_citations_and_labels": {key: sorted(values) for key, values in removed.items()},
     }, indent=2) + "\n")
     print("Generated V5 marked source and source diff against the authenticated 01549 submission.")

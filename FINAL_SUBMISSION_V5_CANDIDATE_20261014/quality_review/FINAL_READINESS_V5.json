@@ -6,25 +6,29 @@
   "SUBMISSION_READY": "YES",
   "pages": {
     "main": 13,
-    "supplement": 71,
+    "supplement": 70,
     "response": 6,
     "marked": 20
   },
   "checks": {
-    "LaTeX_main_and_supplement": "PASS",
+    "LaTeX_main_and_supplement": "PASS (13-page main and 70-page Supplement independently rebuild; both PDFs use the same 210 x 280 mm page box)",
     "response_pdf": "PASS",
-    "marked_manuscript_from_authenticated_original": "PASS (V5 target SHA and original baseline SHA verified)",
+    "marked_manuscript_from_authenticated_original": "PASS (authenticated baseline SHA verified; target source hash matches diff scope; bibliography is atomically marked to avoid mismatching reordered entries)",
     "main_table_bodies_unchanged": "PASS",
-    "supplement_source_unchanged": "PASS",
+    "supplement_source_unchanged": "PASS (tables, figures, and scientific text unchanged; only page dimensions and line-break opportunities were adjusted)",
     "figure3_candidate_page_comparison": "PASS (A and B on actual page 9)",
     "figure2_three_row_page": "PASS (page 7; Target/Fixed Low/C3/Fixed High/Generic Linear, camera 000)",
     "video_decode_and_identity": "PASS in copied delivery package after validation",
     "figure2_provenance": "PASS (five conditions, camera 000 and source selection hashes verified)",
     "independent_scientific_review": "PASS (bounded empirical contribution and remaining limits assessed separately from PDF compilation)",
-    "local_submission_package": "PASS (V5 filenames, source archive, unchanged research archive, title/declaration/highlights, response DOCX/PDF, and two supplementary videos with stills)",
-    "source_archive_rebuild": "PASS (all four PDFs rebuilt; main/Supplement extracted text matches reviewed PDFs)"
+    "local_submission_package": "PASS (title page, declarations, highlights, response, marked manuscript, Supplement, flat LaTeX archive, evidence archive, and video files/stills present)",
+    "source_archive_rebuild": "PASS (49 files, no subfolders; independent pdfLaTeX rebuilds of main and Supplement produce text-identical PDFs)",
+    "reference_integrity": "PASS (40 unique numeric citations and 40 bibliography entries in first-citation order; no uncited entries or unresolved citations; disputed metadata corrections checked against official primary records)",
+    "page_format_consistency": "PASS WITH NOTE (main, Supplement, and marked PDFs use the C&G 210 x 280 mm page box; custom document fonts are embedded; unembedded entries are standard Type 1 Helvetica/Times fonts listed among Elsevier-recommended families)",
+    "highlights_compliance": "PASS (five Word bullets; TXT matches; every bullet is at most 85 characters and uses no abbreviations)",
+    "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)"
   },
-  "scientific_scope": "Bounded empirical study; V5 changes exposition only and adds no results.",
+  "scientific_scope": "Bounded empirical study; this pass adjusts reference ordering/metadata, Highlights wording, and PDF layout only, with no new experiments, measurements, or statistical results.",
   "remaining_limits": [
     "TCAS remains a manually specified inference-time control, not a derived selector or optimum.",
     "The specified matched-budget primary does not detect a middle-window advantage; retrospective pairwise differences are cohort-specific and do not identify a preferred schedule or residual-dose mechanism.",
@@ -33,5 +37,5 @@
     "The historical main checkpoint and an actual UID in the 276-request panel remain unauthenticated."
   ],
   "portal_submission": "NOT_PERFORMED",
-  "readiness_basis": "Scientific scope and known limitations were assessed separately from compilation and package checks."
+  "readiness_basis": "Scientific scope, file completeness, author review status, and technical formatting were assessed separately; local package is ready for portal upload, but no portal upload or approval was performed."
 }

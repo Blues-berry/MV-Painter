@@ -1029,9 +1029,20 @@ For objects with strong reflection, transparency, thin structures, or highly sty
 The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.
 
 
-\DIFaddbegin \begingroup
+\DIFaddbegin
+\begingroup
+\color{blue}\sffamily
 \linespread{0.94}\selectfont
-\DIFaddend \begin{thebibliography}{45}
+\begin{thebibliography}{40}
+\bibitem{controlnet2023layercontrol}
+ControlNet project. Official depth-to-image demo: layer-dependent control scales. Source code, fixed commit f2e1bc38dc8d925fb542be4c138c46013ace1988, 2023. \url{https://github.com/lllyasviel/ControlNet/blob/f2e1bc38dc8d925fb542be4c138c46013ace1988/gradio_depth2image.py}. Accessed 12 October 2026.
+
+\bibitem{diffusers2023controlnet}
+Hugging Face. Diffusers v0.21.0: ControlNet conditioning scale and guidance start/end. Official versioned documentation, 2023. \url{https://huggingface.co/docs/diffusers/v0.21.0/api/pipelines/controlnet}. Accessed 12 October 2026.
+
+\bibitem{kulkarni2026ssi}
+Kulkarni A S. Scheduled Style Injection: Expanding the Style-Content Pareto Frontier in Training-Free Diffusion-Based Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), NTIRE Workshop}, 2026.
+
 \bibitem{liu2023zero1to3}
 Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
 
@@ -1051,10 +1062,13 @@ Shi Y, Wang P, Ye J, et al. MVDream: Multi-view diffusion for 3D generation. \te
 Wang P, et al. ImageDream: Image-prompt multi-view diffusion for 3D generation. arXiv:2312.02201, 2023.
 
 \bibitem{xu2024instantmesh}
-Xu J, et al. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. \textit{Advances in Neural Information Processing Systems}, 2024.
+Xu J, Cheng W, Gao Y, Wang X, Gao S, Shan Y. InstantMesh: Efficient 3D mesh generation from a single image with sparse-view large reconstruction models. arXiv preprint arXiv:2404.07191, 2024.
 
 \bibitem{ke2024era3d}
 Li P, Liu Y, Long X, et al. Era3D: High-resolution multiview diffusion using efficient row-wise attention. \textit{Advances in Neural Information Processing Systems}, 2024.
+
+\bibitem{perla2026survey}
+Perla S R K, Zhang H, Mahdavi-Amiri A. Advances in neural 3D mesh texturing: A survey. \textit{Computer Graphics Forum}, 2026, e70392.
 
 \bibitem{chen2023text2tex}
 Chen D Z, et al. Text2Tex: Text-driven texture synthesis via diffusion models. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
@@ -1068,15 +1082,6 @@ Poole B, Jain A, Barron J T, Mildenhall B. DreamFusion: Text-to-3D using 2D diff
 \bibitem{chen2023fantasia3d}
 Chen R, Chen Y, Jiao N, Jia K. Fantasia3D: Disentangling geometry and appearance for high-quality text-to-3D content creation. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
 
-\bibitem{shao2025mvpainter}
-Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
-
-\bibitem{kynkanniemi2024limited}
-Kynk\"a\"anniemi T, Aittala M, Karras T, et al. Applying guidance in a limited interval improves sample and distribution quality in diffusion models. \textit{Advances in Neural Information Processing Systems}, 2024.
-
-\bibitem{perla2026survey}
-Perla S R K, Zhang H, Mahdavi-Amiri A. Advances in neural 3D mesh texturing: A survey. \textit{Computer Graphics Forum}, 2026, e70392.
-
 \bibitem{guzman2026adaptive}
 Guzm\'an J E, Mould D, Paquette E. Adaptive multiresolution exemplar-based texture synthesis on animated fluids. \textit{Computers \& Graphics}, 2026, 134: 104490.
 
@@ -1084,7 +1089,7 @@ Guzm\'an J E, Mould D, Paquette E. Adaptive multiresolution exemplar-based textu
 Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
 
 \bibitem{zeng2024paint3d}
-Zeng X, Chen X, Qi Z, et al. Paint3D: Paint \DIFdelbegin \DIFdel{anything }\DIFdelend \DIFaddbegin \DIFadd{Anything }\DIFaddend 3D with \DIFdelbegin \DIFdel{lighting-immersive texture generation}\DIFdelend \DIFaddbegin \DIFadd{Lighting-Less Texture Diffusion Models}\DIFaddend . \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
+Zeng X, Chen X, Qi Z, et al. Paint3D: Paint Anything 3D with Lighting-Less Texture Diffusion Models. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
 
 \bibitem{cheng2024mvpaint}
 Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for painting anything 3D. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2025.
@@ -1092,14 +1097,16 @@ Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for pai
 \bibitem{lai2025hunyuan3d}
 Zhao Z, Lai Z, Lin Q, et al. Hunyuan3D 2.0: Scaling diffusion models for high resolution textured 3D assets generation. arXiv:2501.12202, 2025.
 
+\bibitem{shao2025mvpainter}
+Shao M, Xiong F, Sun Z, Xu M. MVPainter: Accurate and detailed 3D texture generation via multi-view diffusion with geometric control. arXiv:2505.12635, 2025.
+
 \bibitem{huang2024mvadapter}
 Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
 
-\DIFaddbegin \bibitem{tang2023mvdiffusion}
-\DIFadd{Tang S, Zhang F, Chen J, Wang P, Furukawa Y. MVDiffusion: Enabling holistic multi-view image generation with correspondence-aware diffusion. \textit{Advances in Neural Information Processing Systems}, 2023.
-}
+\bibitem{tang2023mvdiffusion}
+Tang S, Zhang F, Chen J, Wang P, Furukawa Y. MVDiffusion: Enabling holistic multi-view image generation with correspondence-aware diffusion. \textit{Advances in Neural Information Processing Systems}, 2023.
 
-\DIFaddend \bibitem{liu2024synchronized}
+\bibitem{liu2024synchronized}
 Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
 
 \bibitem{xu2026wondertex}
@@ -1123,90 +1130,30 @@ Liu S Y, Wang C Y, Yin H, et al. DoRA: Weight-decomposed low-rank adaptation. \t
 \bibitem{zhang2023adalora}
 Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
 
-\DIFaddbegin \bibitem{kulkarni2026ssi}
-\DIFadd{Kulkarni A S. Scheduled Style Injection: Expanding the Style-Content Pareto Frontier in Training-Free Diffusion-Based Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), NTIRE Workshop}, 2026.
-}
-
-\DIFaddend \bibitem{ho2020ddpm}
+\bibitem{ho2020ddpm}
 Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advances in Neural Information Processing Systems}, 2020.
 
 \bibitem{song2021ddim}
 Song J, Meng C, Ermon S. Denoising diffusion implicit models. \textit{International Conference on Learning Representations}, 2021.
 
 \bibitem{ho2022cfg}
-Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS Workshop on Deep Generative Models and Downstream Applications}, 2021. arXiv:2207.12598.
+Ho J, Salimans T. Classifier-free diffusion guidance. \textit{NeurIPS 2021 Workshop on Deep Generative Models and Downstream Applications}, 2021; arXiv:2207.12598, 2022.
+
+\bibitem{kynkanniemi2024limited}
+Kynk\"a\"anniemi T, Aittala M, Karras T, et al. Applying guidance in a limited interval improves sample and distribution quality in diffusion models. \textit{Advances in Neural Information Processing Systems}, 2024.
 
 \bibitem{castillo2023adaptive}
 Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.
 
-\DIFdelbegin %DIFDELCMD < \bibitem{rombach2022ldm}
-%DIFDELCMD < %%%
-\DIFdel{Rombach R, Blattmann A, Lorenz D, Esser P, Ommer B. High-resolution image synthesis with latent diffusion models. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2022.
-}%DIFDELCMD <
+\bibitem{chung2024styleid}
+Chung J, Hyun S, Heo J P. Style Injection in Diffusion: A Training-free Approach for Adapting Large-scale Diffusion Models for Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
 
-%DIFDELCMD < \bibitem{esser2024scaling}
-%DIFDELCMD < %%%
-\DIFdel{Esser P, Kulal S, Blattmann A, et al. Scaling rectified flow transformers for high-resolution image synthesis. \textit{International Conference on Machine Learning}, 2024.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{blackforestlabs2024flux}
-%DIFDELCMD < %%%
-\DIFdel{Black Forest Labs. FLUX: Flow matching for image generation. https://github.com/black-forest-labs/flux, 2024.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{loshchilov2019decoupled}
-%DIFDELCMD < %%%
-\DIFdel{Loshchilov I, Hutter F. Decoupled weight decay regularization. \textit{International Conference on Learning Representations}, 2019.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{cherti2023reproducible}
-%DIFDELCMD < %%%
-\DIFdel{Cherti M, Beaumont R, Wightman R, et al. Reproducible scaling laws for contrastive language-image learning. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2023.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{nichol2022glide}
-%DIFDELCMD < %%%
-\DIFdel{Nichol A, Dhariwal P, Ramesh A, et al. GLIDE: Towards photorealistic image generation and editing with text-guided diffusion models. \textit{International Conference on Machine Learning}, 2022.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{saharia2022photorealistic}
-%DIFDELCMD < %%%
-\DIFdel{Saharia C, Chan W, Saxena S, et al. Photorealistic text-to-image diffusion models with deep language understanding. \textit{Advances in Neural Information Processing Systems}, 2022.
-}%DIFDELCMD <
-
-%DIFDELCMD < \bibitem{peebles2023scalable}
-%DIFDELCMD < %%%
-\DIFdel{Peebles W, Xie S. Scalable diffusion models with transformers. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
-}%DIFDELCMD <
-
-%DIFDELCMD < %%%
-\DIFdelend \bibitem{wang2004ssim}
+\bibitem{wang2004ssim}
 Wang Z, Bovik A C, Sheikh H R, Simoncelli E P. Image quality assessment: From error visibility to structural similarity. \textit{IEEE Transactions on Image Processing}, 2004, 13(4): 600--612.
 
 \bibitem{zhang2018lpips}
-Zhang R, Isola P, Efros A A, \DIFdelbegin \DIFdel{Shechtman E, Wang O}\DIFdelend \DIFaddbegin \DIFadd{et al}\DIFaddend . The unreasonable effectiveness of deep features as a perceptual metric. \textit{\DIFdelbegin \DIFdel{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}\DIFdelend \DIFaddbegin \DIFadd{CVPR}\DIFaddend }, 2018.
-
-\DIFdelbegin %DIFDELCMD < \bibitem{wang2023clipiqa}
-%DIFDELCMD < %%%
-\DIFdel{Wang J, Chan K C K, Loy C C. Exploring CLIP for assessing the look and feel of images. }\DIFdelend \DIFaddbegin \bibitem{sad2024apg}
-\DIFadd{Sadat S, Hilliges O, Weber R M. Eliminating oversaturation and artifacts of high guidance scales in diffusion models. }\DIFaddend \textit{\DIFdelbegin \DIFdel{Proceedings of the AAAI }\DIFdelend \DIFaddbegin \DIFadd{International }\DIFaddend Conference on \DIFdelbegin \DIFdel{Artificial Intelligence}\DIFdelend \DIFaddbegin \DIFadd{Learning Representations}\DIFaddend }, \DIFaddbegin \DIFadd{2025.
-}
-
-\bibitem{chung2024styleid}
-\DIFadd{Chung J, Hyun S, Heo J P. Style Injection in Diffusion: A Training-free Approach for Adapting Large-scale Diffusion Models for Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2024.
-}
-
-\bibitem{controlnet2023layercontrol}
-\DIFadd{ControlNet project. Official depth-to-image demo: layer-dependent control scales. Source code, fixed commit f2e1bc38dc8d925fb542be4c138c46013ace1988, }\DIFaddend 2023. \DIFaddbegin \url{https://github.com/lllyasviel/ControlNet/blob/f2e1bc38dc8d925fb542be4c138c46013ace1988/gradio_depth2image.py}\DIFadd{. Accessed 12 October 2026.
-}\DIFaddend
-
-\DIFdelbegin %DIFDELCMD < \bibitem{radford2021clip}
-%DIFDELCMD < %%%
-\DIFdel{Radford A, Kim J W, Hallacy C, et al. Learning transferable visual models from natural language supervision. \textit{International Conference on Machine Learning}, 2021.
-}\DIFdelend \DIFaddbegin \bibitem{diffusers2023controlnet}
-\DIFadd{Hugging Face. Diffusers v0.21.0: ControlNet conditioning scale and guidance start/end. Official versioned documentation, 2023. }\url{https://huggingface.co/docs/diffusers/v0.21.0/api/pipelines/controlnet}\DIFadd{. Accessed 12 October 2026.
-}\DIFaddend
+Zhang R, Isola P, Efros A A, Shechtman E, Wang O. The unreasonable effectiveness of deep features as a perceptual metric. \textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 2018, 586--595.
 
 \end{thebibliography}
-\DIFaddbegin \endgroup
- \DIFaddend\end{document}
+\endgroup
+\DIFaddend\end{document}
