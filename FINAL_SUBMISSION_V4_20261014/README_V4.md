@@ -2,6 +2,8 @@
 
 This directory is the authoritative V4 submission and continuation point. Start every subsequent manuscript edit from the V4 sources here. V1–V3 are historical records and are intentionally excluded from this GitHub package.
 
+GitHub review: [Pull request #1](https://github.com/Blues-berry/MV-Painter/pull/1).
+
 ## Deliverables
 
 - `FINAL_V4_MANUSCRIPT.pdf` and `.tex` — 13-page main manuscript; references through [41] end on p. 13.
