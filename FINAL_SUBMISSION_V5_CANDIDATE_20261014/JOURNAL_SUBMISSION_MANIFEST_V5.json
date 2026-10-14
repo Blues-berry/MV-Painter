@@ -1,6 +1,6 @@
 {
   "version": "V5 candidate submission package",
-  "status": "PASS",
+  "status": "CONDITIONAL_AUTHOR_FACTS_AND_LIVE_PORTAL_CHECK",
   "branch": "codex/cg-final-v4-20261014",
   "baseline_head": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
   "journal_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
@@ -69,8 +69,8 @@
       "sha256": "454f6eca1ea634a359fea230c0c87132c8305a6d7588a0e37dd3e58eaf1a7ba0"
     },
     "FINAL_READINESS_V5.json": {
-      "bytes": 3837,
-      "sha256": "01dbf68fa4667673e90a983176a0e6b27ce517118d9b14dd7c6224809ea3ff97"
+      "bytes": 5046,
+      "sha256": "f170b7a9934ef51e0d7fe921bd917d8943b81feb66e1311619828bcaec9a76fa"
     },
     "FINAL_V5_MANUSCRIPT.pdf": {
       "bytes": 6199418,
@@ -91,6 +91,10 @@
     "FINAL_V5_SUPPLEMENTARY.pdf": {
       "bytes": 16133582,
       "sha256": "cd0046d307ca0d30a4c82b64c6957d30f2711d3ab76e747133f7da03d8c869ad"
+    },
+    "Graphical_Abstract_V5.pdf": {
+      "bytes": 41341,
+      "sha256": "76fb3c5265b032651a368708cc1623517f4c99106a2db8f4719f9e732eb653e0"
     },
     "Highlights_V5.docx": {
       "bytes": 10175,
@@ -137,8 +141,8 @@
       "sha256": "028394e4ca1ffa2a1109be2ac38d24ce65e684176b00db4d3d1ccf9347f0bf2f"
     },
     "V5_SUBMISSION_INSTRUCTIONS.txt": {
-      "bytes": 1971,
-      "sha256": "7b119a22f54a129228927022a392b952203d63732eae0e593c7256beb004b054"
+      "bytes": 4345,
+      "sha256": "72888d7a29ac285e736b5e9b697e32ac073772a503cf3808283a79c513e8999a"
     }
   },
   "checksum_file": "SHA256SUMS_V5.txt",
@@ -148,8 +152,8 @@
   ],
   "media_submission": "Upload both MP4s and matching stills separately in the journal portal; attach the matching still to each MP4 and review its preview. GitHub is not the media-delivery location.",
   "portal_submission": "NOT_PERFORMED",
-  "checksum_sha256": "f6ffe5d061e73857b1c692a53e775f49f2bce6de4281909309839ed607ea8a39",
-  "file_count_excluding_manifest_and_checksum": 19,
+  "checksum_sha256": "14fa1c0490abd3598327d3abb088b07235e4597a9e5c12e69a3acd886615c803",
+  "file_count_excluding_manifest_and_checksum": 20,
   "pdf_page_sizes": {
     "main": "595.276 x 793.701 pts",
     "supplement": "595.276 x 793.701 pts",
@@ -178,9 +182,13 @@
     "Highlights_V5.docx": "Highlights (upload this or the TXT copy, not both).",
     "Manuscript_LaTeX_Sources_V5.zip": "LaTeX source files; never classify as Supplementary Material.",
     "Supplementary_GeoTex_Baked_Comparison.mp4": "Supplementary video; attach Supplementary_GeoTex_Baked_Comparison_Still.png.",
-    "Supplementary_GSO_Baked_Comparison.mp4": "Supplementary video; attach Supplementary_GSO_Baked_Comparison_Still.png."
+    "Supplementary_GSO_Baked_Comparison.mp4": "Supplementary video; attach Supplementary_GSO_Baked_Comparison_Still.png.",
+    "Graphical_Abstract_V5.pdf": "Graphical Abstract if present/required; candidate pending author approval; replaces stale first-round 0907 graphic.",
+    "V5_SUBMISSION_INSTRUCTIONS.txt": "Local handoff only; do not upload.",
+    "SHA256SUMS_V5.txt": "Local integrity file; do not upload.",
+    "JOURNAL_SUBMISSION_MANIFEST_V5.json": "Local audit manifest; do not upload."
   },
-  "guide_access_note": "The C&G ScienceDirect Guide for Authors page returned HTTP 403 during automated retrieval. Official Elsevier LaTeX, Highlights, and Editorial Manager preparation/upload guidance was checked. C&G-specific limits and portal item names must be confirmed against the live journal portal checklist.",
+  "guide_access_note": "The C&G ScienceDirect Guide for Authors page returned HTTP 403 during automated retrieval. Official Elsevier guidance on LaTeX archives, Highlights, Editorial Manager revisions, and human-research ethics was checked. Journal-specific limits and item types must be confirmed in the live revision portal and decision letter.",
   "highlight_audit": {
     "file": "Highlights_V5.docx",
     "word_bullets": 5,
@@ -205,5 +213,33 @@
     "response": "6 pages; Letter page size.",
     "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
     "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview"
-  }
+  },
+  "delivery_commit": "894fdb56a31ee0949bae23f1ffb6328907e0b8a1",
+  "source_baseline_commit": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
+  "first_round_submitted_version": "CAG-S-26-01549",
+  "first_round_source": {
+    "archive": "/tmp/MV-Painter-final-v4-20261014/final/submission_new_0907/latex.zip",
+    "member": "final_0903.tex",
+    "sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
+    "verification": "SHA-256 of member extracted from first-round ZIP matches the marked manuscript baseline byte-for-byte."
+  },
+  "marked_baseline": "First-round submitted version 01549; exact source SHA recorded above.",
+  "graphical_abstract": {
+    "filename": "Graphical_Abstract_V5.pdf",
+    "candidate_status": "Author visual approval pending",
+    "replaces": "Graphical abstract 0907.pdf from first-round 01549; the old graphic contains claims not matching V5 and must not be carried forward.",
+    "page_size_pts": "396.85 x 157.323",
+    "technical_check": "One-page vector PDF; content checked against V5 reported point estimates and uncertainty intervals.",
+    "portal_requirement": "Confirm item type/requirement in live C&G revision portal; official Guide page returned HTTP 403."
+  },
+  "submission_readiness": {
+    "AUTHOR_REVIEW_READY": "YES",
+    "SUBMISSION_READY": "NO — pending author ethics/consent facts and live portal checks",
+    "portal_submission": "NOT_PERFORMED"
+  },
+  "pre_submission_gates": [
+    "Historical 24-participant forced-choice study remains in the Supplement. No ethics approval/exemption or informed-consent statement is present; author facts are required before the accurate statement can be added.",
+    "Confirm whether a Graphical Abstract is required for this revision and replace the stale 0907 file with the V5 candidate if required.",
+    "Use the existing revision record; confirm its article type, current metadata, and portal item types."
+  ]
 }

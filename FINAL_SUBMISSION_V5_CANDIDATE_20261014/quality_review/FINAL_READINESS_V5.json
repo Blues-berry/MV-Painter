@@ -3,7 +3,7 @@
   "baseline_head": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
   "branch": "codex/cg-final-v4-20261014",
   "AUTHOR_REVIEW_READY": "YES",
-  "SUBMISSION_READY": "YES",
+  "SUBMISSION_READY": "NO — author ethics/consent facts and live portal requirements remain to be confirmed",
   "pages": {
     "main": 13,
     "supplement": 70,
@@ -13,7 +13,7 @@
   "checks": {
     "LaTeX_main_and_supplement": "PASS (13-page main and 70-page Supplement independently rebuild; both PDFs use the same 210 x 280 mm page box)",
     "response_pdf": "PASS",
-    "marked_manuscript_from_authenticated_original": "PASS (authenticated baseline SHA verified; target source hash matches diff scope; bibliography is atomically marked to avoid mismatching reordered entries)",
+    "marked_manuscript_from_authenticated_original": "PASS (exact source SHA verified against final_0903.tex extracted from the first-round 01549 LaTeX ZIP; target source hash matches diff scope)",
     "main_table_bodies_unchanged": "PASS",
     "supplement_source_unchanged": "PASS (tables, figures, and scientific text unchanged; only page dimensions and line-break opportunities were adjusted)",
     "figure3_candidate_page_comparison": "PASS (A and B on actual page 9)",
@@ -21,12 +21,14 @@
     "video_decode_and_identity": "PASS in copied delivery package after validation",
     "figure2_provenance": "PASS (five conditions, camera 000 and source selection hashes verified)",
     "independent_scientific_review": "PASS (bounded empirical contribution and remaining limits assessed separately from PDF compilation)",
-    "local_submission_package": "PASS (title page, declarations, highlights, response, marked manuscript, Supplement, flat LaTeX archive, evidence archive, and video files/stills present)",
+    "local_submission_package": "PASS_WITH_GATES (clean/marked PDFs, Supplement, response, title page, declarations, Highlights, flat LaTeX ZIP, videos/stills, and V5 Graphical Abstract are present)",
     "source_archive_rebuild": "PASS (49 files, no subfolders; independent pdfLaTeX rebuilds of main and Supplement produce text-identical PDFs)",
     "reference_integrity": "PASS (40 unique numeric citations and 40 bibliography entries in first-citation order; no uncited entries or unresolved citations; disputed metadata corrections checked against official primary records)",
     "page_format_consistency": "PASS WITH NOTE (main, Supplement, and marked PDFs use the C&G 210 x 280 mm page box; custom document fonts are embedded; unembedded entries are standard Type 1 Helvetica/Times fonts listed among Elsevier-recommended families)",
     "highlights_compliance": "PASS (five Word bullets; TXT matches; every bullet is at most 85 characters and uses no abbreviations)",
-    "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)"
+    "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)",
+    "graphical_abstract_v5": "PASS_AS_CANDIDATE (new V5 one-page vector graphic uses existing reported results; author visual approval and portal requirement check remain; stale 0907 graphic must be replaced)",
+    "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS (historical 24-participant 3AFC remains in Supplement; no ethics approval/exemption or informed-consent statement found)"
   },
   "scientific_scope": "Bounded empirical study; this pass adjusts reference ordering/metadata, Highlights wording, and PDF layout only, with no new experiments, measurements, or statistical results.",
   "remaining_limits": [
@@ -37,5 +39,13 @@
     "The historical main checkpoint and an actual UID in the 276-request panel remain unauthenticated."
   ],
   "portal_submission": "NOT_PERFORMED",
-  "readiness_basis": "Scientific scope, file completeness, author review status, and technical formatting were assessed separately; local package is ready for portal upload, but no portal upload or approval was performed."
+  "readiness_basis": "Technical formatting and source-package checks pass. Scientific and author review remain separate from compilation. Submission is not ready until the factual human-research statement and live portal-specific revision requirements are resolved.",
+  "delivery_commit": "894fdb56a31ee0949bae23f1ffb6328907e0b8a1",
+  "first_round_submitted_version": "CAG-S-26-01549",
+  "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
+  "pre_submission_gates": [
+    "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study; no facts are inferred.",
+    "Confirm whether the C&G revision portal requires a Graphical Abstract; replace the stale first-round 0907 file with Graphical_Abstract_V5.pdf if required.",
+    "Confirm portal item types and update carried-forward title, abstract, keywords, and contributor-role metadata."
+  ]
 }

@@ -1,17 +1,26 @@
 {
-  "status": "PASS",
+  "status": "CONDITIONAL_AUTHOR_FACTS_AND_LIVE_PORTAL_CHECK",
   "version": "V5 candidate",
   "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
-  "submission_manifest_sha256": "c3145af49fa32b9a19652a7fc905db87ab3c858e94d48304f246a811dcef78a6",
+  "submission_manifest_sha256": "8fd3d3e8b40faed6241a24f3abf076f9e9af20a99a583e7b503e7f33de8b1e56",
   "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
-  "checksum_sha256": "f6ffe5d061e73857b1c692a53e775f49f2bce6de4281909309839ed607ea8a39",
+  "checksum_sha256": "14fa1c0490abd3598327d3abb088b07235e4597a9e5c12e69a3acd886615c803",
   "page_counts": {
     "main": 13,
     "supplement": 70,
     "response": 6,
-    "marked": 20
+    "marked": 20,
+    "graphical_abstract": 1
   },
   "source_archive_sha256": "d6b81dd046ffb58b91351fe0430e9a87a89f966ce341fd0ee9919eb4b7456b70",
+  "source_archive_upload_item_type": "LaTeX source files; upload compressed, not as Supplementary Material",
+  "first_round_submitted_version": "CAG-S-26-01549",
+  "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
+  "delivery_commit": "894fdb56a31ee0949bae23f1ffb6328907e0b8a1",
+  "graphical_abstract": {
+    "file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Graphical_Abstract_V5.pdf",
+    "status": "V5 evidence-based candidate; replace stale first-round graphic if required; author approval pending"
+  },
   "video_paths": {
     "GeoTex": {
       "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison.mp4",
@@ -28,10 +37,14 @@
       "identity": "eleven protocol-specific unseen camera indices 0–10; all twelve mesh hashes were verified in prior media audit; source-mesh panel is not a GT self-bake; V5 bytes are identical to that verified file."
     }
   },
-  "upload_method": "Upload both MP4s and matching stills separately in the journal portal; verify role and portal preview. GitHub is not the media-delivery location.",
+  "upload_method": "Use the existing revision. Upload videos and matching stills separately. Check portal roles, current metadata, and the generated review PDF.",
+  "author_gates": [
+    "Historical 24-participant forced-choice study remains in the Supplement. No ethics approval/exemption or informed-consent statement is present; author facts are required before the accurate statement can be added.",
+    "Confirm whether a Graphical Abstract is required for this revision and replace the stale 0907 file with the V5 candidate if required.",
+    "Use the existing revision record; confirm its article type, current metadata, and portal item types."
+  ],
+  "guide_access_note": "The C&G ScienceDirect Guide for Authors page returned HTTP 403 during automated retrieval. Official Elsevier guidance on LaTeX archives, Highlights, Editorial Manager revisions, and human-research ethics was checked. Journal-specific limits and item types must be confirmed in the live revision portal and decision letter.",
   "portal_submission": "NOT_PERFORMED",
-  "source_archive_upload_item_type": "LaTeX source files",
-  "source_archive_archive_layout": "flat; no subdirectories; 49 entries; independently rebuilt",
   "reference_audit": {
     "citation_style": "numeric; reference list follows first citation order",
     "unique_citations": 40,
@@ -45,10 +58,15 @@
     ],
     "metadata_basis": "Citation/bibliography consistency checked locally for all 40 entries; amended/disputed records checked against primary publisher, proceedings, or archive records."
   },
-  "page_sizes": {
-    "main": "595.276 x 793.701 pts",
-    "supplement": "595.276 x 793.701 pts",
-    "marked": "595.276 x 793.701 pts"
+  "format_audit": {
+    "main": "Anonymous, C&G elsarticle/cag 5p two-column PDF with line numbers; 13 pages; 210 x 280 mm.",
+    "abstract_words": 237,
+    "keywords": 5,
+    "supplement": "70 pages; 210 x 280 mm.",
+    "marked_manuscript": "20 pages; generated against authenticated original submission and same page box.",
+    "response": "6 pages; Letter page size.",
+    "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
+    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview"
   },
   "highlight_audit": {
     "file": "Highlights_V5.docx",
@@ -64,15 +82,5 @@
     "word_and_text_copy_match": true,
     "abbreviations_removed": true,
     "official_guideline": "https://www.elsevier.com/researcher/author/tools-and-resources/highlights"
-  },
-  "format_audit": {
-    "main": "Anonymous, C&G elsarticle/cag 5p two-column PDF with line numbers; 13 pages; 210 x 280 mm.",
-    "abstract_words": 237,
-    "keywords": 5,
-    "supplement": "70 pages; 210 x 280 mm.",
-    "marked_manuscript": "20 pages; generated against authenticated original submission and same page box.",
-    "response": "6 pages; Letter page size.",
-    "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
-    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview"
   }
 }
