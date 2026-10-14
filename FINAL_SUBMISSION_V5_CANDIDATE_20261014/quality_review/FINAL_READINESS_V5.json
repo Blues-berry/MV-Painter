@@ -6,12 +6,12 @@
   "SUBMISSION_READY": "NO — author ethics/consent facts and live portal requirements remain to be confirmed",
   "pages": {
     "main": 13,
-    "supplement": 70,
+    "supplement": 69,
     "response": 6,
     "marked": 20
   },
   "checks": {
-    "LaTeX_main_and_supplement": "PASS (13-page main and 70-page Supplement independently rebuild; both PDFs use the same 210 x 280 mm page box)",
+    "LaTeX_main_and_supplement": "PASS (13-page main and 69-page Supplement independently rebuild; both PDFs use the same 210 x 280 mm page box)",
     "response_pdf": "PASS",
     "marked_manuscript_from_authenticated_original": "PASS (exact source SHA verified against final_0903.tex extracted from the first-round 01549 LaTeX ZIP; target source hash matches diff scope)",
     "main_table_bodies_unchanged": "PASS",
@@ -28,9 +28,9 @@
     "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)",
     "graphical_abstract_v5": "PASS_AS_CANDIDATE (new V5 one-page vector graphic uses existing reported results; author visual approval and portal requirement check remain; stale 0907 graphic must be replaced)",
     "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS (historical 24-participant 3AFC remains in Supplement; no ethics approval/exemption or informed-consent statement found)",
-    "supplement_scientific_results_and_tables": "UPDATED DIRECTLY: Figure 2 and Figure 4 identities, display captions, credits and active visual manifest now match the replacement assets; frozen diagnostic data, statistical tables and results remain unchanged."
+    "supplement_scientific_results_and_tables": "PASS: Supplement text was pruned for reader relevance; cohorts, statistical tables/results, and figure pixels are unchanged."
   },
-  "scientific_scope": "Bounded empirical study; this continuation replaces the Figure 2 positive example and Figure 4 color/detail example using frozen source outputs, updates only directly affected text and credits, and adds no experiments or recomputed statistics.",
+  "scientific_scope": "Bounded empirical study; this continuation retains the prior Figure 2 and Figure 4 asset updates and makes only focused Supplement prose edits. No experiment or statistical result was added or recomputed.",
   "remaining_limits": [
     "TCAS remains a manually specified inference-time control, not a derived selector or optimum.",
     "The specified matched-budget primary does not detect a middle-window advantage; retrospective pairwise differences are cohort-specific and do not identify a preferred schedule or residual-dose mechanism.",

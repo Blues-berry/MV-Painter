@@ -15,7 +15,7 @@ The marked manuscript compares against the exact source of first-round submitted
 - `Research_Evidence_V5.zip` (internal reproducibility archive; upload only if requested)
 - `SHA256SUMS_V5.txt`
 
-The main manuscript is 13 pages; the 70-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The full local upload package is `/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate`. The two MP4s are stored there and must be uploaded separately, with their matching stills; they are not in the GitHub source archive.
+The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The Supplement received a focused editorial cleanup of internal archive notes, duplicate implementation/provenance notes and repeated figure caveats; cohorts, statistical results, tables and image pixels are unchanged. The full local upload package is `/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate`. The two MP4s are stored there and must be uploaded separately, with their matching stills; they are not in the GitHub source archive.
 
 ## Readiness
 
