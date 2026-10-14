@@ -1,34 +1,20 @@
-# C&G FINAL V4 submission package
+# C&G V4 continuation — authoritative submission package
 
-This directory is the authoritative V4 submission and continuation point. Start every subsequent manuscript edit from the V4 sources here. V1–V3 are historical records and are intentionally excluded from this GitHub package.
+Continue from the current HEAD of [PR #1](https://github.com/Blues-berry/MV-Painter/pull/1), in this directory. The only input manuscript for this revision was c3017645. Previous local V4 directories and c3017645 are historical snapshots; this remains V4, not a new manuscript version series.
 
-GitHub review: [Pull request #1](https://github.com/Blues-berry/MV-Painter/pull/1).
+Final deliverables: `FINAL_V4_MANUSCRIPT.pdf/.tex` (13 pages), `FINAL_V4_SUPPLEMENTARY.pdf/.tex` (71), `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` (5) and `FINAL_V4_MARKED_MANUSCRIPT.pdf` (21). References end on main p13; S35/S36 remain on Supplement p58/p59.
 
-## Deliverables
+Figure 3 uses B: an input-property median Tire plus an explicitly post-outcome largest LPIPS-benefit font among seven display-cleared candidates. Actual A/B pages, four/three-row Figure 2 pages, independent scientific assessment and source checks are in `quality_review/`. Those page excerpts are author-review records, not alternate submission manuscripts. Absolute-LPIPS ranking is retained as an audit input and is not the current benefit-selection rule.
 
-- `FINAL_V4_MANUSCRIPT.pdf` and `.tex` — 13-page main manuscript; references through [41] end on p. 13.
-- `FINAL_V4_SUPPLEMENTARY.pdf` and `.tex` — complete 71-page Supplement; S35 is on p. 58 and S36 is on p. 59.
-- `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` plus synchronized Markdown and TeX sources.
-- `FINAL_V4_MARKED_MANUSCRIPT.pdf` and its generated TeX source.
-- TeX figure, table, section and class dependencies; figure credits and frozen Figure 6 validation.
-- A sanitized visual selection manifest, seven-candidate Bake10 ranking, selected source pixels and display crops.
-- 01549 reuse audit, layout/science check, change log and author handoff.
-- Build comparison showing that a clean rebuild matches the frozen PDFs in page count and extracted text.
+The local complete journal delivery, including separately uploaded MP4s and stills, is indexed by `JOURNAL_SUBMISSION_HANDOFF_V4.md`. The videos and complete frozen research evidence archive stay local; they are not required in this GitHub change. All source-selected pixel files needed to rebuild current figures are included.
 
-## Figure 3 selection and scientific limits
+From this directory, rebuild in order:
 
-Figure 3 shows one rights-cleared Bake10 best-case example, UID `238ff3e41c964655b83aa9c8770cc766`, selected as the lowest existing 11-view FG-LPIPS case among seven cleared assets for both Fixed Mean (0.05895328) and Late-high (0.05848895). This is explicitly a post-outcome illustration, not a prevalence estimate or general material-fidelity result. The selected 512×512 source images, display crops, attribution and sanitized camera/protocol record are included. The full candidate atlas, unselected pixels, GLBs, checkpoints and internal absolute-path index remain outside the submission package.
+1. `python3 visual_candidates/build_figures_v4.py`
+2. `python3 build_v4_manuscript.py`
+3. `bash review/build_response.sh`
+4. `python3 marked/regenerate_marked_v4.py`
+5. `python3 marked/build_marked_pdf.py`
+6. `python3 alignment/build_submission_manifest.py`
 
-The upstream render record has a metadata inconsistency: its per-render field says 1024×1024, while the renderer setting and actual hashed PNGs are 512×512. V4 discloses the discrepancy and reports the renderer setting/actual pixels; no source image or experiment result was altered.
-
-No experiment or inferential statistic changed, and no GPU experiment was run. The frozen primary remains −0.0338775 dB, 95% CI [−0.117170, +0.051422], p = 0.432378. R1's material/texture fidelity limitation remains. R2.1 remains partly addressed: the paper argues for a task-specific empirical contribution and makes no claim of a new general scheduling method.
-
-## Rebuild
-
-From this directory, with a LaTeX toolchain and Pandoc installed:
-
-1. `python3 build_v4_manuscript.py` — rebuilds the main manuscript and Supplement.
-2. `bash review/build_response.sh` — rebuilds the reviewer response.
-3. `python3 marked/build_marked_pdf.py` — rebuilds the supplied marked manuscript from its committed V4 TeX.
-
-`alignment/SUBMISSION_MANIFEST_V4.json` records page counts, key scientific checks and hashes for the submitted files. Regenerate it with `python3 alignment/build_submission_manifest.py`; it intentionally excludes its own hash to avoid recursion. `BUILD_VERIFICATION_V4.md` explains the clean-build comparison. The internal candidate-ranking script and full source index are not included because they depend on the private, unselected candidate archive; the final selection rule, ranking and sanitized provenance are included.
+The original-submission TeX under marked/original_submission is an authenticated difference reference only. It is not an editing base for the manuscript. Frozen statistics have not changed; no GPU experiment or inferential recalculation was performed. Scientific scope and remaining gaps are evaluated in `quality_review/INDEPENDENT_CG_ASSESSMENT_V4.md`, rather than inferred from compilation success.

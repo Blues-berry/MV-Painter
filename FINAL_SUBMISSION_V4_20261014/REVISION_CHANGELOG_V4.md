@@ -1,9 +1,10 @@
-# V3 → V4 change log
+# V4 c3017645 → final-quality continuation
 
-- Verified the V3 TeX and PDF hashes against the V3 artifact manifest before making changes.
-- Replaced the three-row Bake10 Figure 3 with a single best-case example from the seven rights-cleared display candidates. Selection uses the existing 11-view FG-LPIPS object summaries; UID `238ff3e41c964655b83aa9c8770cc766` ranks first for both displayed schedules.
-- Kept the source projection image at raw view 000 separate from the held-out unseen raw view 004 bake panels. The three bake panels use one shared crop. Added the source pixels, attribution, selection ranking, camera/protocol metadata and hashes to the V4 support records.
-- Corrected the figure's stated render dimensions to the actual 512×512 PNG size and the renderer's top-level 512-pixel setting. Recorded that per-render `image_size` metadata says 1024×1024 for the same files.
-- Updated the Figure 3 interpretation and synchronized the reviewer response. The response continues to disclose the lack of material-fidelity validation.
-- Rebuilt the main manuscript, Supplement, reviewer response and marked manuscript with V4 filenames.
-- No tables, experiment outputs, frozen estimates, confidence intervals, p-values or reviewer positions were changed. No GPU experiment was run.
+- Continued only from PR#1 c3017645; verified its committed artifact identities.
+- Compared actual Figure3 A/B pages; selected source-property median plus post-outcome benefit example, keeping subtle changes and appearance errors explicit.
+- Compared actual Figure2 four/three-row pages; selected larger three-row display with all five columns and positive/adverse examples.
+- Added accurate current credits/source file references and distinguished the GSO video's source-mesh column from a GT self-bake.
+- Reduced one repeated budget explanation and placed current native-interface evidence before the retrospective MVDiffusion paragraph.
+- Copied and decoded both frozen MP4s into the new complete journal directory, preserving their hashes; prepared stills and upload handoff.
+- Reproduced the old marked source exactly, then regenerated original01549→finalV4 markup and complete source diff.
+- Rebuilt all four PDFs and final SHA records. Main/Supplement table content, cohorts, tests, intervals and p-values remain unchanged. No GPU run or inferential recomputation occurred.

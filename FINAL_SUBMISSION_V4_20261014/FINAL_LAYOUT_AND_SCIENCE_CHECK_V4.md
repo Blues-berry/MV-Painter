@@ -1,35 +1,22 @@
-# Final V4 layout and science check
+# V4 final quality check
 
-## Build and placement
+Sole source: PR #1, branch codex/cg-final-v4-20261014, c3017645. Current continuation: main 13 pages, complete references ending p13; Supplement 71; response 5; marked manuscript 21.
 
-The V4 source and PDFs were rebuilt after confirming that the archived V3 manuscript TeX and PDF match the V3 manifest. The V4 main manuscript is 13 pages, with the complete reference list through [41] on page 13. The Supplement is 71 pages; Table S35 remains on page 58 and the original four-condition means in Table S36 remain on page 59. The response is 5 pages and the marked manuscript is 20 pages. The build logs report no LaTeX errors, undefined citations or undefined references.
-
-| Content | V4 location |
+| Content | Current location |
 |---|---:|
-| Figure 3 and Table 5 | Main p. 9 |
-| Table 6 | Main p. 10 |
-| Figure 4 color/material failure | Main p. 10 |
-| Table 7 | Main p. 11 |
-| Final reference [41] | Main p. 13 |
-| Supplement Table S35 | Supplement p. 58 |
-| Supplement Table S36 | Supplement p. 59 |
+| Figure 1 | main p4 |
+| Figure 2, three rows / five full columns | main p7 |
+| Table 4 and Table 5 | main p8 |
+| Figure 3, selected B | main p9 |
+| Figure 4 and Table 6 | main p10 |
+| Original specified timing primary in Table 7 | main p11 |
+| Final reference [41] | main p13 |
+| Table S35 / S36 | Supplement p58 / p59 |
 
-Tables 1–2 retain the verified two-column layout. Tables 3–7 retain the V3 single-column layout. Table 5 carries the two distinct bake FG-LPIPS primaries; Table 7 keeps the original GeoTex Fresh C `Middle-high − mean(Early-high, Late-high)` FG-PSNR test as its first row. Table 8 remains out of the main text; its original means are in S36 without recalculation.
+Figure 3 A/B and Figure 2 four/three are compared using actual rendered manuscript pages in quality_review. B is selected for explanatory reference mismatch and endpoint tradeoff, without a claim of visibly large schedule gains. Both B objects have verified common geometry/UVs and camera004 across GT/Mean/Late. All method/image hashes, real512 resolution, attribution and selection are recorded. The metadata mismatch saying1024 is preserved.
 
-## Figure 3 visual review
+All main/Supplement table blocks and original data validation remain unchanged. No model/GPU run or inferential recomputation occurred. The GeoTex timing primary is −0.0338775 dB, 95% interval [−0.117170,+0.051422], p=0.432378. Ten-object and GSO bake cohorts retain every object and their separate original tests.
 
-The former three-row example used a small amount of page area for three low-saturation objects and made the principal bake comparison hard to inspect. V4 uses one rights-cleared object selected with an explicit criterion: lowest existing 11-view FG-LPIPS among the seven display-cleared objects for both Fixed Mean and Late-high. The selected values are 0.058953 and 0.058489. The three unseen-view panels share one crop and camera. The source projection view 000 is kept separate because it is not pose-matched to unseen view 004.
+The two MP4s are physically copied into the new journal_upload_v4 directory; full decoding passes, original hashes match, discrete decoded frames match archived pre-encoding frames to normal H264 compression accuracy, and source/camera/condition identities are recorded. GSO's source column is explicitly distinguished from a GT self-bake.
 
-The selected bake remains visibly different from the GT-256 self-bake in color and texture. The figure is labelled as a post-outcome best-case illustration, not a representative result. Its source UID, author, CC Attribution license, URL, pixel hashes, camera/protocol identity and crop coordinates are recorded in the V4 selection files. No image was generated, recolored or selectively altered by method.
-
-The source PNGs used for the figure are 512×512. The EGL render manifest's top-level renderer setting is also 512, and the hashed output PNGs are 512×512. The per-render `image_size` field says 1024×1024 for those same files; this inconsistency is preserved in the build report and not silently treated as source resolution.
-
-## Scientific consistency
-
-- The frozen primary remains −0.0338775 dB, 95% CI [−0.117170, +0.051422], paired sign-flip p = 0.432378. Its frozen-data validation remains PASS.
-- No experiment result or inferential statistic was recomputed. No GPU supplementary experiment was run.
-- R1's visual source explanation and inspectability improve. The figure does not establish faithful material color, texture, seams or PBR behavior; that limitation remains.
-- R2.1 remains partly answered. The manuscript argues for a task-specific empirical contribution and does not claim a new general scheduling method, unique optimum or broad transfer result.
-- No 01549 visual pixels were reused as current evidence.
-
-These checks establish an internally consistent author-review package. They do not claim journal acceptance or replace author review.
+The independent contribution review supports a bounded empirical paper, with moderate-to-weak contribution strength and material novelty/deployment/generalization risks. Those boundaries are scientific scope limits, not closed by successful compilation. AUTHOR_REVIEW_READY and SUBMISSION_READY are judged separately in quality_review/FINAL_READINESS_V4.json.
