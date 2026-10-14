@@ -1,6 +1,6 @@
 # Figure 2 readability decision — final V4
 
-The actual comparison uses the archived four-row V4 page 7 and the final revised three-row page 7. The page-level PDF and side-by-side PNG are `FIGURE2_FOUR_VS_FINAL_THREE_ACTUAL_PAGES_V4.pdf` and `.png`.
+The actual comparison uses the archived four-row V4 page 7 and page 7 from the current rebuilt main PDF. The current three-row page and the side-by-side comparison were regenerated after the final text change. The four-row page is retained from the prior V4 layout; surrounding body text below the figure reflects those two text snapshots, while the panel content and readability are the comparison target. The page-level PDF and side-by-side PNG are `FIGURE2_FOUR_VS_FINAL_THREE_ACTUAL_PAGES_V4.pdf` and `.png`.
 
 The three-row version is more readable. It keeps every required column—Target, Fixed Low, C3, Fixed High, and Generic Linear—at camera 000, with the same input, checkpoint, seed, output frame and crop within each object. It uses a shared full-object fit without per-method crop or color adjustment. All displayed source and output frame identities are hash-checked in the provenance manifest.
 

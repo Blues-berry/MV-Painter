@@ -7,7 +7,9 @@
 - Kept full-v29 in the main results and limitations as a non-default deployment boundary; removed it from the abstract so it does not read as an isolated TCAS result.
 - Selected Figure 3 candidate B after comparing actual page 9s: input-property-selected Tire plus explicitly post-outcome Baptisimal Font. The complete ten-object distribution remains in Supplement S5. Figure 2 uses the three-row five-column version after actual-page comparison.
 - Preserved all numeric table bodies, cohorts, inferential tests and the Supplement source; no GPU run or inference recomputation occurred.
-- Rebuilt the 13-page main, 71-page Supplement, five-page response and 20-page marked manuscript. Current local delivery is in a new versioned sibling directory, leaving the earlier handoff directory intact.
+- In the final narrative pass, surfaced the existing matched-budget Middle–Early and Middle–Late FG-PSNR/FG-LPIPS contrasts in Section 4.2, Discussion and the R2.1 response. The text labels them retrospective, reports the separate 59-test Holm family and pointwise intervals, and keeps the specified timing primary distinct. No statistical values or Supplement tables changed.
+- Refreshed the Figure 2 four-row/current-three-row actual-page comparison and Figure 3 A/B actual-page comparison against the rebuilt main PDF. Figure 2 page context below the figure is identified as prior/current V4 text snapshots.
+- Rebuilt the 13-page main, 71-page Supplement, six-page response and 20-page marked manuscript. Current local delivery is in a new versioned sibling directory, leaving the earlier handoff directory intact.
 
 ## Preserved earlier V4 evidence work
 

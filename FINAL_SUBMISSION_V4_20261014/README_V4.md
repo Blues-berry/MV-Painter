@@ -6,7 +6,7 @@ This package continues the single V4 line on PR #1, branch `codex/cg-final-v4-20
 
 - Main manuscript: `FINAL_V4_MANUSCRIPT.pdf` (13 pages) and `.tex`
 - Supplement: `FINAL_V4_SUPPLEMENTARY.pdf` (71 pages) and `.tex`
-- Response: `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` (5 pages) and the source in `review/`
+- Response: `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` (6 pages) and the source in `review/`
 - Original-to-final marked manuscript: `FINAL_V4_MARKED_MANUSCRIPT.pdf` (20 pages), generated against the authenticated original submission
 - Figure 2: three rows, five matched columns, one camera per object
 - Figure 3: candidate B, an input-property-selected Tire plus a clearly post-outcome Baptisimal Font tradeoff; the full Bake10 distribution remains in Supplement S5

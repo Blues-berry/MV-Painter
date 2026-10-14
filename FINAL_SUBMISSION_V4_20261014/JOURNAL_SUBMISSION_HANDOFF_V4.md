@@ -11,7 +11,7 @@ It was created as a new sibling directory. The previous `1014v4_FINAL_QUALITY_CO
 | Clean/revised manuscript | `FINAL_V4_MANUSCRIPT.pdf` — 13 pages |
 | Marked/tracked manuscript | `FINAL_V4_MARKED_MANUSCRIPT.pdf` — 20 pages |
 | Supplementary document | `FINAL_V4_SUPPLEMENTARY.pdf` — 71 pages |
-| Response to reviewers | `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` — 5 pages; `.docx` also supplied |
+| Response to reviewers | `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` — 6 pages; `.docx` also supplied |
 | LaTeX source | `Manuscript_LaTeX_Sources_V4.zip`; use `FINAL_V4_MANUSCRIPT.tex` as main source |
 | Title page, highlights and declaration | Existing `Title_Page_V4.*`, `Highlights_V4.*`, and `Declaration_of_Interest_V4.docx` |
 | Research archive | Existing `Research_Evidence_V4.zip`; retain for the journal's requested evidence workflow |

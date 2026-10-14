@@ -43,7 +43,7 @@ def main():
         "marked": ROOT / "FINAL_V4_MARKED_MANUSCRIPT.pdf",
     }
     counts = {name: pages(path) for name, path in pdfs.items()}
-    expected = {"main": 13, "supplement": 71, "response": 5, "marked": 20}
+    expected = {"main": 13, "supplement": 71, "response": 6, "marked": 20}
     if counts != expected:
         raise RuntimeError(f"Unexpected current PDF page counts: {counts}")
 

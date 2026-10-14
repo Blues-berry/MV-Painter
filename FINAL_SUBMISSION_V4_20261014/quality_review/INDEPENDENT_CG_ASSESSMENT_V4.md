@@ -1,12 +1,12 @@
 # Independent C&G-style assessment — final V4
 
-This is an independent editorial assessment of the current 13-page main text, 71-page Supplement and five-page response. It is not a prediction of the editor's or reviewers' decision.
+This is an independent editorial assessment of the current 13-page main text, 71-page Supplement and six-page response. It is not a prediction of the editor's or reviewers' decision.
 
 ## Scientific contribution
 
 The three contributions form a coherent bounded empirical graphics paper, but they do not have equal evidential strength.
 
-1. **Implementation-aware control characterization is the strongest contribution.** The paper separates requested scale, native-cap-adjusted applied scale and state-dependent residual correction. On 300 held-out objects it shows why C3's gain over Fixed Low is not a timing-only result, compares it with stronger fixed/linear settings, and tests a specified matched-applied-budget contrast. This contributes beyond a single C3 ablation because the executed intervention and the claim identified by each comparator are explicit.
+1. **Implementation-aware control characterization is the strongest contribution.** The paper separates requested scale, native-cap-adjusted applied scale and state-dependent residual correction. On 300 held-out objects it shows why C3's gain over Fixed Low is not a timing-only result, compares it with stronger fixed/linear settings, and tests a specified matched-applied-budget contrast. A separate retrospective all-pair family distinguishes Middle-high from Early-high and Late-high within this cohort at equal applied sums; this makes placement sensitivity visible without replacing the non-significant specified primary or establishing a schedule rule. This contributes beyond a single C3 ablation because the executed intervention and the claim identified by each comparator are explicit.
 2. **The native-UV bake endpoint gives the paper its direct graphics value.** It connects generated-view measurements to rendered textured meshes at unseen cameras against matched reference self-bakes. The GeoTex pilot finds a small local Late-high LPIPS change alongside a much larger appearance gap; the separate GSO20 protocol does not detect the same benefit. This demonstrates why the image endpoint alone is insufficient, while the small compatibility-selected cohorts limit transfer.
 3. **The native-interface studies define transfer boundaries.** Their study-specific primaries do not establish a portable middle-window rule. GSO100 uses the same MV-Adapter backbone as MV-Adapter50, and MVDiffusion scales a different partial operator. These results are useful sensitivity evidence, not three independent backbone replications.
 

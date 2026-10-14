@@ -145,7 +145,7 @@ def main():
         "status": "PASS",
         "source_baseline_head": "11006e003842b25976e20cafd51a7970770f269f",
         "journal_directory": str(J),
-        "pdf_pages": {"main": 13, "supplement": 71, "response": 5, "marked": 20},
+        "pdf_pages": {"main": 13, "supplement": 71, "response": 6, "marked": 20},
         "source_archive": {"filename": source_archive.name, "main_tex": "FINAL_V4_MANUSCRIPT.tex"},
         "videos": videos,
         "files": files,
