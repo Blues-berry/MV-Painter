@@ -7,3 +7,8 @@ Figure 3 C uses one input-property-median Tire image at held-out raw004 and a pl
 New main-text evidence is limited to S8's fifty-object full-v29 deployment comparison and same-base follow-up, S5's ten-object effect distribution, and S7's separate retrospective texture-complexity association. `MAIN_TEXT_EVIDENCE_REINTEGRATION.md`, `SCIENTIFIC_CONTENT_ADDITION_LOG.md` and `quality_review/INDEPENDENT_CG_ASSESSMENT_V4.md` state each experiment's identity and remaining limits. No GPU run or new inferential computation was made.
 
 The upload set is prepared, not uploaded. Scientific novelty, fair complete-default TCAS quality, representative material/PBR/seam fidelity, original checkpoint identity and FAC replay remain review risks. `AUTHOR_REVIEW_READY=YES`; `SUBMISSION_READY=YES` for a bounded empirical manuscript after author inspection, not an acceptance prediction.
+
+
+## Latest PR continuation
+
+The latest edit starts from `1b46e166`. Only the official manuscript Abstract was updated after comparing the supplied two versions with the current V4 results. The review-only editorial TeX files remain intact and are not the submission source. See `ABSTRACT_REVIEW_V4.md` for the evidence check.

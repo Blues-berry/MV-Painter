@@ -15,3 +15,8 @@
 - Figure 3 candidate C replaces the second outcome-selected image with a complete ten-object frozen-effect strip while retaining one pose-matched native-UV asset and a separately labelled input inset. A/B/C decisions and actual pages are archived.
 - Tables 3, 5 and 7 were re-laid out with aligned estimates, intervals and p values. No original numeric result or statistical cohort changed.
 - Response and original-to-final marked manuscript rebuilt; local journal PDFs/source ZIP refreshed. Videos retain verified original hashes. See `SCIENTIFIC_CONTENT_ADDITION_LOG.md` and `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`.
+
+
+## Abstract update on latest PR head 1b46e166
+
+Applied the supplied quantitative abstract structure to the official manuscript source, added the current S8 full-v29 boundary with its non-default-protocol and non-isolation caveat, and left review-only editorial drafts untouched. No claim, experiment or statistic was added. See `ABSTRACT_REVIEW_V4.md`.

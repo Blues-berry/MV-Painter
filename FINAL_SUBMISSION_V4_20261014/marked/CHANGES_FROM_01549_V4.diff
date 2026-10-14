@@ -25,7 +25,7 @@
  
  \journal{Computers \& Graphics}
  
-@@ -24,50 +26,48 @@
+@@ -24,50 +26,47 @@
  
  \begin{frontmatter}
  
@@ -37,8 +37,7 @@
  
  \begin{abstract}
 -Multi-view diffusion pipelines for 3D asset texturing commonly inject geometric conditions, such as normal and depth maps, through adapter modules, and the adapter scale at inference time is usually chosen empirically, although the generated views are later baked into the final mesh texture. We show that a single uniform scale is a blunt control: on the studied adapter, aggressive uniform scaling improves structural metrics such as foreground structural similarity (FG-SSIM) but suppresses the texture synthesis capability of the base model, causing flattened surfaces, reduced color variation, and loss of high-frequency details. We further identify an adapter-specific temporal conflict: geometric residuals are most useful for mid-stage structure refinement, whereas strong residual injection in the early or late stages disturbs global formation or suppresses texture synthesis. We introduce a measurable stage-utility analysis with structural guardrails and derive Timestep-Conditioned Adapter Scaling (TCAS), a training-free low--high--low schedule that concentrates strong geometric correction in the middle denoising stage and uses conservative scales otherwise. The schedule C3 $=(1.25, 2.50, 1.25)$ is selected using only a 24-object probe set from 17 scaling variants and then evaluated unchanged, without further search, on the strictly disjoint 276-object holdout. On the full 300-object pooled evaluation with the main adapter, TCAS achieves FG-SSIM comparable to aggressive uniform scaling while improving the peak signal-to-noise ratio (PSNR) by 0.96~dB; it also retains substantially more texture and receives higher preference in a blinded human study. These results suggest treating adapter strength as a stage-dependent inference control variable within the tested MVPainter-style architecture family rather than as a fixed hyperparameter.
-+Geometry-conditioned multi-view diffusion produces images that are baked onto 3D meshes, but the interpretation of a geometry-control schedule depends on its implemented strength and the evaluated endpoint. We study Timestep-Conditioned Adapter Scaling (TCAS) on an existing GeoTex residual path, separating requested scale, native-cap-adjusted applied scale and state-dependent residual correction. On 300 held-out objects, the historical low--high--low C3 profile gains $0.522$ dB foreground PSNR over Fixed Low while increasing the applied budget; Fixed High and Generic Linear have better means on all four image endpoints. At matched applied-scale sums, the specified Middle-high minus average(Early-high,Late-high) contrast does not detect a middle-window advantage ($-0.0339$ dB, 95\% interval $[-0.1172,+0.0514]$, $p=0.4324$). Actual native-UV baking yields a small Late-high foreground LPIPS benefit on ten compatible GeoTex objects ($-0.00265$), which is not detected in a separate twenty-object GSO study. Native MV-Adapter comparisons likewise do not detect the specified middle-window gain. The findings change the interpretation of C3 and identify practical evaluation requirements: competitive controls, matching at the implemented interface, and unseen-view assessment of the resulting asset. They establish task-specific allocation effects and limits, without a universal schedule or faithful material reproduction.
-+
++Geometry-conditioned multi-view diffusion generates images that are baked onto 3D meshes, yet better image scores need not yield better textured assets. We study Timestep-Conditioned Adapter Scaling (TCAS) on an existing GeoTex residual interface, distinguishing requested scales, native-cap-adjusted applied scales, and state-dependent corrections. On 300 held-out objects, historical C3 improves foreground PSNR over Fixed Low by $0.522$ dB but also increases the applied budget; Fixed High and Generic Linear have better means on all four image endpoints. At matched per-group applied-scale sums, the specified Middle-high minus mean(Early-high, Late-high) contrast is $-0.0339$ dB (95\% interval $[-0.1172,+0.0514]$), with no detected middle-window advantage. Native-UV baking on ten compatible GeoTex objects finds a small Late-high unseen-view LPIPS reduction ($-0.00265$) alongside substantial reference-appearance error; a separate twenty-object GSO protocol does not detect the same benefit. Native-interface tests do not establish a transferable middle-window gain. A separate matched-input comparison under a recorded non-default protocol finds that the new geometry checkpoint remains below full v29 in FG-PSNR and FG-LPIPS, but does not isolate schedule effects. These findings support task-specific evaluation of control allocation and textured assets, not a universally preferred schedule or faithful material reproduction.
  \end{abstract}
  
  \begin{keyword}
@@ -100,7 +99,7 @@
  
  \section{Related Work}
  \label{sec:related}
-@@ -75,38 +75,39 @@
+@@ -75,38 +74,39 @@
  \subsection{3D Texture Generation and Multi-view Diffusion}
  \label{subsec:3dtex}
  
@@ -158,7 +157,7 @@
  \label{fig:overview}
  \end{figure*}
  
-@@ -115,449 +116,373 @@
+@@ -115,449 +115,373 @@
  \mathbf{G} = \{G_\text{normal}, G_\text{depth}, G_\text{mask}\}.
  \end{equation}
  
@@ -931,7 +930,7 @@
  \begin{thebibliography}{45}
  \bibitem{liu2023zero1to3}
  Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.
-@@ -611,7 +536,7 @@
+@@ -611,7 +535,7 @@
  Lv X, Wu Z, Xu J, et al. Interpretable procedural material graph generation via diffusion models from reference images. \textit{The Visual Computer}, 2025, 41(13): 11195--11205.
  
  \bibitem{zeng2024paint3d}
@@ -940,7 +939,7 @@
  
  \bibitem{cheng2024mvpaint}
  Cheng W, Mu J, Zeng X, et al. MVPaint: Synchronized multi-view diffusion for painting anything 3D. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition}, 2025.
-@@ -622,6 +547,9 @@
+@@ -622,6 +546,9 @@
  \bibitem{huang2024mvadapter}
  Huang Z, et al. MV-Adapter: Multi-view consistent image generation made easy. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2025.
  
@@ -950,7 +949,7 @@
  \bibitem{liu2024synchronized}
  Liu Y X, Xie M S, Liu H Y, Wong T T. Text-guided texturing by synchronized multi-view diffusion. \textit{SIGGRAPH Asia 2024 Conference Papers}, 2024.
  
-@@ -646,6 +574,9 @@
+@@ -646,6 +573,9 @@
  \bibitem{zhang2023adalora}
  Zhang Q, Zuo S, Liang C, et al. AdaLoRA: Adaptive budget allocation for parameter-efficient fine-tuning. \textit{International Conference on Learning Representations}, 2023.
  
@@ -960,7 +959,7 @@
  \bibitem{ho2020ddpm}
  Ho J, Jain A, Abbeel P. Denoising diffusion probabilistic models. \textit{Advances in Neural Information Processing Systems}, 2020.
  
-@@ -658,41 +589,24 @@
+@@ -658,41 +588,24 @@
  \bibitem{castillo2023adaptive}
  Castillo A, Kohler J, P\'erez J C, et al. Adaptive guidance: Training-free acceleration of conditional diffusion models. \textit{Proceedings of the AAAI Conference on Artificial Intelligence}, 2025.
  

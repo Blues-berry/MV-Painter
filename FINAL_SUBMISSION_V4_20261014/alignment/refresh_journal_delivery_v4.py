@@ -22,7 +22,7 @@ def main():
  subprocess.run(['pandoc',str(ROOT/'review/FINAL_V4_RESPONSE_TO_REVIEWERS.md'),'-o',str(J/'FINAL_V4_RESPONSE_TO_REVIEWERS.docx')],check=True)
  source=J/'Manuscript_LaTeX_Sources_V4.zip'
  with zipfile.ZipFile(source,'w',compression=zipfile.ZIP_DEFLATED) as z:
-  for name in ['FINAL_V4_MANUSCRIPT.tex','FINAL_V4_SUPPLEMENTARY.tex','fig2.pdf','fig3.pdf','build_v4_manuscript.py','MAIN_TEXT_EVIDENCE_REINTEGRATION.md','R1_R2_EVIDENCE_VALUE_MATRIX.md','FIGURE_AND_TABLE_REDESIGN_PLAN.md','SCIENTIFIC_CONTENT_ADDITION_LOG.md','TABLE_1_TO_7_LAYOUT_AUDIT.md']:
+  for name in ['FINAL_V4_MANUSCRIPT.tex','FINAL_V4_SUPPLEMENTARY.tex','fig2.pdf','fig3.pdf','build_v4_manuscript.py','MAIN_TEXT_EVIDENCE_REINTEGRATION.md','R1_R2_EVIDENCE_VALUE_MATRIX.md','FIGURE_AND_TABLE_REDESIGN_PLAN.md','SCIENTIFIC_CONTENT_ADDITION_LOG.md','TABLE_1_TO_7_LAYOUT_AUDIT.md','ABSTRACT_REVIEW_V4.md']:
    z.write(ROOT/name,name)
   for folder in ['figures','tables','sections','vendor','visual_candidates','marked','review']:
    for p in sorted((ROOT/folder).rglob('*')):
