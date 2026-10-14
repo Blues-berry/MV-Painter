@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "engine": "pdflatex",
+  "passes_per_document": 3,
+  "checks": [
+    "no LaTeX errors",
+    "no undefined references",
+    "no undefined citations"
+  ],
+  "artifacts": {
+    "FINAL_V5_MANUSCRIPT.pdf": {
+      "bytes": 6199482,
+      "sha256": "ecd93bbbae58472439411a13bf0caa16afd0e909ec33d943e3b603b32aaca490"
+    },
+    "FINAL_V5_SUPPLEMENTARY.pdf": {
+      "bytes": 16133850,
+      "sha256": "adab6053d2ea38c88964cfe3c6a5a72c7e2695afc4bee5ab497dd4a77e67d35c"
+    }
+  }
+}

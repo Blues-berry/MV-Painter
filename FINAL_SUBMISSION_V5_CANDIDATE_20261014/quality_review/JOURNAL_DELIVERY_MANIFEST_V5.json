@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "version": "V5 candidate",
+  "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
+  "submission_manifest_sha256": "89ae0315d5288435b1772f7845cbc162ef804a7e613b1516baeb07e420ca72a8",
+  "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
+  "checksum_sha256": "2f90cbdeac9cddd4d45646c332525a08158c6b9be6060e98948dc45391bc4837",
+  "page_counts": {
+    "main": 13,
+    "supplement": 71,
+    "response": 6,
+    "marked": 20
+  },
+  "source_archive_sha256": "554859203ae61103e2b7d9abb3e9f246af9a1980964d8f0b1c85eec4332ddc56",
+  "video_paths": {
+    "GeoTex": {
+      "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison.mp4",
+      "still": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison_Still.png",
+      "sha256": "6191b81e6336c6be62fcd8962a33f1e84245667b68ae6346be2815da1d9502a3",
+      "decode": "PASS: full ffmpeg decode in V5 local directory",
+      "identity": "eleven discrete unseen raw cameras 1–11 per object; V5 video bytes are identical to the ledger-verified file."
+    },
+    "GSO": {
+      "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GSO_Baked_Comparison.mp4",
+      "still": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GSO_Baked_Comparison_Still.png",
+      "sha256": "2e76a5d742fc8432aa8f0f6e58df13d442074bfddcb8552bc539fe665f1261b5",
+      "decode": "PASS: full ffmpeg decode in V5 local directory",
+      "identity": "eleven protocol-specific unseen camera indices 0–10; all twelve mesh hashes were verified in prior media audit; source-mesh panel is not a GT self-bake; V5 bytes are identical to that verified file."
+    }
+  },
+  "upload_method": "Upload both MP4s and matching stills separately in the journal portal; verify role and portal preview. GitHub is not the media-delivery location.",
+  "portal_submission": "NOT_PERFORMED"
+}

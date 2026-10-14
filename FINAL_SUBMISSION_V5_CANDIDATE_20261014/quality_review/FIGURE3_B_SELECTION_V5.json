@@ -1,0 +1,201 @@
+{
+  "selected_candidate": "B",
+  "camera": "004",
+  "source_resolution": "512x512",
+  "rows": [
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "title": "Tire",
+      "creator": "Koto3D Stephane Vogley",
+      "license": "CC Attribution",
+      "source_url": "https://sketchfab.com/3d-models/21678bd623654182b52c11d013de4e71",
+      "role": "Input-property median",
+      "selection_rule": "Median source foreground Laplacian variance among seven display-cleared inputs; input-property selected, not outcome selected.",
+      "fixed_mean_fg_lpips": 0.1719823530451818,
+      "late_high_fg_lpips": 0.16919158365238796,
+      "delta_lpips": -0.0027907693927938515,
+      "delta_psnr_db": 0.2567077766765262,
+      "panels": [
+        {
+          "label": "GT-256 self-bake",
+          "condition": "gt",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_gt_raw004.png",
+          "source_sha256": "81c30925f5cc5937bf96ae5d4292827b85405eaeae1074ed49c4d69c7d2ee4fa",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_gt_display004.png",
+          "display_sha256": "a3ee29c24917794de455e0dcd8a4c4eacb3badff79e8900f6c32fed963bc7f49",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            392,
+            372
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Fixed Mean",
+          "condition": "budget_fixed_mean",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_fixed_mean_raw004.png",
+          "source_sha256": "4bd103f9a857fb49396291cacf0d344ddbde011537fe09e5fc711c605f770799",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_fixed_mean_display004.png",
+          "display_sha256": "3a8d6d8b38a2a6efd8b3da01248c068fb1565485d9a19ea40de0ff0f7845b0ec",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            392,
+            372
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Late-high",
+          "condition": "budget_late16",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_late16_raw004.png",
+          "source_sha256": "b394299c2b5e079813b584fa429858ce736fb18e5a47671dbb023f80b96f53db",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_late16_display004.png",
+          "display_sha256": "d0503b6be3c754e6bf47c7a01dea193463c74462011df730684838c9ce0309ec",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            392,
+            372
+          ],
+          "display_crop_pixel_identity": "PASS"
+        }
+      ]
+    },
+    {
+      "uid": "2dd9bc8172c6461797947cc7214db399",
+      "title": "Baptisimal Font - Aughrim",
+      "creator": "Galway3D_DH_AGe",
+      "license": "CC0 Public Domain",
+      "source_url": "https://sketchfab.com/3d-models/2dd9bc8172c6461797947cc7214db399",
+      "role": "Post-outcome maximum LPIPS decrease",
+      "selection_rule": "Largest existing 11-view Late-high minus Fixed Mean FG-LPIPS reduction among seven display-cleared inputs; explicitly selected after outcomes, not representative.",
+      "fixed_mean_fg_lpips": 0.2376320484009656,
+      "late_high_fg_lpips": 0.2298222306099805,
+      "delta_lpips": -0.007809817790985107,
+      "delta_psnr_db": -0.27087309143759875,
+      "panels": [
+        {
+          "label": "GT-256 self-bake",
+          "condition": "gt",
+          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_gt_raw004.png",
+          "source_sha256": "38a9f298387de7364737ec8a6928d63ec27d9c901688ddb0696df3023045d14a",
+          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_gt_display004.png",
+          "display_sha256": "aa8be5337195e859f50ea8fbc1f16a90f2687f0f1a9953f66568a43ac8d6a8e3",
+          "crop": [
+            21,
+            145,
+            490,
+            367
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            469,
+            222
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Fixed Mean",
+          "condition": "budget_fixed_mean",
+          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_fixed_mean_raw004.png",
+          "source_sha256": "0f0fcee5e1c111d1ea4c9bf003188d69f03f8b99b85b0cddee4b4fd6e86d4647",
+          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_fixed_mean_display004.png",
+          "display_sha256": "a72b6658b5b5cc4e564746c4c7079d76c3f1572cefaf2def86f42206f82c8e40",
+          "crop": [
+            21,
+            145,
+            490,
+            367
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            469,
+            222
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Late-high",
+          "condition": "budget_late16",
+          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_late16_raw004.png",
+          "source_sha256": "5363803f560f097f489c4d9bded1db55535a5a16ea3cbfc6a4aa3edd93a68a9c",
+          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_late16_display004.png",
+          "display_sha256": "5a54186b1dae18f896b7a46ba60e9b23cf3db8cd0e9aaca1fca0246ea2ec26be",
+          "crop": [
+            21,
+            145,
+            490,
+            367
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            469,
+            222
+          ],
+          "display_crop_pixel_identity": "PASS"
+        }
+      ]
+    }
+  ],
+  "effect_distribution": "All ten frozen object-level deltas remain in Supplementary Section S5; this figure does not replace them.",
+  "pixel_validation": "PASS: every display crop is an exact pixel crop from its 512x512 source render; within-object crop coordinates match across GT, Fixed Mean, and Late-high."
+}

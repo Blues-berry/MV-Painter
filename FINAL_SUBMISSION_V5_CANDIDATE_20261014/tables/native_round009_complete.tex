@@ -1,0 +1,30 @@
+\begin{tabular}{llrrr}
+\toprule
+Comparison & Endpoint & Difference & 95\% interval & Holm $p$ \\
+\midrule
+native\_unset -- disabled & fg\_lpips & -0.0200 & [-0.0283,-0.0125] & 0.00001 \\
+budget\_late16 -- budget\_fixed\_mean & fg\_lpips & +0.0027 & [-0.0000,+0.0064] & 0.08042 \\
+native\_unset -- disabled & fg\_psnr & +3.8911 & [+2.9906,+4.7864] & 0.00009 \\
+native\_unset -- disabled & fg\_ssim & +0.0397 & [+0.0095,+0.0673] & 0.05814 \\
+native\_unset -- disabled & ciede2000 & -6.6704 & [-9.2902,-4.1723] & 0.00009 \\
+budget\_late16 -- budget\_fixed\_mean & fg\_psnr & -1.1838 & [-1.5870,-0.8495] & 0.00009 \\
+budget\_late16 -- budget\_fixed\_mean & fg\_ssim & -0.0110 & [-0.0262,+0.0003] & 0.87060 \\
+budget\_late16 -- budget\_fixed\_mean & ciede2000 & +1.9587 & [+1.4128,+2.7127] & 0.00009 \\
+native\_gc3 -- native\_gfh & fg\_psnr & -1.1382 & [-2.2846,+0.0737] & 0.59865 \\
+native\_gc3 -- native\_gfh & fg\_lpips & -0.0060 & [-0.0122,+0.0003] & 0.59865 \\
+native\_gc3 -- native\_gfh & fg\_ssim & -0.0051 & [-0.0196,+0.0085] & 0.97985 \\
+native\_gc3 -- native\_gfh & ciede2000 & +1.3638 & [-0.7338,+3.3865] & 0.97985 \\
+native\_gc3 -- budget\_fixed\_mean & fg\_psnr & -0.2358 & [-0.5671,+0.0336] & 0.89085 \\
+native\_gc3 -- budget\_fixed\_mean & fg\_lpips & +0.0027 & [+0.0004,+0.0059] & 0.36025 \\
+native\_gc3 -- budget\_fixed\_mean & fg\_ssim & -0.0071 & [-0.0198,+0.0022] & 0.97985 \\
+native\_gc3 -- budget\_fixed\_mean & ciede2000 & +0.4729 & [-0.0555,+1.2008] & 0.90309 \\
+native\_gc3 -- budget\_late16 & fg\_psnr & +0.9480 & [+0.6372,+1.2802] & 0.00009 \\
+native\_gc3 -- budget\_late16 & fg\_lpips & +0.0001 & [-0.0020,+0.0022] & 0.97985 \\
+native\_gc3 -- budget\_late16 & fg\_ssim & +0.0039 & [-0.0017,+0.0097] & 0.97985 \\
+native\_gc3 -- budget\_late16 & ciede2000 & -1.4858 & [-1.9209,-1.0335] & 0.00009 \\
+native\_unset -- v29\_full\_controlnet & fg\_psnr & -2.1635 & [-3.1481,-1.2662] & 0.00006 \\
+native\_unset -- v29\_full\_controlnet & fg\_ssim & -0.0894 & [-0.1175,-0.0650] & 0.00002 \\
+native\_unset -- v29\_full\_controlnet & fg\_lpips & +0.0341 & [+0.0235,+0.0464] & 0.00002 \\
+native\_unset -- v29\_full\_controlnet & ciede2000 & +1.7981 & [+0.0137,+3.8511] & 0.06168 \\
+\bottomrule
+\end{tabular}
