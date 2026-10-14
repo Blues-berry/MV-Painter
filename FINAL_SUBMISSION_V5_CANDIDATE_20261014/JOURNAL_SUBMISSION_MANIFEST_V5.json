@@ -8,7 +8,9 @@
     "main": 13,
     "supplement": 69,
     "response": 6,
-    "marked": 20
+    "marked": 20,
+    "title_page": 1,
+    "cover_letter": 1
   },
   "source_archive": {
     "filename": "Manuscript_LaTeX_Sources_V5.zip",
@@ -64,13 +66,25 @@
     }
   },
   "files": {
+    "Acknowledgements_V5.docx": {
+      "bytes": 10094,
+      "sha256": "c7c577efb5a0e73a12a082c4a6227779ac011a16fc580dd8362f93d010ca4833"
+    },
+    "Cover_Letter_V5.docx": {
+      "bytes": 10755,
+      "sha256": "7df700500c6a0ccd25b0e65e5072247770c83cfbf8ec5fdbe00e8af744cf19c2"
+    },
+    "Cover_Letter_V5.pdf": {
+      "bytes": 12844,
+      "sha256": "3df718c6222304216af3020507a22d4cc7bfa29ea0827adb9dec81df093b5218"
+    },
     "Declaration_of_Interest_V5.docx": {
       "bytes": 9952,
       "sha256": "454f6eca1ea634a359fea230c0c87132c8305a6d7588a0e37dd3e58eaf1a7ba0"
     },
     "FINAL_READINESS_V5.json": {
-      "bytes": 5209,
-      "sha256": "97bc357c4f835249a41bb2863ea39906362fe3e5bc6990d69cd89baaf0c73104"
+      "bytes": 5522,
+      "sha256": "26130b83cc09c3794f0370b8fea53f65816e10741c7012063a4b478e33960741"
     },
     "FINAL_V5_MANUSCRIPT.pdf": {
       "bytes": 5944306,
@@ -133,16 +147,16 @@
       "sha256": "84fa50c69f70df369318351a936a0db3292cf5fab90b1ece376159abfc5a7c1c"
     },
     "Title_Page_V5.docx": {
-      "bytes": 10535,
-      "sha256": "387fdcdb35ace6d8dcc3689ab24277cd388a92fbdd5412b4171b7a007936b131"
+      "bytes": 10477,
+      "sha256": "c67c2709a9fad6e55cd8f2b051ee467dedbc084d5431dc01978e498379317b53"
     },
     "Title_Page_V5.pdf": {
-      "bytes": 87349,
-      "sha256": "028394e4ca1ffa2a1109be2ac38d24ce65e684176b00db4d3d1ccf9347f0bf2f"
+      "bytes": 18453,
+      "sha256": "ba87def621c1d099c2dfb85186f4bcdcfb663a1a943b1e2caaf32a9d69c3e829"
     },
     "V5_SUBMISSION_INSTRUCTIONS.txt": {
-      "bytes": 4345,
-      "sha256": "72888d7a29ac285e736b5e9b697e32ac073772a503cf3808283a79c513e8999a"
+      "bytes": 4927,
+      "sha256": "e946479d117395e271b6be6bc65b020f9dc2e60b6ae71a5a8ea8e1aa11dfc18f"
     }
   },
   "checksum_file": "SHA256SUMS_V5.txt",
@@ -152,8 +166,8 @@
   ],
   "media_submission": "Upload both MP4s and matching stills separately in the journal portal; attach the matching still to each MP4 and review its preview. GitHub is not the media-delivery location.",
   "portal_submission": "NOT_PERFORMED",
-  "checksum_sha256": "0213ab73cc803a0ffe964b739c901095cc5a2197165f52cf8eccf0b711aff0b9",
-  "file_count_excluding_manifest_and_checksum": 20,
+  "checksum_sha256": "8c6acb83b6e8955671f007fd43141578992a50953176d60195f9463e92860fdf",
+  "file_count_excluding_manifest_and_checksum": 23,
   "pdf_page_sizes": {
     "main": "595.276 x 793.701 pts",
     "supplement": "595.276 x 793.701 pts",
@@ -173,7 +187,7 @@
     "metadata_basis": "Citation/bibliography consistency checked locally for all 40 entries; amended/disputed records checked against primary publisher, proceedings, or archive records."
   },
   "journal_upload_roles": {
-    "Title_Page_V5.docx": "Title Page (upload this or the PDF proof, not both).",
+    "Title_Page_V5.docx": "Title Page (contains author/funding information; competing-interest statement is supplied separately).",
     "FINAL_V5_MANUSCRIPT.pdf": "Manuscript.",
     "FINAL_V5_MARKED_MANUSCRIPT.pdf": "Marked Manuscript.",
     "FINAL_V5_SUPPLEMENTARY.pdf": "Supplementary Material.",
@@ -186,7 +200,10 @@
     "Graphical_Abstract_V5.pdf": "Graphical Abstract if present/required; candidate pending author approval; replaces stale first-round 0907 graphic.",
     "V5_SUBMISSION_INSTRUCTIONS.txt": "Local handoff only; do not upload.",
     "SHA256SUMS_V5.txt": "Local integrity file; do not upload.",
-    "JOURNAL_SUBMISSION_MANIFEST_V5.json": "Local audit manifest; do not upload."
+    "JOURNAL_SUBMISSION_MANIFEST_V5.json": "Local audit manifest; do not upload.",
+    "Acknowledgements_V5.docx": "Acknowledgements; use the corresponding item type if available. This matches the separately uploaded 0907 format and the Title Page funding text.",
+    "Cover_Letter_V5.docx": "Cover Letter for current second-round revision CAG-D-26-00962.",
+    "Cover_Letter_V5.pdf": "Local proof copy only; do not upload alongside the DOCX."
   },
   "guide_access_note": "The C&G ScienceDirect Guide for Authors page returned HTTP 403 during automated retrieval. Official Elsevier guidance on LaTeX archives, Highlights, Editorial Manager revisions, and human-research ethics was checked. Journal-specific limits and item types must be confirmed in the live revision portal and decision letter.",
   "highlight_audit": {
@@ -241,5 +258,18 @@
     "Confirm whether a Graphical Abstract is required for this revision and replace the stale 0907 file with the V5 candidate if required.",
     "Use the existing revision record; confirm its article type, current metadata, and portal item types."
   ],
-  "source_revision_commit": "92cc03d3eb021fa0c8fefb62d0fe51c7e92b0915"
+  "source_revision_commit": "1df4e8283189e245635654074a2bddf0f1b63fe0",
+  "support_files": {
+    "Acknowledgements_V5.docx": {
+      "source": "Copied byte-for-byte from final/submission_new_0907/Acknowledgements 0907.docx.",
+      "content_alignment": "Matches the funding acknowledgement section on Title_Page_V5.docx."
+    },
+    "Cover_Letter_V5.docx": {
+      "source": "Adapted from the 0907 cover-letter format; updated for manuscript CAG-D-26-00962, separate response/marked files, and the V5 evidence.",
+      "pdf_proof": "Cover_Letter_V5.pdf; local review copy, not an additional upload."
+    },
+    "Title_Page_V5.docx": {
+      "format_alignment": "Competing-interest text removed from the Title Page because the stand-alone Declaration_of_Interest_V5.docx is supplied separately, following the 0907 layout."
+    }
+  }
 }

@@ -1,6 +1,6 @@
 # V5 candidate submission package
 
-This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`, extending the candidate from commit `894fdb56a31ee0949bae23f1ffb6328907e0b8a1`. It uses V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485`; V4 is retained. V5 contains bounded editorial changes to existing evidence and no new experiments or recomputed statistics. This continuation updates the Figure 2 positive example and the Figure 4 color/detail illustration with hash-verified frozen outputs. The V5 graphical abstract is a separate vector summary of results already reported in the paper.
+This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`. The reviewed main manuscript, Supplement, response, and LaTeX source archive were last validated against branch commit `1df4e8283189e245635654074a2bddf0f1b63fe0` before the support-file handoff was completed. V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485` is retained. V5 contains bounded editorial changes to existing evidence and no new experiments or recomputed statistics. This continuation updates the Figure 2 positive example and the Figure 4 color/detail illustration with hash-verified frozen outputs. The V5 graphical abstract is a separate vector summary of results already reported in the paper.
 
 The marked manuscript compares against the exact source of first-round submitted version **CAG-S-26-01549**: `final_0903.tex` extracted from the 0907 LaTeX ZIP, SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`. The final response is for second-round manuscript `CAG-D-26-00962`.
 
@@ -11,6 +11,9 @@ The marked manuscript compares against the exact source of first-round submitted
 - `FINAL_V5_RESPONSE_TO_REVIEWERS.pdf` and editable Markdown/TeX source in `review/`
 - `FINAL_V5_MARKED_MANUSCRIPT.pdf` and its source/diff under `marked/`
 - `Graphical_Abstract_V5.pdf` (author-review candidate; replaces the stale first-round 0907 graphic if the revision portal requires a Graphical Abstract)
+- `Title_Page_V5.docx` and `Declaration_of_Interest_V5.docx` are separate; the Title Page no longer repeats the competing-interest declaration.
+- `Acknowledgements_V5.docx` carries the 0907 acknowledgment text byte-for-byte and matches the funding paragraph on the Title Page.
+- `Cover_Letter_V5.docx` updates the 0907 letter for the current revision ID, response-file arrangement, and V5 evidence; `Cover_Letter_V5.pdf` is a local proof copy. Upload the DOCX only.
 - `Manuscript_LaTeX_Sources_V5.zip` (49 files, flat archive; rebuilds main and Supplement)
 - `Research_Evidence_V5.zip` (internal reproducibility archive; upload only if requested)
 - `SHA256SUMS_V5.txt`
