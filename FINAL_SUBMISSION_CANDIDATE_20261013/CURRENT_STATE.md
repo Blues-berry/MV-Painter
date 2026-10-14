@@ -7,4 +7,4 @@ PUBLIC_RELEASE_SAFETY = AUTHOR_DECISION_REQUIRED
 SUBMISSION_TECHNICAL_READINESS = DOCUMENT_BUILDS_READY / JOURNAL_AND_AUTHOR_FIELDS_PENDING
 AUTHOR_APPROVAL = PENDING
 
-Author-selected illustrative Figure1 integrated; main14 pages,Supplement71,response5,marked22. e943 original snapshot preserved. Actual up_only mapping, GT-context code, two separately identified videos, Fig6 contrast class and formal response language corrected. Frozen numerical data unchanged. Private audit/author records are kept outside this candidate. No formal journal submission performed.
+Author-selected illustrative Figure1 integrated; main14 pages,Supplement71,response5,marked21. e943 original snapshot preserved. Actual up_only mapping, GT-context code, two separately identified videos, Fig6 contrast class and formal response language corrected. Frozen numerical data unchanged. Private audit/author records are kept outside this candidate. No formal journal submission performed.

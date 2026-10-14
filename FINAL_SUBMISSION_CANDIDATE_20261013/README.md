@@ -8,7 +8,7 @@ This is the pre-submission revision of the published e943 candidate. Original015
 - [Clean manuscript,14 pages](1014finalv1.pdf) and [source](1014finalv1.tex)
 - [Supplement,71 pages](Supplementary_1014finalv1.pdf) and [source](Supplementary_1014finalv1.tex)
 - [Response,5 pages](review/Response_to_Reviewers.pdf) and [editable text](review/Response_to_Reviewers.md)
-- [Marked manuscript versus authenticated01549,22 pages](marked/Marked_up_Manuscript_01549.pdf)
+- [Marked manuscript versus authenticated01549,21 pages](marked/Marked_up_Manuscript_01549.pdf)
 - [Final editable Figure1](figure1/fig1_tcas_editable.svg), [vectorPDF](figure1/fig1_tcas.pdf), [preview](figure1/fig1_tcas_preview.png)
 - [Before/after figure comparison](figure1/FINAL_FIGURE_COMPARISON.png)
 - [Claim/evidence map](CLAIM_EVIDENCE_MAP.csv), [verification report](VERIFICATION_REPORT.md), [SHA manifest](MANIFEST.sha256)
@@ -28,5 +28,11 @@ Run `python build_1014finalv1.py` from this directory to rebuild main/supplement
 `python figure1/fig1_generator.py` rebuilds the final editable figure from the preserved original author SVG; itsPDF may differ in creation metadata. To use a regeneratedPDF, copy it to `figures/fig1_tcas_control.pdf` before rebuilding the main. Required local tooling: pdflatex/latexdiff/pandoc and Python NumPy,SciPy,Matplotlib,Pillow,CairoSVG. Fonts are DejaVu Sans from the recorded Linux font location. Compiled figures contain embedded fonts. No checkpoint download or GPU is required to rebuild documents or verify the delivered statistics.
 
 Git delivery is on codex/tcas-final-submission-20261013. The commit identifier is returned in the delivery message; it is not embedded in its own hashed files. The manifest excludes transient build outputs and itself.
+
+Pre-submission repairs have been independently checked in the actual PDFs. Public reviewer-material permissions, original human-study ethics documentation, journal-system requirements and final coauthor approval remain separate author decisions; full private audit reports are not included here. Restored standalone GT context: `python scripts/analyze_gt_context.py`. Both GeoTex22s and GSO5.5s videos are supplied separately.
+
+Pre-submission repairs have been independently checked in the actual PDFs. Public reviewer-material permissions, original human-study ethics documentation, journal-system requirements and final coauthor approval remain separate author decisions; full private audit reports are not included here. Restored standalone GT context: `python scripts/analyze_gt_context.py`. Both GeoTex22s and GSO5.5s videos are supplied separately.
+
+Pre-submission repairs have been independently checked in the actual PDFs. Public reviewer-material permissions, original human-study ethics documentation, journal-system requirements and final coauthor approval remain separate author decisions; full private audit reports are not included here. Restored standalone GT context: `python scripts/analyze_gt_context.py`. Both GeoTex22s and GSO5.5s videos are supplied separately.
 
 Pre-submission repairs have been independently checked in the actual PDFs. Public reviewer-material permissions, original human-study ethics documentation, journal-system requirements and final coauthor approval remain separate author decisions; full private audit reports are not included here. Restored standalone GT context: `python scripts/analyze_gt_context.py`. Both GeoTex22s and GSO5.5s videos are supplied separately.
