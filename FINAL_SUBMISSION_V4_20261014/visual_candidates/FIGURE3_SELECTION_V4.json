@@ -1,5 +1,5 @@
 {
-  "selected_candidate": "B",
+  "selected_candidate": "C",
   "camera": "004",
   "rows": [
     {
@@ -75,81 +75,24 @@
           "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
         }
       ]
-    },
-    {
-      "uid": "2dd9bc8172c6461797947cc7214db399",
-      "title": "Baptisimal Font - Aughrim",
-      "creator": "Galway3D_DH_AGe",
-      "license": "CC0 Public Domain",
-      "source_url": "https://sketchfab.com/3d-models/2dd9bc8172c6461797947cc7214db399",
-      "role": "Post-outcome: largest of 7 LPIPS benefits",
-      "selection_rule": "Largest existing 11-view Late-high minus Fixed Mean FG-LPIPS reduction among seven rights-cleared objects; selected after outcomes, not representative.",
-      "fixed_mean_fg_lpips": 0.2376320484009656,
-      "late_high_fg_lpips": 0.2298222306099805,
-      "delta_lpips": -0.007809817790985107,
-      "delta_psnr_db": -0.27087309143759875,
-      "input_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_source_raw000.png",
-      "input_sha256": "a3003b3b20cdeb2f9e930648f9e55e036f1add551cdc69d790be25468284a925",
-      "panels": [
-        {
-          "label": "GT-256 self-bake",
-          "condition": "gt",
-          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_gt_raw004.png",
-          "source_sha256": "38a9f298387de7364737ec8a6928d63ec27d9c901688ddb0696df3023045d14a",
-          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_gt_display004.png",
-          "display_sha256": "aa8be5337195e859f50ea8fbc1f16a90f2687f0f1a9953f66568a43ac8d6a8e3",
-          "crop": [
-            21,
-            145,
-            490,
-            367
-          ],
-          "camera": "held-out raw004",
-          "width": 512,
-          "height": 512,
-          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
-        },
-        {
-          "label": "Fixed Mean",
-          "condition": "budget_fixed_mean",
-          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_fixed_mean_raw004.png",
-          "source_sha256": "0f0fcee5e1c111d1ea4c9bf003188d69f03f8b99b85b0cddee4b4fd6e86d4647",
-          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_fixed_mean_display004.png",
-          "display_sha256": "a72b6658b5b5cc4e564746c4c7079d76c3f1572cefaf2def86f42206f82c8e40",
-          "crop": [
-            21,
-            145,
-            490,
-            367
-          ],
-          "camera": "held-out raw004",
-          "width": 512,
-          "height": 512,
-          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
-        },
-        {
-          "label": "Late-high",
-          "condition": "budget_late16",
-          "source_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_late16_raw004.png",
-          "source_sha256": "5363803f560f097f489c4d9bded1db55535a5a16ea3cbfc6a4aa3edd93a68a9c",
-          "display_asset": "figures/source_assets/quality_v4/2dd9bc8172c6461797947cc7214db399_budget_late16_display004.png",
-          "display_sha256": "5a54186b1dae18f896b7a46ba60e9b23cf3db8cd0e9aaca1fca0246ea2ec26be",
-          "crop": [
-            21,
-            145,
-            490,
-            367
-          ],
-          "camera": "held-out raw004",
-          "width": 512,
-          "height": 512,
-          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
-          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
-        }
-      ]
     }
   ],
-  "input_metric_definition": "Variance of four-neighbour Laplacian of mean RGB/255 on source raw000, restricted to alpha>127 foreground eroded by 3 pixels. Median among seven publication-cleared inputs; editorial selection, not population representativeness."
+  "input_metric_definition": "Variance of four-neighbour Laplacian of mean RGB/255 on source raw000, restricted to alpha>127 foreground eroded by 3 pixels. Median among seven publication-cleared inputs; editorial selection, not population representativeness.",
+  "effect_plot": {
+    "source": "Supplement S5 ten-object 11-view FG-LPIPS table",
+    "metric": "Late-high minus Fixed Mean FG-LPIPS",
+    "status": "existing primary object deltas; plot descriptive, no new inference",
+    "values_by_uid_prefix": {
+      "1dc2c857f761": -0.00408,
+      "21678bd62365": -0.00279,
+      "238ff3e41c96": -0.00046,
+      "2dd9bc8172c6": -0.00781,
+      "2f6c94487ee5": -3e-05,
+      "3c83796ca5f0": -0.00318,
+      "85a7df80b79a": -0.00445,
+      "e261c0fe85af": -0.00168,
+      "f1ccc55a65c7": -0.00137,
+      "fa5c4b02c5b2": -0.00065
+    }
+  }
 }

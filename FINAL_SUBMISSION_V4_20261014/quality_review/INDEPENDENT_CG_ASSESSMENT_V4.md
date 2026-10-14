@@ -1,29 +1,15 @@
-# 按独立 C&G 审稿标准的科学评估
+# Independent C&G-style assessment after V4 evidence reintegration
 
-评估对象为 c3017645 延续的完整 V4 主文、Supplement 与回复信。这里的独立判断指按稿件证据和期刊研究问题重新评估，不代表另有外部审稿人背书。
+This is an evidence-based manuscript assessment, not an external reviewer endorsement. It evaluates the final 14-page main text, 71-page Supplement and five-page response against second-round concerns.
 
-## 论文是否完整
-
-三项贡献能够构成一篇有共同问题的完整实证论文：实现层面的干预到底改变什么、图像层面的变化如何对应最终网格资产、相关分配规律在另一个实际接口中是否仍成立。C3 是这个问题的固定测试对象。主文确实已有操作定义、配对控制、保留的指定检验、真实烘焙端点和外部接口边界，结论与正负结果相容。它不是三个各自独立的新方法，也没有用实验数量补足方法新颖性。
-
-| 贡献 | 超出单一 C3 消融的价值 | 证据限度 |
+| Dimension | Judgment | Basis and limit |
 |---|---|---|
-| 实现感知的控制分配 | 区分请求值、既有 cap 后的应用值和状态依赖 correction；强固定/线性控制与等应用预算对比改变弱基线所支持的推荐。这为判断一个多视角纹理控制比较实际识别了什么提供具体、可审计的任务知识。 | 报告 cap 和强控制也是应有的实验规范；其研究价值来自改变了实际结论，而非 cap 本身的新颖性。并未识别等真实 residual 剂量机制。 |
-| 图像到烘焙资产的联系 | 六视角生成只是中间产品。真实 native-UV 输出、十一未见相机和匹配 GT self-bake 把局部改善与投影/参考外观误差放在同一应用链中评价；这一点具有直接图形学相关性。 | GeoTex10 是兼容性选择的小样本，GSO20 有事后校准；图像/资产的相机与协议差异不能证明 UV 导致排序反转，unlit 分数不能认证 PBR、接缝或材质。 |
-| 原生接口边界 | Native MV-Adapter 与部分 MVDiffusion 操作提供“哪些结论需要在实际接口重验”的证据，防止把相同数字标签当成相同物理干预。 | 域、checkpoint、输入、算子与采样同时变化，不能归因于单独的 backbone 或域；不构成统一的跨接口机制。 |
+| DOCUMENT_QUALITY | Improved; author-review ready | The main text now has a clear control → asset → deployment/interface sequence. Figure 3 C shows a real same-camera asset and the complete ten-object effect distribution. Tables 3/5/7 separate estimates from intervals and tests. Table 1 remains dense, but all cohort identities fit without clipping. A fourteenth page carries new scientific context rather than typographic compression. |
+| SCIENTIFIC_EVIDENCE | Coherent but bounded empirical paper | Strong fixed/linear controls and the preserved matched-applied-budget primary change the earlier C3 recommendation; native-UV outputs and self-bake references show a small heterogeneous asset effect and persistent error; S8 demonstrates a larger full-native quality deficit, while S7 gives a retrospective input-heterogeneity association. All cohorts and inference families stay distinct. |
+| R1_CLOSURE | Materially stronger, incomplete | The S8 full-v29 comparator now appears in main 4.4 and response, with matched inputs/five views and its weight/architecture limits. Full-object appearance, unseen views, reference gap and video provenance are explicit. An architecture-matched complete-default TCAS comparison, faithful material/PBR/seam endpoint, original checkpoint replay and complete FAC replay remain absent. |
+| R2.1_CONTRIBUTION | More persuasive empirical graphics value; method-novelty risk remains high | The contribution is not another temporal scale curve: it identifies what the implemented capped comparison measures, how weak baselines mislead, how object effects compare with final textured-asset error, and why complete-system/interface boundaries matter. SSI/ControlNet already establish scheduling precedents; no new controller, selector, general mechanism or optimal rule is demonstrated. The S7 association is not adaptive-control validation. |
+| SUBMISSION_READINESS | Ready for author review and bounded-paper submission preparation | Sources, marked original-to-final difference, four PDFs, hashes and local videos are complete. The corresponding author must still decide whether this empirical contribution meets the journal's novelty threshold and perform the portal submission. Compilation alone is not the basis of readiness. |
 
-我的判断是：可按边界明确的实证稿送审，贡献强度中等偏弱，方法新颖性仍是实质性录用风险。稿件最有价值的是纠正控制比较的解释与连接真实资产端点，不能以“更好的调度算法”作为主张。负结果和明显外观失败不使实证论文自动失效，但它们限制部署推荐；目前证据不支持用 C3 替代一个完整默认系统。
+The strongest positive result is not a universally winning schedule; it is a corrected and more useful evaluation of geometry-control allocation for textured assets. The new content has scientific value because S8 answers how local improvement can coexist with inferior full-native quality, and the all-object Bake10 plot prevents a favorable example from carrying the pilot argument. The S7 association suggests a dimension of heterogeneity, without making a causal or deployment recommendation.
 
-## 冗余、顺序与本轮改善
-
-主文沿实现→竞争/指定时间检验→外观失败→真实资产→原生接口推进是合理的。强度预算解释在 Introduction、Method、Results、Discussion 重复，后者已做一处小幅去重。Section 4.5 原先先讲历史 MVDiffusion 再讲当前原生比较，本轮把历史段落放到当前证据之后，改善证据层次，未改任何数值。历史276槽位和FAC记录可以进一步压缩，但它们承接回复要求，本轮不进行大幅重排。Supplement 的历史记录量较大，却明确分级；不应将其条目数写成独立研究数量。
-
-本轮通过 Figure 3 的两种选例标准、同相机显示和轻微变化说明，提高了“局部收益相对于资产误差”的表达；Figure 2 保留强竞争列与负向例并放大对象。回复信现在正面解释三项贡献如何组成同一实证问题，不以重复标注审稿项未解决代替贡献判断。
-
-## 可改善和不能关闭的缺口
-
-现有证据能够改善：绝对低误差与调度收益的混淆、事后选例的标注、对象/相机/许可出处、主文证据优先顺序、视频与 self-bake 身份说明、标注稿真正对应最终目标以及交付缺件。上述缺口已在本轮处理。
-
-现有证据不能关闭：独立前瞻同协议验证、等真实 residual 剂量机制、完整默认 GeoTex 的公平部署品质对照、历史主 checkpoint/替换 UID/FAC replay 的认证、代表性大规模 native-UV 资产与材质/PBR/接缝验证、域与接口效应的因果拆分，以及新的通用调度算法。它们需要新的数据或研究设计。本轮既未通过修辞声称关闭，也未启动实验。
-
-科学送审就绪的理由是问题链完整、干预与端点清楚、主要结论有配对证据、冻结检验保留、选例不冒充总体、剩余边界公开、真实资产与视频交付可查。编译通过只是这一判断中的文件完整性条件。该判断不等于录用推荐或接受概率预测。
+The dominant reject risks are methodological novelty, no fair end-to-end default-system TCAS-only comparison, small compatibility-selected bake samples, post-inspection GSO calibration, and no validated seam/PBR/material endpoint. These require new research design or data and were not closed by prose or layout changes. No evidence tier was promoted to confirmation, and the response explicitly retains the old checkpoint and FAC reproducibility limitations.

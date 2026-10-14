@@ -1,20 +1,19 @@
 {
   "status": "PASS",
-  "source_head": "c3017645",
-  "documents": {
-    "FINAL_V4_MANUSCRIPT.tex": {
-      "table_blocks": 7,
-      "original_blocks_sha256": "e1b9394676524b1562177d261d541020902744ccf6ea380508381769f3f2f069",
-      "current_blocks_sha256": "e1b9394676524b1562177d261d541020902744ccf6ea380508381769f3f2f069",
-      "identical": true
-    },
-    "FINAL_V4_SUPPLEMENTARY.tex": {
-      "table_blocks": 36,
-      "original_blocks_sha256": "bdb6b49f937faafa975e879f9ecc3f2bdaafc11a454dc54d12e8010080895978",
-      "current_blocks_sha256": "bdb6b49f937faafa975e879f9ecc3f2bdaafc11a454dc54d12e8010080895978",
-      "identical": true
-    }
+  "source_head": "0aa1c9b3",
+  "unchanged_tables": {
+    "study-design": true,
+    "new-mva": true,
+    "tab:freshc-absolute": true,
+    "tab:new-bake": true
   },
+  "redesigned_tables": [
+    3,
+    5,
+    7
+  ],
+  "statistical_values": "All numeric estimates, interval endpoints and p values in redesigned Tables 3, 5 and 7 were checked as identical to 0aa1c9b3; layout and test-note location only changed.",
+  "new_results": "S8 and S7 results quoted from existing Supplement; no inferential recomputation",
   "gpu_runs": 0,
   "inferential_statistic_recomputations": 0
 }

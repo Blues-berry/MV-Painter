@@ -22,3 +22,7 @@ B 采用 Tire 输入属性中位例与明确事后选择的洗礼池最大 LPIPS
 裁决：选择 B。依据是参考材质更容易辨认、能同时显示输入属性选例和事后收益选例、能体现 LPIPS/PSNR 权衡；并非更美观或产生更大总体收益。A 保留为审阅备选，不作为最终主文。实际页面对照为 `FIGURE3_AB_ACTUAL_PAGES_V4.pdf`，两套完整候选主文均为13页。
 
 全七对象的原始七条件面板已在最终 Supplement S5 保留。十一视角完整本地审阅文件位于本轮 `review/BAKE10_ELEVEN_VIEW_REVIEW_V4.pdf`；未向 GitHub 增加未选对象的原始输出图库。
+
+## Subsequent evidence-reintegration decision (based on 0aa1c9b3)
+
+This document's preceding A-versus-B decision records the previous V4 visual-quality pass. The present final manuscript uses **C**. Actual B and C manuscript page 9 are consecutive pages 5–6 of `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`. C gives GT-256, Fixed Mean and Late-high a shared camera004 crop for the input-property-selected Tire, places source raw000 in a separate small inset, and uses the second row's space for all ten frozen object-level Late−Mean FG-LPIPS effects. The ten-effect plot makes the near-zero stone/bridge cases visible and prevents the post-outcome font from anchoring the main visual conclusion. The effects are descriptive values from Supplement S5, not a new test or a general-material population distribution. Candidate B remains archived for author review, and no generated pixel or statistical queue changed.

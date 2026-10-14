@@ -57,7 +57,7 @@ The downstream endpoint adds a second distinction. Projection, coverage, resampl
 
 We investigate these questions using Timestep-Conditioned Adapter Scaling (TCAS), a requested scale profile on an existing GeoTex-Adapter residual path. The recorded C3 profile requests $(1.25,2.50,1.25)$ over the early, middle and late sampling windows. Conditioning schedules already exist: ControlNet exposes layer weights and temporal gates, and Scheduled Style Injection (SSI) schedules both attention-based style mixing and geometric ControlNet conditioning \cite{controlnet2023layercontrol,diffusers2023controlnet,kulkarni2026ssi}. Our research question concerns what controlled comparisons can establish for multi-view texturing after native clipping and asset construction. C3 is evaluated as a fixed operating point, without another schedule search or a claim of a new general scheduling principle.
 
-The study links three questions: does C3 remain advantageous against competitive fixed and linear controls; what does moving the same high-scale segment establish at matched applied budgets; and how do these differences appear in actual UV-textured assets and other native conditioning interfaces? The answers revise the original interpretation of the profile. C3 improves over Fixed Low on the held-out GeoTex cohort, while stronger controls have better image-endpoint means. The specified equal-budget primary does not support a middle-window advantage. Baking reveals a small local benefit for a different allocation, together with substantial appearance errors and a separate-protocol non-detection. Different conditioning interfaces also fail to establish a stable middle-window gain.
+The study links three questions: does C3 remain advantageous against competitive fixed and linear controls; what does moving the same high-scale segment establish at matched applied budgets; and how do these differences appear in actual UV-textured assets and other native conditioning interfaces? The answers revise the original interpretation of the profile. C3 improves over Fixed Low on the held-out GeoTex cohort, while stronger controls have better image-endpoint means. The specified equal-budget primary does not support a middle-window advantage. Baking reveals a small, object-dependent local benefit for a different allocation, together with substantial appearance errors and a separate-protocol non-detection. A full-native comparator exposes a larger deployment-quality gap, and a separate input cohort suggests texture-complexity-related response heterogeneity. Different conditioning interfaces also fail to establish a stable middle-window gain.
 
 The supported contributions are:
 
@@ -261,15 +261,15 @@ The selected color diagnosis contains 26 failure-enriched objects: six earlier f
 \centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{Selected paired color-diagnostic contrasts.}
 \label{tab:color-summary}
-\begin{tabular}{p{0.24\columnwidth}p{0.50\columnwidth}p{0.16\columnwidth}}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}p{0.26\columnwidth}r p{0.31\columnwidth}r}
 \toprule
-Contrast & Mean CIEDE2000 difference [95\% CI] & Objects \\
+Contrast & $\Delta E_{00}$ & 95\% CI & Favorable \\
 \midrule
-GFL -- No Adapter & $-19.654$ [$-26.370,-13.248$] & 24/26 lower \\
-LLH -- GFL & $+3.583$ [$+0.462,+6.712$] & -- \\
+GFL -- No Adapter & $-19.654$ & $[-26.370,-13.248]$ & 24/26 \\
+LLH -- GFL & $+3.583$ & $[+0.462,+6.712]$ & -- \\
 \bottomrule
-\end{tabular}
-\par\smallskip{\footnotesize The 26 objects are failure-enriched, not a prevalence sample. Negative differences favor the first condition.}
+\end{tabular*}
+\par\smallskip{\footnotesize Failure-enriched $N=26$; negative differences favor the first condition. Favorable is an object-direction count, not prevalence.}
 \end{table}
 
 GFL lowered reference-relative CIEDE2000 in 24/26 objects, while visible pink or purple shifts remained in two legacy examples under No Adapter, GFL, and LLH. Their mapping to the original submitted panels cannot be recovered; the Fresh C example in Figure~\ref{fig:color-failure} is a different object. The shifts are present in decoded RGB before UV projection or baking. In one case, a ground-truth VAE encode--decode isolate had CIEDE2000 4.086 and $\Delta a^*\approx-1.35$, compared with 22.032 and $+1.977$ for GFL. This weakens ordinary VAE round-trip error as the sole explanation for that example, without identifying the complete cause.
@@ -314,12 +314,12 @@ The internally predeclared primary contrast was Late-high minus Fixed Mean on un
 
 C3--Fixed High has mean PSNR $+0.19$~dB (95\% CI $[-0.65,+0.87]$) and LPIPS $-0.00036$ ($[-0.00396,+0.00336]$); neither separates under the four-comparison secondary Holm family (both adjusted $p=1$). Its SSIM is lower by 0.05274 ($[-0.07459,-0.03170]$; Holm $p=0.00781$). The five-object exploratory C3 PSNR result therefore does not establish a stable benefit in this separate pilot. Late-high is a different allocation from C3.
 
-Across the seven conditions, mean within-object Spearman correlations between generated-view and baked unseen-view rankings are 0.846 for PSNR, 0.804 for LPIPS, 0.746 for SSIM and 0.907 for Edge-SSIM. Broad rankings are positively associated, while the winning condition changes on 7/10 objects for LPIPS (1/10 for PSNR). These are different statements: we do not claim a general reversal of rankings. Figure~\ref{fig:baked-context} separates input-property selection from post-outcome benefit selection. Tire is the median source-only texture-complexity input among seven rights-cleared candidates; the baptismal font has the largest existing Late-high--Fixed Mean LPIPS reduction in that display set, while its PSNR falls. Both retain substantial reference-color and texture mismatch. Their eleven-view scores are not scores for the displayed camera alone, and the visible method differences remain subtle. A lower LPIPS does not establish faithful material reproduction.
+Across the seven conditions, mean within-object Spearman correlations between generated-view and baked unseen-view rankings are 0.846 for PSNR, 0.804 for LPIPS, 0.746 for SSIM and 0.907 for Edge-SSIM. Broad rankings are positively associated, while the winning condition changes on 7/10 objects for LPIPS (1/10 for PSNR). These are different statements: we do not claim a general reversal of rankings. Figure~\ref{fig:baked-context} displays one input-property-selected asset and every ten-object Late-high--Fixed Mean LPIPS effect. The object-level effects range from about $-0.00781$ to nearly zero; the stone case with the lowest absolute LPIPS improves by only $-0.00046$. All ten effects favor Late-high on this endpoint, but the visible method differences remain subtle and generated materials differ substantially from the GT self-bake. This compatibility-selected distribution cannot estimate general asset prevalence or establish faithful material reproduction.
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig3_bake10_context_v4.pdf}
-\caption{GeoTex Bake10: GT-256 self-bake, Fixed Mean and Late-high at the same held-out unseen camera 004. Tire is selected by the median foreground Laplacian variance of the seven cleared source inputs; this input-property example is not a population sample. The baptismal font is explicitly selected post-outcome for the largest existing eleven-view Late-high--Fixed Mean FG-LPIPS reduction among those seven. The respective reductions are $-0.002791$ and $-0.007810$; the latter accompanies lower FG-PSNR. The displayed differences are subtle compared with the remaining reference-appearance mismatch. All PNGs are 512$\times$512, with one shared crop per row and common mesh/UVs within each object. GT-256 is a matched reference self-bake. Row scores average eleven views, not only camera 004. Credits and selection records are in Supplementary Sections~S5/S9 and the V4 source manifest.}
+\includegraphics[width=\textwidth]{figures/fig3_bake10_distribution_v4.pdf}
+\caption{GeoTex Bake10 asset appearance and object-level allocation effects. The small input inset is raw view 000 and is not pose-matched to the three exported-GLB renders at held-out camera 004. Tire is the median source-texture-complexity input among seven display-cleared assets, not a population-representative object. GT-256, Fixed Mean and Late-high use one shared crop and the same mesh/UVs; all source PNGs are 512$\times$512, without method-specific color edits. The lower plot shows every object in the compatibility-selected ten-object pilot using existing eleven-view Late-high minus Fixed Mean FG-LPIPS means; negative values favor Late-high. It describes heterogeneous, small metric effects, not visible material fidelity or a new inferential test. GT-256 is a reference self-bake, not an upper bound. Full UID values and conditions are in Supplementary Section~S5.}
 \label{fig:baked-context}
 \end{figure*}
 
@@ -334,13 +334,13 @@ Late-high minus Fixed Mean unseen-view LPIPS is $+0.000084$ (pointwise interval 
 \begin{table}[t]\centering\footnotesize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.08}
 \caption{Unseen-view FG-LPIPS primary contrasts for the two bake studies.}
 \label{tab:bake-cohorts}
-\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}l p{3.55cm} p{1.8cm}}
-\toprule Study (N) & $\Delta$ FG-LPIPS [95\% CI] & $p$ / test \\
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}l r p{0.39\columnwidth} r}
+\toprule Study ($N$) & $\Delta$ FG-LPIPS & 95\% CI & $p$ \\
 \midrule
-\shortstack[l]{GeoTex Bake10\\(10)} & \shortstack[c]{$-0.002652$\\$[-0.004144,-0.001367]$} & \shortstack[c]{$p=0.00195$\\exact\\sign-flip} \\
-\shortstack[l]{GSO Bake20\\(20)} & \shortstack[c]{$+0.000084$\\$[-0.000103,+0.000286]$} & \shortstack[c]{$p=0.788$\\Holm16\\adjusted} \\
+GeoTex (10) & $-0.002652$ & $[-0.004144,-0.001367]$ & 0.00195 \\
+GSO (20) & $+0.000084$ & $[-0.000103,+0.000286]$ & 0.788 \\
 \bottomrule\end{tabular*}
-\par\smallskip{\footnotesize The input-selected GeoTex pilot and separately calibrated GSO study are not pooled. A non-significant result does not establish equivalence.}
+\par\smallskip{\footnotesize Late-high minus Fixed Mean. GeoTex: exact paired sign-flip. GSO: original-family Holm16-adjusted paired sign-flip. Separate input and calibration protocols are not pooled; non-detection is not equivalence.}
 \end{table}
 
 Across all twelve GSO conditions, mean within-object image/bake LPIPS-rank correlation is 0.601 (object interval $[0.440,0.733]$). A post hoc sensitivity restricted to the seven original scale/time controls gives 0.396 ($[0.175,0.582]$), with the minimum-mean LPIPS condition changing on 11/20 objects. These are positively associated rankings with changing point-estimate winners, not general rank reversal or statistically resolved winner changes. The GT self-bake has mean LPIPS 0.0602 and PSNR 19.36 dB; average complete-bilinear-footprint coverage is about 78.7\%. All foreground remains scored and GT errors are not subtracted. These losses contextualize the small method effects without defining a theoretical quality bound.
@@ -351,7 +351,10 @@ The bake also measures cross-camera color variance at UV texels receiving multip
 \paragraph{Native controls and protocol sensitivity}
 Subsequently added Native residual and No Adapter outputs on the same ten GeoTex objects are exploratory. They retain matched geometry and GT coverage, and the repeated Constant 1.0 (capped) outputs are bitwise identical. Their apparent PSNR/LPIPS gains for the schedules do not separate under the fifteen-test exploratory family. The complete data are in Supplementary Section~S5.
 
-A supporting fifty-object comparison uses a newly trained frozen GeoTex checkpoint with 512-pixel supervision, actual positive/negative reference conditions and CFG 2. Late-high minus Fixed Mean has nonreference PSNR $-1.184$ dB (interval $[-1.587,-0.849]$) and LPIPS $+0.00266$ ($[-0.00003,+0.00640]$; adjusted $p=0.080$). C3 has no corrected advantage over Fixed Mean or Fixed High. This previously studied cohort and changed checkpoint/protocol supply a sensitivity boundary, not an independent backbone confirmation. Training and full-v29 strong-baseline results remain in Supplementary Section~S8.
+A supporting fifty-object comparison uses a newly trained frozen GeoTex checkpoint with 512-pixel supervision, actual positive/negative reference conditions and CFG 2. Late-high minus Fixed Mean has nonreference PSNR $-1.184$ dB (interval $[-1.587,-0.849]$) and LPIPS $+0.00266$ ($[-0.00003,+0.00640]$; adjusted $p=0.080$). C3 has no corrected advantage over Fixed Mean or Fixed High. This previously studied cohort and changed checkpoint/protocol supply a sensitivity boundary, not an independent backbone confirmation. Training details and full-v29 comparisons are in Supplementary Section~S8.
+
+\paragraph{Native-pipeline quality boundary}
+The recorded full-v29 ControlNet pipeline is a stronger deployment comparator than geometry-disabled output from the new HF-based checkpoint. On the same fifty inputs and five nonreference cameras, the new geometry checkpoint trails full v29 by 2.16 dB FG-PSNR (paired interval $[-3.15,-1.27]$) and has FG-LPIPS higher by 0.0341 ($[0.0235,0.0464]$); these belong to the separately frozen four-endpoint Holm family. This is a matched-input deployment comparison, not a scale-only comparison: base weights and geometry implementations differ, and the common 50-step, seed-42, CFG-2 setting is not the official command-line default. In an exploratory follow-up that matches the exported v29 base UNet, unscaled geometry improves LPIPS over disabled geometry by 0.0131 yet remains 0.0159 worse than full v29 (paired interval $[0.0085,0.0237]$). Geometry architecture and training history still differ, and the same previously inspected objects were reused. Thus a local control benefit can coexist with a larger complete-system quality deficit; neither contrast establishes TCAS deployment superiority. Full conditions, tests and grids are in Supplementary Section~S8.
 
 \subsection{Allocation Responses in Other Conditioning Interfaces}
 \label{subsec:cross-interface}
@@ -392,19 +395,19 @@ The source-ordered GSO100 convenience cohort uses the same native MV-Adapter con
 
 The specified all-six-view Middle-high minus Fixed Mean primary is $-0.014$ dB (interval $[-0.031,+0.004]$; paired $p=0.122$). A secondary Late-high--Fixed Mean contrast is $+0.045$ dB ($[+0.024,+0.065]$; Holm83 $p=0.00335$), with SSIM $+0.00134$ (adjusted $p=0.000415$). Its five-nonreference-view LPIPS difference is $-0.000086$ ($[-0.000551,+0.000413]$; separate Holm21 $p=1$). Thus a small detected image effect does not establish a perceptual or baked-appearance benefit. Table~\ref{tab:allocation-summary} reports the original Fresh C timing primary first, followed by the two study-specific native-interface FG-PSNR primaries; Table~\ref{tab:bake-cohorts} retains the separate bake LPIPS primaries. Full paired secondary families remain in Supplementary Sections~S3--S5. The complete rights-cleared native-camera comparison across all seven MV-Adapter conditions is retained in Supplementary Section~S3.
 
-\begin{table}[t]\centering\footnotesize\setlength{\tabcolsep}{2pt}\renewcommand{\arraystretch}{1.12}
+\begin{table*}[t]\centering\footnotesize\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.16}
 \caption{Specified FG-PSNR schedule primaries.}
 \label{tab:allocation-summary}
-\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}>{\raggedright\arraybackslash}p{0.28\columnwidth}c >{\raggedright\arraybackslash}p{0.33\columnwidth} >{\raggedright\arraybackslash}p{0.25\columnwidth}}
-\toprule Study and contrast & $N$ & FG-PSNR difference [95\% CI], dB & $p$ / test \\
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}l l r r l r}
+\toprule Study & Contrast & $N$ & $\Delta$ FG-PSNR (dB) & 95\% CI (dB) & $p$ \\
 \midrule
-GeoTex Fresh C: Middle-high $-$ mean(Early-high, Late-high) & 300 & $-0.033877$ [$-0.117170,+0.051422$] & $p=0.432378$; paired sign-flip, 20,000 draws \\
-MV-Adapter50: Middle-high $-$ Fixed Mean & 50 & $+0.028986$ [$-0.019411,+0.080739$] & $p=0.280747$; paired Monte Carlo sign-flip, 100,000 draws \\
-GSO100: Middle-high $-$ Fixed Mean & 100 & $-0.013660$ [$-0.030565,+0.003519$] & $p=0.122279$; paired Monte Carlo sign-flip, 100,000 draws \\
+GeoTex Fresh C & Middle $-$ mean(Early, Late) & 300 & $-0.033877$ & $[-0.117170,+0.051422]$ & 0.432378 \\
+MV-Adapter50 & Middle $-$ Fixed Mean & 50 & $+0.028986$ & $[-0.019411,+0.080739]$ & 0.280747 \\
+GSO100 & Middle $-$ Fixed Mean & 100 & $-0.013660$ & $[-0.030565,+0.003519]$ & 0.122279 \\
 \bottomrule
 \end{tabular*}
-\par\smallskip{\footnotesize Each row is its study's specified primary. Intervals are pointwise 95\% paired-object intervals; all estimates are FG-PSNR in dB. The GeoTex Fresh C row is Middle-high minus mean(Early-high, Late-high); a separate Middle-high minus Fixed Mean comparison does not replace it. The studies remain separate, and matching applied scalar sums does not establish equal realized residual dose.}
-\end{table}
+\par\smallskip{\footnotesize Middle/Early/Late denote the corresponding high-window allocations. Each row is its study's specified primary; the GeoTex row is the original timing contrast, not Middle--Fixed Mean. Pointwise paired-object intervals; GeoTex uses 20,000 and the native-interface rows 100,000 paired sign-flip draws. Studies are separate; equal applied scalar sums do not imply equal realized residual dose.}
+\end{table*}
 
 \paragraph{Fixed-seed sensitivity}
 A post-inspection analysis retains all three recorded sampling seeds. GSO100 Late--Mean PSNR averages are positive at each seed ($+0.057,+0.038,+0.039$ dB), but only 27/100 objects improve at all three and 68/100 have mixed or tied directions. Its nonreference LPIPS averages change direction ($-0.000389,-0.000269,+0.000398$). For the GSO20 bake, only 1/20 objects has lower Late--Mean LPIPS at all three seeds; 14/20 have mixed or tied directions. Sign agreement has no practical-effect threshold. These conditional, object-level summaries do not estimate training randomness or revise the original primary tests; full seed intervals and deltas are in Supplementary Section~S4.
@@ -446,6 +449,9 @@ In the compatible GeoTex pilot, Late-high reduces LPIPS by about 2\% relative to
 \paragraph{What can and cannot transfer}
 The native MV-Adapter50 and GSO100 primary intervals do not detect a middle-window advantage; they do not establish equivalence. The secondary GSO late-window PSNR effect is small and has no detected nonreference LPIPS counterpart. A reference-conditioned GeoTex checkpoint gives a different Late--Mean direction, and MVDiffusion tests only a partial correspondence operator. These observations limit a portable middle-stage rule. Because inputs, weights, operators and sampling/projection protocols change together, the studies cannot attribute their response differences to a backbone or domain alone. Equal numerical scale labels across them are not common physical doses.
 
+\paragraph{Observed input heterogeneity}
+In the separate retrospective FRESH\_CONFIRM\_300 cohort, LLH minus Fixed Low changes with reference-image texture variation: foreground Laplacian variance has Spearman $\rho=-0.524$ with the FG-PSNR effect, and the four 75-object variance quartiles have mean effects $+4.140$, $+1.127$, $-0.087$ and $-0.029$ dB. This cohort uses its own frozen inputs and LLH/GFL comparison; it is not the Fresh C matched-budget primary. The association suggests an input dimension worth measuring when interpreting control responses, but does not identify a causal texture effect, a threshold, or a validated adaptive schedule. The complete ten-test retrospective family is in Supplementary Section~S7.
+
 \paragraph{Consequences for evaluating a texturing control}
 A practical comparison should first retain the deployed input and camera contract and compare native/default and competitive fixed settings. To interpret placement, it should report the cap-adjusted profiles and match per-group applied sums, with residual traces used to describe rather than certify dose. Reference-color errors and full-object displays should accompany image metrics. Actual baking with shared meshes, unseen cameras and a matched reference bake can then assess whether the effect matters for the asset. Finally, fixed-seed differences should be examined at object level: positive cohort means can coexist with mixed directions across seeds. This is an evaluation sequence supported by the observed failure of stronger interpretations, not a newly validated selection algorithm. The evidence gives no general reason to replace a deployment's fixed setting with C3.
 
@@ -457,7 +463,7 @@ Fresh C uses controlled retraining and sampling rather than the authenticated hi
 \section{Conclusion}
 \label{sec:conclusion}
 
-Geometry-control allocation in multi-view texturing must be interpreted at the implemented interface and the final asset endpoint. On the held-out GeoTex cohort, competitive baselines and cap-adjusted budgets change the interpretation of C3's gain over Fixed Low. The specified matched-budget primary does not support a middle-window advantage, while separate pairwise contrasts reveal endpoint-dependent placement effects. Native-UV baking measures a small Late-high benefit on ten compatible objects together with persistent appearance error; a separate GSO study does not detect this benefit. Native MV-Adapter comparisons also do not establish the proposed middle-window gain. The resulting knowledge is a bounded account of what these control comparisons identify and how their outcomes relate to textured meshes. It supports stronger comparison and asset-evaluation decisions, without a universal schedule, independently derived stage mechanism or faithful material reproduction.
+Geometry-control allocation in multi-view texturing must be interpreted at the implemented interface and the final asset endpoint. On the held-out GeoTex cohort, competitive baselines and cap-adjusted budgets change the interpretation of C3's gain over Fixed Low. The specified matched-budget primary does not support a middle-window advantage, while separate pairwise contrasts reveal endpoint-dependent placement effects. Native-UV baking measures a small, heterogeneous Late-high benefit on ten compatible objects together with persistent appearance error; a separate GSO study does not detect this benefit. A full-native comparator remains substantially stronger than the new geometry checkpoint under a recorded matched-input protocol, and native MV-Adapter comparisons do not establish the proposed middle-window gain. The reusable finding is a comparison chain: identify the applied control, retain strong within-interface alternatives, examine object-dependent responses, and measure the textured asset against a reference bake and complete-system boundary. This supports better evaluation decisions without a universal schedule, independently derived stage mechanism or faithful material reproduction.
 
 \section*{Data availability}
 

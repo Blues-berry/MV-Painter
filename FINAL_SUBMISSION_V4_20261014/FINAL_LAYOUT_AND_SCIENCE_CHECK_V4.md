@@ -1,22 +1,7 @@
-# V4 final quality check
+# V4 scientific/layout check after evidence reintegration
 
-Sole source: PR #1, branch codex/cg-final-v4-20261014, c3017645. Current continuation: main 13 pages, complete references ending p13; Supplement 71; response 5; marked manuscript 21.
+Authoritative branch `codex/cg-final-v4-20261014`, based on remote HEAD `0aa1c9b3` (the c3017645 V4 lineage). Main 14 pages; Supplement 71; response 5; marked 21. Final reference [41] is on p14. Figure 3 C is on p9 and compares the input-property-selected Tire asset at same unseen camera004 across GT-256, Fixed Mean and Late-high, plus all ten existing Bake10 LPIPS effects. The raw000 input inset is separately marked. Figure 2 remains the three-row five-column camera-matched version on p7.
 
-| Content | Current location |
-|---|---:|
-| Figure 1 | main p4 |
-| Figure 2, three rows / five full columns | main p7 |
-| Table 4 and Table 5 | main p8 |
-| Figure 3, selected B | main p9 |
-| Figure 4 and Table 6 | main p10 |
-| Original specified timing primary in Table 7 | main p11 |
-| Final reference [41] | main p13 |
-| Table S35 / S36 | Supplement p58 / p59 |
+All seven main tables were read in the rendered PDF; see `TABLE_1_TO_7_LAYOUT_AUDIT.md`. Tables 3, 5 and 7 change layout only. The alternative Table 3 prose build and baseline/current complete pages are in `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`. The specific scientific additions and boundaries are in `SCIENTIFIC_CONTENT_ADDITION_LOG.md`. S8's complete-system comparator is described as a deployment boundary, not a scale-only experiment. S7's separate retrospective cohort is not treated as Fresh C or as a selector.
 
-Figure 3 A/B and Figure 2 four/three are compared using actual rendered manuscript pages in quality_review. B is selected for explanatory reference mismatch and endpoint tradeoff, without a claim of visibly large schedule gains. Both B objects have verified common geometry/UVs and camera004 across GT/Mean/Late. All method/image hashes, real512 resolution, attribution and selection are recorded. The metadata mismatch saying1024 is preserved.
-
-All main/Supplement table blocks and original data validation remain unchanged. No model/GPU run or inferential recomputation occurred. The GeoTex timing primary is −0.0338775 dB, 95% interval [−0.117170,+0.051422], p=0.432378. Ten-object and GSO bake cohorts retain every object and their separate original tests.
-
-The two MP4s are physically copied into the new journal_upload_v4 directory; full decoding passes, original hashes match, discrete decoded frames match archived pre-encoding frames to normal H264 compression accuracy, and source/camera/condition identities are recorded. GSO's source column is explicitly distinguished from a GT self-bake.
-
-The independent contribution review supports a bounded empirical paper, with moderate-to-weak contribution strength and material novelty/deployment/generalization risks. Those boundaries are scientific scope limits, not closed by successful compilation. AUTHOR_REVIEW_READY and SUBMISSION_READY are judged separately in quality_review/FINAL_READINESS_V4.json.
+The original timing primary remains Middle−mean(Early,Late) −0.0338775 dB, interval [−0.117170,+0.051422], p=0.432378. Bake10/GSO20 primary values, inference families and all original numerical cohorts are unchanged. No GPU run or new inferential computation was performed. Compile success confirms document integrity, not publication merit; the substantive novelty and material-fidelity limits are stated in the assessment and handoff.

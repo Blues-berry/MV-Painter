@@ -1,7 +1,7 @@
-# V4 continuation build verification
+# V4 evidence-reintegration build verification
 
-The sole manuscript source was PR #1 HEAD c3017645. Its four PDF hashes and source hashes matched the committed V4 manifest before edits. The current V4 continuation has a revised Figure 2/3 presentation, small supported narrative changes, current source/credit/video clarifications and a regenerated original-submission marked manuscript. Its PDFs intentionally differ from c3017645.
+Starting remote HEAD: `0aa1c9b3`, itself continuing `c3017645`. All four final PDFs rebuilt from current V4 TeX/Markdown and original-submission marked-source baseline. Main 14 pages, Supplement 71, response 5, marked 21. Manuscript and Supplement build passes found no undefined citation/reference. Main Tables 1–7 and their actual PDF pages were inspected; details in `TABLE_1_TO_7_LAYOUT_AUDIT.md`.
 
-Current builds: main 13 pages; Supplement 71; response 5; marked manuscript 21. All manuscript and Supplement numeric table blocks are byte-identical to c3017645. The original GeoTex timing primary is retained as Table 7, and the two bake LPIPS primaries remain in Table 5. `quality_review/FROZEN_CONTENT_CHECK_V4.json` and the final hash manifest record this validation.
+Tables 1, 2, 4 and 6 retain their original numeric entries; redesigned Tables 3, 5 and 7 retain their numerical estimates, interval endpoints and p values. The original GeoTex Middle−mean(Early,Late) primary remains Table 7's first row. The two separate bake LPIPS primaries remain Table 5. `quality_review/FROZEN_CONTENT_CHECK_V4.json` records this limited frozen-content check; no GPU work or inferential recomputation occurred.
 
-Marked-source authentication reproduced the committed c3017645 marked TeX byte-for-byte from the authenticated original 01549 source, then regenerated against the final V4 TeX. Figures/tables are atomic in CFONT markup; `marked/CHANGES_FROM_01549_V4.diff` supplies the complete expanded-source change record.
+The marked TeX is regenerated from authenticated original 01549 source SHA `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01` against current V4 source; the complete expanded-source diff is supplied. Layout and scientific readiness are judged separately from build success in `quality_review/INDEPENDENT_CG_ASSESSMENT_V4.md`.

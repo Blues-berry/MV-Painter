@@ -1,20 +1,9 @@
-# C&G V4 continuation — authoritative submission package
+# C&G FINAL V4 — authoritative submission package
 
-Continue from the current HEAD of [PR #1](https://github.com/Blues-berry/MV-Painter/pull/1), in this directory. The only input manuscript for this revision was c3017645. Previous local V4 directories and c3017645 are historical snapshots; this remains V4, not a new manuscript version series.
+Continue from [PR #1](https://github.com/Blues-berry/MV-Painter/pull/1), branch `codex/cg-final-v4-20261014`. This is a continuation of V4, using the previously confirmed `0aa1c9b3` as this task's starting HEAD. V1–V3 are historical references only.
 
-Final deliverables: `FINAL_V4_MANUSCRIPT.pdf/.tex` (13 pages), `FINAL_V4_SUPPLEMENTARY.pdf/.tex` (71), `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` (5) and `FINAL_V4_MARKED_MANUSCRIPT.pdf` (21). References end on main p13; S35/S36 remain on Supplement p58/p59.
+Final PDF set: `FINAL_V4_MANUSCRIPT.pdf/.tex` (14 pages), `FINAL_V4_SUPPLEMENTARY.pdf/.tex` (71), `FINAL_V4_RESPONSE_TO_REVIEWERS.pdf` (5), `FINAL_V4_MARKED_MANUSCRIPT.pdf` (21). Figure 3 C has one camera-matched Tire asset plus the complete ten-object Bake10 effect strip; Table 3/5/7 layouts are updated without changing their values. The manuscript restores the bounded S8 full-native quality comparison and S7 texture-complexity association. See `MAIN_TEXT_EVIDENCE_REINTEGRATION.md`, `SCIENTIFIC_CONTENT_ADDITION_LOG.md` and `VISUAL_AND_TABLE_BEFORE_AFTER.pdf`.
 
-Figure 3 uses B: an input-property median Tire plus an explicitly post-outcome largest LPIPS-benefit font among seven display-cleared candidates. Actual A/B pages, four/three-row Figure 2 pages, independent scientific assessment and source checks are in `quality_review/`. Those page excerpts are author-review records, not alternate submission manuscripts. Absolute-LPIPS ranking is retained as an audit input and is not the current benefit-selection rule.
+The actual local journal-upload directory, including both independently submitted MP4s, is listed in `JOURNAL_SUBMISSION_HANDOFF_V4.md`. Large videos and research archives remain local; current manuscript/figure source pixels and SHA list are in this GitHub package.
 
-The local complete journal delivery, including separately uploaded MP4s and stills, is indexed by `JOURNAL_SUBMISSION_HANDOFF_V4.md`. The videos and complete frozen research evidence archive stay local; they are not required in this GitHub change. All source-selected pixel files needed to rebuild current figures are included.
-
-From this directory, rebuild in order:
-
-1. `python3 visual_candidates/build_figures_v4.py`
-2. `python3 build_v4_manuscript.py`
-3. `bash review/build_response.sh`
-4. `python3 marked/regenerate_marked_v4.py`
-5. `python3 marked/build_marked_pdf.py`
-6. `python3 alignment/build_submission_manifest.py`
-
-The original-submission TeX under marked/original_submission is an authenticated difference reference only. It is not an editing base for the manuscript. Frozen statistics have not changed; no GPU experiment or inferential recalculation was performed. Scientific scope and remaining gaps are evaluated in `quality_review/INDEPENDENT_CG_ASSESSMENT_V4.md`, rather than inferred from compilation success.
+Rebuild order: `python3 visual_candidates/build_fig3_distribution_v4.py`, `python3 build_v4_manuscript.py`, `bash review/build_response.sh`, `python3 marked/regenerate_marked_v4.py`, `python3 marked/build_marked_pdf.py`, `python3 alignment/build_submission_manifest.py`. The authenticated original submission under `marked/original_submission` is solely a difference reference. No GPU experiment or inferential statistic was recomputed.

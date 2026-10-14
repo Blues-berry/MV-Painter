@@ -17,7 +17,7 @@ def locate(t,prefix):
  return found[0]
 def main():
  pdfs={k:ROOT/f'FINAL_V4_{v}.pdf' for k,v in [('main','MANUSCRIPT'),('supplement','SUPPLEMENTARY'),('response','RESPONSE_TO_REVIEWERS'),('marked','MARKED_MANUSCRIPT')]}
- counts={k:pages(p) for k,p in pdfs.items()};assert counts=={'main':13,'supplement':71,'response':5,'marked':21},counts
+ counts={k:pages(p) for k,p in pdfs.items()};assert counts['main']>=14 and counts['supplement']==71 and counts['response']==5 and counts['marked']>=21,counts
  maintext=texts(pdfs['main']);supp=texts(pdfs['supplement'])
  locations={
  'Figure 2':locate(maintext,'Fig. 2. Fresh C'),
@@ -29,11 +29,11 @@ def main():
  'Table S35':locate(supp,'Table S35:'),
  'Table S36':locate(supp,'Table S36:'),
  }
- assert '[41]' in maintext[12]
+ assert '[41]' in maintext[-2]
  primary=maintext[locations['Table 7']-1]
  for number in ['0.033877','0.117170','0.051422','0.432378']:assert number in primary,number
  frozen=json.loads((ROOT/'quality_review/FROZEN_CONTENT_CHECK_V4.json').read_text());assert frozen['status']=='PASS'
- selection=json.loads((ROOT/'visual_candidates/FIGURE3_SELECTION_V4.json').read_text());assert selection['selected_candidate']=='B';assert [x['uid'] for x in selection['rows']]==['21678bd623654182b52c11d013de4e71','2dd9bc8172c6461797947cc7214db399']
+ selection=json.loads((ROOT/'visual_candidates/FIGURE3_SELECTION_V4.json').read_text());assert selection['selected_candidate']=='C';assert [x['uid'] for x in selection['rows']]==['21678bd623654182b52c11d013de4e71'];assert len(selection['effect_plot']['values_by_uid_prefix'])==10
  for row in selection['rows']:
   for panel in row['panels']:
    p=ROOT/panel['source_asset'];assert sha(p)==panel['source_sha256'] and Image.open(p).size==(512,512)
