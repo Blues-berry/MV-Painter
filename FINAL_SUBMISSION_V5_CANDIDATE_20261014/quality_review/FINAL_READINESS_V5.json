@@ -1,9 +1,9 @@
 {
-  "version": "V5 candidate",
+  "version": "V5 candidate second-round readiness",
   "baseline_head": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
   "branch": "codex/cg-final-v4-20261014",
   "AUTHOR_REVIEW_READY": "YES",
-  "SUBMISSION_READY": "NO — author ethics/consent facts and live portal requirements remain to be confirmed",
+  "SUBMISSION_READY": "NO — author ethics/consent, data repository or non-sharing rationale, funder roles, visual approval and live portal checks remain.",
   "pages": {
     "main": 13,
     "supplement": 69,
@@ -11,42 +11,39 @@
     "marked": 20
   },
   "checks": {
-    "LaTeX_main_and_supplement": "PASS (13-page main and 69-page Supplement independently rebuild; both PDFs use the same 210 x 280 mm page box)",
-    "response_pdf": "PASS",
-    "marked_manuscript_from_authenticated_original": "PASS (exact source SHA verified against final_0903.tex extracted from the first-round 01549 LaTeX ZIP; target source hash matches diff scope)",
-    "main_table_bodies_unchanged": "PASS",
-    "figure3_candidate_page_comparison": "PASS (A and B on actual page 9)",
-    "figure2_three_row_page": "PASS (page 7; Target/Fixed Low/C3/Fixed High/Generic Linear, camera 000)",
-    "video_decode_and_identity": "PASS in copied delivery package after validation",
-    "figure2_provenance": "PASS (Building 03 target and all four method panels are hash-verified at camera 000; the existing five-condition, three-row layout is retained.)",
-    "independent_scientific_review": "PASS (bounded empirical contribution and remaining limits assessed separately from PDF compilation)",
-    "local_submission_package": "PASS_WITH_GATES (clean/marked PDFs, Supplement, response, title page, separate declaration of interest, Highlights, carried-forward Acknowledgements, current Cover Letter, flat LaTeX ZIP, videos/stills, and V5 Graphical Abstract are present)",
-    "source_archive_rebuild": "PASS (49 flat files; independent pdfLaTeX rebuild of the main manuscript and Supplement completed, with extracted text matching the reviewed PDFs.)",
-    "reference_integrity": "PASS (40 unique numeric citations and 40 bibliography entries in first-citation order; no uncited entries or unresolved citations; disputed metadata corrections checked against official primary records)",
-    "page_format_consistency": "PASS WITH NOTE (main, Supplement, and marked PDFs use the C&G 210 x 280 mm page box; custom document fonts are embedded; unembedded entries are standard Type 1 Helvetica/Times fonts listed among Elsevier-recommended families)",
-    "highlights_compliance": "PASS (five Word bullets; TXT matches; every bullet is at most 85 characters and uses no abbreviations)",
-    "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)",
-    "graphical_abstract_v5": "PASS_AS_CANDIDATE (new V5 one-page vector graphic uses existing reported results; author visual approval and portal requirement check remain; stale 0907 graphic must be replaced)",
-    "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS (historical 24-participant 3AFC remains in Supplement; no ethics approval/exemption or informed-consent statement found)",
-    "supplement_scientific_results_and_tables": "PASS: Supplement text was pruned for reader relevance; cohorts, statistical tables/results, and figure pixels are unchanged.",
-    "support_files_alignment": "PASS (Acknowledgements text matches 0907 and the Title Page funding section; Cover Letter updated for CAG-D-26-00962 and current V5 results; competing-interest statement is separate from the Title Page)"
+    "LaTeX_main_and_supplement": "PASS: flat source archive independently rebuilt 13-page main and 69-page Supplement; text/page geometry match reviewed PDFs.",
+    "marked_manuscript_from_authenticated_original": "PASS: exact source SHA verified against final_0903.tex from first-round 01549 LaTeX ZIP.",
+    "main_table_bodies_unchanged": "PASS: no tables or experimental statistics changed.",
+    "figure3_candidate_page_comparison": "PASS: prior actual-page comparison retained; no current figure change.",
+    "figure2_three_row_page": "PASS: prior 5-condition same-view page retained.",
+    "reference_integrity": "PASS: 41 citations, 41 bibliography entries, no unresolved/uncited items, first-citation order.",
+    "conference_extension_guide": "PASS: distinct title, full Paper 75 citation, status, changes and revised interpretation in Abstract/Introduction/Conclusion; original conference PDF supplied; substantive new evidence appears to meet 30% criterion.",
+    "separate_figure_files": "PASS: four one-page vector figure PDFs supplied separately.",
+    "source_archive_rebuild": "PASS: 49 flat files, both PDFs independently rebuilt with extracted text and geometry matching.",
+    "media_decode": "PASS: both H.264 videos fully decode; matching stills included.",
+    "title_page_and_declaration": "PASS: separate Title Page and Declaration of Interest; acknowledgement appears on Title Page; standalone acknowledgement is not a default upload.",
+    "highlights": "PASS: five bullets; all <=85 characters.",
+    "graphical_abstract": "PASS file supplied as required; author visual approval pending.",
+    "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS: historical 24-participant forced-choice study remains; ethics/exemption and consent facts absent.",
+    "research_data_policy": "BLOCKED_ON_AUTHOR_ACTION: no data-repository DOI/URL and no complete author-approved non-sharing explanation.",
+    "funding_roles": "BLOCKED_ON_AUTHOR_FACTS: funding names are listed but sponsor roles are not stated.",
+    "submission_bundle": "PASS_WITH_GATES: 20 upload candidates in a verified ZIP; upload files individually.",
+    "portal_submission": "NOT_PERFORMED"
   },
-  "scientific_scope": "Bounded empirical study; this continuation retains the prior Figure 2 and Figure 4 asset updates and makes only focused Supplement prose edits. No experiment or statistical result was added or recomputed.",
-  "remaining_limits": [
-    "TCAS remains a manually specified inference-time control, not a derived selector or optimum.",
-    "The specified matched-budget primary does not detect a middle-window advantage; retrospective pairwise differences are cohort-specific and do not identify a preferred schedule or residual-dose mechanism.",
-    "GeoTex Bake10 is a compatibility-selected ten-object pilot with small local LPIPS benefit and substantial remaining reference error; GSO20 does not detect the same benefit.",
-    "Native interfaces use different operators and primaries; full-v29 comparisons do not isolate TCAS or match the official default.",
-    "The historical main checkpoint and an actual UID in the 276-request panel remain unauthenticated."
-  ],
-  "portal_submission": "NOT_PERFORMED",
-  "readiness_basis": "Technical formatting and source-package checks pass. Scientific and author review remain separate from compilation. Submission is not ready until the factual human-research statement and live portal-specific revision requirements are resolved.",
   "first_round_submitted_version": "CAG-S-26-01549",
   "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
   "pre_submission_gates": [
-    "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study; no facts are inferred.",
-    "Confirm whether the C&G revision portal requires a Graphical Abstract; replace the stale first-round 0907 file with Graphical_Abstract_V5.pdf if required.",
-    "Confirm portal item types and update carried-forward title, abstract, keywords, and contributor-role metadata."
+    "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study retained in the Supplement.",
+    "Provide a repository DOI/URL for research data and cite it, or provide an accurate author-approved explanation why data cannot be shared; current Data Availability text has no repository link.",
+    "State each funder’s role in study design, collection, analysis, interpretation, writing, and the decision to submit.",
+    "Author visual approval of the required Graphical Abstract.",
+    "In the existing revision record, confirm current title/abstract/keywords, article type, item types, Paper 75 editor-only classification, and video previews/captions."
   ],
-  "source_revision_commit": "1df4e8283189e245635654074a2bddf0f1b63fe0"
+  "readiness_basis": "Technical formatting and file integrity passed. Scientific claims remain bounded as reported in V5. LaTeX compilation is not treated as submission readiness; unresolved author facts and repository/portal requirements remain explicit.",
+  "portal_submission": "NOT_PERFORMED",
+  "bundle": {
+    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip",
+    "upload_files": 20,
+    "status": "Conditional candidate; extract and upload individual files; do not upload master ZIP as a single item."
+  }
 }

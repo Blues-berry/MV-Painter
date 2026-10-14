@@ -28,8 +28,9 @@
 
 \title{Timestep-Conditioned Adapter Scaling for Multi-view Diffusion Texture Generation: Control Allocation and Baked Appearance}
 
-% Double-anonymized review: author names, affiliations, and acknowledgements
-% (including funding) are provided only on the separately uploaded title page.
+% Extended conference version: author identity is disclosed by the Paper 75
+% citation under the Guide's extension policy. Affiliations, contact details,
+% acknowledgements, and funding appear on the separately uploaded title page.
 
 \begin{abstract}
 Geometry-conditioned multi-view diffusion generates images that are subsequently baked onto 3D meshes, yet the benefit of time-varying geometry control depends on both the implemented intervention and the resulting textured asset. We revisit Timestep-Conditioned Adapter Scaling (TCAS) on an existing GeoTex residual interface, distinguishing requested control strength, native-cap-adjusted applied scales, and state-dependent residual corrections.
@@ -38,7 +39,7 @@ On 300 held-out objects, the historical low--high--low C3 profile improves foreg
 
 Native-UV baking reveals a small Late-high unseen-view LPIPS improvement on ten compatible GeoTex objects ($-0.00265$), while substantial reference-appearance error remains. A separate twenty-object bake study does not detect the same benefit, and native conditioning-interface comparisons do not establish a transferable middle-window rule.
 
-These results clarify how geometry-control allocation should be evaluated through its executed interface, competitive alternatives, and final textured-asset appearance. Rather than identifying a universally preferred schedule, the study provides task-specific evidence about the effects and limits of inference-time geometry control in multi-view texturing.
+Compared with the CAD/Graphics 2026 Paper 75 conference submission, this journal study adds controlled comparisons against strong fixed and linear settings, a matched-budget timing test, native-interface analyses, and unseen-view bake evaluation, revising the earlier interpretation of C3. It provides task-specific evidence about inference-time geometry control without identifying a universally preferred schedule or establishing faithful material reproduction.
 \end{abstract}
 
 \begin{keyword}
@@ -63,6 +64,8 @@ Image-space agreement is also distinct from final appearance. Reference-color ch
 We revisit Timestep-Conditioned Adapter Scaling (TCAS) on an existing GeoTex residual interface, using the recorded C3 operating point $(1.25,2.50,1.25)$ over early, middle, and late denoising windows. Layer and timestep conditioning precedents, including ControlNet controls and Scheduled Style Injection, are established \cite{controlnet2023layercontrol,diffusers2023controlnet,kulkarni2026ssi}; we do not claim to introduce temporal scheduling. We ask whether C3 remains competitive against strong fixed and linear controls, what can be attributed to relocating matched applied-scale budgets, and whether the differences persist in native-UV bakes or other conditioning interfaces.
 
 The results revise the interpretation of C3. It improves foreground PSNR over Fixed Low on 300 held-out objects, but Fixed High and Generic Linear have better means across the four image endpoints. The specified matched-budget primary does not detect a middle-window advantage; a separate retrospective pairwise analysis distinguishes the middle placement from both early and late placements within this cohort, without establishing a preferred schedule. Native-UV baking finds a small Late-high improvement at unseen cameras alongside substantially larger reference-appearance error; a separate bake protocol does not detect the same benefit. Native MV-Adapter comparisons likewise do not establish a transferable middle-window rule.
+
+An earlier version of this work was submitted to CAD/Graphics 2026 as Paper 75 \cite{che2026cadgraphics}. This journal article has a different title and adds controlled comparisons against strong fixed and linear settings, a matched-applied-budget timing test, separate native-interface analyses, and native-UV bake evaluations from unseen cameras against matched reference self-bakes. It revises the interpretation of the earlier C3 result: the specified matched-budget primary does not detect a middle-window advantage, and a separate GSO bake study does not detect the small GeoTex pilot benefit. These additions extend the evaluation from generated-view scores to the implemented interface and resulting textured asset.
 
 The contributions are threefold. \textbf{First, implementation-aware characterization of geometry-control allocation:} we distinguish requested, cap-adjusted applied, and state-dependent residual control on an existing GeoTex adapter interface, making clear which intervention is executed and which differences cannot be attributed to temporal placement alone. \textbf{Second, controlled evaluation of strength and temporal placement:} we compare historical C3 with competitive fixed and linear controls and with schedules matched in per-group applied-scale sums, revising the interpretation of C3's gain over a weaker fixed setting and showing within-cohort allocation sensitivity without identifying a preferred schedule. \textbf{Third, asset-level assessment and transfer boundaries:} we evaluate native-UV textured meshes against matched reference self-bakes from unseen cameras and examine related scheduling questions within separate native conditioning interfaces. Together, these experiments connect generated-view measurements to final-asset appearance while identifying protocol- and endpoint-dependent limits. This is a task-specific empirical contribution, not a general schedule selector or an independently derived optimum.
 
@@ -431,7 +434,7 @@ For a texturing system, the evidence supports comparing the deployed control wit
 \section{Conclusion}
 \label{sec:conclusion}
 
-We evaluated geometry-control allocation from its implemented GeoTex residual interface through image generation and native-UV texturing. On 300 held-out objects, stronger fixed and linear controls revise the interpretation of C3's gain over Fixed Low, while the specified matched-budget primary detects no middle-window advantage. Baking shows a small Late-high unseen-view LPIPS improvement on ten compatible objects alongside substantially larger reference-appearance error; a separate bake protocol does not detect the same benefit. These findings make the graphics contribution an implementation-aware, asset-level evaluation of control allocation, rather than a new universal scheduling method. They support comparing applied controls with strong alternatives and measuring the textured asset from unseen views, without identifying a universally preferred schedule or establishing faithful material reproduction.
+We evaluated geometry-control allocation from its implemented GeoTex residual interface through image generation and native-UV texturing. On 300 held-out objects, stronger fixed and linear controls revise the interpretation of C3's gain over Fixed Low, while the specified matched-budget primary detects no middle-window advantage. Baking shows a small Late-high unseen-view LPIPS improvement on ten compatible objects alongside substantially larger reference-appearance error; a separate bake protocol does not detect the same benefit. These findings make the graphics contribution an implementation-aware, asset-level evaluation of control allocation, rather than a new universal scheduling method. They support comparing applied controls with strong alternatives and measuring the textured asset from unseen views, without identifying a universally preferred schedule or establishing faithful material reproduction. Compared with the CAD/Graphics 2026 Paper 75 submission \cite{che2026cadgraphics}, this journal version adds controlled competitive and matched-budget comparisons, native-interface tests, and unseen-camera bake evaluations; these results revise the earlier interpretation of C3 and bound the conclusions to the tested protocols.
 
 \section*{Data availability}
 
@@ -444,7 +447,7 @@ The authors declare that they have no known competing financial interests or per
 
 \begingroup
 \linespread{0.94}\selectfont
-\begin{thebibliography}{40}
+\begin{thebibliography}{41}
 \bibitem{controlnet2023layercontrol}
 ControlNet project. Official depth-to-image demo: layer-dependent control scales. Source code, fixed commit f2e1bc38dc8d925fb542be4c138c46013ace1988, 2023. \url{https://github.com/lllyasviel/ControlNet/blob/f2e1bc38dc8d925fb542be4c138c46013ace1988/gradio_depth2image.py}. Accessed 12 October 2026.
 
@@ -453,6 +456,9 @@ Hugging Face. Diffusers v0.21.0: ControlNet conditioning scale and guidance star
 
 \bibitem{kulkarni2026ssi}
 Kulkarni A S. Scheduled Style Injection: Expanding the Style-Content Pareto Frontier in Training-Free Diffusion-Based Style Transfer. \textit{Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), NTIRE Workshop}, 2026.
+
+\bibitem{che2026cadgraphics}
+Che X, Sun L. Adapter Scaling Trade-off and Timestep-Conditioned Scheduling in Multi-view Diffusion Texture Generation. \textit{20th International Conference on Computer-Aided Design and Computer Graphics (CAD/Graphics 2026)}, Paper 75 (conference submission recommended by the conference for consideration in \textit{Computers \& Graphics}).
 
 \bibitem{liu2023zero1to3}
 Liu R, Wu R, Van Hoorick B, et al. Zero-1-to-3: Zero-shot one image to 3D object. \textit{Proceedings of the IEEE/CVF International Conference on Computer Vision}, 2023.

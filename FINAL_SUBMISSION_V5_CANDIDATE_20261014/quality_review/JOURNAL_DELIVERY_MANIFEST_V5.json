@@ -2,9 +2,9 @@
   "status": "CONDITIONAL_AUTHOR_FACTS_AND_LIVE_PORTAL_CHECK",
   "version": "V5 candidate",
   "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
-  "submission_manifest_sha256": "8bc2d0ba52334b2ac1fc521fc392ba49a697d25df7518d0fcd637edee96ba7d6",
+  "submission_manifest_sha256": "8edec9452c8420c3f51b93e46bdf7c64fc79c057b02042576f84dc8e096768f9",
   "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
-  "checksum_sha256": "8c6acb83b6e8955671f007fd43141578992a50953176d60195f9463e92860fdf",
+  "checksum_sha256": "0824a2f9bc47fe26d486e879ff1277c7836ec99aca86f5b5ff75e3b92bde365b",
   "page_counts": {
     "main": 13,
     "supplement": 69,
@@ -12,13 +12,13 @@
     "marked": 20,
     "graphical_abstract": 1
   },
-  "source_archive_sha256": "29ceab169ae919ebe50e60031dd0929aad630759f7c6c7b87ba41f4882348534",
+  "source_archive_sha256": "cac341719c516b2d0a65b75cb97911bdce83e94e242ab9a17adcc301714bb559",
   "source_archive_upload_item_type": "LaTeX source files; upload compressed, not as Supplementary Material",
   "first_round_submitted_version": "CAG-S-26-01549",
   "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
   "graphical_abstract": {
     "file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Graphical_Abstract_V5.pdf",
-    "status": "V5 evidence-based candidate; replace stale first-round graphic if required; author approval pending"
+    "status": "Required by supplied official C&G Guide; included; author visual approval pending."
   },
   "video_paths": {
     "GeoTex": {
@@ -36,18 +36,19 @@
       "identity": "eleven protocol-specific unseen camera indices 0–10; all twelve mesh hashes were verified in prior media audit; source-mesh panel is not a GT self-bake; V5 bytes are identical to that verified file."
     }
   },
-  "upload_method": "Use the existing revision. Upload videos and matching stills separately. Check portal roles, current metadata, and the generated review PDF.",
+  "upload_method": "Use the existing revision; upload 20 candidates individually. Upload LaTeX source ZIP, four figure PDFs, videos with matching stills/captions, and Paper 75 as editor-only/related conference paper.",
   "author_gates": [
-    "Historical 24-participant forced-choice study remains in the Supplement. No ethics approval/exemption or informed-consent statement is present; author facts are required before the accurate statement can be added.",
-    "Confirm whether a Graphical Abstract is required for this revision and replace the stale 0907 file with the V5 candidate if required.",
-    "Use the existing revision record; confirm its article type, current metadata, and portal item types."
+    "Provide accurate ethics approval/exemption and informed-consent facts for the historical 24-participant study retained in the Supplement.",
+    "Provide a research-data repository DOI/URL and citation/link, or an accurate author-approved explanation why data cannot be shared.",
+    "State sponsor roles in design, collection, analysis, interpretation, writing and submission.",
+    "Approve the required Graphical Abstract and confirm live portal metadata/item types."
   ],
-  "guide_access_note": "The C&G ScienceDirect Guide for Authors page returned HTTP 403 during automated retrieval. Official Elsevier guidance on LaTeX archives, Highlights, Editorial Manager revisions, and human-research ethics was checked. Journal-specific limits and item types must be confirmed in the live revision portal and decision letter.",
+  "guide_access_note": "Compared against the official Guide text supplied by the user; extended conference paper, editable files, Highlights, required Graphical Abstract, Supplement/video captions, research data, funding roles and cover-letter requirements checked.",
   "portal_submission": "NOT_PERFORMED",
   "reference_audit": {
     "citation_style": "numeric; reference list follows first citation order",
-    "unique_citations": 40,
-    "bibliography_entries": 40,
+    "unique_citations": 41,
+    "bibliography_entries": 41,
     "uncited_entries": 0,
     "unresolved_citations": 0,
     "verified_changes": [
@@ -59,13 +60,14 @@
   },
   "format_audit": {
     "main": "Anonymous, C&G elsarticle/cag 5p two-column PDF with line numbers; 13 pages; 210 x 280 mm.",
-    "abstract_words": 237,
+    "abstract_words": 241,
     "keywords": 5,
     "supplement": "69 pages; 210 x 280 mm.",
     "marked_manuscript": "20 pages; generated against authenticated original submission and same page box.",
     "response": "6 pages; Letter page size.",
     "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
-    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview"
+    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview",
+    "conference_extension": "PASS: separate title, full Paper 75 reference/status and differences/revised interpretation in Abstract/Introduction/Conclusion; original Paper 75 PDF supplied; material additional analyses appear to meet the 30% criterion."
   },
   "highlight_audit": {
     "file": "Highlights_V5.docx",
@@ -82,7 +84,7 @@
     "abbreviations_removed": true,
     "official_guideline": "https://www.elsevier.com/researcher/author/tools-and-resources/highlights"
   },
-  "source_revision_commit": "1df4e8283189e245635654074a2bddf0f1b63fe0",
+  "source_revision_commit": "PENDING_FINAL_SOURCE_COMMIT",
   "support_files": {
     "acknowledgements": {
       "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Acknowledgements_V5.docx",
@@ -91,11 +93,11 @@
     },
     "cover_letter": {
       "docx_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Cover_Letter_V5.docx",
-      "docx_sha256": "7df700500c6a0ccd25b0e65e5072247770c83cfbf8ec5fdbe00e8af744cf19c2",
-      "pdf_proof_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Cover_Letter_V5.pdf",
+      "docx_sha256": "7f7ca1f1cc6a0272e802d452281773cd14ff3d7bcebe5488b7e106b7bf865329",
+      "pdf_proof_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Cover_Letter_V5_PRE_GUIDE_UPDATE_STALE_PROOF_DO_NOT_UPLOAD.pdf",
       "pdf_proof_sha256": "3df718c6222304216af3020507a22d4cc7bfa29ea0827adb9dec81df093b5218",
       "page_count": 1,
-      "status": "Updated for the current second-round revision; upload DOCX only."
+      "status": "Current DOCX includes Paper 75 reference/status, new evidence, revised interpretation, scope fit and revision ID; old PDF proof is stale and excluded."
     },
     "title_page": {
       "docx_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Title_Page_V5.docx",
@@ -103,6 +105,11 @@
       "pdf_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Title_Page_V5.pdf",
       "pdf_sha256": "ba87def621c1d099c2dfb85186f4bcdcfb663a1a943b1e2caaf32a9d69c3e829",
       "status": "Competing-interest statement is supplied only in the separate declaration file."
+    },
+    "original_conference_submission": {
+      "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf",
+      "sha256": "4c7fa4923e9360f7855d8f8fd1119aaf340a55b6f7c1cce903f774a50caca935",
+      "status": "Editor comparison only; not public Supplementary Material."
     }
   }
 }

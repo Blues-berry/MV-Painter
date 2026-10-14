@@ -1,6 +1,6 @@
 # V5 candidate submission package
 
-This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`. The reviewed main manuscript, Supplement, response, and LaTeX source archive were last validated against branch commit `1df4e8283189e245635654074a2bddf0f1b63fe0` before the support-file handoff was completed. V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485` is retained. V5 contains bounded editorial changes to existing evidence and no new experiments or recomputed statistics. This continuation updates the Figure 2 positive example and the Figure 4 color/detail illustration with hash-verified frozen outputs. The V5 graphical abstract is a separate vector summary of results already reported in the paper.
+This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`. The first-round submitted version is CAG-S-26-01549; its authenticated source remains the Marked Manuscript baseline. V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485` is retained. V5 contains no new experiments or recomputed statistics. The current editorial addition cites CAD/Graphics 2026 Paper 75, states the journal extension and its new evidence in the Abstract, Introduction, and Conclusion, and updates the Cover Letter to include the conference-paper reference, status, differences, and scope fit. The original conference submission is supplied separately for editorial comparison.
 
 The marked manuscript compares against the exact source of first-round submitted version **CAG-S-26-01549**: `final_0903.tex` extracted from the 0907 LaTeX ZIP, SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`. The final response is for second-round manuscript `CAG-D-26-00962`.
 
@@ -8,21 +8,23 @@ The marked manuscript compares against the exact source of first-round submitted
 
 - `FINAL_V5_MANUSCRIPT.pdf` and `FINAL_V5_MANUSCRIPT.tex`
 - `FINAL_V5_SUPPLEMENTARY.pdf` and `FINAL_V5_SUPPLEMENTARY.tex`
-- `FINAL_V5_RESPONSE_TO_REVIEWERS.pdf` and editable Markdown/TeX source in `review/`
+- `FINAL_V5_RESPONSE_TO_REVIEWERS.docx` and `FINAL_V5_RESPONSE_TO_REVIEWERS.pdf`; upload the editable DOCX, keeping the PDF as a local proof unless the portal prefers PDF.
 - `FINAL_V5_MARKED_MANUSCRIPT.pdf` and its source/diff under `marked/`
-- `Graphical_Abstract_V5.pdf` (author-review candidate; replaces the stale first-round 0907 graphic if the revision portal requires a Graphical Abstract)
+- `Graphical_Abstract_V5.pdf` (required by the supplied C&G Guide; candidate still needs author visual approval and replaces the stale first-round graphic)
 - `Title_Page_V5.docx` and `Declaration_of_Interest_V5.docx` are separate; the Title Page no longer repeats the competing-interest declaration.
-- `Acknowledgements_V5.docx` carries the 0907 acknowledgment text byte-for-byte and matches the funding paragraph on the Title Page.
-- `Cover_Letter_V5.docx` updates the 0907 letter for the current revision ID, response-file arrangement, and V5 evidence; `Cover_Letter_V5.pdf` is a local proof copy. Upload the DOCX only.
+- `Acknowledgements_V5.docx` carries the 0907 acknowledgment text byte-for-byte as a local comparison copy. Upload the Title Page, which already contains the acknowledgement, rather than a duplicate standalone file unless the live portal explicitly requests one.
+- `Cover_Letter_V5.docx` includes the Paper 75 status and reference, the added journal evidence, revised interpretation, and fit to C&G scope. Upload the DOCX only; the old PDF proof predates this update and is not for upload.
 - `Manuscript_LaTeX_Sources_V5.zip` (49 files, flat archive; rebuilds main and Supplement)
-- `Research_Evidence_V5.zip` (internal reproducibility archive; upload only if requested)
+- The four main figures are also supplied individually as vector PDFs for figure upload.
+- `Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf` (for editorial comparison; not public Supplementary Material)
+- `Research_Evidence_V5.zip` (internal reproducibility archive; not a repository deposit)
 - `SHA256SUMS_V5.txt`
 
-The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The Supplement received a focused editorial cleanup of internal archive notes, duplicate implementation/provenance notes and repeated figure caveats; cohorts, statistical results, tables and image pixels are unchanged. The full local upload package is `/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate`. The two MP4s are stored there and must be uploaded separately, with their matching stills; they are not in the GitHub source archive.
+The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The Supplement received a focused editorial cleanup of internal archive notes, duplicate implementation/provenance notes and repeated figure caveats; cohorts, statistical results, tables and image pixels are unchanged. The two MP4s and matching stills must be uploaded separately; they are not in the LaTeX source archive.
 
 ## Readiness
 
-Technical formatting, bibliography integrity, source-archive rebuilding, and media decoding passed. `AUTHOR_REVIEW_READY` is YES. `SUBMISSION_READY` remains NO until the authors provide accurate ethics/exemption and informed-consent facts for the historical 24-participant study retained in the Supplement, and the live C&G revision portal requirements are checked. The C&G Guide URL returned HTTP 403 during this audit, so the portal and decision letter remain authoritative for journal-specific item types and whether to submit the V5 graphical abstract. See `V5_SUBMISSION_INSTRUCTIONS.txt` and the readiness/manifest files.
+Technical formatting, bibliography integrity, source-archive rebuilding, and media decoding passed. The supplied Guide requirements were checked. `AUTHOR_REVIEW_READY` is YES. `SUBMISSION_READY` remains NO until authors provide the accurate ethics/exemption and informed-consent facts for the historical 24-participant study, a repository link/DOI or an accurate explanation why data cannot be shared, and the role of each funder; live portal metadata and item types must also be confirmed. The Graphical Abstract is required and included, pending author visual approval. See `V5_SUBMISSION_INSTRUCTIONS.txt` and the readiness/manifest files.
 
 ## Rebuild
 
