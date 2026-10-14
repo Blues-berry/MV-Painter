@@ -15,22 +15,22 @@
     "response_pdf": "PASS",
     "marked_manuscript_from_authenticated_original": "PASS (exact source SHA verified against final_0903.tex extracted from the first-round 01549 LaTeX ZIP; target source hash matches diff scope)",
     "main_table_bodies_unchanged": "PASS",
-    "supplement_source_unchanged": "PASS (tables, figures, and scientific text unchanged; only page dimensions and line-break opportunities were adjusted)",
     "figure3_candidate_page_comparison": "PASS (A and B on actual page 9)",
     "figure2_three_row_page": "PASS (page 7; Target/Fixed Low/C3/Fixed High/Generic Linear, camera 000)",
     "video_decode_and_identity": "PASS in copied delivery package after validation",
-    "figure2_provenance": "PASS (five conditions, camera 000 and source selection hashes verified)",
+    "figure2_provenance": "PASS (Building 03 target and all four method panels are hash-verified at camera 000; the existing five-condition, three-row layout is retained.)",
     "independent_scientific_review": "PASS (bounded empirical contribution and remaining limits assessed separately from PDF compilation)",
     "local_submission_package": "PASS_WITH_GATES (clean/marked PDFs, Supplement, response, title page, declarations, Highlights, flat LaTeX ZIP, videos/stills, and V5 Graphical Abstract are present)",
-    "source_archive_rebuild": "PASS (49 files, no subfolders; independent pdfLaTeX rebuilds of main and Supplement produce text-identical PDFs)",
+    "source_archive_rebuild": "PASS (49 flat files; independent pdfLaTeX rebuild of the main manuscript and Supplement completed, with extracted text matching the reviewed PDFs.)",
     "reference_integrity": "PASS (40 unique numeric citations and 40 bibliography entries in first-citation order; no uncited entries or unresolved citations; disputed metadata corrections checked against official primary records)",
     "page_format_consistency": "PASS WITH NOTE (main, Supplement, and marked PDFs use the C&G 210 x 280 mm page box; custom document fonts are embedded; unembedded entries are standard Type 1 Helvetica/Times fonts listed among Elsevier-recommended families)",
     "highlights_compliance": "PASS (five Word bullets; TXT matches; every bullet is at most 85 characters and uses no abbreviations)",
     "author_presentation_format": "PASS (anonymous 13-page two-column main PDF with line numbers; 237-word abstract and five keywords; separate author title page; main, Supplement, and marked PDFs share the 210 x 280 mm C&G template page box)",
     "graphical_abstract_v5": "PASS_AS_CANDIDATE (new V5 one-page vector graphic uses existing reported results; author visual approval and portal requirement check remain; stale 0907 graphic must be replaced)",
-    "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS (historical 24-participant 3AFC remains in Supplement; no ethics approval/exemption or informed-consent statement found)"
+    "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS (historical 24-participant 3AFC remains in Supplement; no ethics approval/exemption or informed-consent statement found)",
+    "supplement_scientific_results_and_tables": "UPDATED DIRECTLY: Figure 2 and Figure 4 identities, display captions, credits and active visual manifest now match the replacement assets; frozen diagnostic data, statistical tables and results remain unchanged."
   },
-  "scientific_scope": "Bounded empirical study; this pass adjusts reference ordering/metadata, Highlights wording, and PDF layout only, with no new experiments, measurements, or statistical results.",
+  "scientific_scope": "Bounded empirical study; this continuation replaces the Figure 2 positive example and Figure 4 color/detail example using frozen source outputs, updates only directly affected text and credits, and adds no experiments or recomputed statistics.",
   "remaining_limits": [
     "TCAS remains a manually specified inference-time control, not a derived selector or optimum.",
     "The specified matched-budget primary does not detect a middle-window advantage; retrospective pairwise differences are cohort-specific and do not identify a preferred schedule or residual-dose mechanism.",
@@ -40,12 +40,12 @@
   ],
   "portal_submission": "NOT_PERFORMED",
   "readiness_basis": "Technical formatting and source-package checks pass. Scientific and author review remain separate from compilation. Submission is not ready until the factual human-research statement and live portal-specific revision requirements are resolved.",
-  "delivery_commit": "894fdb56a31ee0949bae23f1ffb6328907e0b8a1",
   "first_round_submitted_version": "CAG-S-26-01549",
   "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
   "pre_submission_gates": [
     "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study; no facts are inferred.",
     "Confirm whether the C&G revision portal requires a Graphical Abstract; replace the stale first-round 0907 file with Graphical_Abstract_V5.pdf if required.",
     "Confirm portal item types and update carried-forward title, abstract, keywords, and contributor-role metadata."
-  ]
+  ],
+  "source_revision_commit": "92cc03d3eb021fa0c8fefb62d0fe51c7e92b0915"
 }

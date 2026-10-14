@@ -1,6 +1,6 @@
 # V5 candidate submission package
 
-This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`, final delivery commit `894fdb56a31ee0949bae23f1ffb6328907e0b8a1`. It uses V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485`; V4 is retained. V5 contains bounded editorial changes to existing evidence and no new experiments or recomputed statistics. The V5 graphical abstract is a separate vector summary of results already reported in the paper.
+This V5 continuation is on PR #1 branch `codex/cg-final-v4-20261014`, extending the candidate from commit `894fdb56a31ee0949bae23f1ffb6328907e0b8a1`. It uses V4 source baseline commit `91b6c42b16b82eca0fa7a477be1266c1d1a7e485`; V4 is retained. V5 contains bounded editorial changes to existing evidence and no new experiments or recomputed statistics. This continuation updates the Figure 2 positive example and the Figure 4 color/detail illustration with hash-verified frozen outputs. The V5 graphical abstract is a separate vector summary of results already reported in the paper.
 
 The marked manuscript compares against the exact source of first-round submitted version **CAG-S-26-01549**: `final_0903.tex` extracted from the 0907 LaTeX ZIP, SHA-256 `203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01`. The final response is for second-round manuscript `CAG-D-26-00962`.
 

@@ -514,8 +514,8 @@ The \DIFdelbegin \DIFdel{base pipeline is an MVPainter-style geometry-controlled
 \DIFdel{Overall, the FG-SSIM improvement is stable, but the marginal benefit becomes smaller in the high-scale region. For example, increasing the scale from $s = 2.25$ to $s = 2.50$ yields only a limited FG-SSIM gain, while Crop-SSIM already decreases. This suggests that the nature of the high-scale benefit may change: the gain comes more from contour smoothing and foreground alignment than from preservation of local texture details. Figure~\textit{[removed reference: }\texttt{fig:heatmap}\textit{]} showsthe per-object $\Delta$FG-SSIM heatmap, confirming that most objects gain higher structural scores as the scale increases, but with clear object-level differences.
 }\DIFdelend \DIFaddbegin \begin{figure*}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig2_freshc_controls_v4.pdf}
-\caption{Fresh C, camera 000. Every row shows Target, Fixed Low, C3, Fixed High and Generic Linear in the same full-frame view. Targets are source RGB conditioning renders, not measured ground-truth albedo. Green Iguan is a colorful, textured organic object selected from source properties. Mosque ($+1.736$~dB) and Specimen 103 ($-0.468$~dB) are post-outcome selected positive and adverse C3--Fixed Low FG-PSNR examples. These selected rows illustrate endpoint heterogeneity; they do not estimate prevalence or establish a cohort-wide advantage. Complete source identity and credits are in Supplementary Section~S9 and the visual selection manifest.}
+\includegraphics[width=\textwidth]{figures/fig2_freshc_controls_v5.pdf}
+\caption{Fresh C, camera 000. Every row shows Target, Fixed Low, C3, Fixed High and Generic Linear in the same full-frame view. Targets are source RGB conditioning renders, not measured ground-truth albedo. Green Iguan is a colorful, textured organic object selected from source properties. Building 03 ($+2.644$~dB) and Specimen 103 ($-0.468$~dB) illustrate positive and adverse C3--Fixed Low FG-PSNR endpoints. These selected rows illustrate endpoint heterogeneity; they do not estimate prevalence or establish a cohort-wide advantage. Complete source identity and credits are in Supplementary Section~S9 and the visual selection manifest.}
 \label{fig:c3compare}
 \end{figure*}
 \DIFaddend
@@ -862,8 +862,8 @@ Twenty-four participants viewed, for each object and each of the three criteria 
 %DIFDELCMD < %%%
 \DIFdelend \DIFaddbegin \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/fig6_color_diagnostic_freshc_context_roi.pdf}
-\caption{Fresh C view 0, E5-5-2: Target, Fixed Low, C3 and layer LLH share a complete-object frame and an identical pixel crop. The generated brown pattern does not reproduce the gray target; changing its variation does not establish color fidelity. This previously viewed example came from an existing C3--GFL LPIPS stratum and was not selected for color. It does not reproduce the legacy purple-shift cases. Object credits are supplied in Supplementary Section~S9.}
+\includegraphics[width=\textwidth]{figures/fig4_color_diagnostic_freshc_context_roi_v5.pdf}
+\caption{Fresh C view 0, Cap Test -- PhotoCatch: Target, Fixed Low, C3 and layer LLH share a complete-object frame and an identical pixel crop. The generated brown texture does not reproduce the target's pink color or textile/logo details. Object credits are supplied in Supplementary Section~S9.}
 \label{fig:color-failure}
 \end{figure*}
 \DIFaddend
