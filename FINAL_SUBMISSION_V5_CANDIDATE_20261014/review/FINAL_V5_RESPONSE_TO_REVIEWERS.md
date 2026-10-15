@@ -73,7 +73,9 @@ For graphics researchers the output of interest is a textured asset, and the gen
 
 **Locations.** Main Sections 1, 2.3, 3.1, 3.3, 4.2, 4.4 and 5; Main Figure 3 and Tables 2, 5–7; Supplement Sections S1–S5, S7 (retrospective texture complexity) and S8 (full-native and same-base comparisons).
 
-**Remaining limitation.** TCAS remains a manually specified intervention on an existing adapter. The equal-budget addendum reuses previously inspected Fresh C objects and is not independent prospective confirmation; equal applied sums do not establish equal residual dose. Cohort, interface and projection differences prevent causal assignment of the varying effects, and unlit rendering does not establish material fidelity. The evidence supports task-specific controlled empirical understanding, not a universal scheduling method, optimum or transfer result. We acknowledge that this does not eliminate the reviewer's methodological novelty concern.
+**Remaining limitation.** TCAS remains a manually specified intervention on an existing adapter. The equal-budget addendum reuses previously inspected Fresh C objects and is not independent prospective confirmation; equal applied sums do not establish equal residual dose. Cohort, interface and projection differences prevent causal assignment of the varying effects, and unlit rendering does not establish material fidelity.
+
+**Contribution and scope.** Within these boundaries, the revision contributes a controlled empirical account that separates applied-strength comparisons from the matched-applied-sum timing test and evaluates both alongside strong fixed and linear controls. It treats native-UV bake appearance as a distinct asset-level endpoint instead of inferring fidelity from generated-view metrics. The prespecified timing contrast did not detect the proposed middle-window advantage; retrospective pairwise contrasts support only cohort-specific placement sensitivity. We therefore present TCAS as the intervention under study and make no claim of a universally optimal or transferable schedule.
 
 ### Concern 2: CAI formalizes a selected schedule rather than deriving it
 
