@@ -1,0 +1,175 @@
+1
+00:00:00,000 --> 00:00:02,237
+This demo uses AI-generated narration.
+
+2
+00:00:02,437 --> 00:00:09,597
+This presentation summarizes the V5 journal study of timestep-conditioned adapter scaling for multi-view diffusion texture generation.
+
+3
+00:00:09,797 --> 00:00:16,062
+The focus is what survives comparison with strong controls and evaluation on baked assets.
+
+4
+00:00:17,062 --> 00:00:19,657
+For graphics, generated RGB views are intermediate.
+
+5
+00:00:19,857 --> 00:00:26,531
+The deliverable is a textured mesh whose appearance should be checked from cameras not used to generate or
+
+6
+00:00:26,531 --> 00:00:27,643
+bake its texture.
+
+7
+00:00:27,843 --> 00:00:31,180
+Projection, UV coverage, and resampling can change the result.
+
+8
+00:00:31,380 --> 00:00:34,717
+This study connects image-space scores to that asset-level outcome.
+
+9
+00:00:35,717 --> 00:00:43,346
+TCAS changes the requested multiplier on an existing GeoTex adapter residual; it does not add a learned module.
+
+10
+00:00:43,546 --> 00:00:49,904
+The historical C3 profile requests 1.25, 2.50, and 1.25 across early, middle, and late windows.
+
+11
+00:00:50,104 --> 00:00:54,767
+In Fresh C, the shallow group is capped at 0.80 throughout.
+
+12
+00:00:54,967 --> 00:01:02,596
+The realized correction also depends on the evolving hidden state, so a scale label is not a residual-dose
+
+13
+00:01:02,596 --> 00:01:03,020
+measurement.
+
+14
+00:01:04,020 --> 00:01:10,269
+On 300 held-out objects, C3 improves foreground PSNR over Fixed Low by 0.522 decibels.
+
+15
+00:01:10,469 --> 00:01:16,717
+That comparison also raises the deep and middle applied-scale sums from 62.5 to 82.5.
+
+16
+00:01:16,917 --> 00:01:24,059
+Fixed High and Generic Linear have better means than C3 across all four evaluated image endpoints.
+
+17
+00:01:24,259 --> 00:01:28,276
+This revises the interpretation of the original low-versus-high-versus-low result.
+
+18
+00:01:28,476 --> 00:01:32,939
+The figure shows examples, not an estimate of typical appearance.
+
+19
+00:01:33,939 --> 00:01:42,716
+The specified timing primary compares Middle-high with the object-wise average of Early-high and Late-high at matched per-group applied-scale
+
+20
+00:01:42,716 --> 00:01:43,204
+sums.
+
+21
+00:01:43,404 --> 00:01:52,181
+The mean difference is minus 0.0339 decibels, with a 95 percent interval from minus 0.1172 to plus 0.0514
+
+22
+00:01:52,181 --> 00:01:54,619
+and a p-value of 0.432.
+
+23
+00:01:54,819 --> 00:01:59,695
+It detects no middle-window advantage and does not establish equivalence.
+
+24
+00:01:59,895 --> 00:02:07,697
+Retrospective pairwise contrasts differ in opposite directions, indicating within-cohort placement sensitivity without selecting a preferred schedule.
+
+25
+00:02:08,697 --> 00:02:16,751
+In the compatibility-selected GeoTex bake pilot, Late-high—not C3—reduces unseen-view LPIPS relative to Fixed Mean by 0.00265 on ten
+
+26
+00:02:16,751 --> 00:02:17,199
+objects.
+
+27
+00:02:17,399 --> 00:02:25,005
+The change closes about 3.7 percent of the mean reference self-bake gap, while substantial appearance error remains.
+
+28
+00:02:25,205 --> 00:02:32,364
+A separate twenty-object GSO bake study does not detect the same benefit under its distinct protocol.
+
+29
+00:02:33,364 --> 00:02:36,798
+The visual comparison makes the remaining reference-appearance gap concrete.
+
+30
+00:02:36,998 --> 00:02:40,813
+Image-space improvements do not establish faithful color or material reproduction.
+
+31
+00:02:41,013 --> 00:02:47,881
+The bake evaluation uses unlit base color; it does not test a physically based material or lighting pipeline.
+
+32
+00:02:48,881 --> 00:02:57,168
+The two MV-Adapter timing primaries also do not detect their specified middle-window contrasts: plus 0.029 decibels on fifty
+
+33
+00:02:57,168 --> 00:03:03,614
+objects and minus 0.014 on the GSO one-hundred-object cohort, with both intervals spanning zero.
+
+34
+00:03:03,814 --> 00:03:07,037
+These are separate cohorts and primary comparisons.
+
+35
+00:03:07,237 --> 00:03:14,603
+GSO one hundred uses the same MV-Adapter interface, so it is not an independent backbone replication.
+
+36
+00:03:15,603 --> 00:03:20,174
+The contribution is an evidence chain for an implemented graphics control.
+
+37
+00:03:20,374 --> 00:03:27,853
+We report requested values, cap-adjusted applied values, and state-dependent corrections; compare C3 with competitive fixed and linear controls
+
+38
+00:03:27,853 --> 00:03:35,332
+and a matched scalar budget; then evaluate native UV bakes from unseen cameras and test boundaries across interfaces.
+
+39
+00:03:35,532 --> 00:03:41,765
+The findings support reporting the executed interface and asset response, not a universal schedule recommendation.
+
+40
+00:03:42,765 --> 00:03:52,364
+The limited public data release is archived as Zenodo version 1.0.1 at DOI 10.5281 slash zenodo dot 23383807.
+
+41
+00:03:52,564 --> 00:03:56,830
+It contains selected derived metrics and attribution records.
+
+42
+00:03:57,030 --> 00:04:04,495
+It excludes source meshes and textures, generated-image archives, model weights, checkpoints, and participant-level responses.
+
+43
+00:04:04,695 --> 00:04:12,694
+Overall, the evidence does not identify a universally preferred schedule or establish faithful material reproduction.
+
+44
+00:04:12,894 --> 00:04:13,960
+Thank you.

@@ -4,16 +4,33 @@
   "slides": 10,
   "silent_video_seconds_nominal": 90,
   "silent_video_resolution": "1920x1080",
-  "narrated_video": "pending local OPENAI_API_KEY",
+  "narrated_video": "TCAS_Demo_V5_Narrated.mp4",
+  "narrated_video_duration_seconds": 254.967,
+  "narrated_video_codec": "H.264 video + AAC mono audio",
+  "narrated_video_resolution": "1920x1080",
+  "narrated_video_frame_rate": "30 fps",
+  "narration_engine": "Piper TTS (local)",
+  "narration_voice": "en_US-lessac-medium",
+  "narration_voice_model_source": "https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium",
+  "narration_voice_model_license": "MIT",
+  "narration_sample_rate_hz": 22050,
+  "narration_channels": 1,
+  "narration_peak_attenuation_db": 3,
+  "narration_disclosure": "The opening sentence identifies the narration as AI-generated.",
+  "subtitle_file": "TCAS_Demo_V5_Narrated.srt",
   "doi": "10.5281/zenodo.23383807",
   "files": [
     "TCAS_Demo_V5.pptx",
     "TCAS_Demo_V5.pdf",
     "TCAS_Demo_V5_Silent.mp4",
+    "TCAS_Demo_V5_Narrated.mp4",
+    "TCAS_Demo_V5_Narrated.srt",
     "TCAS_Demo_V5_Still.png",
     "TCAS_Demo_V5_Narration_EN.md",
     "README_PRESENTATION_DEMO_V5.md",
-    "build_v5_demo.py"
+    "build_v5_demo.py",
+    "build_v5_narrated_demo.py"
   ],
-  "note": "The PowerPoint speaker notes and narration script carry matching V5 wording."
+  "note": "PowerPoint speaker notes, the narration script, and the spoken voiceover use matching V5 wording.",
+  "subtitle_timing": "Sentence-level cues proportionally timed within each synthesized narration segment."
 }

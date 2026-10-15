@@ -34,7 +34,7 @@ GREEN = 0x3C8C72
 
 
 NARRATION = [
-    ("01 | Title", "This presentation summarizes the V5 journal study of timestep-conditioned adapter scaling for multi-view diffusion texture generation. The focus is what survives comparison with strong controls and evaluation on baked assets."),
+    ("01 | Title", "This demo uses AI-generated narration. This presentation summarizes the V5 journal study of timestep-conditioned adapter scaling for multi-view diffusion texture generation. The focus is what survives comparison with strong controls and evaluation on baked assets."),
     ("02 | The graphics task", "For graphics, generated RGB views are intermediate. The deliverable is a textured mesh whose appearance should be checked from cameras not used to generate or bake its texture. Projection, UV coverage, and resampling can change the result. This study connects image-space scores to that asset-level outcome."),
     ("03 | The executed intervention", "TCAS changes the requested multiplier on an existing GeoTex adapter residual; it does not add a learned module. The historical C3 profile requests 1.25, 2.50, and 1.25 across early, middle, and late windows. In Fresh C, the shallow group is capped at 0.80 throughout. The realized correction also depends on the evolving hidden state, so a scale label is not a residual-dose measurement."),
     ("04 | Strong controls on 300 objects", "On 300 held-out objects, C3 improves foreground PSNR over Fixed Low by 0.522 decibels. That comparison also raises the deep and middle applied-scale sums from 62.5 to 82.5. Fixed High and Generic Linear have better means than C3 across all four evaluated image endpoints. This revises the interpretation of the original low-versus-high-versus-low result. The figure shows examples, not an estimate of typical appearance."),
@@ -495,10 +495,10 @@ def write_script_and_manifest(pptx, pdf, silent, normalized_slides):
     script = OUT / "TCAS_Demo_V5_Narration_EN.md"
     with script.open("w", encoding="utf-8") as f:
         f.write("# TCAS Demo V5 — English narration script\n\n")
-        f.write("Delivery: clear, neutral, steady pace. Speaker notes in the PowerPoint use the same text.\n\n")
+        f.write("Delivery: clear, neutral, steady pace. Speaker notes in the PowerPoint use the same text.\n")
+        f.write("Voice: locally generated with Piper TTS, en_US-lessac-medium. The narration is AI-generated.\n\n")
         for heading, paragraph in NARRATION:
             f.write(f"## {heading}\n\n{paragraph}\n\n")
-        f.write("Voiceover status: audio synthesis pending local OPENAI_API_KEY configuration.\n")
     still = OUT / "TCAS_Demo_V5_Still.png"
     subprocess.run(["cp", str(normalized_slides[5]), str(still)], check=True)
     readme = OUT / "README_PRESENTATION_DEMO_V5.md"
@@ -508,28 +508,60 @@ def write_script_and_manifest(pptx, pdf, silent, normalized_slides):
         "- `TCAS_Demo_V5.pptx`: editable 10-slide deck; speaker notes match the narration script.\n"
         "- `TCAS_Demo_V5.pdf`: review copy of the deck.\n"
         "- `TCAS_Demo_V5_Silent.mp4`: 90-second, 1080p silent slideshow demo.\n"
+        "- `TCAS_Demo_V5_Narrated.mp4`: slide-synchronized 1080p demo with locally generated English narration.\n"
+        "- `TCAS_Demo_V5_Narrated.srt`: sentence-level English subtitles timed within the narration segments.\n"
         "- `TCAS_Demo_V5_Still.png`: baked-asset slide preview.\n"
         "- `TCAS_Demo_V5_Narration_EN.md`: slide-by-slide English voiceover script.\n"
-        "- `build_v5_demo.py`: rebuilds the deck and silent video from the V5 figure PDFs.\n\n"
-        "A narrated MP4 is not included yet. The local OpenAI speech API credential was not available during this build; the old 0907 audio was not reused because it does not match V5.\n\n"
+        "- `build_v5_demo.py`: rebuilds the deck and silent video from the V5 figure PDFs.\n"
+        "- `build_v5_narrated_demo.py`: regenerates the narrated MP4 and subtitles from the script, deck PDF, and a local Piper voice model.\n\n"
+        "To rebuild the voiceover, install `ffmpeg`, `ffprobe`, and `pdftoppm`, download Piper and the model linked below, then run `python build_v5_narrated_demo.py --piper-bin /path/to/piper --voice-model /path/to/en_US-lessac-medium.onnx`.\n\n"
+        "The narrated MP4 uses local Piper TTS with the en_US-lessac-medium voice. Its first spoken sentence discloses AI-generated narration. The 0907 audio was not reused because it does not match V5.\n\n"
+        "Voice model source: [rhasspy/piper-voices, en_US/lessac/medium](https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium) (repository license: MIT). The Piper binary is distributed from [rhasspy/piper](https://github.com/rhasspy/piper/releases).\n\n"
         "The display examples are illustrative. All quantitative claims are taken from V5; no experimental results or cohort statistics were changed.\n",
         encoding="utf-8",
     )
+    narrated_video = OUT / "TCAS_Demo_V5_Narrated.mp4"
+    narrated_duration = None
+    if narrated_video.is_file():
+        raw_duration = subprocess.check_output([
+            "ffprobe", "-v", "error", "-show_entries", "format=duration",
+            "-of", "default=noprint_wrappers=1:nokey=1", str(narrated_video),
+        ], text=True)
+        narrated_duration = round(float(raw_duration.strip()), 3)
     manifest = {
         "version": "V5",
         "source_manuscript": "FINAL_V5_MANUSCRIPT.pdf",
         "slides": 10,
         "silent_video_seconds_nominal": 90,
         "silent_video_resolution": "1920x1080",
-        "narrated_video": "pending local OPENAI_API_KEY",
+        "narrated_video": "TCAS_Demo_V5_Narrated.mp4",
+        "narrated_video_duration_seconds": narrated_duration,
+        "narration_engine": "Piper TTS (local)",
+        "narration_voice": "en_US-lessac-medium",
+        "narration_sample_rate_hz": 22050,
+        "narration_channels": 1,
+        "narration_peak_attenuation_db": 3,
+        "narration_voice_model_source": "https://huggingface.co/rhasspy/piper-voices/tree/main/en/en_US/lessac/medium",
+        "narration_voice_model_license": "MIT",
+        "narration_disclosure": "The opening sentence identifies the narration as AI-generated.",
+        "subtitle_file": "TCAS_Demo_V5_Narrated.srt",
+        "subtitle_timing": "Sentence-level cues proportionally timed within each synthesized narration segment.",
         "doi": "10.5281/zenodo.23383807",
-        "files": [p.name for p in (pptx, pdf, silent, still, script, readme, Path(__file__))],
+        "files": [p.name for p in (pptx, pdf, silent, still, script, readme, Path(__file__))]
+            + ["TCAS_Demo_V5_Narrated.mp4", "TCAS_Demo_V5_Narrated.srt", "build_v5_narrated_demo.py"],
         "note": "The PowerPoint speaker notes and narration script carry matching V5 wording.",
     }
     (OUT / "PRESENTATION_DEMO_MANIFEST_V5.json").write_text(
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
     checksum_files = [pptx, pdf, silent, still, script, readme, Path(__file__)]
+    checksum_files.extend(
+        path for path in (
+            OUT / "TCAS_Demo_V5_Narrated.mp4",
+            OUT / "TCAS_Demo_V5_Narrated.srt",
+            OUT / "build_v5_narrated_demo.py",
+        ) if path.is_file()
+    )
     with (OUT / "SHA256SUMS_PRESENTATION_DEMO_V5.txt").open("w", encoding="utf-8") as f:
         for path in checksum_files:
             digest = hashlib.sha256(path.read_bytes()).hexdigest()
@@ -548,7 +580,7 @@ def main():
         "silent_mp4": str(silent),
         "narration_script": str(OUT / "TCAS_Demo_V5_Narration_EN.md"),
         "slides": 10,
-        "voiceover": "pending local OPENAI_API_KEY",
+        "voiceover": "generated locally with Piper TTS (en_US-lessac-medium)",
     }, indent=2))
 
 

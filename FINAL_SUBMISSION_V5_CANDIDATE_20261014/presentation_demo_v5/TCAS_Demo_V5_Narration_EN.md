@@ -1,10 +1,11 @@
 # TCAS Demo V5 — English narration script
 
 Delivery: clear, neutral, steady pace. Speaker notes in the PowerPoint use the same text.
+Voice: locally generated with Piper TTS, en_US-lessac-medium. The narration is AI-generated.
 
 ## 01 | Title
 
-This presentation summarizes the V5 journal study of timestep-conditioned adapter scaling for multi-view diffusion texture generation. The focus is what survives comparison with strong controls and evaluation on baked assets.
+This demo uses AI-generated narration. This presentation summarizes the V5 journal study of timestep-conditioned adapter scaling for multi-view diffusion texture generation. The focus is what survives comparison with strong controls and evaluation on baked assets.
 
 ## 02 | The graphics task
 
@@ -41,5 +42,3 @@ The contribution is an evidence chain for an implemented graphics control. We re
 ## 10 | Data and conclusion
 
 The limited public data release is archived as Zenodo version 1.0.1 at DOI 10.5281 slash zenodo dot 23383807. It contains selected derived metrics and attribution records. It excludes source meshes and textures, generated-image archives, model weights, checkpoints, and participant-level responses. Overall, the evidence does not identify a universally preferred schedule or establish faithful material reproduction. Thank you.
-
-Voiceover status: audio synthesis pending local OPENAI_API_KEY configuration.
