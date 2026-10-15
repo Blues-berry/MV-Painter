@@ -36,4 +36,4 @@ Those require new experiments, recovered records, or both. The small bake effect
 
 **Scientific assessment: YES, as a bounded empirical C&G manuscript.** The claims are appropriately scoped and supported by the controlled comparisons, the distinction between view and asset endpoints, and the limitations recorded above.
 
-**SUBMISSION_READY: NO.** The handoff still needs the Zenodo version DOI, funder-role confirmation, Graphical Abstract approval, and live portal checks. Portal upload has not been performed; this is not an acceptance forecast.
+**SUBMISSION_READY: NO.** The Zenodo version DOI is now verified and cited; the handoff still needs funder-role confirmation, Graphical Abstract approval, and live portal checks. Portal upload has not been performed; this is not an acceptance forecast.
