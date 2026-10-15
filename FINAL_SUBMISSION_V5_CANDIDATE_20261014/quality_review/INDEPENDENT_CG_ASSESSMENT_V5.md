@@ -34,4 +34,6 @@ Those require new experiments, recovered records, or both. The small bake effect
 
 **AUTHOR_REVIEW_READY: YES.** The revised narrative, figure decisions, cohort boundaries and limitations are internally consistent and supported by the supplied evidence.
 
-**SUBMISSION_READY: YES, as a bounded empirical C&G manuscript.** The package is complete and its claims are appropriately scoped. This judgment is not based on compilation alone: it reflects the controlled comparison design, explicit distinction between view and asset endpoints, full-cohort data retained in the Supplement, clear visual-selection disclosures, provenance-checked media and marked manuscript, and the explicit limits above. The corresponding author should review the remaining novelty risk before submission. Portal upload has not been performed; readiness is not an acceptance forecast.
+**Scientific assessment: YES, as a bounded empirical C&G manuscript.** The claims are appropriately scoped and supported by the controlled comparisons, the distinction between view and asset endpoints, and the limitations recorded above.
+
+**SUBMISSION_READY: NO.** The handoff still needs the Zenodo version DOI, funder-role confirmation, Graphical Abstract approval, and live portal checks. Portal upload has not been performed; this is not an acceptance forecast.

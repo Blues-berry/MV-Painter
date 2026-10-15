@@ -1,10 +1,10 @@
 {
-  "status": "CONDITIONAL_AUTHOR_FACTS_AND_LIVE_PORTAL_CHECK",
+  "status": "CONDITIONAL_ZENODO_DOI_AUTHOR_CONFIRMATIONS_AND_LIVE_PORTAL_CHECK",
   "version": "V5 candidate",
   "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
-  "submission_manifest_sha256": "4740dab6ed00414b907a3555bbb093cd611ee12db44d7d52e841b993d726cdcc",
+  "submission_manifest_sha256": "f06b1c6bec9ce619a06de45d5221f07a1a878bc24a25aff1fc119d4351f62eca",
   "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
-  "checksum_sha256": "d64616a48d8c30f9dc808bfd95e84f98ee3c1f77f4dbe63530f39582c1ed94b5",
+  "checksum_sha256": "a034c6e04b93a8595f3015d4414d39d6041af93b4a68c3c0f5c308b4fc622c5a",
   "page_counts": {
     "main": 13,
     "supplement": 69,
@@ -12,7 +12,7 @@
     "marked": 20,
     "graphical_abstract": 1
   },
-  "source_archive_sha256": "00eed92893e4b6d3925d03a040d773c63fb2d24e99d1cf7bd2e335c1eb58ce3f",
+  "source_archive_sha256": "4ed7726ed7da2120c83ef0683c00b02bb035a22d0e0995f2cb513dc062339542",
   "source_archive_upload_item_type": "LaTeX source files; upload compressed, not as Supplementary Material",
   "first_round_submitted_version": "CAG-S-26-01549",
   "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
@@ -38,11 +38,9 @@
   },
   "upload_method": "Use the existing revision; upload 20 candidates individually. Upload LaTeX source ZIP, four figure PDFs, videos with matching stills/captions, and Paper 75 as editor-only/related conference paper.",
   "author_gates": [
-    "Historical 24-participant ethics/consent facts remain for author confirmation; no ethics content was changed in this update.",
-    "The limited rights-filtered dataset is public at https://github.com/Blues-berry/MV-Painter-research-data, commit 8765e1f186e9d3fabd6151c8b388984c391a7520; enable its Zenodo integration, archive version 1.0.0, and replace the pinned GitHub citation with the assigned version DOI.",
-    "State each funder’s role in design, data collection, analysis, interpretation, writing and the decision to submit.",
-    "Author visual approval of the required Graphical Abstract.",
-    "In the existing revision record, confirm title/abstract/keywords, article type, file item types, Paper 75 editor-only classification, and video previews/captions."
+    "Zenodo DOI insertion for the published rights-filtered data release.",
+    "Funder-role statement.",
+    "Graphical Abstract visual approval and live revision-portal metadata/item types."
   ],
   "guide_access_note": "Compared against the official Guide text supplied by the user; extended conference paper, editable files, Highlights, required Graphical Abstract, Supplement/video captions, research data, funding roles and cover-letter requirements checked.",
   "portal_submission": "NOT_PERFORMED",
@@ -85,7 +83,7 @@
     "abbreviations_removed": true,
     "official_guideline": "https://www.elsevier.com/researcher/author/tools-and-resources/highlights"
   },
-  "source_revision_commit": "7b845de3",
+  "source_revision_commit": "5551c27ded635e2b0e96e767ac7526ad5d2a47b5",
   "support_files": {
     "acknowledgements": {
       "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Acknowledgements_V5.docx",
@@ -114,17 +112,18 @@
     }
   },
   "submission_bundle": {
-    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip",
+    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261015.zip",
     "upload_files": 20,
     "status": "Conditional candidate; refreshed handoff archive; extract and upload 20 individual files.",
-    "bytes": 65438487,
-    "sha256": "dcf87983a89922ca95befcb10df49b08d79ee861aa89552e69bb98a3f4cd5084",
-    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip"
+    "bytes": 65439275,
+    "sha256": "fc69b3bbe3ad81ab101102e2318957a523e59a8fc7c25eac87ed2af2e761c440",
+    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261015.zip"
   },
   "research_data_repository": {
     "url": "https://github.com/Blues-berry/MV-Painter-research-data",
     "commit": "8765e1f186e9d3fabd6151c8b388984c391a7520",
     "scope": "rights-filtered derived metrics and figure-source metadata; no meshes, textures, generated-image archive, model weights or participant-level responses",
-    "doi_status": "pending Zenodo repository enablement and version release archive"
+    "doi_status": "pending Zenodo ingestion/DOI assignment for published v1.0.0 release",
+    "github_release": "https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.0"
   }
 }
