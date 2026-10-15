@@ -1,0 +1,98 @@
+{
+  "selected_candidate": "C",
+  "camera": "004",
+  "rows": [
+    {
+      "uid": "21678bd623654182b52c11d013de4e71",
+      "title": "Tire",
+      "creator": "Koto3D Stephane Vogley",
+      "license": "CC Attribution",
+      "source_url": "https://sketchfab.com/3d-models/21678bd623654182b52c11d013de4e71",
+      "role": "Input-property median",
+      "selection_rule": "Variance of four-neighbour Laplacian of mean RGB/255 on source raw000, restricted to alpha>127 foreground eroded by 3 pixels. Median among seven publication-cleared inputs; editorial selection, not population representativeness.",
+      "fixed_mean_fg_lpips": 0.1719823530451818,
+      "late_high_fg_lpips": 0.16919158365238796,
+      "delta_lpips": -0.0027907693927938515,
+      "delta_psnr_db": 0.2567077766765262,
+      "input_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_source_raw000.png",
+      "input_sha256": "9effd2f9361ced2d86fa26b0f08fb25b34c7557cfa830aaa1e4ced655af6e5a3",
+      "panels": [
+        {
+          "label": "GT-256 self-bake",
+          "condition": "gt",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_gt_raw004.png",
+          "source_sha256": "81c30925f5cc5937bf96ae5d4292827b85405eaeae1074ed49c4d69c7d2ee4fa",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_gt_display004.png",
+          "display_sha256": "a3ee29c24917794de455e0dcd8a4c4eacb3badff79e8900f6c32fed963bc7f49",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+        },
+        {
+          "label": "Fixed Mean",
+          "condition": "budget_fixed_mean",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_fixed_mean_raw004.png",
+          "source_sha256": "4bd103f9a857fb49396291cacf0d344ddbde011537fe09e5fc711c605f770799",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_fixed_mean_display004.png",
+          "display_sha256": "3a8d6d8b38a2a6efd8b3da01248c068fb1565485d9a19ea40de0ff0f7845b0ec",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+        },
+        {
+          "label": "Late-high",
+          "condition": "budget_late16",
+          "source_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_late16_raw004.png",
+          "source_sha256": "b394299c2b5e079813b584fa429858ce736fb18e5a47671dbb023f80b96f53db",
+          "display_asset": "figures/source_assets/quality_v4/21678bd623654182b52c11d013de4e71_budget_late16_display004.png",
+          "display_sha256": "d0503b6be3c754e6bf47c7a01dea193463c74462011df730684838c9ce0309ec",
+          "crop": [
+            42,
+            70,
+            434,
+            442
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb"
+        }
+      ]
+    }
+  ],
+  "input_metric_definition": "Variance of four-neighbour Laplacian of mean RGB/255 on source raw000, restricted to alpha>127 foreground eroded by 3 pixels. Median among seven publication-cleared inputs; editorial selection, not population representativeness.",
+  "effect_plot": {
+    "source": "Supplement S5 ten-object 11-view FG-LPIPS table",
+    "metric": "Late-high minus Fixed Mean FG-LPIPS",
+    "status": "existing primary object deltas; plot descriptive, no new inference",
+    "values_by_uid_prefix": {
+      "1dc2c857f761": -0.00408,
+      "21678bd62365": -0.00279,
+      "238ff3e41c96": -0.00046,
+      "2dd9bc8172c6": -0.00781,
+      "2f6c94487ee5": -3e-05,
+      "3c83796ca5f0": -0.00318,
+      "85a7df80b79a": -0.00445,
+      "e261c0fe85af": -0.00168,
+      "f1ccc55a65c7": -0.00137,
+      "fa5c4b02c5b2": -0.00065
+    }
+  }
+}

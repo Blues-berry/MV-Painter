@@ -1,0 +1,108 @@
+{
+  "selected_candidate": "A",
+  "camera": "004",
+  "rows": [
+    {
+      "uid": "238ff3e41c964655b83aa9c8770cc766",
+      "title": "หิน",
+      "creator": "suntaree",
+      "license": "CC Attribution",
+      "source_url": "https://sketchfab.com/3d-models/238ff3e41c964655b83aa9c8770cc766",
+      "role": "Lowest absolute FG-LPIPS example",
+      "selection_rule": "Post-outcome lowest absolute existing 11-view FG-LPIPS for both shown schedules among seven display-cleared objects; not largest schedule benefit.",
+      "fixed_mean_fg_lpips": 0.058953279121355576,
+      "late_high_fg_lpips": 0.05848895047198643,
+      "delta_lpips": -0.0004643286493691487,
+      "delta_psnr_db": 0.001205639405684522,
+      "input_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_source_raw000.png",
+      "input_sha256": "ac8afd6e335b13fc85086e01b0a1c60759ad82333d27efc4794f3d54eece5c0e",
+      "panels": [
+        {
+          "label": "GT-256 self-bake",
+          "condition": "gt",
+          "source_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_gt_raw004.png",
+          "source_sha256": "913da5760761272e96112d8d3a728e97a6288fd863593e328f52cfd0a9fce557",
+          "display_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_gt_display004.png",
+          "display_sha256": "d58023e302f2e909885fe1a1f288505a8e2576b62ca9c376e009e2171ae2d4ea",
+          "crop": [
+            107,
+            197,
+            406,
+            315
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Fixed Mean",
+          "condition": "budget_fixed_mean",
+          "source_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_budget_fixed_mean_raw004.png",
+          "source_sha256": "c0cf08b4cbaaf20c8193f1b1c2c7816fc46ae5538c426822164b4aceacb74859",
+          "display_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_budget_fixed_mean_display004.png",
+          "display_sha256": "259d661976384f10a1e16f38f5065781dc87839f5e93635fa58c79b808b2d5c6",
+          "crop": [
+            107,
+            197,
+            406,
+            315
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
+        },
+        {
+          "label": "Late-high",
+          "condition": "budget_late16",
+          "source_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_budget_late16_raw004.png",
+          "source_sha256": "d53663e5c6212d00c77eb94082e8a0a662dba61c855a31b927eb5a88d2794cbc",
+          "display_asset": "figures/source_assets/quality_v4/238ff3e41c964655b83aa9c8770cc766_budget_late16_display004.png",
+          "display_sha256": "66fe69a5f148bc1093ef3f1c5917667e465ee4db9261ffaa321e480637ae4435",
+          "crop": [
+            107,
+            197,
+            406,
+            315
+          ],
+          "camera": "held-out raw004",
+          "width": 512,
+          "height": 512,
+          "camera_sha256": "d63d488d16990bd7b453578248544b6c1cbcc841ff765aa8b61f0d85ba046e8e",
+          "protocol_manifest_sha256": "f7815343cec209669d2a37074a5fd96d45aad3863aca43f512ba94b4ab9c58fb",
+          "source_resolution": [
+            512,
+            512
+          ],
+          "display_crop_resolution": [
+            299,
+            118
+          ],
+          "display_crop_pixel_identity": "PASS"
+        }
+      ]
+    }
+  ],
+  "pixel_validation": "PASS: every display crop is an exact pixel crop from its 512x512 source render; within-object crop coordinates match across GT, Fixed Mean, and Late-high."
+}

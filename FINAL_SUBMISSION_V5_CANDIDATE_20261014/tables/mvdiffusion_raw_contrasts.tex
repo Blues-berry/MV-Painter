@@ -1,0 +1,47 @@
+\begingroup\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{p{4.0cm}p{3.1cm}p{7.2cm}}
+\caption{MVDiffusion 75-object paired contrasts, reported as raw condition A minus condition B. Every comparison has $N=75$ paired objects; intervals are pointwise 95\% object-bootstrap percentile CIs (10,000 resamples, seed 20260928), without multiplicity adjustment. Higher PSNR, FG-SSIM, and Edge-SSIM are favorable; lower FG-LPIPS, CIEDE2000, and GT-relative texture error are favorable. The last metric is a mean symmetric-log error across three reference-relative variation statistics and is not a texture-fidelity measure.}\label{tab:mvdiffusion-raw-paired}\\
+\toprule
+Contrast (A $-$ B) & Endpoint & Raw mean difference [95\% CI] \\
+\midrule\endfirsthead
+\toprule Contrast (A $-$ B) & Endpoint & Raw mean difference [95\% CI] \\
+\midrule\endhead
+\multicolumn{3}{l}{\textbf{P1: L-LLH $-$ G-FL}}\\
+& PSNR (dB) & $-0.453828\;[-0.752102,-0.160451]$ \\
+& FG-SSIM & $-0.019393\;[-0.029361,-0.009856]$ \\
+& Edge-SSIM & $-0.005941\;[-0.010305,-0.001382]$ \\
+& FG-LPIPS & $+0.002745\;[-0.001808,+0.007632]$ \\
+& CIEDE2000 & $+1.373021\;[+0.418244,+2.374678]$ \\
+& GT-relative texture error & $-0.082286\;[-0.145316,-0.020073]$ \\
+\multicolumn{3}{l}{\textbf{P2: L-LLH $-$ G-LLH}}\\
+& PSNR (dB) & $-0.466728\;[-0.767571,-0.174846]$ \\
+& FG-SSIM & $-0.019245\;[-0.029244,-0.009725]$ \\
+& Edge-SSIM & $-0.006207\;[-0.010601,-0.001620]$ \\
+& FG-LPIPS & $+0.002998\;[-0.001458,+0.007765]$ \\
+& CIEDE2000 & $+1.377180\;[+0.400867,+2.393609]$ \\
+& GT-relative texture error & $-0.064768\;[-0.124369,-0.005093]$ \\
+\multicolumn{3}{l}{\textbf{P3: L-LLH $-$ L-FIX}}\\
+& PSNR (dB) & $-0.092564\;[-0.182342,-0.003231]$ \\
+& FG-SSIM & $+0.000528\;[-0.003700,+0.004874]$ \\
+& Edge-SSIM & $-0.002828\;[-0.005185,-0.000405]$ \\
+& FG-LPIPS & $-0.001089\;[-0.002704,+0.000499]$ \\
+& CIEDE2000 & $+0.082626\;[-0.235252,+0.410153]$ \\
+& GT-relative texture error & $-0.037090\;[-0.081113,+0.000258]$ \\
+\multicolumn{3}{l}{\textbf{P4: L-LHL $-$ G-LHL}}\\
+& PSNR (dB) & $-0.520646\;[-0.810872,-0.232104]$ \\
+& FG-SSIM & $-0.021431\;[-0.032306,-0.011114]$ \\
+& Edge-SSIM & $-0.007282\;[-0.011359,-0.003234]$ \\
+& FG-LPIPS & $+0.002491\;[-0.001895,+0.007174]$ \\
+& CIEDE2000 & $+1.545280\;[+0.592682,+2.526751]$ \\
+& GT-relative texture error & $-0.098921\;[-0.154601,-0.044345]$ \\
+\multicolumn{3}{l}{\textbf{P5: G-LLH $-$ G-LHL}}\\
+& PSNR (dB) & $-0.078763\;[-0.163889,+0.004507]$ \\
+& FG-SSIM & $-0.0000003\;[-0.002323,+0.002393]$ \\
+& Edge-SSIM & $-0.001471\;[-0.003510,+0.000589]$ \\
+& FG-LPIPS & $-0.001371\;[-0.002642,-0.000141]$ \\
+& CIEDE2000 & $+0.015861\;[-0.264829,+0.299044]$ \\
+& GT-relative texture error & $-0.032667\;[-0.068249,+0.002649]$ \\
+\bottomrule
+\end{longtable}
+\endgroup

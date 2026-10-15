@@ -1,0 +1,137 @@
+{
+  "status": "CONDITIONAL_AUTHOR_CONFIRMATIONS_AND_LIVE_PORTAL_CHECK",
+  "version": "V5 candidate",
+  "local_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
+  "submission_manifest_sha256": "b3c58b77fa148340cdcf47abd6603aa54eace598106edb2f40bf45c01892d1da",
+  "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
+  "checksum_sha256": "3abea7ba8f64eae176cc37650cd91002b87a3277254232a754843bcac510831a",
+  "page_counts": {
+    "main": 13,
+    "supplement": 69,
+    "response": 6,
+    "marked": 20,
+    "graphical_abstract": 1
+  },
+  "source_archive_sha256": "ad4316b8e6f2e15f02bdb0fd5e9588ba943a7f1b6614831a637e6d9391fce425",
+  "source_archive_upload_item_type": "LaTeX source files; upload compressed, not as Supplementary Material",
+  "first_round_submitted_version": "CAG-S-26-01549",
+  "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
+  "graphical_abstract": {
+    "file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Graphical_Abstract_V5.pdf",
+    "status": "Required by supplied official C&G Guide; included; author visual approval pending."
+  },
+  "video_paths": {
+    "GeoTex": {
+      "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison.mp4",
+      "still": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GeoTex_Baked_Comparison_Still.png",
+      "sha256": "6191b81e6336c6be62fcd8962a33f1e84245667b68ae6346be2815da1d9502a3",
+      "decode": "PASS: full ffmpeg decode in V5 local directory",
+      "identity": "eleven discrete unseen raw cameras 1–11 per object; V5 video bytes are identical to the ledger-verified file."
+    },
+    "GSO": {
+      "mp4": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GSO_Baked_Comparison.mp4",
+      "still": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Supplementary_GSO_Baked_Comparison_Still.png",
+      "sha256": "2e76a5d742fc8432aa8f0f6e58df13d442074bfddcb8552bc539fe665f1261b5",
+      "decode": "PASS: full ffmpeg decode in V5 local directory",
+      "identity": "eleven protocol-specific unseen camera indices 0–10; all twelve mesh hashes were verified in prior media audit; source-mesh panel is not a GT self-bake; V5 bytes are identical to that verified file."
+    }
+  },
+  "upload_method": "Use the existing revision; upload 20 candidates individually. Upload LaTeX source ZIP, four figure PDFs, videos with matching stills/captions, and Paper 75 as editor-only/related conference paper.",
+  "author_gates": [
+    "Funder-role statement.",
+    "Graphical Abstract visual approval and live revision-portal metadata/item types."
+  ],
+  "guide_access_note": "Compared against the official Guide text supplied by the user; extended conference paper, editable files, Highlights, required Graphical Abstract, Supplement/video captions, research data, funding roles and cover-letter requirements checked.",
+  "portal_submission": "NOT_PERFORMED",
+  "reference_audit": {
+    "citation_style": "numeric; reference list follows first citation order",
+    "unique_citations": 42,
+    "bibliography_entries": 42,
+    "uncited_entries": 0,
+    "unresolved_citations": 0,
+    "verified_changes": [
+      "InstantMesh corrected to its arXiv preprint record rather than NeurIPS 2024.",
+      "Classifier-free guidance workshop year and arXiv year disambiguated.",
+      "LPIPS reference completed with all five authors and CVPR pages 586–595."
+    ],
+    "metadata_basis": "Citation/bibliography consistency checked; the limited dataset reference cites the verified Zenodo v1.0.1 DOI."
+  },
+  "format_audit": {
+    "main": "Anonymous, C&G elsarticle/cag 5p two-column PDF with line numbers; 13 pages; 210 x 280 mm.",
+    "abstract_words": 241,
+    "keywords": 5,
+    "supplement": "69 pages; 210 x 280 mm.",
+    "marked_manuscript": "20 pages; generated against authenticated original submission and same page box.",
+    "response": "6 pages; Letter page size.",
+    "fonts": "Font inspection passed: document-specific fonts are embedded. The PDFs also reference standard Type 1 Helvetica and Times base fonts without embedding; Elsevier lists Helvetica/Arial and Times among recommended font families.",
+    "font_note": "https://www.elsevier.com/about/policies-and-standards/author/artwork-and-media-instructions/artwork-overview",
+    "conference_extension": "PASS: separate title, full Paper 75 reference/status and differences/revised interpretation in Abstract/Introduction/Conclusion; original Paper 75 PDF supplied; material additional analyses appear to meet the 30% criterion."
+  },
+  "highlight_audit": {
+    "file": "Highlights_V5.docx",
+    "word_bullets": 5,
+    "maximum_characters_including_spaces": 85,
+    "actual_character_counts": [
+      59,
+      80,
+      84,
+      83,
+      82
+    ],
+    "word_and_text_copy_match": true,
+    "abbreviations_removed": true,
+    "official_guideline": "https://www.elsevier.com/researcher/author/tools-and-resources/highlights"
+  },
+  "source_revision_commit": "10a1619324a154e03f2c9068ab148d37f3fc2458",
+  "support_files": {
+    "acknowledgements": {
+      "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Acknowledgements_V5.docx",
+      "sha256": "c7c577efb5a0e73a12a082c4a6227779ac011a16fc580dd8362f93d010ca4833",
+      "source": "Byte-identical copy from first-round 0907; same text as the funding section on Title_Page_V5.docx."
+    },
+    "cover_letter": {
+      "docx_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Cover_Letter_V5.docx",
+      "docx_sha256": "7f7ca1f1cc6a0272e802d452281773cd14ff3d7bcebe5488b7e106b7bf865329",
+      "pdf_proof_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Cover_Letter_V5_PRE_GUIDE_UPDATE_STALE_PROOF_DO_NOT_UPLOAD.pdf",
+      "pdf_proof_sha256": "3df718c6222304216af3020507a22d4cc7bfa29ea0827adb9dec81df093b5218",
+      "page_count": 1,
+      "status": "Current DOCX includes Paper 75 reference/status, new evidence, revised interpretation, scope fit and revision ID; old PDF proof is stale and excluded."
+    },
+    "title_page": {
+      "docx_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Title_Page_V5.docx",
+      "docx_sha256": "c67c2709a9fad6e55cd8f2b051ee467dedbc084d5431dc01978e498379317b53",
+      "pdf_path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Title_Page_V5.pdf",
+      "pdf_sha256": "ba87def621c1d099c2dfb85186f4bcdcfb663a1a943b1e2caaf32a9d69c3e829",
+      "status": "Competing-interest statement is supplied only in the separate declaration file."
+    },
+    "original_conference_submission": {
+      "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf",
+      "sha256": "4c7fa4923e9360f7855d8f8fd1119aaf340a55b6f7c1cce903f774a50caca935",
+      "status": "Editor comparison only; not public Supplementary Material."
+    }
+  },
+  "submission_bundle": {
+    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip",
+    "upload_files": 20,
+    "status": "Conditional V5 handoff with verified Zenodo DOI; extract and upload the 20 individual files.",
+    "bytes": 65446965,
+    "sha256": "92ca89d6bc4c792bc30f461974dfdadc55725509d7005c8308f9d99aa14425e4",
+    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip"
+  },
+  "research_data_repository": {
+    "repository_url": "https://github.com/Blues-berry/MV-Painter-research-data",
+    "version": "1.0.1",
+    "github_release": "https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.1",
+    "zenodo_record": "https://zenodo.org/records/23383807",
+    "doi": "10.5281/zenodo.23383807",
+    "doi_url": "https://doi.org/10.5281/zenodo.23383807",
+    "tag_commit": "c33c568398c5b0b5f9b5a838d36722140fe0e8d1",
+    "archive_file": "Blues-berry/MV-Painter-research-data-v1.0.1.zip",
+    "archive_bytes": 851975,
+    "archive_md5": "0923032eacea686e8304a3c2a9df8f08",
+    "archive_sha256": "aafbbbe7f9a9dc33d9ad5c24d20683dcf583e0341cba71ee23223c87306b9217",
+    "access": "open",
+    "license": "CC BY 4.0",
+    "verification": "Published record state done; downloaded archive MD5 matches Zenodo API; ZIP contents verified."
+  }
+}

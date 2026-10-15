@@ -1,0 +1,68 @@
+{
+  "version": "V5 candidate second-round readiness",
+  "baseline_head": "5551c27ded635e2b0e96e767ac7526ad5d2a47b5",
+  "branch": "codex/cg-final-v4-20261014",
+  "AUTHOR_REVIEW_READY": "YES",
+  "SUBMISSION_READY": "NO — funder-role confirmation, Graphical Abstract approval, and live portal checks remain.",
+  "pages": {
+    "main": 13,
+    "supplement": 69,
+    "response": 6,
+    "marked": 20
+  },
+  "checks": {
+    "LaTeX_main_and_supplement": "PASS: independently rebuilt from the 48-file flat archive; extracted text matches the reviewed 13-page main PDF and updated 69-page Supplement.",
+    "marked_manuscript_from_authenticated_original": "PASS: exact source SHA verified against final_0903.tex from first-round 01549 LaTeX ZIP.",
+    "main_table_bodies_unchanged": "PASS: no tables or experimental statistics changed.",
+    "figure3_candidate_page_comparison": "PASS: rebuilt from both complete manuscript variants; candidate A page 8 and retained B page 9 shown side by side.",
+    "figure2_three_row_page": "PASS: current page 8 has three objects, five conditions, camera 000, and neutral object labels.",
+    "reference_integrity": "PASS: 42 citations, 42 bibliography entries, no unresolved/uncited items, first-citation order.",
+    "conference_extension_guide": "PASS: distinct title, full Paper 75 citation, status, changes and revised interpretation in Abstract/Introduction/Conclusion; original conference PDF supplied; substantive new evidence appears to meet 30% criterion.",
+    "separate_figure_files": "PASS: four one-page vector figure PDFs supplied separately.",
+    "source_archive_rebuild": "PASS: 48 flat files; independent rebuilds match extracted text and page counts (13 main, 69 Supplement).",
+    "media_decode": "PASS: both H.264 videos fully decode; matching stills included.",
+    "title_page_and_declaration": "PASS: separate Title Page and Declaration of Interest; acknowledgement appears on Title Page; standalone acknowledgement is not a default upload.",
+    "highlights": "PASS: five bullets; all <=85 characters.",
+    "graphical_abstract": "PASS file supplied as required; author visual approval pending.",
+    "human_research_statement": "PASS — Supplement S7 states the author-provided minimal-risk, non-interventional ethics/consent basis; no ethics action remains open.",
+    "research_data_policy": "PASS: rights-filtered dataset archived as Zenodo v1.0.1 under CC BY 4.0; DOI, public record, file checksum, and archive contents verified.",
+    "funding_roles": "BLOCKED_ON_AUTHOR_FACTS: funding names are listed but sponsor roles are not stated.",
+    "submission_bundle": "PASS_WITH_GATES: refreshed 20-file handoff bundle; individual files must be uploaded in the existing revision.",
+    "portal_submission": "NOT_PERFORMED",
+    "figure_sources_and_rights": "PASS: Figure 2, Figure 3, Figure 4 and Supplement S26 attributions and current asset identities checked against source/rights ledgers; Supplement S26 non-title raster pixels are unchanged."
+  },
+  "first_round_submitted_version": "CAG-S-26-01549",
+  "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
+  "pre_submission_gates": [
+    "State each funder’s role in design, collection, analysis, interpretation, writing, and the decision to submit.",
+    "Author visual approval of the required Graphical Abstract.",
+    "In the existing revision record, confirm title/abstract/keywords, article type, file item types, Paper 75 editor-only classification, and video previews/captions."
+  ],
+  "readiness_basis": "Technical formatting, citation integrity, source rebuilding, figure-source/rights checks, media decoding and the author-provided S7 research statement passed review. The rights-filtered data are public and archived under the Zenodo v1.0.1 DOI, which is cited in the manuscript; funder-role confirmation, Graphical Abstract visual approval and live portal checks remain. Compilation alone does not establish scientific or submission readiness.",
+  "portal_submission": "NOT_PERFORMED",
+  "bundle": {
+    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip",
+    "upload_files": 20,
+    "status": "Conditional V5 handoff with verified Zenodo DOI; extract and upload the 20 individual files.",
+    "bytes": 65446965,
+    "sha256": "92ca89d6bc4c792bc30f461974dfdadc55725509d7005c8308f9d99aa14425e4",
+    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip"
+  },
+  "source_revision_commit": "10a1619324a154e03f2c9068ab148d37f3fc2458",
+  "research_data_archive": {
+    "repository_url": "https://github.com/Blues-berry/MV-Painter-research-data",
+    "version": "1.0.1",
+    "github_release": "https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.1",
+    "zenodo_record": "https://zenodo.org/records/23383807",
+    "doi": "10.5281/zenodo.23383807",
+    "doi_url": "https://doi.org/10.5281/zenodo.23383807",
+    "tag_commit": "c33c568398c5b0b5f9b5a838d36722140fe0e8d1",
+    "archive_file": "Blues-berry/MV-Painter-research-data-v1.0.1.zip",
+    "archive_bytes": 851975,
+    "archive_md5": "0923032eacea686e8304a3c2a9df8f08",
+    "archive_sha256": "aafbbbe7f9a9dc33d9ad5c24d20683dcf583e0341cba71ee23223c87306b9217",
+    "access": "open",
+    "license": "CC BY 4.0",
+    "verification": "Published record state done; downloaded archive MD5 matches Zenodo API; ZIP contents verified."
+  }
+}
