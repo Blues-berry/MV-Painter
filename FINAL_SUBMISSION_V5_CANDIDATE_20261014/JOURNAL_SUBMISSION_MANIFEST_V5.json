@@ -1,6 +1,6 @@
 {
   "version": "V5 candidate second-round handoff",
-  "status": "CONDITIONAL_ZENODO_DOI_AUTHOR_CONFIRMATIONS_AND_LIVE_PORTAL_CHECK",
+  "status": "CONDITIONAL_AUTHOR_CONFIRMATIONS_AND_LIVE_PORTAL_CHECK",
   "branch": "codex/cg-final-v4-20261014",
   "baseline_head": "5551c27ded635e2b0e96e767ac7526ad5d2a47b5",
   "journal_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
@@ -16,8 +16,8 @@
     "filename": "Manuscript_LaTeX_Sources_V5.zip",
     "main_tex": "FINAL_V5_MANUSCRIPT.tex",
     "supplement_tex": "FINAL_V5_SUPPLEMENTARY.tex",
-    "sha256": "4ed7726ed7da2120c83ef0683c00b02bb035a22d0e0995f2cb513dc062339542",
-    "bytes": 22534611,
+    "sha256": "ad4316b8e6f2e15f02bdb0fd5e9588ba943a7f1b6614831a637e6d9391fce425",
+    "bytes": 22534647,
     "upload_item_type": "LaTeX source files",
     "archive_layout": "flat; no subdirectories",
     "archive_entries": 48,
@@ -83,16 +83,16 @@
       "sha256": "454f6eca1ea634a359fea230c0c87132c8305a6d7588a0e37dd3e58eaf1a7ba0"
     },
     "FINAL_READINESS_V5.json": {
-      "bytes": 4780,
-      "sha256": "0523bbfc060357c0f3af49b85734f0dad163cd6c531fd6398bcbc2b28ea99b5d"
+      "bytes": 5491,
+      "sha256": "e07c8766ed0eb5f5a1e80dc9c4a17a2d513801a68a5099d9ed219f6f9da66d65"
     },
     "FINAL_V5_MANUSCRIPT.pdf": {
-      "bytes": 5945623,
-      "sha256": "6991984b8c002b202d1cbdff1810ea3dec3129a9f4dc5d388fa4473ed0981f80"
+      "bytes": 5948928,
+      "sha256": "add46e9e56e1a6069a0f6fcd20e79dd2e0aafa6132ddfc9d6ae9bbbdd85ed6f4"
     },
     "FINAL_V5_MARKED_MANUSCRIPT.pdf": {
-      "bytes": 6044497,
-      "sha256": "007eb60453bbeba82dd8bbb0fac0773c8778f657b16fc626bd9f069fefa5c0ec"
+      "bytes": 6048323,
+      "sha256": "adad6a5b70beb26fd5029a3c7ce4890c70d1ce3927e55a2ee1a906bbfb03e2e4"
     },
     "FINAL_V5_RESPONSE_TO_REVIEWERS.docx": {
       "bytes": 19589,
@@ -104,7 +104,7 @@
     },
     "FINAL_V5_SUPPLEMENTARY.pdf": {
       "bytes": 19053682,
-      "sha256": "204170bb43be44a431289f6b8025cafb9893acf04a7593077d544461cac8dcd7"
+      "sha256": "52421ba4a667e2c42a00361a6611a9fc154c63aeaa8e589dafe2b9fdd361c6a1"
     },
     "Figure_1.pdf": {
       "bytes": 2059525,
@@ -135,8 +135,8 @@
       "sha256": "fad0747b4d5f56b972907232c408a34fd5bad54c5a8e46beb080a5e08415fd49"
     },
     "Manuscript_LaTeX_Sources_V5.zip": {
-      "bytes": 22534611,
-      "sha256": "4ed7726ed7da2120c83ef0683c00b02bb035a22d0e0995f2cb513dc062339542"
+      "bytes": 22534647,
+      "sha256": "ad4316b8e6f2e15f02bdb0fd5e9588ba943a7f1b6614831a637e6d9391fce425"
     },
     "Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf": {
       "bytes": 7583599,
@@ -175,8 +175,8 @@
       "sha256": "ba87def621c1d099c2dfb85186f4bcdcfb663a1a943b1e2caaf32a9d69c3e829"
     },
     "V5_SUBMISSION_INSTRUCTIONS.txt": {
-      "bytes": 2510,
-      "sha256": "ca8584ca5e9202333a0fea48591f1eae2d56b86bc09e85e08786ec385640e39c"
+      "bytes": 2443,
+      "sha256": "243ef62fb9a8a49061d13ba86e1cac0274712cf1cd203328419febbaea88e725"
     }
   },
   "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
@@ -187,7 +187,7 @@
   ],
   "media_submission": "PASS: both MP4s decode fully. Upload each separately with its matching Still.png; use Supplementary_Video_Captions_V5.txt in caption fields if available.",
   "portal_submission": "NOT_PERFORMED",
-  "checksum_sha256": "247709a48c1422792a7b012f3d60c288fb9e133fb1ac7f831df8000d53065064",
+  "checksum_sha256": "3abea7ba8f64eae176cc37650cd91002b87a3277254232a754843bcac510831a",
   "file_count_excluding_manifest_and_checksum": 28,
   "pdf_page_sizes": {
     "main": "595.276 x 793.701 pts",
@@ -206,7 +206,7 @@
       "LPIPS reference completed with all five authors and CVPR pages 586–595.",
       "Added the full CAD/Graphics 2026 Paper 75 conference-submission reference; recommendation status follows the existing response record; original 0907 conference PDF is included for editorial comparison."
     ],
-    "metadata_basis": "Citation/bibliography consistency checked for 42 entries; the limited dataset reference points to a pinned public GitHub commit.",
+    "metadata_basis": "Citation/bibliography consistency checked for 42 entries; the limited dataset reference cites the verified Zenodo v1.0.1 DOI and matching versioned GitHub release.",
     "citation_order": "PASS"
   },
   "journal_upload_roles": {
@@ -273,16 +273,15 @@
   },
   "submission_readiness": {
     "AUTHOR_REVIEW_READY": "YES",
-    "SUBMISSION_READY": "NO — Zenodo DOI insertion, funder-role confirmation, Graphical Abstract approval, and live portal checks are pending.",
+    "SUBMISSION_READY": "NO — funder-role confirmation, Graphical Abstract approval, and live portal checks remain.",
     "portal_submission": "NOT_PERFORMED"
   },
   "pre_submission_gates": [
-    "Confirm Zenodo ingestion/DOI assignment for the published v1.0.0 release and add the version DOI to the manuscript.",
     "State each funder’s role in study design, data collection, analysis, interpretation, writing, and the decision to submit.",
     "Author visual approval of the required Graphical Abstract.",
     "In the existing revision record, confirm title/abstract/keywords, article type, file item types, Paper 75 editor-only classification, and video previews/captions."
   ],
-  "source_revision_commit": "3f2095e1508fa06d06f0ca1caadaf92d9ad6c8c5",
+  "source_revision_commit": "10a1619324a154e03f2c9068ab148d37f3fc2458",
   "support_files": {
     "Acknowledgements_V5.docx": {
       "source": "Byte-identical to 0907 acknowledgement copy; retained locally for comparison. Title Page includes it; do not upload separately unless requested."
@@ -322,18 +321,27 @@
     "30_percent_assessment": "Substantive new analyses and interpretations are present beyond rewriting; content-level assessment appears to meet the Guide criterion."
   },
   "submission_bundle": {
-    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261015.zip",
+    "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip",
     "upload_files": 20,
-    "status": "Conditional candidate; refreshed handoff archive; extract and upload 20 individual files.",
-    "bytes": 65439277,
-    "sha256": "cb5d9a3dca6d6e1dd11f436c3139eef81efec7bc3f36bcf525d1f894b1877fe7",
-    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261015.zip"
+    "status": "Conditional V5 handoff with verified Zenodo DOI; extract and upload the 20 individual files.",
+    "bytes": 65446965,
+    "sha256": "92ca89d6bc4c792bc30f461974dfdadc55725509d7005c8308f9d99aa14425e4",
+    "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_DOI_20261015.zip"
   },
   "research_data_repository": {
-    "url": "https://github.com/Blues-berry/MV-Painter-research-data",
-    "commit": "8765e1f186e9d3fabd6151c8b388984c391a7520",
-    "scope": "rights-filtered derived metrics and figure-source metadata; no meshes, textures, generated-image archive, model weights or participant-level responses",
-    "doi_status": "pending Zenodo ingestion/DOI assignment for published v1.0.0 release",
-    "github_release": "https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.0"
+    "repository_url": "https://github.com/Blues-berry/MV-Painter-research-data",
+    "version": "1.0.1",
+    "github_release": "https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.1",
+    "zenodo_record": "https://zenodo.org/records/23383807",
+    "doi": "10.5281/zenodo.23383807",
+    "doi_url": "https://doi.org/10.5281/zenodo.23383807",
+    "tag_commit": "c33c568398c5b0b5f9b5a838d36722140fe0e8d1",
+    "archive_file": "Blues-berry/MV-Painter-research-data-v1.0.1.zip",
+    "archive_bytes": 851975,
+    "archive_md5": "0923032eacea686e8304a3c2a9df8f08",
+    "archive_sha256": "aafbbbe7f9a9dc33d9ad5c24d20683dcf583e0341cba71ee23223c87306b9217",
+    "access": "open",
+    "license": "CC BY 4.0",
+    "verification": "Published record state done; downloaded archive MD5 matches Zenodo API; ZIP contents verified."
   }
 }
