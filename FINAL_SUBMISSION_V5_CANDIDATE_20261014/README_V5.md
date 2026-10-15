@@ -24,6 +24,10 @@ The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm
 
 The rights-filtered research data are archived as [Zenodo version 1.0.1](https://doi.org/10.5281/zenodo.23383807) and available from the matching [GitHub release](https://github.com/Blues-berry/MV-Painter-research-data/releases/tag/v1.0.1) at tag commit `c33c568398c5b0b5f9b5a838d36722140fe0e8d1`. The archived ZIP checksum was verified against Zenodo metadata. It contains derived metrics and figure-source metadata only; source meshes, textures, generated-image archives, model weights, and participant-level responses are excluded.
 
+## Presentation and demo
+
+`presentation_demo_v5/` contains the V5-aligned editable 10-slide deck, a PDF review copy, a 90-second 1080p silent demo, a representative still, and slide-matched English narration text in the PowerPoint notes and a separate script. The 0907 presentation/demo files remain in their original archive paths. The narrated MP4 is pending local speech-API credentials; the old 0907 narration is not reused because its claims and notes do not match V5. These are companion materials, outside the 20 journal `UPLOAD_FILES` items.
+
 ## Readiness
 
 Technical formatting, bibliography integrity, source-archive rebuilding, and media decoding passed. The supplied Guide requirements were checked. `AUTHOR_REVIEW_READY` is YES. `SUBMISSION_READY` remains NO pending funder-role confirmation, Graphical Abstract visual approval, and live portal metadata/item-type checks. Supplement S7 records the author-provided basis for the minimal-risk, non-interventional preference study; ethics/consent is not an outstanding gate. The manuscript cites the versioned Zenodo DOI and matching GitHub release. See `V5_SUBMISSION_INSTRUCTIONS.txt` and the readiness/manifest files.
