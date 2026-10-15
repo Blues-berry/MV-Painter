@@ -14,17 +14,19 @@ The marked manuscript compares against the exact source of first-round submitted
 - `Title_Page_V5.docx` and `Declaration_of_Interest_V5.docx` are separate; the Title Page no longer repeats the competing-interest declaration.
 - `Acknowledgements_V5.docx` carries the 0907 acknowledgment text byte-for-byte as a local comparison copy. Upload the Title Page, which already contains the acknowledgement, rather than a duplicate standalone file unless the live portal explicitly requests one.
 - `Cover_Letter_V5.docx` includes the Paper 75 status and reference, the added journal evidence, revised interpretation, and fit to C&G scope. Upload the DOCX only; the old PDF proof predates this update and is not for upload.
-- `Manuscript_LaTeX_Sources_V5.zip` (49 files, flat archive; rebuilds main and Supplement)
+- `Manuscript_LaTeX_Sources_V5.zip` (48 files, flat archive; rebuilds main and Supplement)
 - The four main figures are also supplied individually as vector PDFs for figure upload.
 - `Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf` (for editorial comparison; not public Supplementary Material)
 - `Research_Evidence_V5.zip` (internal reproducibility archive; not a repository deposit)
 - `SHA256SUMS_V5.txt`
 
-The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The Supplement received a focused editorial cleanup of internal archive notes, duplicate implementation/provenance notes and repeated figure caveats; cohorts, statistical results, tables and image pixels are unchanged. The two MP4s and matching stills must be uploaded separately; they are not in the LaTeX source archive.
+The main manuscript is 13 pages; the 69-page Supplement shares the 210 × 280 mm page box. The response is 6 pages and the marked manuscript is 20 pages. The Supplement received a focused editorial cleanup of internal archive notes, duplicate implementation/provenance notes and repeated figure caveats; cohorts, statistical results, tables and source-render pixels are unchanged. Figure 2/3 now use neutral object and condition labels, and the rebuilt Supplement Figure S26 changes only its title bands. The two MP4s and matching stills must be uploaded separately; they are not in the LaTeX source archive.
+
+The limited, rights-filtered research data are public at [MV-Painter-research-data](https://github.com/Blues-berry/MV-Painter-research-data), pinned to commit `8765e1f186e9d3fabd6151c8b388984c391a7520`. The deposit contains derived metrics and figure-source metadata only. A Zenodo DOI is pending repository integration and will be added to the manuscript citation after Zenodo archives a versioned release.
 
 ## Readiness
 
-Technical formatting, bibliography integrity, source-archive rebuilding, and media decoding passed. The supplied Guide requirements were checked. `AUTHOR_REVIEW_READY` is YES. `SUBMISSION_READY` remains NO until authors provide the accurate ethics/exemption and informed-consent facts for the historical 24-participant study, a repository link/DOI or an accurate explanation why data cannot be shared, and the role of each funder; live portal metadata and item types must also be confirmed. The Graphical Abstract is required and included, pending author visual approval. See `V5_SUBMISSION_INSTRUCTIONS.txt` and the readiness/manifest files.
+Technical formatting, bibliography integrity, source-archive rebuilding, and media decoding passed. The supplied Guide requirements were checked. `AUTHOR_REVIEW_READY` is YES. `SUBMISSION_READY` remains NO pending author facts, a Zenodo DOI for the public data release, Graphical Abstract visual approval, and live portal metadata/item-type checks. The public dataset URL is already cited in the manuscript; the version DOI will replace the pinned GitHub citation after it is assigned. See `V5_SUBMISSION_INSTRUCTIONS.txt` and the readiness/manifest files.
 
 ## Rebuild
 

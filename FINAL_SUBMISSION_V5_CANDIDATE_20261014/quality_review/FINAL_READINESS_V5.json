@@ -1,9 +1,9 @@
 {
   "version": "V5 candidate second-round readiness",
-  "baseline_head": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
+  "baseline_head": "34ed140a8fe8a81f34b41f2ce86493e625441de8",
   "branch": "codex/cg-final-v4-20261014",
   "AUTHOR_REVIEW_READY": "YES",
-  "SUBMISSION_READY": "NO — author ethics/consent, data repository or non-sharing rationale, funder roles, visual approval and live portal checks remain.",
+  "SUBMISSION_READY": "NO — Zenodo DOI insertion and remaining author confirmations/portal checks are pending.",
   "pages": {
     "main": 13,
     "supplement": 69,
@@ -11,43 +11,44 @@
     "marked": 20
   },
   "checks": {
-    "LaTeX_main_and_supplement": "PASS: flat source archive independently rebuilt 13-page main and 69-page Supplement; text/page geometry match reviewed PDFs.",
+    "LaTeX_main_and_supplement": "PASS: independently rebuilt from the 48-file flat archive; extracted text matches the reviewed 13-page main PDF and 69-page Supplement.",
     "marked_manuscript_from_authenticated_original": "PASS: exact source SHA verified against final_0903.tex from first-round 01549 LaTeX ZIP.",
     "main_table_bodies_unchanged": "PASS: no tables or experimental statistics changed.",
-    "figure3_candidate_page_comparison": "PASS: prior actual-page comparison retained; no current figure change.",
-    "figure2_three_row_page": "PASS: prior 5-condition same-view page retained.",
-    "reference_integrity": "PASS: 41 citations, 41 bibliography entries, no unresolved/uncited items, first-citation order.",
+    "figure3_candidate_page_comparison": "PASS: rebuilt from both complete manuscript variants; candidate A page 8 and retained B page 9 shown side by side.",
+    "figure2_three_row_page": "PASS: current page 8 has three objects, five conditions, camera 000, and neutral object labels.",
+    "reference_integrity": "PASS: 42 citations, 42 bibliography entries, no unresolved/uncited items, first-citation order.",
     "conference_extension_guide": "PASS: distinct title, full Paper 75 citation, status, changes and revised interpretation in Abstract/Introduction/Conclusion; original conference PDF supplied; substantive new evidence appears to meet 30% criterion.",
     "separate_figure_files": "PASS: four one-page vector figure PDFs supplied separately.",
-    "source_archive_rebuild": "PASS: 49 flat files, both PDFs independently rebuilt with extracted text and geometry matching.",
+    "source_archive_rebuild": "PASS: 48 flat files; independent rebuilds match extracted text and page counts (13 main, 69 Supplement).",
     "media_decode": "PASS: both H.264 videos fully decode; matching stills included.",
     "title_page_and_declaration": "PASS: separate Title Page and Declaration of Interest; acknowledgement appears on Title Page; standalone acknowledgement is not a default upload.",
     "highlights": "PASS: five bullets; all <=85 characters.",
     "graphical_abstract": "PASS file supplied as required; author visual approval pending.",
     "human_research_statement": "BLOCKED_ON_AUTHOR_FACTS: historical 24-participant forced-choice study remains; ethics/exemption and consent facts absent.",
-    "research_data_policy": "BLOCKED_ON_AUTHOR_ACTION: no data-repository DOI/URL and no complete author-approved non-sharing explanation.",
+    "research_data_policy": "PASS_WITH_DOI_PENDING: limited rights-filtered data are public at the pinned GitHub commit; Zenodo repository integration and version DOI are pending.",
     "funding_roles": "BLOCKED_ON_AUTHOR_FACTS: funding names are listed but sponsor roles are not stated.",
-    "submission_bundle": "PASS_WITH_GATES: 20 upload candidates in a verified ZIP; upload files individually.",
-    "portal_submission": "NOT_PERFORMED"
+    "submission_bundle": "PASS_WITH_GATES: refreshed 20-file handoff bundle; individual files must be uploaded in the existing revision.",
+    "portal_submission": "NOT_PERFORMED",
+    "figure_sources_and_rights": "PASS: Figure 2, Figure 3, Figure 4 and Supplement S26 attributions and current asset identities checked against source/rights ledgers; Supplement S26 non-title raster pixels are unchanged."
   },
   "first_round_submitted_version": "CAG-S-26-01549",
   "first_round_source_sha256": "203966151e1129d308b7827ececab194d2abf12c2e2639249444d11d09320a01",
   "pre_submission_gates": [
-    "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study retained in the Supplement.",
-    "Provide a repository DOI/URL for research data and cite it, or provide an accurate author-approved explanation why data cannot be shared; current Data Availability text has no repository link.",
-    "State each funder’s role in study design, collection, analysis, interpretation, writing, and the decision to submit.",
+    "Historical 24-participant ethics/consent facts remain for author confirmation; no ethics content was changed in this update.",
+    "The limited rights-filtered dataset is public at https://github.com/Blues-berry/MV-Painter-research-data, commit 8765e1f186e9d3fabd6151c8b388984c391a7520; enable its Zenodo integration, archive version 1.0.0, and replace the pinned GitHub citation with the assigned version DOI.",
+    "State each funder’s role in design, data collection, analysis, interpretation, writing and the decision to submit.",
     "Author visual approval of the required Graphical Abstract.",
-    "In the existing revision record, confirm current title/abstract/keywords, article type, item types, Paper 75 editor-only classification, and video previews/captions."
+    "In the existing revision record, confirm title/abstract/keywords, article type, file item types, Paper 75 editor-only classification, and video previews/captions."
   ],
-  "readiness_basis": "Technical formatting and file integrity passed. Scientific claims remain bounded as reported in V5. LaTeX compilation is not treated as submission readiness; unresolved author facts and repository/portal requirements remain explicit.",
+  "readiness_basis": "Technical formatting, citations, source rebuilding, figure-source/rights checks and media decoding passed. The public data URL is in the manuscript; a Zenodo version DOI and remaining author/portal confirmations are outstanding. Compilation does not establish scientific or submission readiness.",
   "portal_submission": "NOT_PERFORMED",
   "bundle": {
     "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip",
     "upload_files": 20,
-    "status": "Conditional candidate; extract and upload individual files; do not upload master ZIP as a single item.",
-    "bytes": 61139087,
-    "sha256": "b089ad9ebcced219a0e1ee57bf8001056529287ba1f3f74b4167d3c4b1407de5",
+    "status": "Conditional candidate; refreshed handoff archive; extract and upload 20 individual files.",
+    "bytes": 65438487,
+    "sha256": "dcf87983a89922ca95befcb10df49b08d79ee861aa89552e69bb98a3f4cd5084",
     "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip"
   },
-  "source_revision_commit": "7b845de3"
+  "source_revision_commit": "34ed140a8fe8a81f34b41f2ce86493e625441de8"
 }

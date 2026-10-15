@@ -1,8 +1,8 @@
 {
   "version": "V5 candidate second-round handoff",
-  "status": "CONDITIONAL_AUTHOR_FACTS_AND_LIVE_PORTAL_CHECK",
+  "status": "CONDITIONAL_AUTHOR_FACTS_ZENODO_DOI_AND_LIVE_PORTAL_CHECK",
   "branch": "codex/cg-final-v4-20261014",
-  "baseline_head": "91b6c42b16b82eca0fa7a477be1266c1d1a7e485",
+  "baseline_head": "34ed140a8fe8a81f34b41f2ce86493e625441de8",
   "journal_directory": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate",
   "pdf_pages": {
     "main": 13,
@@ -16,12 +16,12 @@
     "filename": "Manuscript_LaTeX_Sources_V5.zip",
     "main_tex": "FINAL_V5_MANUSCRIPT.tex",
     "supplement_tex": "FINAL_V5_SUPPLEMENTARY.tex",
-    "sha256": "cac341719c516b2d0a65b75cb97911bdce83e94e242ab9a17adcc301714bb559",
-    "bytes": 20384631,
+    "sha256": "00eed92893e4b6d3925d03a040d773c63fb2d24e99d1cf7bd2e335c1eb58ce3f",
+    "bytes": 22534590,
     "upload_item_type": "LaTeX source files",
     "archive_layout": "flat; no subdirectories",
-    "archive_entries": 49,
-    "independent_rebuild": "PASS: independently rebuilt both PDFs after the current manuscript edit; extracted text and page geometry match."
+    "archive_entries": 48,
+    "independent_rebuild": "PASS: independent flat-archive builds match extracted text and page counts for the reviewed main PDF and Supplement."
   },
   "research_evidence_archive": {
     "filename": "Research_Evidence_V5.zip",
@@ -83,16 +83,16 @@
       "sha256": "454f6eca1ea634a359fea230c0c87132c8305a6d7588a0e37dd3e58eaf1a7ba0"
     },
     "FINAL_READINESS_V5.json": {
-      "bytes": 4140,
-      "sha256": "67db8d73d15b60966f88c09e36eb9dd71b637772fcacd2593839691f1b8134de"
+      "bytes": 4897,
+      "sha256": "6e41a8aa3725363169af057976079e558e70f9a513c2b4558b4dc9b3ef361358"
     },
     "FINAL_V5_MANUSCRIPT.pdf": {
-      "bytes": 5945711,
-      "sha256": "19fa35f15d71f23e623b2e3f9f2c2b6aba9ae037f0e55aa95d49b7871fa15e45"
+      "bytes": 5945623,
+      "sha256": "e1444c642bce7e94a991715c36593a945269bc4b302fdba1b896626b6beb6279"
     },
     "FINAL_V5_MARKED_MANUSCRIPT.pdf": {
-      "bytes": 6045110,
-      "sha256": "345e187801e8b5f55f435bd249501c6241e826a177b5f3a8d978feed6351b929"
+      "bytes": 6044497,
+      "sha256": "007eb60453bbeba82dd8bbb0fac0773c8778f657b16fc626bd9f069fefa5c0ec"
     },
     "FINAL_V5_RESPONSE_TO_REVIEWERS.docx": {
       "bytes": 19589,
@@ -100,23 +100,23 @@
     },
     "FINAL_V5_RESPONSE_TO_REVIEWERS.pdf": {
       "bytes": 158873,
-      "sha256": "b42d53fc39775910eaf97fc7ab8fdd06124c5317f1bc04b2d61eb6a012b6aa04"
+      "sha256": "13cdf179f1849af5a76bfc3d5b35994006d41074d43a9ed743af5a1c2413e750"
     },
     "FINAL_V5_SUPPLEMENTARY.pdf": {
-      "bytes": 16124901,
-      "sha256": "c3a6c3d2a90d3d077d7f44c7b265de13259f85ddcb0585f3c5d7123a66afc2ec"
+      "bytes": 19053659,
+      "sha256": "984ab34e0aa801be809ad1ca8c342b0fd5b825208b15b3a1ad98a7942771b127"
     },
     "Figure_1.pdf": {
       "bytes": 2059525,
       "sha256": "1a952d7a209445d42025152569d4bda087e677cbd39a39b00f22197a5e27497a"
     },
     "Figure_2.pdf": {
-      "bytes": 1559880,
-      "sha256": "60a9e474633ec1eaedfc8246942f8b90c9f0a250407186c619f3dd154d2d1b58"
+      "bytes": 1559654,
+      "sha256": "65183249f80a8b2a6d8af89e89f418e44169951c668b2e2ac4b7578d81e0b46e"
     },
     "Figure_3.pdf": {
-      "bytes": 1140419,
-      "sha256": "4f7262a54ee33314bc116c7179c38af62e732d6217be6438c1ba0dfe39af63d7"
+      "bytes": 1140232,
+      "sha256": "414948136d321bdc005daeaf04d65b5cc1db5d2ac281b1e22455fa6925d49f41"
     },
     "Figure_4.pdf": {
       "bytes": 964578,
@@ -135,8 +135,8 @@
       "sha256": "fad0747b4d5f56b972907232c408a34fd5bad54c5a8e46beb080a5e08415fd49"
     },
     "Manuscript_LaTeX_Sources_V5.zip": {
-      "bytes": 20384631,
-      "sha256": "cac341719c516b2d0a65b75cb97911bdce83e94e242ab9a17adcc301714bb559"
+      "bytes": 22534590,
+      "sha256": "00eed92893e4b6d3925d03a040d773c63fb2d24e99d1cf7bd2e335c1eb58ce3f"
     },
     "Original_Conference_Submission_CAD_Graphics_2026_Paper_75.pdf": {
       "bytes": 7583599,
@@ -175,18 +175,19 @@
       "sha256": "ba87def621c1d099c2dfb85186f4bcdcfb663a1a943b1e2caaf32a9d69c3e829"
     },
     "V5_SUBMISSION_INSTRUCTIONS.txt": {
-      "bytes": 4708,
-      "sha256": "63d690718751e5b2e1a7334a25b2566dd92db8a1fb16eeb7fe7199fc5440ac5b"
+      "bytes": 2557,
+      "sha256": "11bd229c0574c45dd8dc19d82543e4c945617ac74ad47db3b820bd9b02db8d92"
     }
   },
-  "checksum_file": "SHA256SUMS_V5.txt",
+  "checksum_file": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/journal_upload_v5_candidate/SHA256SUMS_V5.txt",
   "checksum_excludes": [
     "JOURNAL_SUBMISSION_MANIFEST_V5.json",
+    "quality_review/JOURNAL_DELIVERY_MANIFEST_V5.json",
     "SHA256SUMS_V5.txt"
   ],
   "media_submission": "PASS: both MP4s decode fully. Upload each separately with its matching Still.png; use Supplementary_Video_Captions_V5.txt in caption fields if available.",
   "portal_submission": "NOT_PERFORMED",
-  "checksum_sha256": "7e527d0d6c3ef7040284515b6c49d2932e842d2bb06d32b4a568fe144d2120fe",
+  "checksum_sha256": "d64616a48d8c30f9dc808bfd95e84f98ee3c1f77f4dbe63530f39582c1ed94b5",
   "file_count_excluding_manifest_and_checksum": 28,
   "pdf_page_sizes": {
     "main": "595.276 x 793.701 pts",
@@ -195,8 +196,8 @@
   },
   "reference_audit": {
     "citation_style": "numeric; reference list follows first citation order",
-    "unique_citations": 41,
-    "bibliography_entries": 41,
+    "unique_citations": 42,
+    "bibliography_entries": 42,
     "uncited_entries": 0,
     "unresolved_citations": 0,
     "verified_changes": [
@@ -205,7 +206,7 @@
       "LPIPS reference completed with all five authors and CVPR pages 586–595.",
       "Added the full CAD/Graphics 2026 Paper 75 conference-submission reference; recommendation status follows the existing response record; original 0907 conference PDF is included for editorial comparison."
     ],
-    "metadata_basis": "Citation/bibliography consistency checked locally for all 40 entries; amended/disputed records checked against primary publisher, proceedings, or archive records.",
+    "metadata_basis": "Citation/bibliography consistency checked for 42 entries; the limited dataset reference points to a pinned public GitHub commit.",
     "citation_order": "PASS; bibliography item order matches first-citation order."
   },
   "journal_upload_roles": {
@@ -272,17 +273,17 @@
   },
   "submission_readiness": {
     "AUTHOR_REVIEW_READY": "YES",
-    "SUBMISSION_READY": "NO — pending ethics/consent facts, research-data repository/link or valid non-sharing explanation, sponsor-role statement, Graphical Abstract approval, and live portal metadata/item types.",
+    "SUBMISSION_READY": "NO — public data URL is present; Zenodo DOI insertion and remaining author confirmations/portal checks are pending.",
     "portal_submission": "NOT_PERFORMED"
   },
   "pre_submission_gates": [
-    "Author to provide the accurate ethics approval/exemption basis and informed-consent statement for the historical 24-participant study retained in the Supplement.",
-    "Provide a repository DOI/URL for research data and cite it, or provide an accurate author-approved explanation why data cannot be shared; current Data Availability text has no repository link.",
-    "State each funder’s role in study design, collection, analysis, interpretation, writing, and the decision to submit.",
+    "Historical 24-participant ethics/consent facts remain for author confirmation; no ethics content was changed in this update.",
+    "The limited rights-filtered dataset is public at https://github.com/Blues-berry/MV-Painter-research-data, commit 8765e1f186e9d3fabd6151c8b388984c391a7520; enable its Zenodo integration, archive version 1.0.0, and replace the pinned GitHub citation with the assigned version DOI.",
+    "State each funder’s role in design, data collection, analysis, interpretation, writing and the decision to submit.",
     "Author visual approval of the required Graphical Abstract.",
-    "In the existing revision record, confirm current title/abstract/keywords, article type, item types, Paper 75 editor-only classification, and video previews/captions."
+    "In the existing revision record, confirm title/abstract/keywords, article type, file item types, Paper 75 editor-only classification, and video previews/captions."
   ],
-  "source_revision_commit": "7b845de3",
+  "source_revision_commit": "34ed140a8fe8a81f34b41f2ce86493e625441de8",
   "support_files": {
     "Acknowledgements_V5.docx": {
       "source": "Byte-identical to 0907 acknowledgement copy; retained locally for comparison. Title Page includes it; do not upload separately unless requested."
@@ -324,9 +325,15 @@
   "submission_bundle": {
     "filename": "CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip",
     "upload_files": 20,
-    "status": "Conditional candidate; verified archive; extract and upload 20 individual files.",
-    "sha256": "b089ad9ebcced219a0e1ee57bf8001056529287ba1f3f74b4167d3c4b1407de5",
-    "bytes": 61139087,
+    "status": "Conditional candidate; refreshed handoff archive; extract and upload 20 individual files.",
+    "bytes": 65438487,
+    "sha256": "dcf87983a89922ca95befcb10df49b08d79ee861aa89552e69bb98a3f4cd5084",
     "path": "/4T/CXY/TCAS_PRE_SUBMISSION_AUDIT_20261013/working/1014v4_TEXT_FINAL_REVISION_20261014/CAG-D-26-00962_R2_V5_SUBMISSION_BUNDLE_CONDITIONAL_20261014.zip"
+  },
+  "research_data_repository": {
+    "url": "https://github.com/Blues-berry/MV-Painter-research-data",
+    "commit": "8765e1f186e9d3fabd6151c8b388984c391a7520",
+    "scope": "rights-filtered derived metrics and figure-source metadata; no meshes, textures, generated-image archive, model weights or participant-level responses",
+    "doi_status": "pending Zenodo repository enablement and version release archive"
   }
 }
