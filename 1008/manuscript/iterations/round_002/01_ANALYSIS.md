@@ -1,7 +1,0 @@
-# 第二轮分析：默认调用身份与有效对照
-
-上一轮表明收益仅缩小约3.7%的LPIPS经验参考差距。R1.1仍缺真实默认残差分支的生成结果；现有capped1.0不能代表unset-scale。
-
-只读核查确认：GeoTexResnetWrapper在属性缺失时直接加原始残差；属性存在时应用层cap。现有冻结采样函数每步写入该属性。另一方面，模型文件的validation_step用75步调用基础pipeline，并未显式绑定几何特征；直接将其输出称为同协议GeoTex默认是不成立的。因此本轮应测量“同一冻结50步采样协议中的原生unset-scale残差分支”，不能声称整个官方默认pipeline像素复现。
-
-计划采用不改动原始wrapper.forward的临时pre-hook，在每次真实wrapper调用前删除尺度属性；保留参考write-pass跳过逻辑、几何特征、条件、种子和采样。逐调用验证属性确实缺失，结束后移除hook。重新生成capped1.0并与上一轮逐像素、输入hash核对，作为额外driver路径一致性门槛。No Adapter是另一独立控制，不与unset混同。所有新比较均后验探索，旧冻结primary不变。

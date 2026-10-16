@@ -1,6 +1,0 @@
-# scientific-validation-v3-20261006 branch audit
-
-- Archived source HEAD: `12da08c7056f5f0c36677668d640477bfb249454`; parent is the audited `codex/final-evidence-freeze-20261001` HEAD `29b3a0a6ec00f5848f1898ffda4fb8e787f81375`. No registered source worktree or WIP state is available.
-- Full-history merge was rejected: this 126-commit source history contains stale `final/` content, deletes active 1008/1009 trees, and carries historical experiment objects. Its latest snapshot adds 525 files (38,943,044 bytes) beneath `final/round2/scientific_validation_v3/`; that is not an instruction to import the whole snapshot.
-- The unique selected content is `a3_interaction/`: the 4,800-row, 16-condition A3 dataset and the corrected Wald audit needed to reproduce the active Supplement's A3 interaction values. The source rows pass the cohort, ledger, baseline, and Wald checks recorded in that package. Other files remain recoverable from the archived source ref; no source files or data were deleted or moved.
-- `PAPER_IMPACT=DIRECT` because these source rows directly support the active Supplement's A3 statistics. No TeX, figure, response, or submission file changed; the current 1008 interpretation and its dose/stress limits were retained. No GPU, push, or journal submission. `SUBMISSION_APPROVED=NO`.

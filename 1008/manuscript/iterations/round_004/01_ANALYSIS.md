@@ -1,5 +1,0 @@
-# 第四轮分析
-
-第三轮两个已见失败对象的完整base路径保留参考外观，但分辨率、采样器、图像embedding、CFG和预处理均不同，无法归因。历史B2简单替换embedding失败，不得隐去。因此先做两对象2×2诊断，固定旧256视图/50步Euler采样/实际conditioning RGB及初始latent，不追加算法或扫参。
-
-原条件cached/conditional-only必须逐像素复现上一轮NoAdapter。online只改变global embedding；CFG2使用标准2εc−εu，两路顺序调用，条件路保持B1及旧随机序列；负条件编码和UNet随机噪声在独立fork_rng中产生，避免额外负路消耗把正路随机输入改掉。与原生batched CFG并不宣称像素等价。先验证实现和随机耦合，再分析输出，不把两对象变成总体统计证据。

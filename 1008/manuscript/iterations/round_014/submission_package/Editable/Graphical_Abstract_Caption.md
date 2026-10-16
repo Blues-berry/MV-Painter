@@ -1,1 +1,0 @@
-The graphical abstract summarizes the controlled comparisons and separate bake outcomes. Error bars are pointwise 95% object intervals; different cohorts/protocols are not pooled. The illustration and data plot were created with Matplotlib from the frozen object-level facts; no general-purpose generative image tool was used.

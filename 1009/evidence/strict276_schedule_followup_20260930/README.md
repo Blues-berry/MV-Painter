@@ -1,9 +1,0 @@
-# Strict-276 schedule follow-up archive
-
-This is the targeted six-schedule follow-up named by the three `stash@{0}` notes. The protocol identifies it as a post-development follow-up on the already-used clean-v2 strict-276 cohort, not an independent confirmation. It is separate from `MAIN-STAGE-276` and does not replace that paper-facing result. It is also distinct from the invalid D19 576-row factorial recorded in the stash: D19 used the UNet in training mode, whereas this follow-up's loader set the UNet and VAE to evaluation mode.
-
-Source files were recovered from `/4T/CXY/MV-Painter`, V3 worktree HEAD `5c2c8829a1e19b42837761160dc4c14cf8f09045`, at the 2026-10-09 local audit. The persistent result directory is local/ignored in that worktree. Copied files are listed with exact source and destination hashes in `1009/main_consolidation/MAIN_INTEGRATION_COPY_MANIFEST.csv`.
-
-The controller loads the model through the evaluation-mode loader; the audited loader calls `model.unet.eval()` and `vae.eval()`. The run-level audit covers 276 objects × 6 methods (1,656 object/method rows). Recomputed per-object means match the audit. On FG-LPIPS, `LLH_ramp_eq − LLH_eq` is −0.0003384 (95% object-bootstrap CI [−0.000605, −0.000063], 165/276 wins). This narrow post-development comparison does not establish a general schedule advantage. A separate reproducibility manifest still labels checkpoint provenance `AUDIT NEEDED`, so the run-level integrity result does not remove the checkpoint-provenance caveat.
-
-This archive intentionally excludes `pilot_results.json`, `pilot_progress.json`, the duplicate bootstrap JSON, run logs, per-object budget JSON, and prediction images (about 239 MB in the source directory). They remain in the V3 worktree. No strict-276 result was added to the manuscript or used as an independent replication.

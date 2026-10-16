@@ -1,7 +1,0 @@
-# Round 12 follow-up evidence package
-
-This directory preserves the completed, non-TCAS follow-up records used in Supplementary Section S22. It does not contain model weights or the generated PNG archive. The per-cell score records, frozen cohort and analysis protocol, generation identity ledger, source code, aggregate test, APG/MV-Adapter comparisons, and file hashes are included. Where original output PNGs remain available in the workspace, the verifier checks their recorded hashes; the source package rebuild does not require those images.
-
-`confirmation64/CONFIRMATION64_FREEZE.json` and `CANDIDATE_EXPOSURE_AUDIT_STAGE02.json` preserve the object order, target hashes, seed/condition matrix, two specified primary endpoints, and historical Fresh C exposure caveat. `scores_native_grid_projection_view_projection_interaction_projection.json` contains 768 object-condition-seed score rows. `evaluate_confirmation012.py` and `scoring_worker.py` preserve the evaluation path; `verify_round012_evidence.py` independently recomputes the saved comparisons and checks identity records.
-
-`apg/` and `mvadapter/` preserve their protocol, comparison, status, and report files. They remain development evidence. `server_snapshot/` preserves the 14:02 UTC status of the separate GSO100/APG/bake chain; those statuses were rechecked at 14:22 UTC and were unchanged. Queued or running cells are not reported as outcomes.

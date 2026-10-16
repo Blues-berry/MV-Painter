@@ -1,9 +1,0 @@
-# C&G 保守修订第1轮
-
-本轮版本：conservative_r1。基于review2/refined工作稿创建独立副本，所有可提交文件带保守后缀。现有有效matched300/native50/bake10保留；没有新推理或训练。
-
-先分析与计划见ROUND_ANALYSIS_PLAN_ZH.md；执行结果见ROUND_EXECUTION_ZH.md；原稿及其他版本保护见PARENT_SNAPSHOT.json和PROTECTED_MANUSCRIPTS.json。最终交付目录delivery_conservative_r1，包括独立TeX、clean/01549 marked/Supplement/回复/视频、源码包和沿用复算包。
-
-在manuscript目录运行build_clean_conservative_r1.sh、build_supplement_conservative_r1.sh、build_marked_conservative_r1.sh。已交付图资产足以编译PDF，无需重跑模型。图生成脚本仅在拥有原始图源时可重建；其图资产本轮不改。
-
-贡献定位为受控实证；不恢复C3最优、CAI独立推导、原+0.96复现或实际纹理已修好的结论。研究缺口和中稿风险见ACCEPTANCE_ASSESSMENT_ZH.md，未给出虚构百分比。

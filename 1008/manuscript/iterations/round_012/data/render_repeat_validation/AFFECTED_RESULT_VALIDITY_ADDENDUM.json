@@ -1,9 +1,0 @@
-{
-  "status": "PREVIOUS_REPEAT_UNSEEN_RENDER_RESULTS_REQUIRE_RECOMPUTATION",
-  "cause": "render_textured_view computed fx/fy after wrapping floor indices; negative/edge UVs could generate invalid weights. Splat correction alone did not correct this separate render path.",
-  "main10_record_verification": "bake_matrix and bake_matrix_v2 metadata explicitly use modulo/REPEAT; contrary to initial assumption that main10 disabled it.",
-  "affected_scope": "All results whose unseen views were rendered by the pre-fix render_textured_view with repeat_uv=True, including main10; verify executed-source hash and retain failures/old values.",
-  "unaffected_scope": "2D generated view scores and native output identity are unaffected by this CPU renderer. Clamp mode is bitidentical on54 controlled fixtures. Existing UV baked textures may be reusable only after their splat/inpaint/source identities are checked.",
-  "required_action": "Freeze matched corrected re-render/evaluation; recompute all conditions, GT comparisons and object-level statistics. No selective recomputation or unsupported preservation of prior ranking.",
-  "source_unchanged_history": true
-}
